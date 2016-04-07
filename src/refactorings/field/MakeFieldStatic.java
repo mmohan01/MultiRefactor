@@ -15,6 +15,7 @@ public class MakeFieldStatic extends Refactoring
 {	
 	public MakeFieldStatic(CrossReferenceServiceConfiguration sc) 
 	{
+		
 		super(sc);
 	}
 	
@@ -51,8 +52,7 @@ public class MakeFieldStatic extends Refactoring
 		// Specify refactoring information for results information.
 		super.refactoringInfo = "Iteration " + iteration + ": \"Make Field Static\" applied at class " 
 				+ super.getFileName(getSourceFileRepository().getKnownCompilationUnits().get(unit).getName())
-				+ " to element " + pe.getClass().getSimpleName() + " (" + pe.toString().substring(last + 2)
-				+ ")";
+				+ " to field " + pe.toString().substring(last + 2);
 		
 		return setProblemReport(EQUIVALENCE);
 	}
@@ -92,7 +92,6 @@ public class MakeFieldStatic extends Refactoring
 		// Only counts the relevant program element.
 		while (tw.next(FieldDeclaration.class))
 		{
-			//counter++;
 			FieldDeclaration fd = (FieldDeclaration) tw.getProgramElement();
 			if (mayRefactor(fd))
 				counter++;
@@ -101,18 +100,19 @@ public class MakeFieldStatic extends Refactoring
 		return counter;
 	}
 	
-	public int getID(int unit, int element)
+	public String getName(int unit, int element)
 	{		
-		super.tw = new TreeWalker(getSourceFileRepository().getKnownCompilationUnits().get(unit));
+		AbstractTreeWalker tw = new TreeWalker(getSourceFileRepository().getKnownCompilationUnits().get(unit));
 
 		for (int i = 0; i < element; i++)
 		{
-			super.tw.next(FieldDeclaration.class);
-			FieldDeclaration fd = (FieldDeclaration) super.tw.getProgramElement();
+			tw.next(FieldDeclaration.class);
+			FieldDeclaration fd = (FieldDeclaration) tw.getProgramElement();
 			if (!mayRefactor(fd))
 				i--;
 		}
 
-		return super.tw.getProgramElement().getID();
+		FieldDeclaration fd = (FieldDeclaration) tw.getProgramElement();
+		return fd.toString();
 	}
 }

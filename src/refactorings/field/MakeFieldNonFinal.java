@@ -9,6 +9,7 @@ import recoder.java.declaration.EnumDeclaration;
 import recoder.java.declaration.FieldDeclaration;
 import recoder.java.declaration.InterfaceDeclaration;
 import recoder.java.declaration.VariableDeclaration;
+import recoder.kit.MiscKit;
 import recoder.kit.Problem;
 import recoder.kit.ProblemReport;
 import recoder.kit.transformation.Modify;
@@ -60,8 +61,7 @@ public class MakeFieldNonFinal extends Refactoring
 		// Specify refactoring information for results information.
 		super.refactoringInfo = "Iteration " + iteration + ": \"Make Field Non Final\" applied at class " 
 				+ super.getFileName(getSourceFileRepository().getKnownCompilationUnits().get(unit).getName())
-				+ " to element " + pe.getClass().getSimpleName() + " (" + pe.toString().substring(last + 2)
-				+ ")";
+				+ " to " + pe.getClass().getSimpleName() + " " + pe.toString().substring(last + 2);
 
 		return setProblemReport(EQUIVALENCE);
 	}
@@ -84,8 +84,8 @@ public class MakeFieldNonFinal extends Refactoring
 
 	public boolean mayRefactor(VariableDeclaration vd)
 	{
-		if ((!vd.isFinal()) || (vd.getASTParent() instanceof EnumDeclaration) || (vd instanceof EnumConstantDeclaration) || 
-			((vd instanceof FieldDeclaration) && (vd.getASTParent() instanceof InterfaceDeclaration)))
+		if ((!vd.isFinal()) || (MiscKit.getParentTypeDeclaration(vd) instanceof EnumDeclaration) || (vd instanceof EnumConstantDeclaration) || 
+			((vd instanceof FieldDeclaration) && (MiscKit.getParentTypeDeclaration(vd) instanceof InterfaceDeclaration)))
 			return false;
 		else
 			return true;	
@@ -101,7 +101,6 @@ public class MakeFieldNonFinal extends Refactoring
 		// Only counts the relevant program element.
 		while (tw.next(VariableDeclaration.class))
 		{
-			//counter++;
 			VariableDeclaration vd = (VariableDeclaration) tw.getProgramElement();
 			if (mayRefactor(vd))
 				counter++;
@@ -110,18 +109,19 @@ public class MakeFieldNonFinal extends Refactoring
 		return counter;
 	}
 	
-	public int getID(int unit, int element)
+	public String getName(int unit, int element)
 	{
-		super.tw = new TreeWalker(getSourceFileRepository().getKnownCompilationUnits().get(unit));
+		AbstractTreeWalker tw = new TreeWalker(getSourceFileRepository().getKnownCompilationUnits().get(unit));
 
 		for (int i = 0; i < element; i++)
 		{
-			super.tw.next(VariableDeclaration.class);
-			VariableDeclaration vd = (VariableDeclaration) super.tw.getProgramElement();
+			tw.next(VariableDeclaration.class);
+			VariableDeclaration vd = (VariableDeclaration) tw.getProgramElement();
 			if (!mayRefactor(vd))
 				i--;
 		}
 
-		return super.tw.getProgramElement().getID();
+		VariableDeclaration vd = (VariableDeclaration) tw.getProgramElement();
+		return vd.toString();
 	}
 }

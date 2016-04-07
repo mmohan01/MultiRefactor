@@ -4,8 +4,12 @@ import recoder.CrossReferenceServiceConfiguration;
 import recoder.convenience.AbstractTreeWalker;
 import recoder.convenience.TreeWalker;
 import recoder.java.ProgramElement;
+import recoder.java.declaration.ConstructorDeclaration;
 import recoder.java.declaration.EnumDeclaration;
+import recoder.java.declaration.MemberDeclaration;
 import recoder.java.declaration.VariableDeclaration;
+import recoder.java.reference.VariableReference;
+import recoder.kit.MiscKit;
 import recoder.kit.Problem;
 import recoder.kit.ProblemReport;
 import recoder.kit.transformation.Modify;
@@ -52,8 +56,7 @@ public class MakeFieldFinal extends Refactoring
 		// Specify refactoring information for results information.
 		super.refactoringInfo = "Iteration " + iteration + ": \"Make Field Final\" applied at class " 
 				+ super.getFileName(getSourceFileRepository().getKnownCompilationUnits().get(unit).getName())
-				+ " to element " + pe.getClass().getSimpleName() + " (" + pe.toString().substring(last + 2)
-				+ ")";
+				+ " to " + pe.getClass().getSimpleName() + " " + pe.toString().substring(last + 2);
 
 		return setProblemReport(EQUIVALENCE);
 	}
@@ -76,11 +79,40 @@ public class MakeFieldFinal extends Refactoring
 	}
 
 	public boolean mayRefactor(VariableDeclaration vd)
-	{		
-		if ((vd.isFinal()) || (vd.getASTParent() instanceof EnumDeclaration))
+	{				
+		if ((vd.isFinal()) || (MiscKit.getParentTypeDeclaration(vd) instanceof EnumDeclaration))
 			return false;
 		else
+		{
+			if (!(vd.toSource().contains("=")))
+			{				
+				for (MemberDeclaration md : MiscKit.getParentTypeDeclaration(vd).getMembers())
+				{
+					if (md instanceof ConstructorDeclaration)
+					{
+						boolean check = false;
+						
+						for (int i = 0; i < ((ConstructorDeclaration) md).getStatementCount(); i++)
+						{
+							if (((ConstructorDeclaration) md).getStatementAt(i).toSource().contains(vd.getVariables().get(0).getName() + " ="))
+							{
+								check = true;
+								break;
+							}
+						}
+						
+						if (!check)
+							return false;
+					}
+				}
+			}
+
+			for (VariableReference vr : getCrossReferenceSourceInfo().getReferences(vd.getVariables().get(0)))
+				if (vr.getASTParent().toSource().contains(vd.getVariables().get(0).getName() + " ="))
+					return false;
+
 			return true;
+		}
 	}
 	
 	// Count the amount of available elements in the chosen class for refactoring.
@@ -89,11 +121,10 @@ public class MakeFieldFinal extends Refactoring
 	{
 		int counter = 0;
 		AbstractTreeWalker tw = new TreeWalker(getSourceFileRepository().getKnownCompilationUnits().get(unit));
-
+		
 		// Only counts the relevant program element.
 		while (tw.next(VariableDeclaration.class))
 		{
-			//counter++;
 			VariableDeclaration vd = (VariableDeclaration) tw.getProgramElement();
 			if (mayRefactor(vd))
 				counter++;
@@ -102,18 +133,19 @@ public class MakeFieldFinal extends Refactoring
 		return counter;
 	}
 	
-	public int getID(int unit, int element)
+	public String getName(int unit, int element)
 	{
-		super.tw = new TreeWalker(getSourceFileRepository().getKnownCompilationUnits().get(unit));
+		AbstractTreeWalker tw = new TreeWalker(getSourceFileRepository().getKnownCompilationUnits().get(unit));
 
 		for (int i = 0; i < element; i++)
 		{
-			super.tw.next(VariableDeclaration.class);
-			VariableDeclaration vd = (VariableDeclaration) super.tw.getProgramElement();
+			tw.next(VariableDeclaration.class);
+			VariableDeclaration vd = (VariableDeclaration) tw.getProgramElement();
 			if (!mayRefactor(vd))
 				i--;
 		}
 
-		return super.tw.getProgramElement().getID();
+		VariableDeclaration vd = (VariableDeclaration) tw.getProgramElement();
+		return vd.toString();
 	}
 }
