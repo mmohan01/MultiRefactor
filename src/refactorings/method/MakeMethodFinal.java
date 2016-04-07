@@ -6,6 +6,8 @@ import recoder.convenience.TreeWalker;
 import recoder.java.ProgramElement;
 import recoder.java.declaration.ConstructorDeclaration;
 import recoder.java.declaration.MethodDeclaration;
+import recoder.kit.MethodKit;
+import recoder.kit.MiscKit;
 import recoder.kit.Problem;
 import recoder.kit.ProblemReport;
 import recoder.kit.transformation.Modify;
@@ -25,7 +27,7 @@ public class MakeMethodFinal extends Refactoring
 	}
 	
 	public ProblemReport analyze(int iteration, int unit, int element) 
-	{
+	{		
 		// Initialise and pick the element to visit.
 		CrossReferenceServiceConfiguration config = getServiceConfiguration();
 		ProblemReport report = EQUIVALENCE;		
@@ -51,8 +53,7 @@ public class MakeMethodFinal extends Refactoring
 		// Specify refactoring information for results information.
 		super.refactoringInfo = "Iteration " + iteration + ": \"Make Method Final\" applied at class " 
 				+ super.getFileName(getSourceFileRepository().getKnownCompilationUnits().get(unit).getName())
-				+ " to element " + pe.getClass().getSimpleName() + " (" + ((MethodDeclaration) pe).getName()
-				+ ")";
+				+ " to method " + ((MethodDeclaration) pe).getName();
 
 		return setProblemReport(EQUIVALENCE);
 	}
@@ -77,10 +78,19 @@ public class MakeMethodFinal extends Refactoring
 	
 	public boolean mayRefactor(MethodDeclaration md)
 	{
-		if (md.isFinal() || (md instanceof ConstructorDeclaration))
+		if ((md.isFinal()) || (md.isAbstract()) || (md instanceof ConstructorDeclaration) || (MiscKit.getParentTypeDeclaration(md).isInterface()))
 			return false;
 		else
-			return true;	
+		{
+			// Prevents "Zero Service" outputs logged to the console.
+			if (md.getMemberParent().getProgramModelInfo() == null)
+				md.getFactory().getServiceConfiguration().getChangeHistory().updateModel();
+			
+			if (MethodKit.getRedefiningMethods(getCrossReferenceSourceInfo(), md).size() > 0)
+				return false;
+			else 
+				return true;
+		}
 	}
 
 	// Count the amount of available elements in the chosen class for refactoring.
@@ -89,11 +99,10 @@ public class MakeMethodFinal extends Refactoring
 	{
 		int counter = 0;
 		AbstractTreeWalker tw = new TreeWalker(getSourceFileRepository().getKnownCompilationUnits().get(unit));
-
+		
 		// Only counts the relevant program element.
 		while (tw.next(MethodDeclaration.class))
 		{
-			//counter++;
 			MethodDeclaration md = (MethodDeclaration) tw.getProgramElement();
 			if (mayRefactor(md))
 				counter++;
@@ -102,18 +111,19 @@ public class MakeMethodFinal extends Refactoring
 		return counter;
 	}
 	
-	public int getID(int unit, int element)
+	public String getName(int unit, int element)
 	{		
-		super.tw = new TreeWalker(getSourceFileRepository().getKnownCompilationUnits().get(unit));
+		AbstractTreeWalker tw = new TreeWalker(getSourceFileRepository().getKnownCompilationUnits().get(unit));
 
 		for (int i = 0; i < element; i++)
 		{
-			super.tw.next(MethodDeclaration.class);
-			MethodDeclaration md = (MethodDeclaration) super.tw.getProgramElement();
+			tw.next(MethodDeclaration.class);
+			MethodDeclaration md = (MethodDeclaration) tw.getProgramElement();
 			if (!mayRefactor(md))
 				i--;
 		}
 
-		return super.tw.getProgramElement().getID();
+		MethodDeclaration md = (MethodDeclaration) tw.getProgramElement();
+		return md.getName();
 	}
 }

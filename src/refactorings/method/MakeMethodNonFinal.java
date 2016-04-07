@@ -55,8 +55,7 @@ public class MakeMethodNonFinal extends Refactoring
 		// Specify refactoring information for results information.
 		super.refactoringInfo = "Iteration " + iteration + ": \"Make Method Non Final\" applied at class " 
 				+ super.getFileName(getSourceFileRepository().getKnownCompilationUnits().get(unit).getName())
-				+ " to element " + pe.getClass().getSimpleName() + " (" + ((MethodDeclaration) pe).getName()
-				+ ")";
+				+ " to method " + ((MethodDeclaration) pe).getName();
 
 		return setProblemReport(EQUIVALENCE);
 	}
@@ -95,7 +94,6 @@ public class MakeMethodNonFinal extends Refactoring
 		// Only counts the relevant program element.
 		while (tw.next(MethodDeclaration.class))
 		{
-			//counter++;
 			MethodDeclaration md = (MethodDeclaration) tw.getProgramElement();
 			if (mayRefactor(md))
 				counter++;
@@ -104,18 +102,19 @@ public class MakeMethodNonFinal extends Refactoring
 		return counter;
 	}
 	
-	public int getID(int unit, int element)
+	public String getName(int unit, int element)
 	{		
-		super.tw = new TreeWalker(getSourceFileRepository().getKnownCompilationUnits().get(unit));
+		AbstractTreeWalker tw = new TreeWalker(getSourceFileRepository().getKnownCompilationUnits().get(unit));
 
 		for (int i = 0; i < element; i++)
 		{
-			super.tw.next(MethodDeclaration.class);
-			MethodDeclaration md = (MethodDeclaration) super.tw.getProgramElement();
+			tw.next(MethodDeclaration.class);
+			MethodDeclaration md = (MethodDeclaration) tw.getProgramElement();
 			if (!mayRefactor(md))
 				i--;
 		}
 
-		return super.tw.getProgramElement().getID();
+		MethodDeclaration md = (MethodDeclaration) tw.getProgramElement();
+		return md.getName();
 	}
 }

@@ -1,18 +1,30 @@
 package refactorings.method;
 
+import java.util.ArrayList;
+
 import recoder.CrossReferenceServiceConfiguration;
+import recoder.abstraction.Method;
 import recoder.convenience.AbstractTreeWalker;
 import recoder.convenience.TreeWalker;
 import recoder.java.ProgramElement;
+import recoder.java.declaration.AnnotationPropertyDeclaration;
+import recoder.java.declaration.ConstructorDeclaration;
+import recoder.java.declaration.InterfaceDeclaration;
 import recoder.java.declaration.MethodDeclaration;
-import recoder.java.declaration.modifier.Public;
+import recoder.java.declaration.TypeDeclaration;
+import recoder.java.declaration.modifier.Private;
+import recoder.java.reference.MemberReference;
+import recoder.kit.MethodKit;
+import recoder.kit.MiscKit;
 import recoder.kit.Problem;
 import recoder.kit.ProblemReport;
 import recoder.kit.transformation.Modify;
+import recoder.service.CrossReferenceSourceInfo;
 import refactorings.Refactoring;
+import refactory.AccessFlags;
 
 public class IncreaseMethodSecurity extends Refactoring 
-{	
+{		
 	public IncreaseMethodSecurity(CrossReferenceServiceConfiguration sc) 
 	{
 		super(sc);
@@ -25,11 +37,11 @@ public class IncreaseMethodSecurity extends Refactoring
 	
 	public ProblemReport analyze(int iteration, int unit, int element) 
 	{
-		// Initialise and pick a random class to visit.
+		// Initialise and pick the element to visit.
 		CrossReferenceServiceConfiguration config = getServiceConfiguration();
 		ProblemReport report = EQUIVALENCE;		
 		super.tw = new TreeWalker(getSourceFileRepository().getKnownCompilationUnits().get(unit));
-		
+
 		for (int i = 0; i < element; i++)
 		{
 			super.tw.next(MethodDeclaration.class);
@@ -37,12 +49,12 @@ public class IncreaseMethodSecurity extends Refactoring
 			if (!mayRefactor(md))
 				i--;
 		}
-			
+	
 		ProgramElement pe = super.tw.getProgramElement();
 		MethodDeclaration md = (MethodDeclaration) pe;
 
 		// Construct refactoring transformation.
-		super.transformation = new Modify(config, true, md, super.visibilityUp(md.getVisibilityModifier()));
+		super.transformation = new Modify(config, true, md, super.visibilityDown(md.getVisibilityModifier()));
 		report = super.transformation.analyze();
 		if (report instanceof Problem) 
 			return setProblemReport(report);
@@ -50,10 +62,9 @@ public class IncreaseMethodSecurity extends Refactoring
 		// Specify refactoring information for results information.
 		super.refactoringInfo = "Iteration " + iteration + ": \"Increase Method Security\" applied at class " 
 				+ super.getFileName(getSourceFileRepository().getKnownCompilationUnits().get(unit).getName())
-				+ " to element " + pe.getClass().getSimpleName() + " (" + ((MethodDeclaration) pe).getName()
-				+ ") from " + super.currentModifier(md.getVisibilityModifier()) + " to " 
-				+ super.refactoredUpModifier(md.getVisibilityModifier());
-
+				+ " to method " + ((MethodDeclaration) pe).getName() + " from " + super.currentModifier(md.getVisibilityModifier()) 
+				+ " to " + super.refactoredDownModifier(md.getVisibilityModifier());
+		
 		return setProblemReport(EQUIVALENCE);
 	}
 	
@@ -65,20 +76,87 @@ public class IncreaseMethodSecurity extends Refactoring
 		MethodDeclaration md = (MethodDeclaration) super.tw.getProgramElement();
 
 		// Construct refactoring transformation.
-		super.transformation = new Modify(config, true, md, super.visibilityDown(md.getVisibilityModifier()));
+		super.transformation = new Modify(config, true, md, super.visibilityUp(md.getVisibilityModifier()));
 		report = super.transformation.analyze();
 		if (report instanceof Problem) 
 			return setProblemReport(report);
 		
 		return setProblemReport(EQUIVALENCE);
 	}
-
+	
 	public boolean mayRefactor(MethodDeclaration md)
-	{
-		if (md.getVisibilityModifier() instanceof Public)
+	{		
+		if ((md.getVisibilityModifier() instanceof Private) || (md instanceof AnnotationPropertyDeclaration) || 
+			(md instanceof ConstructorDeclaration) || (md.getMemberParent() instanceof InterfaceDeclaration))
+			return false;
+		else if ((md.isAbstract()) && (super.visibilityDown(md.getVisibilityModifier()) == AccessFlags.PRIVATE))
 			return false;
 		else
-			return true;	
+		{
+			CrossReferenceSourceInfo si = getCrossReferenceSourceInfo();
+			ArrayList<TypeDeclaration> referenceTypes = new ArrayList<TypeDeclaration>();
+			
+			// Prevents "Zero Service" outputs logged to the console.
+			if (md.getMemberParent().getProgramModelInfo() == null)
+				md.getFactory().getServiceConfiguration().getChangeHistory().updateModel();
+			
+			// Checks any method the method redefines to see if 
+			// it will become less visible than the original method.
+			for (Method m : MethodKit.getAllRedefinedMethods(md))
+			{
+				int override = visibility(m);
+				int overridden = visibility(md) - 1;
+				
+				if (overridden < override)
+					return false;
+			}
+			
+			// Checks any methods that redefine the method 
+			// to see if they will be unable to access it. 
+			for  (Method m : MethodKit.getRedefiningMethods(si, md))
+			{
+				if (super.visibilityDown(md.getVisibilityModifier()) == AccessFlags.PRIVATE)
+				{
+					if (!(md.getContainingClassType().equals(m.getContainingClassType())))
+						return false;
+				}
+				else if (!md.getPackage().equals(m.getPackage()))
+				{
+					if (!(super.visibilityDown(md.getVisibilityModifier()) == AccessFlags.PROTECTED))
+						return false;
+					else if (!(m.getContainingClassType().getAllSupertypes().contains(md.getContainingClassType())))
+						return false;
+				}
+			}
+				
+			// Checks any reference to the method in the program 
+			// and whether its class will be able to access the method.
+			for (MemberReference mr : si.getReferences(md))
+			{				
+				if (MiscKit.getParentTypeDeclaration(mr) == null)
+					return false;
+				else if (!(referenceTypes.contains(MiscKit.getParentTypeDeclaration(mr))))
+					referenceTypes.add(MiscKit.getParentTypeDeclaration(mr));
+			}
+			
+			for (TypeDeclaration td : referenceTypes)
+			{				
+				if (super.visibilityDown(md.getVisibilityModifier()) == AccessFlags.PRIVATE)
+				{
+					if (!(md.getMemberParent().equals(td)))
+						return false;
+				}
+				else if (!(md.getMemberParent().getPackage().equals(td.getPackage())))
+				{
+					if (!(super.visibilityDown(md.getVisibilityModifier()) == AccessFlags.PROTECTED))
+						return false;
+					else if (!(td.getAllSupertypes().contains(md.getMemberParent())))
+						return false;
+				}
+			}
+			
+			return true;
+		}
 	}
 
 	// Count the amount of available elements in the chosen class for refactoring.
@@ -91,7 +169,6 @@ public class IncreaseMethodSecurity extends Refactoring
 		// Only counts the relevant program element.
 		while (tw.next(MethodDeclaration.class))
 		{
-			//counter++;
 			MethodDeclaration md = (MethodDeclaration) tw.getProgramElement();
 			if (mayRefactor(md))
 				counter++;
@@ -100,18 +177,30 @@ public class IncreaseMethodSecurity extends Refactoring
 		return counter;
 	}
 	
-	public int getID(int unit, int element)
+	public String getName(int unit, int element)
 	{		
-		super.tw = new TreeWalker(getSourceFileRepository().getKnownCompilationUnits().get(unit));
+		AbstractTreeWalker tw = new TreeWalker(getSourceFileRepository().getKnownCompilationUnits().get(unit));
 
 		for (int i = 0; i < element; i++)
 		{
-			super.tw.next(MethodDeclaration.class);
-			MethodDeclaration md = (MethodDeclaration) super.tw.getProgramElement();
+			tw.next(MethodDeclaration.class);
+			MethodDeclaration md = (MethodDeclaration) tw.getProgramElement();
 			if (!mayRefactor(md))
 				i--;
 		}
 
-		return super.tw.getProgramElement().getID();
+		MethodDeclaration md = (MethodDeclaration) tw.getProgramElement();
+		return md.getName();
+	}
+	
+	private int visibility(Method m)
+	{
+		if (m.isPublic())
+			return 3;
+		else if (m.isProtected())
+			return 2;
+		else if (m.isPrivate())
+			return 0;
+		else return 1;
 	}
 }

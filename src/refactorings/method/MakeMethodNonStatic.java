@@ -5,6 +5,10 @@ import recoder.convenience.AbstractTreeWalker;
 import recoder.convenience.TreeWalker;
 import recoder.java.ProgramElement;
 import recoder.java.declaration.MethodDeclaration;
+import recoder.java.reference.MemberReference;
+import recoder.java.reference.MethodReference;
+import recoder.java.reference.TypeReference;
+import recoder.kit.MethodKit;
 import recoder.kit.Problem;
 import recoder.kit.ProblemReport;
 import recoder.kit.transformation.Modify;
@@ -55,8 +59,7 @@ public class MakeMethodNonStatic extends Refactoring
 		// Specify refactoring information for results information.
 		super.refactoringInfo = "Iteration " + iteration + ": \"Make Method Non Static\" applied at class " 
 				+ super.getFileName(getSourceFileRepository().getKnownCompilationUnits().get(unit).getName())
-				+ " to element " + pe.getClass().getSimpleName() + " (" + ((MethodDeclaration) pe).getName()
-				+ ")";
+				+ " to method " + ((MethodDeclaration) pe).getName();
 
 		return setProblemReport(EQUIVALENCE);
 	}
@@ -78,11 +81,22 @@ public class MakeMethodNonStatic extends Refactoring
 	}
 
 	public boolean mayRefactor(MethodDeclaration md)
-	{
-		if (md.isStatic())
-			return true;
+	{				
+		// Prevents "Zero Service" outputs logged to the console.
+		if (md.getMemberParent().getProgramModelInfo() == null)
+			md.getFactory().getServiceConfiguration().getChangeHistory().updateModel();
+
+					
+		if (!(md.isStatic()) || (MethodKit.isMain(getNameInfo(), md)))
+			return false;
 		else
-			return false;	
+		{
+			for (MemberReference mr : getCrossReferenceSourceInfo().getReferences(md))
+				if (((MethodReference) mr).getReferencePrefix() instanceof TypeReference)
+						return false;
+			
+			return true;
+		}	
 	}
 	
 	// Count the amount of available elements in the chosen class for refactoring.
@@ -95,7 +109,6 @@ public class MakeMethodNonStatic extends Refactoring
 		// Only counts the relevant program element.
 		while (tw.next(MethodDeclaration.class))
 		{
-			//counter++;
 			MethodDeclaration md = (MethodDeclaration) tw.getProgramElement();
 			if (mayRefactor(md))
 				counter++;
@@ -104,18 +117,19 @@ public class MakeMethodNonStatic extends Refactoring
 		return counter;
 	}
 	
-	public int getID(int unit, int element)
+	public String getName(int unit, int element)
 	{		
-		super.tw = new TreeWalker(getSourceFileRepository().getKnownCompilationUnits().get(unit));
+		AbstractTreeWalker tw = new TreeWalker(getSourceFileRepository().getKnownCompilationUnits().get(unit));
 
 		for (int i = 0; i < element; i++)
 		{
-			super.tw.next(MethodDeclaration.class);
-			MethodDeclaration md = (MethodDeclaration) super.tw.getProgramElement();
+			tw.next(MethodDeclaration.class);
+			MethodDeclaration md = (MethodDeclaration) tw.getProgramElement();
 			if (!mayRefactor(md))
 				i--;
 		}
 
-		return super.tw.getProgramElement().getID();
+		MethodDeclaration md = (MethodDeclaration) tw.getProgramElement();
+		return md.getName();
 	}
 }

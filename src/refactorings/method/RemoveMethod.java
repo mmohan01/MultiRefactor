@@ -3,28 +3,30 @@ package refactorings.method;
 import java.util.ArrayList;
 
 import recoder.CrossReferenceServiceConfiguration;
-import recoder.abstraction.Member;
+import recoder.abstraction.Method;
+import recoder.abstraction.Type;
 import recoder.convenience.AbstractTreeWalker;
 import recoder.convenience.TreeWalker;
 import recoder.java.ProgramElement;
 import recoder.java.declaration.ConstructorDeclaration;
 import recoder.java.declaration.MethodDeclaration;
+import recoder.java.declaration.TypeDeclaration;
 import recoder.kit.MethodKit;
-import recoder.kit.MiscKit;
-import recoder.kit.Problem;
 import recoder.kit.ProblemReport;
-import recoder.kit.transformation.Modify;
 import refactorings.Refactoring;
-import refactory.AccessFlags;
 
-public class MakeMethodStatic extends Refactoring 
-{	
-	public MakeMethodStatic(CrossReferenceServiceConfiguration sc) 
+public class RemoveMethod extends Refactoring 
+{
+	private TypeDeclaration type, abstractType;
+	private MethodDeclaration method, abstractMethod;
+	private int position, abstractMethodPosition;
+	
+	public RemoveMethod(CrossReferenceServiceConfiguration sc) 
 	{
 		super(sc);
 	}
 	
-	public MakeMethodStatic() 
+	public RemoveMethod() 
 	{
 		super();
 	}
@@ -32,8 +34,6 @@ public class MakeMethodStatic extends Refactoring
 	public ProblemReport analyze(int iteration, int unit, int element) 
 	{
 		// Initialise and pick the element to visit.
-		CrossReferenceServiceConfiguration config = getServiceConfiguration();
-		ProblemReport report = EQUIVALENCE;		
 		super.tw = new TreeWalker(getSourceFileRepository().getKnownCompilationUnits().get(unit));
 		
 		for (int i = 0; i < element; i++)
@@ -43,68 +43,75 @@ public class MakeMethodStatic extends Refactoring
 			if (!mayRefactor(md))
 				i--;
 		}
-	
+		
 		ProgramElement pe = super.tw.getProgramElement();
-		MethodDeclaration md = (MethodDeclaration) pe;
+		this.method = (MethodDeclaration) pe;
+		this.type = this.method.getMemberParent();
+		ArrayList<Type> types = (ArrayList<Type>) this.method.getSignature();
+		types.add(this.method.getReturnType());
+		this.position = super.getPosition(this.type, this.method);
+		this.abstractMethodPosition = -1;
+		
+		for (Method m : MethodKit.getAllRedefinedMethods(this.method))
+		{
+			if (m.isAbstract())
+			{
+				this.abstractMethod = (MethodDeclaration) m;
+				this.abstractType = this.method.getMemberParent();
+				this.abstractMethodPosition = super.getPosition(this.abstractType, (MethodDeclaration) m);
+			}
+		}
 		
 		// Construct refactoring transformation.
-		super.transformation = new Modify(config, true, md, AccessFlags.STATIC);
-		report = super.transformation.analyze();
-		if (report instanceof Problem) 
-			return setProblemReport(report);
+		// The transformation is handled here manually and the transformation
+		// method will do nothing for this refactoring when it is called.
+		super.transformation = null;
+		getChangeHistory().begin(this);
+		detach(this.method);
+		
+		if (this.abstractMethodPosition != -1)
+		{
+			detach(this.abstractMethod);
+		}
 
 		// Specify refactoring information for results information.
-		super.refactoringInfo = "Iteration " + iteration + ": \"Make Method Static\" applied at class " 
+		super.refactoringInfo = "Iteration " + iteration + ": \"Remove Method\" applied at class " 
 				+ super.getFileName(getSourceFileRepository().getKnownCompilationUnits().get(unit).getName())
 				+ " to method " + ((MethodDeclaration) pe).getName();
-
+		
 		return setProblemReport(EQUIVALENCE);
 	}
 
 	public ProblemReport analyzeReverse() 
 	{
-		// Initialise and pick the element to visit.	
-		MethodDeclaration md = (MethodDeclaration) super.tw.getProgramElement();
-
-		// Find iterator in declaration list.
-		int counter = -1;
-		for (int i = 0; i < md.getDeclarationSpecifiers().size(); i++)
-			if (md.getDeclarationSpecifiers().get(i).toString().contains("Static"))
-				counter = i;
-
 		// Construct refactoring transformation.
 		super.transformation = null;
-		detach(md.getDeclarationSpecifiers().get(counter));
+		attach(this.method, this.type, this.position);	
+		
+		if (this.abstractMethodPosition != -1)
+			attach(this.abstractMethod, this.abstractType, this.abstractMethodPosition);
+		
 		return setProblemReport(EQUIVALENCE);
 	}
-
+	
 	public boolean mayRefactor(MethodDeclaration md)
-	{
-		if ((md.isStatic()) || (md.isAbstract()) || (md instanceof ConstructorDeclaration) || (MiscKit.getParentTypeDeclaration(md).isInterface()))
+	{					
+		// Makes a number of checks against the method in order to exclude any insufficient candidates. 
+		if ((md instanceof ConstructorDeclaration) || (md == null) || (getCrossReferenceSourceInfo().getReferences(md).size() > 0) ||
+			((md.isAbstract()) && (MethodKit.getRedefiningMethods(getCrossReferenceSourceInfo(), md).size() > 0)) || 
+			(MethodKit.isMain(getServiceConfiguration().getNameInfo(), md)))
 			return false;
 		else
 		{
-			// Prevents "Zero Service" outputs logged to the console.
-			if (md.getMemberParent().getProgramModelInfo() == null)
-				md.getFactory().getServiceConfiguration().getChangeHistory().updateModel();
-			
-			if (MethodKit.getRedefiningMethods(getCrossReferenceSourceInfo(), md).size() > 0)
-				return false;
-			else
-			{
-				ArrayList<Member> allMembers = new ArrayList<Member>();
-				allMembers.addAll(MiscKit.getParentTypeDeclaration(md).getAllMethods());
-				allMembers.addAll(MiscKit.getParentTypeDeclaration(md).getAllFields());
+			for (Method m : MethodKit.getAllRedefinedMethods(md))
+				if (((m.isAbstract()) && (MethodKit.getRedefiningMethods(getCrossReferenceSourceInfo(), m).size() > 1)) || 
+					!(m instanceof MethodDeclaration) || (getCrossReferenceSourceInfo().getReferences(m).size() > 0))
+					return false;
 
-				for (Member m : allMembers)
-					if (!(m.isStatic()) && (md.getBody().toSource().contains(m.getName())))
-						return false;
-
-				return true;	
-			}
+			return true;
 		}
 	}
-	
+
 	// Count the amount of available elements in the chosen class for refactoring.
 	// If an element is not applicable for the current refactoring it is not counted.
 	public int getAmount(int unit)
