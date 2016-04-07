@@ -22,11 +22,18 @@ public abstract class Search
 	protected Configuration c;
 	protected String resultsPath;
 	protected ArrayList<String> refactoringInfo;
-
+	
 	public Search(CrossReferenceServiceConfiguration sc, Configuration c) 
 	{
 		this.sc = sc;
 		this.c = c;
+		String output = sc.getProjectSettings().getProperty(PropertyNames.OUTPUT_PATH);
+		this.resultsPath = "./results/" + output.substring(output.lastIndexOf("/") + 1) + "/";
+	}
+	
+	public Search(CrossReferenceServiceConfiguration sc) 
+	{
+		this.sc = sc;
 		String output = sc.getProjectSettings().getProperty(PropertyNames.OUTPUT_PATH);
 		this.resultsPath = "./results/" + output.substring(output.lastIndexOf("/") + 1) + "/";
 	}
@@ -38,11 +45,7 @@ public abstract class Search
 		List<CompilationUnit> list = sfr.getKnownCompilationUnits();
 
 		for (CompilationUnit cu : list)
-		{
-			//cu.validateAll();
-			//if(!sfr.isUpToDate(cu))
-			//	System.out.println("\nClass changed");
-			
+		{	
 			try 
 			{
 				sfr.print(cu);
@@ -59,9 +62,10 @@ public abstract class Search
 	{
 		int[] position = new int[2];
 		position[0] = (int) (Math.random() * r.getServiceConfiguration().getSourceFileRepository().getKnownCompilationUnits().size());
-			
-		// Only counts the relevant program element.
+	
+		// Only counts the relevant program elements.
 		int amount = r.getAmount(position[0]);
+		
 		// Count the amount of available elements in the chosen class for refactoring.
 		// If none are available find the next element up that is available.
 		// If there are still no elements found look in the other direction and if there 
@@ -86,7 +90,7 @@ public abstract class Search
 		return position;
 	}
 	
-	protected int[] nextElementUp(int currentUnit, int currentElement, Refactoring r) 
+	private int[] nextElementUp(int currentUnit, int currentElement, Refactoring r) 
 	{
 		int[] position = new int[2];
 		
@@ -133,7 +137,7 @@ public abstract class Search
 		return position;
 	}
 	
-	protected int[] nextElementDown(int currentUnit, int currentElement, Refactoring r) 
+	private int[] nextElementDown(int currentUnit, int currentElement, Refactoring r) 
 	{
 		int[] position = new int[2];
 		
@@ -209,172 +213,52 @@ public abstract class Search
 		return position;
 	}
 	
-	// A neighbour will be chosen using the list of available refactorings and
-	// the applicable elements on either side of the current position. If the 
-	// element is at the edge of a compilation unit the next class will be used.
-	// The neighbour returned will contain the element and refactoring that improves 
-	// the current score, and the level of improvement will depend on whether the search is
-	// first descent or steepest descent.
-	protected int[] getNeighbour(int currentUnit, int currentElement, int iteration, ArrayList<Refactoring> refactorings, 
-			boolean steepestDescent, FitnessFunction ff, Metrics m, float currentScore)
+	protected int unitPosition(String name)
 	{
-		float newScore = currentScore;
-		int[] position = new int[2];
-		int[] neighbour = new int[3];
-		neighbour[0] = currentUnit;
-		neighbour[1] = currentElement;
-		neighbour[2] = -1;
-
-		for (int i = 0; i < refactorings.size(); i++)
+		int unit = -1;
+		
+		for (int i = 0; i < this.sc.getSourceFileRepository().getKnownCompilationUnits().size(); i++)
 		{
-			double random = Math.random();
-			if (random >= 0.5)
-				position = nextElementUp(currentUnit, currentElement, refactorings.get(i));
-			else
-				position = nextElementDown(currentUnit, currentElement, refactorings.get(i));
-
-			if ((position[0] != -1) && (position[1] != -1))
+			if (this.sc.getSourceFileRepository().getKnownCompilationUnits().get(i).getName().equals(name))
 			{
-				refactorings.get(i).transform(refactorings.get(i).analyze(iteration, position[0], position[1]));
-				newScore = ff.calculateScore(m, this.c.getConfiguration());
-				refactorings.get(i).transform(refactorings.get(i).analyzeReverse());
-
-				if (newScore > currentScore)
-				{
-					neighbour[0] = position[0];
-					neighbour[1] = position[1];
-					neighbour[2] = i;
-					
-					if (steepestDescent)
-						currentScore = newScore;
-					else
-						break;
-				}
-			}
-
-			if (random >= 0.5)
-				position = nextElementDown(currentUnit, currentElement, refactorings.get(i));
-			else
-				position = nextElementUp(currentUnit, currentElement, refactorings.get(i));
-
-			if ((position[0] != -1) && (position[1] != -1))
-			{
-				refactorings.get(i).transform(refactorings.get(i).analyze(iteration, position[0], position[1]));
-				newScore = ff.calculateScore(m, this.c.getConfiguration());
-				refactorings.get(i).transform(refactorings.get(i).analyzeReverse());
-
-				if (newScore > currentScore)
-				{
-					neighbour[0] = position[0];
-					neighbour[1] = position[1];
-					neighbour[2] = i;
-					
-					if (steepestDescent)
-						currentScore = newScore;
-					else
-						break;
-				}
+				unit = i;
+				break;
 			}
 		}
 		
-		return neighbour;
-	}
-
-	// A neighbour will be chosen using the list of available refactorings and
-	// the applicable elements on either side of the current position. If the 
-	// element is at the edge of a compilation unit the next class will be used.
-	// The neighbour returned will contain the element and refactoring that improves 
-	// the current score, or if the refactoring doesn't improve the score it may still
-	// be returned, depending on the current temperature value and the magnitude of the difference.
-	protected int[] getNeighbour(int currentUnit, int currentElement, int iteration, ArrayList<Refactoring> refactorings, 
-			float currentTemperature, FitnessFunction ff, Metrics m, float currentScore)
-	{
-		float newScore = currentScore;
-		int[] position = new int[2];
-		int[] neighbour = new int[3];
-		neighbour[0] = currentUnit;
-		neighbour[1] = currentElement;
-		neighbour[2] = -1;
-
-		for (int i = 0; i < refactorings.size(); i++)
-		{
-			double random = Math.random();
-			if (random >= 0.5)
-				position = nextElementUp(currentUnit, currentElement, refactorings.get(i));
-			else
-				position = nextElementDown(currentUnit, currentElement, refactorings.get(i));
-
-			if ((position[0] != -1) && (position[1] != -1))
-			{
-				refactorings.get(i).transform(refactorings.get(i).analyze(iteration, position[0], position[1]));
-				newScore = ff.calculateScore(m, this.c.getConfiguration());
-				refactorings.get(i).transform(refactorings.get(i).analyzeReverse());
-
-				if (newScore > currentScore)
-				{
-					neighbour[0] = position[0];
-					neighbour[1] = position[1];
-					neighbour[2] = i;
-					break;
-				}
-				else
-				{
-					// Probability of accepting negative move = exponential((-)difference/current temperature).
-					// Exponential of a negative value is confined to the range 0 -> 1 as the negative value approaches 0. 
-					float probability = (float) Math.exp((newScore - currentScore) / currentTemperature);
-					
-					if (probability > Math.random())
-					{
-						neighbour[0] = position[0];
-						neighbour[1] = position[1];
-						neighbour[2] = i;
-						break;
-					}
-				}
-			}
-
-			if (random >= 0.5)
-				position = nextElementDown(currentUnit, currentElement, refactorings.get(i));
-			else
-				position = nextElementUp(currentUnit, currentElement, refactorings.get(i));
-
-			if ((position[0] != -1) && (position[1] != -1))
-			{
-				refactorings.get(i).transform(refactorings.get(i).analyze(iteration, position[0], position[1]));
-				newScore = ff.calculateScore(m, this.c.getConfiguration());
-				refactorings.get(i).transform(refactorings.get(i).analyzeReverse());
-				
-				if (newScore > currentScore)
-				{
-					neighbour[0] = position[0];
-					neighbour[1] = position[1];
-					neighbour[2] = i;
-					break;
-				}
-				else
-				{
-					// Probability of accepting negative move = exponential((-)difference/current temperature).
-					// Exponential of a negative value is confined to the range 0 -> 1 as the negative value approaches 0. 
-					float probability = (float) Math.exp((newScore - currentScore) / currentTemperature);
-					
-					if (probability > Math.random())
-					{
-						neighbour[0] = position[0];
-						neighbour[1] = position[1];
-						neighbour[2] = i;
-						break;
-					}
-				}
-			}
-		}
-
-		return neighbour;
+		return unit;
 	}
 	
 	// Output search information to results file.
 	protected void outputSearchInfo(String pathName, String runInfo)
 	{
 		String runName = String.format("%sresults.txt", pathName);
+		File dir = new File(pathName);
+		if (!dir.exists()) 
+			dir.mkdirs();
+
+		try 
+		{
+			BufferedWriter bw = new BufferedWriter(new FileWriter(runName, false));
+			bw.write(String.format("======== Search Information ========"));
+			bw.write(String.format("\r\n%s", runInfo));
+			bw.close();
+		}
+		catch (IOException e) 
+		{
+			System.out.println("\nEXCEPTION: Cannot export results to text file.");
+			System.exit(1);
+		}
+	}
+		
+	// Output search information to results file.
+	// Can be used for a population of solutions to generate separate results files.
+	protected void outputSearchInfo(String pathName, int solution, String runInfo)
+	{
+		// Create a location for the results output.
+		pathName = pathName.substring(0, (pathName.length() - 1));
+		pathName += "s/";
+		String runName = String.format("%sresultsSolution%d.txt", pathName, solution);
 		File dir = new File(pathName);
 		if (!dir.exists()) 
 			dir.mkdirs();
@@ -457,7 +341,6 @@ public abstract class Search
 
 		if (log)
 		{
-			
 			// Outputs the metric values for the project to the console for immediate feedback.
 			System.out.printf("\n");
 			
@@ -473,16 +356,16 @@ public abstract class Search
 		}
 	}
 	
+	public String getResultsPath()
+	{
+		return this.resultsPath;
+	}
+	
 	public void setResultsPath(String resultsPath)
 	{
 		this.resultsPath = resultsPath;
 	}
-
-	public String getResultsPath()
-	{
-		return this.resultsPath;
-	}	
-	
+		
 	public void setServiceConfiguration(CrossReferenceServiceConfiguration sc)
 	{
 		this.sc = sc;

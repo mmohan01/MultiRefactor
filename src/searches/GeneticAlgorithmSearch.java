@@ -11,7 +11,6 @@ import java.util.Comparator;
 import recoder.CrossReferenceServiceConfiguration;
 import recoder.ParserException;
 import recoder.io.PropertyNames;
-import refactorings.Refactoring;
 import refactory.Configuration;
 import refactory.FitnessFunction;
 import refactory.Metrics;
@@ -20,6 +19,7 @@ import refactory.RefactoringSequence;
 public class GeneticAlgorithmSearch extends Search
 {
 	private String[] sourceFiles;
+	private String outputPath;
 	
 	private boolean printAll;	
 	private int generations;
@@ -53,7 +53,10 @@ public class GeneticAlgorithmSearch extends Search
 
 	// Executes the Genetic Algorithm.
 	public void run() 
-	{
+	{		
+		// Store output path from original program model for printing.
+		this.outputPath = super.sc.getProjectSettings().getProperty(PropertyNames.OUTPUT_PATH);
+		
 		String runInfo = String.format("Search: Genetic Algorithm\r\nGenerations: %d\r\nPopulation Size: %d"
 									   + "\r\nCrossover Probability: %f\r\nMutation Probability: %f",
 				                       this.generations, this.populationSize, this.crossoverProbability, this.mutationProbability);
@@ -65,7 +68,7 @@ public class GeneticAlgorithmSearch extends Search
 		{
 			for (int i = 1; i <= populationSize; i++)
 			{
-				outputSearchInfo(super.resultsPath, i, runInfo);
+				super.outputSearchInfo(super.resultsPath, i, runInfo);
 				outputMetrics(benchmark, m, true, false, i, super.resultsPath);
 			}
 		}
@@ -81,7 +84,7 @@ public class GeneticAlgorithmSearch extends Search
 		System.out.printf("\n\nCreating Initial Population...");
 		ArrayList<RefactoringSequence> population = new ArrayList<RefactoringSequence>(this.populationSize);
 		ArrayList<RefactoringSequence> newGeneration = new ArrayList<RefactoringSequence>();
-		population = initialize();
+		population = initialise();
 		
 		// At each generation, crossover is applied to produce a number of child solutions.
 		// Then, mutation is applied amongst these new solutions to introduce variety.
@@ -106,29 +109,16 @@ public class GeneticAlgorithmSearch extends Search
 			while (Math.random() < this.mutationProbability)
 			{
 				System.out.printf("\nMutation...");
-				int randomChild = (int)(Math.random()*newGeneration.size());
+				int randomChild = (int)(Math.random() * newGeneration.size());
 				newGeneration.set(randomChild, mutation(newGeneration.get(randomChild)));
 			}
 			
 			// Increases the size of the array list so it can add the new solutions before 
-			// calculating the fitnesses and being trimmed back down to the population size.
+			// sorting them and being trimmed back down to the population size.
 			newGeneration.trimToSize();
 			population.ensureCapacity(this.populationSize + newGeneration.size());
+			population.addAll(newGeneration);
 			
-			// On the first generation the initial population 
-			// and children are all measured for fitness.
-			if (i == 1)
-			{
-				population.addAll(newGeneration);
-				population = fitness(population);
-			}
-			// Only the new solutions need to be measured for fitness.
-			else
-			{
-				newGeneration = fitness(newGeneration);
-				population.addAll(newGeneration);
-			}
-
 			// Sort new population by fitness and truncate it to remove weakest solutions.
 			population = new ArrayList<RefactoringSequence>(sort(population));
 			population.trimToSize();
@@ -140,30 +130,50 @@ public class GeneticAlgorithmSearch extends Search
 		
 		if (this.printAll)
 		{
-			for (int i = 0; i < population.size(); i++)
-			{
-				outputRefactoringInfo(super.resultsPath, time, population.get(i).getFitness() - benchmark, i + 1, population.get(i).getRefactoringInfo());
-				m = new Metrics(population.get(i).getServiceConfiguration().getSourceFileRepository().getKnownCompilationUnits());	
-				outputMetrics(population.get(i).getFitness(), m, false, false, i + 1, super.resultsPath);
-			}
-				
 			System.out.printf("\n\nPrinting Population");
 			
 			for (int i = 0; i < population.size(); i++)
 			{
-				String newOutputPath = super.sc.getProjectSettings().getProperty(PropertyNames.OUTPUT_PATH) + "s/Solution" + (i + 1);
-				population.get(i).getServiceConfiguration().getProjectSettings().setProperty(PropertyNames.OUTPUT_PATH, newOutputPath);
-				super.print(population.get(i).getServiceConfiguration().getSourceFileRepository());	
+				resetModel();
+				
+				// Reconstruct model so it can be printed.
+				for (int j = 0; j < population.get(i).getRefactorings().size(); j++)
+				{
+					super.c.getRefactorings().get(population.get(i).getRefactorings().get(j))
+						   .transform(super.c.getRefactorings().get(population.get(i).getRefactorings().get(j))
+						   .analyze((j + 1), population.get(i).getPositions().get(j)[0], population.get(i).getPositions().get(j)[1]));
+				}
+				
+				//Output information.
+				outputRefactoringInfo(super.resultsPath, time, population.get(i).getFitness() - benchmark, i + 1, population.get(i).getRefactoringInfo());
+				m = new Metrics(super.sc.getSourceFileRepository().getKnownCompilationUnits());	
+				outputMetrics(population.get(i).getFitness(), m, false, false, i + 1, super.resultsPath);
+
+				// Output refactored solution.
+				String newOutputPath = this.outputPath + "s/Solution" + (i + 1);
+				super.sc.getProjectSettings().setProperty(PropertyNames.OUTPUT_PATH, newOutputPath);
+				super.print(super.sc.getSourceFileRepository());	
 			}
 		}
 		else
 		{
+			resetModel();
+			
+			// Reconstruct model so it can be printed.
+			for (int i = 0; i < population.get(0).getRefactorings().size(); i++)
+			{
+				super.c.getRefactorings().get(population.get(0).getRefactorings().get(i))
+					   .transform(super.c.getRefactorings().get(population.get(0).getRefactorings().get(i))
+					   .analyze((i + 1), population.get(0).getPositions().get(i)[0], population.get(0).getPositions().get(i)[1]));
+			}
+			
 			outputRefactoringInfo(super.resultsPath, time, population.get(0).getFitness() - benchmark, -1, population.get(0).getRefactoringInfo());
-			m = new Metrics(population.get(0).getServiceConfiguration().getSourceFileRepository().getKnownCompilationUnits());	
+			m = new Metrics(super.sc.getSourceFileRepository().getKnownCompilationUnits());	
 			super.outputMetrics(population.get(0).getFitness(), m, false, true, super.resultsPath);
 			System.out.printf("\n\nScore has improved overall by %f", population.get(0).getFitness() - benchmark);
 			System.out.printf("\nPrinting Top Solution");
-			super.print(population.get(0).getServiceConfiguration().getSourceFileRepository());	
+			super.sc.getProjectSettings().setProperty(PropertyNames.OUTPUT_PATH, this.outputPath);
+			super.print(super.sc.getSourceFileRepository());	
 		}
 		
 		// Output time taken to console and refactoring information to results file.
@@ -171,53 +181,36 @@ public class GeneticAlgorithmSearch extends Search
 		timeTaken = System.currentTimeMillis() - startTime;
 		time = timeTaken / 1000.0;
 		System.out.printf("\nOverall time taken for search: %.2fs", time);
+		System.out.printf("\n-------------------------------------");
 	}
 	
 	// Creates an initial population of refactoring solutions at random.
 	// Using the initial refactoring range a random amount of refactorings will
 	// be applied in that range to create a possible solution and this will be 
 	// repeated until the population size has been satisfied.
-	private ArrayList<RefactoringSequence> initialize()
+	private ArrayList<RefactoringSequence> initialise()
 	{
-		ArrayList<Refactoring> refactorings = new ArrayList<Refactoring>(super.c.getRefactorings().size());
-		refactorings = super.c.getRefactorings();
 		ArrayList<RefactoringSequence> population = new ArrayList<RefactoringSequence>(this.populationSize);
-		CrossReferenceServiceConfiguration[] scArray = new CrossReferenceServiceConfiguration[this.populationSize];
+		FitnessFunction ff = new FitnessFunction();
+		Metrics m;
 		
 		for (int i = 0; i < this.populationSize; i++)
 		{
-			// Create copy of the initial program model.
-			CrossReferenceServiceConfiguration scCopy = new CrossReferenceServiceConfiguration();
-
-			try 
-			{
-				// Read the original input.
-				scCopy.getSourceFileRepository().getCompilationUnitsFromFiles(this.sourceFiles);
-			}
-			catch (ParserException e) 
-			{
-				System.out.println("\nEXCEPTION: Cannot read input.");
-				System.exit(1);
-			}
+			// Reinitialise the initial program model.
+			if (i > 0)
+				resetModel();
 			
-			// Set up initial properties of service configuration.
-			// Saves new model into array so it can be updated and passed to the relevant refactoring.
-			scCopy.getProjectSettings().setProperty(PropertyNames.INPUT_PATH, super.sc.getProjectSettings().getProperty(PropertyNames.INPUT_PATH));
-			scCopy.getProjectSettings().setProperty(PropertyNames.OUTPUT_PATH, super.sc.getProjectSettings().getProperty(PropertyNames.OUTPUT_PATH));
-			scCopy.getProjectSettings().ensureSystemClassesAreInPath();
-			scArray[i] = scCopy;
-
 			// Applies random refactorings to each solution to create an initial population.
 			// The amount of refactorings applied in each case is chosen randomly within the range supplied.
-			int refactoringAmount = ((int)(Math.random() * this.initialRefactoringRange)) + 1;
+			int refactoringAmount =  ((int)(Math.random() * this.initialRefactoringRange)) + 1;
 			ArrayList<int[]> posSequence = new ArrayList<int[]>(refactoringAmount);
 			ArrayList<Integer> refSequence = new ArrayList<Integer>(refactoringAmount);
-			ArrayList<Integer> IDSequence = new ArrayList<Integer>(refactoringAmount);
+			ArrayList<String[]> nameSequence = new ArrayList<String[]>(refactoringAmount);
 			ArrayList<String> refactoringInfo = new ArrayList<String>(refactoringAmount);
 			
 			for (int j = 0; j < refactoringAmount; j++)
 			{				
-				int[] result = randomRefactoring(scArray[i]);
+				int[] result = randomRefactoring();
 				int[] position = {result[1], result[2]};
 
 				if (result[0] == -1)
@@ -226,21 +219,25 @@ public class GeneticAlgorithmSearch extends Search
 					j = refactoringAmount;
 				}
 				else
-				{
-					IDSequence.add(refactorings.get(result[0]).getID(position[0], position[1]));
-					refactorings.get(result[0]).transform(refactorings.get(result[0]).analyze((j + 1), position[0], position[1]));
-					refactoringInfo.add(refactorings.get(result[0]).getRefactoringInfo());
+				{	
+					nameSequence.add(new String[]{super.sc.getSourceFileRepository().getKnownCompilationUnits().get(position[0]).getName(),
+				                                  super.c.getRefactorings().get(result[0]).getName(position[0], position[1])});
+					super.c.getRefactorings().get(result[0]).transform(super.c.getRefactorings().get(result[0]).analyze((j + 1), position[0], position[1]));
+					refactoringInfo.add(super.c.getRefactorings().get(result[0]).getRefactoringInfo());
 					refSequence.add(result[0]);
 					posSequence.add(position);
-					scArray[i] = refactorings.get(result[0]).getServiceConfiguration();
 				}
 			}
 			
 			refSequence.trimToSize();
 			posSequence.trimToSize();
-			IDSequence.trimToSize();
+			nameSequence.trimToSize();
 			refactoringInfo.trimToSize();
-			population.add(new RefactoringSequence(scArray[i], refSequence, posSequence, IDSequence, refactoringInfo));
+			population.add(new RefactoringSequence(refSequence, posSequence, nameSequence, refactoringInfo));
+			
+			// Calculate fitness up front so program model isn't needed at a later point.
+			m = new Metrics(super.sc.getSourceFileRepository().getKnownCompilationUnits());		
+			population.get(i).setFitness(ff.calculateScore(m, super.c.getConfiguration()));	
 		}
 		
 		return population;
@@ -253,56 +250,33 @@ public class GeneticAlgorithmSearch extends Search
 	private ArrayList<RefactoringSequence> crossover(RefactoringSequence p1, RefactoringSequence p2)
 	{
 		ArrayList<RefactoringSequence> children = new ArrayList<RefactoringSequence>(2);
-		ArrayList<Refactoring> refactorings = new ArrayList<Refactoring>(super.c.getRefactorings().size());
-		refactorings = super.c.getRefactorings();
 		int cutPoint1 = ((int)(Math.random() * (p1.getRefactorings().size() - 1))) + 1;
 		int cutPoint2 = ((int)(Math.random() * (p2.getRefactorings().size() - 1))) + 1;
-		int elementPosition, i2;
+		int unitPosition, elementPosition, i2;
+		FitnessFunction ff = new FitnessFunction();
+		Metrics m;
 		
 		int c1Size = cutPoint1 + (p2.getRefactorings().size() - cutPoint2);
 		ArrayList<Integer> c1Refactorings = new ArrayList<Integer>(c1Size);
 		ArrayList<int[]> c1Positions = new ArrayList<int[]>(c1Size);
-		ArrayList<Integer> c1IDs = new ArrayList<Integer>(c1Size);
+		ArrayList<String[]> c1Names = new ArrayList<String[]>(c1Size);
 		ArrayList<String> refactoringInfo1 = new ArrayList<String>(c1Size);
 		
-		// Create copies of the initial program model.
-		CrossReferenceServiceConfiguration sc1 = new CrossReferenceServiceConfiguration();
-		CrossReferenceServiceConfiguration sc2 = new CrossReferenceServiceConfiguration();
-
-		try 
-		{
-			// Read the original input.
-			sc1.getSourceFileRepository().getCompilationUnitsFromFiles(this.sourceFiles);
-			sc2.getSourceFileRepository().getCompilationUnitsFromFiles(this.sourceFiles);
-		}
-		catch (ParserException e) 
-		{
-			System.out.println("\nEXCEPTION: Cannot read input.");
-			System.exit(1);
-		}
-		
-		// Set up initial properties of service configurations.
-		sc1.getProjectSettings().setProperty(PropertyNames.INPUT_PATH, super.sc.getProjectSettings().getProperty(PropertyNames.INPUT_PATH));
-		sc1.getProjectSettings().setProperty(PropertyNames.OUTPUT_PATH, super.sc.getProjectSettings().getProperty(PropertyNames.OUTPUT_PATH));
-		sc1.getProjectSettings().ensureSystemClassesAreInPath();
-		sc2.getProjectSettings().setProperty(PropertyNames.INPUT_PATH, super.sc.getProjectSettings().getProperty(PropertyNames.INPUT_PATH));
-		sc2.getProjectSettings().setProperty(PropertyNames.OUTPUT_PATH, super.sc.getProjectSettings().getProperty(PropertyNames.OUTPUT_PATH));
-		sc2.getProjectSettings().ensureSystemClassesAreInPath();
+		// Reinitialise the initial program model.
+		resetModel();
 
 		for (int i = 0; i < c1Size; i++)
 		{				
 			// The first sequence in each solution will be applicable so 
 			// refactorings can be applied without checking.
 			if (i < cutPoint1)
-			{	
-				refactorings.get(p1.getRefactorings().get(i)).setServiceConfiguration(sc1);
-				refactorings.get(p1.getRefactorings().get(i)).transform(refactorings.get(p1.getRefactorings().get(i))
-						    .analyze((i + 1), p1.getPositions().get(i)[0], p1.getPositions().get(i)[1]));
-				refactoringInfo1.add(refactorings.get(p1.getRefactorings().get(i)).getRefactoringInfo());
+			{
+				super.c.getRefactorings().get(p1.getRefactorings().get(i)).transform(super.c.getRefactorings().get(p1.getRefactorings().get(i))
+					   .analyze((i + 1), p1.getPositions().get(i)[0], p1.getPositions().get(i)[1]));
+				refactoringInfo1.add(super.c.getRefactorings().get(p1.getRefactorings().get(i)).getRefactoringInfo());
 				c1Refactorings.add(p1.getRefactorings().get(i));
 				c1Positions.add(p1.getPositions().get(i));	
-				c1IDs.add(p1.getIDs().get(i));
-				sc1 = refactorings.get(p1.getRefactorings().get(i)).getServiceConfiguration();
+				c1Names.add(p1.getNames().get(i));
 			}
 			// For the second sequence, a check will have 
 			// to be made for each contiguous refactoring.
@@ -310,43 +284,54 @@ public class GeneticAlgorithmSearch extends Search
 			{
 				elementPosition = -1;
 				i2 = cutPoint2 + (i - cutPoint1);
-				refactorings.get(p2.getRefactorings().get(i2)).setServiceConfiguration(sc1);
+				unitPosition = super.unitPosition(p2.getNames().get(i2)[0]);
 				
 				// Checks for the relevant program element by comparing the names of 
 				// each applicable element in the class with the desired element name.
-				for (int j = 1; j <= refactorings.get(p2.getRefactorings().get(i2)).getAmount(p2.getPositions().get(i2)[0]); j++)
-				{					
-					if (refactorings.get(p2.getRefactorings().get(i2)).getID(p2.getPositions().get(i2)[0], j) == (p2.getIDs().get(i2)))
-					{
-						elementPosition = j;
-						break;
+				if (unitPosition != -1)
+				{
+					for (int j = 1; j <= super.c.getRefactorings().get(p2.getRefactorings().get(i2)).getAmount(unitPosition); j++)
+					{	
+						if (super.c.getRefactorings().get(p2.getRefactorings().get(i2)).getName(unitPosition, j).equals(p2.getNames().get(i2)[1]))
+						{
+							elementPosition = j;
+							break;
+						}
 					}
 				}
 				
 				// If the element exists and can be refactored.
 				if (elementPosition != -1)
 				{
-					refactorings.get(p2.getRefactorings().get(i2)).transform(refactorings.get(p2.getRefactorings().get(i2))
-							    .analyze((i + 1), p2.getPositions().get(i2)[0], elementPosition));
-					refactoringInfo1.add(refactorings.get(p2.getRefactorings().get(i2)).getRefactoringInfo());
+					super.c.getRefactorings().get(p2.getRefactorings().get(i2)).transform(super.c.getRefactorings().get(p2.getRefactorings().get(i2))
+					       .analyze((i + 1), unitPosition, elementPosition));
+					refactoringInfo1.add(super.c.getRefactorings().get(p2.getRefactorings().get(i2)).getRefactoringInfo());
 					c1Refactorings.add(p2.getRefactorings().get(i2));
-					c1Positions.add(new int[] {p2.getPositions().get(i2)[0], elementPosition});
-					c1IDs.add(p2.getIDs().get(i2));
-					sc1 = refactorings.get(p2.getRefactorings().get(i2)).getServiceConfiguration();
+					c1Positions.add(new int[] {unitPosition, elementPosition});
+					c1Names.add(p2.getNames().get(i2));
 				}
+				else
+					System.out.printf("\n  Refactoring %d N/A at child 1", i + 1);
 			}
 		}
 
 		c1Refactorings.trimToSize();
 		c1Positions.trimToSize();
-		c1IDs.trimToSize();
+		c1Names.trimToSize();
 		refactoringInfo1.trimToSize();
-		children.add(new RefactoringSequence(sc1, c1Refactorings, c1Positions, c1IDs, refactoringInfo1));
+		children.add(new RefactoringSequence(c1Refactorings, c1Positions, c1Names, refactoringInfo1));
+		
+		// Calculate fitness up front so program model isn't needed at a later point.
+		m = new Metrics(super.sc.getSourceFileRepository().getKnownCompilationUnits());		
+		children.get(0).setFitness(ff.calculateScore(m, super.c.getConfiguration()));	
+		
+		// Reinitialise the initial program model again for second child.
+		resetModel();
 		
 		int c2Size = cutPoint2 + (p1.getRefactorings().size() - cutPoint1);
 		ArrayList<Integer> c2Refactorings = new ArrayList<Integer>(c2Size);
 		ArrayList<int[]> c2Positions = new ArrayList<int[]>(c2Size);
-		ArrayList<Integer> c2IDs = new ArrayList<Integer>(c2Size);
+		ArrayList<String[]> c2Names = new ArrayList<String[]>(c2Size);
 		ArrayList<String> refactoringInfo2 = new ArrayList<String>(c2Size);
 					
 		for (int i = 0; i < c2Size; i++)
@@ -355,14 +340,12 @@ public class GeneticAlgorithmSearch extends Search
 			// refactorings can be applied without checking.
 			if (i < cutPoint2)
 			{
-				refactorings.get(p2.getRefactorings().get(i)).setServiceConfiguration(sc2);
-				refactorings.get(p2.getRefactorings().get(i)).transform(refactorings.get(p2.getRefactorings().get(i))
-						    .analyze((i + 1), p2.getPositions().get(i)[0], p2.getPositions().get(i)[1]));
-				refactoringInfo2.add(refactorings.get(p2.getRefactorings().get(i)).getRefactoringInfo());
+				super.c.getRefactorings().get(p2.getRefactorings().get(i)).transform(super.c.getRefactorings().get(p2.getRefactorings().get(i))
+					   .analyze((i + 1), p2.getPositions().get(i)[0], p2.getPositions().get(i)[1]));
+				refactoringInfo2.add(super.c.getRefactorings().get(p2.getRefactorings().get(i)).getRefactoringInfo());
 				c2Refactorings.add(p2.getRefactorings().get(i));
 				c2Positions.add(p2.getPositions().get(i));
-				c2IDs.add(p2.getIDs().get(i));
-				sc2 = refactorings.get(p2.getRefactorings().get(i)).getServiceConfiguration();
+				c2Names.add(p2.getNames().get(i));
 			}	
 			// For the second sequence, a check will have 
 			// to be made for each contiguous refactoring.
@@ -370,94 +353,97 @@ public class GeneticAlgorithmSearch extends Search
 			{
 				elementPosition = -1;
 				i2 = cutPoint1 + (i - cutPoint2);
-				refactorings.get(p1.getRefactorings().get(i2)).setServiceConfiguration(sc2);
+				unitPosition = super.unitPosition(p1.getNames().get(i2)[0]);
 				
 				// Checks for the relevant program element by comparing the names of 
 				// each applicable element in the class with the desired element name.
-				for (int j = 1; j <=  refactorings.get(p1.getRefactorings().get(i2)).getAmount(p1.getPositions().get(i2)[0]); j++)
+				if (unitPosition != -1)
 				{
-					if (refactorings.get(p1.getRefactorings().get(i2)).getID(p1.getPositions().get(i2)[0], j) == (p1.getIDs().get(i2)))
+					for (int j = 1; j <= super.c.getRefactorings().get(p1.getRefactorings().get(i2)).getAmount(unitPosition); j++)
 					{
-						elementPosition = j;
-						break;
+						if (super.c.getRefactorings().get(p1.getRefactorings().get(i2)).getName(unitPosition, j).equals(p1.getNames().get(i2)[1]))
+						{
+							elementPosition = j;
+							break;
+						}
 					}
 				}
 				
 				// If the element exists and can be refactored.
 				if (elementPosition != -1)
 				{
-					refactorings.get(p1.getRefactorings().get(i2)).transform(refactorings.get(p1.getRefactorings().get(i2))
-							    .analyze((i + 1), p1.getPositions().get(i2)[0], elementPosition));
-					refactoringInfo2.add(refactorings.get(p1.getRefactorings().get(i2)).getRefactoringInfo());
+					super.c.getRefactorings().get(p1.getRefactorings().get(i2)).transform(super.c.getRefactorings().get(p1.getRefactorings().get(i2))
+						   .analyze((i + 1), unitPosition, elementPosition));
+					refactoringInfo2.add(super.c.getRefactorings().get(p1.getRefactorings().get(i2)).getRefactoringInfo());
 					c2Refactorings.add(p1.getRefactorings().get(i2));
-					c2Positions.add(new int[] {p1.getPositions().get(i2)[0], elementPosition});
-					c2IDs.add(p1.getIDs().get(i2));
-					sc2 = refactorings.get(p1.getRefactorings().get(i2)).getServiceConfiguration();
+					c2Positions.add(new int[] {unitPosition, elementPosition});
+					c2Names.add(p1.getNames().get(i2));
 				}
+				else
+					System.out.printf("\n  Refactoring %d N/A at child 2", i + 1);
 			}
 		}
 		
 		c2Refactorings.trimToSize();
 		c2Positions.trimToSize();
-		c2IDs.trimToSize();
+		c2Names.trimToSize();
 		refactoringInfo2.trimToSize();
-		children.add(new RefactoringSequence(sc2, c2Refactorings, c2Positions, c2IDs, refactoringInfo2));
+		children.add(new RefactoringSequence(c2Refactorings, c2Positions, c2Names, refactoringInfo2));
+		
+		// Calculate fitness up front so program model isn't needed at a later point.
+		m = new Metrics(super.sc.getSourceFileRepository().getKnownCompilationUnits());		
+		children.get(1).setFitness(ff.calculateScore(m, super.c.getConfiguration()));	
 		
 		return children;
 	}
 	
 	// Applies a random refactoring to the end of the refactoring sequence passed in.
-	// If the refactoring is not applicable it will keep trying until an applicable	
-	// refactoring is found or it runs out of possibilities. In this case the original 
-	// sequence is returned.
+	// If the refactoring is not applicable it will keep trying until an applicable	refactoring
+	// is found or it runs out of possibilities. In this case the original sequence is returned.
 	private RefactoringSequence mutation(RefactoringSequence p)
-	{			
-		int[] result = randomRefactoring(p.getServiceConfiguration());
+	{					
+		// Reinitialise the program model.
+		resetModel();
+		
+		for (int i = 0; i < p.getRefactorings().size(); i++)
+			super.c.getRefactorings().get(p.getRefactorings().get(i)).transform(super.c.getRefactorings().get(p.getRefactorings().get(i))
+				   .analyze((i + 1), p.getPositions().get(i)[0], p.getPositions().get(i)[1]));
+
+		int[] result = randomRefactoring();
 		int[] position = {result[1], result[2]};
 		
 		// Applies refactoring to model and adds it to the sequence.
 		if (result[0] != -1)
 		{			
-			ArrayList<Refactoring> refactorings = new ArrayList<Refactoring>(super.c.getRefactorings().size());
-			refactorings = super.c.getRefactorings();
 			ArrayList<Integer> refSequence = new ArrayList<Integer>(p.getRefactorings().size() + 1);
 			refSequence = p.getRefactorings();
 			ArrayList<int[]> posSequence = new ArrayList<int[]>(p.getPositions().size() + 1);
 			posSequence = p.getPositions();
-			ArrayList<Integer> IDSequence = new ArrayList<Integer>(p.getIDs().size() + 1);
-			IDSequence = p.getIDs();
+			ArrayList<String[]> nameSequence = new ArrayList<String[]>(p.getNames().size() + 1);
+			nameSequence = p.getNames();
 			ArrayList<String> refactoringInfo = new ArrayList<String>(p.getRefactoringInfo().size() + 1);
 			refactoringInfo = p.getRefactoringInfo();
 			
 			refSequence.add(result[0]);
 			posSequence.add(position);
-			IDSequence.add(refactorings.get(result[0]).getID(position[0], position[1]));
-			refactorings.get(result[0]).transform(refactorings.get(result[0]).analyze((refSequence.size()), position[0], position[1]));
-			refactoringInfo.add(refactorings.get(result[0]).getRefactoringInfo());
+			nameSequence.add(new String[]{super.sc.getSourceFileRepository().getKnownCompilationUnits().get(position[0]).getName(),
+                                          super.c.getRefactorings().get(result[0]).getName(position[0], position[1])});
+			super.c.getRefactorings().get(result[0]).transform(super.c.getRefactorings().get(result[0])
+				   .analyze((refSequence.size()), position[0], position[1]));
+			refactoringInfo.add(super.c.getRefactorings().get(result[0]).getRefactoringInfo());
 			p.setRefactorings(refSequence);
 			p.setPositions(posSequence);
-			p.setIDs(IDSequence);
+			p.setNames(nameSequence);
 			p.setRefactoringInfo(refactoringInfo);
-			p.setServiceConfiguration(refactorings.get(result[0]).getServiceConfiguration());
+			
+			// Calculate fitness up front so program model isn't needed at a later point.
+			Metrics m = new Metrics(super.sc.getSourceFileRepository().getKnownCompilationUnits());		
+			p.setFitness(new FitnessFunction().calculateScore(m, super.c.getConfiguration()));	
 		}
 		
 		return p;
 	}
 
-	// Calculates the fitness values for the solutions passed in.
-	private ArrayList<RefactoringSequence> fitness(ArrayList<RefactoringSequence> population)
-	{
-		FitnessFunction ff = new FitnessFunction();
-		
-		for (int i = 0; i < population.size(); i++)
-		{
-			Metrics m = new Metrics(population.get(i).getServiceConfiguration().getSourceFileRepository().getKnownCompilationUnits());		
-			population.get(i).setFitness(ff.calculateScore(m, super.c.getConfiguration()));
-		}
-		
-		return population;	
-	}
-	
 	// Sorts the population so that the more fit solutions are at the front of the list.
 	// After the list is sorted, it is truncated to remove the weakest solutions.
 	private ArrayList<RefactoringSequence> sort(ArrayList<RefactoringSequence> population) 
@@ -474,37 +460,44 @@ public class GeneticAlgorithmSearch extends Search
 		return sortedPopulation;
 	}
 
-	// This inner class allows sorting by fitness so that the more fit solutions are at the front of the list.
-	private static class FitnessComparator implements Comparator<RefactoringSequence> 
+
+	// Reset the program model to the initial input so it can be reused.
+	private void resetModel()
 	{
-		// Compares the two specified individuals using the fitness operator.
-		// Returns -1, 0 or 1 as the first argument is greater than, equal to, or less than the second.
-		public int compare(RefactoringSequence s1, RefactoringSequence s2) 
-		{   
-			if (s1.getFitness() > s2.getFitness())
-				return -1;
-			else if (s1.getFitness() < s2.getFitness())
-				return 1;
-			else
-				return 0;
+		// Save the input path and then overwrite the program model using the constructor.
+		// Recreate relevant refactoring objects to ensure old program model is no longer referenced.
+		String inputPath = super.sc.getProjectSettings().getProperty(PropertyNames.INPUT_PATH);
+		super.sc = new CrossReferenceServiceConfiguration();
+		super.c.resetRefactorings(super.sc, this.c.getRefactorings(), true);
+		
+		try 
+		{
+			// Read the original input.			
+			super.sc.getSourceFileRepository().getCompilationUnitsFromFiles(this.sourceFiles);
 		}
+		catch (ParserException e) 
+		{
+			System.out.println("\nEXCEPTION: Cannot read input.");
+			System.exit(1);
+		}
+
+		// Set up initial properties of service configuration.
+		super.sc.getProjectSettings().setProperty(PropertyNames.INPUT_PATH, inputPath);
+		super.sc.getProjectSettings().ensureSystemClassesAreInPath();
 	}
-	
+		
 	// Finds a random available refactoring in the specified model and passes back the
 	// refactoring used and the position of the applicable program element in the model.
-	private int[] randomRefactoring(CrossReferenceServiceConfiguration sc)
+	private int[] randomRefactoring()
 	{
-		ArrayList<Refactoring> refactorings = new ArrayList<Refactoring>(super.c.getRefactorings().size());
-		refactorings = super.c.getRefactorings();
 		int[] position = new int[2];
 		int r = -1;
 
 		// Find element to refactor.
-		if (refactorings.size() > 0)
+		if (super.c.getRefactorings().size() > 0)
 		{
-			r = (int)(Math.random() * refactorings.size());
-			refactorings.get(r).setServiceConfiguration(sc);
-			position = super.randomElement(refactorings.get(r));
+			r = (int)(Math.random() * super.c.getRefactorings().size());
+			position = super.randomElement(super.c.getRefactorings().get(r));
 		}
 		else
 		{
@@ -518,16 +511,15 @@ public class GeneticAlgorithmSearch extends Search
 		if ((position[0] == -1) && (position[1] == -1))
 		{
 			int exclude = r;
-			for (r = 0; r < refactorings.size(); r++)
+			for (r = 0; r < super.c.getRefactorings().size(); r++)
 			{
 				// Stops the loop from repeating the check for the previous refactoring.
-				if ((r == exclude) && ((r + 1) < refactorings.size()))
+				if ((r == exclude) && ((r + 1) < super.c.getRefactorings().size()))
 					r++;
 				else if (r == exclude)
 					break;
 
-				refactorings.get(r).setServiceConfiguration(sc);
-				position = super.randomElement(refactorings.get(r));
+				position = super.randomElement(super.c.getRefactorings().get(r));
 
 				if ((position[0] != -1) && (position[1] != -1))
 					break;
@@ -555,11 +547,11 @@ public class GeneticAlgorithmSearch extends Search
 		// The linear ranking formula takes in sp values in the range (1,2]. 
 		for (int i = 0; i < populationSize; i++)
 		{
-			rankProportions[i] = (2 - sp) + 2 * (sp - 1) * (((populationSize - 1) - i)/(populationSize - 1));
+			rankProportions[i] = (2 - sp) + 2 * (sp - 1) * (((populationSize - 1) - i) / (populationSize - 1));
 			fitnessSum += rankProportions[i];
 		}
 
-		float rouletteSelection = (float)(Math.random()*fitnessSum);
+		float rouletteSelection = (float)(Math.random() * fitnessSum);
 
 		// Find the first parent iteration.
 		for (int i = 0; i < populationSize; i++)
@@ -573,7 +565,7 @@ public class GeneticAlgorithmSearch extends Search
 			}
 		}
 
-		rouletteSelection = (float)(Math.random()*fitnessSum);
+		rouletteSelection = (float)(Math.random() * fitnessSum);
 		dynamicSum = 0;
 
 		// Find the second parent iteration.
@@ -595,31 +587,6 @@ public class GeneticAlgorithmSearch extends Search
 		}		
 
 		return parents;
-	}
-
-	// Output search information to results file.
-	// Can be used for a population of solutions to generate separate results files.
-	private void outputSearchInfo(String pathName, int solution, String runInfo)
-	{
-		pathName = pathName.substring(0, (pathName.length() - 1));
-		pathName += "s/";
-		String runName = String.format("%sresultsSolution%d.txt", pathName, solution);
-		File dir = new File(pathName);
-		if (!dir.exists()) 
-			dir.mkdirs();
-
-		try 
-		{
-			BufferedWriter bw = new BufferedWriter(new FileWriter(runName, false));
-			bw.write(String.format("======== Search Information ========"));
-			bw.write(String.format("\r\n%s", runInfo));
-			bw.close();
-		}
-		catch (IOException e) 
-		{
-			System.out.println("\nEXCEPTION: Cannot export results to text file.");
-			System.exit(1);
-		}
 	}
 	
 	// Output refactoring information to results file for a solution.
@@ -712,6 +679,22 @@ public class GeneticAlgorithmSearch extends Search
 			}
 			
 			System.out.printf("\nOverall fitness function score: %.2f", score);
+		}
+	}
+	
+	// This inner class allows sorting by fitness so that the more fit solutions are at the front of the list.
+	private static class FitnessComparator implements Comparator<RefactoringSequence> 
+	{
+		// Compares the two specified individuals using the fitness operator.
+		// Returns -1, 0 or 1 as the first argument is greater than, equal to, or less than the second.
+		public int compare(RefactoringSequence s1, RefactoringSequence s2) 
+		{   
+			if (s1.getFitness() > s2.getFitness())
+				return -1;
+			else if (s1.getFitness() < s2.getFitness())
+				return 1;
+			else
+				return 0;
 		}
 	}
 }
