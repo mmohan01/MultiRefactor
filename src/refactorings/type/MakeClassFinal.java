@@ -4,9 +4,7 @@ import recoder.CrossReferenceServiceConfiguration;
 import recoder.convenience.AbstractTreeWalker;
 import recoder.convenience.TreeWalker;
 import recoder.java.ProgramElement;
-import recoder.java.declaration.EnumDeclaration;
 import recoder.java.declaration.TypeDeclaration;
-import recoder.java.declaration.TypeParameterDeclaration;
 import recoder.kit.Problem;
 import recoder.kit.ProblemReport;
 import recoder.kit.transformation.Modify;
@@ -50,11 +48,7 @@ public class MakeClassFinal extends Refactoring
 			return setProblemReport(report);
 
 		// Specify refactoring information for results information.
-		super.refactoringInfo = "Iteration " + iteration + ": \"Make Class Final\" applied at class " 
-				+ super.getFileName(getSourceFileRepository().getKnownCompilationUnits().get(unit).getName())
-				+ " to element " + pe.getClass().getSimpleName() + " (" + ((TypeDeclaration) pe).getName()
-				+ ")";
-
+		super.refactoringInfo = "Iteration " + iteration + ": \"Make Class Final\" applied to class " + ((TypeDeclaration) pe).getName();
 		return setProblemReport(EQUIVALENCE);
 	}
 	
@@ -77,7 +71,8 @@ public class MakeClassFinal extends Refactoring
 
 	public boolean mayRefactor(TypeDeclaration td)
 	{
-		if ((td.isFinal()) || (td instanceof EnumDeclaration) || (td instanceof TypeParameterDeclaration))
+		if ((td.getName() == null) || (td.isFinal()) || (td.isAbstract()) || !(td.isOrdinaryClass()) || 
+		    (getCrossReferenceSourceInfo().getSubtypes(td).size() > 0))
 			return false;
 		else
 			return true;	
@@ -93,7 +88,6 @@ public class MakeClassFinal extends Refactoring
 		// Only counts the relevant program element.
 		while (tw.next(TypeDeclaration.class))
 		{
-			//counter++;
 			TypeDeclaration td = (TypeDeclaration) tw.getProgramElement();
 			if (mayRefactor(td))
 				counter++;
@@ -102,18 +96,19 @@ public class MakeClassFinal extends Refactoring
 		return counter;
 	}
 	
-	public int getID(int unit, int element)
+	public String getName(int unit, int element)
 	{		
-		super.tw = new TreeWalker(getSourceFileRepository().getKnownCompilationUnits().get(unit));
+		AbstractTreeWalker tw = new TreeWalker(getSourceFileRepository().getKnownCompilationUnits().get(unit));
 
 		for (int i = 0; i < element; i++)
 		{
-			super.tw.next(TypeDeclaration.class);
-			TypeDeclaration td = (TypeDeclaration) super.tw.getProgramElement();
+			tw.next(TypeDeclaration.class);
+			TypeDeclaration td = (TypeDeclaration) tw.getProgramElement();
 			if (!mayRefactor(td))
 				i--;
 		}
 		
-		return super.tw.getProgramElement().getID();
+		TypeDeclaration td = (TypeDeclaration) tw.getProgramElement();
+		return td.getName();
 	}
 }

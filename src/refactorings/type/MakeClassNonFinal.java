@@ -4,7 +4,6 @@ import recoder.CrossReferenceServiceConfiguration;
 import recoder.convenience.AbstractTreeWalker;
 import recoder.convenience.TreeWalker;
 import recoder.java.ProgramElement;
-import recoder.java.declaration.EnumDeclaration;
 import recoder.java.declaration.TypeDeclaration;
 import recoder.kit.Problem;
 import recoder.kit.ProblemReport;
@@ -54,11 +53,7 @@ public class MakeClassNonFinal extends Refactoring
 		detach(td.getDeclarationSpecifiers().get(counter));
 
 		// Specify refactoring information for results information.
-		super.refactoringInfo = "Iteration " + iteration + ": \"Make Class Non Final\" applied at class " 
-				+ super.getFileName(getSourceFileRepository().getKnownCompilationUnits().get(unit).getName())
-				+ " to element " + pe.getClass().getSimpleName() + " (" + ((TypeDeclaration) pe).getName()
-				+ ")";
-
+		super.refactoringInfo = "Iteration " + iteration + ": \"Make Class Non Final\" applied to class " + ((TypeDeclaration) pe).getName();
 		return setProblemReport(EQUIVALENCE);
 	}
 	
@@ -80,7 +75,7 @@ public class MakeClassNonFinal extends Refactoring
 
 	public boolean mayRefactor(TypeDeclaration td)
 	{
-		if ((!td.isFinal()) || (td instanceof EnumDeclaration))
+		if ((td.getName() == null) || (!td.isFinal()) || !(td.isOrdinaryClass()))
 			return false;
 		else
 			return true;	
@@ -96,7 +91,6 @@ public class MakeClassNonFinal extends Refactoring
 		// Only counts the relevant program element.
 		while (tw.next(TypeDeclaration.class))
 		{
-			//counter++;
 			TypeDeclaration td = (TypeDeclaration) tw.getProgramElement();
 			if (mayRefactor(td))
 				counter++;
@@ -105,18 +99,19 @@ public class MakeClassNonFinal extends Refactoring
 		return counter;
 	}
 	
-	public int getID(int unit, int element)
+	public String getName(int unit, int element)
 	{		
-		super.tw = new TreeWalker(getSourceFileRepository().getKnownCompilationUnits().get(unit));
+		AbstractTreeWalker tw = new TreeWalker(getSourceFileRepository().getKnownCompilationUnits().get(unit));
 
 		for (int i = 0; i < element; i++)
 		{
-			super.tw.next(TypeDeclaration.class);
-			TypeDeclaration td = (TypeDeclaration) super.tw.getProgramElement();
+			tw.next(TypeDeclaration.class);
+			TypeDeclaration td = (TypeDeclaration) tw.getProgramElement();
 			if (!mayRefactor(td))
 				i--;
 		}
 		
-		return super.tw.getProgramElement().getID();
+		TypeDeclaration td = (TypeDeclaration) tw.getProgramElement();
+		return td.getName();
 	}
 }

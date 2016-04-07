@@ -1,6 +1,7 @@
 package refactorings.type;
 
 import recoder.CrossReferenceServiceConfiguration;
+import recoder.abstraction.Method;
 import recoder.convenience.AbstractTreeWalker;
 import recoder.convenience.TreeWalker;
 import recoder.java.ProgramElement;
@@ -55,11 +56,7 @@ public class MakeClassConcrete extends Refactoring
 		detach(td.getDeclarationSpecifiers().get(counter));
 
 		// Specify refactoring information for results information.
-		super.refactoringInfo = "Iteration " + iteration + ": \"Make Class Concrete\" applied at class " 
-				+ super.getFileName(getSourceFileRepository().getKnownCompilationUnits().get(unit).getName())
-				+ " to element " + pe.getClass().getSimpleName() + " (" + ((TypeDeclaration) pe).getName()
-				+ ")";
-
+		super.refactoringInfo = "Iteration " + iteration + ": \"Make Class Concrete\" applied to class "  + ((TypeDeclaration) pe).getName();
 		return setProblemReport(EQUIVALENCE);
 	}
 
@@ -81,10 +78,20 @@ public class MakeClassConcrete extends Refactoring
 
 	public boolean mayRefactor(TypeDeclaration td)
 	{
-		if ((!td.isAbstract()) || (td instanceof InterfaceDeclaration))
+		if ((td.getName() == null) || (!td.isAbstract()) || (td instanceof InterfaceDeclaration))
 			return false;
 		else
-			return true;	
+		{
+			// Prevents "Zero Service" outputs logged to the console.
+			if (td.getProgramModelInfo() == null)
+				td.getFactory().getServiceConfiguration().getChangeHistory().updateModel();
+			
+			for (Method md : td.getMethods())
+				if (md.isAbstract())
+					return false;
+			
+			return true;
+		}
 	}
 	
 	// Count the amount of available elements in the chosen class for refactoring.
@@ -97,7 +104,6 @@ public class MakeClassConcrete extends Refactoring
 		// Only counts the relevant program element.
 		while (tw.next(TypeDeclaration.class))
 		{
-			//counter++;
 			TypeDeclaration td = (TypeDeclaration) tw.getProgramElement();
 			if (mayRefactor(td))
 				counter++;
@@ -106,18 +112,19 @@ public class MakeClassConcrete extends Refactoring
 		return counter;
 	}
 	
-	public int getID(int unit, int element)
+	public String getName(int unit, int element)
 	{		
-		super.tw = new TreeWalker(getSourceFileRepository().getKnownCompilationUnits().get(unit));
+		AbstractTreeWalker tw = new TreeWalker(getSourceFileRepository().getKnownCompilationUnits().get(unit));
 
 		for (int i = 0; i < element; i++)
 		{
-			super.tw.next(TypeDeclaration.class);
-			TypeDeclaration td = (TypeDeclaration) super.tw.getProgramElement();
+			tw.next(TypeDeclaration.class);
+			TypeDeclaration td = (TypeDeclaration) tw.getProgramElement();
 			if (!mayRefactor(td))
 				i--;
 		}
 		
-		return super.tw.getProgramElement().getID();
+		TypeDeclaration td = (TypeDeclaration) tw.getProgramElement();
+		return td.getName();
 	}
 }

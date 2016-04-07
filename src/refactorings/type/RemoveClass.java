@@ -3,34 +3,34 @@ package refactorings.type;
 import recoder.CrossReferenceServiceConfiguration;
 import recoder.convenience.AbstractTreeWalker;
 import recoder.convenience.TreeWalker;
+import recoder.java.CompilationUnit;
 import recoder.java.ProgramElement;
+import recoder.java.declaration.MemberDeclaration;
 import recoder.java.declaration.TypeDeclaration;
-import recoder.java.expression.operator.New;
-import recoder.java.reference.TypeReference;
-import recoder.kit.Problem;
 import recoder.kit.ProblemReport;
-import recoder.kit.transformation.Modify;
+import recoder.list.generic.ASTList;
 import refactorings.Refactoring;
-import refactory.AccessFlags;
 
-public class MakeClassAbstract extends Refactoring 
+public class RemoveClass extends Refactoring 
 {
+	TypeDeclaration type, containingType;
+	CompilationUnit unit;
+	int position, unitPosition;
+	boolean detachUnit, isNested;
 	
-	public MakeClassAbstract(CrossReferenceServiceConfiguration sc) 
+	public RemoveClass(CrossReferenceServiceConfiguration sc) 
 	{
 		super(sc);
 	}
 	
-	public MakeClassAbstract() 
+	public RemoveClass() 
 	{
 		super();
 	}
 	
 	public ProblemReport analyze(int iteration, int unit, int element) 
-	{
+	{		
 		// Initialise and pick the element to visit.
-		CrossReferenceServiceConfiguration config = getServiceConfiguration();
-		ProblemReport report = EQUIVALENCE;
 		super.tw = new TreeWalker(getSourceFileRepository().getKnownCompilationUnits().get(unit));
 		
 		for (int i = 0; i < element; i++)
@@ -42,47 +42,74 @@ public class MakeClassAbstract extends Refactoring
 		}
 		
 		ProgramElement pe = super.tw.getProgramElement();
-		TypeDeclaration td = (TypeDeclaration) pe;
-
+		this.type = (TypeDeclaration) pe;
+		this.unit = getSourceFileRepository().getKnownCompilationUnits().get(unit);
+		this.unitPosition = unit;
+		
+		if (this.type.getContainingClassType() == null)
+		{
+			this.position = super.getPosition(this.unit, this.type);
+			this.isNested = false;
+		}
+		else
+		{
+			this.position = super.getPosition(this.type.getContainingClassType(), this.type);
+			this.isNested = true;
+			this.containingType = this.type.getContainingClassType();
+		}
+		
+		if ((this.type.getContainingClassType() != null) || (this.unit.getTypeDeclarationCount() > 1))
+			this.detachUnit = false;
+		else
+			this.detachUnit = true;
+		
 		// Construct refactoring transformation.
-		super.transformation = new Modify(config, true, td, AccessFlags.ABSTRACT);
-		report = super.transformation.analyze();
-		if (report instanceof Problem) 
-			return setProblemReport(report);
+		// The transformation is handled here manually and the transformation
+		// method will do nothing for this refactoring when it is called.
+		super.transformation = null;
+		getChangeHistory().begin(this);
+		
+		if (this.detachUnit)
+			detach(this.unit);
+		else
+			detach(this.type);
 		
 		// Specify refactoring information for results information.
-		super.refactoringInfo = "Iteration " + iteration + ": \"Make Class Abstract\" applied to class "  + ((TypeDeclaration) pe).getName();
+		super.refactoringInfo = "Iteration " + iteration + ": \"Remove Class\" applied to class " + ((TypeDeclaration) pe).getName();
+		getChangeHistory().updateModel();
 		return setProblemReport(EQUIVALENCE);
 	}
 
 	public ProblemReport analyzeReverse() 
-	{
-		// Initialise and pick the element to visit.
-		TypeDeclaration td = (TypeDeclaration) super.tw.getProgramElement();
-		
-		// Find iterator in declaration list.
-		int counter = -1;
-		for (int i = 0; i < td.getDeclarationSpecifiers().size(); i++)
-			if (td.getDeclarationSpecifiers().get(i).toString().contains("Abstract"))
-				counter = i;
-
-		// Construct refactoring transformation.
+	{		
+		// Construct refactoring transformation.	
 		super.transformation = null;
-		detach(td.getDeclarationSpecifiers().get(counter));
+		
+		if (this.detachUnit)
+			attach(this.unit);
+		else
+			if (this.isNested)
+				attach(this.type, this.containingType, this.position);
+			else
+				attach(this.type, this.unit, this.position);
+		
+		getChangeHistory().updateModel();
 		return setProblemReport(EQUIVALENCE);
 	}
 
 	public boolean mayRefactor(TypeDeclaration td)
-	{
-		if ((td.getName() == null) || (td.isAbstract()) || (td.isFinal()) || !(td.isOrdinaryClass()) || 
-			(getCrossReferenceSourceInfo().getSubtypes(td).size() == 0))
+	{		
+		if (!(td.isOrdinaryClass()) || (getCrossReferenceSourceInfo().getSubtypes(td).size() > 0) || (td.getName() == null) ||
+			(getCrossReferenceSourceInfo().getReferences(td, true).size() > 0))
 			return false;
 		else
-		{
-			for (TypeReference tr : getCrossReferenceSourceInfo().getReferences(td, true))
-				if (tr.getParent() instanceof New)
-						return false;
-
+		{			
+			ASTList<MemberDeclaration> members = td.getMembers();
+			members.removeAll(td.getConstructors());
+			
+			if (members.size() > 0)
+				return false;
+			
 			return true;	
 		}
 	}
