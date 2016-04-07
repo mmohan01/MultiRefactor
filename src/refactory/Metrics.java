@@ -89,7 +89,7 @@ public class Metrics
 			typeCounter++;
 		
 		methodCounter = numberOfMethods();
-		return methodCounter/typeCounter;
+		return methodCounter / typeCounter;
 	}
 	
 	// Amount of interfaces over the overall amount of classes (as a percentage).
@@ -101,12 +101,12 @@ public class Metrics
 
 		while (this.tw.next(TypeDeclaration.class))
 		{
+			typeCounter++;
 			if (this.tw.getProgramElement() instanceof InterfaceDeclaration)
 				interfaceCounter++;
-			typeCounter++;
 		}
 		
-		float answer = (float)interfaceCounter/typeCounter*100;
+		float answer = (float)((interfaceCounter / typeCounter) * 100);
 		return answer;
 	}
 	
@@ -198,6 +198,31 @@ public class Metrics
 		return finalCounter;
 	}
 	
+	// Amount of constant elements in project.
+	public int constantAmount()
+	{
+		int constantCounter = 0;
+		this.tw = new ForestWalker(this.units);
+
+		while (this.tw.next())
+		{
+			if (this.tw.getProgramElement() instanceof MethodDeclaration)
+			{
+				MethodDeclaration md = (MethodDeclaration)(this.tw.getProgramElement());
+				if ((md.isFinal()) && (md.isStatic()))
+					constantCounter++;
+			}
+			else if (this.tw.getProgramElement() instanceof FieldDeclaration)
+			{
+				FieldDeclaration fd = (FieldDeclaration)(this.tw.getProgramElement());
+				if ((fd.isFinal()) && (fd.isStatic()))
+					constantCounter++;
+			}
+		}
+
+		return constantCounter;
+	}
+	
 	// Amount of classes in the project that are declared inside other classes.
 	public int innerClassAmount()
 	{
@@ -207,7 +232,7 @@ public class Metrics
 		while (this.tw.next(TypeDeclaration.class))
 		{
 			TypeDeclaration td = (TypeDeclaration)(this.tw.getProgramElement());
-			if (td.isInner())
+			if (td.getContainingClassType() != null)
 				innerClassCounter++;
 		}
 
@@ -218,38 +243,48 @@ public class Metrics
 	public int numberOfHierarchies()
 	{
 		ArrayList<String> types = new ArrayList<String>();
-
+		
 		for (int i = 0; i < this.units.size(); i++)
+		{
 			for (TypeDeclaration td : this.units.get(i).getDeclarations())
-				if ((!td.isInner()) && !(td instanceof EnumDeclaration) && !(td instanceof TypeParameterDeclaration))
-//					while (td.getContainingClassType() != null)
-//						td = td.getContainingClassType();
-					types.add(td.getBaseClassType().getName());
+			{
+				if (!(td.isInner()) && (td instanceof ClassDeclaration))
+				{
+					// Prevents "Zero Service" outputs logged to the console.
+					if (td.getProgramModelInfo() == null)
+						td.getFactory().getServiceConfiguration().getChangeHistory().updateModel();
+						
+					if (!td.getSupertypes().get(0).getFullName().equals("java.lang.Object"))
+						types.add(td.getSupertypes().get(0).getName());
+				}
+			}
+		}
 					
 		Set<String> distinctTypes = new HashSet<String>(types);
 		return distinctTypes.size();
 	}
 	
-	// Average amount of classes away from the root for per class.
+	// Average amount of classes away from the root per class.
 	public float averageNumberOfAncestors()
 	{
-		int counter;
 		int classCounter = 0;
 		int accumulativeCounter = 0;
 
 		for (int i = 0; i < this.units.size(); i++)
+		{
 			for (TypeDeclaration td : this.units.get(i).getDeclarations())
+			{
 				if ((!td.isInner()) && !(td instanceof EnumDeclaration) && !(td instanceof TypeParameterDeclaration))
-				{
+				{					
+					// Prevents "Zero Service" outputs logged to the console.
+					if (td.getProgramModelInfo() == null)
+						td.getFactory().getServiceConfiguration().getChangeHistory().updateModel();
+
 					classCounter++;
-					counter = 0;
-					while (td.getContainingClassType() != null)
-					{
-						td = td.getContainingClassType();
-						counter++;
-					}
-					accumulativeCounter += counter;
+					accumulativeCounter += td.getAllSupertypes().size() - 2;
 				}
+			}
+		}
 
 		return accumulativeCounter/classCounter;
 	}
@@ -274,19 +309,15 @@ public class Metrics
 		{		
 			// Get all relevant classes in compilation unit.
 			typeDeclarations = new ArrayList<TypeDeclaration>();
-			for (TypeDeclaration td : this.units.get(i).getDeclarations())
+			for (TypeDeclaration td : getAllTypes(this.units.get(i)))
 			{
 				if (!(td instanceof EnumDeclaration) && !(td instanceof TypeParameterDeclaration))
 					typeDeclarations.add(td);
 				
 				if (td.getTypesInScope() != null)
-				{
 					for (TypeDeclaration td2 : td.getTypesInScope())
-					{
 						if (!(td2 instanceof EnumDeclaration) && !(td2 instanceof TypeParameterDeclaration))
 							typeDeclarations.add(td);
-					}
-				}
 			}
 
 			for (TypeDeclaration td : typeDeclarations)
@@ -296,7 +327,9 @@ public class Metrics
 				cohesionCounter = 0;
 				allTypes = new ArrayList<String>();
 				
-				td.getFactory().getServiceConfiguration().getChangeHistory().updateModel();
+				// Prevents "Zero Service" outputs logged to the console.
+				if (td.getProgramModelInfo() == null)
+					td.getFactory().getServiceConfiguration().getChangeHistory().updateModel();
 				
 				for (Method m : td.getMethods())
 				{
@@ -319,11 +352,11 @@ public class Metrics
 				distinctTypes = new HashSet<String>(allTypes);
 
 				if ((methodCounter*distinctTypes.size()) > 0)
-					cohesionAmongMethods += cohesionCounter/(methodCounter*distinctTypes.size());
+					cohesionAmongMethods += cohesionCounter / (methodCounter * distinctTypes.size());
 			}
 		}
 
-		return cohesionAmongMethods/classCounter;
+		return cohesionAmongMethods / classCounter;
 	}
 	
 	// The accumulative number of other distinct classes each class depends on.
@@ -337,21 +370,18 @@ public class Metrics
 		{
 			types = new ArrayList<String>();
 			
-			for (TypeDeclaration td : this.units.get(i).getDeclarations())
+			for (TypeDeclaration td : getAllTypes(this.units.get(i)))
 			{
-				td.getFactory().getServiceConfiguration().getChangeHistory().updateModel();
+				// Prevents "Zero Service" outputs logged to the console.
+				if (td.getProgramModelInfo() == null)
+					td.getFactory().getServiceConfiguration().getChangeHistory().updateModel();
 				
 				for (FieldSpecification fs : td.getFieldsInScope())
-				{
 					types.add(fs.getType().getName());
-				}
+				
 				for (Method m : td.getMethods())
-				{
 					for (Type t : m.getSignature())
-					{
 						types.add(t.getName());
-					}
-				}
 			}
 
 			distinctTypes = new HashSet<String>(types);
@@ -361,13 +391,26 @@ public class Metrics
 		return couplingCounter;
 	}
 	
-	// Accumulative amount of child classes for each class.
+	// Amount of child classes in the project.
 	public int childAmount()
-	{		
+	{
 		int childCounter = 0;
+		
+		for (int i = 0; i < this.units.size(); i++)
+		{
+			for (TypeDeclaration td : this.units.get(i).getDeclarations())
+			{
+				if ((!td.isInner()) && !(td instanceof EnumDeclaration) && !(td instanceof TypeParameterDeclaration))
+				{					
+					// Prevents "Zero Service" outputs logged to the console.
+					if (td.getProgramModelInfo() == null)
+						td.getFactory().getServiceConfiguration().getChangeHistory().updateModel();
 
-		for (CompilationUnit u : this.units)
-			childCounter += u.getChildCount();
+					if (!td.getSupertypes().get(0).getFullName().equals("java.lang.Object"))
+						childCounter++;
+				}
+			}
+		}
 
 		return childCounter;
 	}
@@ -458,7 +501,7 @@ public class Metrics
 			}
 
 			if (counter > 0)
-				accumulativeCounter += publicCounter/counter;
+				accumulativeCounter += publicCounter / counter;
 		}
 
 		return accumulativeCounter;
@@ -476,4 +519,15 @@ public class Metrics
 		else
 			return 1;
 	}
+
+	private ArrayList<TypeDeclaration> getAllTypes(CompilationUnit cu)
+	{
+		AbstractTreeWalker tw = new TreeWalker(cu);
+		ArrayList<TypeDeclaration> types = new ArrayList<TypeDeclaration>();
+
+		while (tw.next(TypeDeclaration.class))
+			types.add((TypeDeclaration) tw.getProgramElement());
+
+		return types;
+	} 
 }

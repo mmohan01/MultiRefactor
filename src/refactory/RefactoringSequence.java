@@ -2,44 +2,31 @@ package refactory;
 
 import java.util.ArrayList;
 
-import recoder.CrossReferenceServiceConfiguration;
-
 public class RefactoringSequence
 {
 	private float fitness;
+	private float[] MOFitness;
 	private int rank;
 	private float crowdingDistance;
 	
-	private CrossReferenceServiceConfiguration sc;
 	private ArrayList<Integer> refactorings;
 	private ArrayList<int[]> positions;
-	private ArrayList<Integer> IDs;
+	private ArrayList<String[]> names;
 	private ArrayList<String> refactoringInfo;
 
-	public RefactoringSequence(CrossReferenceServiceConfiguration sc, ArrayList<Integer> refactorings, 
-							   ArrayList<int[]> positions, ArrayList<Integer> IDs, ArrayList<String> refactoringInfo) 
+	public RefactoringSequence(ArrayList<Integer> refactorings, ArrayList<int[]> positions, 
+							   ArrayList<String[]> names, ArrayList<String> refactoringInfo) 
 	{
 		this.fitness = 1.0f;
 		this.rank = 0;
 		this.crowdingDistance = 0.0f;
 		
-		this.sc = sc;
 		this.refactorings = refactorings;
 		this.positions = positions;
-		this.IDs = IDs;
+		this.names = names;
 		this.refactoringInfo = refactoringInfo;
 	}
-
-	public CrossReferenceServiceConfiguration getServiceConfiguration()
-	{
-		return this.sc;
-	}
 	
-	public void setServiceConfiguration(CrossReferenceServiceConfiguration sc)
-	{
-		this.sc = sc;
-	}
-
 	public float getFitness()
 	{
 		return this.fitness;
@@ -48,6 +35,16 @@ public class RefactoringSequence
 	public void setFitness(float fitness)
 	{
 		this.fitness = fitness;
+	}
+	
+	public float[] getMOFitness()
+	{
+		return this.MOFitness;
+	}
+	
+	public void setMOFitness(float[] MOFitness)
+	{
+		this.MOFitness = MOFitness;
 	}
 	
 	public float getRank()
@@ -90,14 +87,14 @@ public class RefactoringSequence
 		this.positions = positions;
 	}
 	
-	public ArrayList<Integer> getIDs()
+	public ArrayList<String[]> getNames()
 	{
-		return this.IDs;
+		return this.names;
 	}
 	
-	public void setIDs(ArrayList<Integer> IDs)
+	public void setNames(ArrayList<String[]> names)
 	{
-		this.IDs = IDs;
+		this.names = names;
 	}
 	
 	public ArrayList<String> getRefactoringInfo()

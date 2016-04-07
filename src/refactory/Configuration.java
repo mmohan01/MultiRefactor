@@ -14,7 +14,11 @@ import org.w3c.dom.Document;
 import org.w3c.dom.NodeList;
 import org.xml.sax.SAXException;
 
+import recoder.CrossReferenceServiceConfiguration;
 import refactorings.Refactoring;
+import refactorings.field.*;
+import refactorings.method.*;
+import refactorings.type.*;
 
 public class Configuration 
 {
@@ -118,6 +122,212 @@ public class Configuration
 				}
 			}
 		}
+	}
+	
+	public Configuration(String pathway)
+	{
+		this.configuration = new ArrayList<Triple<String, Boolean, Float>>();
+		File file = new File(pathway);
+		
+		if (file.exists())
+		{
+			if (file.getName().endsWith(".txt"))
+			{
+				try 
+				{
+					BufferedReader br = new BufferedReader(new FileReader(file));
+					String line;
+
+					while((line = br.readLine()) != null)
+					{
+						// \\s+ means any number of white spaces between tokens
+						String [] tokens = line.split("\\s+");
+						Triple<String, Boolean, Float> element = new Triple<String, Boolean, Float> (tokens[0], tokens[1].equals("true"), Float.parseFloat(tokens[2]));
+						this.configuration.add(element);
+					}
+
+					br.close();
+				} 
+				catch (IOException e) 
+				{
+					System.out.println("\nEXCEPTION: Cannot read metric configuration from text file.");
+					System.exit(1);
+				}
+			}
+			else if (file.getName().endsWith(".xml"))
+			{
+				DocumentBuilderFactory docBuilderFactory = DocumentBuilderFactory.newInstance();
+				
+				try 
+				{
+					DocumentBuilder docBuilder = docBuilderFactory.newDocumentBuilder();
+					Document doc = docBuilder.parse(file);
+					NodeList nodes = doc.getElementsByTagName("metric");
+
+					for (int i = 0 ; i < nodes.getLength(); i++) 
+					{
+						String name = nodes.item(i).getAttributes().getNamedItem("name").getTextContent();
+						boolean maximise = nodes.item(i).getAttributes().getNamedItem("maximise").getTextContent().equals("true");
+						float weight = Float.parseFloat(nodes.item(i).getAttributes().getNamedItem("weight").getTextContent());
+						Triple<String, Boolean, Float> element = new Triple<String, Boolean, Float> (name, maximise, weight);
+						this.configuration.add(element);
+					}
+				} 
+				catch (ParserConfigurationException | SAXException | IOException e) 
+				{
+					System.out.println("\nEXCEPTION: Cannot read metric configuration from xml file.");
+					System.exit(1);
+				}
+			}
+		}
+	}
+	
+	public ArrayList<Refactoring> resetRefactorings(CrossReferenceServiceConfiguration sc, ArrayList<Refactoring> refactorings, boolean store)
+	{
+		ArrayList<Refactoring> newRefactorings = new ArrayList<Refactoring>(refactorings.size());
+		
+		for (Refactoring r : refactorings)
+		{
+			if (r instanceof DecreaseMethodSecurity)
+			{
+				DecreaseMethodSecurity dms = new DecreaseMethodSecurity(sc);
+				newRefactorings.add(dms);
+			}
+			else if (r instanceof DecreaseFieldSecurity)
+			{
+				DecreaseFieldSecurity dfs = new DecreaseFieldSecurity(sc);
+				newRefactorings.add(dfs);
+			}
+			else if (r instanceof IncreaseMethodSecurity)
+			{
+				IncreaseMethodSecurity ims = new IncreaseMethodSecurity(sc);
+				newRefactorings.add(ims);
+			}
+			else if (r instanceof IncreaseFieldSecurity)
+			{
+				IncreaseFieldSecurity ifs = new IncreaseFieldSecurity(sc);
+				newRefactorings.add(ifs);
+			}
+			else if (r instanceof MakeClassAbstract)
+			{
+				MakeClassAbstract mca = new MakeClassAbstract(sc);
+				newRefactorings.add(mca);
+			}
+			else if (r instanceof MakeClassConcrete)
+			{
+				MakeClassConcrete mcc = new MakeClassConcrete(sc);
+				newRefactorings.add(mcc);
+			}
+			else if (r instanceof MakeClassFinal)
+			{
+				MakeClassFinal mcf = new MakeClassFinal(sc);
+				newRefactorings.add(mcf);
+			}
+			else if (r instanceof MakeMethodFinal)
+			{
+				MakeMethodFinal mmf = new MakeMethodFinal(sc);
+				newRefactorings.add(mmf);
+			}
+			else if (r instanceof MakeFieldFinal)
+			{
+				MakeFieldFinal mff = new MakeFieldFinal(sc);
+				newRefactorings.add(mff);
+			}
+			else if (r instanceof MakeClassNonFinal)
+			{
+				MakeClassNonFinal mcnf = new MakeClassNonFinal(sc);
+				newRefactorings.add(mcnf);
+			}
+			else if (r instanceof MakeMethodNonFinal)
+			{
+				MakeMethodNonFinal mmnf = new MakeMethodNonFinal(sc);
+				newRefactorings.add(mmnf);
+			}
+			else if (r instanceof MakeFieldNonFinal)
+			{
+				MakeFieldNonFinal mfnf = new MakeFieldNonFinal(sc);
+				newRefactorings.add(mfnf);
+			}
+			else if (r instanceof MakeMethodStatic)
+			{
+				MakeMethodStatic mms = new MakeMethodStatic();
+				newRefactorings.add(mms);
+			}
+			else if (r instanceof MakeFieldStatic)
+			{
+				MakeFieldStatic mfs = new MakeFieldStatic(sc);
+				newRefactorings.add(mfs);
+			}
+			else if (r instanceof MakeMethodNonStatic)
+			{
+				MakeMethodNonStatic mmns = new MakeMethodNonStatic(sc);
+				newRefactorings.add(mmns);
+			}
+			else if (r instanceof MakeFieldNonStatic)
+			{
+				MakeFieldNonStatic mfns = new MakeFieldNonStatic(sc);
+				newRefactorings.add(mfns);
+			}
+
+			else if (r instanceof MoveMethodUp)
+			{
+				MoveMethodUp mmu = new MoveMethodUp(sc);
+				newRefactorings.add(mmu);
+			}
+			else if (r instanceof MoveMethodDown)
+			{
+				MoveMethodDown mmd = new MoveMethodDown(sc);
+				newRefactorings.add(mmd);
+			}
+			else if (r instanceof MoveFieldUp)
+			{
+				MoveFieldUp mfu = new MoveFieldUp(sc);
+				newRefactorings.add(mfu);
+			}
+			else if (r instanceof MoveFieldDown)
+			{
+				MoveFieldDown mfd = new MoveFieldDown(sc);
+				newRefactorings.add(mfd);
+			}
+			else if (r instanceof RemoveInterface)
+			{
+				RemoveInterface ri = new RemoveInterface(sc);
+				newRefactorings.add(ri);
+			}
+			else if (r instanceof RemoveClass)
+			{
+				RemoveClass rc = new RemoveClass(sc);
+				newRefactorings.add(rc);
+			}
+			else if (r instanceof RemoveMethod)
+			{
+				RemoveMethod rm = new RemoveMethod(sc);
+				newRefactorings.add(rm);
+			}
+			else if (r instanceof RemoveField)
+			{
+				RemoveField rf = new RemoveField(sc);
+				newRefactorings.add(rf);
+			}
+			else if (r instanceof ExtractSubclass)
+			{
+				ExtractSubclass es = new ExtractSubclass(sc);
+				newRefactorings.add(es);
+			}
+			else if (r instanceof CollapseHierarchy)
+			{
+				CollapseHierarchy ch = new CollapseHierarchy(sc);
+				newRefactorings.add(ch);
+			}			
+		}
+		
+		for (Refactoring r : newRefactorings)
+			r.setServiceConfiguration(sc);
+		
+		if (store)
+			this.refactorings = new ArrayList<Refactoring>(newRefactorings);
+		
+		return newRefactorings;
 	}
 	
 	public  ArrayList<Triple<String, Boolean, Float>> getConfiguration()

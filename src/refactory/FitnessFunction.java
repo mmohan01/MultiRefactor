@@ -37,6 +37,9 @@ public class FitnessFunction
 			case "finalAmount":
 				value = m.finalAmount();
 				break;
+			case "constantAmount":
+				value = m.constantAmount();
+				break;
 			case "innerClassAmount":
 				value = m.innerClassAmount();
 				break;
@@ -117,6 +120,10 @@ public class FitnessFunction
 			case "finalAmount":
 				m1Value = m1.finalAmount();
 				m2Value = m2.finalAmount();
+				break;
+			case "constantAmount":
+				m1Value = m1.constantAmount();
+				m2Value = m2.constantAmount();
 				break;
 			case "innerClassAmount":
 				m1Value = m1.innerClassAmount();
@@ -214,6 +221,9 @@ public class FitnessFunction
 			break;
 			case "finalAmount":
 				outputs[i] = String.format("Amount of final classes/methods/variables in project: %d", m.finalAmount());
+				break;
+			case "constantAmount":
+				outputs[i] = String.format("Amount of constant methods/variables in project: %d", m.constantAmount());
 				break;
 			case "innerClassAmount":
 				outputs[i] = String.format("Amount of inner classes in project: %d", m.innerClassAmount());

@@ -15,7 +15,7 @@ import searches.*;
 
 public class Tasks 
 {
-	String pathway = "./data/original/acma";
+	String pathway = "./data/original/json-1.1";
 	
 	// No attributes - empty constructor.
 	public Tasks(){}
@@ -42,12 +42,14 @@ public class Tasks
 		ArrayList<Search> searches = new ArrayList<Search>();
 		RandomSearch random = new RandomSearch(sc, c);
 		searches.add(random);
-		HillClimbingSearch hillClimbing = new HillClimbingSearch(sc, c, 0, false);
+		HillClimbingSearch hillClimbing = new HillClimbingSearch(sc, c, 5, 10, true, 100);
 		searches.add(hillClimbing);
-		SimulatedAnnealingSearch simulatedAnnealing = new SimulatedAnnealingSearch(sc, c, 100, 1.0f);
+		SimulatedAnnealingSearch simulatedAnnealing = new SimulatedAnnealingSearch(sc, c, 100, 4.0f, false);
 		searches.add(simulatedAnnealing);
 		GeneticAlgorithmSearch geneticAlgorithm = new GeneticAlgorithmSearch(sc, c, sourceFiles);
 		searches.add(geneticAlgorithm);
+		MultiObjectiveSearch MOGeneticAlgorithm = new MultiObjectiveSearch(sc, cGA, refactorings, sourceFiles);
+		searches.add(MOGeneticAlgorithm);
 				
 		// Create list of output directories for
 		// each refactored project to be written to.
@@ -66,11 +68,6 @@ public class Tasks
 		"./results/" + this.pathway.substring(this.pathway.lastIndexOf("/") + 1) + "/SimulatedAnnealing/",
 		"./results/" + this.pathway.substring(this.pathway.lastIndexOf("/") + 1) + "/GeneticAlgorithm/",
 		"./results/" + this.pathway.substring(this.pathway.lastIndexOf("/") + 1) + "/MOGeneticAlgorithm/"};
-		
-		// Initialise genetic algorithm tasks.
-		ArrayList<MultiObjectiveSearch> MOsearches = new ArrayList<MultiObjectiveSearch>();
-		MultiObjectiveSearch MOGeneticAlgorithm = new MultiObjectiveSearch(cGA, sourceFiles, this.pathway + readLibs(this.pathway), output[4]);
-		MOsearches.add(MOGeneticAlgorithm);
 
 		long timeTaken, startTime = System.currentTimeMillis();
 		double time;
@@ -79,18 +76,22 @@ public class Tasks
 		{
 			// Creates new service configuration to start from scratch.
 			sc = new CrossReferenceServiceConfiguration();
-			
+		
 			// Initialise available refactorings. Needs to be done each 
 			// time as the service configuration won't be updated otherwise.
 			refactorings = new ArrayList<Refactoring>();
+			DecreaseMethodSecurity dms = new DecreaseMethodSecurity(sc);
+			refactorings.add(dms);
+			DecreaseFieldSecurity dfs = new DecreaseFieldSecurity(sc);
+			refactorings.add(dfs);
+			IncreaseMethodSecurity ims = new IncreaseMethodSecurity(sc);
+			refactorings.add(ims);
+			IncreaseFieldSecurity ifs = new IncreaseFieldSecurity(sc);
+			refactorings.add(ifs);
 			MakeClassAbstract mca = new MakeClassAbstract(sc);
 			refactorings.add(mca);
-			MakeMethodAbstract mma = new MakeMethodAbstract(sc);
-			refactorings.add(mma);
 			MakeClassConcrete mcc = new MakeClassConcrete(sc);
 			refactorings.add(mcc);
-			MakeMethodConcrete mmc = new MakeMethodConcrete(sc);
-			refactorings.add(mmc);
 			MakeClassFinal mcf = new MakeClassFinal(sc);
 			refactorings.add(mcf);
 			MakeMethodFinal mmf = new MakeMethodFinal(sc);
@@ -111,7 +112,27 @@ public class Tasks
 			refactorings.add(mmns);
 			MakeFieldNonStatic mfns = new MakeFieldNonStatic(sc);
 			refactorings.add(mfns);
-		
+			MoveMethodUp mmu = new MoveMethodUp(sc);
+			refactorings.add(mmu);
+			MoveFieldUp mfu = new MoveFieldUp(sc);
+			refactorings.add(mfu);
+			MoveMethodDown mmd = new MoveMethodDown(sc);
+			refactorings.add(mmd);	
+			MoveFieldDown mfd = new MoveFieldDown(sc);
+			refactorings.add(mfd);
+			RemoveInterface ri = new RemoveInterface(sc);
+			refactorings.add(ri);
+			RemoveClass rc = new RemoveClass(sc);
+			refactorings.add(rc);
+			RemoveMethod rm = new RemoveMethod(sc);
+			refactorings.add(rm);
+			RemoveField rf = new RemoveField(sc);
+			refactorings.add(rf);
+			ExtractSubclass es = new ExtractSubclass(sc);
+			refactorings.add(es);
+			CollapseHierarchy ch = new CollapseHierarchy(sc);
+			refactorings.add(ch);
+			
 			try 
 			{
 				// Read the original input.
@@ -128,21 +149,23 @@ public class Tasks
 			sc.getProjectSettings().setProperty(PropertyNames.OUTPUT_PATH, output[i]);
 			sc.getProjectSettings().ensureSystemClassesAreInPath();
 
-			// initialise search task.
-			c = new Configuration("data/metrics.txt", refactorings);
-			searches.get(i).setConfiguration(c);
+			// initialise search task.			
+			if (searches.get(i).getClass().getName().contains("MultiObjectiveSearch"))
+			{
+				c = new Configuration("data/metrics.txt");
+				cGA = new Configuration[] {c};
+				((MultiObjectiveSearch) searches.get(i)).setConfigurations(cGA);
+				((MultiObjectiveSearch) searches.get(i)).setRefactorings(refactorings);
+			}
+			else
+			{
+				c = new Configuration("data/metrics.txt", refactorings);
+				searches.get(i).setConfiguration(c);
+			}
+			
 			searches.get(i).setServiceConfiguration(sc);
 			searches.get(i).setResultsPath(resultsDir[i]);
-//			if (i == 3)
 			searches.get(i).run();
-		}
-		
-		for (int i = 0; i < MOsearches.size(); i++)
-		{
-			cGA = new Configuration[] {c};
-			MOsearches.get(i).setConfiguration(cGA);
-			MOsearches.get(i).setResultsPath(resultsDir[searches.size() + i]);
-			MOsearches.get(i).run();
 		}	
 
 		// Output overall time taken to console.
