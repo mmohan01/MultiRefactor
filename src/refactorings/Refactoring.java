@@ -16,6 +16,7 @@ import recoder.java.Import;
 import recoder.java.NonTerminalProgramElement;
 import recoder.java.ProgramElement;
 import recoder.java.declaration.MemberDeclaration;
+import recoder.java.declaration.MethodDeclaration;
 import recoder.java.declaration.TypeDeclaration;
 import recoder.java.declaration.modifier.Private;
 import recoder.java.declaration.modifier.Protected;
@@ -161,10 +162,22 @@ public abstract class Refactoring extends TwoPassTransformation
 		return references;
 	}
 	
-	// Returns all the type references in a member declaration.
+	// Returns all the types referenced in a member declaration.
 	protected ArrayList<Type> getTypes(MemberDeclaration md, CrossReferenceSourceInfo si)
 	{
 		ArrayList<Type> types = new ArrayList<Type>();
+		
+		if (md instanceof MethodDeclaration)
+		{
+			for (Type t : ((MethodDeclaration) md).getSignature())
+				if ((t != null) && !(types.contains(t)) && !(t.getFullName().contains("java.lang.")) && !(t instanceof PrimitiveType))
+					types.add(t); 
+			
+			Type returnType = ((MethodDeclaration) md).getReturnType();
+			if ((returnType != null) && !(types.contains(returnType)) && !(returnType.getFullName().contains("java.lang.")) && 
+				!(returnType instanceof PrimitiveType))
+				types.add(returnType);
+		}
 		
 		TreeWalker tw = new TreeWalker(md);
 		while (tw.next()) 
