@@ -58,6 +58,9 @@ public class FitnessFunction
 			case "childAmount":
 				value = m.childAmount();
 				break;
+			case "averageChildAmount":
+				value = m.averageChildAmount();
+				break;
 			case "linesOfCode":
 				value = m.linesOfCode();
 				break;
@@ -148,6 +151,10 @@ public class FitnessFunction
 			case "childAmount":
 				m1Value = m1.childAmount();
 				m2Value = m2.childAmount();
+				break;
+			case "averageChildAmount":
+				m1Value = m1.averageChildAmount();
+				m2Value = m2.averageChildAmount();
 				break;
 			case "linesOfCode":
 				m1Value = m1.linesOfCode();
@@ -243,20 +250,23 @@ public class FitnessFunction
 			case "childAmount":
 				outputs[i] = String.format("Amount of child classes in project: %d", m.childAmount());
 				break;
+			case "averageChildAmount":
+				outputs[i] = String.format("Ratio of sub class to class: %f", m.averageChildAmount());
+				break;
 			case "linesOfCode":
-				outputs[i] = String.format("Amount lines of code in project: %d", m.linesOfCode());
+				outputs[i] = String.format("Amount of lines of code in project: %d", m.linesOfCode());
 				break;
 			case "fileAmount":
 				outputs[i] = String.format("Amount of files in project: %d", m.fileAmount());
 				break;
 			case "visibility":
-				outputs[i] = String.format("Amount of visibility in project: %d", m.visibility());
+				outputs[i] = String.format("Visibility ratio in project: %f", m.visibility());
 				break;
 			case "classInterfaceSize":
 				outputs[i] = String.format("Amount of public methods in project: %d", m.classInterfaceSize ());
 				break;
 			case "dataAccessMetric":
-				outputs[i] = String.format("Accumulative ratio of private/protected attributes to overall attributes per class: %f", m.dataAccessMetric ());
+				outputs[i] = String.format("Accumulative ratio of private/package/protected attributes to overall attributes per class: %f", m.dataAccessMetric ());
 				break;
 			default:
 				outputs[i] = "STRING INPUT DOES NOT RELATE TO A METRIC";
