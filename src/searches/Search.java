@@ -74,13 +74,22 @@ public abstract class Search
 		{
 			int[] temp = new int[2];
 			position[1] = 1;
-			temp = nextElementUp(position[0], position[1], r);
 			
-			if ((temp[0] == -1) && (temp[1] == -1))
+			if (Math.random() >= 0.5)
+			{
+				temp = nextElementUp(position[0], position[1], r);
+
+				if ((temp[0] == -1) && (temp[1] == -1))
+					temp = nextElementDown(position[0], position[1], r);
+			}
+			else
 			{
 				temp = nextElementDown(position[0], position[1], r);
-			}	
-			
+				
+				if ((temp[0] == -1) && (temp[1] == -1))
+					temp = nextElementUp(position[0], position[1], r);	
+			}
+				
 			position = temp;
 		}
 		else
