@@ -27,6 +27,7 @@ import recoder.java.declaration.modifier.Private;
 import recoder.java.declaration.modifier.Protected;
 import recoder.java.declaration.modifier.Public;
 import recoder.java.declaration.modifier.VisibilityModifier;
+import recoder.java.reference.MethodReference;
 import recoder.java.reference.TypeReference;
 import recoder.service.SourceInfo;
 
@@ -147,6 +148,67 @@ public class Metrics
 		}
 
 		return abstractCounter;
+	}
+	
+	// Average functional abstraction ratio per class.
+	// Ratio gets the accumulation of the amount of inherited external methods accessed within
+	// the methods of a class (methods declared in a super class of the current class) over
+	// the overall distinct amount of external methods accessed in the methods of the class.
+	public float functionalAbstraction()
+	{
+		int methodCount, inheritedMethodCount;
+		int classCounter = 0;
+		float functionalAbstraction = 0;
+		
+		ArrayList<MethodDeclaration> methods;
+		SourceInfo si = this.units.get(0).getFactory().getServiceConfiguration().getSourceInfo();
+		
+		for (int i = 0; i < this.units.size(); i++)
+		{
+			for (TypeDeclaration td : getAllTypes(this.units.get(i)))
+			{
+				if ((td instanceof ClassDeclaration) || (td instanceof InterfaceDeclaration))
+				{
+					classCounter++;
+					methods = new ArrayList<MethodDeclaration>();
+					
+					// Prevents "Zero Service" outputs logged to the console.
+					if (td.getProgramModelInfo() == null)
+						td.getFactory().getServiceConfiguration().getChangeHistory().updateModel();
+					
+					for (Method m : td.getMethods())
+					{
+						if (m instanceof MethodDeclaration)
+						{							
+							TreeWalker tw = new TreeWalker((MethodDeclaration) m);
+							while (tw.next()) 
+							{
+								ProgramElement pe = tw.getProgramElement();
+								if ((pe instanceof MethodReference) && (si.getMethod((MethodReference) pe) instanceof MethodDeclaration))
+								{
+									MethodDeclaration md = (MethodDeclaration) si.getMethod((MethodReference) pe);
+									
+									if (!(methods.contains(md)) && !(md.getContainingClassType().equals(td)))
+										methods.add(md);
+								}
+							}
+						}
+					}
+					
+					methodCount = methods.size();
+					inheritedMethodCount = 0;
+					
+					for (MethodDeclaration md : methods)
+						if (td.getAllSupertypes().contains(md.getContainingClassType()))
+							inheritedMethodCount++;
+					
+					if (methodCount > 0)
+						functionalAbstraction += (float) inheritedMethodCount / (float) methodCount;
+				}
+			}
+		}
+		
+		return functionalAbstraction / (float) classCounter;
 	}
 	
 	// Amount of static elements in project.

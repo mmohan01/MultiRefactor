@@ -31,6 +31,9 @@ public class FitnessFunction
 			case "abstractAmount":
 				value = m.abstractAmount();
 				break;
+			case "functionalAbstraction":
+				value = m.functionalAbstraction();
+				break;
 			case "staticAmount":
 				value = m.staticAmount();
 			break;
@@ -115,6 +118,10 @@ public class FitnessFunction
 			case "abstractAmount":
 				m1Value = m1.abstractAmount();
 				m2Value = m2.abstractAmount();
+				break;
+			case "functionalAbstraction":
+				m1Value = m1.functionalAbstraction();
+				m2Value = m2.functionalAbstraction();
 				break;
 			case "staticAmount":
 				m1Value = m1.staticAmount();
@@ -222,6 +229,9 @@ public class FitnessFunction
 				break;
 			case "abstractAmount":
 				outputs[i] = String.format("Amount of abstract classes/methods in project: %d", m.abstractAmount());
+				break;
+			case "functionalAbstraction":
+				outputs[i] = String.format("Amount of functional abstraction per class: %f", m.functionalAbstraction());
 				break;
 			case "staticAmount":
 				outputs[i] = String.format("Amount of static methods/variables in project: %d", m.staticAmount());
