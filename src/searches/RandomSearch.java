@@ -39,8 +39,7 @@ public class RandomSearch extends Search
 
 	public void run()
 	{
-		Metrics m = new Metrics(super.sc.getSourceFileRepository().getKnownCompilationUnits());		
-		
+		Metrics m = new Metrics(super.sc.getSourceFileRepository().getKnownCompilationUnits());				
 		FitnessFunction ff = new FitnessFunction();
 		super.refactoringInfo = new ArrayList<String>();
 		ArrayList<Integer> refactorings = new ArrayList<Integer>(this.iterations);
@@ -100,6 +99,7 @@ public class RandomSearch extends Search
 				if ((position[0] == -1) && (position[1] == -1))
 				{
 					System.out.printf("\nSearch terminated before specified number of iterations due to lack of available refactorings");
+					this.iterations = i - 1;
 					break;
 				}
 			}
@@ -144,7 +144,7 @@ public class RandomSearch extends Search
 		System.out.printf("\n\nBest score acquired was %.2f at iteration %d", best, bestIteration);
 		System.out.printf("\nScore has improved overall by %.2f", best - benchmark);
 		
-		if (getBest)
+		if ((getBest) && (bestIteration != this.iterations))
 		{
 			System.out.printf("\nReconstructing Best Iteration...");
 			
