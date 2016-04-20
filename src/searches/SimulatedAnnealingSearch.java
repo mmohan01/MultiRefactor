@@ -63,6 +63,7 @@ public class SimulatedAnnealingSearch extends Search
 		int[] position = new int[2];
 		boolean findNeighbour;
 		int counter;
+		boolean progress = true;
 
 		String runInfo = String.format("Search: Simulated Annealing\r\nIterations: %d\r\nStarting Temperature: %f", this.iterations, this.temperature);
 		super.outputSearchInfo(super.resultsPath, runInfo);
@@ -158,7 +159,7 @@ public class SimulatedAnnealingSearch extends Search
 							current = newScore;
 							findNeighbour = false;
 							
-							if (getBest)
+							if (this.getBest)
 							{
 								refactorings.add(r);
 								positions.add(position);
@@ -166,36 +167,46 @@ public class SimulatedAnnealingSearch extends Search
 						}
 						else
 						{
-							counter--;
 							super.c.getRefactorings().get(r).transform(super.c.getRefactorings().get(r).analyzeReverse());
+							
+							if (alwaysMove)
+							{
+								if (counter == 0)
+									System.out.printf("\nNeighbours: %d", counter + 1);
+								else
+									System.out.printf(", %d", counter + 1);
+							}
+							
+							counter++;
+							
+							if (counter == this.breakout)
+							{
+								System.out.printf("\n  There are no refactorings available - search terminating.");
+								this.iterations = i - 1;
+								progress = false;
+								findNeighbour = false;
+							}
 						}
 					}
 				}			
 				else
 				{
 					System.out.printf("\n  There are no refactorings available - search terminating.");
-					i = this.iterations;
+					this.iterations = i - 1;
+					progress = false;
 					findNeighbour = false;
-				}
-				
-				counter++;
-				if (counter == this.breakout)
-				{
-					System.out.printf("\n  There are no refactorings available - search terminating.");
-					i = this.iterations;
-					findNeighbour = false;
-				}
+				}	
 			}
 
-			if (i % 25 == 0)
+			if ((i % 25 == 0) && (progress))
 			{
 				timeTaken = System.currentTimeMillis() - startTime;
 				time = timeTaken / 1000.0;
-				int percent = (int) ((float)i / this.iterations*100);
+				int percent = (int) ((float) i / this.iterations*100);
 				System.out.printf("\n  Search has taken %.2fs so far (%d%% complete)", time, percent);
 			}
 			
-			double step = (this.iterations - i) / (double)this.iterations;
+			double step = (this.iterations - i) / (double) this.iterations;
 			currentTemperature = (float) (this.temperature * step * step);
 		}
 
@@ -214,7 +225,7 @@ public class SimulatedAnnealingSearch extends Search
 			lastI = Integer.parseInt(sub);
 		}
 		
-		if ((getBest) && (bestIteration != this.iterations) && (bestIteration != lastI))
+		if ((this.getBest) && (bestIteration != this.iterations) && (bestIteration != lastI))
 		{			
 			// Output the lowest best value measured during the search and at what iteration it was acquired.
 			System.out.printf("\n\nBest score acquired was %.2f at iteration %d", best, bestIteration);

@@ -206,7 +206,7 @@ public class HillClimbingSearch extends Search
 			}
 			
 			// Stops search if the specified maximum iterations have been reached.
-			if ((maxIterations != -1) && (iteration == maxIterations) || (r == -1))
+			if (((maxIterations != -1) && (iteration == maxIterations)) || (r == -1))
 				break;	
 		}
 

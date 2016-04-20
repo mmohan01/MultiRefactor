@@ -58,6 +58,7 @@ public class RandomSearch extends Search
 		System.out.printf("\n\nRefactoring...");
 		long timeTaken, startTime = System.currentTimeMillis();
 		double time;
+		boolean progress = true;
 
 		// Apply refactorings for the given amount of iterations.
 		// If a refactoring does not improve on the initial visibility,
@@ -100,6 +101,7 @@ public class RandomSearch extends Search
 				{
 					System.out.printf("\nSearch terminated before specified number of iterations due to lack of available refactorings");
 					this.iterations = i - 1;
+					progress = false;
 					break;
 				}
 			}
@@ -110,7 +112,7 @@ public class RandomSearch extends Search
 			System.out.printf("\n%s", super.c.getRefactorings().get(randomRef).getRefactoringInfo());
 			newValue = ff.calculateScore(m, super.c.getConfiguration());
 				
-			if (getBest)
+			if (this.getBest)
 			{
 				refactorings.add(randomRef);
 				positions.add(position);
@@ -122,7 +124,7 @@ public class RandomSearch extends Search
 				bestIteration = i;
 			}
 			
-			if (i % 25 == 0)
+			if ((i % 25 == 0) && (progress))
 			{
 				timeTaken = System.currentTimeMillis() - startTime;
 				time = timeTaken / 1000.0;
@@ -144,7 +146,7 @@ public class RandomSearch extends Search
 		System.out.printf("\n\nBest score acquired was %.2f at iteration %d", best, bestIteration);
 		System.out.printf("\nScore has improved overall by %.2f", best - benchmark);
 		
-		if ((getBest) && (bestIteration != this.iterations))
+		if ((this.getBest) && (bestIteration != this.iterations))
 		{
 			System.out.printf("\nReconstructing Best Iteration...");
 			

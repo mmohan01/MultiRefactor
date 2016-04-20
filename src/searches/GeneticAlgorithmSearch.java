@@ -440,6 +440,8 @@ public class GeneticAlgorithmSearch extends Search
 			Metrics m = new Metrics(super.sc.getSourceFileRepository().getKnownCompilationUnits());		
 			p.setFitness(new FitnessFunction().calculateScore(m, super.c.getConfiguration()));	
 		}
+		else
+			System.out.printf("\n  Mutation N/A");
 		
 		return p;
 	}
