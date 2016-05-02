@@ -63,7 +63,7 @@ public abstract class Refactoring extends TwoPassTransformation
 	{
 		if (p instanceof Problem)
         {
-        	System.out.println("\nPROBLEM REPORT: ");
+        	System.out.println("\r\nPROBLEM REPORT: ");
         	System.err.println(p.toString());
         }
 		else
