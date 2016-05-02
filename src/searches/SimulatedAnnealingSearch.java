@@ -49,12 +49,12 @@ public class SimulatedAnnealingSearch extends Search
 	public void run()
 	{
 		Metrics m = new Metrics(super.sc.getSourceFileRepository().getKnownCompilationUnits());		
-		FitnessFunction ff = new FitnessFunction();
+		FitnessFunction ff = new FitnessFunction(m, super.c.getConfiguration());
 		super.refactoringInfo = new ArrayList<String>();
 		ArrayList<Integer> refactorings = new ArrayList<Integer>(this.iterations);
 		ArrayList<int[]> positions = new ArrayList<int[]>(this.iterations);
 
-		float benchmark = ff.calculateScore(m, super.c.getConfiguration());
+		float benchmark = 0;
 		float current = benchmark, best = benchmark;
 		float newScore;
 		float currentTemperature = this.temperature;
@@ -68,7 +68,7 @@ public class SimulatedAnnealingSearch extends Search
 		String runInfo = String.format("Search: Simulated Annealing\r\nIterations: %d\r\nStarting Temperature: %f", this.iterations, this.temperature);
 		super.outputSearchInfo(super.resultsPath, runInfo);
 		super.outputMetrics(benchmark, m, true, true, super.resultsPath);
-		System.out.printf("\n\nRefactoring...");
+		System.out.printf("\r\n\r\nRefactoring...");
 		long timeTaken, startTime = System.currentTimeMillis();
 		double time;
 
@@ -125,12 +125,12 @@ public class SimulatedAnnealingSearch extends Search
 				if ((position[0] != -1) && (position[1] != -1))
 				{
 					super.c.getRefactorings().get(r).transform(super.c.getRefactorings().get(r).analyze(i, position[0], position[1]));
-					newScore = ff.calculateScore(m, super.c.getConfiguration());
+					newScore = ff.calculateNormalizedScore(m);
 
 					if (newScore > current)
 					{
 						super.refactoringInfo.add(super.c.getRefactorings().get(r).getRefactoringInfo());
-						System.out.printf("\n%s", super.c.getRefactorings().get(r).getRefactoringInfo());
+						System.out.printf("\r\n%s", super.c.getRefactorings().get(r).getRefactoringInfo());
 						current = newScore;
 						findNeighbour = false;
 
@@ -150,12 +150,12 @@ public class SimulatedAnnealingSearch extends Search
 					{
 						// Probability of accepting negative move = exponential((-)difference/current temperature).
 						// Exponential of a negative value is confined to the range 0 -> 1 as the negative value approaches 0. 
-						float probability = (float) Math.exp((newScore - current) / currentTemperature);
+						float probability = (float) Math.exp(((newScore - current) * 100) / currentTemperature);
 
 						if (probability > Math.random())
 						{
 							super.refactoringInfo.add(super.c.getRefactorings().get(r).getRefactoringInfo());
-							System.out.printf("\n%s", super.c.getRefactorings().get(r).getRefactoringInfo());
+							System.out.printf("\r\n%s", super.c.getRefactorings().get(r).getRefactoringInfo());
 							current = newScore;
 							findNeighbour = false;
 							
@@ -172,7 +172,7 @@ public class SimulatedAnnealingSearch extends Search
 							if (alwaysMove)
 							{
 								if (counter == 0)
-									System.out.printf("\nNeighbours: %d", counter + 1);
+									System.out.printf("\r\nNeighbours: %d", counter + 1);
 								else
 									System.out.printf(", %d", counter + 1);
 							}
@@ -181,7 +181,7 @@ public class SimulatedAnnealingSearch extends Search
 							
 							if (counter == this.breakout)
 							{
-								System.out.printf("\n  There are no refactorings available - search terminating.");
+								System.out.printf("\r\n  There are no refactorings available - search terminating.");
 								this.iterations = i - 1;
 								progress = false;
 								findNeighbour = false;
@@ -191,7 +191,7 @@ public class SimulatedAnnealingSearch extends Search
 				}			
 				else
 				{
-					System.out.printf("\n  There are no refactorings available - search terminating.");
+					System.out.printf("\r\n  There are no refactorings available - search terminating.");
 					this.iterations = i - 1;
 					progress = false;
 					findNeighbour = false;
@@ -203,7 +203,7 @@ public class SimulatedAnnealingSearch extends Search
 				timeTaken = System.currentTimeMillis() - startTime;
 				time = timeTaken / 1000.0;
 				int percent = (int) ((float) i / this.iterations*100);
-				System.out.printf("\n  Search has taken %.2fs so far (%d%% complete)", time, percent);
+				System.out.printf("\r\n  Search has taken %.2fs so far (%d%% complete)", time, percent);
 			}
 			
 			double step = (this.iterations - i) / (double) this.iterations;
@@ -213,7 +213,7 @@ public class SimulatedAnnealingSearch extends Search
 		// Output time taken to console and refactoring information to results file.
 		timeTaken = System.currentTimeMillis() - startTime;
 		time = timeTaken / 1000.0;
-		System.out.printf("\nTime taken to refactor: %.2fs", time);
+		System.out.printf("\r\nTime taken to refactor: %.2fs", time);
 
 		int lastI = 0, colon;
 		String sub;
@@ -228,9 +228,9 @@ public class SimulatedAnnealingSearch extends Search
 		if ((this.getBest) && (bestIteration != this.iterations) && (bestIteration != lastI))
 		{			
 			// Output the lowest best value measured during the search and at what iteration it was acquired.
-			System.out.printf("\n\nBest score acquired was %.2f at iteration %d", best, bestIteration);
-			System.out.printf("\nScore has improved overall by %.2f", best - benchmark);
-			System.out.printf("\nReconstructing Best Iteration...");
+			System.out.printf("\r\n\r\nBest score acquired was %.2f at iteration %d", best, bestIteration);
+			System.out.printf("\r\nScore has improved overall by %.2f", best - benchmark);
+			System.out.printf("\r\nReconstructing Best Iteration...");
 			
 			// Save the input path and then overwrite the program model using the constructor.
 			// Recreate relevant refactoring objects to ensure old program model is no longer referenced.
@@ -246,7 +246,7 @@ public class SimulatedAnnealingSearch extends Search
 			}
 			catch (ParserException e) 
 			{
-				System.out.println("\nEXCEPTION: Cannot read input.");
+				System.out.println("\r\nEXCEPTION: Cannot read input.");
 				System.exit(1);
 			}
 
@@ -280,22 +280,22 @@ public class SimulatedAnnealingSearch extends Search
 			super.outputRefactoringInfo(super.resultsPath, time, best - benchmark);
 			m = new Metrics(super.sc.getSourceFileRepository().getKnownCompilationUnits());	
 			super.outputMetrics(best, m, false, true, super.resultsPath);
-			System.out.printf("\n");
+			System.out.printf("\r\n");
 		}
 		else
 		{
 			super.outputRefactoringInfo(super.resultsPath, time, current - benchmark);
 			super.outputMetrics(current, m, false, true, super.resultsPath);
-			System.out.printf("\n\nScore has improved overall by %.2f", current - benchmark);
+			System.out.printf("\r\n\r\nScore has improved overall by %.2f", current - benchmark);
 		}
 		
 		// Apply refactorings from the AST to the source code.
-		System.out.printf("\nApplying Transformations...");   	
+		System.out.printf("\r\nApplying Transformations...");   	
 		super.print(super.sc.getSourceFileRepository());
 
 		timeTaken = System.currentTimeMillis() - startTime;
 		time = timeTaken / 1000.0;
-		System.out.printf("\nOverall time taken for search: %.2fs", time);
-		System.out.printf("\n-------------------------------------");
+		System.out.printf("\r\nOverall time taken for search: %.2fs", time);
+		System.out.printf("\r\n-------------------------------------");
 	}
 }

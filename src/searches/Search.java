@@ -52,7 +52,7 @@ public abstract class Search
 			} 
 			catch (IOException e) 
 			{
-				System.out.println("\nEXCEPTION: Cannot print changes to output.");
+				System.out.println("\r\nEXCEPTION: Cannot print changes to output.");
 				System.exit(1);
 			}
 		}
@@ -255,7 +255,7 @@ public abstract class Search
 		}
 		catch (IOException e) 
 		{
-			System.out.println("\nEXCEPTION: Cannot export results to text file.");
+			System.out.println("\r\nEXCEPTION: Cannot export results to text file.");
 			System.exit(1);
 		}
 	}
@@ -281,7 +281,7 @@ public abstract class Search
 		}
 		catch (IOException e) 
 		{
-			System.out.println("\nEXCEPTION: Cannot export results to text file.");
+			System.out.println("\r\nEXCEPTION: Cannot export results to text file.");
 			System.exit(1);
 		}
 	}
@@ -309,7 +309,7 @@ public abstract class Search
 		}
 		catch (IOException e) 
 		{
-			System.out.println("\nEXCEPTION: Cannot export results to text file.");
+			System.out.println("\r\nEXCEPTION: Cannot export results to text file.");
 			System.exit(1);
 		}
 	}
@@ -317,8 +317,8 @@ public abstract class Search
 	// Outputs the metric values for the project.
 	protected void outputMetrics(float score, Metrics metric, boolean initial, boolean log, String pathName)
 	{
-		FitnessFunction ff = new FitnessFunction();
-		String[] outputs = ff.createOutput(metric, this.c.getConfiguration());
+		FitnessFunction ff = new FitnessFunction(this.c.getConfiguration());
+		String[] outputs = ff.createOutput(metric);
 		
 		// Create a location for the results output.
 		String runName = String.format("%sresults.txt", pathName);
@@ -344,24 +344,24 @@ public abstract class Search
 		}
 		catch (IOException e) 
 		{
-			System.out.println("\nEXCEPTION: Cannot export results to text file.");
+			System.out.println("\r\nEXCEPTION: Cannot export results to text file.");
 			System.exit(1);
 		}
 
 		if (log)
 		{
 			// Outputs the metric values for the project to the console for immediate feedback.
-			System.out.printf("\n");
+			System.out.printf("\r\n");
 			
 			for (int i = 0; i < outputs.length; i++)
 			{
 				if(outputs[i].charAt(outputs[i].length() - 7) == '.')
 					outputs[i] = outputs[i].substring(0, outputs[i].length() - 4);
 				
-				System.out.printf("\n%s", outputs[i]);
+				System.out.printf("\r\n%s", outputs[i]);
 			}
 			
-			System.out.printf("\nOverall score: %.2f", score);
+			System.out.printf("\r\nOverall score: %.2f", score);
 		}
 	}
 	

@@ -20,6 +20,7 @@ public class GeneticAlgorithmSearch extends Search
 {
 	private String[] sourceFiles;
 	private String outputPath;
+	private FitnessFunction ff;
 	
 	private boolean printAll;	
 	private int generations;
@@ -61,8 +62,8 @@ public class GeneticAlgorithmSearch extends Search
 									   + "\r\nCrossover Probability: %f\r\nMutation Probability: %f",
 				                       this.generations, this.populationSize, this.crossoverProbability, this.mutationProbability);
 		Metrics m = new Metrics(super.sc.getSourceFileRepository().getKnownCompilationUnits());	
-		FitnessFunction ff = new FitnessFunction();
-		float benchmark = ff.calculateScore(m, super.c.getConfiguration());
+		this.ff = new FitnessFunction(m, super.c.getConfiguration());
+		float benchmark = 0;
 		
 		if (this.printAll)
 		{
@@ -81,7 +82,7 @@ public class GeneticAlgorithmSearch extends Search
 		long timeTaken, startTime = System.currentTimeMillis();
 		double time;
 		
-		System.out.printf("\n\nCreating Initial Population...");
+		System.out.printf("\r\n\r\nCreating Initial Population...");
 		ArrayList<RefactoringSequence> population = new ArrayList<RefactoringSequence>(this.populationSize);
 		ArrayList<RefactoringSequence> newGeneration = new ArrayList<RefactoringSequence>();
 		population = initialise();
@@ -91,14 +92,14 @@ public class GeneticAlgorithmSearch extends Search
 		// Fitness is measured for the new solutions and they are sorted accordingly.
 		for (int i = 1; i <= this.generations; i++)
 		{
-			System.out.printf("\n\nIteration %d:", i);
+			System.out.printf("\r\n\r\nIteration %d:", i);
 			newGeneration = new ArrayList<RefactoringSequence>();
 			
 			// Crossover is always done once for each generation but beyond that the
 			// amount of times it is executed depends on the crossover probability.
 			do
 			{
-				System.out.printf("\nCrossover...");
+				System.out.printf("\r\nCrossover...");
 				int[] parents = rankSelection(population.size(), 2);
 				newGeneration.addAll(crossover(population.get(parents[0]), population.get(parents[1])));
 			}
@@ -108,7 +109,7 @@ public class GeneticAlgorithmSearch extends Search
 			// mutation probability. This will mutate the children of the current generation.
 			while (Math.random() < this.mutationProbability)
 			{
-				System.out.printf("\nMutation...");
+				System.out.printf("\r\nMutation...");
 				int randomChild = (int)(Math.random() * newGeneration.size());
 				newGeneration.set(randomChild, mutation(newGeneration.get(randomChild)));
 			}
@@ -130,7 +131,7 @@ public class GeneticAlgorithmSearch extends Search
 		
 		if (this.printAll)
 		{
-			System.out.printf("\n\nPrinting Population");
+			System.out.printf("\r\n\r\nPrinting Population");
 			
 			for (int i = 0; i < population.size(); i++)
 			{
@@ -170,8 +171,8 @@ public class GeneticAlgorithmSearch extends Search
 			outputRefactoringInfo(super.resultsPath, time, population.get(0).getFitness() - benchmark, -1, population.get(0).getRefactoringInfo());
 			m = new Metrics(super.sc.getSourceFileRepository().getKnownCompilationUnits());	
 			super.outputMetrics(population.get(0).getFitness(), m, false, true, super.resultsPath);
-			System.out.printf("\n\nScore has improved overall by %f", population.get(0).getFitness() - benchmark);
-			System.out.printf("\nPrinting Top Solution");
+			System.out.printf("\r\n\r\nScore has improved overall by %f", population.get(0).getFitness() - benchmark);
+			System.out.printf("\r\nPrinting Top Solution");
 			super.sc.getProjectSettings().setProperty(PropertyNames.OUTPUT_PATH, this.outputPath);
 			super.print(super.sc.getSourceFileRepository());	
 		}
@@ -180,8 +181,8 @@ public class GeneticAlgorithmSearch extends Search
 		population = null;
 		timeTaken = System.currentTimeMillis() - startTime;
 		time = timeTaken / 1000.0;
-		System.out.printf("\nOverall time taken for search: %.2fs", time);
-		System.out.printf("\n-------------------------------------");
+		System.out.printf("\r\nOverall time taken for search: %.2fs", time);
+		System.out.printf("\r\n-------------------------------------");
 	}
 	
 	// Creates an initial population of refactoring solutions at random.
@@ -191,7 +192,6 @@ public class GeneticAlgorithmSearch extends Search
 	private ArrayList<RefactoringSequence> initialise()
 	{
 		ArrayList<RefactoringSequence> population = new ArrayList<RefactoringSequence>(this.populationSize);
-		FitnessFunction ff = new FitnessFunction();
 		Metrics m;
 		
 		for (int i = 0; i < this.populationSize; i++)
@@ -215,7 +215,7 @@ public class GeneticAlgorithmSearch extends Search
 
 				if (result[0] == -1)
 				{
-					System.out.printf("\nThere are no refactorings available for the rest of the sequence.");
+					System.out.printf("\r\nThere are no refactorings available for the rest of the sequence.");
 					j = refactoringAmount;
 				}
 				else
@@ -237,7 +237,7 @@ public class GeneticAlgorithmSearch extends Search
 			
 			// Calculate fitness up front so program model isn't needed at a later point.
 			m = new Metrics(super.sc.getSourceFileRepository().getKnownCompilationUnits());		
-			population.get(i).setFitness(ff.calculateScore(m, super.c.getConfiguration()));	
+			population.get(i).setFitness(this.ff.calculateNormalizedScore(m));	
 		}
 		
 		return population;
@@ -253,7 +253,6 @@ public class GeneticAlgorithmSearch extends Search
 		int cutPoint1 = ((int)(Math.random() * (p1.getRefactorings().size() - 1))) + 1;
 		int cutPoint2 = ((int)(Math.random() * (p2.getRefactorings().size() - 1))) + 1;
 		int unitPosition, elementPosition, i2;
-		FitnessFunction ff = new FitnessFunction();
 		Metrics m;
 		
 		int c1Size = cutPoint1 + (p2.getRefactorings().size() - cutPoint2);
@@ -311,7 +310,7 @@ public class GeneticAlgorithmSearch extends Search
 					c1Names.add(p2.getNames().get(i2));
 				}
 				else
-					System.out.printf("\n  Refactoring %d N/A at child 1", i + 1);
+					System.out.printf("\r\n  Refactoring %d N/A at child 1", i + 1);
 			}
 		}
 
@@ -323,7 +322,7 @@ public class GeneticAlgorithmSearch extends Search
 		
 		// Calculate fitness up front so program model isn't needed at a later point.
 		m = new Metrics(super.sc.getSourceFileRepository().getKnownCompilationUnits());		
-		children.get(0).setFitness(ff.calculateScore(m, super.c.getConfiguration()));	
+		children.get(0).setFitness(this.ff.calculateNormalizedScore(m));	
 		
 		// Reinitialise the initial program model again for second child.
 		resetModel();
@@ -380,7 +379,7 @@ public class GeneticAlgorithmSearch extends Search
 					c2Names.add(p1.getNames().get(i2));
 				}
 				else
-					System.out.printf("\n  Refactoring %d N/A at child 2", i + 1);
+					System.out.printf("\r\n  Refactoring %d N/A at child 2", i + 1);
 			}
 		}
 		
@@ -392,7 +391,7 @@ public class GeneticAlgorithmSearch extends Search
 		
 		// Calculate fitness up front so program model isn't needed at a later point.
 		m = new Metrics(super.sc.getSourceFileRepository().getKnownCompilationUnits());		
-		children.get(1).setFitness(ff.calculateScore(m, super.c.getConfiguration()));	
+		children.get(1).setFitness(this.ff.calculateNormalizedScore(m));	
 		
 		return children;
 	}
@@ -438,10 +437,10 @@ public class GeneticAlgorithmSearch extends Search
 			
 			// Calculate fitness up front so program model isn't needed at a later point.
 			Metrics m = new Metrics(super.sc.getSourceFileRepository().getKnownCompilationUnits());		
-			p.setFitness(new FitnessFunction().calculateScore(m, super.c.getConfiguration()));	
+			p.setFitness(this.ff.calculateNormalizedScore(m));	
 		}
 		else
-			System.out.printf("\n  Mutation N/A");
+			System.out.printf("\r\n  Mutation N/A");
 		
 		return p;
 	}
@@ -479,7 +478,7 @@ public class GeneticAlgorithmSearch extends Search
 		}
 		catch (ParserException e) 
 		{
-			System.out.println("\nEXCEPTION: Cannot read input.");
+			System.out.println("\r\nEXCEPTION: Cannot read input.");
 			System.exit(1);
 		}
 
@@ -625,7 +624,7 @@ public class GeneticAlgorithmSearch extends Search
 		}
 		catch (IOException e) 
 		{
-			System.out.println("\nEXCEPTION: Cannot export results to text file.");
+			System.out.println("\r\nEXCEPTION: Cannot export results to text file.");
 			System.exit(1);
 		}
 	}
@@ -634,8 +633,8 @@ public class GeneticAlgorithmSearch extends Search
 	// Can be used for when printing out the whole population.
 	private void outputMetrics(float score, Metrics metric, boolean initial, boolean log, int solution, String pathName)
 	{
-		FitnessFunction ff = new FitnessFunction();
-		String[] outputs = ff.createOutput(metric, super.c.getConfiguration());
+		FitnessFunction ff = new FitnessFunction(super.c.getConfiguration());
+		String[] outputs = ff.createOutput(metric);
 		
 		// Create a location for the results output.
 		pathName = pathName.substring(0, (pathName.length() - 1));
@@ -663,24 +662,24 @@ public class GeneticAlgorithmSearch extends Search
 		}
 		catch (IOException e) 
 		{
-			System.out.println("\nEXCEPTION: Cannot export results to text file.");
+			System.out.println("\r\nEXCEPTION: Cannot export results to text file.");
 			System.exit(1);
 		}
 
 		if (log)
 		{
 			// Outputs the metric values for the project to the console for immediate feedback.
-			System.out.printf("\n");
+			System.out.printf("\r\n");
 			
 			for (int i = 0; i < outputs.length; i++)
 			{
 				if(outputs[i].charAt(outputs[i].length() - 7) == '.')
 					outputs[i] = outputs[i].substring(0, outputs[i].length() - 4);
 				
-				System.out.printf("\n%s", outputs[i]);
+				System.out.printf("\r\n%s", outputs[i]);
 			}
 			
-			System.out.printf("\nOverall fitness function score: %.2f", score);
+			System.out.printf("\r\nOverall fitness function score: %.2f", score);
 		}
 	}
 	
@@ -698,5 +697,10 @@ public class GeneticAlgorithmSearch extends Search
 			else
 				return 0;
 		}
+	}
+	
+	public void setInitialRefactoringRange(int refactoringRange)
+	{
+		this.initialRefactoringRange = refactoringRange;
 	}
 }

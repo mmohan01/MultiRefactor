@@ -40,12 +40,12 @@ public class RandomSearch extends Search
 	public void run()
 	{
 		Metrics m = new Metrics(super.sc.getSourceFileRepository().getKnownCompilationUnits());				
-		FitnessFunction ff = new FitnessFunction();
+		FitnessFunction ff = new FitnessFunction(m, super.c.getConfiguration());
 		super.refactoringInfo = new ArrayList<String>();
 		ArrayList<Integer> refactorings = new ArrayList<Integer>(this.iterations);
 		ArrayList<int[]> positions = new ArrayList<int[]>(this.iterations);
 
-		float benchmark = ff.calculateScore(m, super.c.getConfiguration());
+		float benchmark = 0;
 		float best = benchmark;
 		float newValue = 0;
 		int bestIteration = 1;
@@ -55,7 +55,7 @@ public class RandomSearch extends Search
 		String runInfo = String.format("Search: Random\r\nIterations: %d", this.iterations);
 		super.outputSearchInfo(super.resultsPath, runInfo);
 		super.outputMetrics(benchmark, m, true, true, super.resultsPath);
-		System.out.printf("\n\nRefactoring...");
+		System.out.printf("\r\n\r\nRefactoring...");
 		long timeTaken, startTime = System.currentTimeMillis();
 		double time;
 		boolean progress = true;
@@ -99,7 +99,7 @@ public class RandomSearch extends Search
 				
 				if ((position[0] == -1) && (position[1] == -1))
 				{
-					System.out.printf("\nSearch terminated before specified number of iterations due to lack of available refactorings");
+					System.out.printf("\r\nSearch terminated before specified number of iterations due to lack of available refactorings");
 					this.iterations = i - 1;
 					progress = false;
 					break;
@@ -109,8 +109,8 @@ public class RandomSearch extends Search
 			// Refactoring is applied to that element.
 			super.c.getRefactorings().get(randomRef).transform(super.c.getRefactorings().get(randomRef).analyze(i, position[0], position[1]));
 			super.refactoringInfo.add(super.c.getRefactorings().get(randomRef).getRefactoringInfo());
-			System.out.printf("\n%s", super.c.getRefactorings().get(randomRef).getRefactoringInfo());
-			newValue = ff.calculateScore(m, super.c.getConfiguration());
+			System.out.printf("\r\n%s", super.c.getRefactorings().get(randomRef).getRefactoringInfo());
+			newValue = ff.calculateNormalizedScore(m);
 				
 			if (this.getBest)
 			{
@@ -129,26 +129,26 @@ public class RandomSearch extends Search
 				timeTaken = System.currentTimeMillis() - startTime;
 				time = timeTaken / 1000.0;
 				int percent = (int) ((float) i / this.iterations*100);
-				System.out.printf("\n  Search has taken %.2fs so far (%d%% complete)", time, percent);
+				System.out.printf("\r\n  Search has taken %.2fs so far (%d%% complete)", time, percent);
 			}
 		}
 
 		// Output time taken to console and refactoring information to results file.
 		timeTaken = System.currentTimeMillis() - startTime;
 		time = timeTaken / 1000.0;
-		System.out.printf("\nTime taken to refactor: %.2fs", time);
+		System.out.printf("\r\nTime taken to refactor: %.2fs", time);
 		super.outputRefactoringInfo(super.resultsPath, time, best - benchmark);
 
 		// Output the final metric values to the results file.
 		super.outputMetrics(newValue, m, false, true, super.resultsPath);
 
 		// Output the best value measured during the search and at what iteration it was acquired.
-		System.out.printf("\n\nBest score acquired was %.2f at iteration %d", best, bestIteration);
-		System.out.printf("\nScore has improved overall by %.2f", best - benchmark);
+		System.out.printf("\r\n\r\nBest score acquired was %.2f at iteration %d", best, bestIteration);
+		System.out.printf("\r\nScore has improved overall by %.2f", best - benchmark);
 		
 		if ((this.getBest) && (bestIteration != this.iterations))
 		{
-			System.out.printf("\nReconstructing Best Iteration...");
+			System.out.printf("\r\nReconstructing Best Iteration...");
 			
 			// Save the input path and then overwrite the program model using the constructor.
 			// Recreate relevant refactoring objects to ensure old program model is no longer referenced.
@@ -164,7 +164,7 @@ public class RandomSearch extends Search
 			}
 			catch (ParserException e) 
 			{
-				System.out.println("\nEXCEPTION: Cannot read input.");
+				System.out.println("\r\nEXCEPTION: Cannot read input.");
 				System.exit(1);
 			}
 
@@ -181,12 +181,12 @@ public class RandomSearch extends Search
 		}
 		
 		// Apply refactorings from the AST to the source code.
-		System.out.printf("\nApplying Transformations...");
+		System.out.printf("\r\nApplying Transformations...");
 		super.print(super.sc.getSourceFileRepository());
 
 		timeTaken = System.currentTimeMillis() - startTime;
 		time = timeTaken / 1000.0;
-		System.out.printf("\nOverall time taken for search: %.2fs", time);
-		System.out.printf("\n-------------------------------------");
+		System.out.printf("\r\nOverall time taken for search: %.2fs", time);
+		System.out.printf("\r\n-------------------------------------");
 	}
 }

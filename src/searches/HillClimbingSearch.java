@@ -45,12 +45,12 @@ public class HillClimbingSearch extends Search
 	public void run()
 	{
 		Metrics m = new Metrics(super.sc.getSourceFileRepository().getKnownCompilationUnits());		
-		FitnessFunction ff = new FitnessFunction();
+		FitnessFunction ff = new FitnessFunction(m, super.c.getConfiguration());
 		super.refactoringInfo = new ArrayList<String>();
 		String currentRefactoringInfo = "";
 		boolean keepGoing, improved;
 		
-		float benchmark = ff.calculateScore(m, super.c.getConfiguration());
+		float benchmark = 0;
 		float currentScore = benchmark;
 		float newScore;
 		int iteration = 1;
@@ -64,7 +64,7 @@ public class HillClimbingSearch extends Search
 		String runInfo = String.format("Search: Hill Climbing\r\nAscent: %s", ascent);
 		super.outputSearchInfo(super.resultsPath, runInfo);
 		super.outputMetrics(benchmark, m, true, true, super.resultsPath);
-		System.out.printf("\n\nRefactoring...");
+		System.out.printf("\r\n\r\nRefactoring...");
 		long timeTaken, startTime = System.currentTimeMillis();
 		double time;
 	
@@ -74,7 +74,7 @@ public class HillClimbingSearch extends Search
 		for (int i = 0; i <= this.restartCount; i++)
 		{
 			if (i > 0)
-				System.out.printf("\n Restarting %d of %d", i, this.restartCount);
+				System.out.printf("\r\n Restarting %d of %d", i, this.restartCount);
 			
 			keepGoing = true;
 			
@@ -133,10 +133,10 @@ public class HillClimbingSearch extends Search
 					{
 						unit = super.sc.getSourceFileRepository().getKnownCompilationUnits().get(position[0]).getName();
 						super.c.getRefactorings().get(r).transform(super.c.getRefactorings().get(r).analyze(iteration, position[0], position[1]));
-						newScore = ff.calculateScore(m, this.c.getConfiguration());
+						newScore = ff.calculateNormalizedScore(m);
 						
 						if (j == 0)
-							System.out.printf("\nNeighbours: %d", j + 1);
+							System.out.printf("\r\nNeighbours: %d", j + 1);
 						else
 							System.out.printf(", %d", j + 1);
 						
@@ -170,9 +170,9 @@ public class HillClimbingSearch extends Search
 				if (r == -1)
 				{
 					if (iteration == 1)
-						System.out.printf("\nThere are no refactorings available - search terminating.");
+						System.out.printf("\r\nThere are no refactorings available - search terminating.");
 					else
-						System.out.printf("\nThere are no more refactorings available - search terminating.");
+						System.out.printf("\r\nThere are no more refactorings available - search terminating.");
 
 					keepGoing = false;
 				}
@@ -189,14 +189,14 @@ public class HillClimbingSearch extends Search
 					}
 
 						super.refactoringInfo.add(currentRefactoringInfo);
-						System.out.printf("\n%s", currentRefactoringInfo);
+						System.out.printf("\r\n%s", currentRefactoringInfo);
 				}
 
 				if ((iteration % 25 == 0) && (r != -1))
 				{
 					timeTaken = System.currentTimeMillis() - startTime;
 					time = timeTaken / 1000.0;
-					System.out.printf("\n  Search has taken %.2fs so far (%d iterations)", time, iteration);
+					System.out.printf("\r\n  Search has taken %.2fs so far (%d iterations)", time, iteration);
 				}
 
 				if ((maxIterations != -1) && (iteration == maxIterations))
@@ -213,22 +213,22 @@ public class HillClimbingSearch extends Search
 		// Output time taken to console and refactoring information to results file.
 		timeTaken = System.currentTimeMillis() - startTime;
 		time = timeTaken / 1000.0;
-		System.out.printf("\nTime taken to refactor: %.2fs", time);
+		System.out.printf("\r\nTime taken to refactor: %.2fs", time);
 		super.outputRefactoringInfo(super.resultsPath, time, currentScore - benchmark);
 
 		// Output the final metric values to the results file.
 		super.outputMetrics(currentScore, m, false, true, super.resultsPath);
 
 		// Output the improvement obtained during the search.
-		System.out.printf("\n\nScore has improved overall by %.2f", currentScore - benchmark);
+		System.out.printf("\r\n\r\nScore has improved overall by %.2f", currentScore - benchmark);
 
 		// Apply refactorings from the AST to the source code.
-		System.out.printf("\nApplying Transformations...");	
+		System.out.printf("\r\nApplying Transformations...");	
 		super.print(super.sc.getSourceFileRepository());
 
 		timeTaken = System.currentTimeMillis() - startTime;
 		time = timeTaken / 1000.0;
-		System.out.printf("\nOverall time taken for search: %.2fs", time);
-		System.out.printf("\n-------------------------------------");
+		System.out.printf("\r\nOverall time taken for search: %.2fs", time);
+		System.out.printf("\r\n-------------------------------------");
 	}
 }

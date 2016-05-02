@@ -24,6 +24,7 @@ public class MultiObjectiveSearch extends Search
 	private ArrayList <Refactoring> refactorings;
 	private String[] sourceFiles;
 	private String outputPath;
+	private FitnessFunction[] ff;
 		
 	private int generations;
 	private int populationSize;
@@ -35,6 +36,7 @@ public class MultiObjectiveSearch extends Search
 	{
 		super(sc);
 		this.c = c;
+		this.ff = new FitnessFunction[this.c.length];
 		this.refactorings = refactorings;
 		this.sourceFiles = sourceFiles;
 		this.generations = 5;
@@ -48,6 +50,7 @@ public class MultiObjectiveSearch extends Search
 	{
 		super(sc);
 		this.c = c;
+		this.ff = new FitnessFunction[this.c.length];
 		this.sourceFiles = sourceFiles;
 		this.generations = generations;
 		this.populationSize = populationSize;
@@ -72,7 +75,7 @@ public class MultiObjectiveSearch extends Search
 		long timeTaken, startTime = System.currentTimeMillis();
 		double time;
 
-		System.out.printf("\n\nCreating Initial Population...");
+		System.out.printf("\r\n\r\nCreating Initial Population...");
 		ArrayList<RefactoringSequence> population = new ArrayList<RefactoringSequence>(this.populationSize);
 		ArrayList<RefactoringSequence> newGeneration = new ArrayList<RefactoringSequence>();
 		population = fitness(initialize());
@@ -82,14 +85,14 @@ public class MultiObjectiveSearch extends Search
 		// Fitness is measured for the new solutions and they are sorted accordingly.
 		for (int i = 1; i <= this.generations; i++)
 		{
-			System.out.printf("\n\nIteration %d:", i);
+			System.out.printf("\r\n\r\nIteration %d:", i);
 			newGeneration = new ArrayList<RefactoringSequence>();
 			
 			// Crossover is always done once for each generation but beyond that the
 			// amount of times it is executed depends on the crossover probability.
 			do
 			{
-				System.out.printf("\nCrossover...");
+				System.out.printf("\r\nCrossover...");
 				int randomS1, randomS2;
 				RefactoringSequence[] parents = new RefactoringSequence[2];
 				
@@ -112,13 +115,13 @@ public class MultiObjectiveSearch extends Search
 			// mutation probability. This will mutate the children of the current generation.
 			while (Math.random() < this.mutationProbability)
 			{
-				System.out.printf("\nMutation...");
+				System.out.printf("\r\nMutation...");
 				int randomChild = (int)(Math.random() * newGeneration.size());
 				newGeneration.set(randomChild, mutation(newGeneration.get(randomChild)));
 			}
 			
 			// The current population is measured and sorted accordingly.
-			System.out.printf("\nFitness...");
+			System.out.printf("\r\nFitness...");
 			newGeneration.trimToSize();
 			population.ensureCapacity(this.populationSize + newGeneration.size());
 			population.addAll(newGeneration);
@@ -130,7 +133,7 @@ public class MultiObjectiveSearch extends Search
 		timeTaken = System.currentTimeMillis() - startTime;
 		time = timeTaken / 1000.0;
 		
-		System.out.printf("\n\nPrinting Population");
+		System.out.printf("\r\n\r\nPrinting Population");
 
 		for (int i = 0; i < population.size(); i++)
 		{
@@ -158,8 +161,8 @@ public class MultiObjectiveSearch extends Search
 		population = null;
 		timeTaken = System.currentTimeMillis() - startTime;
 		time = timeTaken / 1000.0;
-		System.out.printf("\nOverall time taken for search: %.2fs", time);
-		System.out.printf("\n-------------------------------------");
+		System.out.printf("\r\nOverall time taken for search: %.2fs", time);
+		System.out.printf("\r\n-------------------------------------");
 	}
 	
 	// Creates an initial population of refactoring solutions at random.
@@ -169,13 +172,15 @@ public class MultiObjectiveSearch extends Search
 	private ArrayList<RefactoringSequence> initialize()
 	{
 		ArrayList<RefactoringSequence> population = new ArrayList<RefactoringSequence>(this.populationSize);
-		FitnessFunction ff = new FitnessFunction();
 		Metrics m = new Metrics(super.sc.getSourceFileRepository().getKnownCompilationUnits());	
 		float benchmark[] = new float[this.c.length];
 		float finalScore[] = new float[this.c.length];
 		
 		for (int i = 0; i < this.c.length; i++)
-			benchmark[i] = ff.calculateScore(m, this.c[i].getConfiguration());
+		{
+			this.ff[i] = new FitnessFunction(m, this.c[i].getConfiguration());
+			benchmark[i] = 0;
+		}
 		
 		for (int i = 0; i < this.populationSize; i++)
 		{
@@ -200,7 +205,7 @@ public class MultiObjectiveSearch extends Search
 
 				if (result[0] == -1)
 				{
-					System.out.printf("\nThere are no refactorings available for the rest of the sequence.");
+					System.out.printf("\r\nThere are no refactorings available for the rest of the sequence.");
 					j = refactoringAmount;
 				}
 				else
@@ -224,7 +229,7 @@ public class MultiObjectiveSearch extends Search
 			// Calculate fitness up front so program model isn't needed at a later point.
 			m = new Metrics(super.sc.getSourceFileRepository().getKnownCompilationUnits());		
 			for (int j = 0; j < this.c.length; j++)
-				finalScore[j] = ff.calculateScore(m, this.c[j].getConfiguration());
+				finalScore[j] = this.ff[j].calculateNormalizedScore(m);
 			population.get(i).setMOFitness(finalScore);
 		}
 		
@@ -241,7 +246,6 @@ public class MultiObjectiveSearch extends Search
 		int cutPoint1 = ((int)(Math.random() * (p1.getRefactorings().size() - 1))) + 1;
 		int cutPoint2 = ((int)(Math.random() * (p2.getRefactorings().size() - 1))) + 1;
 		int unitPosition, elementPosition, i2;
-		FitnessFunction ff = new FitnessFunction();
 		Metrics m;
 		float finalScore[] = new float[this.c.length];
 		
@@ -302,7 +306,7 @@ public class MultiObjectiveSearch extends Search
 					c1Names.add(p2.getNames().get(i2));
 				}
 				else
-					System.out.printf("\n  Refactoring %d N/A at child 1", i + 1);
+					System.out.printf("\r\n  Refactoring %d N/A at child 1", i + 1);
 			}
 		}
 
@@ -315,7 +319,7 @@ public class MultiObjectiveSearch extends Search
 		// Calculate fitness up front so program model isn't needed at a later point.
 		m = new Metrics(super.sc.getSourceFileRepository().getKnownCompilationUnits());		
 		for (int j = 0; j < this.c.length; j++)
-			finalScore[j] = ff.calculateScore(m, this.c[j].getConfiguration());
+			finalScore[j] = this.ff[j].calculateNormalizedScore(m);
 		children.get(0).setMOFitness(finalScore);
 
 		// Reinitialise the initial program model again for second child.
@@ -375,7 +379,7 @@ public class MultiObjectiveSearch extends Search
 					c2Positions.add(new int[] {unitPosition, elementPosition});
 				}
 				else
-					System.out.printf("\n  Refactoring %d N/A at child 2", i + 1);
+					System.out.printf("\r\n  Refactoring %d N/A at child 2", i + 1);
 			}
 		}
 		
@@ -388,7 +392,7 @@ public class MultiObjectiveSearch extends Search
 		// Calculate fitness up front so program model isn't needed at a later point.
 		m = new Metrics(super.sc.getSourceFileRepository().getKnownCompilationUnits());		
 		for (int j = 0; j < this.c.length; j++)
-			finalScore[j] = ff.calculateScore(m, this.c[j].getConfiguration());
+			finalScore[j] = this.ff[j].calculateNormalizedScore(m);
 		children.get(1).setMOFitness(finalScore);
 
 		return children;
@@ -440,7 +444,7 @@ public class MultiObjectiveSearch extends Search
 			float finalScore[] = new float[this.c.length];
 
 			for (int j = 0; j < this.c.length; j++)
-				finalScore[j] = new FitnessFunction().calculateScore(m, this.c[j].getConfiguration());
+				finalScore[j] = this.ff[j].calculateNormalizedScore(m);
 			p.setMOFitness(finalScore);
 		}
 		
@@ -493,7 +497,7 @@ public class MultiObjectiveSearch extends Search
 		}
 		catch (ParserException e) 
 		{
-			System.out.println("\nEXCEPTION: Cannot read input.");
+			System.out.println("\r\nEXCEPTION: Cannot read input.");
 			System.exit(1);
 		}
 
@@ -526,7 +530,7 @@ public class MultiObjectiveSearch extends Search
 		}
 		catch (IOException e) 
 		{
-			System.out.println("\nEXCEPTION: Cannot export results to text file.");
+			System.out.println("\r\nEXCEPTION: Cannot export results to text file.");
 			System.exit(1);
 		}
 	}
@@ -559,7 +563,7 @@ public class MultiObjectiveSearch extends Search
 		}
 		catch (IOException e) 
 		{
-			System.out.println("\nEXCEPTION: Cannot export results to text file.");
+			System.out.println("\r\nEXCEPTION: Cannot export results to text file.");
 			System.exit(1);
 		}
 
@@ -567,7 +571,7 @@ public class MultiObjectiveSearch extends Search
 		{
 			// Outputs the fitness function values for the project to the console for immediate feedback.
 			for (int i = 0; i < scores.length; i++)
-				System.out.printf("\n\nFitness function %d score: %.2f", (i + 1), scores[i]);
+				System.out.printf("\r\n\r\nFitness function %d score: %.2f", (i + 1), scores[i]);
 		}
 	}
 
