@@ -300,7 +300,7 @@ public class MoveMethodUp extends Refactoring
 			// Check if fields can be accessed in super type.
 			for (Field f : fields)
 			{				
-				if (td.getFields().contains(f))
+				if (td.getFieldsInScope().contains(f))
 					return false;
 				
 				if (f.isPrivate())
