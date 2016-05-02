@@ -1,86 +1,88 @@
 package refactory;
 
 import java.util.ArrayList;
+import java.util.HashMap;
+import java.util.Map;
 
 public class FitnessFunction 
 {
-	// No attributes - empty constructor.
-	public FitnessFunction(){}
+	ArrayList<Triple<String, Boolean, Float>> configuration;
+	Map<String, Float> initialMetrics;
+
+	// Only use if normalization functions (calculateBenchmark, calculateNormalizedScore) are not being used.
+	public FitnessFunction(ArrayList<Triple<String, Boolean, Float>> configuration)
+	{
+		this.configuration = configuration;
+	}
 	
-	public float calculateScore(Metrics m, ArrayList<Triple<String, Boolean, Float>> configuration)
+	public FitnessFunction(Metrics m, ArrayList<Triple<String, Boolean, Float>> configuration)
+	{
+		this.configuration = configuration;
+		
+		this.initialMetrics = new HashMap<String, Float>();
+		initialMetrics.put("classDesignSize", (float) m.classDesignSize());
+		initialMetrics.put("numberOfHierarchies", (float) m.numberOfHierarchies());
+		initialMetrics.put("averageNumberOfAncestors", m.averageNumberOfAncestors());
+		initialMetrics.put("dataAccessMetric", m.dataAccessMetric());
+		initialMetrics.put("directClassCoupling", m.directClassCoupling());
+		initialMetrics.put("cohesionAmongMethods", m.cohesionAmongMethods());
+		initialMetrics.put("aggregation", m.aggregation());
+		initialMetrics.put("functionalAbstraction", m.functionalAbstraction());
+		initialMetrics.put("numberOfPolymorphicMethods", m.numberOfPolymorphicMethods());
+		initialMetrics.put("classInterfaceSize", m.classInterfaceSize());
+		initialMetrics.put("numberOfMethods", m.numberOfMethods());
+		initialMetrics.put("methodsPerType", m.methodsPerType());
+		initialMetrics.put("numberOfChildren", m.numberOfChildren());
+		initialMetrics.put("abstractness", m.abstractness());
+		initialMetrics.put("abstractRatio", m.abstractRatio());
+		initialMetrics.put("staticRatio", m.staticRatio());
+		initialMetrics.put("finalRatio", m.finalRatio());
+		initialMetrics.put("constantRatio", m.constantRatio());
+		initialMetrics.put("innerClassRatio", m.innerClassRatio());
+		initialMetrics.put("referencedMethodsRatio", m.referencedMethodsRatio());
+		initialMetrics.put("visibilityRatio", m.visibilityRatio());
+		initialMetrics.put("linesOfCode", (float) m.linesOfCode());
+		initialMetrics.put("numberOfFiles", (float) m.numberOfFiles());
+	}
+	
+	public float calculateBenchmark()
+	{
+		float amount = 0;
+
+		for (Triple<String, Boolean, Float> metric : this.configuration)
+			if (this.initialMetrics.get(metric.getFirst()) != 0)
+				amount += (metric.getSecond() == true) ? 1 : -1;
+		
+		return amount;
+	}
+	
+	public float calculateScore(Metrics m)
 	{
 		float amount = 0;
 		float value = 0;
 
-		for (Triple<String, Boolean, Float> metric : configuration)
+		for (Triple<String, Boolean, Float> metric : this.configuration)
 		{
-			switch (metric.getFirst()) 
+			value = findMetricValue(m, metric.getFirst());			
+			amount += (metric.getSecond() == true) ? (metric.getThird() * value) : -(metric.getThird() * value);
+		}
+
+		return amount;
+	}
+	
+	public float calculateNormalizedScore(Metrics m)
+	{
+		float amount = 0;
+		float value = 0;
+
+		for (Triple<String, Boolean, Float> metric : this.configuration)
+		{
+			value = findMetricValue(m, metric.getFirst());
+			
+			if (this.initialMetrics.get(metric.getFirst()) != 0)
 			{
-			case "classDesignSize":
-				value = m.classDesignSize();
-				break;
-			case "numberOfMethods":
-				value = m.numberOfMethods();
-				break;
-			case "methodsPerType":
-				value = m.methodsPerType();
-				break;
-			case "abstractness":
-				value = m.abstractness();
-				break;
-			case "abstractAmount":
-				value = m.abstractAmount();
-				break;
-			case "functionalAbstraction":
-				value = m.functionalAbstraction();
-				break;
-			case "staticAmount":
-				value = m.staticAmount();
-			break;
-			case "finalAmount":
-				value = m.finalAmount();
-				break;
-			case "constantAmount":
-				value = m.constantAmount();
-				break;
-			case "innerClassAmount":
-				value = m.innerClassAmount();
-				break;
-			case "numberOfHierarchies":
-				value = m.numberOfHierarchies();
-				break;
-			case "averageNumberOfAncestors":
-				value = m.averageNumberOfAncestors();
-				break;
-			case "cohesionAmongMethods":
-				value = m.cohesionAmongMethods();
-				break;
-			case "directClassCoupling":
-				value = m.directClassCoupling();
-				break;
-			case "childAmount":
-				value = m.childAmount();
-				break;
-			case "averageChildAmount":
-				value = m.averageChildAmount();
-				break;
-			case "linesOfCode":
-				value = m.linesOfCode();
-				break;
-			case "fileAmount":
-				value = m.fileAmount();
-				break;
-			case "visibility":
-				value = m.visibility();
-				break;
-			case "classInterfaceSize":
-				value = m.classInterfaceSize();
-				break;
-			case "dataAccessMetric":
-				value = m.dataAccessMetric();
-				break;
-			default:
-				value = 0;
+				value /= this.initialMetrics.get(metric.getFirst());
+				value--;
 			}
 			
 			amount += (metric.getSecond() == true) ? (metric.getThird() * value) : -(metric.getThird() * value);
@@ -89,105 +91,17 @@ public class FitnessFunction
 		return amount;
 	}
 	
-	public boolean isParetoDominant(Metrics m1, Metrics m2, ArrayList<Triple<String, Boolean, Float>> configuration)
+	public boolean isParetoDominant(Metrics m1, Metrics m2)
 	{
 		boolean better = false;
 		float m1Value = 0;
 		float m2Value = 0;
 
-		for (Triple<String, Boolean, Float> metric : configuration)
+		for (Triple<String, Boolean, Float> metric : this.configuration)
 		{
-			switch (metric.getFirst()) 
-			{
-			case "classDesignSize":
-				m1Value = m1.classDesignSize();
-				m2Value = m2.classDesignSize();
-				break;
-			case "numberOfMethods":
-				m1Value = m1.numberOfMethods();
-				m2Value = m2.numberOfMethods();
-				break;
-			case "methodsPerType":
-				m1Value = m1.methodsPerType();
-				m2Value = m2.methodsPerType();
-				break;
-			case "abstractness":
-				m1Value = m1.abstractness();
-				m2Value = m2.abstractness();
-				break;
-			case "abstractAmount":
-				m1Value = m1.abstractAmount();
-				m2Value = m2.abstractAmount();
-				break;
-			case "functionalAbstraction":
-				m1Value = m1.functionalAbstraction();
-				m2Value = m2.functionalAbstraction();
-				break;
-			case "staticAmount":
-				m1Value = m1.staticAmount();
-				m2Value = m2.staticAmount();
-				break;
-			case "finalAmount":
-				m1Value = m1.finalAmount();
-				m2Value = m2.finalAmount();
-				break;
-			case "constantAmount":
-				m1Value = m1.constantAmount();
-				m2Value = m2.constantAmount();
-				break;
-			case "innerClassAmount":
-				m1Value = m1.innerClassAmount();
-				m2Value = m2.innerClassAmount();
-				break;
-			case "numberOfHierarchies":
-				m1Value = m1.numberOfHierarchies();
-				m2Value = m2.numberOfHierarchies();
-				break;
-			case "averageNumberOfAncestors":
-				m1Value = m1.averageNumberOfAncestors();
-				m2Value = m2.averageNumberOfAncestors();
-				break;
-			case "cohesionAmongMethods":
-				m1Value = m1.cohesionAmongMethods();
-				m2Value = m2.cohesionAmongMethods();
-				break;
-			case "directClassCoupling":
-				m1Value = m1.directClassCoupling();
-				m2Value = m2.directClassCoupling();
-				break;
-			case "childAmount":
-				m1Value = m1.childAmount();
-				m2Value = m2.childAmount();
-				break;
-			case "averageChildAmount":
-				m1Value = m1.averageChildAmount();
-				m2Value = m2.averageChildAmount();
-				break;
-			case "linesOfCode":
-				m1Value = m1.linesOfCode();
-				m2Value = m2.linesOfCode();
-				break;
-			case "fileAmount":
-				m1Value = m1.fileAmount();
-				m2Value = m2.fileAmount();
-				break;
-			case "visibility":
-				m1Value = m1.visibility();
-				m2Value = m2.visibility();
-				break;
-			case "classInterfaceSize":
-				m1Value = m1.classInterfaceSize();
-				m2Value = m2.classInterfaceSize();
-				break;
-			case "dataAccessMetric":
-				m1Value = m1.dataAccessMetric();
-				m2Value = m2.dataAccessMetric();
-				break;
-			default:
-				m1Value = 0;
-				m2Value = 0;
-			}
-			
+			m1Value = findMetricValue(m1, metric.getFirst());
+			m2Value = findMetricValue(m2, metric.getFirst());
+
 			if (metric.getSecond() == true)
 			{
 				if (m1Value > m2Value) 
@@ -207,43 +121,98 @@ public class FitnessFunction
 		return better;
 	}
 	
-	public String[] createOutput(Metrics m, ArrayList<Triple<String, Boolean, Float>> configuration)
+	private float findMetricValue(Metrics m, String metric)
 	{
-		String[] outputs = new String[configuration.size()];
+		float value = 0;
 
-		for (int i = 0; i < configuration.size(); i++)
+		switch (metric) 
 		{
-			switch (configuration.get(i).getFirst()) 
+		case "classDesignSize":
+			value = m.classDesignSize();
+			break;
+		case "numberOfHierarchies":
+			value = m.numberOfHierarchies();
+			break;
+		case "averageNumberOfAncestors":
+			value = m.averageNumberOfAncestors();
+			break;
+		case "dataAccessMetric":
+			value = m.dataAccessMetric();
+			break;
+		case "directClassCoupling":
+			value = m.directClassCoupling();
+			break;
+		case "cohesionAmongMethods":
+			value = m.cohesionAmongMethods();
+			break;
+		case "aggregation":
+			value = m.aggregation();
+			break;
+		case "functionalAbstraction":
+			value = m.functionalAbstraction();
+			break;
+		case "numberOfPolymorphicMethods":
+			value = m.numberOfPolymorphicMethods();
+			break;
+		case "classInterfaceSize":
+			value = m.classInterfaceSize();
+			break;
+		case "numberOfMethods":
+			value = m.numberOfMethods();
+			break;
+		case "methodsPerType":
+			value = m.methodsPerType();
+			break;
+		case "numberOfChildren":
+			value = m.numberOfChildren();
+			break;
+		case "abstractness":
+			value = m.abstractness();
+			break;
+		case "abstractRatio":
+			value = m.abstractRatio();
+			break;
+		case "staticRatio":
+			value = m.staticRatio();
+			break;
+		case "finalRatio":
+			value = m.finalRatio();
+			break;
+		case "constantRatio":
+			value = m.constantRatio();
+			break;
+		case "innerClassRatio":
+			value = m.innerClassRatio();
+			break;
+		case "referencedMethodsRatio":
+			value = m.referencedMethodsRatio();
+			break;
+		case "visibilityRatio":
+			value = m.visibilityRatio();
+			break;
+		case "linesOfCode":
+			value = m.linesOfCode();
+			break;
+		case "numberOfFiles":
+			value = m.numberOfFiles();
+			break;			
+		default:
+			value = 0;
+		}
+		
+		return value;
+	}
+	
+	public String[] createOutput(Metrics m)
+	{
+		String[] outputs = new String[this.configuration.size()];
+
+		for (int i = 0; i < this.configuration.size(); i++)
+		{
+			switch (this.configuration.get(i).getFirst()) 
 			{
 			case "classDesignSize":
 				outputs[i] = String.format("Amount of classes in project: %d", m.classDesignSize());
-				break;
-			case "numberOfMethods":
-				outputs[i] = String.format("Amount of methods in project: %d", m.numberOfMethods());
-				break;
-			case "methodsPerType":
-				outputs[i] = String.format("Amount of methods per class: %f", m.methodsPerType());
-				break;
-			case "abstractness":
-				outputs[i] = String.format("Ratio of interfaces to overall amount of classes: %.2f%%", m.abstractness());
-				break;
-			case "abstractAmount":
-				outputs[i] = String.format("Amount of abstract classes/methods in project: %d", m.abstractAmount());
-				break;
-			case "functionalAbstraction":
-				outputs[i] = String.format("Amount of functional abstraction per class: %f", m.functionalAbstraction());
-				break;
-			case "staticAmount":
-				outputs[i] = String.format("Amount of static methods/variables in project: %d", m.staticAmount());
-			break;
-			case "finalAmount":
-				outputs[i] = String.format("Amount of final classes/methods/variables in project: %d", m.finalAmount());
-				break;
-			case "constantAmount":
-				outputs[i] = String.format("Amount of constant methods/variables in project: %d", m.constantAmount());
-				break;
-			case "innerClassAmount":
-				outputs[i] = String.format("Amount of inner classes in project: %d", m.innerClassAmount());
 				break;
 			case "numberOfHierarchies":
 				outputs[i] = String.format("Amount of hierarchies in project: %d", m.numberOfHierarchies());
@@ -251,37 +220,69 @@ public class FitnessFunction
 			case "averageNumberOfAncestors":
 				outputs[i] = String.format("Amount of ancestors per class: %f", m.averageNumberOfAncestors());
 				break;
-			case "cohesionAmongMethods":
-				outputs[i] = String.format("Amount of cohesion among methods per class: %f", m.cohesionAmongMethods());
+			case "dataAccessMetric":
+				outputs[i] = String.format("Average ratio of private/package/protected attributes to overall attributes per class: %f", m.dataAccessMetric ());
 				break;
 			case "directClassCoupling":
-				outputs[i] = String.format("Amount of coupling in project: %d", m.directClassCoupling ());
+				outputs[i] = String.format("Average coupling per class: %f", m.directClassCoupling ());
 				break;
-			case "childAmount":
-				outputs[i] = String.format("Amount of child classes in project: %d", m.childAmount());
+			case "cohesionAmongMethods":
+				outputs[i] = String.format("Average cohesion among methods per class: %f", m.cohesionAmongMethods());
 				break;
-			case "averageChildAmount":
-				outputs[i] = String.format("Ratio of sub class to class: %f", m.averageChildAmount());
+			case "aggregation":
+				outputs[i] = String.format("Average amount of user defined attributes declared per class: %f", m.aggregation());
+				break;
+			case "functionalAbstraction":
+				outputs[i] = String.format("Average functional abstraction per class: %f", m.functionalAbstraction());
+				break;
+			case "numberOfPolymorphicMethods":
+				outputs[i] = String.format("Average amount of polymorphic methods per class: %f", m.numberOfPolymorphicMethods());
+				break;
+			case "classInterfaceSize":
+				outputs[i] = String.format("Average amount of public methods per class: %f", m.classInterfaceSize ());
+				break;
+			case "numberOfMethods":
+				outputs[i] = String.format("Average amount of methods per class: %f", m.numberOfMethods());
+				break;
+			case "methodsPerType":
+				outputs[i] = String.format("Average amount of complexity of methods per class: %f", m.methodsPerType());
+				break;
+			case "numberOfChildren":
+				outputs[i] = String.format("Average amount of direct child classes per class: %f", m.numberOfChildren());
+				break;
+			case "abstractness":
+				outputs[i] = String.format("Ratio of interfaces to overall amount of classes: %f", m.abstractness());
+				break;
+			case "abstractRatio":
+				outputs[i] = String.format("Average ratio of abstract classes/methods per class: %f", m.abstractRatio());
+				break;
+			case "staticRatio":
+				outputs[i] = String.format("Average ratio of static classes/methods/variables per class: %f", m.staticRatio());
+				break;
+			case "finalRatio":
+				outputs[i] = String.format("Average ratio of final classes/methods/variables per class: %f", m.finalRatio());
+				break;
+			case "constantRatio":
+				outputs[i] = String.format("Average ratio of constant classes/methods/variables per class: %f", m.constantRatio());
+				break;
+			case "innerClassRatio":
+				outputs[i] = String.format("Ratio of inner classes to overall amount of ordinary classes in project: %f", m.innerClassRatio());
+				break;
+			case "referencedMethodsRatio":
+				outputs[i] = String.format("Average inherited referenced methods ratio per class: %f", m.referencedMethodsRatio());
+				break;
+			case "visibilityRatio":
+				outputs[i] = String.format("Average visibility ratio per class: %f", m.visibilityRatio());
 				break;
 			case "linesOfCode":
 				outputs[i] = String.format("Amount of lines of code in project: %d", m.linesOfCode());
 				break;
-			case "fileAmount":
-				outputs[i] = String.format("Amount of files in project: %d", m.fileAmount());
-				break;
-			case "visibility":
-				outputs[i] = String.format("Visibility ratio in project: %f", m.visibility());
-				break;
-			case "classInterfaceSize":
-				outputs[i] = String.format("Amount of public methods in project: %d", m.classInterfaceSize ());
-				break;
-			case "dataAccessMetric":
-				outputs[i] = String.format("Accumulative ratio of private/package/protected attributes to overall attributes per class: %f", m.dataAccessMetric ());
-				break;
+			case "numberOfFiles":
+				outputs[i] = String.format("Amount of source files in project: %d", m.numberOfFiles());
+				break;			
 			default:
 				outputs[i] = "STRING INPUT DOES NOT RELATE TO A METRIC";
-			}
-			
+			}	
 		}
 
 		return outputs;			

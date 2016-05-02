@@ -4,6 +4,9 @@ import java.io.BufferedReader;
 import java.io.FileReader;
 import java.io.IOException;
 
+import tasks.Tasks;
+import tasks.toolexperiment.*;
+
 // Writes to console when program begins and ends.
 // Starts a new instance of Tasks (this is where the 
 // various tasks should be declared to be run automatically). 
@@ -31,23 +34,25 @@ public class Main
 				} 
 				catch (IOException e) 
 				{
-					System.out.println("\nEXCEPTION: Cannot read source path from file.");
+					System.out.println("\r\nEXCEPTION: Cannot read source path from file.");
 					System.exit(1);
 				}
 			}
 			else
 			{
-				System.out.print("\n\nArgument not applicable. Input arguments must consist of one of the following:\n"
-						+ " -f to pass in a directory containing the input\n"
+				System.out.print("\r\n\r\nArgument not applicable. Input arguments must consist of one of the following:\r\n"
+						+ " -f to pass in a directory containing the input\r\n"
 						+ " -r to read in a file containing the input directory");
 			}
 		} 
 		else 
 		{
-			Tasks run = new Tasks();
-			run.run();
+			ToolTasksPart1 run1 = new ToolTasksPart1();
+			run1.run();
+			ToolTasksPart2 run2 = new ToolTasksPart2();
+			run2.run();
 		}
 		
-		System.out.printf("\n\nFinished!");
+		System.out.printf("\r\n\r\nFinished!");
 	}
 }

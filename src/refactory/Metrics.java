@@ -7,7 +7,6 @@ import java.util.Set;
 
 import recoder.abstraction.ClassType;
 import recoder.abstraction.Method;
-import recoder.abstraction.PrimitiveType;
 import recoder.abstraction.Type;
 import recoder.convenience.AbstractTreeWalker;
 import recoder.convenience.ForestWalker;
@@ -15,13 +14,12 @@ import recoder.convenience.TreeWalker;
 import recoder.java.CompilationUnit;
 import recoder.java.ProgramElement;
 import recoder.java.declaration.ClassDeclaration;
-import recoder.java.declaration.EnumDeclaration;
 import recoder.java.declaration.FieldDeclaration;
 import recoder.java.declaration.FieldSpecification;
 import recoder.java.declaration.InterfaceDeclaration;
+import recoder.java.declaration.MemberDeclaration;
 import recoder.java.declaration.MethodDeclaration;
 import recoder.java.declaration.TypeDeclaration;
-import recoder.java.declaration.TypeParameterDeclaration;
 import recoder.java.declaration.VariableDeclaration;
 import recoder.java.declaration.modifier.Private;
 import recoder.java.declaration.modifier.Protected;
@@ -29,9 +27,12 @@ import recoder.java.declaration.modifier.Public;
 import recoder.java.declaration.modifier.VisibilityModifier;
 import recoder.java.reference.MethodReference;
 import recoder.java.reference.TypeReference;
+import recoder.kit.MethodKit;
+import recoder.service.CrossReferenceSourceInfo;
 import recoder.service.SourceInfo;
 
 // Calculates various software metrics from the source code input.
+// Contains implementations of the full QMOOD suite and 2 metrics from the CK suite.
 public class Metrics 
 {
 	private List<CompilationUnit> units;
@@ -41,18 +42,8 @@ public class Metrics
 	{
 		this.units = units;
 	}
-	
-	public List<CompilationUnit> getUnits()
-	{
-		return this.units;
-	}
-	
-	public void setUnits(List<CompilationUnit> units)
-	{
-		this.units = units;
-	}
-	
-	// Amount of classes in project.
+
+	// Amount of classes in the project.
 	// Includes both ordinary classes and interfaces.
 	public int classDesignSize()
 	{
@@ -62,7 +53,6 @@ public class Metrics
 		while (this.tw.next(TypeDeclaration.class))
 		{
 			TypeDeclaration td = (TypeDeclaration) tw.getProgramElement();
-
 			if ((td.getName() != null) && ((td instanceof ClassDeclaration) || (td instanceof InterfaceDeclaration)))
 				classCounter++;
 		}
@@ -70,253 +60,13 @@ public class Metrics
 		return classCounter;
 	}
 	
-	// Amount of methods in project.
-	// Iterated from the method declarations.
-	public int numberOfMethods()
-	{
-		int methodCounter = 0;
-		this.tw = new ForestWalker(this.units);
-
-		while (this.tw.next(MethodDeclaration.class))
-			methodCounter++;
-		
-		return methodCounter;
-	}
-	
-	// Amount of methods over the overall amount of classes.
-	// Uses all method declarations and all types.
-	// Abstract method declarations are not excluded.
-	public float methodsPerType()
-	{
-		int typeCounter = 0;
-		int methodCounter;
-		this.tw = new ForestWalker(this.units);
-
-		while (this.tw.next(TypeDeclaration.class))
-		{
-			TypeDeclaration td = (TypeDeclaration) tw.getProgramElement();
-			if ((td.getName() != null) && ((td instanceof ClassDeclaration) || (td instanceof InterfaceDeclaration)))
-				typeCounter++;
-		}
-		
-		methodCounter = numberOfMethods();
-		return (float) methodCounter / (float) typeCounter;
-	}
-	
-	// Amount of interfaces over the overall amount of classes (as a percentage).
-	public float abstractness()
-	{
-		int typeCounter = 0;
-		int interfaceCounter = 0;
-		this.tw = new ForestWalker(this.units);
-
-		while (this.tw.next(TypeDeclaration.class))
-		{
-			TypeDeclaration td = (TypeDeclaration) tw.getProgramElement();
-			if ((td.getName() != null) && ((td instanceof ClassDeclaration) || (td instanceof InterfaceDeclaration)))
-			{
-				typeCounter++;
-				if (td instanceof InterfaceDeclaration)
-					interfaceCounter++;
-			}
-		}
-		
-		float answer = ((float) interfaceCounter / (float) typeCounter) * 100;
-		return answer;
-	}
-	
-	// Amount of abstract elements in project.
-	public int abstractAmount()
-	{
-		int abstractCounter = 0;
-		this.tw = new ForestWalker(this.units);
-
-		while (this.tw.next())
-		{
-			if (this.tw.getProgramElement() instanceof TypeDeclaration)
-			{
-				TypeDeclaration td = (TypeDeclaration)(this.tw.getProgramElement());
-				if ((td.getName() != null) && (td.isAbstract()) && ((td instanceof ClassDeclaration) || (td instanceof InterfaceDeclaration)))
-					abstractCounter++;
-			}
-			else if (this.tw.getProgramElement() instanceof MethodDeclaration)
-			{
-				MethodDeclaration md = (MethodDeclaration)(this.tw.getProgramElement());
-				if (md.isAbstract())
-					abstractCounter++;
-			}
-		}
-
-		return abstractCounter;
-	}
-	
-	// Average functional abstraction ratio per class.
-	// Ratio gets the accumulation of the amount of inherited external methods accessed within
-	// the methods of a class (methods declared in a super class of the current class) over
-	// the overall distinct amount of external methods accessed in the methods of the class.
-	public float functionalAbstraction()
-	{
-		int methodCount, inheritedMethodCount;
-		int classCounter = 0;
-		float functionalAbstraction = 0;
-		
-		ArrayList<MethodDeclaration> methods;
-		SourceInfo si = this.units.get(0).getFactory().getServiceConfiguration().getSourceInfo();
-		
-		for (int i = 0; i < this.units.size(); i++)
-		{
-			for (TypeDeclaration td : getAllTypes(this.units.get(i)))
-			{
-				if ((td instanceof ClassDeclaration) || (td instanceof InterfaceDeclaration))
-				{
-					classCounter++;
-					methods = new ArrayList<MethodDeclaration>();
-					
-					// Prevents "Zero Service" outputs logged to the console.
-					if (td.getProgramModelInfo() == null)
-						td.getFactory().getServiceConfiguration().getChangeHistory().updateModel();
-					
-					for (Method m : td.getMethods())
-					{
-						if (m instanceof MethodDeclaration)
-						{							
-							TreeWalker tw = new TreeWalker((MethodDeclaration) m);
-							while (tw.next()) 
-							{
-								ProgramElement pe = tw.getProgramElement();
-								if ((pe instanceof MethodReference) && (si.getMethod((MethodReference) pe) instanceof MethodDeclaration))
-								{
-									MethodDeclaration md = (MethodDeclaration) si.getMethod((MethodReference) pe);
-									
-									if (!(methods.contains(md)) && !(md.getContainingClassType().equals(td)))
-										methods.add(md);
-								}
-							}
-						}
-					}
-					
-					methodCount = methods.size();
-					inheritedMethodCount = 0;
-					
-					for (MethodDeclaration md : methods)
-						if (td.getAllSupertypes().contains(md.getContainingClassType()))
-							inheritedMethodCount++;
-					
-					if (methodCount > 0)
-						functionalAbstraction += (float) inheritedMethodCount / (float) methodCount;
-				}
-			}
-		}
-		
-		return functionalAbstraction / (float) classCounter;
-	}
-	
-	// Amount of static elements in project.
-	// Of the variable declarations, only a field can be static.
-	public int staticAmount()
-	{
-		int staticCounter = 0;
-		this.tw = new ForestWalker(this.units);
-
-		while (this.tw.next())
-		{
-			if (this.tw.getProgramElement() instanceof TypeDeclaration)
-			{
-				TypeDeclaration td = (TypeDeclaration)(this.tw.getProgramElement());
-				if ((td.getName() != null) && (td.isStatic()) && ((td instanceof ClassDeclaration) || (td instanceof InterfaceDeclaration)))
-					staticCounter++;
-			}
-			else if (this.tw.getProgramElement() instanceof MethodDeclaration)
-			{
-				MethodDeclaration md = (MethodDeclaration)(this.tw.getProgramElement());
-				if (md.isStatic())
-					staticCounter++;
-			}
-			else if (this.tw.getProgramElement() instanceof FieldDeclaration)
-			{
-				FieldDeclaration fd = (FieldDeclaration)(this.tw.getProgramElement());
-				if (fd.isStatic())
-					staticCounter++;
-			}
-		}
-
-		return staticCounter;
-	}
-	
-	// Amount of final elements in project.
-	public int finalAmount()
-	{
-		int finalCounter = 0;
-		this.tw = new ForestWalker(this.units);
-
-		while (this.tw.next())
-		{
-			if (this.tw.getProgramElement() instanceof TypeDeclaration)
-			{
-				TypeDeclaration td = (TypeDeclaration)(this.tw.getProgramElement());
-				if ((td.getName() != null) && (td.isFinal()) && ((td instanceof ClassDeclaration) || (td instanceof InterfaceDeclaration)))
-					finalCounter++;
-			}
-			else if (this.tw.getProgramElement() instanceof MethodDeclaration)
-			{
-				MethodDeclaration md = (MethodDeclaration)(this.tw.getProgramElement());
-				if (md.isFinal())
-					finalCounter++;
-			}
-			else if (this.tw.getProgramElement() instanceof VariableDeclaration)
-			{
-				VariableDeclaration vd = (VariableDeclaration)(this.tw.getProgramElement());
-				if (vd.isFinal())
-					finalCounter++;
-			}
-		}
-
-		return finalCounter;
-	}
-	
-	// Amount of constant elements in project.
-	public int constantAmount()
-	{
-		int constantCounter = 0;
-		this.tw = new ForestWalker(this.units);
-
-		while (this.tw.next())
-		{
-			if (this.tw.getProgramElement() instanceof MethodDeclaration)
-			{
-				MethodDeclaration md = (MethodDeclaration)(this.tw.getProgramElement());
-				if ((md.isStatic()) && (md.isFinal()))
-					constantCounter++;
-			}
-			else if (this.tw.getProgramElement() instanceof FieldDeclaration)
-			{
-				FieldDeclaration fd = (FieldDeclaration)(this.tw.getProgramElement());
-				if ((fd.isStatic()) && (fd.isFinal()))
-					constantCounter++;
-			}
-		}
-
-		return constantCounter;
-	}
-	
-	// Amount of classes in the project that are declared inside other classes.
-	public int innerClassAmount()
-	{
-		int innerClassCounter = 0;
-		
-		for (int i = 0; i < this.units.size(); i++)
-			for (TypeDeclaration td : getAllTypes(this.units.get(i)))
-				if ((td.getContainingClassType() != null) && ((td instanceof ClassDeclaration) || (td instanceof InterfaceDeclaration)))
-					innerClassCounter++;
-
-		return innerClassCounter;
-	}
-	
-	// Amount of distinct class hierarchies in a project.
+	// Amount of distinct class hierarchies in the project.
+	// Excludes classes from external libraries.
 	public int numberOfHierarchies()
 	{
+		SourceInfo si = this.units.get(0).getFactory().getServiceConfiguration().getSourceInfo();
 		Set<String> baseTypes = new HashSet<String>();
-		
+
 		for (int i = 0; i < this.units.size(); i++)
 		{
 			for (TypeDeclaration td : getAllTypes(this.units.get(i)))
@@ -326,25 +76,23 @@ public class Metrics
 					// Prevents "Zero Service" outputs logged to the console.
 					if (td.getProgramModelInfo() == null)
 						td.getFactory().getServiceConfiguration().getChangeHistory().updateModel();
-						
-					while (td.getSupertypes().get(0) instanceof TypeDeclaration)
-						td = (TypeDeclaration) td.getSupertypes().get(0);
 					
-					baseTypes.add(td.getFullName());
+					if (!(td.getSupertypes().get(0) instanceof TypeDeclaration) && (si.getSubtypes(td).size() > 0))
+						baseTypes.add(td.getFullName());
 				}
 			}
-		}	
-
+		}
+		
 		return baseTypes.size();
 	}
 	
 	// Average amount of classes away from the root per class.
+	// Excludes classes from external libraries.
 	public float averageNumberOfAncestors()
 	{
 		int classCounter = 0;
-		int accumulativeCounter = 0;
-		int superTypeCounter;
- 
+		int superTypeCounter = 0;
+
 		for (int i = 0; i < this.units.size(); i++)
 		{
 			for (ClassType ct : getAllTypes(this.units.get(i)))
@@ -356,22 +104,99 @@ public class Metrics
 						((ClassDeclaration) ct).getFactory().getServiceConfiguration().getChangeHistory().updateModel();
 
 					classCounter++;
-					superTypeCounter = 0;
-					
 					while (ct.getSupertypes().get(0) instanceof TypeDeclaration)
 					{
 						superTypeCounter++;
 						ct = ct.getSupertypes().get(0);
 					}
-					
-					accumulativeCounter += superTypeCounter;
 				}
 			}
 		}
 
-		return (float) accumulativeCounter / (float) classCounter;
+		return (float) superTypeCounter / (float) classCounter;
 	}
 	
+	// Average ratio of the amount of private, package or 
+	// protected attributes in a class to the overall amount per class.
+	public float dataAccessMetric()
+	{
+		int counter, nonPublicCounter;
+		int classCounter = 0;
+		float dataAccessMetric = 0;
+		
+		for (int i = 0; i < this.units.size(); i++)
+		{
+			for (TypeDeclaration td : getAllTypes(this.units.get(i)))
+			{
+				if ((td instanceof ClassDeclaration) || (td instanceof InterfaceDeclaration))
+				{
+					counter = 0;
+					nonPublicCounter = 0;
+					classCounter++;
+					
+					for (MemberDeclaration md : td.getMembers())
+					{
+						if (md instanceof FieldDeclaration)
+						{	
+							counter++;
+							if (!(((FieldDeclaration) md).getVisibilityModifier() instanceof Public))
+								nonPublicCounter++;
+						}
+					}
+					
+					if (counter > 0)
+						dataAccessMetric += (float) nonPublicCounter / (float) counter;
+				}
+			}
+		}
+		
+		return dataAccessMetric / (float) classCounter;
+	}
+	
+	// Average number of other distinct classes each class depends on per class.
+	// Only includes user defined classes from the project.
+	public float directClassCoupling()
+	{
+		int couplingCounter = 0;
+		int classCounter = 0;
+		Set<String> distinctTypes;
+		SourceInfo si = this.units.get(0).getFactory().getServiceConfiguration().getSourceInfo();
+
+		for (int i = 0; i < this.units.size(); i++)
+		{			
+			for (TypeDeclaration td : getAllTypes(this.units.get(i)))
+			{
+				if ((td instanceof ClassDeclaration) || (td instanceof InterfaceDeclaration))
+				{
+					classCounter++;
+					distinctTypes = new HashSet<String>();
+
+						for (MemberDeclaration md : td.getMembers())
+							if (md instanceof MethodDeclaration)
+								for (Type t : ((MethodDeclaration) md).getSignature())
+									if ((t != null) && ((t instanceof ClassDeclaration) || (t instanceof InterfaceDeclaration)))
+										distinctTypes.add(t.getFullName());
+
+					for (FieldSpecification fs : td.getFieldsInScope())
+					{
+						TreeWalker tw = new TreeWalker(fs);
+						while (tw.next(TypeReference.class)) 
+						{
+							Type t = si.getType(tw.getProgramElement());
+
+							if ((t != null) && ((t instanceof ClassDeclaration) || (t instanceof InterfaceDeclaration)))
+								distinctTypes.add(t.getFullName()); 
+						}
+					}
+
+					couplingCounter += distinctTypes.size();	
+				}
+			}
+		}
+
+		return (float) couplingCounter / (float) classCounter;
+	}
+
 	// Average cohesion among methods ratio per class.
 	// Ratio gets the accumulation of the amount of distinct parameter types for each method
 	// over the maximum possible amount of distinct parameter types across all the methods.
@@ -386,123 +211,224 @@ public class Metrics
 		ArrayList<String> types;
 		ArrayList<String> allTypes;
 		Set<String> distinctTypes;
-		ArrayList<TypeDeclaration> typeDeclarations;
 
 		for (int i = 0; i < this.units.size(); i++)
 		{		
-			typeDeclarations = new ArrayList<TypeDeclaration>();
-			
-			// Get all relevant classes in compilation unit.
 			for (TypeDeclaration td : getAllTypes(this.units.get(i)))
-				if (!(td instanceof EnumDeclaration) && !(td instanceof TypeParameterDeclaration))
-					typeDeclarations.add(td);
-
-			for (TypeDeclaration td : typeDeclarations)
 			{
-				classCounter++;
-				methodCounter = 0;
-				cohesionCounter = 0;
-				allTypes = new ArrayList<String>();
-				
-				// Prevents "Zero Service" outputs logged to the console.
-				if (td.getProgramModelInfo() == null)
-					td.getFactory().getServiceConfiguration().getChangeHistory().updateModel();
-				
-				for (Method m : td.getMethods())
+				if ((td instanceof ClassDeclaration) || (td instanceof InterfaceDeclaration))
 				{
-					methodCounter++;
-					types = new ArrayList<String>();
-
-					for (Type t : m.getSignature())
+					classCounter++;
+					methodCounter = 0;
+					cohesionCounter = 0;
+					allTypes = new ArrayList<String>();
+					
+					for (MemberDeclaration md : td.getMembers())
 					{
-						types.add(t.getFullName());
-						allTypes.add(t.getFullName());
+						if (md instanceof MethodDeclaration)
+						{
+							methodCounter++;
+							types = new ArrayList<String>();
+
+							for (Type t : ((MethodDeclaration) md).getSignature())
+							{
+								types.add(t.getFullName());
+								allTypes.add(t.getFullName());
+							}
+
+							distinctTypes = new HashSet<String>(types);
+							cohesionCounter += distinctTypes.size();
+						}
 					}
 
-					distinctTypes = new HashSet<String>(types);
-					cohesionCounter += distinctTypes.size();
+					distinctTypes = new HashSet<String>(allTypes);
+
+					if ((methodCounter * distinctTypes.size()) > 0)
+						cohesionAmongMethods += (float) cohesionCounter / (float) (methodCounter * distinctTypes.size());
 				}
-
-				distinctTypes = new HashSet<String>(allTypes);
-
-				if ((methodCounter * distinctTypes.size()) > 0)
-					cohesionAmongMethods += (float) cohesionCounter / (float) (methodCounter * distinctTypes.size());
 			}
 		}
 
 		return cohesionAmongMethods / (float) classCounter;
 	}
-	
-	// The accumulative number of other distinct classes each class depends on.
-	public int directClassCoupling()
+
+	// Average amount of user defined attributes declared per class.
+	// Only counts classes defined in the project.
+	public float aggregation()
 	{
-		int couplingCounter = 0;
-		Set<String> distinctTypes;
+		int counter = 0;
+		int classCounter = 0;
 		SourceInfo si = this.units.get(0).getFactory().getServiceConfiguration().getSourceInfo();
 		
 		for (int i = 0; i < this.units.size(); i++)
 		{			
 			for (TypeDeclaration td : getAllTypes(this.units.get(i)))
 			{
-				distinctTypes = new HashSet<String>();
-				
-				// Prevents "Zero Service" outputs logged to the console.
-				if (td.getProgramModelInfo() == null)
-					td.getFactory().getServiceConfiguration().getChangeHistory().updateModel();
-				
-				for (Method m : td.getMethods())
-					for (Type t : m.getSignature())
-						if ((t != null) && !(t.getFullName().contains("java.lang.")) && !(t instanceof PrimitiveType))
-							distinctTypes.add(t.getFullName());
-				
-				for (FieldSpecification fs : td.getFieldsInScope())
+				if ((td instanceof ClassDeclaration) || (td instanceof InterfaceDeclaration))
 				{
-					TreeWalker tw = new TreeWalker(fs);
-					while (tw.next()) 
+					classCounter++;
+					for (FieldSpecification f : td.getFieldsInScope())
 					{
-						ProgramElement pe = tw.getProgramElement();
-						if (pe instanceof TypeReference) 
-						{
-							Type t = si.getType(pe);
-							
-							if ((t != null) && !(t.getFullName().contains("java.lang.")) &&	!(t instanceof PrimitiveType))
-								distinctTypes.add(t.getFullName()); 
-						}
+						Type t = si.getType(f);	
+						if ((t != null) && ((t instanceof ClassDeclaration) || (t instanceof InterfaceDeclaration)))
+							counter++;
 					}
 				}
-				
-				couplingCounter += distinctTypes.size();			
 			}
 		}
 
-		return couplingCounter;
+		return (float) counter / (float) classCounter;
 	}
 	
-	// Amount of child classes in the project.
-	public int childAmount()
+	// Average functional abstraction ratio per class.
+	// Ratio gets the amount of inherited methods accessible within a class
+	// (methods declared in a super class of the current class that are public
+	// or protected, or are package and contain the same package) over the overall
+	// amount of methods accessible (inherited and declared within the class) to the class.
+	// Excludes methods inherited from external library classes.
+	public float functionalAbstraction()
 	{
-		int childCounter = 0;
+		int counter, inheritedCounter;
+		int classCounter = 0;
+		float functionalAbstraction = 0;
 		
 		for (int i = 0; i < this.units.size(); i++)
 		{
 			for (TypeDeclaration td : getAllTypes(this.units.get(i)))
 			{
-				if (td.isOrdinaryClass())
-				{					
-					// Prevents "Zero Service" outputs logged to the console.
-					if (td.getProgramModelInfo() == null)
-						td.getFactory().getServiceConfiguration().getChangeHistory().updateModel();
-
-					if (td.getSupertypes().get(0) instanceof TypeDeclaration)
-						childCounter++;
+				if ((td instanceof ClassDeclaration) || (td instanceof InterfaceDeclaration))
+				{
+					classCounter++;
+					inheritedCounter = 0;
+					counter = 0;
+					TypeDeclaration superType = td;
+					
+					for (MemberDeclaration md : td.getMembers())
+						if (md instanceof MethodDeclaration)
+							counter++;
+					
+					while (superType.getSupertypes().get(0) instanceof TypeDeclaration)
+					{
+						superType = (TypeDeclaration) superType.getSupertypes().get(0);
+						
+						for (MemberDeclaration md : td.getMembers())
+							if (md instanceof MethodDeclaration)
+								if ((md.isPublic()) || (md.isProtected()) || (!(md.isPrivate()) && (td.getPackage().equals(superType.getPackage()))))
+									inheritedCounter++;
+					}
+					
+					counter += inheritedCounter;
+					
+					if (counter > 0)
+						functionalAbstraction += (float) inheritedCounter / (float) counter;
+				}
+			}
+		}
+		
+		return functionalAbstraction / (float) classCounter;
+	}
+	
+	// Average amount of polymorphic methods 
+	// (methods that are redefined/overwritten) per class.
+	// Abstract method declarations and constructors are included.
+	public float numberOfPolymorphicMethods()
+	{
+		int counter = 0;
+		int classCounter = 0;
+		SourceInfo si = this.units.get(0).getFactory().getServiceConfiguration().getSourceInfo();
+		
+		for (int i = 0; i < this.units.size(); i++)
+		{			
+			for (TypeDeclaration td : getAllTypes(this.units.get(i)))
+			{
+				if ((td instanceof ClassDeclaration) || (td instanceof InterfaceDeclaration))
+				{
+					classCounter++;
+					for (MemberDeclaration md : td.getMembers())
+						if (md instanceof MethodDeclaration)
+							if (MethodKit.getRedefiningMethods((CrossReferenceSourceInfo) si, (Method) md).size() > 0)
+								counter++;
+				}
+			}
+		}
+		
+		return (float) counter / (float) classCounter;
+	}
+	
+	// Average amount of public methods per class.
+	public float classInterfaceSize()
+	{
+		int counter = 0;
+		int classCounter = 0;
+		
+		for (int i = 0; i < this.units.size(); i++)
+		{
+			for (TypeDeclaration td : getAllTypes(this.units.get(i)))
+			{
+				if ((td instanceof ClassDeclaration) || (td instanceof InterfaceDeclaration))
+				{
+					classCounter++;
+					for (MemberDeclaration md : td.getMembers())
+						if ((md instanceof MethodDeclaration) && (((MethodDeclaration) md).getVisibilityModifier() instanceof Public))
+							counter++;
 				}
 			}
 		}
 
-		return childCounter;
+		return (float) counter / (float) classCounter;
 	}
 	
-	public float averageChildAmount()
+	// Average amount of methods per class.
+	public float numberOfMethods()
+	{
+		int classCounter = 0;
+		int methodCounter = 0;
+
+		for (int i = 0; i < this.units.size(); i++)
+		{
+			for (TypeDeclaration td : getAllTypes(this.units.get(i)))
+			{
+				if ((td instanceof ClassDeclaration) || (td instanceof InterfaceDeclaration))
+				{
+					classCounter++;
+					for (MemberDeclaration md : td.getMembers())
+						if (md instanceof MethodDeclaration)
+							methodCounter++;
+				}
+			}
+		}
+
+		return (float) methodCounter / (float) classCounter;
+	}
+	
+	
+	// Average amount of complexity of all methods per class.
+	// The complexity is calculated using the amount of lines of code per method.
+	public float methodsPerType()
+	{
+		int classCounter = 0;
+		int methodCounter = 0;
+		
+		for (int i = 0; i < this.units.size(); i++)
+		{
+			for (TypeDeclaration td : getAllTypes(this.units.get(i)))
+			{
+				if ((td instanceof ClassDeclaration) || (td instanceof InterfaceDeclaration))
+				{
+					classCounter++;
+					for (MemberDeclaration md : td.getMembers())
+						if (md instanceof MethodDeclaration)
+							methodCounter += (md.getEndPosition().getLine() - md.getStartPosition().getLine() + 1);
+				}
+			}
+		}
+		
+		return (float) methodCounter / (float) classCounter;
+	}
+	
+	// Average amount of direct child classes per class.
+	// Only includes ordinary classes within the project.
+	public float numberOfChildren()
 	{
 		int childCounter = 0;
 		int classCounter = 0;
@@ -517,15 +443,343 @@ public class Metrics
 					if (td.getProgramModelInfo() == null)
 						td.getFactory().getServiceConfiguration().getChangeHistory().updateModel();
 
+					classCounter++;
 					if (td.getSupertypes().get(0) instanceof TypeDeclaration)
 						childCounter++;
-					
-					classCounter++;
 				}
 			}
 		}
 
 		return (float) childCounter / (float) classCounter;
+	}
+	
+	
+	// Ratio of the amount of interfaces over the overall amount of classes.
+	public float abstractness()
+	{
+		int classCounter = 0;
+		int interfaceCounter = 0;
+		this.tw = new ForestWalker(this.units);
+
+		while (this.tw.next(TypeDeclaration.class))
+		{
+			TypeDeclaration td = (TypeDeclaration) tw.getProgramElement();
+			if ((td.getName() != null) && ((td instanceof ClassDeclaration) || (td instanceof InterfaceDeclaration)))
+			{
+				classCounter++;
+				if (td instanceof InterfaceDeclaration)
+					interfaceCounter++;
+			}
+		}
+		
+		float answer = (float) interfaceCounter / (float) classCounter;
+		return answer;
+	}
+	
+	// Average ratio of abstract elements over abstract
+	// and potentially abstract elements per class.
+	// Variables can't be abstract.
+	public float abstractRatio()
+	{
+		int counter, abstractCounter;
+		int classCounter = 0;
+		float abstractAmount = 0;
+		
+		for (int i = 0; i < this.units.size(); i++)
+		{
+			for (TypeDeclaration td : getAllTypes(this.units.get(i)))
+			{				
+				if ((td instanceof ClassDeclaration) || (td instanceof InterfaceDeclaration))
+				{
+					counter = 1;
+					abstractCounter = 0;
+					classCounter++;
+					
+					if (td.isAbstract())
+						abstractCounter++;
+				
+					for (MemberDeclaration md : td.getMembers())
+					{
+						if (md instanceof MethodDeclaration)
+						{
+							counter++;
+							if (((MethodDeclaration) md).isAbstract())
+								abstractCounter++;
+						}
+					}
+
+					abstractAmount += (float) abstractCounter / (float) counter;
+				}
+			}
+		}
+		
+		return abstractAmount / (float) classCounter;
+	}
+
+	// Average ratio of static elements over static
+	// and potentially static elements per class.
+	// Of the variable declarations, only a field can be static.
+	public float staticRatio()
+	{
+		int counter, staticCounter;
+		int classCounter = 0;
+		float staticAmount = 0;
+		
+		for (int i = 0; i < this.units.size(); i++)
+		{
+			for (TypeDeclaration td : getAllTypes(this.units.get(i)))
+			{				
+				if ((td instanceof ClassDeclaration) || (td instanceof InterfaceDeclaration))
+				{
+					counter = 1;
+				    staticCounter = 0;
+					classCounter++;
+					
+					if (td.isStatic())
+						staticCounter++;
+					
+					for (MemberDeclaration md : td.getMembers())
+					{
+						if ((md instanceof MethodDeclaration) || (md instanceof FieldDeclaration))
+						{
+							counter++;
+							if (md.isStatic())
+								staticCounter++;
+						}
+					}
+					
+					staticAmount += (float) staticCounter / (float) counter;
+				}
+			}
+		}
+
+		return staticAmount / (float) classCounter;
+	}
+	
+	// Average ratio of final elements over final
+	// and potentially final elements per class.
+	public float finalRatio()
+	{
+		int counter, finalCounter;
+		int classCounter = 0;
+		float finalAmount = 0;
+		
+		for (int i = 0; i < this.units.size(); i++)
+		{
+			for (TypeDeclaration td : getAllTypes(this.units.get(i)))
+			{				
+				if ((td instanceof ClassDeclaration) || (td instanceof InterfaceDeclaration))
+				{
+					counter = 1;
+					finalCounter = 0;
+					classCounter++;
+					
+					if (td.isFinal())
+						finalCounter++;
+					
+					for (MemberDeclaration md : td.getMembers())
+					{
+						if (md instanceof MethodDeclaration)
+						{
+							counter++;
+							if (((MethodDeclaration) md).isFinal())
+								finalCounter++;
+							
+							this.tw = new TreeWalker(md);
+							
+							while (this.tw.next(VariableDeclaration.class))
+							{
+								counter++;
+								VariableDeclaration vd = (VariableDeclaration)(this.tw.getProgramElement());
+								if (vd.isFinal())
+									finalCounter++;
+							}
+						}
+						else if (md instanceof FieldDeclaration)
+						{
+							counter++;
+							if (((FieldDeclaration) md).isFinal())
+								finalCounter++;
+						}
+					}
+					
+					finalAmount += (float) finalCounter / (float) counter;
+				}
+			}
+		}
+
+		return finalAmount / (float) classCounter;
+	}
+	
+	// Average ratio of constant elements over constant
+	// and potentially constant elements per class.
+	// Of the variable declarations, only a field can be constant.
+	public float constantRatio()
+	{
+		int counter, constantCounter;
+		int classCounter = 0;
+		float constantAmount = 0;
+		
+		for (int i = 0; i < this.units.size(); i++)
+		{
+			for (TypeDeclaration td : getAllTypes(this.units.get(i)))
+			{				
+				if ((td instanceof ClassDeclaration) || (td instanceof InterfaceDeclaration))
+				{
+					counter = 1;
+					constantCounter = 0;
+					classCounter++;
+					
+					if ((td.isStatic()) && (td.isFinal()))
+						constantCounter++;
+					
+					for (MemberDeclaration md : td.getMembers())
+					{
+						if (md instanceof MethodDeclaration)
+						{
+							counter++;
+							if ((md.isStatic()) && (((MethodDeclaration) md).isFinal()))
+								constantCounter++;
+						}
+						else if (md instanceof FieldDeclaration)
+						{
+							counter++;
+							if ((md.isStatic()) && (((FieldDeclaration) md).isFinal()))
+								constantCounter++;
+						}
+					}
+					
+					constantAmount += (float) constantCounter / (float) counter;
+				}
+			}
+		}
+
+		return constantAmount / (float) classCounter;
+	}
+	
+	// Ratio of amount of classes in the project that are 
+	// declared inside other classes over the amount of classes.
+	public float innerClassRatio()
+	{
+		int innerClassCounter = 0;
+		int classCounter = 0;
+		
+		for (int i = 0; i < this.units.size(); i++)
+		{			
+			for (TypeDeclaration td : getAllTypes(this.units.get(i)))
+			{				
+				if ((td instanceof ClassDeclaration) || (td instanceof InterfaceDeclaration))
+				{
+					classCounter++;
+					
+					if (td.getContainingClassType() != null)
+						innerClassCounter++;
+				}
+			}
+		}
+		
+		return (float) innerClassCounter / (float) classCounter;
+	}	
+	
+	// Average referenced inherited methods ratio per class.
+	// Ratio gets the accumulation of the amount of inherited external methods accessed within
+	// the methods of a class (methods declared in a super class of the current class) over
+	// the overall distinct amount of external methods accessed in the methods of the class.
+	public float referencedMethodsRatio()
+	{
+		int methodCount, inheritedMethodCount;
+		int classCounter = 0;
+		float referencedMethodsRatio = 0;
+
+		ArrayList<MethodDeclaration> methods;
+		SourceInfo si = this.units.get(0).getFactory().getServiceConfiguration().getSourceInfo();
+
+		for (int i = 0; i < this.units.size(); i++)
+		{
+			for (TypeDeclaration td : getAllTypes(this.units.get(i)))
+			{
+				if ((td instanceof ClassDeclaration) || (td instanceof InterfaceDeclaration))
+				{
+					classCounter++;
+					methods = new ArrayList<MethodDeclaration>();
+
+					for (MemberDeclaration md : td.getMembers())
+					{
+						if (md instanceof MethodDeclaration)
+						{							
+							TreeWalker tw = new TreeWalker(md);
+							while (tw.next(MethodReference.class)) 
+							{
+								ProgramElement pe = tw.getProgramElement();
+								if (si.getMethod((MethodReference) pe) instanceof MethodDeclaration)
+								{
+									MethodDeclaration method = (MethodDeclaration) si.getMethod((MethodReference) pe);
+
+									if (!(methods.contains(method)) && !(method.getContainingClassType().equals(td)))
+										methods.add(method);
+								}
+							}
+						}
+					}
+
+					methodCount = methods.size();
+					inheritedMethodCount = 0;
+
+					for (MethodDeclaration md : methods)
+						if (td.getAllSupertypes().contains(md.getContainingClassType()))
+							inheritedMethodCount++;
+
+					if (methodCount > 0)
+						referencedMethodsRatio += (float) inheritedMethodCount / (float) methodCount;
+				}
+			}
+		}
+
+		return referencedMethodsRatio / (float) classCounter;
+	}
+	
+	// Average visibility ratio per class.
+	// Ratio calculates the accumulative visibility value among 
+	// type, method and variable declarations over the amount of 
+	// declarations, where a higher value means more visibility.
+	public float visibilityRatio()
+	{
+		int counter;
+		float visibilityCounter;
+		int classCounter = 0;
+		float visibility = 0;
+		
+		for (int i = 0; i < this.units.size(); i++)
+		{
+			for (TypeDeclaration td : getAllTypes(this.units.get(i)))
+			{				
+				if ((td instanceof ClassDeclaration) || (td instanceof InterfaceDeclaration))
+				{
+					counter = 1;
+					classCounter++;
+					
+					visibilityCounter = identifier(td.getVisibilityModifier());
+					
+					for (MemberDeclaration md : td.getMembers())
+					{
+						if (md instanceof MethodDeclaration)
+						{
+							counter++;
+							visibilityCounter += identifier(((MethodDeclaration) md).getVisibilityModifier());
+						}
+						else if (md instanceof FieldDeclaration)
+						{
+							counter++;
+							visibilityCounter += identifier(((FieldDeclaration) md).getVisibilityModifier());
+						}
+					}
+					
+					visibility += (float) visibilityCounter / (float) counter;
+				}
+			}
+		}
+
+		return visibility / (float) classCounter;
 	}
 	
 	// Amount of lines of code in the project.
@@ -539,86 +793,12 @@ public class Metrics
 		return childCounter;
 	}
 
-	// Amount of java files in the source code.
-	public int fileAmount()
+	// Amount of java source files in the project.
+	public int numberOfFiles()
 	{		
 		return this.units.size();
 	}
 	
-	// Amount of visibility in a project among type, method and variable declarations.
-	// Returns integer value to represent the visibility where a higher value means more visibility.
-	public float visibility()
-	{
-		float visibilityCounter = 0;
-		int attributeCounter = 0;
-		this.tw = new ForestWalker(this.units);
-
-		while (this.tw.next())
-		{
-			ProgramElement pe = this.tw.getProgramElement(); 
-			
-			if (pe instanceof VariableDeclaration)
-			{
-				VariableDeclaration vd = (VariableDeclaration) pe;
-				visibilityCounter += identifier(vd.getVisibilityModifier());
-				attributeCounter++;
-			}
-			if (pe instanceof MethodDeclaration)
-			{
-				MethodDeclaration md = (MethodDeclaration) pe;
-				visibilityCounter += identifier(md.getVisibilityModifier());
-				attributeCounter++;
-			}
-			if (pe instanceof TypeDeclaration)
-			{
-				TypeDeclaration td = (TypeDeclaration) pe;
-				
-				if ((td.getName() != null) && ((td instanceof ClassDeclaration) || (td instanceof InterfaceDeclaration)))
-				{
-					visibilityCounter += identifier(td.getVisibilityModifier());
-					attributeCounter++;
-				}
-			}
-		}
-
-		return visibilityCounter / (float) attributeCounter;
-	}
-	
-	// Amount of public methods in the project.
-	public int classInterfaceSize()
-	{
-		int counter = 0;
-		this.tw = new ForestWalker(this.units);
-
-		while (this.tw.next(MethodDeclaration.class))
-		{
-			MethodDeclaration md = (MethodDeclaration)(this.tw.getProgramElement());
-			if (md.getVisibilityModifier() instanceof Public)
-				counter++;
-		}
-
-		return counter;
-	}
-	
-	// Accumulative ratio of the amount of private, package 
-	// or protected attributes in a class to the overall amount.
-	public float dataAccessMetric()
-	{
-		int counter = 0;
-		int nonPublicCounter = 0;
-		this.tw = new ForestWalker(this.units);
-
-		while (this.tw.next(VariableDeclaration.class))
-		{
-			VariableDeclaration vd = (VariableDeclaration)(this.tw.getProgramElement());
-			if (!(vd.getVisibilityModifier() instanceof Public))
-				nonPublicCounter++;
-			
-			counter++;
-		}
-
-		return (float) nonPublicCounter / (float) counter;
-	}
 	
 	// Returns a value to represent the visibility of a modifier.
 	private float identifier(VisibilityModifier vm)
@@ -649,4 +829,14 @@ public class Metrics
 
 		return types;
 	} 
+	
+	public List<CompilationUnit> getUnits()
+	{
+		return this.units;
+	}
+	
+	public void setUnits(List<CompilationUnit> units)
+	{
+		this.units = units;
+	}
 }

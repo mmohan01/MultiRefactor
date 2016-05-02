@@ -92,7 +92,7 @@ public class Configuration
 				} 
 				catch (IOException e) 
 				{
-					System.out.println("\nEXCEPTION: Cannot read metric configuration from text file.");
+					System.out.println("\r\nEXCEPTION: Cannot read metric configuration from text file.");
 					System.exit(1);
 				}
 			}
@@ -117,7 +117,7 @@ public class Configuration
 				} 
 				catch (ParserConfigurationException | SAXException | IOException e) 
 				{
-					System.out.println("\nEXCEPTION: Cannot read metric configuration from xml file.");
+					System.out.println("\r\nEXCEPTION: Cannot read metric configuration from xml file.");
 					System.exit(1);
 				}
 			}
@@ -150,7 +150,7 @@ public class Configuration
 				} 
 				catch (IOException e) 
 				{
-					System.out.println("\nEXCEPTION: Cannot read metric configuration from text file.");
+					System.out.println("\r\nEXCEPTION: Cannot read metric configuration from text file.");
 					System.exit(1);
 				}
 			}
@@ -175,7 +175,7 @@ public class Configuration
 				} 
 				catch (ParserConfigurationException | SAXException | IOException e) 
 				{
-					System.out.println("\nEXCEPTION: Cannot read metric configuration from xml file.");
+					System.out.println("\r\nEXCEPTION: Cannot read metric configuration from xml file.");
 					System.exit(1);
 				}
 			}
