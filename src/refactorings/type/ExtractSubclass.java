@@ -246,7 +246,7 @@ public class ExtractSubclass extends Refactoring
 			boolean defaultConstructor = false;
 			CrossReferenceSourceInfo si = getCrossReferenceSourceInfo();
 			ArrayList<MethodDeclaration> availableMethods = new ArrayList<MethodDeclaration>(td.getMethods().size());
-			ArrayList<FieldDeclaration> availableFields = new ArrayList<FieldDeclaration>(td.getFields().size());
+			ArrayList<FieldDeclaration> availableFields = new ArrayList<FieldDeclaration>(td.getFieldsInScope().size());
 			ArrayList<TypeDeclaration> innerTypes = new ArrayList<TypeDeclaration>(td.getTypes().size());
 			
 			for (ClassType ct : si.getSubtypes(td))
@@ -380,16 +380,19 @@ public class ExtractSubclass extends Refactoring
 				
 				// If any of the methods in the group access one of the other methods in the class
 				// and the method is private and therefore will be inaccessible, discard the group.
-				for (Method m : td.getMethods())
+				for (MemberDeclaration m : td.getMembers())
 				{
-					if (!(methodList.contains(m)) && (m.isPrivate()))
+					if (m instanceof MethodDeclaration)
 					{
-						for (MemberReference mr : MethodKit.getReferences(si, m, td, true))
+						if (!(methodList.contains(m)) && (m.isPrivate()))
 						{
-							if (methodList.contains(MiscKit.getParentMemberDeclaration(mr)))
+							for (MemberReference mr : MethodKit.getReferences(si, (Method) m, td, true))
 							{
-								next = true;
-								break;
+								if (methodList.contains(MiscKit.getParentMemberDeclaration(mr)))
+								{
+									next = true;
+									break;
+								}
 							}
 						}
 					}

@@ -315,7 +315,6 @@ public class CollapseHierarchy extends Refactoring
 				for (MethodReference mr : methods)
 				{
 					Method m = si.getMethod(mr);
-
 					if (td.getMethods().contains(m))
 						continue;
 
@@ -337,7 +336,7 @@ public class CollapseHierarchy extends Refactoring
 				// Check if fields can be accessed in super type.
 				for (Field f : fields)
 				{
-					if (td.getFields().contains(f))
+					if (td.getFieldsInScope().contains(f))
 						continue;
 					
 					if (!(f.isPublic()) && !(f.isPrivate()))
