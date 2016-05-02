@@ -292,7 +292,7 @@ public class MoveFieldUp extends Refactoring
 				if (f.equals(fd.getFieldSpecifications().get(0)))
 					continue;
 				
-				if (td.getFields().contains(f))
+				if (td.getFieldsInScope().contains(f))
 					return false;
 
 				if (f.isPrivate())
