@@ -1,0 +1,51 @@
+======== Search Information ========
+Search: Genetic Algorithm
+Generations: 100
+Population Size: 50
+Crossover Probability: 0.200000
+Mutation Probability: 0.800000
+
+======== Initial Metric Info ========
+Average ratio of private/package/protected attributes to overall attributes per class: 0.406288
+Overall score: 0.000000
+
+======== Applied Refactorings ========
+Iteration 1: "Decrease Method Security" applied at class Configuration to method Configuration from private to package
+Iteration 2: "Decrease Method Security" applied at class Action to method Maker from package to protected
+Iteration 3: "Decrease Method Security" applied at class Log to method Record from package to protected
+Iteration 4: "Increase Field Security" applied at class Rule to field prec_sym_name from public to protected
+Iteration 5: "Move Field Up" applied to field found from null to RuleWalker
+Iteration 6: "Increase Field Security" applied at class Production to field NONE from public to protected
+Iteration 7: "Make Field Non Final" applied at class Terminal to FieldDeclaration RIGHT
+Iteration 8: "Remove Method" applied at class IntArray to method compact
+Iteration 9: "Increase Field Security" applied at class Rule to field prec_sym_name from protected to package
+Iteration 10: "Decrease Method Security" applied at class NonTerminal to method NonTerminal from package to protected
+Iteration 11: "Increase Field Security" applied at class Production to field NONE from protected to package
+Iteration 12: "Make Field Non Final" applied at class Action to FieldDeclaration RESOLVED
+Iteration 13: "Make Class Non Final" applied to class Associativity
+Iteration 14: "Make Field Non Final" applied at class Terminal to FieldDeclaration LEFT
+Iteration 15: "Make Method Non Final" applied at class GrammarScanner to method yyreset
+Iteration 16: "Increase Field Security" applied at class ParserGenerator to field PARSER_ACTIONS_REPORT_FILE_EXT from public to protected
+Iteration 17: "Decrease Method Security" applied at class Grammar to method Grammar from package to protected
+Iteration 18: "Make Class Abstract" applied to class Action
+Iteration 19: "Decrease Method Security" applied at class Log to method Record from protected to public
+Iteration 20: "Increase Field Security" applied at class Rule to field prec_sym_name from package to private
+Iteration 21: "Increase Field Security" applied at class Production to field NONE from package to private
+Iteration 23: "Make Field Non Static" applied at class GrammarScanner to field YYEOF
+Iteration 24: "Decrease Field Security" applied at class GrammarScanner to field yyline from private to package
+Iteration 25: "Make Class Concrete" applied to class SymbolsContainer
+Iteration 26: "Increase Field Security" applied at class Rule to field alias from public to protected
+Iteration 27: "Increase Field Security" applied at class Declaration to field type from public to protected
+Iteration 28: "Move Method Down" applied to method toString from GrammarSymbol to Terminal
+Iteration 28: "Make Field Non Final" applied at class SrcReader to FieldDeclaration file
+Iteration 29: "Make Method Non Static" applied at class Action to method makeDescription
+Iteration 30: "Increase Field Security" applied at class Terminal to field NONE from public to protected
+Iteration 31: "Decrease Field Security" applied at class GrammarScanner to field ZZ_BUFFERSIZE from private to package
+Iteration 32: "Decrease Field Security" applied at class IntArray to field data from private to package
+
+Score has improved overall by 0.120135
+Time taken to refactor: 112.89s
+
+======== Final Metric Info ========
+Average ratio of private/package/protected attributes to overall attributes per class: 0.455098
+Overall score: 0.120135
