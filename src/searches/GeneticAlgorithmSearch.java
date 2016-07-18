@@ -11,10 +11,10 @@ import java.util.Comparator;
 import recoder.CrossReferenceServiceConfiguration;
 import recoder.ParserException;
 import recoder.io.PropertyNames;
-import refactory.Configuration;
-import refactory.FitnessFunction;
-import refactory.Metrics;
-import refactory.RefactoringSequence;
+import multirefactor.Configuration;
+import multirefactor.FitnessFunction;
+import multirefactor.Metrics;
+import multirefactor.RefactoringSequence;
 
 public class GeneticAlgorithmSearch extends Search
 {
@@ -27,7 +27,7 @@ public class GeneticAlgorithmSearch extends Search
 	private int populationSize;
 	private float crossoverProbability;
 	private float mutationProbability;
-	private int initialRefactoringRange = 10;
+	private int initialRefactoringRange = 50;
 
 	public GeneticAlgorithmSearch(CrossReferenceServiceConfiguration sc, Configuration c, String[] sourceFiles) 
 	{
@@ -36,8 +36,8 @@ public class GeneticAlgorithmSearch extends Search
 		this.printAll = true;
 		this.generations = 5;
 		this.populationSize = 10;
-		this.crossoverProbability = 0.5f;
-		this.mutationProbability = 0.5f;	
+		this.crossoverProbability = 0.2f;
+		this.mutationProbability = 0.8f;	
 	}
 
 	public GeneticAlgorithmSearch(CrossReferenceServiceConfiguration sc, Configuration c, String[] sourceFiles,
@@ -86,6 +86,11 @@ public class GeneticAlgorithmSearch extends Search
 		ArrayList<RefactoringSequence> population = new ArrayList<RefactoringSequence>(this.populationSize);
 		ArrayList<RefactoringSequence> newGeneration = new ArrayList<RefactoringSequence>();
 		population = initialise();
+		System.out.printf("\nInitial Population Fitness Values: ");
+		for (int j = 0; j < population.size(); j++)
+		{
+				System.out.printf("%f ", population.get(j).getFitness());
+		}
 		
 		// At each generation, crossover is applied to produce a number of child solutions.
 		// Then, mutation is applied amongst these new solutions to introduce variety.
@@ -140,9 +145,18 @@ public class GeneticAlgorithmSearch extends Search
 				// Reconstruct model so it can be printed.
 				for (int j = 0; j < population.get(i).getRefactorings().size(); j++)
 				{
-					super.c.getRefactorings().get(population.get(i).getRefactorings().get(j))
-						   .transform(super.c.getRefactorings().get(population.get(i).getRefactorings().get(j))
-						   .analyze((j + 1), population.get(i).getPositions().get(j)[0], population.get(i).getPositions().get(j)[1]));
+					try 
+					{
+						super.c.getRefactorings().get(population.get(i).getRefactorings().get(j))
+						       .transform(super.c.getRefactorings().get(population.get(i).getRefactorings().get(j))
+						       .analyze((j + 1), population.get(i).getPositions().get(j)[0], population.get(i).getPositions().get(j)[1]));
+					} 
+					catch (NullPointerException e) 
+					{
+						System.out.printf("\r\nNull Pointer exception found during reconstruction of model for printing;" +
+										  "\r\nP%d: Refactoring %d Unit: %d, Element: %d", i + 1, j + 1, population.get(i).getPositions().get(j)[0], 
+										  															   population.get(i).getPositions().get(j)[1]);
+					}
 				}
 				
 				//Output information.
@@ -151,7 +165,7 @@ public class GeneticAlgorithmSearch extends Search
 				outputMetrics(population.get(i).getFitness(), m, false, false, i + 1, super.resultsPath);
 
 				// Output refactored solution.
-				String newOutputPath = this.outputPath + "s/Solution" + (i + 1);
+				String newOutputPath = this.outputPath + "Solution" + (i + 1) + "/";
 				super.sc.getProjectSettings().setProperty(PropertyNames.OUTPUT_PATH, newOutputPath);
 				super.print(super.sc.getSourceFileRepository());	
 			}
@@ -163,9 +177,18 @@ public class GeneticAlgorithmSearch extends Search
 			// Reconstruct model so it can be printed.
 			for (int i = 0; i < population.get(0).getRefactorings().size(); i++)
 			{
-				super.c.getRefactorings().get(population.get(0).getRefactorings().get(i))
-					   .transform(super.c.getRefactorings().get(population.get(0).getRefactorings().get(i))
-					   .analyze((i + 1), population.get(0).getPositions().get(i)[0], population.get(0).getPositions().get(i)[1]));
+				try 
+				{
+					super.c.getRefactorings().get(population.get(0).getRefactorings().get(i))
+					       .transform(super.c.getRefactorings().get(population.get(0).getRefactorings().get(i))
+					       .analyze((i + 1), population.get(0).getPositions().get(i)[0], population.get(0).getPositions().get(i)[1]));
+				} 
+				catch (NullPointerException e) 
+				{
+					System.out.printf("\r\nNull Pointer exception found during reconstruction of model for printing;" +
+									  "\r\nRefactoring %d Unit: %d, Element: %d", i + 1, population.get(0).getPositions().get(i)[0], 
+									  												   population.get(0).getPositions().get(i)[1]);
+				}
 			}
 			
 			outputRefactoringInfo(super.resultsPath, time, population.get(0).getFitness() - benchmark, -1, population.get(0).getRefactoringInfo());
@@ -270,12 +293,20 @@ public class GeneticAlgorithmSearch extends Search
 			// refactorings can be applied without checking.
 			if (i < cutPoint1)
 			{
-				super.c.getRefactorings().get(p1.getRefactorings().get(i)).transform(super.c.getRefactorings().get(p1.getRefactorings().get(i))
-					   .analyze((i + 1), p1.getPositions().get(i)[0], p1.getPositions().get(i)[1]));
-				refactoringInfo1.add(super.c.getRefactorings().get(p1.getRefactorings().get(i)).getRefactoringInfo());
-				c1Refactorings.add(p1.getRefactorings().get(i));
-				c1Positions.add(p1.getPositions().get(i));	
-				c1Names.add(p1.getNames().get(i));
+				try 
+				{
+					super.c.getRefactorings().get(p1.getRefactorings().get(i)).transform(super.c.getRefactorings().get(p1.getRefactorings().get(i))
+						   .analyze((i + 1), p1.getPositions().get(i)[0], p1.getPositions().get(i)[1]));
+					refactoringInfo1.add(super.c.getRefactorings().get(p1.getRefactorings().get(i)).getRefactoringInfo());
+					c1Refactorings.add(p1.getRefactorings().get(i));
+					c1Positions.add(p1.getPositions().get(i));	
+					c1Names.add(p1.getNames().get(i));
+				} 
+				catch (NullPointerException e) 
+				{
+					System.out.printf("\r\nNull Pointer exception found during first half of child 1 for crossover;" +
+							          "\r\nRefactoring %d Unit: %d, Element: %d", i + 1, p1.getPositions().get(i)[0], p1.getPositions().get(i)[1]);
+				}
 			}
 			// For the second sequence, a check will have 
 			// to be made for each contiguous refactoring.
@@ -339,12 +370,20 @@ public class GeneticAlgorithmSearch extends Search
 			// refactorings can be applied without checking.
 			if (i < cutPoint2)
 			{
-				super.c.getRefactorings().get(p2.getRefactorings().get(i)).transform(super.c.getRefactorings().get(p2.getRefactorings().get(i))
-					   .analyze((i + 1), p2.getPositions().get(i)[0], p2.getPositions().get(i)[1]));
-				refactoringInfo2.add(super.c.getRefactorings().get(p2.getRefactorings().get(i)).getRefactoringInfo());
-				c2Refactorings.add(p2.getRefactorings().get(i));
-				c2Positions.add(p2.getPositions().get(i));
-				c2Names.add(p2.getNames().get(i));
+				try 
+				{
+					super.c.getRefactorings().get(p2.getRefactorings().get(i)).transform(super.c.getRefactorings().get(p2.getRefactorings().get(i))
+						   .analyze((i + 1), p2.getPositions().get(i)[0], p2.getPositions().get(i)[1]));
+					refactoringInfo2.add(super.c.getRefactorings().get(p2.getRefactorings().get(i)).getRefactoringInfo());
+					c2Refactorings.add(p2.getRefactorings().get(i));
+					c2Positions.add(p2.getPositions().get(i));
+					c2Names.add(p2.getNames().get(i));
+				} 
+				catch (NullPointerException e) 
+				{
+					System.out.printf("\r\nNull Pointer exception found during first half of child 2 for crossover;" +
+									  "\r\nRefactoring %d Unit: %d, Element: %d", i + 1, p2.getPositions().get(i)[0], p2.getPositions().get(i)[1]);
+				}
 			}	
 			// For the second sequence, a check will have 
 			// to be made for each contiguous refactoring.
@@ -405,9 +444,19 @@ public class GeneticAlgorithmSearch extends Search
 		resetModel();
 		
 		for (int i = 0; i < p.getRefactorings().size(); i++)
-			super.c.getRefactorings().get(p.getRefactorings().get(i)).transform(super.c.getRefactorings().get(p.getRefactorings().get(i))
-				   .analyze((i + 1), p.getPositions().get(i)[0], p.getPositions().get(i)[1]));
-
+		{
+			try 
+			{
+				super.c.getRefactorings().get(p.getRefactorings().get(i)).transform(super.c.getRefactorings().get(p.getRefactorings().get(i))
+					   .analyze((i + 1), p.getPositions().get(i)[0], p.getPositions().get(i)[1]));
+			} 
+			catch (NullPointerException e) 
+			{
+				System.out.printf("\nNull Pointer exception found during reconstruction of model for mutation;" +
+								  "\nRefactoring %d Unit: %d, Element: %d", i + 1, p.getPositions().get(i)[0], p.getPositions().get(i)[1]);
+			}
+		}
+		
 		int[] result = randomRefactoring();
 		int[] position = {result[1], result[2]};
 		
@@ -600,11 +649,7 @@ public class GeneticAlgorithmSearch extends Search
 		if (solution == -1)
 			runName = String.format("%sresults.txt", pathName);
 		else
-		{
-			pathName = pathName.substring(0, (pathName.length() - 1));
-			pathName += "s/";
 			runName = String.format("%sresultsSolution%d.txt", pathName, solution);
-		}
 
 		File dir = new File(pathName);
 		if (!dir.exists()) 
@@ -637,8 +682,6 @@ public class GeneticAlgorithmSearch extends Search
 		String[] outputs = ff.createOutput(metric);
 		
 		// Create a location for the results output.
-		pathName = pathName.substring(0, (pathName.length() - 1));
-		pathName += "s/";
 		String runName = String.format("%sresultsSolution%d.txt", pathName, solution);
 		File dir = new File(pathName);
 		if (!dir.exists()) 

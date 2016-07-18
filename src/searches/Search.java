@@ -7,14 +7,14 @@ import java.io.IOException;
 import java.util.ArrayList;
 import java.util.List;
 
+import multirefactor.Configuration;
+import multirefactor.FitnessFunction;
+import multirefactor.Metrics;
 import recoder.CrossReferenceServiceConfiguration;
 import recoder.io.PropertyNames;
 import recoder.io.SourceFileRepository;
 import recoder.java.CompilationUnit;
 import refactorings.Refactoring;
-import refactory.Configuration;
-import refactory.FitnessFunction;
-import refactory.Metrics;
 
 public abstract class Search 
 {
@@ -265,8 +265,6 @@ public abstract class Search
 	protected void outputSearchInfo(String pathName, int solution, String runInfo)
 	{
 		// Create a location for the results output.
-		pathName = pathName.substring(0, (pathName.length() - 1));
-		pathName += "s/";
 		String runName = String.format("%sresultsSolution%d.txt", pathName, solution);
 		File dir = new File(pathName);
 		if (!dir.exists()) 

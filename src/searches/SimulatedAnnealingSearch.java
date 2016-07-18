@@ -2,12 +2,12 @@ package searches;
 
 import java.util.ArrayList;
 
+import multirefactor.Configuration;
+import multirefactor.FitnessFunction;
+import multirefactor.Metrics;
 import recoder.CrossReferenceServiceConfiguration;
 import recoder.ParserException;
 import recoder.io.PropertyNames;
-import refactory.Configuration;
-import refactory.FitnessFunction;
-import refactory.Metrics;
 
 public class SimulatedAnnealingSearch extends Search
 {
@@ -169,7 +169,7 @@ public class SimulatedAnnealingSearch extends Search
 						{
 							super.c.getRefactorings().get(r).transform(super.c.getRefactorings().get(r).analyzeReverse());
 							
-							if (alwaysMove)
+							if (this.alwaysMove)
 							{
 								if (counter == 0)
 									System.out.printf("\r\nNeighbours: %d", counter + 1);

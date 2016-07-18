@@ -2,6 +2,7 @@ package refactorings.field;
 
 import java.util.ArrayList;
 
+import multirefactor.AccessFlags;
 import recoder.CrossReferenceServiceConfiguration;
 import recoder.convenience.AbstractTreeWalker;
 import recoder.convenience.TreeWalker;
@@ -18,7 +19,6 @@ import recoder.kit.ProblemReport;
 import recoder.kit.transformation.Modify;
 import recoder.service.CrossReferenceSourceInfo;
 import refactorings.Refactoring;
-import refactory.AccessFlags;
 
 public class IncreaseFieldSecurity extends Refactoring 
 {	

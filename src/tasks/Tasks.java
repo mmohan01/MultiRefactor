@@ -11,12 +11,12 @@ import refactorings.Refactoring;
 import refactorings.field.*;
 import refactorings.method.*;
 import refactorings.type.*;
-import refactory.Configuration;
+import multirefactor.Configuration;
 import searches.*;
 
 public class Tasks 
 {
-	String pathway = "./data/original/refactory";
+	String pathway = "./data/original/json-1.1";
 	
 	// No attributes - empty constructor.
 	public Tasks(){}
@@ -36,8 +36,9 @@ public class Tasks
 		// Create empty list of refactorings.
 		// Reads the metric configuration in from them to a specified text file.
 		ArrayList<Refactoring> refactorings = new ArrayList<Refactoring>();
-		Configuration c = new Configuration("configurations/allmetrics.txt", refactorings);
-		Configuration[] cGA = {c};
+		Configuration c = new Configuration("./configurations/allmetrics.txt", refactorings);
+		Configuration[] cGA = {new Configuration("./configurations/qualityfunction1.txt"), new Configuration("qualityfunction-objective2"),
+							   new Configuration("qualityfunction-objective3"), new Configuration("./configurations/visibilityratio.txt"), new Configuration("./configurations/linesofcode.txt")};
 		
 		// Initialise search tasks.
 		ArrayList<Search> searches = new ArrayList<Search>();
@@ -49,17 +50,20 @@ public class Tasks
 		searches.add(simulatedAnnealing);
 		GeneticAlgorithmSearch geneticAlgorithm = new GeneticAlgorithmSearch(sc, c, sourceFiles);
 		searches.add(geneticAlgorithm);
-		MultiObjectiveSearch MOGeneticAlgorithm = new MultiObjectiveSearch(sc, cGA, refactorings, sourceFiles);
-		searches.add(MOGeneticAlgorithm);
+		MultiObjectiveSearch MultiObjectiveGeneticAlgorithm = new MultiObjectiveSearch(sc, cGA, refactorings, sourceFiles);
+		searches.add(MultiObjectiveGeneticAlgorithm);
+		ManyObjectiveSearch ManyObjectiveGeneticAlgorithm = new ManyObjectiveSearch(sc, cGA, refactorings, sourceFiles, 5, 50, 0.2f, 0.8f);
+		searches.add(ManyObjectiveGeneticAlgorithm);
 				
 		// Create list of output directories for
 		// each refactored project to be written to.
 		String[] output = new String[]{
-		createOutputDirectory(this.pathway, "Random"),
-		createOutputDirectory(this.pathway, "HillClimbing"),
-		createOutputDirectory(this.pathway, "SimulatedAnnealing"),
-		createOutputDirectory(this.pathway, "GeneticAlgorithm"),
-		createOutputDirectory(this.pathway, "MOGeneticAlgorithm")};
+		createOutputDirectory(this.pathway, "Random/"),
+		createOutputDirectory(this.pathway, "HillClimbing/"),
+		createOutputDirectory(this.pathway, "SimulatedAnnealing/"),
+		createOutputDirectory(this.pathway, "GeneticAlgorithm/"),
+		createOutputDirectory(this.pathway, "MultiObjectiveGeneticAlgorithm/"),
+		createOutputDirectory(this.pathway, "ManyObjectiveGeneticAlgorithm/")};
 
 		// Create list of output directories for
 		// each result data output to be written to.
@@ -68,7 +72,8 @@ public class Tasks
 		"./results/" + this.pathway.substring(this.pathway.lastIndexOf("/") + 1) + "/HillClimbing/",
 		"./results/" + this.pathway.substring(this.pathway.lastIndexOf("/") + 1) + "/SimulatedAnnealing/",
 		"./results/" + this.pathway.substring(this.pathway.lastIndexOf("/") + 1) + "/GeneticAlgorithm/",
-		"./results/" + this.pathway.substring(this.pathway.lastIndexOf("/") + 1) + "/MOGeneticAlgorithm/"};
+		"./results/" + this.pathway.substring(this.pathway.lastIndexOf("/") + 1) + "/MultiObjectiveGeneticAlgorithm/",
+		"./results/" + this.pathway.substring(this.pathway.lastIndexOf("/") + 1) + "/ManyObjectiveGeneticAlgorithm/"};
 
 		long timeTaken, startTime = System.currentTimeMillis();
 		double time;
@@ -152,21 +157,18 @@ public class Tasks
 
 			// initialise search task.			
 			if (searches.get(i).getClass().getName().contains("MultiObjectiveSearch"))
-			{
-				c = new Configuration("configurations/allmetrics.txt");
-				cGA = new Configuration[] {c};
-				((MultiObjectiveSearch) searches.get(i)).setConfigurations(cGA);
 				((MultiObjectiveSearch) searches.get(i)).setRefactorings(refactorings);
-			}
+			else if (searches.get(i).getClass().getName().contains("ManyObjectiveSearch"))
+				((ManyObjectiveSearch) searches.get(i)).setRefactorings(refactorings);
 			else
 			{
-				c = new Configuration("configurations/allmetrics.txt", refactorings);
+				c = new Configuration("./configurations/allmetrics.txt", refactorings);
 				searches.get(i).setConfiguration(c);
 			}
 			
 			searches.get(i).setServiceConfiguration(sc);
 			searches.get(i).setResultsPath(resultsDir[i]);
-			if (i == 0)
+			if (i == 5)
 			searches.get(i).run();
 		}	
 

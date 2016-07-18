@@ -1,5 +1,6 @@
 package refactorings.method;
 
+import multirefactor.AccessFlags;
 import recoder.CrossReferenceServiceConfiguration;
 import recoder.convenience.AbstractTreeWalker;
 import recoder.convenience.TreeWalker;
@@ -13,7 +14,6 @@ import recoder.kit.Problem;
 import recoder.kit.ProblemReport;
 import recoder.kit.transformation.Modify;
 import refactorings.Refactoring;
-import refactory.AccessFlags;
 
 public class MakeMethodNonStatic extends Refactoring 
 {	
@@ -86,7 +86,6 @@ public class MakeMethodNonStatic extends Refactoring
 		if (md.getMemberParent().getProgramModelInfo() == null)
 			md.getFactory().getServiceConfiguration().getChangeHistory().updateModel();
 
-					
 		if (!(md.isStatic()) || (MethodKit.isMain(getNameInfo(), md)))
 			return false;
 		else

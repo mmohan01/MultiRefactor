@@ -2,6 +2,7 @@ package refactorings.method;
 
 import java.util.ArrayList;
 
+import multirefactor.AccessFlags;
 import recoder.CrossReferenceServiceConfiguration;
 import recoder.abstraction.Member;
 import recoder.convenience.AbstractTreeWalker;
@@ -15,7 +16,6 @@ import recoder.kit.Problem;
 import recoder.kit.ProblemReport;
 import recoder.kit.transformation.Modify;
 import refactorings.Refactoring;
-import refactory.AccessFlags;
 
 public class MakeMethodStatic extends Refactoring 
 {	

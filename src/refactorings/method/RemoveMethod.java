@@ -95,7 +95,11 @@ public class RemoveMethod extends Refactoring
 	}
 	
 	public boolean mayRefactor(MethodDeclaration md)
-	{					
+	{			
+		// Prevents "Zero Service" outputs logged to the console.
+		if (md.getMemberParent().getProgramModelInfo() == null)
+			md.getFactory().getServiceConfiguration().getChangeHistory().updateModel();
+		
 		// Makes a number of checks against the method in order to exclude any insufficient candidates. 
 		if ((md instanceof ConstructorDeclaration) || (md == null) || (getCrossReferenceSourceInfo().getReferences(md).size() > 0) ||
 			((md.isAbstract()) && (MethodKit.getRedefiningMethods(getCrossReferenceSourceInfo(), md).size() > 0)) || 

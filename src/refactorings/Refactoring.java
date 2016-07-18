@@ -33,7 +33,7 @@ import recoder.kit.TwoPassTransformation;
 import recoder.list.generic.ASTArrayList;
 import recoder.list.generic.ASTList;
 import recoder.service.CrossReferenceSourceInfo;
-import refactory.AccessFlags;
+import multirefactor.AccessFlags;
 
 public abstract class Refactoring extends TwoPassTransformation 
 {

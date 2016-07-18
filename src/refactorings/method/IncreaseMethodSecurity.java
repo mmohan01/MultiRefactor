@@ -2,6 +2,7 @@ package refactorings.method;
 
 import java.util.ArrayList;
 
+import multirefactor.AccessFlags;
 import recoder.CrossReferenceServiceConfiguration;
 import recoder.abstraction.Method;
 import recoder.convenience.AbstractTreeWalker;
@@ -21,7 +22,6 @@ import recoder.kit.ProblemReport;
 import recoder.kit.transformation.Modify;
 import recoder.service.CrossReferenceSourceInfo;
 import refactorings.Refactoring;
-import refactory.AccessFlags;
 
 public class IncreaseMethodSecurity extends Refactoring 
 {		

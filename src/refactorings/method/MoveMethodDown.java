@@ -199,6 +199,10 @@ public class MoveMethodDown extends Refactoring
 		CrossReferenceSourceInfo si = getCrossReferenceSourceInfo();
 		TypeDeclaration std;
 		
+		// Prevents "Zero Service" outputs logged to the console.
+		if (td.getProgramModelInfo() == null)
+			td.getFactory().getServiceConfiguration().getChangeHistory().updateModel();
+		
 		// Makes a number of initial checks against the method and the class in order to quickly exclude insufficient candidates. 
 		if (!(td.isOrdinaryClass()) || (md instanceof ConstructorDeclaration) || (MethodKit.isMain(getServiceConfiguration().getNameInfo(), md)) ||
 			 (MethodKit.isSerializationMethod(getServiceConfiguration().getNameInfo(), md)) || (md.isAbstract()) || (md.isPrivate()) || 

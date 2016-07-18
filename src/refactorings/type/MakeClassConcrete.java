@@ -1,5 +1,6 @@
 package refactorings.type;
 
+import multirefactor.AccessFlags;
 import recoder.CrossReferenceServiceConfiguration;
 import recoder.abstraction.Method;
 import recoder.convenience.AbstractTreeWalker;
@@ -11,7 +12,6 @@ import recoder.kit.Problem;
 import recoder.kit.ProblemReport;
 import recoder.kit.transformation.Modify;
 import refactorings.Refactoring;
-import refactory.AccessFlags;
 
 public class MakeClassConcrete extends Refactoring 
 {

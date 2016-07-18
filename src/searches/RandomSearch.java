@@ -2,12 +2,12 @@ package searches;
 
 import java.util.ArrayList;
 
+import multirefactor.Configuration;
+import multirefactor.FitnessFunction;
+import multirefactor.Metrics;
 import recoder.CrossReferenceServiceConfiguration;
 import recoder.ParserException;
 import recoder.io.PropertyNames;
-import refactory.Configuration;
-import refactory.FitnessFunction;
-import refactory.Metrics;
 
 public class RandomSearch extends Search
 {

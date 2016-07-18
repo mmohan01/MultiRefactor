@@ -1,5 +1,6 @@
 package refactorings.method;
 
+import multirefactor.AccessFlags;
 import recoder.CrossReferenceServiceConfiguration;
 import recoder.convenience.AbstractTreeWalker;
 import recoder.convenience.TreeWalker;
@@ -12,7 +13,6 @@ import recoder.kit.Problem;
 import recoder.kit.ProblemReport;
 import recoder.kit.transformation.Modify;
 import refactorings.Refactoring;
-import refactory.AccessFlags;
 
 public class MakeMethodFinal extends Refactoring 
 {

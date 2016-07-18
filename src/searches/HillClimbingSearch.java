@@ -2,10 +2,10 @@ package searches;
 
 import java.util.ArrayList;
 
+import multirefactor.Configuration;
+import multirefactor.FitnessFunction;
+import multirefactor.Metrics;
 import recoder.CrossReferenceServiceConfiguration;
-import refactory.Configuration;
-import refactory.FitnessFunction;
-import refactory.Metrics;
 
 public class HillClimbingSearch extends Search
 {

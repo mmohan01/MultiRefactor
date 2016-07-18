@@ -2,6 +2,7 @@ package tasks.toolexperiment;
 
 import java.util.ArrayList;
 
+import multirefactor.Configuration;
 import recoder.CrossReferenceServiceConfiguration;
 import recoder.ParserException;
 import recoder.io.PropertyNames;
@@ -32,14 +33,12 @@ import refactorings.type.MakeClassFinal;
 import refactorings.type.MakeClassNonFinal;
 import refactorings.type.RemoveClass;
 import refactorings.type.RemoveInterface;
-import refactory.Configuration;
 import searches.GeneticAlgorithmSearch;
 import searches.Search;
 import tasks.Tasks;
 
 public class ToolTasksPart3 extends Tasks
 {
-	String pathway = "./data/original/json-1.1";
 	
 	// No attributes - empty constructor.
 	public ToolTasksPart3()
@@ -53,72 +52,163 @@ public class ToolTasksPart3 extends Tasks
 	}
 	
 	public void run()
-	{				
+	{								
+		String[] input = new String[]{
+				"./data/original/json-1.1",
+				"./data/original/mango",
+				"./data/original/beaver-0.9.11",
+				"./data/original/apachexmlrpc-2.0",
+				"./data/original/jhotdraw-5.3"};
+		
 		// Create an initial service configuration to be overwritten.
 		// Reads the source code from the specified directory.
 		CrossReferenceServiceConfiguration sc = new CrossReferenceServiceConfiguration();
-		String[] sourceFiles = super.read(this.pathway);
+		String[][] sourceFiles = new String[][]{
+				super.read("./data/original/json-1.1"),
+				super.read("./data/original/mango"),
+				super.read("./data/original/beaver-0.9.11"),
+				super.read("./data/original/apachexmlrpc-2.0"),
+				super.read("./data/original/jhotdraw-5.3")};
 		
 		// Create empty list of refactorings.
 		// Reads the metric configuration in from them to a specified text file.
 		ArrayList<Refactoring> refactorings = new ArrayList<Refactoring>();
-		Configuration c = new Configuration("data/metrics.txt", refactorings);
+		Configuration c = new Configuration("./configurations/classdesignsize.txt", refactorings);
 		
 		// Initialise search tasks.
 		ArrayList<Search> searches = new ArrayList<Search>();
-		GeneticAlgorithmSearch geneticAlgorithm1 = new GeneticAlgorithmSearch(sc, c, sourceFiles, true, 50, 10, 0.8f, 0.2f);
+		GeneticAlgorithmSearch geneticAlgorithm1 = new GeneticAlgorithmSearch(sc, c, sourceFiles[0], true, 100, 50, 0.2f, 0.8f);
+		geneticAlgorithm1.setInitialRefactoringRange(50);
 		searches.add(geneticAlgorithm1);
-		GeneticAlgorithmSearch geneticAlgorithm2 = new GeneticAlgorithmSearch(sc, c, sourceFiles, true, 100, 10, 0.8f, 0.2f);
+		GeneticAlgorithmSearch geneticAlgorithm2 = new GeneticAlgorithmSearch(sc, c, sourceFiles[0], true, 100, 50, 0.2f, 0.8f);
+		geneticAlgorithm2.setInitialRefactoringRange(50);
 		searches.add(geneticAlgorithm2);
-		GeneticAlgorithmSearch geneticAlgorithm3 = new GeneticAlgorithmSearch(sc, c, sourceFiles, true, 200, 10, 0.8f, 0.2f);
+		GeneticAlgorithmSearch geneticAlgorithm3 = new GeneticAlgorithmSearch(sc, c, sourceFiles[0], true, 100, 50, 0.2f, 0.8f);
+		geneticAlgorithm3.setInitialRefactoringRange(50);
 		searches.add(geneticAlgorithm3);
-		GeneticAlgorithmSearch geneticAlgorithm4 = new GeneticAlgorithmSearch(sc, c, sourceFiles, true, 50, 50, 0.8f, 0.2f);
+		GeneticAlgorithmSearch geneticAlgorithm4 = new GeneticAlgorithmSearch(sc, c, sourceFiles[0], true, 100, 50, 0.2f, 0.8f);
+		geneticAlgorithm4.setInitialRefactoringRange(50);
 		searches.add(geneticAlgorithm4);
-		GeneticAlgorithmSearch geneticAlgorithm5 = new GeneticAlgorithmSearch(sc, c, sourceFiles, true, 100, 50, 0.8f, 0.2f);
+		GeneticAlgorithmSearch geneticAlgorithm5 = new GeneticAlgorithmSearch(sc, c, sourceFiles[0], true, 100, 50, 0.2f, 0.8f);
+		geneticAlgorithm5.setInitialRefactoringRange(50);
 		searches.add(geneticAlgorithm5);
-		GeneticAlgorithmSearch geneticAlgorithm6 = new GeneticAlgorithmSearch(sc, c, sourceFiles, true, 200, 50, 0.8f, 0.2f);
+		
+		GeneticAlgorithmSearch geneticAlgorithm6 = new GeneticAlgorithmSearch(sc, c, sourceFiles[1], true, 100, 50, 0.2f, 0.8f);
+		geneticAlgorithm6.setInitialRefactoringRange(50);
 		searches.add(geneticAlgorithm6);
-		GeneticAlgorithmSearch geneticAlgorithm7 = new GeneticAlgorithmSearch(sc, c, sourceFiles, true, 50, 100, 0.8f, 0.2f);
+		GeneticAlgorithmSearch geneticAlgorithm7 = new GeneticAlgorithmSearch(sc, c, sourceFiles[1], true, 100, 50, 0.2f, 0.8f);
+		geneticAlgorithm7.setInitialRefactoringRange(50);
 		searches.add(geneticAlgorithm7);
-		GeneticAlgorithmSearch geneticAlgorithm8 = new GeneticAlgorithmSearch(sc, c, sourceFiles, true, 100, 100, 0.8f, 0.2f);
+		GeneticAlgorithmSearch geneticAlgorithm8 = new GeneticAlgorithmSearch(sc, c, sourceFiles[1], true, 100, 50, 0.2f, 0.8f);
+		geneticAlgorithm8.setInitialRefactoringRange(50);
 		searches.add(geneticAlgorithm8);
-		GeneticAlgorithmSearch geneticAlgorithm9 = new GeneticAlgorithmSearch(sc, c, sourceFiles, true, 200, 100, 0.8f, 0.2f);
+		GeneticAlgorithmSearch geneticAlgorithm9 = new GeneticAlgorithmSearch(sc, c, sourceFiles[1], true, 100, 50, 0.2f, 0.8f);
+		geneticAlgorithm9.setInitialRefactoringRange(50);
 		searches.add(geneticAlgorithm9);
+		GeneticAlgorithmSearch geneticAlgorithm10 = new GeneticAlgorithmSearch(sc, c, sourceFiles[1], true, 100, 50, 0.2f, 0.8f);
+		geneticAlgorithm10.setInitialRefactoringRange(50);
+		searches.add(geneticAlgorithm10);
+		
+		GeneticAlgorithmSearch geneticAlgorithm11 = new GeneticAlgorithmSearch(sc, c, sourceFiles[2], true, 100, 50, 0.2f, 0.8f);
+		geneticAlgorithm11.setInitialRefactoringRange(50);
+		searches.add(geneticAlgorithm11);
+		GeneticAlgorithmSearch geneticAlgorithm12 = new GeneticAlgorithmSearch(sc, c, sourceFiles[2], true, 100, 50, 0.2f, 0.8f);
+		geneticAlgorithm12.setInitialRefactoringRange(50);
+		searches.add(geneticAlgorithm12);
+		GeneticAlgorithmSearch geneticAlgorithm13 = new GeneticAlgorithmSearch(sc, c, sourceFiles[2], true, 100, 50, 0.2f, 0.8f);
+		geneticAlgorithm13.setInitialRefactoringRange(50);
+		searches.add(geneticAlgorithm13);
+		GeneticAlgorithmSearch geneticAlgorithm14 = new GeneticAlgorithmSearch(sc, c, sourceFiles[2], true, 100, 50, 0.2f, 0.8f);
+		geneticAlgorithm14.setInitialRefactoringRange(50);
+		searches.add(geneticAlgorithm14);
+		GeneticAlgorithmSearch geneticAlgorithm15 = new GeneticAlgorithmSearch(sc, c, sourceFiles[2], true, 100, 50, 0.2f, 0.8f);
+		geneticAlgorithm15.setInitialRefactoringRange(50);
+		searches.add(geneticAlgorithm15);
+		
+		GeneticAlgorithmSearch geneticAlgorithm16 = new GeneticAlgorithmSearch(sc, c, sourceFiles[3], true, 100, 50, 0.2f, 0.8f);
+		geneticAlgorithm16.setInitialRefactoringRange(50);
+		searches.add(geneticAlgorithm16);
+		GeneticAlgorithmSearch geneticAlgorithm17 = new GeneticAlgorithmSearch(sc, c, sourceFiles[3], true, 100, 50, 0.2f, 0.8f);
+		geneticAlgorithm17.setInitialRefactoringRange(50);
+		searches.add(geneticAlgorithm17);
+		GeneticAlgorithmSearch geneticAlgorithm18 = new GeneticAlgorithmSearch(sc, c, sourceFiles[3], true, 100, 50, 0.2f, 0.8f);
+		geneticAlgorithm18.setInitialRefactoringRange(50);
+		searches.add(geneticAlgorithm18);
+		GeneticAlgorithmSearch geneticAlgorithm19 = new GeneticAlgorithmSearch(sc, c, sourceFiles[3], true, 100, 50, 0.2f, 0.8f);
+		geneticAlgorithm19.setInitialRefactoringRange(50);
+		searches.add(geneticAlgorithm19);
+		GeneticAlgorithmSearch geneticAlgorithm20 = new GeneticAlgorithmSearch(sc, c, sourceFiles[3], true, 100, 50, 0.2f, 0.8f);
+		geneticAlgorithm20.setInitialRefactoringRange(50);
+		searches.add(geneticAlgorithm20);
+		
+		GeneticAlgorithmSearch geneticAlgorithm21 = new GeneticAlgorithmSearch(sc, c, sourceFiles[4], true, 100, 50, 0.2f, 0.8f);
+		geneticAlgorithm21.setInitialRefactoringRange(50);
+		searches.add(geneticAlgorithm21);
+		GeneticAlgorithmSearch geneticAlgorithm22 = new GeneticAlgorithmSearch(sc, c, sourceFiles[4], true, 100, 50, 0.2f, 0.8f);
+		geneticAlgorithm22.setInitialRefactoringRange(50);
+		searches.add(geneticAlgorithm22);
+		GeneticAlgorithmSearch geneticAlgorithm23 = new GeneticAlgorithmSearch(sc, c, sourceFiles[4], true, 100, 50, 0.2f, 0.8f);
+		geneticAlgorithm23.setInitialRefactoringRange(50);
+		searches.add(geneticAlgorithm23);
+		GeneticAlgorithmSearch geneticAlgorithm24 = new GeneticAlgorithmSearch(sc, c, sourceFiles[4], true, 100, 50, 0.2f, 0.8f);
+		geneticAlgorithm24.setInitialRefactoringRange(50);
+		searches.add(geneticAlgorithm24);
+		GeneticAlgorithmSearch geneticAlgorithm25 = new GeneticAlgorithmSearch(sc, c, sourceFiles[4], true, 100, 50, 0.2f, 0.8f);
+		geneticAlgorithm25.setInitialRefactoringRange(50);
+		searches.add(geneticAlgorithm25);
+		
+		String[] metricConfiguration = new String[]{
+				"./configurations/classdesignsize.txt",
+				"./configurations/numberofhierarchies.txt",
+				"./configurations/averagenumberofancestors.txt",
+				"./configurations/dataaccessmetric.txt",
+				"./configSurations/directclasscoupling.txt",
+				"./configurations/cohesionamongmethods.txt",
+				"./configurations/aggregation.txt",
+				"./configurations/functionalabstraction.txt",
+				"./configurations/numberofpolymorphicmethods.txt",
+				"./configurations/classinterfacesize.txt",
+				"./configurations/numberofmethods.txt",
+				"./configurations/weightedmethodsperclass.txt",
+				"./configurations/numberofchildren.txt",
+				"./configurations/abstractness.txt",
+				"./configurations/abstractratio.txt",
+				"./configurations/staticratio.txt",
+				"./configurations/finalratio.txt",
+				"./configurations/constantratio.txt",
+				"./configurations/innerclassratio.txt",
+				"./configurations/referencedmethodsratio.txt",
+				"./configurations/visibilityratio.txt",
+				"./configurations/linesofcode.txt",
+				"./configurations/numberoffiles.txt"};
+		
+		// Create list of output directories for
+		// each refactored project to be written to.
+		String[] output = new String[metricConfiguration.length];
+		
+		// Create list of output directories for
+		// each result data output to be written to.
+		String[] resultsDir = new String[metricConfiguration.length];
+		
+		long timeTaken, startTime = System.currentTimeMillis();
+		double time;
 				
-		for (int i = 1; i <= 3; i++)
+		for (int i = 0; i < metricConfiguration.length; i++)
 		{
-			switch (i)
-			{
-			case 1:
-				((GeneticAlgorithmSearch) searches.get(i)).setInitialRefactoringRange(50);
-				break;
-			case 2:
-				((GeneticAlgorithmSearch) searches.get(i)).setInitialRefactoringRange(100);
-				break;
-			case 3:
-				((GeneticAlgorithmSearch) searches.get(i)).setInitialRefactoringRange(200);
-				break;
-			}
+			output[i] = "./data/refactored/ToolExperimentExample/Part3/" + 
+			            metricConfiguration[i].substring((metricConfiguration[i].lastIndexOf("/") + 1), metricConfiguration[i].lastIndexOf(".")) + "/";
 
-			// Create list of output directories for
-			// each refactored project to be written to.
-			String[] output = new String[9];
-			for (int j = 0; j < 9; j++)
-				output[j] = super.createOutputDirectory(this.pathway, "GeneticAlgorithm" + (j + 1) + "-" + i);
-
-			// Create list of output directories for
-			// each result data output to be written to.
-			String[] resultsDir = new String[9];
-			for (int j = 0; j < 9; j++)
-				resultsDir[j] = "./results/" + this.pathway.substring(this.pathway.lastIndexOf("/") + 1) + "/GeneticAlgorithm" + (j + 1) + "-" + i + "/";
-
-			long timeTaken, startTime = System.currentTimeMillis();
-			double time;
+			resultsDir[i] = "./results/ToolExperimentExample/Part3/" + 
+					        metricConfiguration[i].substring((metricConfiguration[i].lastIndexOf("/") + 1), metricConfiguration[i].lastIndexOf(".")) + "/";
 
 			for (int j = 0; j < searches.size(); j++)
 			{
 				// Creates new service configuration to start from scratch.
 				sc = new CrossReferenceServiceConfiguration();
+				int path = (int) Math.floor(j/5);
+				
+				String outputPath = output[i] + input[path].substring(input[path].lastIndexOf("/") + 1) + "/" + ((j % 5) + 1) + "/";
+				String resultsPath = resultsDir[i] + input[path].substring(input[path].lastIndexOf("/") + 1) + "/" + ((j % 5) + 1) + "/";
 
 				// Initialise available refactorings. Needs to be done each 
 				// time as the service configuration won't be updated otherwise.
@@ -179,7 +269,7 @@ public class ToolTasksPart3 extends Tasks
 				try 
 				{
 					// Read the original input.
-					sc.getSourceFileRepository().getCompilationUnitsFromFiles(sourceFiles);
+					sc.getSourceFileRepository().getCompilationUnitsFromFiles(sourceFiles[path]);
 				}
 				catch (ParserException e) 
 				{
@@ -188,22 +278,24 @@ public class ToolTasksPart3 extends Tasks
 				}
 
 				// Set up initial properties of service configuration.
-				sc.getProjectSettings().setProperty(PropertyNames.INPUT_PATH, this.pathway + super.readLibs(this.pathway));
-				sc.getProjectSettings().setProperty(PropertyNames.OUTPUT_PATH, output[j]);
+				sc.getProjectSettings().setProperty(PropertyNames.INPUT_PATH, input[path] + super.readLibs(input[path]));
+				sc.getProjectSettings().setProperty(PropertyNames.OUTPUT_PATH, outputPath);
 				sc.getProjectSettings().ensureSystemClassesAreInPath();
 
 				// initialise search task.			
-				c = new Configuration("data/metrics.txt", refactorings);
+				c = new Configuration(metricConfiguration[i], refactorings);
 				searches.get(j).setConfiguration(c);
 				searches.get(j).setServiceConfiguration(sc);
-				searches.get(j).setResultsPath(resultsDir[j]);
+				searches.get(j).setResultsPath(resultsPath);
 				searches.get(j).run();
+				
+				// Output overall time taken to console.
+				timeTaken = System.currentTimeMillis() - startTime;
+				time = timeTaken / 1000.0;
+				System.out.printf("\r\n\r\nTime taken to run part 3 so far: %.2fs", time);
+				System.out.printf("\n\r-----------------------------------------------");
+				System.out.printf("\n\r-----------------------------------------------");
 			}	
-
-			// Output overall time taken to console.
-			timeTaken = System.currentTimeMillis() - startTime;
-			time = timeTaken / 1000.0;
-			System.out.printf("\r\n\r\nTime taken to run program: %.2fs", time);
 		}
 	}
 }
