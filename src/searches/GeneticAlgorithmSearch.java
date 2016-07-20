@@ -86,11 +86,6 @@ public class GeneticAlgorithmSearch extends Search
 		ArrayList<RefactoringSequence> population = new ArrayList<RefactoringSequence>(this.populationSize);
 		ArrayList<RefactoringSequence> newGeneration = new ArrayList<RefactoringSequence>();
 		population = initialise();
-		System.out.printf("\nInitial Population Fitness Values: ");
-		for (int j = 0; j < population.size(); j++)
-		{
-				System.out.printf("%f ", population.get(j).getFitness());
-		}
 		
 		// At each generation, crossover is applied to produce a number of child solutions.
 		// Then, mutation is applied amongst these new solutions to introduce variety.
@@ -155,7 +150,7 @@ public class GeneticAlgorithmSearch extends Search
 					{
 						System.out.printf("\r\nNull Pointer exception found during reconstruction of model for printing;" +
 										  "\r\nP%d: Refactoring %d Unit: %d, Element: %d", i + 1, j + 1, population.get(i).getPositions().get(j)[0], 
-										  															   population.get(i).getPositions().get(j)[1]);
+										  															     population.get(i).getPositions().get(j)[1]);
 					}
 				}
 				
@@ -187,7 +182,7 @@ public class GeneticAlgorithmSearch extends Search
 				{
 					System.out.printf("\r\nNull Pointer exception found during reconstruction of model for printing;" +
 									  "\r\nRefactoring %d Unit: %d, Element: %d", i + 1, population.get(0).getPositions().get(i)[0], 
-									  												   population.get(0).getPositions().get(i)[1]);
+									  												     population.get(0).getPositions().get(i)[1]);
 				}
 			}
 			
