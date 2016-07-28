@@ -150,8 +150,26 @@ public class MoveMethodDown extends Refactoring
 			if (!(imports.contains(ci)))
 				imports.add(ci);
 		
+		// If the package import hasn't already been added and the supertype
+		// is in a different package, create and add an import to the package.
 		if (addPackageImport)
-			imports.add(getProgramFactory().createImport(PackageKit.createPackageReference(getProgramFactory(), pack)));
+		{
+			Import wholePackage = getProgramFactory().createImport(PackageKit.createPackageReference(getProgramFactory(), pack));
+			boolean contains = false;
+
+			for (Import i : imports)
+			{
+				if ((i.toString().equals(wholePackage.toString())))
+				{
+					contains = true;
+					break;
+				}
+			}
+
+			if (!contains)
+				imports.add(wholePackage);
+		}
+				
 		UnitKit.getCompilationUnit(this.subDeclaration).setImports(imports);
 
 		// Specify refactoring information for results information.
@@ -337,10 +355,10 @@ public class MoveMethodDown extends Refactoring
 				// Get types accessed in method.
 				ArrayList<Type> types = super.getTypes(md, si);
 
-				// Check if inner types can be accessed in super type.
+				// Check if types can be accessed in super type.
 				for (Type t: types)
 				{
-					if ((((ClassType) t).isInner()) && ((t instanceof TypeDeclaration) || (t instanceof ClassFile)))
+					if (((t instanceof TypeDeclaration) || (t instanceof ClassFile)))
 					{
 						if (((ClassType) t).isPrivate())
 						{
@@ -352,7 +370,7 @@ public class MoveMethodDown extends Refactoring
 						}
 						else if (!((ClassType) t).isPublic())
 						{
-							if (!((ClassType) t).getContainingClassType().getPackage().equals(std.getPackage()))
+							if (!((ClassType) t).getPackage().equals(std.getPackage()))
 							{
 								if (!((ClassType) t).isProtected())
 								{

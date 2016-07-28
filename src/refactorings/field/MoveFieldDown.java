@@ -16,6 +16,7 @@ import recoder.java.Import;
 import recoder.java.ProgramElement;
 import recoder.java.declaration.ClassDeclaration;
 import recoder.java.declaration.FieldDeclaration;
+import recoder.java.declaration.FieldSpecification;
 import recoder.java.declaration.MemberDeclaration;
 import recoder.java.declaration.MethodDeclaration;
 import recoder.java.declaration.TypeDeclaration;
@@ -71,6 +72,7 @@ public class MoveFieldDown extends Refactoring
 		this.currentDeclaration = MiscKit.getParentTypeDeclaration(fd);
 		this.position = super.getPosition(this.currentDeclaration, fd);
 		this.duplicatePosition = -1;
+		this.superReferences = new ArrayList<VariableReference>();
 		ArrayList<Type> types = super.getTypes(fd, si);
 		ASTList<Import> fieldImports = super.getMemberImports(types, UnitKit.getCompilationUnit(this.currentDeclaration).getImports(), si);
 		boolean addPackageImport = false;
@@ -106,9 +108,10 @@ public class MoveFieldDown extends Refactoring
 				break;
 			}
 		}
-
+		
 		// Any "super." references to the field in the sub class are changed to "this." references.
-		this.superReferences = VariableKit.getReferences(si, fd.getFieldSpecifications().get(0), this.subDeclaration, true);
+		for (FieldSpecification fs : fd.getFieldSpecifications())
+			this.superReferences.addAll(VariableKit.getReferences(si, fs, this.subDeclaration, true));
 
 		for (VariableReference vr : this.superReferences)
 			if (((FieldReference) vr).getReferencePrefix() instanceof SuperReference)
@@ -146,8 +149,26 @@ public class MoveFieldDown extends Refactoring
 			if (!(imports.contains(ci)))
 				imports.add(ci);
 
+		// If the package import hasn't already been added and the supertype
+		// is in a different package, create and add an import to the package.
 		if (addPackageImport)
-			imports.add(getProgramFactory().createImport(PackageKit.createPackageReference(getProgramFactory(), pack)));
+		{
+			Import wholePackage = getProgramFactory().createImport(PackageKit.createPackageReference(getProgramFactory(), pack));
+			boolean contains = false;
+
+			for (Import i : imports)
+			{
+				if ((i.toString().equals(wholePackage.toString())))
+				{
+					contains = true;
+					break;
+				}
+			}
+
+			if (!contains)
+				imports.add(wholePackage);
+		}
+				
 		UnitKit.getCompilationUnit(this.subDeclaration).setImports(imports);
 
 		// Specify refactoring information for results information.
@@ -202,8 +223,9 @@ public class MoveFieldDown extends Refactoring
 		else
 		{			
 			// Are there any references to the field in the class.
-			if (VariableKit.getReferences(si, fd.getFieldSpecifications().get(0), td, true).size() > 0)
-				return false;
+			for (FieldSpecification fs : fd.getFieldSpecifications())
+				if (VariableKit.getReferences(si, fs, td, true).size() > 0)
+					return false;
 
 			// Allows the program to go through the child classes at random
 			// and pick the first one (if any) that is applicable for the refactoring.
@@ -295,8 +317,9 @@ public class MoveFieldDown extends Refactoring
 				// Check if fields can be accessed in super type.
 				for (Field f : fields)
 				{
-					if (f.equals(fd.getFieldSpecifications().get(0)))
-						continue;
+					for (FieldSpecification fs : fd.getFieldSpecifications())
+						if (f.equals(fs))
+							continue;
 					
 					if (f.isPrivate())
 					{
@@ -330,10 +353,10 @@ public class MoveFieldDown extends Refactoring
 				// Get types accessed by field.
 				ArrayList<Type> types = super.getTypes(fd, si);
 
-				// Check if inner types can be accessed in super type.
+				// Check if types can be accessed in super type.
 				for (Type t: types)
 				{
-					if ((((ClassType) t).isInner()) && ((t instanceof TypeDeclaration) || (t instanceof ClassFile)))
+					if (((t instanceof TypeDeclaration) || (t instanceof ClassFile)))
 					{
 						if (((ClassType) t).isPrivate())
 						{
@@ -345,7 +368,7 @@ public class MoveFieldDown extends Refactoring
 						}
 						else if (!((ClassType) t).isPublic())
 						{
-							if (!((ClassType) t).getContainingClassType().getPackage().equals(std.getPackage()))
+							if (!((ClassType) t).getPackage().equals(std.getPackage()))
 							{
 								if (!((ClassType) t).isProtected())
 								{
@@ -369,62 +392,66 @@ public class MoveFieldDown extends Refactoring
 				// field is not the current child class then the child class will not be applicable.
 				// An exception is if the field reference is a super reference in the child class. In this
 				// case the reference can be modified during the refactoring to point to the right class.
-				for (FieldReference fr : si.getReferences(fd.getFieldSpecifications().get(0)))
+				for (FieldSpecification fs : fd.getFieldSpecifications())
 				{
-					// Check whether the field can be accessed from the class.
-					if (!(std.getPackage().equals(MiscKit.getParentTypeDeclaration(fr).getPackage())) && 
-						!(fd.isPublic()))
+					for (FieldReference fr : si.getReferences(fs))
 					{
-						if (!(fd.isProtected()))
+						// Check whether the field can be accessed from the class.
+						if (!(std.getPackage().equals(MiscKit.getParentTypeDeclaration(fr).getPackage())) && !(fd.isPublic()))
 						{
-							next = true;
-							break;
-						}
-						else if (!(MiscKit.getParentTypeDeclaration(fr).getAllSupertypes().contains(std)))
-						{
-							next = true;
-							break;
-						}
-					}
-					
-					// If reference is "this." or "super." or has no prefix 
-					// it needs to be in the sub class or one of its sub classes.
-					if ((fr.getReferencePrefix() instanceof ThisReference) || 
-						(fr.getReferencePrefix() instanceof SuperReference) ||
-						(fr.getReferencePrefix() == null))
-					{
-						if (!(MiscKit.getParentTypeDeclaration(fr).equals(std)) &&
-							!(si.getAllSubtypes(std).contains(MiscKit.getParentTypeDeclaration(fr))))
-						{
-							next = true;
-							break;
-						}
-					}
-					// If the reference is prefixed by a type reference, it needs to be a
-					// static field and the type reference needs to be the type of the sub class. 
-					else if (fr.getReferencePrefix() instanceof TypeReference)
-					{
-						if (!(fr.getReferencePrefix().toSource().equals(std.getName())) || !(fd.isStatic()))
-						{
-							next = true;
-							break;
-						}
-					}
-					// If the reference if being called from a variable, the variable needs to be the type of the sub class or
-					// one of its sub classes (in this case, if the field is a package type, it will need to be accessible).
-					else
-					{
-						if (!(si.getType(fr.getReferencePrefix()).equals(std)))
-						{
-							if (!(si.getAllSubtypes(std).contains(si.getType(fr.getReferencePrefix()))) || 
-								(!(fd.isProtected()) && !(fd.isPublic()) && 
-								 !(((TypeDeclaration) si.getType(fr.getReferencePrefix())).getPackage().equals(std.getPackage()))))
+							if (!(fd.isProtected()))
 							{
+								next = true;
+								break;
+							}
+							else if (!(MiscKit.getParentTypeDeclaration(fr).getAllSupertypes().contains(std)))
+							{
+								next = true;
+								break;
+							}
+						}
+
+						// If reference is "this." or "super." or has no prefix 
+						// it needs to be in the sub class or one of its sub classes.
+						if ((fr.getReferencePrefix() instanceof ThisReference) || (fr.getReferencePrefix() instanceof SuperReference) ||
+							(fr.getReferencePrefix() == null))
+						{
+							if (!(MiscKit.getParentTypeDeclaration(fr).equals(std)) &&
+								!(si.getAllSubtypes(std).contains(MiscKit.getParentTypeDeclaration(fr))))
+							{
+								next = true;
+								break;
+							}
+						}
+						// If the reference is prefixed by a type reference, it needs to be a
+						// static field and the type reference needs to be the type of the sub class. 
+						else if (fr.getReferencePrefix() instanceof TypeReference)
+						{
+							if (!(fr.getReferencePrefix().toSource().equals(std.getName())) || !(fd.isStatic()))
+							{
+								next = true;
+								break;
+							}
+						}
+						// If the reference if being called from a variable, the variable needs to be the type of the sub class or
+						// one of its sub classes (in this case, if the field is a package type, it will need to be accessible).
+						else
+						{
+							if (!(si.getType(fr.getReferencePrefix()).equals(std)))
+							{
+								if (!(si.getAllSubtypes(std).contains(si.getType(fr.getReferencePrefix()))) || 
+									(!(fd.isProtected()) && !(fd.isPublic()) && 
+									!(((TypeDeclaration) si.getType(fr.getReferencePrefix())).getPackage().equals(std.getPackage()))))
+								{
 									next = true;
 									break;
+								}
 							}
 						}
 					}
+					
+					if (next)
+						break;
 				}
 
 				if (!next)

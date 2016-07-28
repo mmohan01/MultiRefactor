@@ -9,6 +9,7 @@ import recoder.convenience.TreeWalker;
 import recoder.java.ProgramElement;
 import recoder.java.declaration.EnumConstantDeclaration;
 import recoder.java.declaration.FieldDeclaration;
+import recoder.java.declaration.FieldSpecification;
 import recoder.java.declaration.InterfaceDeclaration;
 import recoder.java.declaration.TypeDeclaration;
 import recoder.java.declaration.modifier.Private;
@@ -94,12 +95,15 @@ public class IncreaseFieldSecurity extends Refactoring
 			
 			// Checks any reference to the field in the program 
 			// and whether its class will be able to access the field.
-			for (FieldReference fr : si.getReferences(((FieldDeclaration) fd).getFieldSpecifications().get(0)))
+			for (FieldSpecification fs : ((FieldDeclaration) fd).getFieldSpecifications())
 			{
-				if (MiscKit.getParentTypeDeclaration(fr) == null)
-					return false;
-				else if (!(referenceTypes.contains(MiscKit.getParentTypeDeclaration(fr))))
-					referenceTypes.add(MiscKit.getParentTypeDeclaration(fr));
+				for (FieldReference fr : si.getReferences(fs))
+				{
+					if (MiscKit.getParentTypeDeclaration(fr) == null)
+						return false;
+					else if (!(referenceTypes.contains(MiscKit.getParentTypeDeclaration(fr))))
+						referenceTypes.add(MiscKit.getParentTypeDeclaration(fr));
+				}
 			}
 			
 			for (TypeDeclaration td : referenceTypes)

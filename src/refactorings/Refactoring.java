@@ -2,13 +2,14 @@ package refactorings;
 
 import java.util.ArrayList;
 
+import multirefactor.AccessFlags;
 import recoder.CrossReferenceServiceConfiguration;
+import recoder.abstraction.ArrayType;
 import recoder.abstraction.ClassType;
 import recoder.abstraction.Field;
 import recoder.abstraction.Package;
 import recoder.abstraction.PrimitiveType;
 import recoder.abstraction.Type;
-import recoder.bytecode.ClassFile;
 import recoder.convenience.AbstractTreeWalker;
 import recoder.convenience.TreeWalker;
 import recoder.java.CompilationUnit;
@@ -33,7 +34,6 @@ import recoder.kit.TwoPassTransformation;
 import recoder.list.generic.ASTArrayList;
 import recoder.list.generic.ASTList;
 import recoder.service.CrossReferenceSourceInfo;
-import multirefactor.AccessFlags;
 
 public abstract class Refactoring extends TwoPassTransformation 
 {
@@ -44,6 +44,10 @@ public abstract class Refactoring extends TwoPassTransformation
 	public Refactoring(CrossReferenceServiceConfiguration sc) 
 	{
 		super(sc);
+	}
+	
+	public Refactoring(int f) 
+	{
 	}
 	
 	public Refactoring() 
@@ -170,12 +174,22 @@ public abstract class Refactoring extends TwoPassTransformation
 		if (md instanceof MethodDeclaration)
 		{
 			for (Type t : ((MethodDeclaration) md).getSignature())
-				if ((t != null) && !(types.contains(t)) && !(t.getFullName().contains("java.lang.")) && !(t instanceof PrimitiveType))
+			{
+				if (t instanceof ArrayType)
+					t = ((ArrayType) t).getBaseType();
+				
+				if ((t != null) && !(types.contains(t)) && !(t instanceof PrimitiveType) &&
+					!((t.toString().contains("java.lang.")) && !(t.toString().contains("%RAW%"))))
 					types.add(t); 
+			}
 			
 			Type returnType = ((MethodDeclaration) md).getReturnType();
-			if ((returnType != null) && !(types.contains(returnType)) && !(returnType.getFullName().contains("java.lang.")) && 
-				!(returnType instanceof PrimitiveType))
+			
+			if (returnType instanceof ArrayType)
+				returnType = ((ArrayType) returnType).getBaseType();
+			
+			if ((returnType != null) && !(types.contains(returnType)) && !(returnType instanceof PrimitiveType) &&
+			    !((returnType.toString().contains("java.lang.")) && !(returnType.toString().contains("%RAW%"))))
 				types.add(returnType);
 		}
 		
@@ -185,9 +199,14 @@ public abstract class Refactoring extends TwoPassTransformation
 			ProgramElement pe = tw.getProgramElement();
 			if (pe instanceof TypeReference) 
 			{
-				if ((si.getType(pe) != null) && !(types.contains(si.getType(pe))) && 
-						!(si.getType(pe).getFullName().contains("java.lang.")) && !(si.getType(pe) instanceof PrimitiveType))
-					types.add(si.getType(pe)); 
+				Type t = si.getType(pe);
+				
+				if (t instanceof ArrayType)
+					t = ((ArrayType) t).getBaseType();
+				
+				if ((t != null) && !(types.contains(t)) && !(t instanceof PrimitiveType) && 
+					!((t.toString().contains("java.lang.")) && !(t.toString().contains("%RAW%"))))	
+					types.add(t);
 			}
 		}
 		
@@ -251,7 +270,7 @@ public abstract class Refactoring extends TwoPassTransformation
 			if (ci.isMultiImport())
 			{
 				Package p;
-		
+			
 				if (ci.getTypeReferenceCount() == 0)
 					p = si.getPackage(ci.getPackageReference());
 				else
@@ -259,8 +278,7 @@ public abstract class Refactoring extends TwoPassTransformation
 					
 				for (Type type : methodTypes)
 				{
-					if (((type instanceof TypeDeclaration) || (type instanceof ClassFile)) && 
-						(((ClassType) type).getPackage().getName().equals(p.getName())))
+					if ((type instanceof ClassType) && (((ClassType) type).getPackage().getName().equals(p.getName())))
 					{
 						add = true;
 						methodTypes.remove(type);

@@ -148,9 +148,18 @@ public class SimulatedAnnealingSearch extends Search
 					}
 					else
 					{
-						// Probability of accepting negative move = exponential((-)difference/current temperature).
-						// Exponential of a negative value is confined to the range 0 -> 1 as the negative value approaches 0. 
-						float probability = (float) Math.exp(((newScore - current) * 100) / currentTemperature);
+						float probability;
+						
+						// if current score is 0 do not accept negative change.
+						if (current == 0)
+							probability = 0.0f;
+						// Probability of accepting negative move = exponential((-)percentage difference/current temperature).
+						// Exponential of a negative value is confined to the range 0 -> 1 as the negative value approaches 0.
+						else
+						{
+							float percentageChange = ((newScore - current) / Math.abs(current)) * 100;
+							probability = (float) Math.exp(percentageChange / currentTemperature);
+						}
 
 						if (probability > Math.random())
 						{

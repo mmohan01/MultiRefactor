@@ -11,6 +11,7 @@ import recoder.abstraction.Type;
 import recoder.bytecode.ClassFile;
 import recoder.convenience.AbstractTreeWalker;
 import recoder.convenience.TreeWalker;
+import recoder.java.Identifier;
 import recoder.java.Import;
 import recoder.java.ProgramElement;
 import recoder.java.declaration.ClassDeclaration;
@@ -21,6 +22,7 @@ import recoder.java.declaration.MethodDeclaration;
 import recoder.java.declaration.TypeDeclaration;
 import recoder.java.reference.MemberReference;
 import recoder.java.reference.MethodReference;
+import recoder.java.reference.PackageReference;
 import recoder.java.reference.SuperReference;
 import recoder.java.reference.ThisReference;
 import recoder.java.reference.TypeReference;
@@ -168,8 +170,55 @@ public class MoveMethodUp extends Refactoring
 			if (!(imports.contains(ci)))
 				imports.add(ci);
 		
+		// If the package import hasn't already been added and the supertype
+		// is in a different package, create and add an import to the package.
 		if (addPackageImport)
-			imports.add(getProgramFactory().createImport(PackageKit.createPackageReference(getProgramFactory(), pack)));
+		{
+			Import wholePackage = getProgramFactory().createImport(PackageKit.createPackageReference(getProgramFactory(), pack));
+			boolean contains = false;
+
+			for (Import i : imports)
+			{
+				if ((i.toString().equals(wholePackage.toString())))
+				{
+					contains = true;
+					break;
+				}
+			}
+
+			if (!contains)
+				imports.add(wholePackage);
+		}
+		
+		// If a field type from the method is defined as a class nested in the current class, need to contain an import to that class.
+		for (Type t : types)
+		{
+			if ((t instanceof TypeDeclaration) && (((TypeDeclaration) t).getContainingClassType() instanceof TypeDeclaration) &&
+					(((TypeDeclaration) t).getContainingClassType().equals(this.currentDeclaration)))
+			{
+				PackageReference proto = PackageKit.createPackageReference(getProgramFactory(), pack);
+				ArrayList<Identifier> identifiers = new ArrayList<Identifier>();
+				TypeDeclaration nestedClass = (TypeDeclaration) t;
+
+				// It may be nested by more than one level, in which 
+				// case each inner class needs to be included in the import.
+				while (nestedClass.getContainingClassType() != null)
+				{
+					nestedClass = nestedClass.getContainingClassType();
+					identifiers.add(nestedClass.getIdentifier());
+				}
+
+				for (int i = identifiers.size() - 1; i >= 0; i--)
+				{
+					PackageReference fullPackage = getProgramFactory().createPackageReference(proto, identifiers.get(i));
+					proto = fullPackage;
+				}
+
+				imports.add(getProgramFactory().createImport(proto));
+				break;
+			}
+		}
+
 		UnitKit.getCompilationUnit(this.superDeclaration).setImports(imports);
 
 		// Specify refactoring information for results information.
@@ -328,12 +377,17 @@ public class MoveMethodUp extends Refactoring
 			for (TypeDeclaration typedec : super.getTypeDeclarations(UnitKit.getCompilationUnit(td)))
 				if (!(typedec.equals(td)) && (types.contains(typedec)) && !(td.getPackage().equals(std.getPackage())))
 					return false;
+			
+			// If the current class is referenced in the method explicitly i.e. an
+			// object of the current class is created within the method, don't move it.
+			if (types.contains(td))
+				return false;
 
-			// Check if inner types can be accessed in super type.
+			// Check if types can be accessed in super type.
 			for (Type t: types)
 			{
-				if ((((ClassType) t).isInner()) && ((t instanceof TypeDeclaration) || (t instanceof ClassFile)))
-				{
+				if (((t instanceof TypeDeclaration) || (t instanceof ClassFile)))
+				{					
 					if (((ClassType) t).isPrivate())
 					{
 						if (!(((ClassType) t).equals(std)))
@@ -341,7 +395,7 @@ public class MoveMethodUp extends Refactoring
 					}
 					else if (!((ClassType) t).isPublic())
 					{
-						if (!((ClassType) t).getContainingClassType().getPackage().equals(std.getPackage()))
+						if (!((ClassType) t).getPackage().equals(std.getPackage()))
 						{
 							if (!((ClassType) t).isProtected())
 								return false;

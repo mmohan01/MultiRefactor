@@ -78,7 +78,8 @@ public class FitnessFunction
 
 		for (Triple<String, Boolean, Float> metric : this.configuration)
 		{
-			value = findMetricValue(m, metric.getFirst()) / this.initialMetrics.get(metric.getFirst());
+			float metricValue = (findMetricValue(m, metric.getFirst()) == 0) ? 0.000001f : findMetricValue(m, metric.getFirst());
+			value = metricValue / this.initialMetrics.get(metric.getFirst());
 			value--;
 			amount += (metric.getSecond() == true) ? (metric.getThird() * value) : -(metric.getThird() * value);
 		}

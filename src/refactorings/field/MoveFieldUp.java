@@ -11,15 +11,18 @@ import recoder.abstraction.Type;
 import recoder.bytecode.ClassFile;
 import recoder.convenience.AbstractTreeWalker;
 import recoder.convenience.TreeWalker;
+import recoder.java.Identifier;
 import recoder.java.Import;
 import recoder.java.ProgramElement;
 import recoder.java.declaration.ClassDeclaration;
 import recoder.java.declaration.FieldDeclaration;
+import recoder.java.declaration.FieldSpecification;
 import recoder.java.declaration.MemberDeclaration;
 import recoder.java.declaration.MethodDeclaration;
 import recoder.java.declaration.TypeDeclaration;
 import recoder.java.reference.FieldReference;
 import recoder.java.reference.MethodReference;
+import recoder.java.reference.PackageReference;
 import recoder.java.reference.SuperReference;
 import recoder.java.reference.ThisReference;
 import recoder.java.reference.TypeReference;
@@ -50,13 +53,12 @@ public class MoveFieldUp extends Refactoring
 	{
 		super();
 	}
-	
+
 	public ProblemReport analyze(int iteration, int unit, int element) 
 	{
 		// Initialise and pick the element to visit.
 		CrossReferenceSourceInfo si = getCrossReferenceSourceInfo();
 		super.tw = new TreeWalker(getSourceFileRepository().getKnownCompilationUnits().get(unit));
-		
 		for (int i = 0; i < element; i++)
 		{
 			super.tw.next(FieldDeclaration.class);
@@ -140,15 +142,18 @@ public class MoveFieldUp extends Refactoring
 			this.randomPosition = 0;
 
 		// Do any references to the field in the class use "this."
-		for (VariableReference mr : VariableKit.getReferences(si, fd.getFieldSpecifications().get(0), this.currentDeclaration, true))
+		for (FieldSpecification fs : fd.getFieldSpecifications())
 		{
-			if (mr.toSource().contains("this."))
+			for (VariableReference mr : VariableKit.getReferences(si, fs, this.currentDeclaration, true))
 			{
-				SuperReference sr = new SuperReference();
-				
-				for (int i = 0; i < mr.getChildCount(); i++)
-					if (mr.getChildAt(i) instanceof ThisReference)
-						mr.replaceChild(mr.getChildAt(i), sr);
+				if (mr.toSource().contains("this."))
+				{
+					SuperReference sr = new SuperReference();
+
+					for (int i = 0; i < mr.getChildCount(); i++)
+						if (mr.getChildAt(i) instanceof ThisReference)
+							mr.replaceChild(mr.getChildAt(i), sr);
+				}
 			}
 		}
 		
@@ -168,8 +173,55 @@ public class MoveFieldUp extends Refactoring
 			if (!(imports.contains(ci)))
 				imports.add(ci);
 
+		// If the package import hasn't already been added and the supertype
+		// is in a different package, create and add an import to the package.
 		if (addPackageImport)
-			imports.add(getProgramFactory().createImport(PackageKit.createPackageReference(getProgramFactory(), pack)));
+		{
+			Import wholePackage = getProgramFactory().createImport(PackageKit.createPackageReference(getProgramFactory(), pack));
+			boolean contains = false;
+
+			for (Import i : imports)
+			{
+				if ((i.toString().equals(wholePackage.toString())))
+				{
+					contains = true;
+					break;
+				}
+			}
+			
+			if (!contains)
+				imports.add(wholePackage);
+		}
+		
+		// If the field type is defined as a class nested in the current class, need to contain an import to that class.
+		for (Type t : types)
+		{
+			if ((t instanceof TypeDeclaration) && (((TypeDeclaration) t).getContainingClassType() instanceof TypeDeclaration) &&
+				(((TypeDeclaration) t).getContainingClassType().equals(this.currentDeclaration)))
+			{
+				PackageReference proto = PackageKit.createPackageReference(getProgramFactory(), pack);
+				ArrayList<Identifier> identifiers = new ArrayList<Identifier>();
+				TypeDeclaration nestedClass = (TypeDeclaration) t;
+				
+				// It may be nested by more than one level, in which 
+				// case each inner class needs to be included in the import.
+				while (nestedClass.getContainingClassType() != null)
+				{
+					nestedClass = nestedClass.getContainingClassType();
+					identifiers.add(nestedClass.getIdentifier());
+				}
+				
+				for (int i = identifiers.size() - 1; i >= 0; i--)
+				{
+					PackageReference fullPackage = getProgramFactory().createPackageReference(proto, identifiers.get(i));
+					proto = fullPackage;
+				}
+				
+				imports.add(getProgramFactory().createImport(proto));
+				break;
+			}
+		}
+				
 		UnitKit.getCompilationUnit(this.superDeclaration).setImports(imports);
 		
 		// Specify refactoring information for results information.
@@ -185,16 +237,18 @@ public class MoveFieldUp extends Refactoring
 		FieldDeclaration fd = (FieldDeclaration) this.superDeclaration.getMembers().get(this.randomPosition);
 
 		// Do any references to the field in the class use "super."
-		for (VariableReference mr : VariableKit.getReferences(getCrossReferenceSourceInfo(), fd.getFieldSpecifications().get(0), 
-				                                              this.currentDeclaration, true))
+		for (FieldSpecification fs : fd.getFieldSpecifications())
 		{
-			if (mr.toSource().contains("super."))
+			for (VariableReference mr : VariableKit.getReferences(getCrossReferenceSourceInfo(), fs, this.currentDeclaration, true))
 			{
-				ThisReference tr = new ThisReference();
-				
-				for (int i = 0; i < mr.getChildCount(); i++)
-					if (mr.getChildAt(i) instanceof SuperReference)
-						mr.replaceChild(mr.getChildAt(i), tr);
+				if (mr.toSource().contains("super."))
+				{
+					ThisReference tr = new ThisReference();
+
+					for (int i = 0; i < mr.getChildCount(); i++)
+						if (mr.getChildAt(i) instanceof SuperReference)
+							mr.replaceChild(mr.getChildAt(i), tr);
+				}
 			}
 		}
 				
@@ -211,7 +265,7 @@ public class MoveFieldUp extends Refactoring
 		}
 		
 		// Reset the imports in the class.
-		UnitKit.getCompilationUnit(this.superDeclaration).setImports(this.superDeclarationImports);		
+		UnitKit.getCompilationUnit(this.superDeclaration).setImports(this.superDeclarationImports);	
 		return setProblemReport(EQUIVALENCE);
 	}
 	
@@ -289,8 +343,9 @@ public class MoveFieldUp extends Refactoring
 			// Check if fields can be accessed in super type.
 			for (Field f : fields)
 			{				
-				if (f.equals(fd.getFieldSpecifications().get(0)))
-					continue;
+				for (FieldSpecification fs : fd.getFieldSpecifications())
+					if (f.equals(fs))
+						continue;
 				
 				if (td.getFieldsInScope().contains(f))
 					return false;
@@ -321,10 +376,15 @@ public class MoveFieldUp extends Refactoring
 				if (!(typedec.equals(td)) && (types.contains(typedec)) && !(td.getPackage().equals(std.getPackage())))
 					return false;
 
-			// Check if inner types can be accessed in super type.
+			// If the current class is referenced in the field explicitly i.e. an
+			// object of the current class is being created, don't move it.
+			if (types.contains(td))
+				return false;
+
+			// Check if types can be accessed in super type.
 			for (Type t: types)
 			{
-				if ((((ClassType) t).isInner()) && ((t instanceof TypeDeclaration) || (t instanceof ClassFile)))
+				if (((t instanceof TypeDeclaration) || (t instanceof ClassFile)))
 				{
 					if (((ClassType) t).isPrivate())
 					{
@@ -333,7 +393,7 @@ public class MoveFieldUp extends Refactoring
 					}
 					else if (!((ClassType) t).isPublic())
 					{
-						if (!((ClassType) t).getContainingClassType().getPackage().equals(std.getPackage()))
+						if (!((ClassType) t).getPackage().equals(std.getPackage()))
 						{
 							if (!((ClassType) t).isProtected())
 								return false;
@@ -346,14 +406,17 @@ public class MoveFieldUp extends Refactoring
 			
 			// Checks any reference to the field in the program and if the field is being 
 			// statically referenced and is not referencing the super class it will be inapplicable.
-			for (FieldReference fr : si.getReferences(fd.getFieldSpecifications().get(0)))
+			for (FieldSpecification fs : fd.getFieldSpecifications())
 			{
-				if (!(std.getPackage().equals(MiscKit.getParentTypeDeclaration(fr).getPackage())) && !(fd.isPublic()))
-					return false;
-
-				if (fd.isStatic())
-					if ((fr.getReferencePrefix() instanceof TypeReference) && !(fr.getReferencePrefix().toSource().equals(std.getName())))
+				for (FieldReference fr : si.getReferences(fs))
+				{
+					if (!(std.getPackage().equals(MiscKit.getParentTypeDeclaration(fr).getPackage())) && !(fd.isPublic()))
 						return false;
+
+					if (fd.isStatic())
+						if ((fr.getReferencePrefix() instanceof TypeReference) && !(fr.getReferencePrefix().toSource().equals(std.getName())))
+							return false;
+				}
 			}
 			
 			return true;

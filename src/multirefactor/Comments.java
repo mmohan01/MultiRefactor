@@ -3987,3 +3987,22 @@
 //		if (i > 0)
 //			hyperplane[i][i - 1] = worstPoint[i - 1];
 //	}
+//
+//
+//  // Code was used to add an import to the package of the superclass in subclasses that were
+//  // not in the same package as the superclass when a superclass was being created to derive
+//  // from another class with the ExtractHierarchy refactoring. The code isn't needed as the 
+//  // newly extracted class will be default be located in the same package as the original class.
+//	for (ClassDeclaration cd : this.subClasses)
+//	{
+//		this.importSizes[this.subClasses.indexOf(cd)] = UnitKit.getCompilationUnit(cd).getImports().size();
+//	
+//		if (!(cd.getPackage().equals(this.subDeclaration.getPackage())))
+//		{
+//			Import i = getProgramFactory().createImport(PackageKit.createPackageReference(getProgramFactory(), 
+//					this.subDeclaration.getPackage()));
+//	
+//			if (!(UnitKit.getCompilationUnit(cd).getImports().contains(i)))
+//				attach(i, UnitKit.getCompilationUnit(cd), UnitKit.getCompilationUnit(cd).getImports().size());
+//		}
+//	}

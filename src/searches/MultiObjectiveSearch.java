@@ -200,7 +200,7 @@ public class MultiObjectiveSearch extends Search
 		for (int i = 0; i < this.c.length; i++)
 		{
 			this.ff[i] = new FitnessFunction(m, this.c[i].getConfiguration());
-			benchmark[i] = 0;
+			benchmark[i] = 0.0f;
 		}
 		
 		for (int i = 0; i < this.populationSize; i++)

@@ -1,3 +1,4 @@
+
 package refactorings.type;
 
 import java.util.ArrayList;
@@ -18,6 +19,7 @@ import recoder.java.declaration.ClassDeclaration;
 import recoder.java.declaration.ConstructorDeclaration;
 import recoder.java.declaration.Extends;
 import recoder.java.declaration.FieldDeclaration;
+import recoder.java.declaration.FieldSpecification;
 import recoder.java.declaration.MemberDeclaration;
 import recoder.java.declaration.MethodDeclaration;
 import recoder.java.declaration.TypeDeclaration;
@@ -172,8 +174,26 @@ public class CollapseHierarchy extends Refactoring
 			if (!(imports.contains(ci)))
 				imports.add(ci);
 			
+		// If the package import hasn't already been added and the supertype
+		// is in a different package, create and add an import to the package.
 		if (addPackageImport)
-			imports.add(getProgramFactory().createImport(PackageKit.createPackageReference(getProgramFactory(), pack)));
+		{
+			Import wholePackage = getProgramFactory().createImport(PackageKit.createPackageReference(getProgramFactory(), pack));
+			boolean contains = false;
+
+			for (Import i : imports)
+			{
+				if ((i.toString().equals(wholePackage.toString())))
+				{
+					contains = true;
+					break;
+				}
+			}
+
+			if (!contains)
+				imports.add(wholePackage);
+		}
+
 		UnitKit.getCompilationUnit(this.superDeclaration).setImports(imports);
 		
 		// Update any sub classes to now extend from the super class.		
@@ -278,7 +298,7 @@ public class CollapseHierarchy extends Refactoring
 		// Prevents "Zero Service" outputs logged to the console.
 		if (td.getProgramModelInfo() == null)
 			td.getFactory().getServiceConfiguration().getChangeHistory().updateModel();
-
+		
 		// Makes a number of initial checks against the method, the class and the super class in order to quickly exclude insufficient candidates. 
 		if (!(td.getSupertypes().get(0) instanceof TypeDeclaration) || !(td.getSupertypes().get(0).isOrdinaryClass()) ||
 			(td.getAllSupertypes().size() == 2) || !(td.isOrdinaryClass()) || (td.getSupertypes().get(0).isAbstract()) || 
@@ -317,6 +337,9 @@ public class CollapseHierarchy extends Refactoring
 					Method m = si.getMethod(mr);
 					if (td.getMethods().contains(m))
 						continue;
+					
+					if ((m instanceof ConstructorDeclaration) && (m.getName().equals(td.getName())))
+						return false;
 
 					if (!(m.isPublic()) && !(m.isPrivate()))
 					{
@@ -351,7 +374,7 @@ public class CollapseHierarchy extends Refactoring
 					}
 				}
 
-				// Get types accessed in method.
+				// Get types accessed in member declaration.
 				ArrayList<Type> types = super.getTypes(md, si);
 
 				// In the case that a nested class in the current unit is being referenced 
@@ -360,14 +383,22 @@ public class CollapseHierarchy extends Refactoring
 					if (!(typedec.equals(td)) && (types.contains(typedec)) && !(td.getPackage().equals(std.getPackage())))
 						return false;
 				
-				// Check if inner types can be accessed in super type.
+				// Check if types can be accessed in super type.
 				for (Type t: types)
 				{
-					if ((((ClassType) t).isInner()) && ((t instanceof TypeDeclaration) || (t instanceof ClassFile)))
+					if (((t instanceof TypeDeclaration) || (t instanceof ClassFile)))
 					{
-						if (!(((ClassType) t).isPublic()) && !(((ClassType) t).isPrivate()))
+						if (((ClassType) t).equals(td))
+							continue;
+						
+						if (((ClassType) t).isPrivate())
 						{
-							if (!((ClassType) t).getContainingClassType().getPackage().equals(std.getPackage()))
+							if (!(((ClassType) t).equals(std)))
+								return false;
+						}
+						else if (!(((ClassType) t).isPublic()))
+						{
+							if (!((ClassType) t).getPackage().equals(std.getPackage()))
 							{
 								if (!((ClassType) t).isProtected())
 									return false;
@@ -421,10 +452,11 @@ public class CollapseHierarchy extends Refactoring
 					}
 			
 					if (md.isStatic())
-						for (FieldReference mr : si.getReferences(((FieldDeclaration) md).getFieldSpecifications().get(0)))
-							if ((((FieldReference) mr).getReferencePrefix() instanceof TypeReference) && 
-								!(((FieldReference) mr).getReferencePrefix().toSource().equals(std.getName()))) 
-								return false;
+						for (FieldSpecification fs : ((FieldDeclaration) md).getFieldSpecifications())
+							for (FieldReference mr : si.getReferences(fs))
+								if ((((FieldReference) mr).getReferencePrefix() instanceof TypeReference) && 
+									!(((FieldReference) mr).getReferencePrefix().toSource().equals(std.getName()))) 
+									return false;
 				}
 			}
 			

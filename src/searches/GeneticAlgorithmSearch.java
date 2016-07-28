@@ -63,7 +63,7 @@ public class GeneticAlgorithmSearch extends Search
 				                       this.generations, this.populationSize, this.crossoverProbability, this.mutationProbability);
 		Metrics m = new Metrics(super.sc.getSourceFileRepository().getKnownCompilationUnits());	
 		this.ff = new FitnessFunction(m, super.c.getConfiguration());
-		float benchmark = 0;
+		float benchmark = 0.0f;
 		
 		if (this.printAll)
 		{
@@ -214,6 +214,7 @@ public class GeneticAlgorithmSearch extends Search
 		
 		for (int i = 0; i < this.populationSize; i++)
 		{
+			System.out.printf("\r\nPOPULATION %d INITIALISE", i + 1);
 			// Reinitialise the initial program model.
 			if (i > 0)
 				resetModel();
@@ -242,6 +243,7 @@ public class GeneticAlgorithmSearch extends Search
 				                                  super.c.getRefactorings().get(result[0]).getName(position[0], position[1])});
 					super.c.getRefactorings().get(result[0]).transform(super.c.getRefactorings().get(result[0]).analyze((j + 1), position[0], position[1]));
 					refactoringInfo.add(super.c.getRefactorings().get(result[0]).getRefactoringInfo());
+					System.out.printf("\r\n  %s", super.c.getRefactorings().get(result[0]).getRefactoringInfo());
 					refSequence.add(result[0]);
 					posSequence.add(position);
 				}

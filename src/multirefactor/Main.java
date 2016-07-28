@@ -47,8 +47,10 @@ public class Main
 		} 
 		else 
 		{
-			ToolTasksPart1 run1 = new ToolTasksPart1();
-			run1.run();
+			Tasks run = new Tasks();
+			run.run();
+//			ToolTasksPart3 run3 = new ToolTasksPart3();
+//			run3.run();
 		}
 		
 		System.out.printf("\r\n\r\nFinished!");

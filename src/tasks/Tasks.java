@@ -36,8 +36,8 @@ public class Tasks
 		// Create empty list of refactorings.
 		// Reads the metric configuration in from them to a specified text file.
 		ArrayList<Refactoring> refactorings = new ArrayList<Refactoring>();
-		Configuration c = new Configuration("./configurations/allmetrics.txt", refactorings);
-		Configuration[] cGA = {new Configuration("./configurations/qualityfunction1.txt"), new Configuration("qualityfunction-objective2"),
+		Configuration c = new Configuration("./configurations/qualityfunction-objective1.txt", refactorings);
+		Configuration[] cGA = {new Configuration("./configurations/qualityfunction-objective1.txt"), new Configuration("qualityfunction-objective2"),
 							   new Configuration("qualityfunction-objective3"), new Configuration("./configurations/visibilityratio.txt"), new Configuration("./configurations/linesofcode.txt")};
 		
 		// Initialise search tasks.
@@ -46,7 +46,7 @@ public class Tasks
 		searches.add(random);
 		HillClimbingSearch hillClimbing = new HillClimbingSearch(sc, c, 5, 10, true, 100);
 		searches.add(hillClimbing);
-		SimulatedAnnealingSearch simulatedAnnealing = new SimulatedAnnealingSearch(sc, c, 100, 4.0f, false);
+		SimulatedAnnealingSearch simulatedAnnealing = new SimulatedAnnealingSearch(sc, c, 100, 4.0f, false); 
 		searches.add(simulatedAnnealing);
 		GeneticAlgorithmSearch geneticAlgorithm = new GeneticAlgorithmSearch(sc, c, sourceFiles);
 		searches.add(geneticAlgorithm);
@@ -168,6 +168,7 @@ public class Tasks
 			
 			searches.get(i).setServiceConfiguration(sc);
 			searches.get(i).setResultsPath(resultsDir[i]);
+			if (i == 3)
 			searches.get(i).run();
 		}	
 

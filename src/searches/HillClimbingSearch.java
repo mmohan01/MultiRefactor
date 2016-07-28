@@ -50,7 +50,7 @@ public class HillClimbingSearch extends Search
 		String currentRefactoringInfo = "";
 		boolean keepGoing, improved;
 		
-		float benchmark = 0;
+		float benchmark = 0.0f;
 		float currentScore = benchmark;
 		float newScore;
 		int iteration = 1;

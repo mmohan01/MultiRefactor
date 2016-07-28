@@ -23,12 +23,17 @@ import recoder.java.declaration.ConstructorDeclaration;
 import recoder.java.declaration.DeclarationSpecifier;
 import recoder.java.declaration.Extends;
 import recoder.java.declaration.FieldDeclaration;
+import recoder.java.declaration.FieldSpecification;
+import recoder.java.declaration.Implements;
+import recoder.java.declaration.InterfaceDeclaration;
 import recoder.java.declaration.MemberDeclaration;
 import recoder.java.declaration.MethodDeclaration;
 import recoder.java.declaration.TypeDeclaration;
+import recoder.java.declaration.TypeParameterDeclaration;
 import recoder.java.reference.FieldReference;
 import recoder.java.reference.MemberReference;
 import recoder.java.reference.MethodReference;
+import recoder.java.reference.PackageReference;
 import recoder.java.reference.SuperConstructorReference;
 import recoder.java.reference.SuperReference;
 import recoder.java.reference.ThisReference;
@@ -95,6 +100,30 @@ public class ExtractSubclass extends Refactoring
 		ArrayList<Type> types = new ArrayList<Type>(distinctTypes);
 		ASTList<Import> imports = super.getMemberImports(types, UnitKit.getCompilationUnit(this.currentDeclaration).getImports(), si);
 		
+		// If class being extracted from is a nested class, need to contain an import to that class.
+		if (this.currentDeclaration.getContainingClassType() instanceof TypeDeclaration)
+		{
+			PackageReference proto = PackageKit.createPackageReference(getProgramFactory(), this.currentDeclaration.getPackage());
+			ArrayList<Identifier> identifiers = new ArrayList<Identifier>();
+			TypeDeclaration nestedClass = this.currentDeclaration;
+
+			// It may be nested by more than one level, in which 
+			// case each inner class needs to be included in the import.
+			while (nestedClass.getContainingClassType() != null)
+			{
+				nestedClass = nestedClass.getContainingClassType();
+				identifiers.add(nestedClass.getIdentifier());
+			}
+
+			for (int i = identifiers.size() - 1; i >= 0; i--)
+			{
+				PackageReference fullPackage = getProgramFactory().createPackageReference(proto, identifiers.get(i));
+				proto = fullPackage;
+			}
+
+			imports.add(getProgramFactory().createImport(proto));
+		}
+		
 		// Construct refactoring transformation.
 		// The transformation is handled here manually and the transformation
 		// method will do nothing for this refactoring when it is called.
@@ -126,8 +155,10 @@ public class ExtractSubclass extends Refactoring
 		attach(superclass, (ClassDeclaration) this.subDeclaration);
 		attach(newIdentifier, this.subDeclaration);
 		this.subDeclaration.setDeclarationSpecifiers(declarations);
+		Implements empty = getProgramFactory().createImplements();
+		attach(empty, (ClassDeclaration) this.subDeclaration);
 		ASTList<MemberDeclaration> remove = new ASTArrayList<MemberDeclaration>(this.subDeclaration.getMembers().size());
-		
+
 		for (MemberDeclaration md : this.subDeclaration.getMembers())
 			remove.add(md);
 		
@@ -141,28 +172,17 @@ public class ExtractSubclass extends Refactoring
 		attach(this.unit);
 		this.subDeclaration.getFactory().getServiceConfiguration().getChangeHistory().updateModel();
 		
-		for (ClassDeclaration cd : this.subClasses)
-		{
-			this.importSizes[this.subClasses.indexOf(cd)] = UnitKit.getCompilationUnit(cd).getImports().size();
-			
-			if (!(cd.getPackage().equals(this.subDeclaration.getPackage())))
-			{
-				Import i = getProgramFactory().createImport(PackageKit.createPackageReference(getProgramFactory(), 
-						                                                                      this.subDeclaration.getPackage()));
-				
-				if (!(UnitKit.getCompilationUnit(cd).getImports().contains(i)))
-					attach(i, UnitKit.getCompilationUnit(cd), UnitKit.getCompilationUnit(cd).getImports().size());
-			}
-			
-			Extends subClass = getProgramFactory().createExtends(getProgramFactory().createTypeReference(this.subDeclaration.getIdentifier()));
-			attach(subClass, cd);
-		}
-		
 		// Move members from the current class to the new extracted class.
 		for (MemberDeclaration md : this.members)
 		{
 			detach(md);
 			attach(md, this.subDeclaration, this.subDeclaration.getMembers().size());
+		}
+		
+		for (ClassDeclaration cd : this.subClasses)
+		{			
+			Extends subClass = getProgramFactory().createExtends(getProgramFactory().createTypeReference(this.subDeclaration.getIdentifier()));
+			attach(subClass, cd);
 		}
 			
 		// Specify refactoring information for results information.
@@ -228,19 +248,18 @@ public class ExtractSubclass extends Refactoring
 	}
 
 	public boolean mayRefactor(TypeDeclaration td)
-	{
+	{		
 		// Makes a number of initial checks against the class 
 		// in order to quickly exclude insufficient candidates. 
-		if (!(td.isOrdinaryClass()) || (td.isPrivate() || (td.isFinal()) || (td.getName() == null))) 
+		if (!(td.isOrdinaryClass()) || (td.isPrivate() || (td.isFinal()) || (td.getName() == null)) || 
+			 ((td.getContainingClassType() instanceof TypeDeclaration) && !(td.isStatic())) ||
+			 (td.getContainingClassType() instanceof InterfaceDeclaration)) 
 			return false;
 		else
-		{
+		{			
 			// Prevents "Zero Service" outputs logged to the console.
 			if (td.getProgramModelInfo() == null)
 				td.getFactory().getServiceConfiguration().getChangeHistory().updateModel();
-			
-			if (!(td.getName().equals("Helpers")) && !(td.getName().equals("Unique")))
-				return false;
 			
 			boolean next;
 			boolean defaultConstructor = false;
@@ -301,17 +320,21 @@ public class ExtractSubclass extends Refactoring
 				{			
 					// Checks any reference to the field in the program and if it
 					// refers explicitly to the current class it will not be applicable.
-					for (FieldReference fr : si.getReferences(((FieldDeclaration) md).getFieldSpecifications().get(0)))
+					for (FieldSpecification fs : ((FieldDeclaration) md).getFieldSpecifications())
 					{
-						if ((fr.getReferencePrefix() instanceof TypeReference) || 
-							((si.getType(fr.getReferencePrefix()) != null) && 
-							 !(fr.getReferencePrefix() instanceof ThisReference) && 
-							 !(fr.getReferencePrefix() instanceof SuperReference) && 
-							 (si.getType(fr.getReferencePrefix()).equals(td))))
+						for (FieldReference fr : si.getReferences(fs))
 						{
-							next = true;
+							if ((fr.getReferencePrefix() instanceof TypeReference) || ((si.getType(fr.getReferencePrefix()) != null) && 
+								!(fr.getReferencePrefix() instanceof ThisReference) && 	!(fr.getReferencePrefix() instanceof SuperReference) && 
+								(si.getType(fr.getReferencePrefix()).equals(td))))
+							{
+								next = true;
+								break;
+							}							
+						}
+						
+						if (next)
 							break;
-						}							
 					}
 					
 					if (!next)
@@ -332,7 +355,6 @@ public class ExtractSubclass extends Refactoring
 			// sub class without breaking the semantics of the program.
 			for (MethodDeclaration md : availableMethods)
 			{
-
 				next = false;
 				methodList.clear();
 				methodList.add(md);
@@ -357,19 +379,10 @@ public class ExtractSubclass extends Refactoring
 				
 				// Covers the case that the return type includes a generic type as in this 
 				// case it doesn't seem to catch any references to the method in the class.
-				if (MethodKit.getReferences(si, md, td, true).size() == 0)
-				{
-					String returnType = md.toSource().substring(0, md.toSource().indexOf(md.getName() + '('));
-					while (returnType.indexOf('<') != -1)
-					{
-						returnType = returnType.substring(returnType.indexOf('<'));
-						if ((returnType.length() >= 3) && (returnType.charAt(2) == '>'))
-						{
-							next = true;
-							break;
-						}
-					}
-				}
+				if ((MethodKit.getReferences(si, md, td, true).size() == 0) && (md.getReturnType() != null))
+					if (((md.getReturnType() instanceof ClassType) && (((ClassType) md.getReturnType()).getTypeParameters() != null)) || 
+						(md.getReturnType() instanceof TypeParameterDeclaration))
+						next = true;
 				
 				// If the group of methods makes up more than 50% of the methods in the class, discard it.
 				if ((methodList.size() * 2) > td.getMethods().size())
@@ -440,29 +453,35 @@ public class ExtractSubclass extends Refactoring
 						boolean inMethods = false;
 						boolean outMethods = false;
 
-						for (VariableReference vr : VariableKit.getReferences(si, ((FieldDeclaration) fd).getFieldSpecifications().get(0), td, true))
+						for (FieldSpecification fs : ((FieldDeclaration) fd).getFieldSpecifications())
 						{
-							if (methodList.contains(MiscKit.getParentMemberDeclaration(vr)))
+							for (VariableReference vr : VariableKit.getReferences(si, fs, td, true))
 							{
-								inMethods = true;
-								if (outMethods)
-									break;
+									if (methodList.contains(MiscKit.getParentMemberDeclaration(vr)))
+									{
+										inMethods = true;
+										if (outMethods)
+											break;
+									}
+									else
+									{
+										outMethods = true;
+										if (inMethods)
+											break;
+									}
 							}
-							else
-							{
-								outMethods = true;
-								if (inMethods)
-									break;
-							}
+							
+							if ((inMethods) && (outMethods))
+								break;
 						}
 
 						if  (((outMethods) && (inMethods) && (fd.isPrivate())) || 
-							 (!(outMethods) && (inMethods) && (fd.isPrivate()) && !(availableMethods.contains(fd))))
+							 (!(outMethods) && (inMethods) && (fd.isPrivate()) && !(availableFields.contains(fd))))
 						{
 							next = true;
 							break;
 						}
-						else if (!(outMethods) && (inMethods) && (availableMethods.contains(fd)))
+						else if (!(outMethods) && (inMethods) && (availableFields.contains(fd)))
 							fieldsToMove.add((FieldDeclaration) fd);
 					}
 				}
@@ -502,21 +521,24 @@ public class ExtractSubclass extends Refactoring
 						{						
 							for (ClassType c : classes)
 							{
-								if (VariableKit.getReferences(si, f.getFieldSpecifications().get(0), (TypeDeclaration) c, true).size() > 0)
+								for (FieldSpecification fs : f.getFieldSpecifications())
 								{
-									this.subClasses.add((ClassDeclaration) ct);
-									breakout = true;
-									break;
+									if (VariableKit.getReferences(si, fs, (TypeDeclaration) c, true).size() > 0)
+									{
+										this.subClasses.add((ClassDeclaration) ct);
+										breakout = true;
+										break;
+									}
 								}
+								
+								if (breakout)
+									break;
 							}
 							
 							if (breakout)
 								break;
 						}
 					}
-					
-					if (!(this.subClasses.contains((ClassDeclaration) ct)))
-						this.subClasses.add((ClassDeclaration) ct);
 					
 					// If any of these classes contain any super references to
 					// a constructor with parameters, the group will be discarded.

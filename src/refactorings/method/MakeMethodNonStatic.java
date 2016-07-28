@@ -92,7 +92,7 @@ public class MakeMethodNonStatic extends Refactoring
 		{
 			for (MemberReference mr : getCrossReferenceSourceInfo().getReferences(md))
 				if (((MethodReference) mr).getReferencePrefix() instanceof TypeReference)
-						return false;
+					return false;
 			
 			return true;
 		}	

@@ -45,7 +45,7 @@ public class RandomSearch extends Search
 		ArrayList<Integer> refactorings = new ArrayList<Integer>(this.iterations);
 		ArrayList<int[]> positions = new ArrayList<int[]>(this.iterations);
 
-		float benchmark = 0;
+		float benchmark = 0.0f;
 		float best = benchmark;
 		float newValue = 0;
 		int bestIteration = 1;

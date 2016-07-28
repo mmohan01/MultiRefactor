@@ -7,6 +7,7 @@ import recoder.convenience.TreeWalker;
 import recoder.java.ProgramElement;
 import recoder.java.declaration.EnumConstantDeclaration;
 import recoder.java.declaration.FieldDeclaration;
+import recoder.java.declaration.FieldSpecification;
 import recoder.java.declaration.InterfaceDeclaration;
 import recoder.java.reference.FieldReference;
 import recoder.java.reference.TypeReference;
@@ -88,8 +89,9 @@ public class MakeFieldNonStatic extends Refactoring
 			return false;
 		else
 		{
-			for (FieldReference fr : getCrossReferenceSourceInfo().getReferences(fd.getFieldSpecifications().get(0)))
-				if (fr.getReferencePrefix() instanceof TypeReference)
+			for (FieldSpecification fs : fd.getFieldSpecifications())
+				for (FieldReference fr : getCrossReferenceSourceInfo().getReferences(fs))
+					if (fr.getReferencePrefix() instanceof TypeReference)
 						return false;
 			
 			return true;

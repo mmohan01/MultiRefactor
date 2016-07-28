@@ -74,7 +74,7 @@ public class DecreaseFieldSecurity extends Refactoring
 	}
 	
 	public boolean mayRefactor(FieldDeclaration fd)
-	{
+	{		
 		if (fd.getVisibilityModifier() instanceof Public)
 			return false;
 		else
