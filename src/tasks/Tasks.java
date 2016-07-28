@@ -168,7 +168,6 @@ public class Tasks
 			
 			searches.get(i).setServiceConfiguration(sc);
 			searches.get(i).setResultsPath(resultsDir[i]);
-			if (i == 3)
 			searches.get(i).run();
 		}	
 
