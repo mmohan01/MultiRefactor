@@ -49,8 +49,6 @@ public class Main
 		{
 			Tasks run = new Tasks();
 			run.run();
-//			ToolTasksPart3 run3 = new ToolTasksPart3();
-//			run3.run();
 		}
 		
 		System.out.printf("\r\n\r\nFinished!");
