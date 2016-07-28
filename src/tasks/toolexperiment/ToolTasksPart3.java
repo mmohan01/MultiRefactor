@@ -77,53 +77,53 @@ public class ToolTasksPart3 extends Tasks
 		
 		// Initialise search tasks.
 		ArrayList<Search> searches = new ArrayList<Search>();
-//		GeneticAlgorithmSearch geneticAlgorithm1 = new GeneticAlgorithmSearch(sc, c, sourceFiles[0], true, 100, 50, 0.2f, 0.8f);
-//		geneticAlgorithm1.setInitialRefactoringRange(50);
-//		searches.add(geneticAlgorithm1);
-//		GeneticAlgorithmSearch geneticAlgorithm2 = new GeneticAlgorithmSearch(sc, c, sourceFiles[0], true, 100, 50, 0.2f, 0.8f);
-//		geneticAlgorithm2.setInitialRefactoringRange(50);
-//		searches.add(geneticAlgorithm2);
-//		GeneticAlgorithmSearch geneticAlgorithm3 = new GeneticAlgorithmSearch(sc, c, sourceFiles[0], true, 100, 50, 0.2f, 0.8f);
-//		geneticAlgorithm3.setInitialRefactoringRange(50);
-//		searches.add(geneticAlgorithm3);
-//		GeneticAlgorithmSearch geneticAlgorithm4 = new GeneticAlgorithmSearch(sc, c, sourceFiles[0], true, 100, 50, 0.2f, 0.8f);
-//		geneticAlgorithm4.setInitialRefactoringRange(50);
-//		searches.add(geneticAlgorithm4);
-//		GeneticAlgorithmSearch geneticAlgorithm5 = new GeneticAlgorithmSearch(sc, c, sourceFiles[0], true, 100, 50, 0.2f, 0.8f);
-//		geneticAlgorithm5.setInitialRefactoringRange(50);
-//		searches.add(geneticAlgorithm5);
-//		
-//		GeneticAlgorithmSearch geneticAlgorithm6 = new GeneticAlgorithmSearch(sc, c, sourceFiles[1], true, 100, 50, 0.2f, 0.8f);
-//		geneticAlgorithm6.setInitialRefactoringRange(50);
-//		searches.add(geneticAlgorithm6);
-//		GeneticAlgorithmSearch geneticAlgorithm7 = new GeneticAlgorithmSearch(sc, c, sourceFiles[1], true, 100, 50, 0.2f, 0.8f);
-//		geneticAlgorithm7.setInitialRefactoringRange(50);
-//		searches.add(geneticAlgorithm7);
-//		GeneticAlgorithmSearch geneticAlgorithm8 = new GeneticAlgorithmSearch(sc, c, sourceFiles[1], true, 100, 50, 0.2f, 0.8f);
-//		geneticAlgorithm8.setInitialRefactoringRange(50);
-//		searches.add(geneticAlgorithm8);
-//		GeneticAlgorithmSearch geneticAlgorithm9 = new GeneticAlgorithmSearch(sc, c, sourceFiles[1], true, 100, 50, 0.2f, 0.8f);
-//		geneticAlgorithm9.setInitialRefactoringRange(50);
-//		searches.add(geneticAlgorithm9);
-//		GeneticAlgorithmSearch geneticAlgorithm10 = new GeneticAlgorithmSearch(sc, c, sourceFiles[1], true, 100, 50, 0.2f, 0.8f);
-//		geneticAlgorithm10.setInitialRefactoringRange(50);
-//		searches.add(geneticAlgorithm10);
-//		
-//		GeneticAlgorithmSearch geneticAlgorithm11 = new GeneticAlgorithmSearch(sc, c, sourceFiles[2], true, 100, 50, 0.2f, 0.8f);
-//		geneticAlgorithm11.setInitialRefactoringRange(50);
-//		searches.add(geneticAlgorithm11);
-//		GeneticAlgorithmSearch geneticAlgorithm12 = new GeneticAlgorithmSearch(sc, c, sourceFiles[2], true, 100, 50, 0.2f, 0.8f);
-//		geneticAlgorithm12.setInitialRefactoringRange(50);
-//		searches.add(geneticAlgorithm12);
-//		GeneticAlgorithmSearch geneticAlgorithm13 = new GeneticAlgorithmSearch(sc, c, sourceFiles[2], true, 100, 50, 0.2f, 0.8f);
-//		geneticAlgorithm13.setInitialRefactoringRange(50);
-//		searches.add(geneticAlgorithm13);
-//		GeneticAlgorithmSearch geneticAlgorithm14 = new GeneticAlgorithmSearch(sc, c, sourceFiles[2], true, 100, 50, 0.2f, 0.8f);
-//		geneticAlgorithm14.setInitialRefactoringRange(50);
-//		searches.add(geneticAlgorithm14);
-//		GeneticAlgorithmSearch geneticAlgorithm15 = new GeneticAlgorithmSearch(sc, c, sourceFiles[2], true, 100, 50, 0.2f, 0.8f);
-//		geneticAlgorithm15.setInitialRefactoringRange(50);
-//		searches.add(geneticAlgorithm15);
+		GeneticAlgorithmSearch geneticAlgorithm1 = new GeneticAlgorithmSearch(sc, c, sourceFiles[0], true, 100, 50, 0.2f, 0.8f);
+		geneticAlgorithm1.setInitialRefactoringRange(50);
+		searches.add(geneticAlgorithm1);
+		GeneticAlgorithmSearch geneticAlgorithm2 = new GeneticAlgorithmSearch(sc, c, sourceFiles[0], true, 100, 50, 0.2f, 0.8f);
+		geneticAlgorithm2.setInitialRefactoringRange(50);
+		searches.add(geneticAlgorithm2);
+		GeneticAlgorithmSearch geneticAlgorithm3 = new GeneticAlgorithmSearch(sc, c, sourceFiles[0], true, 100, 50, 0.2f, 0.8f);
+		geneticAlgorithm3.setInitialRefactoringRange(50);
+		searches.add(geneticAlgorithm3);
+		GeneticAlgorithmSearch geneticAlgorithm4 = new GeneticAlgorithmSearch(sc, c, sourceFiles[0], true, 100, 50, 0.2f, 0.8f);
+		geneticAlgorithm4.setInitialRefactoringRange(50);
+		searches.add(geneticAlgorithm4);
+		GeneticAlgorithmSearch geneticAlgorithm5 = new GeneticAlgorithmSearch(sc, c, sourceFiles[0], true, 100, 50, 0.2f, 0.8f);
+		geneticAlgorithm5.setInitialRefactoringRange(50);
+		searches.add(geneticAlgorithm5);
+		
+		GeneticAlgorithmSearch geneticAlgorithm6 = new GeneticAlgorithmSearch(sc, c, sourceFiles[1], true, 100, 50, 0.2f, 0.8f);
+		geneticAlgorithm6.setInitialRefactoringRange(50);
+		searches.add(geneticAlgorithm6);
+		GeneticAlgorithmSearch geneticAlgorithm7 = new GeneticAlgorithmSearch(sc, c, sourceFiles[1], true, 100, 50, 0.2f, 0.8f);
+		geneticAlgorithm7.setInitialRefactoringRange(50);
+		searches.add(geneticAlgorithm7);
+		GeneticAlgorithmSearch geneticAlgorithm8 = new GeneticAlgorithmSearch(sc, c, sourceFiles[1], true, 100, 50, 0.2f, 0.8f);
+		geneticAlgorithm8.setInitialRefactoringRange(50);
+		searches.add(geneticAlgorithm8);
+		GeneticAlgorithmSearch geneticAlgorithm9 = new GeneticAlgorithmSearch(sc, c, sourceFiles[1], true, 100, 50, 0.2f, 0.8f);
+		geneticAlgorithm9.setInitialRefactoringRange(50);
+		searches.add(geneticAlgorithm9);
+		GeneticAlgorithmSearch geneticAlgorithm10 = new GeneticAlgorithmSearch(sc, c, sourceFiles[1], true, 100, 50, 0.2f, 0.8f);
+		geneticAlgorithm10.setInitialRefactoringRange(50);
+		searches.add(geneticAlgorithm10);
+		
+		GeneticAlgorithmSearch geneticAlgorithm11 = new GeneticAlgorithmSearch(sc, c, sourceFiles[2], true, 100, 50, 0.2f, 0.8f);
+		geneticAlgorithm11.setInitialRefactoringRange(50);
+		searches.add(geneticAlgorithm11);
+		GeneticAlgorithmSearch geneticAlgorithm12 = new GeneticAlgorithmSearch(sc, c, sourceFiles[2], true, 100, 50, 0.2f, 0.8f);
+		geneticAlgorithm12.setInitialRefactoringRange(50);
+		searches.add(geneticAlgorithm12);
+		GeneticAlgorithmSearch geneticAlgorithm13 = new GeneticAlgorithmSearch(sc, c, sourceFiles[2], true, 100, 50, 0.2f, 0.8f);
+		geneticAlgorithm13.setInitialRefactoringRange(50);
+		searches.add(geneticAlgorithm13);
+		GeneticAlgorithmSearch geneticAlgorithm14 = new GeneticAlgorithmSearch(sc, c, sourceFiles[2], true, 100, 50, 0.2f, 0.8f);
+		geneticAlgorithm14.setInitialRefactoringRange(50);
+		searches.add(geneticAlgorithm14);
+		GeneticAlgorithmSearch geneticAlgorithm15 = new GeneticAlgorithmSearch(sc, c, sourceFiles[2], true, 100, 50, 0.2f, 0.8f);
+		geneticAlgorithm15.setInitialRefactoringRange(50);
+		searches.add(geneticAlgorithm15);
 		
 		GeneticAlgorithmSearch geneticAlgorithm16 = new GeneticAlgorithmSearch(sc, c, sourceFiles[3], true, 100, 50, 0.2f, 0.8f);
 		geneticAlgorithm16.setInitialRefactoringRange(50);
@@ -141,46 +141,46 @@ public class ToolTasksPart3 extends Tasks
 		geneticAlgorithm20.setInitialRefactoringRange(50);
 		searches.add(geneticAlgorithm20);
 		
-//		GeneticAlgorithmSearch geneticAlgorithm21 = new GeneticAlgorithmSearch(sc, c, sourceFiles[4], true, 100, 50, 0.2f, 0.8f);
-//		geneticAlgorithm21.setInitialRefactoringRange(50);
-//		searches.add(geneticAlgorithm21);
-//		GeneticAlgorithmSearch geneticAlgorithm22 = new GeneticAlgorithmSearch(sc, c, sourceFiles[4], true, 100, 50, 0.2f, 0.8f);
-//		geneticAlgorithm22.setInitialRefactoringRange(50);
-//		searches.add(geneticAlgorithm22);
-//		GeneticAlgorithmSearch geneticAlgorithm23 = new GeneticAlgorithmSearch(sc, c, sourceFiles[4], true, 100, 50, 0.2f, 0.8f);
-//		geneticAlgorithm23.setInitialRefactoringRange(50);
-//		searches.add(geneticAlgorithm23);
-//		GeneticAlgorithmSearch geneticAlgorithm24 = new GeneticAlgorithmSearch(sc, c, sourceFiles[4], true, 100, 50, 0.2f, 0.8f);
-//		geneticAlgorithm24.setInitialRefactoringRange(50);
-//		searches.add(geneticAlgorithm24);
-//		GeneticAlgorithmSearch geneticAlgorithm25 = new GeneticAlgorithmSearch(sc, c, sourceFiles[4], true, 100, 50, 0.2f, 0.8f);
-//		geneticAlgorithm25.setInitialRefactoringRange(50);
-//		searches.add(geneticAlgorithm25);
+		GeneticAlgorithmSearch geneticAlgorithm21 = new GeneticAlgorithmSearch(sc, c, sourceFiles[4], true, 100, 50, 0.2f, 0.8f);
+		geneticAlgorithm21.setInitialRefactoringRange(50);
+		searches.add(geneticAlgorithm21);
+		GeneticAlgorithmSearch geneticAlgorithm22 = new GeneticAlgorithmSearch(sc, c, sourceFiles[4], true, 100, 50, 0.2f, 0.8f);
+		geneticAlgorithm22.setInitialRefactoringRange(50);
+		searches.add(geneticAlgorithm22);
+		GeneticAlgorithmSearch geneticAlgorithm23 = new GeneticAlgorithmSearch(sc, c, sourceFiles[4], true, 100, 50, 0.2f, 0.8f);
+		geneticAlgorithm23.setInitialRefactoringRange(50);
+		searches.add(geneticAlgorithm23);
+		GeneticAlgorithmSearch geneticAlgorithm24 = new GeneticAlgorithmSearch(sc, c, sourceFiles[4], true, 100, 50, 0.2f, 0.8f);
+		geneticAlgorithm24.setInitialRefactoringRange(50);
+		searches.add(geneticAlgorithm24);
+		GeneticAlgorithmSearch geneticAlgorithm25 = new GeneticAlgorithmSearch(sc, c, sourceFiles[4], true, 100, 50, 0.2f, 0.8f);
+		geneticAlgorithm25.setInitialRefactoringRange(50);
+		searches.add(geneticAlgorithm25);
 		
 		String[] metricConfiguration = new String[]{
-//				"./configurations/classdesignsize.txt",
-//				"./configurations/numberofhierarchies.txt",
-//				"./configurations/averagenumberofancestors.txt",
-//				"./configurations/dataaccessmetric.txt",
-//				"./configSurations/directclasscoupling.txt",
-//				"./configurations/cohesionamongmethods.txt",
-//				"./configurations/aggregation.txt",
-//				"./configurations/functionalabstraction.txt",
-//				"./configurations/numberofpolymorphicmethods.txt",
-				"./configurations/classinterfacesize.txt"};//,
-//				"./configurations/numberofmethods.txt",
-//				"./configurations/weightedmethodsperclass.txt",
-//				"./configurations/numberofchildren.txt",
-//				"./configurations/abstractness.txt",
-//				"./configurations/abstractratio.txt",
-//				"./configurations/staticratio.txt",
-//				"./configurations/finalratio.txt",
-//				"./configurations/constantratio.txt",
-//				"./configurations/innerclassratio.txt",
-//				"./configurations/referencedmethodsratio.txt",
-//				"./configurations/visibilityratio.txt",
-//				"./configurations/linesofcode.txt",
-//				"./configurations/numberoffiles.txt"};
+				"./configurations/classdesignsize.txt",
+				"./configurations/numberofhierarchies.txt",
+				"./configurations/averagenumberofancestors.txt",
+				"./configurations/dataaccessmetric.txt",
+				"./configSurations/directclasscoupling.txt",
+				"./configurations/cohesionamongmethods.txt",
+				"./configurations/aggregation.txt",
+				"./configurations/functionalabstraction.txt",
+				"./configurations/numberofpolymorphicmethods.txt",
+				"./configurations/classinterfacesize.txt",
+				"./configurations/numberofmethods.txt",
+				"./configurations/weightedmethodsperclass.txt",
+				"./configurations/numberofchildren.txt",
+				"./configurations/abstractness.txt",
+				"./configurations/abstractratio.txt",
+				"./configurations/staticratio.txt",
+				"./configurations/finalratio.txt",
+				"./configurations/constantratio.txt",
+				"./configurations/innerclassratio.txt",
+				"./configurations/referencedmethodsratio.txt",
+				"./configurations/visibilityratio.txt",
+				"./configurations/linesofcode.txt",
+				"./configurations/numberoffiles.txt"};
 		
 		// Create list of output directories for
 		// each refactored project to be written to.
@@ -195,10 +195,10 @@ public class ToolTasksPart3 extends Tasks
 				
 		for (int i = 0; i < metricConfiguration.length; i++)
 		{
-			output[i] = "./data/refactored/example/Part3/" + 
+			output[i] = "./data/refactored/ToolExperiment/Part3/" + 
 			            metricConfiguration[i].substring((metricConfiguration[i].lastIndexOf("/") + 1), metricConfiguration[i].lastIndexOf(".")) + "/";
 
-			resultsDir[i] = "./results/example/Part3/" + 
+			resultsDir[i] = "./results/ToolExperiment/Part3/" + 
 					        metricConfiguration[i].substring((metricConfiguration[i].lastIndexOf("/") + 1), metricConfiguration[i].lastIndexOf(".")) + "/";
 
 			for (int j = 0; j < searches.size(); j++)
@@ -206,7 +206,6 @@ public class ToolTasksPart3 extends Tasks
 				// Creates new service configuration to start from scratch.
 				sc = new CrossReferenceServiceConfiguration();
 				int path = (int) Math.floor(j/5);
-				path = 3;
 				
 				String outputPath = output[i] + input[path].substring(input[path].lastIndexOf("/") + 1) + "/" + ((j % 5) + 1) + "/";
 				String resultsPath = resultsDir[i] + input[path].substring(input[path].lastIndexOf("/") + 1) + "/" + ((j % 5) + 1) + "/";
