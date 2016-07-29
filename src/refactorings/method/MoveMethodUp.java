@@ -165,10 +165,24 @@ public class MoveMethodUp extends Refactoring
 		// Add any applicable imports from the current class to the super class.
 		this.superDeclarationImports =  UnitKit.getCompilationUnit(this.superDeclaration).getImports();
 		ASTList<Import> imports =  this.superDeclarationImports;
-	
+
+		// If they aren't already present, add the method imports.
 		for (Import ci : methodImports)
-			if (!(imports.contains(ci)))
+		{
+			boolean contains = false;
+
+			for (Import i : imports)
+			{
+				if ((i.toString().equals(ci.toString())))
+				{
+					contains = true;
+					break;
+				}
+			}
+
+			if (!contains)
 				imports.add(ci);
+		}
 		
 		// If the package import hasn't already been added and the supertype
 		// is in a different package, create and add an import to the package.

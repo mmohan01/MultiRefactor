@@ -80,7 +80,7 @@ public class MoveFieldUp extends Refactoring
 		ASTList<Import> fieldImports = super.getMemberImports(types, UnitKit.getCompilationUnit(this.currentDeclaration).getImports(), si);
 		boolean addPackageImport = false;
 		Package pack = this.currentDeclaration.getPackage();
-		
+
 		// Construct refactoring transformation.
 		// The transformation is handled here manually and the transformation
 		// method will do nothing for this refactoring when it is called.
@@ -169,9 +169,23 @@ public class MoveFieldUp extends Refactoring
 		this.superDeclarationImports =  UnitKit.getCompilationUnit(this.superDeclaration).getImports();
 		ASTList<Import> imports =  this.superDeclarationImports;
 		
+		// If they aren't already present, add the field imports.
 		for (Import ci : fieldImports)
-			if (!(imports.contains(ci)))
+		{
+			boolean contains = false;
+
+			for (Import i : imports)
+			{
+				if ((i.toString().equals(ci.toString())))
+				{
+					contains = true;
+					break;
+				}
+			}
+
+			if (!contains)
 				imports.add(ci);
+		}
 
 		// If the package import hasn't already been added and the supertype
 		// is in a different package, create and add an import to the package.

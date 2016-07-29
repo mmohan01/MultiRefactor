@@ -15,7 +15,6 @@ import refactorings.Refactoring;
 
 public class MakeClassConcrete extends Refactoring 
 {
-	
 	public MakeClassConcrete(CrossReferenceServiceConfiguration sc) 
 	{
 		super(sc);

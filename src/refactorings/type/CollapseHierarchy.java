@@ -170,9 +170,23 @@ public class CollapseHierarchy extends Refactoring
 		this.superDeclarationImports =  UnitKit.getCompilationUnit(this.superDeclaration).getImports();
 		ASTList<Import> imports =  this.superDeclarationImports;
 
+		// If they aren't already present, add imports from the current unit.
 		for (Import ci : this.unit.getImports())
-			if (!(imports.contains(ci)))
+		{
+			boolean contains = false;
+
+			for (Import i : imports)
+			{
+				if ((i.toString().equals(ci.toString())))
+				{
+					contains = true;
+					break;
+				}
+			}
+
+			if (!contains)
 				imports.add(ci);
+		}
 			
 		// If the package import hasn't already been added and the supertype
 		// is in a different package, create and add an import to the package.
