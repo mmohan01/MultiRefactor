@@ -358,7 +358,7 @@ public class ExtractSubclass extends Refactoring
 				next = false;
 				methodList.clear();
 				methodList.add(md);
-
+				
 				// Finds the methods in the class that reference the 
 				// current method and if they can be moved add them to the list.
 				// This finds potential groups of methods to move.
@@ -377,6 +377,36 @@ public class ExtractSubclass extends Refactoring
 					}
 				}
 				
+				// Get methods referenced in method.
+				ArrayList<MethodReference> methods = super.getMethods(md);
+				
+				// If a method within the class is referenced and is private, it will either
+				// be added to the list if it can be moved or the list will be discarded.
+				for (MethodReference mr : methods)
+				{
+					Method m = si.getMethod(mr);
+
+					if (m.equals(si.getMethod(md)))
+						continue;
+
+					if (m.isPrivate() && (m.getContainingClassType().equals(td)))
+					{
+						if (availableMethods.contains(m))
+						{
+							if (!(methodList.contains((MethodDeclaration) m)))
+								methodList.add((MethodDeclaration) m);
+						}
+						else
+						{
+							next = true;
+							break;
+						}
+					}
+				}
+				
+				if (next)
+					continue;
+				
 				// Covers the case that the return type includes a generic type as in this 
 				// case it doesn't seem to catch any references to the method in the class.
 				if ((MethodKit.getReferences(si, md, td, true).size() == 0) && (md.getReturnType() != null))
@@ -387,29 +417,6 @@ public class ExtractSubclass extends Refactoring
 				// If the group of methods makes up more than 50% of the methods in the class, discard it.
 				if ((methodList.size() * 2) > td.getMethods().size())
 					next = true;
-				
-				if (next)
-					continue;
-				
-				// If any of the methods in the group access one of the other methods in the class
-				// and the method is private and therefore will be inaccessible, discard the group.
-				for (MemberDeclaration m : td.getMembers())
-				{
-					if (m instanceof MethodDeclaration)
-					{
-						if (!(methodList.contains(m)) && (m.isPrivate()))
-						{
-							for (MemberReference mr : MethodKit.getReferences(si, (Method) m, td, true))
-							{
-								if (methodList.contains(MiscKit.getParentMemberDeclaration(mr)))
-								{
-									next = true;
-									break;
-								}
-							}
-						}
-					}
-				}
 				
 				if (next)
 					continue;
