@@ -7,32 +7,9 @@ import recoder.CrossReferenceServiceConfiguration;
 import recoder.ParserException;
 import recoder.io.PropertyNames;
 import refactorings.Refactoring;
-import refactorings.field.DecreaseFieldSecurity;
-import refactorings.field.IncreaseFieldSecurity;
-import refactorings.field.MakeFieldFinal;
-import refactorings.field.MakeFieldNonFinal;
-import refactorings.field.MakeFieldNonStatic;
-import refactorings.field.MakeFieldStatic;
-import refactorings.field.MoveFieldDown;
-import refactorings.field.MoveFieldUp;
-import refactorings.field.RemoveField;
-import refactorings.method.DecreaseMethodSecurity;
-import refactorings.method.IncreaseMethodSecurity;
-import refactorings.method.MakeMethodFinal;
-import refactorings.method.MakeMethodNonFinal;
-import refactorings.method.MakeMethodNonStatic;
-import refactorings.method.MakeMethodStatic;
-import refactorings.method.MoveMethodDown;
-import refactorings.method.MoveMethodUp;
-import refactorings.method.RemoveMethod;
-import refactorings.type.CollapseHierarchy;
-import refactorings.type.ExtractSubclass;
-import refactorings.type.MakeClassAbstract;
-import refactorings.type.MakeClassConcrete;
-import refactorings.type.MakeClassFinal;
-import refactorings.type.MakeClassNonFinal;
-import refactorings.type.RemoveClass;
-import refactorings.type.RemoveInterface;
+import refactorings.field.*;
+import refactorings.method.*;
+import refactorings.type.*;
 import searches.GeneticAlgorithmSearch;
 import searches.MultiObjectiveSearch;
 import searches.Search;
@@ -77,26 +54,26 @@ public class ToolTasksPart4 extends Tasks
 		Configuration c1 = new Configuration("./configurations/qualityfunction-objective1.txt", refactorings);
 		Configuration c2 = new Configuration("./configurations/qualityfunction-objective2.txt", refactorings);
 		Configuration c3 = new Configuration("./configurations/qualityfunction-objective3.txt", refactorings);
-		Configuration[] cGA = new Configuration[]{
+		Configuration[] cMO = new Configuration[]{
 				new Configuration("./configurations/qualityfunction-objective1.txt"), 
 				new Configuration("./configurations/qualityfunction-objective2.txt"),
 				new Configuration("./configurations/qualityfunction-objective3.txt")};
 
 		// Initialise search tasks.
 		ArrayList<Search> searches = new ArrayList<Search>();
-		MultiObjectiveSearch MOGeneticAlgorithm1 = new MultiObjectiveSearch(sc, cGA, refactorings, sourceFiles[0], 100, 50, 0.2f, 0.8f);
+		MultiObjectiveSearch MOGeneticAlgorithm1 = new MultiObjectiveSearch(sc, cMO, refactorings, sourceFiles[0], 100, 50, 0.2f, 0.8f);
 		MOGeneticAlgorithm1.setInitialRefactoringRange(50);
 		searches.add(MOGeneticAlgorithm1);
-		MultiObjectiveSearch MOGeneticAlgorithm2 = new MultiObjectiveSearch(sc, cGA, refactorings, sourceFiles[1], 100, 50, 0.2f, 0.8f);
+		MultiObjectiveSearch MOGeneticAlgorithm2 = new MultiObjectiveSearch(sc, cMO, refactorings, sourceFiles[1], 100, 50, 0.2f, 0.8f);
 		MOGeneticAlgorithm2.setInitialRefactoringRange(50);
 		searches.add(MOGeneticAlgorithm2);
-		MultiObjectiveSearch MOGeneticAlgorithm3 = new MultiObjectiveSearch(sc, cGA, refactorings, sourceFiles[2], 100, 50, 0.2f, 0.8f);
+		MultiObjectiveSearch MOGeneticAlgorithm3 = new MultiObjectiveSearch(sc, cMO, refactorings, sourceFiles[2], 100, 50, 0.2f, 0.8f);
 		MOGeneticAlgorithm3.setInitialRefactoringRange(50);
 		searches.add(MOGeneticAlgorithm3);
-		MultiObjectiveSearch MOGeneticAlgorithm4 = new MultiObjectiveSearch(sc, cGA, refactorings, sourceFiles[3], 100, 50, 0.2f, 0.8f);
+		MultiObjectiveSearch MOGeneticAlgorithm4 = new MultiObjectiveSearch(sc, cMO, refactorings, sourceFiles[3], 100, 50, 0.2f, 0.8f);
 		MOGeneticAlgorithm4.setInitialRefactoringRange(50);
 		searches.add(MOGeneticAlgorithm4);
-		MultiObjectiveSearch MOGeneticAlgorithm5 = new MultiObjectiveSearch(sc, cGA, refactorings, sourceFiles[4], 100, 50, 0.2f, 0.8f);
+		MultiObjectiveSearch MOGeneticAlgorithm5 = new MultiObjectiveSearch(sc, cMO, refactorings, sourceFiles[4], 100, 50, 0.2f, 0.8f);
 		MOGeneticAlgorithm5.setInitialRefactoringRange(50);
 		searches.add(MOGeneticAlgorithm5);
 		
@@ -234,8 +211,6 @@ public class ToolTasksPart4 extends Tasks
 			refactorings.add(rm);
 			RemoveField rf = new RemoveField(sc);
 			refactorings.add(rf);
-			ExtractSubclass es = new ExtractSubclass(sc);
-			refactorings.add(es);
 			CollapseHierarchy ch = new CollapseHierarchy(sc);
 			refactorings.add(ch);
 

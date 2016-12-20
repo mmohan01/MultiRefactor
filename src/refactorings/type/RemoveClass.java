@@ -1,14 +1,16 @@
 package refactorings.type;
 
+import java.util.ArrayList;
+
 import recoder.CrossReferenceServiceConfiguration;
 import recoder.convenience.AbstractTreeWalker;
 import recoder.convenience.TreeWalker;
 import recoder.java.CompilationUnit;
 import recoder.java.ProgramElement;
+import recoder.java.declaration.ConstructorDeclaration;
 import recoder.java.declaration.MemberDeclaration;
 import recoder.java.declaration.TypeDeclaration;
 import recoder.kit.ProblemReport;
-import recoder.list.generic.ASTList;
 import refactorings.Refactoring;
 
 public class RemoveClass extends Refactoring 
@@ -76,6 +78,11 @@ public class RemoveClass extends Refactoring
 		
 		// Specify refactoring information for results information.
 		super.refactoringInfo = "Iteration " + iteration + ": \"Remove Class\" applied to class " + ((TypeDeclaration) pe).getName();
+		
+		// Stores list of names of classes affected by refactoring.
+		super.affectedClasses = new ArrayList<String>(1);
+		super.affectedClasses.add(((TypeDeclaration) pe).getName());
+				
 		getChangeHistory().updateModel();
 		return setProblemReport(EQUIVALENCE);
 	}
@@ -104,10 +111,13 @@ public class RemoveClass extends Refactoring
 			return false;
 		else
 		{			
-			ASTList<MemberDeclaration> members = td.getMembers();
-			members.removeAll(td.getConstructors());
+			int members = td.getMembers().size();
 			
-			if (members.size() > 0)
+			for (MemberDeclaration dec : td.getMembers())
+				if (dec instanceof ConstructorDeclaration)
+					members--;
+			
+			if (members > 0)
 				return false;
 			
 			return true;	

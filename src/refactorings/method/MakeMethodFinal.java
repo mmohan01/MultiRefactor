@@ -1,5 +1,7 @@
 package refactorings.method;
 
+import java.util.ArrayList;
+
 import multirefactor.AccessFlags;
 import recoder.CrossReferenceServiceConfiguration;
 import recoder.convenience.AbstractTreeWalker;
@@ -54,6 +56,10 @@ public class MakeMethodFinal extends Refactoring
 		super.refactoringInfo = "Iteration " + iteration + ": \"Make Method Final\" applied at class " 
 				+ super.getFileName(getSourceFileRepository().getKnownCompilationUnits().get(unit).getName())
 				+ " to method " + ((MethodDeclaration) pe).getName();
+		
+		// Stores list of names of classes affected by refactoring.
+		super.affectedClasses = new ArrayList<String>(1);
+		super.affectedClasses.add(super.getFileName(getSourceFileRepository().getKnownCompilationUnits().get(unit).getName()));
 
 		return setProblemReport(EQUIVALENCE);
 	}

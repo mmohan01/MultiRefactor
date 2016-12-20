@@ -14,6 +14,9 @@ import recoder.java.declaration.InterfaceDeclaration;
 import recoder.java.declaration.TypeDeclaration;
 import recoder.java.declaration.modifier.Private;
 import recoder.java.reference.FieldReference;
+import recoder.java.reference.SuperReference;
+import recoder.java.reference.ThisReference;
+import recoder.java.reference.TypeReference;
 import recoder.kit.MiscKit;
 import recoder.kit.Problem;
 import recoder.kit.ProblemReport;
@@ -63,6 +66,10 @@ public class IncreaseFieldSecurity extends Refactoring
 				+ super.getFileName(getSourceFileRepository().getKnownCompilationUnits().get(unit).getName())
 				+ " to field " + pe.toString().substring(last + 2) + " from " + super.currentModifier(fd.getVisibilityModifier()) 
 				+ " to " + super.refactoredDownModifier(fd.getVisibilityModifier());
+		
+		// Stores list of names of classes affected by refactoring.
+		super.affectedClasses = new ArrayList<String>(1);
+		super.affectedClasses.add(super.getFileName(getSourceFileRepository().getKnownCompilationUnits().get(unit).getName()));
 
 		return setProblemReport(EQUIVALENCE);
 	}
@@ -99,6 +106,15 @@ public class IncreaseFieldSecurity extends Refactoring
 			{
 				for (FieldReference fr : si.getReferences(fs))
 				{
+					// Check if a sub class can access the field.
+					if ((si.getType(fr.getReferencePrefix()) instanceof TypeDeclaration) && ((fr.getReferencePrefix() instanceof TypeReference) || 
+						 ((si.getType(fr.getReferencePrefix()) != null) && !(fr.getReferencePrefix() instanceof ThisReference) && 
+						  !(fr.getReferencePrefix() instanceof SuperReference))))	
+					{
+						if (!(referenceTypes.contains(si.getType(fr.getReferencePrefix()))))
+							referenceTypes.add((TypeDeclaration) si.getType(fr.getReferencePrefix()));
+					}
+					
 					if (MiscKit.getParentTypeDeclaration(fr) == null)
 						return false;
 					else if (!(referenceTypes.contains(MiscKit.getParentTypeDeclaration(fr))))

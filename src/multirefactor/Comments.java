@@ -736,7 +736,7 @@
 //
 //
 //  // Code to use an array to find out where applicable
-//  // elements areand save having to check twice.
+//  // elements are and save having to check twice.
 //	// Count the amount of available elements in the chosen class for refactoring.
 //	// If an element is not applicable for the current refactoring it is not counted.
 //	public int[] getAmount(int unit)
@@ -4004,5 +4004,221 @@
 //	
 //			if (!(UnitKit.getCompilationUnit(cd).getImports().contains(i)))
 //				attach(i, UnitKit.getCompilationUnit(cd), UnitKit.getCompilationUnit(cd).getImports().size());
+//		}
+//	}
+//
+//
+//	// Checks priority classes that have been input to remove classes that
+//  // don't exist in the model. Removed this as it wasn't really necessary.
+//  // Even if nonexistent classes are included the metric will come out the same.
+//	ArrayList<String> temp = new ArrayList<String>(priorityClasses);
+//	
+//	for (int i = 0; i < priorityClasses.size(); i++)
+//	{
+//		boolean breakout = false;
+//	
+//		for (int j = 0; j < this.units.size(); j++)
+//		{
+//			for (TypeDeclaration td : getAllTypes(this.units.get(j)))
+//			{
+//				if (td.getName().equals(temp.get(i)))
+//				{
+//					breakout = true;
+//					break;
+//				}
+//			}
+//	
+//			if (breakout)
+//				break;
+//		}
+//	
+//		if (!breakout)
+//			priorityClasses.remove(temp.get(i));				
+//	}
+//	
+//	priorityClasses.trimToSize();
+//
+//
+//  // Checks any reference to the method in the program and if it
+//  // refers explicitly to the current class it will not be applicable.
+//  // This was used in ExtractSubclass but was replaced by more detailed code
+//  // that concerned itself also with subclasses referencing the method.
+//	for (MemberReference mr : si.getReferences((Method) md))
+//	{
+//		if (!(mr instanceof MethodReference))
+//		{
+//			next = true;
+//			break;
+//		}
+//	
+//		if ((((MethodReference) mr).getReferencePrefix() instanceof TypeReference) || 
+//				((si.getType(((MethodReference) mr).getReferencePrefix()) != null) && 
+//						!(((MethodReference) mr).getReferencePrefix() instanceof ThisReference) && 
+//						!(((MethodReference) mr).getReferencePrefix() instanceof SuperReference) && 
+//						(si.getType(((MethodReference) mr).getReferencePrefix()).equals(td))))
+//		{  
+//			next = true;
+//			break;
+//		}						
+//	}
+//
+//
+//	// Modified version of the number of methods metric that output the 
+//  // amount of methods per class. Used in order to choose priority and 
+//  // non priority classes with the inputs used in the priority experiment.
+//	public float numberOfMethods()
+//	{
+//		int classCounter = 0;
+//		int methodCounter = 0;
+//		System.out.printf("\n\nINPUT, Number Of Methods");
+//
+//		for (int i = 0; i < this.units.size(); i++)
+//		{			
+//			for (TypeDeclaration td : getAllTypes(this.units.get(i)))
+//			{
+//				if ((td instanceof ClassDeclaration) || (td instanceof InterfaceDeclaration))
+//				{
+//					int classMethodCounter = 0;
+//					classCounter++;
+//					
+//					for (MemberDeclaration md : td.getMembers())
+//					{
+//						if (md instanceof MethodDeclaration)
+//						{
+//							methodCounter++;
+//							classMethodCounter++;
+//						}
+//					}
+//					
+//					System.out.printf("\n%s, %d", td.getName(), classMethodCounter);
+//				}
+//			}
+//		}
+//
+//		return (float) methodCounter / (float) classCounter;
+//	}
+//
+//
+//  // Original code used to name sub classes created in the ExtractSubclass refactoring.
+//  // Would add a random alphanumeric character each time the class name already existed.
+//  // This would create different class names when a refactoring sequence was reconstructed.
+//  // Therefore it was changed to ad a number that would gradually increment instead.
+//	while (typeNames.contains(name))
+//	{
+//		if (name.equals(this.currentDeclaration.getIdentifier().getText() + "_SubClass"))			
+//			name = name + "_";
+//	
+//		name = name + (char)(((int)(Math.random() * 26)) + 'a');
+//	}
+//
+//
+//  // Code was used in the move refactorings to place the element at a pseudo-random point in the class.
+//  // This was changed after realising that this could affect how the refactoring is applied when the model 
+//  // is reconstructed. The refactoring needs to be applied the same way or it could cause trouble later on.
+//	if ((this.randomPosition == -1) && !(this.superDeclaration.getMembers().isEmpty()))
+//	{
+//		ASTList<MemberDeclaration> members = this.superDeclaration.getMembers();
+//		for (int i = members.size() - 1; i >= 0; i--)
+//		{
+//			if (members.get(i) instanceof FieldDeclaration)
+//			{
+//				this.randomPosition = i + 1;
+//				break;
+//			}
+//			else if (i == 0)
+//				this.randomPosition = 0;
+//		}
+//	
+//		// Generate random position between the last field declaration in the class and the end of the class.
+//		this.randomPosition = this.randomPosition + (int)(Math.random() * (this.superDeclaration.getMembers().size() + 1 - this.randomPosition));
+//	}
+//	else if (this.randomPosition == -1)
+//		this.randomPosition = 0;
+//
+//
+//  // Two methods originally used for priority metric. The ratio meant that less refactorings translated to a better score
+//  // and therefore, the results would use less refactorings and give a worse score for the other quality objective.
+//	public float priorityClassRatio(ArrayList<String> priorityClasses)
+//	{		
+//		int priorityAmount = 0;
+//		
+//		if (this.affectedClasses.size() == 0)
+//			return 0;
+//		
+//		for (String s : this.affectedClasses)
+//			if (priorityClasses.contains(s))
+//				priorityAmount++;
+//		
+//		return priorityAmount / (float) this.affectedClasses.size();	
+//	}
+//	
+//	public float priorityClassRatio(ArrayList<String> priorityClasses, ArrayList<String> nonPriorityClasses)
+//	{				
+//		int nonPriorityAmount = 0;
+//		float nonPriorityRatio;
+//		float priorityRatio = priorityClassRatio(priorityClasses);
+//
+//		for (String s : this.affectedClasses)
+//			if (nonPriorityClasses.contains(s))
+//				nonPriorityAmount++;
+//		
+//		nonPriorityRatio = (this.affectedClasses.size() == 0) ? 0 : nonPriorityAmount / (float) this.affectedClasses.size();
+//		return priorityRatio - nonPriorityRatio;
+//	}
+//
+//
+//  // Older version of mayRefactor method for MakeFieldFinal refactoring. There was a check to the constructors to see if
+//  // they initialize the variable but this shouldn't be necessary because it would be included in the getReferences method call.
+//	public boolean mayRefactor(VariableDeclaration vd)
+//	{				
+//		if ((vd.isFinal()) || (MiscKit.getParentTypeDeclaration(vd) instanceof EnumDeclaration))
+//			return false;
+//		else
+//		{			
+//			if (!(vd.toSource().contains("=")))
+//			{	
+//				int references = 0;
+//				boolean check = false;
+//	
+//				for (VariableReference vr : getCrossReferenceSourceInfo().getReferences(vd.getVariables().get(0)))
+//				{
+//					if (vr.getASTParent().toSource().contains(vd.getVariables().get(0).getName() + " ="))
+//					{
+//						references++;
+//						
+//						if (references > 1)
+//							return false;
+//					}
+//				}
+//						
+//				for (MemberDeclaration md : MiscKit.getParentTypeDeclaration(vd).getMembers())
+//				{
+//					if (md instanceof ConstructorDeclaration)
+//					{						
+//						for (int i = 0; i < ((ConstructorDeclaration) md).getStatementCount(); i++)
+//						{
+//							if (((ConstructorDeclaration) md).getStatementAt(i).toSource().contains(vd.getVariables().get(0).getName() + " ="))
+//							{
+//								check = true;
+//								break;
+//							}
+//						}
+//	
+//						if (check)
+//							break;
+//					}
+//				}
+//	
+//				if ((check) && (references > 1))
+//					return false;
+//			}
+//			else
+//			{
+//				for (VariableReference vr : getCrossReferenceSourceInfo().getReferences(vd.getVariables().get(0)))
+//					if (vr.getASTParent().toSource().contains(vd.getVariables().get(0).getName() + " ="))
+//						return false;
+//			}
+//	
+//			return true;
 //		}
 //	}

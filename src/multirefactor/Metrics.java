@@ -36,11 +36,19 @@ import recoder.service.SourceInfo;
 public class Metrics 
 {
 	private List<CompilationUnit> units;
+	private ArrayList<String> affectedClasses;
 	private AbstractTreeWalker tw;
 	
 	public Metrics(List<CompilationUnit> units)
 	{
 		this.units = units;
+		affectedClasses = new ArrayList<String>(0);
+	}
+	
+	public Metrics(List<CompilationUnit> units, ArrayList<String> affectedClasses)
+	{
+		this.units = units;
+		this.affectedClasses = affectedClasses;
 	}
 
 	// Amount of classes in the project.
@@ -401,7 +409,7 @@ public class Metrics
 		int methodCounter = 0;
 
 		for (int i = 0; i < this.units.size(); i++)
-		{
+		{			
 			for (TypeDeclaration td : getAllTypes(this.units.get(i)))
 			{
 				if ((td instanceof ClassDeclaration) || (td instanceof InterfaceDeclaration))
@@ -801,20 +809,48 @@ public class Metrics
 	// Amount of lines of code in the project.
 	public int linesOfCode()
 	{		
-		int childCounter = 0;
+		int lineCounter = 0;
 
 		for (CompilationUnit u : this.units)
-			childCounter += u.getEndPosition().getLine();
+			lineCounter += u.getEndPosition().getLine();
 
-		return childCounter;
+		return lineCounter;
 	}
 
 	// Amount of java source files in the project.
 	public int numberOfFiles()
-	{		
+	{
 		return this.units.size();
 	}
 	
+	// Instances of priority classes (most important classes determined 
+	// by the user) affected by the refactorings of a solution.
+	public int priorityClasses(ArrayList<String> priorityClasses)
+	{		
+		int priorityAmount = 0;
+		
+		for (String s : this.affectedClasses)
+			if (priorityClasses.contains(s))
+				priorityAmount++;
+		
+		return priorityAmount;
+	}
+	
+	// Instances of priority classes affected by the refactorings of a solution. This
+	// override also incorporates a list of non priority classes (classes where
+	// modifications are undesirable). The instances of non priority classes are also 
+	// calculated and then taken away from the priority classes amount to give an overall value.
+	public int priorityClasses(ArrayList<String> priorityClasses, ArrayList<String> nonPriorityClasses)
+	{				
+		int nonPriorityAmount = 0;
+		int priorityAmount = priorityClasses(priorityClasses);
+
+		for (String s : this.affectedClasses)
+			if (nonPriorityClasses.contains(s))
+				nonPriorityAmount++;
+		
+		return priorityAmount - nonPriorityAmount;
+	}
 	
 	// Returns a value to represent the visibility of a modifier.
 	private float identifier(VisibilityModifier vm)

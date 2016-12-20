@@ -24,6 +24,8 @@ public class Configuration
 {
 	private ArrayList<Triple<String, Boolean, Float>> configuration;
 	private ArrayList<Refactoring> refactorings;
+	private ArrayList<String> priorityClasses;
+	private ArrayList<String> nonPriorityClasses;
 	
 	public Configuration(ArrayList<Triple<String, Boolean, Float>> configuration, ArrayList<Refactoring> refactorings)
 	{
@@ -43,7 +45,7 @@ public class Configuration
 			if (i >= weight.size())
 				weight.add(i, 1.0f);
 			
-			Triple<String, Boolean, Float> element = new Triple<String, Boolean, Float> (name.get(i), maximise.get(i), weight.get(i));
+			Triple<String, Boolean, Float> element = new Triple<String, Boolean, Float>(name.get(i), maximise.get(i), weight.get(i));
 			this.configuration.add(element);
 		}
 	}
@@ -60,7 +62,7 @@ public class Configuration
 			if (i >= weight.length)
 				weight[i-1] = 1;
 			
-			Triple<String, Boolean, Float> element = new Triple<String, Boolean, Float> (name[i], maximise[i], weight[i]);
+			Triple<String, Boolean, Float> element = new Triple<String, Boolean, Float>(name[i], maximise[i], weight[i]);
 			this.configuration.add(element);
 		}
 	}
@@ -79,12 +81,21 @@ public class Configuration
 				{
 					BufferedReader br = new BufferedReader(new FileReader(file));
 					String line;
-
-					while((line = br.readLine()) != null)
+					boolean executeWhile = true;
+					
+					if (br.readLine().equals("PRIORITY"))
+					{
+						readPriority(br);
+						executeWhile = false;
+					}
+					
+					br = new BufferedReader(new FileReader(file));
+					
+					while (((line = br.readLine()) != null) && executeWhile)
 					{
 						// \\s+ means any number of white spaces between tokens
 						String [] tokens = line.split("\\s+");
-						Triple<String, Boolean, Float> element = new Triple<String, Boolean, Float> (tokens[0], tokens[1].equals("true"), Float.parseFloat(tokens[2]));
+						Triple<String, Boolean, Float> element = new Triple<String, Boolean, Float>(tokens[0], tokens[1].equals("true"), Float.parseFloat(tokens[2]));
 						this.configuration.add(element);
 					}
 
@@ -111,7 +122,7 @@ public class Configuration
 						String name = nodes.item(i).getAttributes().getNamedItem("name").getTextContent();
 						boolean maximise = nodes.item(i).getAttributes().getNamedItem("maximise").getTextContent().equals("true");
 						float weight = Float.parseFloat(nodes.item(i).getAttributes().getNamedItem("weight").getTextContent());
-						Triple<String, Boolean, Float> element = new Triple<String, Boolean, Float> (name, maximise, weight);
+						Triple<String, Boolean, Float> element = new Triple<String, Boolean, Float>(name, maximise, weight);
 						this.configuration.add(element);
 					}
 				} 
@@ -137,12 +148,21 @@ public class Configuration
 				{
 					BufferedReader br = new BufferedReader(new FileReader(file));
 					String line;
+					boolean executeWhile = true;
 
-					while((line = br.readLine()) != null)
+					if (br.readLine().equals("PRIORITY"))
+					{
+						readPriority(br);
+						executeWhile = false;
+					}
+					
+					br = new BufferedReader(new FileReader(file));
+					
+					while (((line = br.readLine()) != null) && executeWhile)
 					{
 						// \\s+ means any number of white spaces between tokens
 						String [] tokens = line.split("\\s+");
-						Triple<String, Boolean, Float> element = new Triple<String, Boolean, Float> (tokens[0], tokens[1].equals("true"), Float.parseFloat(tokens[2]));
+						Triple<String, Boolean, Float> element = new Triple<String, Boolean, Float>(tokens[0], tokens[1].equals("true"), Float.parseFloat(tokens[2]));
 						this.configuration.add(element);
 					}
 
@@ -169,7 +189,7 @@ public class Configuration
 						String name = nodes.item(i).getAttributes().getNamedItem("name").getTextContent();
 						boolean maximise = nodes.item(i).getAttributes().getNamedItem("maximise").getTextContent().equals("true");
 						float weight = Float.parseFloat(nodes.item(i).getAttributes().getNamedItem("weight").getTextContent());
-						Triple<String, Boolean, Float> element = new Triple<String, Boolean, Float> (name, maximise, weight);
+						Triple<String, Boolean, Float> element = new Triple<String, Boolean, Float>(name, maximise, weight);
 						this.configuration.add(element);
 					}
 				} 
@@ -181,7 +201,9 @@ public class Configuration
 			}
 		}
 	}
-	
+		
+	// Reinitialises the refactorings used in the configuration which
+	// is necessary when a model is reset to use in a genetic algorithm.
 	public ArrayList<Refactoring> resetRefactorings(CrossReferenceServiceConfiguration sc, ArrayList<Refactoring> refactorings, boolean store)
 	{
 		ArrayList<Refactoring> newRefactorings = new ArrayList<Refactoring>(refactorings.size());
@@ -329,6 +351,40 @@ public class Configuration
 		
 		return newRefactorings;
 	}
+
+	// Reads in and stores classes from text input when the priority obbjective is being used.
+	// Also checks is non priority classes are included and stores them separately if so.
+	private void readPriority(BufferedReader br)
+	{
+		String line;
+		boolean priority = true;
+		this.priorityClasses = new ArrayList<String>();
+		this.configuration.add(new Triple<String, Boolean, Float>("priorityClasses", true, 1.0f));
+
+		try
+		{
+			while ((line = br.readLine()) != null)
+			{
+				if ((line.equals("")) && (br.readLine().equals("NONPRIORITY")))
+				{
+					line = br.readLine();
+					priority = false;
+					this.nonPriorityClasses = new ArrayList<String>();
+				}
+
+				if (priority)
+					this.priorityClasses.add(line);
+				else
+					this.nonPriorityClasses.add(line);
+			}				
+		} 
+		catch (IOException e) 
+		{
+			System.out.println("\r\nEXCEPTION: Cannot read priority classes from text file.");
+			System.exit(1);
+		}
+	}
+
 	
 	public ArrayList<Triple<String, Boolean, Float>> getConfiguration()
 	{
@@ -350,7 +406,7 @@ public class Configuration
 		}
 		
 		if (!present)
-			this.configuration.add(new Triple<String, Boolean, Float> (name, maximise, weight));
+			this.configuration.add(new Triple<String, Boolean, Float>(name, maximise, weight));
 			
 		return !present;
 	}
@@ -374,5 +430,15 @@ public class Configuration
 		}
 		else
 			return false;
+	}
+	
+	public ArrayList<String> getPriorityClasses()
+	{
+		return this.priorityClasses;
+	}
+	
+	public ArrayList<String> getNonPriorityClasses()
+	{
+		return this.nonPriorityClasses;
 	}
 }

@@ -6,8 +6,10 @@ import java.util.Map;
 
 public class FitnessFunction 
 {
-	ArrayList<Triple<String, Boolean, Float>> configuration;
-	Map<String, Float> initialMetrics;
+	private ArrayList<Triple<String, Boolean, Float>> configuration;
+	private Map<String, Float> initialMetrics;
+	private ArrayList<String> priorityClasses;
+	private ArrayList<String> nonPriorityClasses;
 
 	// Only use if normalization functions (calculateBenchmark, calculateNormalizedScore) are not being used.
 	public FitnessFunction(ArrayList<Triple<String, Boolean, Float>> configuration)
@@ -18,7 +20,7 @@ public class FitnessFunction
 	public FitnessFunction(Metrics m, ArrayList<Triple<String, Boolean, Float>> configuration)
 	{
 		this.configuration = configuration;
-		float baseline = 0.000001f;
+		float baseline = 0.01f;
 		
 		this.initialMetrics = new HashMap<String, Float>();
 		initialMetrics.put("classDesignSize", (float) m.classDesignSize() == 0 ? baseline : (float) m.classDesignSize());
@@ -44,6 +46,7 @@ public class FitnessFunction
 		initialMetrics.put("visibilityRatio", m.visibilityRatio() == 0 ? baseline : m.visibilityRatio());
 		initialMetrics.put("linesOfCode", (float) m.linesOfCode() == 0 ? baseline : (float) m.linesOfCode());
 		initialMetrics.put("numberOfFiles", (float) m.numberOfFiles() == 0 ? baseline : (float) m.numberOfFiles());
+		initialMetrics.put("priorityClasses", baseline);
 	}
 	
 	public float calculateBenchmark()
@@ -78,10 +81,20 @@ public class FitnessFunction
 
 		for (Triple<String, Boolean, Float> metric : this.configuration)
 		{
-			float metricValue = (findMetricValue(m, metric.getFirst()) == 0) ? 0.000001f : findMetricValue(m, metric.getFirst());
-			value = metricValue / this.initialMetrics.get(metric.getFirst());
-			value--;
-			amount += (metric.getSecond() == true) ? (metric.getThird() * value) : -(metric.getThird() * value);
+			// Don't want to compare improvement as the metric starts at
+			// zero and the metric is being used alone in a separate 
+			// objective so it doesn't necessarily need to be normalized.
+			if (metric.getFirst().equals("priorityClasses"))
+			{
+				amount += findMetricValue(m, metric.getFirst());
+			}
+			else
+			{
+				float metricValue = (findMetricValue(m, metric.getFirst()) == 0) ? 0.01f : findMetricValue(m, metric.getFirst());
+				value = metricValue / this.initialMetrics.get(metric.getFirst());
+				value--;
+				amount += (metric.getSecond() == true) ? (metric.getThird() * value) : -(metric.getThird() * value);
+			}
 		}
 
 		return amount;
@@ -191,7 +204,13 @@ public class FitnessFunction
 			break;
 		case "numberOfFiles":
 			value = m.numberOfFiles();
-			break;			
+			break;		
+		case "priorityClasses":
+			if (this.nonPriorityClasses == null)
+				value = m.priorityClasses(this.priorityClasses);
+			else
+				value = m.priorityClasses(this.priorityClasses, this.nonPriorityClasses);
+			break;	
 		default:
 			value = 0;
 		}
@@ -275,12 +294,28 @@ public class FitnessFunction
 				break;
 			case "numberOfFiles":
 				outputs[i] = String.format("Amount of source files in project: %d", m.numberOfFiles());
-				break;			
+				break;	
+			case "priorityClasses":
+				if (this.nonPriorityClasses == null)
+					outputs[i] = String.format("Instances of priority classes used in solution: %d", m.priorityClasses(this.priorityClasses));
+				else
+					outputs[i] = String.format("Instances of priority classes and non priority classes used in solution: %d", m.priorityClasses(this.priorityClasses, this.nonPriorityClasses));
+				break;	
 			default:
 				outputs[i] = "STRING INPUT DOES NOT RELATE TO A METRIC";
 			}	
 		}
 
 		return outputs;			
+	}
+	
+	public void setPriorityClasses(ArrayList<String> priorityClasses)
+	{
+		this.priorityClasses = priorityClasses;
+	}
+	
+	public void setNonPriorityClasses(ArrayList<String> nonPriorityClasses)
+	{
+		this.nonPriorityClasses = nonPriorityClasses;
 	}
 }

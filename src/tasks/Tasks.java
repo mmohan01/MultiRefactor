@@ -37,8 +37,8 @@ public class Tasks
 		// Reads the metric configuration in from them to a specified text file.
 		ArrayList<Refactoring> refactorings = new ArrayList<Refactoring>();
 		Configuration c = new Configuration("./configurations/qualityfunction-objective1.txt", refactorings);
-		Configuration[] cGA = {new Configuration("./configurations/qualityfunction-objective1.txt"), new Configuration("qualityfunction-objective2"),
-							   new Configuration("qualityfunction-objective3"), new Configuration("./configurations/visibilityratio.txt"), new Configuration("./configurations/linesofcode.txt")};
+		Configuration[] cGA = {new Configuration("./configurations/qualityfunction-objective1.txt"), new Configuration("./configurations/qualityfunction-objective2"),
+							   new Configuration("./configurations/qualityfunction-objective3")};
 		
 		// Initialise search tasks.
 		ArrayList<Search> searches = new ArrayList<Search>();
@@ -162,12 +162,13 @@ public class Tasks
 				((ManyObjectiveSearch) searches.get(i)).setRefactorings(refactorings);
 			else
 			{
-				c = new Configuration("./configurations/allmetrics.txt", refactorings);
+				c = new Configuration("./configurations/qualityfunction-objective1.txt", refactorings);
 				searches.get(i).setConfiguration(c);
 			}
 			
 			searches.get(i).setServiceConfiguration(sc);
 			searches.get(i).setResultsPath(resultsDir[i]);
+//			if (i == 3)
 			searches.get(i).run();
 		}	
 

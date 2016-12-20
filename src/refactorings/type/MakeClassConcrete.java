@@ -1,5 +1,7 @@
 package refactorings.type;
 
+import java.util.ArrayList;
+
 import multirefactor.AccessFlags;
 import recoder.CrossReferenceServiceConfiguration;
 import recoder.abstraction.Method;
@@ -56,6 +58,11 @@ public class MakeClassConcrete extends Refactoring
 
 		// Specify refactoring information for results information.
 		super.refactoringInfo = "Iteration " + iteration + ": \"Make Class Concrete\" applied to class "  + ((TypeDeclaration) pe).getName();
+		
+		// Stores list of names of classes affected by refactoring.
+		super.affectedClasses = new ArrayList<String>(1);
+		super.affectedClasses.add(((TypeDeclaration) pe).getName());
+				
 		return setProblemReport(EQUIVALENCE);
 	}
 

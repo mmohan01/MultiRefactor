@@ -177,7 +177,7 @@ public class CollapseHierarchy extends Refactoring
 
 			for (Import i : imports)
 			{
-				if ((i.toString().equals(ci.toString())))
+				if (i.toSource().substring(i.toSource().indexOf("import")).equals(ci.toSource().substring(ci.toSource().indexOf("import"))))
 				{
 					contains = true;
 					break;
@@ -256,7 +256,12 @@ public class CollapseHierarchy extends Refactoring
 		// Specify refactoring information for results information.		
 		super.refactoringInfo = "Iteration " + iteration + ": \"Collapse Hierarchy\" applied from all elements in " 
 				+ ((TypeDeclaration) pe).getName() + " to " + this.superDeclaration.getName();
-	
+		
+		// Stores list of names of classes affected by refactoring.
+		super.affectedClasses = new ArrayList<String>(2);
+		super.affectedClasses.add(((TypeDeclaration) pe).getName());
+		super.affectedClasses.add(this.superDeclaration.getName());
+
 		getChangeHistory().updateModel();
 		return setProblemReport(EQUIVALENCE);
 	}

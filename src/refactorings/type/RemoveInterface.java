@@ -1,14 +1,16 @@
 package refactorings.type;
 
+import java.util.ArrayList;
+
 import recoder.CrossReferenceServiceConfiguration;
 import recoder.convenience.AbstractTreeWalker;
 import recoder.convenience.TreeWalker;
 import recoder.java.CompilationUnit;
 import recoder.java.ProgramElement;
+import recoder.java.declaration.ConstructorDeclaration;
 import recoder.java.declaration.InterfaceDeclaration;
 import recoder.java.declaration.MemberDeclaration;
 import recoder.kit.ProblemReport;
-import recoder.list.generic.ASTList;
 import refactorings.Refactoring;
 
 public class RemoveInterface extends Refactoring 
@@ -78,6 +80,11 @@ public class RemoveInterface extends Refactoring
 		
 		// Specify refactoring information for results information.
 		super.refactoringInfo = "Iteration " + iteration + ": \"Remove Interface\" applied to interface " + ((InterfaceDeclaration) pe).getName();
+		
+		// Stores list of names of classes affected by refactoring.
+		super.affectedClasses = new ArrayList<String>(1);
+		super.affectedClasses.add(((InterfaceDeclaration) pe).getName());
+
 		getChangeHistory().updateModel();
 		return setProblemReport(EQUIVALENCE);
 	}
@@ -107,10 +114,13 @@ public class RemoveInterface extends Refactoring
 			return false;
 		else
 		{			
-			ASTList<MemberDeclaration> members = id.getMembers();
-			members.removeAll(id.getConstructors());
+			int members = id.getMembers().size();
 			
-			if (members.size() > 0)
+			for (MemberDeclaration dec : id.getMembers())
+				if (dec instanceof ConstructorDeclaration)
+					members--;
+			
+			if (members > 0)
 				return false;
 			
 			return true;	

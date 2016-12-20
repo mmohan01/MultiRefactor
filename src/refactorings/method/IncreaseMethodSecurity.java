@@ -15,6 +15,10 @@ import recoder.java.declaration.MethodDeclaration;
 import recoder.java.declaration.TypeDeclaration;
 import recoder.java.declaration.modifier.Private;
 import recoder.java.reference.MemberReference;
+import recoder.java.reference.MethodReference;
+import recoder.java.reference.SuperReference;
+import recoder.java.reference.ThisReference;
+import recoder.java.reference.TypeReference;
 import recoder.kit.MethodKit;
 import recoder.kit.MiscKit;
 import recoder.kit.Problem;
@@ -41,7 +45,7 @@ public class IncreaseMethodSecurity extends Refactoring
 		CrossReferenceServiceConfiguration config = getServiceConfiguration();
 		ProblemReport report = EQUIVALENCE;		
 		super.tw = new TreeWalker(getSourceFileRepository().getKnownCompilationUnits().get(unit));
-
+		
 		for (int i = 0; i < element; i++)
 		{
 			super.tw.next(MethodDeclaration.class);
@@ -64,6 +68,11 @@ public class IncreaseMethodSecurity extends Refactoring
 				+ super.getFileName(getSourceFileRepository().getKnownCompilationUnits().get(unit).getName())
 				+ " to method " + ((MethodDeclaration) pe).getName() + " from " + super.currentModifier(md.getVisibilityModifier()) 
 				+ " to " + super.refactoredDownModifier(md.getVisibilityModifier());
+		
+		// Stores list of names of classes affected by refactoring.
+		super.affectedClasses = new ArrayList<String>(1);
+		super.affectedClasses.add(super.getFileName(getSourceFileRepository().getKnownCompilationUnits().get(unit).getName()));
+
 		
 		return setProblemReport(EQUIVALENCE);
 	}
@@ -132,7 +141,18 @@ public class IncreaseMethodSecurity extends Refactoring
 			// Checks any reference to the method in the program 
 			// and whether its class will be able to access the method.
 			for (MemberReference mr : si.getReferences(md))
-			{				
+			{			
+				// Check if a sub class can access the method.
+				if ((si.getType(((MethodReference) mr).getReferencePrefix()) instanceof TypeDeclaration) && 
+					((((MethodReference) mr).getReferencePrefix() instanceof TypeReference) || 
+					  ((si.getType(((MethodReference) mr).getReferencePrefix()) != null) && 
+				       !(((MethodReference) mr).getReferencePrefix() instanceof ThisReference) && 
+				       !(((MethodReference) mr).getReferencePrefix() instanceof SuperReference))))
+				{
+					if (!(referenceTypes.contains(si.getType(((MethodReference) mr).getReferencePrefix()))))
+						referenceTypes.add((TypeDeclaration) si.getType(((MethodReference) mr).getReferencePrefix()));
+				}
+				
 				if (MiscKit.getParentTypeDeclaration(mr) == null)
 					return false;
 				else if (!(referenceTypes.contains(MiscKit.getParentTypeDeclaration(mr))))
@@ -140,7 +160,7 @@ public class IncreaseMethodSecurity extends Refactoring
 			}
 			
 			for (TypeDeclaration td : referenceTypes)
-			{				
+			{
 				if (super.visibilityDown(md.getVisibilityModifier()) == AccessFlags.PRIVATE)
 				{
 					if (!(md.getMemberParent().equals(td)))

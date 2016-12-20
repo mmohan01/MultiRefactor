@@ -4,8 +4,7 @@ import java.io.BufferedReader;
 import java.io.FileReader;
 import java.io.IOException;
 
-import tasks.Tasks;
-import tasks.toolexperiment.*;
+import tasks.*;
 
 // Writes to console when program begins and ends.
 // Starts a new instance of Tasks (this is where the 

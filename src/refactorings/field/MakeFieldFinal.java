@@ -1,13 +1,13 @@
 package refactorings.field;
 
+import java.util.ArrayList;
+
 import multirefactor.AccessFlags;
 import recoder.CrossReferenceServiceConfiguration;
 import recoder.convenience.AbstractTreeWalker;
 import recoder.convenience.TreeWalker;
 import recoder.java.ProgramElement;
-import recoder.java.declaration.ConstructorDeclaration;
 import recoder.java.declaration.EnumDeclaration;
-import recoder.java.declaration.MemberDeclaration;
 import recoder.java.declaration.VariableDeclaration;
 import recoder.java.reference.VariableReference;
 import recoder.kit.MiscKit;
@@ -50,13 +50,17 @@ public class MakeFieldFinal extends Refactoring
 		// Construct refactoring transformation.
 		super.transformation = new Modify(config, true, vd, AccessFlags.FINAL);
 		report = super.transformation.analyze();
-		if (report instanceof Problem) 
+		if (report instanceof Problem)
 			return setProblemReport(report);
 
 		// Specify refactoring information for results information.
 		super.refactoringInfo = "Iteration " + iteration + ": \"Make Field Final\" applied at class " 
 				+ super.getFileName(getSourceFileRepository().getKnownCompilationUnits().get(unit).getName())
 				+ " to " + pe.getClass().getSimpleName() + " " + pe.toString().substring(last + 2);
+		
+		// Stores list of names of classes affected by refactoring.
+		super.affectedClasses = new ArrayList<String>(1);
+		super.affectedClasses.add(super.getFileName(getSourceFileRepository().getKnownCompilationUnits().get(unit).getName()));
 
 		return setProblemReport(EQUIVALENCE);
 	}
@@ -83,33 +87,28 @@ public class MakeFieldFinal extends Refactoring
 		if ((vd.isFinal()) || (MiscKit.getParentTypeDeclaration(vd) instanceof EnumDeclaration))
 			return false;
 		else
-		{
+		{			
 			if (!(vd.toSource().contains("=")))
-			{				
-				for (MemberDeclaration md : MiscKit.getParentTypeDeclaration(vd).getMembers())
+			{	
+				int references = 0;
+
+				for (VariableReference vr : getCrossReferenceSourceInfo().getReferences(vd.getVariables().get(0)))
 				{
-					if (md instanceof ConstructorDeclaration)
+					if (vr.getASTParent().toSource().contains(vd.getVariables().get(0).getName() + " ="))
 					{
-						boolean check = false;
+						references++;
 						
-						for (int i = 0; i < ((ConstructorDeclaration) md).getStatementCount(); i++)
-						{
-							if (((ConstructorDeclaration) md).getStatementAt(i).toSource().contains(vd.getVariables().get(0).getName() + " ="))
-							{
-								check = true;
-								break;
-							}
-						}
-						
-						if (!check)
+						if (references > 1)
 							return false;
 					}
 				}
 			}
-
-			for (VariableReference vr : getCrossReferenceSourceInfo().getReferences(vd.getVariables().get(0)))
-				if (vr.getASTParent().toSource().contains(vd.getVariables().get(0).getName() + " ="))
-					return false;
+			else
+			{
+				for (VariableReference vr : getCrossReferenceSourceInfo().getReferences(vd.getVariables().get(0)))
+					if (vr.getASTParent().toSource().contains(vd.getVariables().get(0).getName() + " ="))
+						return false;
+			}
 
 			return true;
 		}

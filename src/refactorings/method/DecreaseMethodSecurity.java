@@ -1,5 +1,7 @@
 package refactorings.method;
 
+import java.util.ArrayList;
+
 import recoder.CrossReferenceServiceConfiguration;
 import recoder.convenience.AbstractTreeWalker;
 import recoder.convenience.TreeWalker;
@@ -25,7 +27,7 @@ public class DecreaseMethodSecurity extends Refactoring
 	
 	public ProblemReport analyze(int iteration, int unit, int element) 
 	{
-		// Initialise and pick a random class to visit.
+		// Initialise and pick the element to visit.
 		CrossReferenceServiceConfiguration config = getServiceConfiguration();
 		ProblemReport report = EQUIVALENCE;		
 		super.tw = new TreeWalker(getSourceFileRepository().getKnownCompilationUnits().get(unit));
@@ -40,7 +42,7 @@ public class DecreaseMethodSecurity extends Refactoring
 			
 		ProgramElement pe = super.tw.getProgramElement();
 		MethodDeclaration md = (MethodDeclaration) pe;
-
+		
 		// Construct refactoring transformation.
 		super.transformation = new Modify(config, true, md, super.visibilityUp(md.getVisibilityModifier()));
 		report = super.transformation.analyze();
@@ -52,6 +54,10 @@ public class DecreaseMethodSecurity extends Refactoring
 				+ super.getFileName(getSourceFileRepository().getKnownCompilationUnits().get(unit).getName())
 				+ " to method " + ((MethodDeclaration) pe).getName() + " from " + super.currentModifier(md.getVisibilityModifier()) 
 				+ " to " + super.refactoredUpModifier(md.getVisibilityModifier());
+		
+		// Stores list of names of classes affected by refactoring.
+		super.affectedClasses = new ArrayList<String>(1);
+		super.affectedClasses.add(super.getFileName(getSourceFileRepository().getKnownCompilationUnits().get(unit).getName()));
 
 		return setProblemReport(EQUIVALENCE);
 	}

@@ -1,6 +1,8 @@
 package refactorings.field;
 
 import java.util.ArrayList;
+import java.util.Collections;
+import java.util.Comparator;
 import java.util.List;
 
 import recoder.CrossReferenceServiceConfiguration;
@@ -16,7 +18,6 @@ import recoder.java.Import;
 import recoder.java.ProgramElement;
 import recoder.java.declaration.ClassDeclaration;
 import recoder.java.declaration.FieldDeclaration;
-import recoder.java.declaration.FieldSpecification;
 import recoder.java.declaration.MemberDeclaration;
 import recoder.java.declaration.MethodDeclaration;
 import recoder.java.declaration.TypeDeclaration;
@@ -41,7 +42,7 @@ public class MoveFieldDown extends Refactoring
 	private List<VariableReference> superReferences;
 	private ArrayList<SuperReference> thisReferences;
 	private ASTList<Import> subDeclarationImports;
-	private int position, randomPosition, duplicatePosition;
+	private int position, newPosition, duplicatePosition;
 	
 	public MoveFieldDown(CrossReferenceServiceConfiguration sc) 
 	{
@@ -110,8 +111,7 @@ public class MoveFieldDown extends Refactoring
 		}
 		
 		// Any "super." references to the field in the sub class are changed to "this." references.
-		for (FieldSpecification fs : fd.getFieldSpecifications())
-			this.superReferences.addAll(VariableKit.getReferences(si, fs, this.subDeclaration, true));
+		this.superReferences.addAll(VariableKit.getReferences(si, fd.getFieldSpecifications().get(0), this.subDeclaration, true));
 
 		for (VariableReference vr : this.superReferences)
 			if (((FieldReference) vr).getReferencePrefix() instanceof SuperReference)
@@ -120,26 +120,24 @@ public class MoveFieldDown extends Refactoring
 		ASTList<MemberDeclaration> members = this.subDeclaration.getMembers();
 		
 		if (members.isEmpty())
-			this.randomPosition = 0;
+			this.newPosition = 0;
 		else
 		{
+			// Places field after last field in the class, or at the start.
 			for (int i = 0; i < members.size(); i++)
 			{
 				if (members.get(i) instanceof MethodDeclaration)
 				{
-					this.randomPosition = i + 1;
+					this.newPosition = i;
 					break;
 				}
 				else if (i == members.size() - 1)
-					this.randomPosition = members.size() + 1;
+					this.newPosition = members.size();
 			}
-
-			// Generate random position between the start of the class and the first method declaration in the class.
-			this.randomPosition = (int)(Math.random() * this.randomPosition);
 		}
 
 		detach(fd);
-		attach(fd, this.subDeclaration, this.randomPosition);
+		attach(fd, this.subDeclaration, this.newPosition);
 		
 		// Add any applicable imports from the current class to the sub class.
 		this.subDeclarationImports =  UnitKit.getCompilationUnit(this.subDeclaration).getImports();
@@ -152,7 +150,7 @@ public class MoveFieldDown extends Refactoring
 
 			for (Import i : imports)
 			{
-				if ((i.toString().equals(ci.toString())))
+				if (i.toSource().substring(i.toSource().indexOf("import")).equals(ci.toSource().substring(ci.toSource().indexOf("import"))))
 				{
 					contains = true;
 					break;
@@ -188,6 +186,11 @@ public class MoveFieldDown extends Refactoring
 		// Specify refactoring information for results information.
 		super.refactoringInfo = "Iteration " + iteration + ": \"Move Field Down\" applied to field " 
 				+ pe.toString().substring(last + 2) + " from " + this.currentDeclaration.getName() + " to " + this.subDeclaration.getName();
+		
+		// Stores list of names of classes affected by refactoring.
+		super.affectedClasses = new ArrayList<String>(2);
+		super.affectedClasses.add(this.currentDeclaration.getName());
+		super.affectedClasses.add(this.subDeclaration.getName());
 
 		return setProblemReport(EQUIVALENCE);
 	}
@@ -195,7 +198,7 @@ public class MoveFieldDown extends Refactoring
 	public ProblemReport analyzeReverse() 
 	{
 		// Initialise and pick the element to visit.
-		FieldDeclaration fd = (FieldDeclaration) this.subDeclaration.getMembers().get(this.randomPosition);
+		FieldDeclaration fd = (FieldDeclaration) this.subDeclaration.getMembers().get(this.newPosition);
 				
 		// Find new "super." references in field and change them back to "this." references.
 		for (SuperReference sr : this.thisReferences)
@@ -232,18 +235,25 @@ public class MoveFieldDown extends Refactoring
 		TypeDeclaration std;
 		
 		// Makes initial checks against the field and the class in order to quickly exclude insufficient candidates. 
-		if (!(td.isOrdinaryClass()) || (fd.isPrivate()))
+		if (!(td.isOrdinaryClass()) || (fd.isPrivate()) || (fd.getFieldSpecifications().size() > 1))
 			return false;
 		else
 		{			
 			// Are there any references to the field in the class.
-			for (FieldSpecification fs : fd.getFieldSpecifications())
-				if (VariableKit.getReferences(si, fs, td, true).size() > 0)
-					return false;
-
-			// Allows the program to go through the child classes at random
+			if (VariableKit.getReferences(si, fd.getFieldSpecifications().get(0), td, true).size() > 0)
+				return false;
+			
+			// Allows the program to go through the child classes at in order of class name
 			// and pick the first one (if any) that is applicable for the refactoring.
 			List<ClassType> subtypes = si.getSubtypes(td);
+			List<ClassType> exclude = new ArrayList<ClassType>();
+
+			for (ClassType ct : subtypes)
+				if (ct.getName() == null)
+					exclude.add(ct);
+
+			subtypes.removeAll(exclude);
+			Collections.sort(subtypes,  new NameComparator());
 			
 			// Check each child class to see if the field can be accessed from the class.
 			for (int i = 0; i < subtypes.size(); i++)
@@ -331,9 +341,8 @@ public class MoveFieldDown extends Refactoring
 				// Check if fields can be accessed in super type.
 				for (Field f : fields)
 				{
-					for (FieldSpecification fs : fd.getFieldSpecifications())
-						if (f.equals(fs))
-							continue;
+					if (f.equals(fd.getFieldSpecifications().get(0)))
+						continue;
 					
 					if (f.isPrivate())
 					{
@@ -406,66 +415,60 @@ public class MoveFieldDown extends Refactoring
 				// field is not the current child class then the child class will not be applicable.
 				// An exception is if the field reference is a super reference in the child class. In this
 				// case the reference can be modified during the refactoring to point to the right class.
-				for (FieldSpecification fs : fd.getFieldSpecifications())
+				for (FieldReference fr : si.getReferences(fd.getFieldSpecifications().get(0)))
 				{
-					for (FieldReference fr : si.getReferences(fs))
+					// Check whether the field can be accessed from the class.
+					if (!(std.getPackage().equals(MiscKit.getParentTypeDeclaration(fr).getPackage())) && !(fd.isPublic()))
 					{
-						// Check whether the field can be accessed from the class.
-						if (!(std.getPackage().equals(MiscKit.getParentTypeDeclaration(fr).getPackage())) && !(fd.isPublic()))
+						if (!(fd.isProtected()))
 						{
-							if (!(fd.isProtected()))
-							{
-								next = true;
-								break;
-							}
-							else if (!(MiscKit.getParentTypeDeclaration(fr).getAllSupertypes().contains(std)))
-							{
-								next = true;
-								break;
-							}
+							next = true;
+							break;
 						}
+						else if (!(MiscKit.getParentTypeDeclaration(fr).getAllSupertypes().contains(std)))
+						{
+							next = true;
+							break;
+						}
+					}
 
-						// If reference is "this." or "super." or has no prefix 
-						// it needs to be in the sub class or one of its sub classes.
-						if ((fr.getReferencePrefix() instanceof ThisReference) || (fr.getReferencePrefix() instanceof SuperReference) ||
+					// If reference is "this." or "super." or has no prefix 
+					// it needs to be in the sub class or one of its sub classes.
+					if ((fr.getReferencePrefix() instanceof ThisReference) || (fr.getReferencePrefix() instanceof SuperReference) ||
 							(fr.getReferencePrefix() == null))
-						{
-							if (!(MiscKit.getParentTypeDeclaration(fr).equals(std)) &&
+					{
+						if (!(MiscKit.getParentTypeDeclaration(fr).equals(std)) &&
 								!(si.getAllSubtypes(std).contains(MiscKit.getParentTypeDeclaration(fr))))
-							{
-								next = true;
-								break;
-							}
-						}
-						// If the reference is prefixed by a type reference, it needs to be a
-						// static field and the type reference needs to be the type of the sub class. 
-						else if (fr.getReferencePrefix() instanceof TypeReference)
 						{
-							if (!(fr.getReferencePrefix().toSource().equals(std.getName())) || !(fd.isStatic()))
-							{
-								next = true;
-								break;
-							}
+							next = true;
+							break;
 						}
-						// If the reference if being called from a variable, the variable needs to be the type of the sub class or
-						// one of its sub classes (in this case, if the field is a package type, it will need to be accessible).
-						else
+					}
+					// If the reference is prefixed by a type reference, it needs to be a
+					// static field and the type reference needs to be the type of the sub class. 
+					else if (fr.getReferencePrefix() instanceof TypeReference)
+					{
+						if (!(fr.getReferencePrefix().toSource().equals(std.getName())) || !(fd.isStatic()))
 						{
-							if (!(si.getType(fr.getReferencePrefix()).equals(std)))
-							{
-								if (!(si.getAllSubtypes(std).contains(si.getType(fr.getReferencePrefix()))) || 
+							next = true;
+							break;
+						}
+					}
+					// If the reference if being called from a variable, the variable needs to be the type of the sub class or
+					// one of its sub classes (in this case, if the field is a package type, it will need to be accessible).
+					else
+					{
+						if (!(si.getType(fr.getReferencePrefix()).equals(std)))
+						{
+							if (!(si.getAllSubtypes(std).contains(si.getType(fr.getReferencePrefix()))) || 
 									(!(fd.isProtected()) && !(fd.isPublic()) && 
-									!(((TypeDeclaration) si.getType(fr.getReferencePrefix())).getPackage().equals(std.getPackage()))))
-								{
-									next = true;
-									break;
-								}
+											!(((TypeDeclaration) si.getType(fr.getReferencePrefix())).getPackage().equals(std.getPackage()))))
+							{
+								next = true;
+								break;
 							}
 						}
 					}
-					
-					if (next)
-						break;
 				}
 
 				if (!next)
@@ -511,5 +514,17 @@ public class MoveFieldDown extends Refactoring
 
 		FieldDeclaration fd = (FieldDeclaration) tw.getProgramElement();
 		return fd.toString();
+	}
+	
+	// This inner class allows sorting by name so that the list is sorted alphanumerically by the class names.
+	private class NameComparator implements Comparator<ClassType> 
+	{
+		// Compares the two specified individuals using the fitness
+		// operator. Returns less than 1, 0 or more than 1 as the first
+		// argument is less than, equal to, or greater than the second.
+		public int compare(ClassType ct1, ClassType ct2) 
+		{   
+			return ct1.getName().compareTo(ct2.getName());
+		}
 	}
 }

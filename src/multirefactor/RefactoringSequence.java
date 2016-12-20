@@ -10,12 +10,13 @@ public class RefactoringSequence
 	private float crowdingDistance;
 	
 	private ArrayList<Integer> refactorings;
-	private ArrayList<int[]> positions;
+	private ArrayList<Integer> positions;
 	private ArrayList<String[]> names;
 	private ArrayList<String> refactoringInfo;
+	private ArrayList<String> affectedClasses;
 
-	public RefactoringSequence(ArrayList<Integer> refactorings, ArrayList<int[]> positions, 
-							   ArrayList<String[]> names, ArrayList<String> refactoringInfo) 
+	public RefactoringSequence(ArrayList<Integer> refactorings, ArrayList<Integer> positions, 
+							   ArrayList<String[]> names, ArrayList<String> refactoringInfo, ArrayList<String> affectedClasses) 
 	{
 		this.fitness = 1.0f;
 		this.rank = 0;
@@ -25,6 +26,7 @@ public class RefactoringSequence
 		this.positions = positions;
 		this.names = names;
 		this.refactoringInfo = refactoringInfo;
+		this.affectedClasses = affectedClasses;
 	}
 	
 	public float getFitness()
@@ -77,12 +79,12 @@ public class RefactoringSequence
 		this.refactorings = refactorings;
 	}
 	
-	public ArrayList<int[]> getPositions()
+	public ArrayList<Integer> getPositions()
 	{
 		return this.positions;
 	}	
 	
-	public void setPositions(ArrayList<int[]> positions)
+	public void setPositions(ArrayList<Integer> positions)
 	{
 		this.positions = positions;
 	}
@@ -105,5 +107,15 @@ public class RefactoringSequence
 	public void setRefactoringInfo(ArrayList<String> refactoringInfo)
 	{
 		this.refactoringInfo = refactoringInfo;
+	}
+	
+	public ArrayList<String> getAffectedClasses()
+	{
+		return this.affectedClasses;
+	}
+	
+	public void setAffectedClasses(ArrayList<String> affectedClasses)
+	{
+		this.affectedClasses = affectedClasses;
 	}
 }

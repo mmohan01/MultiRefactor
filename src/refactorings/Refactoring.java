@@ -39,17 +39,14 @@ public abstract class Refactoring extends TwoPassTransformation
 {
 	protected TwoPassTransformation transformation;
 	protected String refactoringInfo; 
+	protected ArrayList<String> affectedClasses;
 	protected AbstractTreeWalker tw;
 	
 	public Refactoring(CrossReferenceServiceConfiguration sc) 
 	{
 		super(sc);
 	}
-	
-	public Refactoring(int f) 
-	{
-	}
-	
+		
 	public Refactoring() 
 	{
 		super();
@@ -62,6 +59,25 @@ public abstract class Refactoring extends TwoPassTransformation
 	public abstract int getAmount(int unit);
 	
 	public abstract String getName(int unit, int element);
+	
+	public ProblemReport analyze(int iteration, String name, int element)
+	{
+		int unit = -1;
+
+		for (int i = 0; i < getSourceFileRepository().getKnownCompilationUnits().size(); i++)
+		{
+			int index = getSourceFileRepository().getKnownCompilationUnits().get(i).getName().indexOf("MultiRefactor\\") + 14;
+			String unitName = getSourceFileRepository().getKnownCompilationUnits().get(i).getName().substring(index);
+			
+			if (name.endsWith(unitName))
+			{
+				unit = i;
+				break;
+			}
+		}
+		
+		return analyze(iteration, unit, element);
+	}
 	
 	public void transform(ProblemReport p) 
 	{
@@ -179,7 +195,7 @@ public abstract class Refactoring extends TwoPassTransformation
 					t = ((ArrayType) t).getBaseType();
 				
 				if ((t != null) && !(types.contains(t)) && !(t instanceof PrimitiveType) &&
-					!((t.toString().contains("java.lang.")) && !(t.toString().contains("%RAW%"))))
+					!((t.toString().startsWith("java.lang.")) && !(t.toString().contains("%RAW%"))))
 					types.add(t); 
 			}
 			
@@ -189,7 +205,7 @@ public abstract class Refactoring extends TwoPassTransformation
 				returnType = ((ArrayType) returnType).getBaseType();
 			
 			if ((returnType != null) && !(types.contains(returnType)) && !(returnType instanceof PrimitiveType) &&
-			    !((returnType.toString().contains("java.lang.")) && !(returnType.toString().contains("%RAW%"))))
+			    !((returnType.toString().startsWith("java.lang.")) && !(returnType.toString().contains("%RAW%"))))
 				types.add(returnType);
 		}
 		
@@ -205,7 +221,7 @@ public abstract class Refactoring extends TwoPassTransformation
 					t = ((ArrayType) t).getBaseType();
 				
 				if ((t != null) && !(types.contains(t)) && !(t instanceof PrimitiveType) && 
-					!((t.toString().contains("java.lang.")) && !(t.toString().contains("%RAW%"))))	
+					!((t.toString().startsWith("java.lang.")) && !(t.toString().contains("%RAW%"))))	
 					types.add(t);
 			}
 		}
@@ -266,7 +282,7 @@ public abstract class Refactoring extends TwoPassTransformation
 		for (Import ci : classImports)
 		{
 			boolean add = false;
-
+			
 			if (ci.isMultiImport())
 			{
 				Package p;
@@ -278,7 +294,7 @@ public abstract class Refactoring extends TwoPassTransformation
 					
 				for (Type type : methodTypes)
 				{
-					if ((type instanceof ClassType) && (((ClassType) type).getPackage().getName().equals(p.getName())))
+					if ((type instanceof ClassType) && (p.getName().startsWith(((ClassType) type).getPackage().getName())))
 					{
 						add = true;
 						methodTypes.remove(type);
@@ -338,6 +354,20 @@ public abstract class Refactoring extends TwoPassTransformation
 		return position;
 	}
 	
+	// Returns the set of outer types that a type declaration is declared within.
+	protected ArrayList<TypeDeclaration> getContainingClasses(TypeDeclaration td)
+	{
+		ArrayList<TypeDeclaration> containingClasses = new ArrayList<TypeDeclaration>();
+		
+		while (td.getContainingClassType() != null)
+		{
+			td = td.getContainingClassType();
+			containingClasses.add(td);
+		}
+		
+		return containingClasses;
+	}
+	
 	// Truncates a path name to just the element name.
 	protected String getFileName(String input)
 	{
@@ -348,26 +378,15 @@ public abstract class Refactoring extends TwoPassTransformation
 
 		return input;
 	}
-	
-	public ProblemReport analyze(int iteration, String name, int element)
-	{
-		int unit = -1;
-		
-		for (int i = 0; i < getSourceFileRepository().getKnownCompilationUnits().size(); i++)
-		{
-			if (getSourceFileRepository().getKnownCompilationUnits().get(i).getName().equals(name))
-			{
-				unit = i;
-				break;
-			}
-		}
-		
-		return analyze(iteration, unit, element);
-	}
-	
+
 	public String getRefactoringInfo()
 	{
 		return this.refactoringInfo;
+	}
+	
+	public ArrayList<String> getAffectedClasses()
+	{
+		return this.affectedClasses;
 	}
 	
 	public void setServiceConfiguration(CrossReferenceServiceConfiguration sc)

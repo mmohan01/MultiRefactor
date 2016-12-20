@@ -74,16 +74,18 @@ public class ExtractSubclass extends Refactoring
 	public ProblemReport analyze(int iteration, int unit, int element) 
 	{
 		// Initialise and pick the element to visit.
-		super.tw = new TreeWalker(getSourceFileRepository().getKnownCompilationUnits().get(unit));
+		super.tw = new TreeWalker(getSourceFileRepository().getKnownCompilationUnits().get(unit));		
 		
 		for (int i = 0; i < element; i++)
 		{
 			super.tw.next(TypeDeclaration.class);
 			TypeDeclaration td = (TypeDeclaration) super.tw.getProgramElement();
 			if (!mayRefactor(td))
+			{
 				i--;
+			}
 		}
-		
+				
 		ProgramElement pe = super.tw.getProgramElement();
 		this.currentDeclaration = (TypeDeclaration) pe;
 		CrossReferenceSourceInfo si = getCrossReferenceSourceInfo();
@@ -109,11 +111,8 @@ public class ExtractSubclass extends Refactoring
 
 			// It may be nested by more than one level, in which 
 			// case each inner class needs to be included in the import.
-			while (nestedClass.getContainingClassType() != null)
-			{
-				nestedClass = nestedClass.getContainingClassType();
-				identifiers.add(nestedClass.getIdentifier());
-			}
+			for (TypeDeclaration containingClass : super.getContainingClasses(nestedClass))
+				identifiers.add(containingClass.getIdentifier());
 
 			for (int i = identifiers.size() - 1; i >= 0; i--)
 			{
@@ -137,13 +136,12 @@ public class ExtractSubclass extends Refactoring
 		
 		String name = this.currentDeclaration.getIdentifier().getText() + "_SubClass";
 		ArrayList<String> typeNames = getAllTypeNames();
+		int subClassNumber = 1;
 		
 		while (typeNames.contains(name))
-		{
-			if (name.equals(this.currentDeclaration.getIdentifier().getText() + "_SubClass"))			
-				name = name + "_";
-			
-			name = name + (char)(((int)(Math.random() * 26)) + 'a');
+		{			
+			name = this.currentDeclaration.getIdentifier().getText() + "_SubClass_" + subClassNumber;
+			subClassNumber++;
 		}
 			
 		// Create new class from current class.
@@ -179,6 +177,7 @@ public class ExtractSubclass extends Refactoring
 			attach(md, this.subDeclaration, this.subDeclaration.getMembers().size());
 		}
 		
+		// Update relevant sub classes to now extend from the new sub class.
 		for (ClassDeclaration cd : this.subClasses)
 		{			
 			Extends subClass = getProgramFactory().createExtends(getProgramFactory().createTypeReference(this.subDeclaration.getIdentifier()));
@@ -203,6 +202,12 @@ public class ExtractSubclass extends Refactoring
 		}
 		
 		super.refactoringInfo = super.refactoringInfo + "\" in class " + ((TypeDeclaration) pe).getName() + " to " + this.subDeclaration.getName();
+		
+		// Stores list of names of classes affected by refactoring.
+		super.affectedClasses = new ArrayList<String>(2);
+		super.affectedClasses.add(((TypeDeclaration) pe).getName());
+		super.affectedClasses.add(this.subDeclaration.getName());
+		
 		return setProblemReport(EQUIVALENCE);
 	}
 	
@@ -251,12 +256,12 @@ public class ExtractSubclass extends Refactoring
 	{		
 		// Makes a number of initial checks against the class 
 		// in order to quickly exclude insufficient candidates. 
-		if (!(td.isOrdinaryClass()) || (td.isPrivate() || (td.isFinal()) || (td.getName() == null)) || 
+		if (!(td.isOrdinaryClass()) || (td.isPrivate() || (td.isFinal()) ||	(td.getName() == null)) || 
 			 ((td.getContainingClassType() instanceof TypeDeclaration) && !(td.isStatic())) ||
 			 (td.getContainingClassType() instanceof InterfaceDeclaration)) 
 			return false;
 		else
-		{			
+		{						
 			// Prevents "Zero Service" outputs logged to the console.
 			if (td.getProgramModelInfo() == null)
 				td.getFactory().getServiceConfiguration().getChangeHistory().updateModel();
@@ -288,7 +293,7 @@ public class ExtractSubclass extends Refactoring
 				if ((md instanceof MethodDeclaration) && !(md instanceof ConstructorDeclaration))
 				{					
 					if (MethodKit.getRedefiningMethods(si, (Method) md).size() > 0)
-						next = true;
+						continue;
 					
 					// Checks any reference to the method in the program and if it
 					// refers explicitly to the current class it will not be applicable.
@@ -300,15 +305,24 @@ public class ExtractSubclass extends Refactoring
 							break;
 						}
 
-						if ((((MethodReference) mr).getReferencePrefix() instanceof TypeReference) || 
-							((si.getType(((MethodReference) mr).getReferencePrefix()) != null) && 
-							 !(((MethodReference) mr).getReferencePrefix() instanceof ThisReference) && 
-							 !(((MethodReference) mr).getReferencePrefix() instanceof SuperReference) && 
-							 (si.getType(((MethodReference) mr).getReferencePrefix()).equals(td))))
-						{  
-							next = true;
-							break;
-						}
+						// If the method reference is used by a class instance.
+						if ((si.getType(((MethodReference) mr).getReferencePrefix()) instanceof TypeDeclaration) &&
+						    ((((MethodReference) mr).getReferencePrefix() instanceof TypeReference) || 
+							 ((si.getType(((MethodReference) mr).getReferencePrefix()) != null) && 
+							  !(((MethodReference) mr).getReferencePrefix() instanceof ThisReference) && 
+							  !(((MethodReference) mr).getReferencePrefix() instanceof SuperReference))))
+						{
+							// What is the class instance that uses the method reference.
+							TypeDeclaration referenceClass = (TypeDeclaration) si.getType(((MethodReference) mr).getReferencePrefix());
+
+							// If the method reference refers explicitly to a class
+							// that isn't a sub class the method will be discarded.
+							if ((referenceClass == td) || !(referenceClass.getAllSupertypes().contains(td)))
+							{
+								next = true;
+								break;
+							}
+						}						
 					}
 					
 					if (!next)
@@ -317,26 +331,36 @@ public class ExtractSubclass extends Refactoring
 				// Initial checks on fields to restrict the
 				// set that may be moved with the methods.
 				else if (md instanceof FieldDeclaration)
-				{			
+				{						
+					// If there is more than one field declared within the declaration.
+					if (((FieldDeclaration) md).getFieldSpecifications().size() > 1)
+						continue;
+				
 					// Checks any reference to the field in the program and if it
 					// refers explicitly to the current class it will not be applicable.
-					for (FieldSpecification fs : ((FieldDeclaration) md).getFieldSpecifications())
+					for (FieldReference fr : si.getReferences(((FieldDeclaration) md).getFieldSpecifications().get(0)))
 					{
-						for (FieldReference fr : si.getReferences(fs))
+						// If the field reference is used by a class instance.
+						if ((si.getType(fr.getReferencePrefix()) instanceof TypeDeclaration) && ((fr.getReferencePrefix() instanceof TypeReference) || 
+							 ((si.getType(fr.getReferencePrefix()) != null) && !(fr.getReferencePrefix() instanceof ThisReference) && 
+							  !(fr.getReferencePrefix() instanceof SuperReference))))
 						{
-							if ((fr.getReferencePrefix() instanceof TypeReference) || ((si.getType(fr.getReferencePrefix()) != null) && 
-								!(fr.getReferencePrefix() instanceof ThisReference) && 	!(fr.getReferencePrefix() instanceof SuperReference) && 
-								(si.getType(fr.getReferencePrefix()).equals(td))))
-							{
+							// What is the class instance that uses the method reference.
+							TypeDeclaration referenceClass =  (TypeDeclaration) si.getType(fr.getReferencePrefix());
+
+							// If the field reference refers explicitly to a class
+							// that isn't a sub class the method will be discarded.
+							if ((referenceClass == td) || !(referenceClass.getAllSupertypes().contains(td)))
+							{  
 								next = true;
 								break;
-							}							
-						}
-						
+							}
+						}	
+
 						if (next)
 							break;
 					}
-					
+
 					if (!next)
 						availableFields.add((FieldDeclaration) md);
 				}
@@ -358,6 +382,7 @@ public class ExtractSubclass extends Refactoring
 				next = false;
 				methodList.clear();
 				methodList.add(md);
+				this.subClasses = new ArrayList<ClassDeclaration>(si.getSubtypes(td).size());
 				
 				// Finds the methods in the class that reference the 
 				// current method and if they can be moved add them to the list.
@@ -388,7 +413,7 @@ public class ExtractSubclass extends Refactoring
 
 					if (m.equals(si.getMethod(md)))
 						continue;
-
+					
 					if (m.isPrivate() && (m.getContainingClassType().equals(td)))
 					{
 						if (availableMethods.contains(m))
@@ -410,14 +435,14 @@ public class ExtractSubclass extends Refactoring
 				// Covers the case that the return type includes a generic type as in this 
 				// case it doesn't seem to catch any references to the method in the class.
 				if ((MethodKit.getReferences(si, md, td, true).size() == 0) && (md.getReturnType() != null))
-					if (((md.getReturnType() instanceof ClassType) && (((ClassType) md.getReturnType()).getTypeParameters() != null)) || 
-						(md.getReturnType() instanceof TypeParameterDeclaration))
+					if (((md.getReturnType() instanceof ClassType) && (((ClassType) md.getReturnType()).getTypeParameters() == null)) || 
+						(md.getReturnType() instanceof TypeParameterDeclaration) || (md.getTypeParameters() != null))
 						next = true;
 				
 				// If the group of methods makes up more than 50% of the methods in the class, discard it.
 				if ((methodList.size() * 2) > td.getMethods().size())
 					next = true;
-				
+					
 				if (next)
 					continue;
 
@@ -445,7 +470,37 @@ public class ExtractSubclass extends Refactoring
 				
 				if (next)
 					continue;
+				
+				// For the methods in the group, if any other methods not
+				// within the group are accessed in them, the group is discarded.
+				for (MethodDeclaration md2 : methodList)
+				{
+					if (!(md2.equals(md)))
+					{
+						methods = super.getMethods(md2);
 
+						for (MethodReference mr : methods)
+						{
+							Method m = si.getMethod(mr);
+
+							if (m.isPrivate() && (m.getContainingClassType().equals(td)))
+							{
+								if (!methodList.contains(m))
+								{
+									next = true;
+									break;
+								}
+							}
+						}
+					}
+					
+					if (next)
+						break;
+				}
+
+				if (next)
+					continue;
+				
 				// The previous list contains the fields that can be moved and this list
 				// will store the sub selection that will be moved if this group can be used 
 				// i.e. fields the method group use that are not needed elsewhere in the class.
@@ -495,10 +550,71 @@ public class ExtractSubclass extends Refactoring
 				
 				if (next)
 					continue;
+
+				// Need to check the references to the methods to see if
+				// any sub classes need to be derived from the new sub class.
+				for (MethodDeclaration dec : methodList)
+				{
+					// If the method reference refers explicitly to a sub class the sub class
+					// will be added to the list of classes to derive from the new sub class.
+					for (MemberReference mr : si.getReferences((Method) dec))
+					{
+						// If the method reference is used by a class instance.
+						if ((si.getType(((MethodReference) mr).getReferencePrefix()) instanceof TypeDeclaration) &&
+								((((MethodReference) mr).getReferencePrefix() instanceof TypeReference) || 
+										((si.getType(((MethodReference) mr).getReferencePrefix()) != null) && 
+												!(((MethodReference) mr).getReferencePrefix() instanceof ThisReference) && 
+												!(((MethodReference) mr).getReferencePrefix() instanceof SuperReference))))
+						{
+							// What is the class instance that uses the method reference.
+							TypeDeclaration referenceClass = (TypeDeclaration) si.getType(((MethodReference) mr).getReferencePrefix());
+
+							// If the method reference refers explicitly to a sub class the sub class
+							// will be added to the list of classes to derive from the new sub class.
+							if ((referenceClass != td) && (referenceClass.getAllSupertypes().contains(td)))
+							{  
+								while(referenceClass.getSupertypes().get(0) != td)
+									referenceClass = (TypeDeclaration) referenceClass.getSupertypes().get(0);
+
+								if (!(this.subClasses.contains((ClassDeclaration) referenceClass)))
+									this.subClasses.add((ClassDeclaration) referenceClass);
+							}
+						}
+					}
+				}
+
+				// Need to check the references to the fields to see if
+				// any sub classes need to be derived from the new sub class.
+				for (FieldDeclaration fd : fieldsToMove)
+				{
+					// If the field reference refers explicitly to a sub class the sub class
+					// will be added to the list of classes to derive from the new sub class.
+					for (FieldReference fr : si.getReferences(((FieldDeclaration) fd).getFieldSpecifications().get(0)))
+					{
+						// If the field reference is used by a class instance.
+						if ((si.getType(fr.getReferencePrefix()) instanceof TypeDeclaration) && ((fr.getReferencePrefix() instanceof TypeReference) || 
+							 ((si.getType(fr.getReferencePrefix()) != null) && !(fr.getReferencePrefix() instanceof ThisReference) && 
+							  !(fr.getReferencePrefix() instanceof SuperReference))))
+						{
+							// What is the class instance that uses the method reference.
+							TypeDeclaration referenceClass =  (TypeDeclaration) si.getType(fr.getReferencePrefix());
+
+							// If the field reference refers explicitly to a sub class the sub class
+							// will be added to the list of classes to derive from the new sub class.
+							if ((referenceClass != td) && (referenceClass.getAllSupertypes().contains(td)))
+							{  
+								while (referenceClass.getSupertypes().get(0) != td)
+									referenceClass = (TypeDeclaration) referenceClass.getSupertypes().get(0);
+
+								if (!(this.subClasses.contains((ClassDeclaration) referenceClass)))
+									this.subClasses.add((ClassDeclaration) referenceClass);
+							}
+						}
+					}
+				}
 				
-				// If any of the sub classes of the current type use the members being moved to the sub class, 
-				// The direct sub class will need to be changed to derive from the sub class.
-				this.subClasses = new ArrayList<ClassDeclaration>(si.getSubtypes(td).size());
+				// If any of the sub classes of the current type use the members being moved to the new sub 
+				// class, the direct sub class will need to be changed to derive from the new sub class.
 				for (ClassType ct : si.getSubtypes(td))
 				{
 					ArrayList<ClassType> classes = new ArrayList<ClassType>(si.getAllSubtypes(ct).size() + 1);
@@ -512,7 +628,9 @@ public class ExtractSubclass extends Refactoring
 						{
 							if (MethodKit.getReferences(si, m, (TypeDeclaration) c, true).size() > 0)
 							{
-								this.subClasses.add((ClassDeclaration) ct);
+								if (!(this.subClasses.contains((ClassDeclaration) ct)))
+									this.subClasses.add((ClassDeclaration) ct);
+								
 								breakout = true;
 								break;
 							}
@@ -528,44 +646,43 @@ public class ExtractSubclass extends Refactoring
 						{						
 							for (ClassType c : classes)
 							{
-								for (FieldSpecification fs : f.getFieldSpecifications())
+								if (VariableKit.getReferences(si, f.getFieldSpecifications().get(0), (TypeDeclaration) c, true).size() > 0)
 								{
-									if (VariableKit.getReferences(si, fs, (TypeDeclaration) c, true).size() > 0)
-									{
+									if (!(this.subClasses.contains((ClassDeclaration) ct)))
 										this.subClasses.add((ClassDeclaration) ct);
-										breakout = true;
-										break;
-									}
-								}
-								
-								if (breakout)
+
+									breakout = true;
 									break;
+								}
 							}
 							
 							if (breakout)
 								break;
 						}
 					}
-					
-					// If any of these classes contain any super references to
-					// a constructor with parameters, the group will be discarded.
-					if (breakout)
+				}
+				
+				// If any of these sub classes contain any super references to
+				// a constructor with parameters, the group will be discarded.
+				for (ClassDeclaration ct : this.subClasses)
+				{
+					AbstractTreeWalker tw = new TreeWalker((TypeDeclaration) ct);
+					while (tw.next(SuperConstructorReference.class)) 
 					{
-						AbstractTreeWalker tw = new TreeWalker((TypeDeclaration) ct);
-						while (tw.next(SuperConstructorReference.class)) 
+						SuperConstructorReference ref = (SuperConstructorReference) tw.getProgramElement();
+						if ((ref.getArguments() != null) && (ref.getArguments().size() > 0))
 						{
-							SuperConstructorReference ref = (SuperConstructorReference) tw.getProgramElement();
-							if ((ref.getArguments() != null) && (ref.getArguments().size() > 0))
-							{
-								next = true;
-								break;
-							}
+							next = true;
+							break;
 						}
 					}
 					
 					if (next)
 						break;
 				}
+				
+				if (next)
+					break;
 				
 				Set<Type> distinctTypes = new HashSet<Type>();
 				for (MemberDeclaration dec : availableMethods)

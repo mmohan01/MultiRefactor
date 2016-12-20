@@ -16,7 +16,6 @@ import recoder.java.Import;
 import recoder.java.ProgramElement;
 import recoder.java.declaration.ClassDeclaration;
 import recoder.java.declaration.FieldDeclaration;
-import recoder.java.declaration.FieldSpecification;
 import recoder.java.declaration.MemberDeclaration;
 import recoder.java.declaration.MethodDeclaration;
 import recoder.java.declaration.TypeDeclaration;
@@ -39,7 +38,7 @@ import refactorings.Refactoring;
 public class MoveFieldUp extends Refactoring 
 {
 	private TypeDeclaration currentDeclaration, superDeclaration;
-	private int position, randomPosition;
+	private int position, newPosition;
 	private ArrayList<TypeDeclaration> sisterClasses;
 	private ArrayList<Integer> sisterPositions;	
 	private ASTList<Import> superDeclarationImports;
@@ -73,7 +72,7 @@ public class MoveFieldUp extends Refactoring
 		this.currentDeclaration = MiscKit.getParentTypeDeclaration(fd);
 		this.superDeclaration = (TypeDeclaration) this.currentDeclaration.getSupertypes().get(0);
 		this.position = super.getPosition(this.currentDeclaration, fd);
-		this.randomPosition = -1;
+		this.newPosition = -1;
 		sisterClasses = new ArrayList<TypeDeclaration>();
 		sisterPositions = new ArrayList<Integer>();
 		ArrayList<Type> types = super.getTypes(fd, si);
@@ -116,44 +115,40 @@ public class MoveFieldUp extends Refactoring
 			{
 				this.sisterClasses.add(this.superDeclaration);
 				this.sisterPositions.add(super.getPosition(this.superDeclaration, dec));
-				this.randomPosition = super.getPosition(this.superDeclaration, dec);
+				this.newPosition = super.getPosition(this.superDeclaration, dec);
 				detach(dec);
 			}
 		}
 		
-		if ((this.randomPosition == -1) && !(this.superDeclaration.getMembers().isEmpty()))
+		// Places field after last field in the class, or at the start.
+		if ((this.newPosition == -1) && !(this.superDeclaration.getMembers().isEmpty()))
 		{
 			ASTList<MemberDeclaration> members = this.superDeclaration.getMembers();
+			
 			for (int i = 0; i < members.size(); i++)
 			{
 				if (members.get(i) instanceof MethodDeclaration)
 				{
-					this.randomPosition = i + 1;
+					this.newPosition = i;
 					break;
 				}
 				else if (i == members.size() - 1)
-					this.randomPosition = members.size() + 1;
+					this.newPosition = members.size();
 			}
-
-			// Generate random position between the start of the class and the first method declaration in the class.
-			this.randomPosition = (int)(Math.random() * this.randomPosition);
 		}
-		else if (this.randomPosition == -1)
-			this.randomPosition = 0;
+		else if (this.newPosition == -1)
+			this.newPosition = 0;
 
 		// Do any references to the field in the class use "this."
-		for (FieldSpecification fs : fd.getFieldSpecifications())
+		for (VariableReference mr : VariableKit.getReferences(si, fd.getFieldSpecifications().get(0), this.currentDeclaration, true))
 		{
-			for (VariableReference mr : VariableKit.getReferences(si, fs, this.currentDeclaration, true))
+			if (mr.toSource().contains("this."))
 			{
-				if (mr.toSource().contains("this."))
-				{
-					SuperReference sr = new SuperReference();
+				SuperReference sr = new SuperReference();
 
-					for (int i = 0; i < mr.getChildCount(); i++)
-						if (mr.getChildAt(i) instanceof ThisReference)
-							mr.replaceChild(mr.getChildAt(i), sr);
-				}
+				for (int i = 0; i < mr.getChildCount(); i++)
+					if (mr.getChildAt(i) instanceof ThisReference)
+						mr.replaceChild(mr.getChildAt(i), sr);
 			}
 		}
 		
@@ -163,7 +158,7 @@ public class MoveFieldUp extends Refactoring
 			sr.getASTParent().replaceChild(sr, null);
 		
 		detach(fd);
-		attach(fd, this.superDeclaration, this.randomPosition);
+		attach(fd, this.superDeclaration, this.newPosition);
 		
 		// Add any applicable imports from the current class to the super class.
 		this.superDeclarationImports =  UnitKit.getCompilationUnit(this.superDeclaration).getImports();
@@ -176,7 +171,7 @@ public class MoveFieldUp extends Refactoring
 
 			for (Import i : imports)
 			{
-				if ((i.toString().equals(ci.toString())))
+				if (i.toSource().substring(i.toSource().indexOf("import")).equals(ci.toSource().substring(ci.toSource().indexOf("import"))))
 				{
 					contains = true;
 					break;
@@ -219,11 +214,8 @@ public class MoveFieldUp extends Refactoring
 				
 				// It may be nested by more than one level, in which 
 				// case each inner class needs to be included in the import.
-				while (nestedClass.getContainingClassType() != null)
-				{
-					nestedClass = nestedClass.getContainingClassType();
-					identifiers.add(nestedClass.getIdentifier());
-				}
+				for (TypeDeclaration containingClass : super.getContainingClasses(nestedClass))
+					identifiers.add(containingClass.getIdentifier());
 				
 				for (int i = identifiers.size() - 1; i >= 0; i--)
 				{
@@ -241,28 +233,30 @@ public class MoveFieldUp extends Refactoring
 		// Specify refactoring information for results information.
 		super.refactoringInfo = "Iteration " + iteration + ": \"Move Field Up\" applied to field " 
 				+ pe.toString().substring(last + 2)	+ " from " + this.currentDeclaration.getName() + " to " + this.superDeclaration.getName();
-
+		
+		// Stores list of names of classes affected by refactoring.
+		super.affectedClasses = new ArrayList<String>(2);
+		super.affectedClasses.add(this.currentDeclaration.getName());
+		super.affectedClasses.add(this.superDeclaration.getName());
+		
 		return setProblemReport(EQUIVALENCE);
 	}
 
 	public ProblemReport analyzeReverse() 
 	{
 		// Initialise and pick the element to visit.
-		FieldDeclaration fd = (FieldDeclaration) this.superDeclaration.getMembers().get(this.randomPosition);
+		FieldDeclaration fd = (FieldDeclaration) this.superDeclaration.getMembers().get(this.newPosition);
 
 		// Do any references to the field in the class use "super."
-		for (FieldSpecification fs : fd.getFieldSpecifications())
+		for (VariableReference mr : VariableKit.getReferences(getCrossReferenceSourceInfo(), fd.getFieldSpecifications().get(0), this.currentDeclaration, true))
 		{
-			for (VariableReference mr : VariableKit.getReferences(getCrossReferenceSourceInfo(), fs, this.currentDeclaration, true))
+			if (mr.toSource().contains("super."))
 			{
-				if (mr.toSource().contains("super."))
-				{
-					ThisReference tr = new ThisReference();
+				ThisReference tr = new ThisReference();
 
-					for (int i = 0; i < mr.getChildCount(); i++)
-						if (mr.getChildAt(i) instanceof SuperReference)
-							mr.replaceChild(mr.getChildAt(i), tr);
-				}
+				for (int i = 0; i < mr.getChildCount(); i++)
+					if (mr.getChildAt(i) instanceof SuperReference)
+						mr.replaceChild(mr.getChildAt(i), tr);
 			}
 		}
 				
@@ -294,7 +288,7 @@ public class MoveFieldUp extends Refactoring
 		
 		// Makes a number of initial checks against the field, the class and the super class in order to quickly exclude insufficient candidates. 
 		if (!(td.getSupertypes().get(0) instanceof TypeDeclaration) || !(td.getSupertypes().get(0).isOrdinaryClass()) || 
-			!(td.isOrdinaryClass()) || (fd.isPrivate()) || (fd.toSource().contains("this")))
+			!(td.isOrdinaryClass()) || (fd.isPrivate()) || (fd.toSource().contains("this")) || (fd.getFieldSpecifications().size() > 1))
 			return false;
 		else
 		{
@@ -356,10 +350,9 @@ public class MoveFieldUp extends Refactoring
 
 			// Check if fields can be accessed in super type.
 			for (Field f : fields)
-			{				
-				for (FieldSpecification fs : fd.getFieldSpecifications())
-					if (f.equals(fs))
-						continue;
+			{								
+				if (f.equals(fd.getFieldSpecifications().get(0)))
+					continue;
 				
 				if (td.getFieldsInScope().contains(f))
 					return false;
@@ -389,6 +382,14 @@ public class MoveFieldUp extends Refactoring
 			for (TypeDeclaration typedec : super.getTypeDeclarations(UnitKit.getCompilationUnit(td)))
 				if (!(typedec.equals(td)) && (types.contains(typedec)) && !(td.getPackage().equals(std.getPackage())))
 					return false;
+
+			// Similarly, if the current class is nested and the field references another nested
+			// class in the unit that is within the same outer class, don't move the field (as
+			// the outer class would need to be used in the nested class reference when moved).
+			if (td.getContainingClassType() instanceof TypeDeclaration)
+				for (TypeDeclaration typedec : super.getTypeDeclarations(UnitKit.getCompilationUnit(td)))
+					if (!(typedec.equals(td)) && (super.getContainingClasses(typedec).contains(td.getContainingClassType())) && (types.contains(typedec)))
+						return false;
 
 			// If the current class is referenced in the field explicitly i.e. an
 			// object of the current class is being created, don't move it.
@@ -420,17 +421,14 @@ public class MoveFieldUp extends Refactoring
 			
 			// Checks any reference to the field in the program and if the field is being 
 			// statically referenced and is not referencing the super class it will be inapplicable.
-			for (FieldSpecification fs : fd.getFieldSpecifications())
+			for (FieldReference fr : si.getReferences(fd.getFieldSpecifications().get(0)))
 			{
-				for (FieldReference fr : si.getReferences(fs))
-				{
-					if (!(std.getPackage().equals(MiscKit.getParentTypeDeclaration(fr).getPackage())) && !(fd.isPublic()))
-						return false;
+				if (!(std.getPackage().equals(MiscKit.getParentTypeDeclaration(fr).getPackage())) && !(fd.isPublic()))
+					return false;
 
-					if (fd.isStatic())
-						if ((fr.getReferencePrefix() instanceof TypeReference) && !(fr.getReferencePrefix().toSource().equals(std.getName())))
-							return false;
-				}
+				if (fd.isStatic())
+					if ((fr.getReferencePrefix() instanceof TypeReference) && !(fr.getReferencePrefix().toSource().equals(std.getName())))
+						return false;
 			}
 			
 			return true;

@@ -1,6 +1,8 @@
 package refactorings.method;
 
 import java.util.ArrayList;
+import java.util.Collections;
+import java.util.Comparator;
 import java.util.List;
 
 import recoder.CrossReferenceServiceConfiguration;
@@ -16,7 +18,6 @@ import recoder.java.Import;
 import recoder.java.ProgramElement;
 import recoder.java.declaration.ClassDeclaration;
 import recoder.java.declaration.ConstructorDeclaration;
-import recoder.java.declaration.FieldDeclaration;
 import recoder.java.declaration.MemberDeclaration;
 import recoder.java.declaration.MethodDeclaration;
 import recoder.java.declaration.TypeDeclaration;
@@ -40,7 +41,7 @@ public class MoveMethodDown extends Refactoring
 	private List<MemberReference> superReferences;
 	private ArrayList<SuperReference> thisReferences;
 	private ASTList<Import> subDeclarationImports;
-	private int position, randomPosition;
+	private int position, newPosition;
 	private boolean identical;
 	
 	public MoveMethodDown(CrossReferenceServiceConfiguration sc) 
@@ -75,27 +76,25 @@ public class MoveMethodDown extends Refactoring
 		this.identical = false;
 		ASTList<Import> methodImports = super.getMemberImports(types, UnitKit.getCompilationUnit(this.currentDeclaration).getImports(), si);
 		boolean addPackageImport = false;
-		Package pack = this.currentDeclaration.getPackage();
+		Package pack = this.currentDeclaration.getPackage();		
 		
 		ASTList<MemberDeclaration> members = this.subDeclaration.getMembers();
 		
 		if (members.isEmpty())
-			this.randomPosition = 0;
+			this.newPosition = 0;
+		// Places method after last method in the class, or at the end.
 		else
 		{
+			this.newPosition = members.size();
+			
 			for (int i = members.size() - 1; i >= 0; i--)
 			{
-				if (members.get(i) instanceof FieldDeclaration)
+				if (members.get(i) instanceof MethodDeclaration)
 				{
-					this.randomPosition = i + 1;
+					this.newPosition = i + 1;
 					break;
 				}
-				else if (i == 0)
-					this.randomPosition = 0;
 			}
-
-			// Generate random position between the last field declaration in the class and the end of the class.
-			this.randomPosition = this.randomPosition + (int)(Math.random() * (this.subDeclaration.getMembers().size() + 1 - this.randomPosition));
 		}
 		
 		// Construct refactoring transformation.
@@ -133,14 +132,14 @@ public class MoveMethodDown extends Refactoring
 			if (m.equals(md))
 			{
 				this.identical = true;
-				this.randomPosition = super.getPosition(this.subDeclaration, (MethodDeclaration) m);
+				this.newPosition = super.getPosition(this.subDeclaration, (MethodDeclaration) m);
 				detach((MethodDeclaration) m);
 				break;
 			}
 		}
 		
 		detach(md);
-		attach(md, this.subDeclaration, this.randomPosition);
+		attach(md, this.subDeclaration, this.newPosition);
 		
 		// Add any applicable imports from the current class to the sub class.
 		this.subDeclarationImports =  UnitKit.getCompilationUnit(this.subDeclaration).getImports();
@@ -153,7 +152,7 @@ public class MoveMethodDown extends Refactoring
 
 			for (Import i : imports)
 			{
-				if ((i.toString().equals(ci.toString())))
+				if (i.toSource().substring(i.toSource().indexOf("import")).equals(ci.toSource().substring(ci.toSource().indexOf("import"))))
 				{
 					contains = true;
 					break;
@@ -190,13 +189,18 @@ public class MoveMethodDown extends Refactoring
 		super.refactoringInfo = "Iteration " + iteration + ": \"Move Method Down\" applied to method " 
 				+ ((MethodDeclaration) pe).getName() + " from " + this.currentDeclaration.getName() + " to " + this.subDeclaration.getName();
 		
+		// Stores list of names of classes affected by refactoring.
+		super.affectedClasses = new ArrayList<String>(2);
+		super.affectedClasses.add(this.currentDeclaration.getName());
+		super.affectedClasses.add(this.subDeclaration.getName());
+		
 		return setProblemReport(EQUIVALENCE);
 	}
 
 	public ProblemReport analyzeReverse() 
 	{
 		// Initialise and pick the element to visit.
-		MethodDeclaration md = (MethodDeclaration) this.subDeclaration.getMembers().get(this.randomPosition);
+		MethodDeclaration md = (MethodDeclaration) this.subDeclaration.getMembers().get(this.newPosition);
 
 		// Find new "super." references in method and change them back to "this." references.
 		for (SuperReference sr : this.thisReferences)
@@ -213,7 +217,7 @@ public class MoveMethodDown extends Refactoring
 		
 		// If there is an identical method in the sub class, it is added back to the class.
 		if (this.identical)
-			attach(md.deepClone(), this.subDeclaration, this.randomPosition);
+			attach(md.deepClone(), this.subDeclaration, this.newPosition);
 
 		// Construct refactoring transformation.
 		super.transformation = null;
@@ -255,16 +259,24 @@ public class MoveMethodDown extends Refactoring
 				if (!(mr.getASTParent().equals(md)))
 					return false;
 
-			// Allows the program to go through the child classes at random
+			// Allows the program to go through the child classes in order of class name
 			// and pick the first one (if any) that is applicable for the refactoring.
 			List<ClassType> subtypes = si.getSubtypes(td);
+			List<ClassType> exclude = new ArrayList<ClassType>();
+
+			for (ClassType ct : subtypes)
+				if (ct.getName() == null)
+					exclude.add(ct);
+
+			subtypes.removeAll(exclude);
+			Collections.sort(subtypes,  new NameComparator());
 			
 			// Check each child class to see if the elements 
 			// of the method can be accessed from the class.
 			for (int i = 0; i < subtypes.size(); i++)
 			{
 				if (subtypes.get(i) instanceof ClassDeclaration)
-					std = (TypeDeclaration) si.getSubtypes(td).get(i);
+					std = (TypeDeclaration) subtypes.get(i);
 				else continue;
 				
 				boolean next = false;
@@ -480,7 +492,7 @@ public class MoveMethodDown extends Refactoring
 			return false;
 		}
 	}
-
+	
 	// Count the amount of available elements in the chosen class for refactoring.
 	// If an element is not applicable for the current refactoring it is not counted.
 	public int getAmount(int unit)
@@ -513,5 +525,17 @@ public class MoveMethodDown extends Refactoring
 
 		MethodDeclaration md = (MethodDeclaration) tw.getProgramElement();
 		return md.getName();
+	}
+	
+	// This inner class allows sorting by name so that the list is sorted alphanumerically by the class names.
+	private class NameComparator implements Comparator<ClassType> 
+	{
+		// Compares the two specified individuals using the fitness
+		// operator. Returns less than 1, 0 or more than 1 as the first
+		// argument is less than, equal to, or greater than the second.
+		public int compare(ClassType ct1, ClassType ct2) 
+		{   
+			return ct1.getName().compareTo(ct2.getName());
+		}
 	}
 }

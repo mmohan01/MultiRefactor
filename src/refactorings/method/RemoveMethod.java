@@ -57,7 +57,7 @@ public class RemoveMethod extends Refactoring
 			if (m.isAbstract())
 			{
 				this.abstractMethod = (MethodDeclaration) m;
-				this.abstractType = this.method.getMemberParent();
+				this.abstractType = this.abstractMethod.getMemberParent();
 				this.abstractMethodPosition = super.getPosition(this.abstractType, (MethodDeclaration) m);
 			}
 		}
@@ -79,6 +79,10 @@ public class RemoveMethod extends Refactoring
 				+ super.getFileName(getSourceFileRepository().getKnownCompilationUnits().get(unit).getName())
 				+ " to method " + ((MethodDeclaration) pe).getName();
 		
+		// Stores list of names of classes affected by refactoring.
+		super.affectedClasses = new ArrayList<String>(1);
+		super.affectedClasses.add(super.getFileName(getSourceFileRepository().getKnownCompilationUnits().get(unit).getName()));
+	
 		return setProblemReport(EQUIVALENCE);
 	}
 

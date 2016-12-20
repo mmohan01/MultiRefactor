@@ -16,7 +16,6 @@ import recoder.java.Import;
 import recoder.java.ProgramElement;
 import recoder.java.declaration.ClassDeclaration;
 import recoder.java.declaration.ConstructorDeclaration;
-import recoder.java.declaration.FieldDeclaration;
 import recoder.java.declaration.MemberDeclaration;
 import recoder.java.declaration.MethodDeclaration;
 import recoder.java.declaration.TypeDeclaration;
@@ -39,7 +38,7 @@ public class MoveMethodUp extends Refactoring
 {
 	private TypeDeclaration currentDeclaration, superDeclaration;
 	private MethodDeclaration abstractMethodDeclaration;
-	private int abstractMethodPosition, position, randomPosition;
+	private int abstractMethodPosition, position, newPosition;
 	private ArrayList<TypeDeclaration> sisterClasses;
 	private ArrayList<Integer> sisterPositions;
 	private ASTList<Import> superDeclarationImports;
@@ -54,7 +53,7 @@ public class MoveMethodUp extends Refactoring
 	}
 	
 	public ProblemReport analyze(int iteration, int unit, int element) 
-	{
+	{		
 		// Initialise and pick the element to visit.
 		CrossReferenceSourceInfo si = getCrossReferenceSourceInfo();
 		super.tw = new TreeWalker(getSourceFileRepository().getKnownCompilationUnits().get(unit));
@@ -75,7 +74,7 @@ public class MoveMethodUp extends Refactoring
 		this.sisterPositions = new ArrayList<Integer>(si.getSubtypes(this.superDeclaration).size());
 		this.position =  super.getPosition(this.currentDeclaration, md);
 		this.abstractMethodDeclaration = null;
-		this.randomPosition = -1;
+		this.newPosition = -1;
 		this.abstractMethodPosition = -1;
 		ArrayList<Type> types = super.getTypes(md, si);
 		ASTList<Import> methodImports = super.getMemberImports(types, UnitKit.getCompilationUnit(this.currentDeclaration).getImports(), si);
@@ -116,31 +115,29 @@ public class MoveMethodUp extends Refactoring
 			{
 				this.abstractMethodDeclaration = (MethodDeclaration) m;
 				this.abstractMethodPosition = super.getPosition(this.superDeclaration, this.abstractMethodDeclaration);
-				this.randomPosition = super.getPosition(this.superDeclaration, this.abstractMethodDeclaration);
+				this.newPosition = super.getPosition(this.superDeclaration, this.abstractMethodDeclaration);
 				detach((MethodDeclaration) m);
 				break;
 			}
 		}
 
-		if ((this.randomPosition == -1) && !(this.superDeclaration.getMembers().isEmpty()))
+		// Places method after last method in the class, or at the end.
+		if ((this.newPosition == -1) && !(this.superDeclaration.getMembers().isEmpty()))
 		{
 			ASTList<MemberDeclaration> members = this.superDeclaration.getMembers();
+			this.newPosition = this.superDeclaration.getMembers().size();
+			
 			for (int i = members.size() - 1; i >= 0; i--)
 			{
-				if (members.get(i) instanceof FieldDeclaration)
+				if (members.get(i) instanceof MethodDeclaration)
 				{
-					this.randomPosition = i + 1;
+					this.newPosition = i + 1;
 					break;
 				}
-				else if (i == 0)
-					this.randomPosition = 0;
 			}
-
-			// Generate random position between the last field declaration in the class and the end of the class.
-			this.randomPosition = this.randomPosition + (int)(Math.random() * (this.superDeclaration.getMembers().size() + 1 - this.randomPosition));
 		}
-		else if (this.randomPosition == -1)
-			this.randomPosition = 0;
+		else if (this.newPosition == -1)
+			this.newPosition = 0;
 		 
 		// Do any references to the method in the class use "this."
 		for (MemberReference mr : MethodKit.getReferences(si, md, this.currentDeclaration, true))
@@ -160,7 +157,7 @@ public class MoveMethodUp extends Refactoring
 			sr.getASTParent().replaceChild(sr, null);
 		
 		detach(md);
-		attach(md, this.superDeclaration, this.randomPosition);
+		attach(md, this.superDeclaration, this.newPosition);
 		
 		// Add any applicable imports from the current class to the super class.
 		this.superDeclarationImports =  UnitKit.getCompilationUnit(this.superDeclaration).getImports();
@@ -173,7 +170,7 @@ public class MoveMethodUp extends Refactoring
 
 			for (Import i : imports)
 			{
-				if ((i.toString().equals(ci.toString())))
+				if (i.toSource().substring(i.toSource().indexOf("import")).equals(ci.toSource().substring(ci.toSource().indexOf("import"))))
 				{
 					contains = true;
 					break;
@@ -216,11 +213,8 @@ public class MoveMethodUp extends Refactoring
 
 				// It may be nested by more than one level, in which 
 				// case each inner class needs to be included in the import.
-				while (nestedClass.getContainingClassType() != null)
-				{
-					nestedClass = nestedClass.getContainingClassType();
-					identifiers.add(nestedClass.getIdentifier());
-				}
+				for (TypeDeclaration containingClass : super.getContainingClasses(nestedClass))
+					identifiers.add(containingClass.getIdentifier());
 
 				for (int i = identifiers.size() - 1; i >= 0; i--)
 				{
@@ -234,10 +228,15 @@ public class MoveMethodUp extends Refactoring
 		}
 
 		UnitKit.getCompilationUnit(this.superDeclaration).setImports(imports);
-
+		
 		// Specify refactoring information for results information.
 		super.refactoringInfo = "Iteration " + iteration + ": \"Move Method Up\" applied to method " 
 				+ ((MethodDeclaration) pe).getName() + " from " + this.currentDeclaration.getName() + " to " + this.superDeclaration.getName();
+		
+		// Stores list of names of classes affected by refactoring.
+		super.affectedClasses = new ArrayList<String>(2);
+		super.affectedClasses.add(this.currentDeclaration.getName());
+		super.affectedClasses.add(this.superDeclaration.getName());
 
 		return setProblemReport(EQUIVALENCE);
 	}
@@ -245,7 +244,7 @@ public class MoveMethodUp extends Refactoring
 	public ProblemReport analyzeReverse() 
 	{
 		// Initialise and pick the element to visit.
-		MethodDeclaration md = (MethodDeclaration) this.superDeclaration.getMembers().get(this.randomPosition);
+		MethodDeclaration md = (MethodDeclaration) this.superDeclaration.getMembers().get(this.newPosition);
 
 		// Do any references to the method in the class use "super."
 		for (MemberReference mr : MethodKit.getReferences(getCrossReferenceSourceInfo(), md, this.currentDeclaration, true))
@@ -280,7 +279,7 @@ public class MoveMethodUp extends Refactoring
 	}
 	
 	public boolean mayRefactor(MethodDeclaration md)
-	{					
+	{
 		TypeDeclaration td = md.getMemberParent();
 		CrossReferenceSourceInfo si = getCrossReferenceSourceInfo();
 
@@ -391,6 +390,14 @@ public class MoveMethodUp extends Refactoring
 			for (TypeDeclaration typedec : super.getTypeDeclarations(UnitKit.getCompilationUnit(td)))
 				if (!(typedec.equals(td)) && (types.contains(typedec)) && !(td.getPackage().equals(std.getPackage())))
 					return false;
+			
+			// Similarly, if the current class is nested and the method references another nested
+			// class in the unit that is within the same outer class, don't move the method (as
+			// the outer class would need to be used in the nested class reference when moved).
+			if (td.getContainingClassType() instanceof TypeDeclaration)
+				for (TypeDeclaration typedec : super.getTypeDeclarations(UnitKit.getCompilationUnit(td)))
+					if (!(typedec.equals(td)) && (super.getContainingClasses(typedec).contains(td.getContainingClassType())) && (types.contains(typedec)))
+						return false;
 			
 			// If the current class is referenced in the method explicitly i.e. an
 			// object of the current class is created within the method, don't move it.

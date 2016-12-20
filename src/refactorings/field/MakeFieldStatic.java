@@ -1,5 +1,7 @@
 package refactorings.field;
 
+import java.util.ArrayList;
+
 import multirefactor.AccessFlags;
 import recoder.CrossReferenceServiceConfiguration;
 import recoder.convenience.AbstractTreeWalker;
@@ -53,6 +55,10 @@ public class MakeFieldStatic extends Refactoring
 		super.refactoringInfo = "Iteration " + iteration + ": \"Make Field Static\" applied at class " 
 				+ super.getFileName(getSourceFileRepository().getKnownCompilationUnits().get(unit).getName())
 				+ " to field " + pe.toString().substring(last + 2);
+		
+		// Stores list of names of classes affected by refactoring.
+		super.affectedClasses = new ArrayList<String>(1);
+		super.affectedClasses.add(super.getFileName(getSourceFileRepository().getKnownCompilationUnits().get(unit).getName()));
 		
 		return setProblemReport(EQUIVALENCE);
 	}

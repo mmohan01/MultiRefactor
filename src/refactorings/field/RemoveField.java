@@ -1,5 +1,7 @@
 package refactorings.field;
 
+import java.util.ArrayList;
+
 import recoder.CrossReferenceServiceConfiguration;
 import recoder.convenience.AbstractTreeWalker;
 import recoder.convenience.TreeWalker;
@@ -59,6 +61,10 @@ public class RemoveField extends Refactoring
 				+ super.getFileName(getSourceFileRepository().getKnownCompilationUnits().get(unit).getName())
 				+ " to field " + pe.toString().substring(last + 2);
 		
+		// Stores list of names of classes affected by refactoring.
+		super.affectedClasses = new ArrayList<String>(1);
+		super.affectedClasses.add(super.getFileName(getSourceFileRepository().getKnownCompilationUnits().get(unit).getName()));
+		
 		return setProblemReport(EQUIVALENCE);
 	}
 
@@ -74,11 +80,16 @@ public class RemoveField extends Refactoring
 	{			
 		TypeDeclaration td =  MiscKit.getParentTypeDeclaration(fd);
 		 
-		if ((td.isEnumType()) || (td instanceof TypeParameterDeclaration) || 
-			(getCrossReferenceSourceInfo().getReferences(fd.getVariables().get(0)).size() > 0))
+		if ((td.isEnumType()) || (td instanceof TypeParameterDeclaration))
 			return false;
 		else
+		{
+			for (int i = 0; i < fd.getVariables().size(); i++)			
+				if (getCrossReferenceSourceInfo().getReferences(fd.getVariables().get(i)).size() > 0)
+					return false;	
+			
 			return true;
+		}
 	}
 
 	// Count the amount of available elements in the chosen class for refactoring.

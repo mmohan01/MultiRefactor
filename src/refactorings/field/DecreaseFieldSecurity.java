@@ -1,5 +1,7 @@
 package refactorings.field;
 
+import java.util.ArrayList;
+
 import recoder.CrossReferenceServiceConfiguration;
 import recoder.convenience.AbstractTreeWalker;
 import recoder.convenience.TreeWalker;
@@ -53,6 +55,10 @@ public class DecreaseFieldSecurity extends Refactoring
 				+ super.getFileName(getSourceFileRepository().getKnownCompilationUnits().get(unit).getName())
 				+ " to field " + pe.toString().substring(last + 2) + " from " + super.currentModifier(fd.getVisibilityModifier()) 
 				+ " to " + super.refactoredUpModifier(fd.getVisibilityModifier());
+		
+		// Stores list of names of classes affected by refactoring.
+		super.affectedClasses = new ArrayList<String>(1);
+		super.affectedClasses.add(super.getFileName(getSourceFileRepository().getKnownCompilationUnits().get(unit).getName()));
 
 		return setProblemReport(EQUIVALENCE);
 	}

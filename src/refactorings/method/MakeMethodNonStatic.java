@@ -1,5 +1,7 @@
 package refactorings.method;
 
+import java.util.ArrayList;
+
 import multirefactor.AccessFlags;
 import recoder.CrossReferenceServiceConfiguration;
 import recoder.convenience.AbstractTreeWalker;
@@ -60,6 +62,10 @@ public class MakeMethodNonStatic extends Refactoring
 		super.refactoringInfo = "Iteration " + iteration + ": \"Make Method Non Static\" applied at class " 
 				+ super.getFileName(getSourceFileRepository().getKnownCompilationUnits().get(unit).getName())
 				+ " to method " + ((MethodDeclaration) pe).getName();
+		
+		// Stores list of names of classes affected by refactoring.
+		super.affectedClasses = new ArrayList<String>(1);
+		super.affectedClasses.add(super.getFileName(getSourceFileRepository().getKnownCompilationUnits().get(unit).getName()));
 
 		return setProblemReport(EQUIVALENCE);
 	}
