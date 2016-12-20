@@ -5,11 +5,13 @@ import java.io.File;
 import java.io.FileWriter;
 import java.io.IOException;
 import java.util.ArrayList;
+import java.util.Comparator;
 import java.util.List;
 
 import multirefactor.Configuration;
 import multirefactor.FitnessFunction;
 import multirefactor.Metrics;
+import multirefactor.RefactoringSequence;
 import recoder.CrossReferenceServiceConfiguration;
 import recoder.io.PropertyNames;
 import recoder.io.SourceFileRepository;
@@ -228,7 +230,10 @@ public abstract class Search
 		
 		for (int i = 0; i < this.sc.getSourceFileRepository().getKnownCompilationUnits().size(); i++)
 		{
-			if (this.sc.getSourceFileRepository().getKnownCompilationUnits().get(i).getName().equals(name))
+			int index = this.sc.getSourceFileRepository().getKnownCompilationUnits().get(i).getName().indexOf("MultiRefactor\\") + 14;
+			String unitName = this.sc.getSourceFileRepository().getKnownCompilationUnits().get(i).getName().substring(index);
+			
+			if (name.endsWith(unitName))
 			{
 				unit = i;
 				break;
@@ -316,6 +321,15 @@ public abstract class Search
 	protected void outputMetrics(float score, Metrics metric, boolean initial, boolean log, String pathName)
 	{
 		FitnessFunction ff = new FitnessFunction(this.c.getConfiguration());
+		
+		// If priority objective is being used.
+		if (this.c.getPriorityClasses() != null)
+			ff.setPriorityClasses(this.c.getPriorityClasses());
+		
+		// If priority objective is being used and there are also non priority classes.
+		if (this.c.getNonPriorityClasses() != null)
+			ff.setNonPriorityClasses(this.c.getNonPriorityClasses());
+		
 		String[] outputs = ff.createOutput(metric);
 		
 		// Create a location for the results output.
@@ -360,6 +374,22 @@ public abstract class Search
 			}
 			
 			System.out.printf("\r\nOverall score: %.2f", score);
+		}
+	}
+	
+	// This inner class allows sorting by fitness so that the more fit solutions are at the front of the list.
+	protected class FitnessComparator implements Comparator<RefactoringSequence> 
+	{
+		// Compares the two specified individuals using the fitness operator.
+		// Returns -1, 0 or 1 as the first argument is greater than, equal to, or less than the second.
+		public int compare(RefactoringSequence s1, RefactoringSequence s2) 
+		{   
+			if (s1.getFitness() > s2.getFitness())
+				return -1;
+			else if (s1.getFitness() < s2.getFitness())
+				return 1;
+			else
+				return 0;
 		}
 	}
 	

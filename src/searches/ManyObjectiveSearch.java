@@ -40,8 +40,8 @@ public class ManyObjectiveSearch extends Search
 		this.ff = new FitnessFunction[this.c.length];
 		this.refactorings = refactorings;
 		this.sourceFiles = sourceFiles;
-		this.generations = 5;
-		this.populationSize = 10;
+		this.generations = 100;
+		this.populationSize = 50;
 		this.crossoverProbability = 0.2f;
 		this.mutationProbability = 0.8f;
 	}
@@ -74,6 +74,7 @@ public class ManyObjectiveSearch extends Search
 	
 		long timeTaken, startTime = System.currentTimeMillis();
 		double time;
+		int unitPosition;
 
 		System.out.printf("\r\n\r\nCreating Initial Population...");
 		ArrayList<RefactoringSequence> population = new ArrayList<RefactoringSequence>(this.populationSize);
@@ -102,7 +103,7 @@ public class ManyObjectiveSearch extends Search
 			// amount of times it is executed depends on the crossover probability.
 			do
 			{
-				System.out.printf("\r\nCrossover...");
+				System.out.printf("\r\n  Crossover...");
 				int randomS1, randomS2;
 				RefactoringSequence[] parents = new RefactoringSequence[2];
 				randomS1 = (int)(Math.random() * population.size());
@@ -121,13 +122,13 @@ public class ManyObjectiveSearch extends Search
 			// mutation probability. This will mutate the children of the current generation.
 			while (Math.random() < this.mutationProbability)
 			{
-				System.out.printf("\r\nMutation...");
+				System.out.printf("\r\n  Mutation...");
 				int randomChild = (int)(Math.random() * newGeneration.size());
 				newGeneration.set(randomChild, mutation(newGeneration.get(randomChild)));
 			}
 			
 			// The current population is measured and sorted accordingly.
-			System.out.printf("\r\nFitness...");
+			System.out.printf("\r\n  Fitness...");
 			newGeneration.trimToSize();
 			population.ensureCapacity(this.populationSize + newGeneration.size());
 			population.addAll(newGeneration);
@@ -152,23 +153,16 @@ public class ManyObjectiveSearch extends Search
 
 		for (int i = 0; i < population.size(); i++)
 		{
+			System.out.printf("\r\n  Population %d", i + 1);
 			resetModel();
 			
 			// Reconstruct model so it can be printed.
 			for (int j = 0; j < population.get(i).getRefactorings().size(); j++)
 			{
-				try 
-				{
-					this.refactorings.get(population.get(i).getRefactorings().get(j))
-		             				 .transform(this.refactorings.get(population.get(i).getRefactorings().get(j))
-		             				 .analyze((j + 1), population.get(i).getPositions().get(j)[0], population.get(i).getPositions().get(j)[1]));
-				} 
-				catch (NullPointerException e) 
-				{
-					System.out.printf("\r\nNull Pointer exception found during reconstruction of model for printing;" +
-									  "\r\nP%d: Refactoring %d Unit: %d, Element: %d", i + 1, j + 1, population.get(i).getPositions().get(j)[0], 
-									  															   population.get(i).getPositions().get(j)[1]);
-				}
+				unitPosition = super.unitPosition(population.get(i).getNames().get(j)[0]);
+				this.refactorings.get(population.get(i).getRefactorings().get(j))
+				                 .transform(this.refactorings.get(population.get(i).getRefactorings().get(j))
+						         .analyze((j + 1), unitPosition, population.get(i).getPositions().get(j)));
 			}
 			
 			// Output information.
@@ -189,7 +183,7 @@ public class ManyObjectiveSearch extends Search
 		population = null;
 		timeTaken = System.currentTimeMillis() - startTime;
 		time = timeTaken / 1000.0;
-		System.out.printf("\r\nOverall time taken for search: %.2fs", time);
+		System.out.printf("\r\n\r\nOverall time taken for search: %.2fs", time);
 		System.out.printf("\r\n-------------------------------------");
 	}
 	
@@ -207,6 +201,15 @@ public class ManyObjectiveSearch extends Search
 		for (int i = 0; i < this.c.length; i++)
 		{
 			this.ff[i] = new FitnessFunction(m, this.c[i].getConfiguration());
+			
+			// If priority objective is being used.
+			if (this.c[i].getPriorityClasses() != null)
+				this.ff[i].setPriorityClasses(this.c[i].getPriorityClasses());
+			
+			// If priority objective is being used and there are also non priority classes.
+			if (this.c[i].getNonPriorityClasses() != null)
+				this.ff[i].setNonPriorityClasses(this.c[i].getNonPriorityClasses());
+			
 			benchmark[i] = 0.0f;
 		}
 		
@@ -217,19 +220,20 @@ public class ManyObjectiveSearch extends Search
 				resetModel();
 
 			outputMetrics(benchmark, true, false, false, i + 1, super.resultsPath);
+			System.out.printf("\r\n  Population %d", i + 1);
 
 			// Applies random refactorings to each solution to create an initial population.
 			// The amount of refactorings applied in each case is chosen randomly within the range supplied.
 			int refactoringAmount = ((int)(Math.random() * this.initialRefactoringRange)) + 1;
-			ArrayList<int[]> posSequence = new ArrayList<int[]>(refactoringAmount);
+			ArrayList<Integer> posSequence = new ArrayList<Integer>(refactoringAmount);
 			ArrayList<Integer> refSequence = new ArrayList<Integer>(refactoringAmount);
 			ArrayList<String[]> nameSequence = new ArrayList<String[]>(refactoringAmount);
 			ArrayList<String> refactoringInfo = new ArrayList<String>(refactoringAmount);
+			ArrayList<String> affectedClasses = new ArrayList<String>(refactoringAmount);
 			
 			for (int j = 0; j < refactoringAmount; j++)
 			{				
 				int[] result = randomRefactoring();
-				int[] position = {result[1], result[2]};
 
 				if (result[0] == -1)
 				{
@@ -238,13 +242,14 @@ public class ManyObjectiveSearch extends Search
 				}
 				else
 				{
-					nameSequence.add(new String[]{super.sc.getSourceFileRepository().getKnownCompilationUnits().get(position[0]).getName(),
-                                                  this.refactorings.get(result[0]).getName(position[0], position[1])});
+					nameSequence.add(new String[]{super.sc.getSourceFileRepository().getKnownCompilationUnits().get(result[1]).getName(),
+                                                  this.refactorings.get(result[0]).getName(result[1], result[2])});
 					this.refactorings.get(result[0]).transform(this.refactorings.get(result[0])
-					                 .analyze((j + 1), position[0], position[1]));
+					                 .analyze((j + 1), result[1], result[2]));
 					refactoringInfo.add(this.refactorings.get(result[0]).getRefactoringInfo());
+					affectedClasses.addAll(this.refactorings.get(result[0]).getAffectedClasses());
 					refSequence.add(result[0]);
-					posSequence.add(position);
+					posSequence.add(result[2]);
 				}
 			}
 			
@@ -252,10 +257,11 @@ public class ManyObjectiveSearch extends Search
 			posSequence.trimToSize();
 			nameSequence.trimToSize();
 			refactoringInfo.trimToSize();
-			population.add(new RefactoringSequence(refSequence, posSequence, nameSequence, refactoringInfo));
+			affectedClasses.trimToSize();
+			population.add(new RefactoringSequence(refSequence, posSequence, nameSequence, refactoringInfo, affectedClasses));
 			
 			// Calculate fitness up front so program model isn't needed at a later point.
-			m = new Metrics(super.sc.getSourceFileRepository().getKnownCompilationUnits());		
+			m = new Metrics(super.sc.getSourceFileRepository().getKnownCompilationUnits(), affectedClasses);		
 			for (int j = 0; j < this.c.length; j++)
 				finalScore[j] = this.ff[j].calculateNormalizedScore(m);
 			population.get(i).setMOFitness(finalScore.clone());
@@ -279,9 +285,10 @@ public class ManyObjectiveSearch extends Search
 		
 		int c1Size = cutPoint1 + (p2.getRefactorings().size() - cutPoint2);
 		ArrayList<Integer> c1Refactorings = new ArrayList<Integer>(c1Size);
-		ArrayList<int[]> c1Positions = new ArrayList<int[]>(c1Size);
+		ArrayList<Integer> c1Positions = new ArrayList<Integer>(c1Size);
 		ArrayList<String[]> c1Names = new ArrayList<String[]>(c1Size);
 		ArrayList<String> refactoringInfo1 = new ArrayList<String>(c1Size);
+		ArrayList<String> affectedClasses1 = new ArrayList<String>(c1Size);
 		
 		// Reinitialise the initial program model.
 		resetModel();
@@ -292,21 +299,14 @@ public class ManyObjectiveSearch extends Search
 			// refactorings can be applied without checking.
 			if (i < cutPoint1)
 			{	
-				try
-				{
-					this.refactorings.get(p1.getRefactorings().get(i))
-									 .transform(this.refactorings.get(p1.getRefactorings().get(i))
-									 .analyze((i + 1), p1.getPositions().get(i)[0], p1.getPositions().get(i)[1]));
-					refactoringInfo1.add(this.refactorings.get(p1.getRefactorings().get(i)).getRefactoringInfo());
+					unitPosition = super.unitPosition(p1.getNames().get(i)[0]);
+					this.refactorings.get(p1.getRefactorings().get(i)).transform(this.refactorings.get(p1.getRefactorings().get(i))
+							         .analyze((i + 1), unitPosition, p1.getPositions().get(i)));
+					refactoringInfo1.add(p1.getRefactoringInfo().get(i));
+					affectedClasses1.add(p1.getAffectedClasses().get(i));
 					c1Refactorings.add(p1.getRefactorings().get(i));
 					c1Positions.add(p1.getPositions().get(i));	
 					c1Names.add(p1.getNames().get(i));
-				} 
-				catch (NullPointerException e) 
-				{
-					System.out.printf("\r\nNull Pointer exception found during first half of child 1 for crossover;" +
-							          "\r\nRefactoring %d Unit: %d, Element: %d", i + 1, p1.getPositions().get(i)[0], p1.getPositions().get(i)[1]);
-				}
 			}
 			// For the second sequence, a check will have 
 			// to be made for each contiguous refactoring.
@@ -333,16 +333,16 @@ public class ManyObjectiveSearch extends Search
 				// If the element exists and can be refactored.
 				if (elementPosition != -1)
 				{
-					this.refactorings.get(p2.getRefactorings().get(i2))
-					                 .transform(this.refactorings.get(p2.getRefactorings().get(i2))
+					this.refactorings.get(p2.getRefactorings().get(i2)).transform(this.refactorings.get(p2.getRefactorings().get(i2))
 							         .analyze((i + 1), unitPosition, elementPosition));
-					refactoringInfo1.add(this.refactorings.get(p2.getRefactorings().get(i2)).getRefactoringInfo());
+					refactoringInfo1.add(p2.getRefactoringInfo().get(i2));
+					affectedClasses1.add(p2.getAffectedClasses().get(i2));
 					c1Refactorings.add(p2.getRefactorings().get(i2));
-					c1Positions.add(new int[] {unitPosition, elementPosition});
+					c1Positions.add(elementPosition);
 					c1Names.add(p2.getNames().get(i2));
 				}
 				else
-					System.out.printf("\r\n  Refactoring %d N/A at child 1", i + 1);
+					System.out.printf("\r\n    Refactoring %d N/A at child 1", i + 1);
 			}
 		}
 
@@ -350,10 +350,11 @@ public class ManyObjectiveSearch extends Search
 		c1Positions.trimToSize();
 		c1Names.trimToSize();
 		refactoringInfo1.trimToSize();
-		children.add(new RefactoringSequence(c1Refactorings, c1Positions, c1Names, refactoringInfo1));
+		affectedClasses1.trimToSize();
+		children.add(new RefactoringSequence(c1Refactorings, c1Positions, c1Names, refactoringInfo1, affectedClasses1));
 		
 		// Calculate fitness up front so program model isn't needed at a later point.
-		m = new Metrics(super.sc.getSourceFileRepository().getKnownCompilationUnits());		
+		m = new Metrics(super.sc.getSourceFileRepository().getKnownCompilationUnits(), affectedClasses1);		
 		for (int j = 0; j < this.c.length; j++)
 			finalScore[j] = this.ff[j].calculateNormalizedScore(m);
 		children.get(0).setMOFitness(finalScore);
@@ -363,9 +364,10 @@ public class ManyObjectiveSearch extends Search
 		
 		int c2Size = cutPoint2 + (p1.getRefactorings().size() - cutPoint1);
 		ArrayList<Integer> c2Refactorings = new ArrayList<Integer>(c2Size);
-		ArrayList<int[]> c2Positions = new ArrayList<int[]>(c2Size);
+		ArrayList<Integer> c2Positions = new ArrayList<Integer>(c2Size);
 		ArrayList<String[]> c2Names = new ArrayList<String[]>(c2Size);
 		ArrayList<String> refactoringInfo2 = new ArrayList<String>(c2Size);
+		ArrayList<String> affectedClasses2 = new ArrayList<String>(c2Size);
 					
 		for (int i = 0; i < c2Size; i++)
 		{			
@@ -373,21 +375,14 @@ public class ManyObjectiveSearch extends Search
 			// refactorings can be applied without checking.
 			if (i < cutPoint2)
 			{
-				try 
-				{
-					this.refactorings.get(p2.getRefactorings().get(i))
-									 .transform(this.refactorings.get(p2.getRefactorings().get(i))
-									 .analyze((i + 1), p2.getPositions().get(i)[0], p2.getPositions().get(i)[1]));
-					refactoringInfo2.add(this.refactorings.get(p2.getRefactorings().get(i)).getRefactoringInfo());
-					c2Refactorings.add(p2.getRefactorings().get(i));
-					c2Positions.add(p2.getPositions().get(i));
-					c2Names.add(p2.getNames().get(i));
-				} 
-				catch (NullPointerException e) 
-				{
-					System.out.printf("\r\nNull Pointer exception found during first half of child 2 for crossover;" +
-									  "\r\nRefactoring %d Unit: %d, Element: %d", i + 1, p2.getPositions().get(i)[0], p2.getPositions().get(i)[1]);
-				}
+				unitPosition = super.unitPosition(p2.getNames().get(i)[0]);
+				this.refactorings.get(p2.getRefactorings().get(i)).transform(this.refactorings.get(p2.getRefactorings().get(i))
+						         .analyze((i + 1), unitPosition, p2.getPositions().get(i)));
+				refactoringInfo2.add(p2.getRefactoringInfo().get(i));
+				affectedClasses2.add(p2.getAffectedClasses().get(i));
+				c2Refactorings.add(p2.getRefactorings().get(i));
+				c2Positions.add(p2.getPositions().get(i));
+				c2Names.add(p2.getNames().get(i));
 			}	
 			// For the second sequence, a check will have 
 			// to be made for each contiguous refactoring.
@@ -417,13 +412,14 @@ public class ManyObjectiveSearch extends Search
 					this.refactorings.get(p1.getRefactorings().get(i2))
 					                 .transform(this.refactorings.get(p1.getRefactorings().get(i2))
 							         .analyze((i + 1), unitPosition, elementPosition));
-					refactoringInfo2.add(this.refactorings.get(p1.getRefactorings().get(i2)).getRefactoringInfo());
+					refactoringInfo2.add(p1.getRefactoringInfo().get(i2));
+					affectedClasses2.add(p1.getAffectedClasses().get(i2));
 					c2Refactorings.add(p1.getRefactorings().get(i2));
 					c2Names.add(p1.getNames().get(i2));
-					c2Positions.add(new int[] {unitPosition, elementPosition});
+					c2Positions.add(elementPosition);
 				}
 				else
-					System.out.printf("\r\n  Refactoring %d N/A at child 2", i + 1);
+					System.out.printf("\r\n    Refactoring %d N/A at child 2", i + 1);
 			}
 		}
 		
@@ -431,10 +427,11 @@ public class ManyObjectiveSearch extends Search
 		c2Positions.trimToSize();
 		c2Names.trimToSize();
 		refactoringInfo2.trimToSize();
-		children.add(new RefactoringSequence(c2Refactorings, c2Positions, c2Names, refactoringInfo2));
+		affectedClasses2.trimToSize();
+		children.add(new RefactoringSequence(c2Refactorings, c2Positions, c2Names, refactoringInfo2, affectedClasses2));
 		
 		// Calculate fitness up front so program model isn't needed at a later point.
-		m = new Metrics(super.sc.getSourceFileRepository().getKnownCompilationUnits());		
+		m = new Metrics(super.sc.getSourceFileRepository().getKnownCompilationUnits(), affectedClasses2);		
 		for (int j = 0; j < this.c.length; j++)
 			finalScore[j] = this.ff[j].calculateNormalizedScore(m);
 		children.get(1).setMOFitness(finalScore);
@@ -451,54 +448,52 @@ public class ManyObjectiveSearch extends Search
 		resetModel();
 				
 		for (int i = 0; i < p.getRefactorings().size(); i++)
-		{				
-			try 
-			{
-				this.refactorings.get(p.getRefactorings().get(i)).transform(this.refactorings.get(p.getRefactorings().get(i))
-			             		 .analyze((i + 1), p.getPositions().get(i)[0], p.getPositions().get(i)[1]));
-			} 
-			catch (NullPointerException e) 
-			{
-				System.out.printf("\nNull Pointer exception found during reconstruction of model for mutation;" +
-								  "\nRefactoring %d Unit: %d, Element: %d", i + 1, p.getPositions().get(i)[0], p.getPositions().get(i)[1]);
-			}
+		{		
+			int unitPosition = super.unitPosition(p.getNames().get(i)[0]);
+			this.refactorings.get(p.getRefactorings().get(i)).transform(this.refactorings.get(p.getRefactorings().get(i))
+					         .analyze((i + 1), unitPosition, p.getPositions().get(i)));
 		}
 		
 		int[] result = randomRefactoring();
-		int[] position = {result[1], result[2]};
 		
 		// Applies refactoring to model and adds it to the sequence.
 		if (result[0] != -1)
 		{
 			ArrayList<Integer> refSequence = new ArrayList<Integer>(p.getRefactorings().size() + 1);
 			refSequence = p.getRefactorings();
-			ArrayList<int[]> posSequence = new ArrayList<int[]>(p.getPositions().size() + 1);
+			ArrayList<Integer> posSequence = new ArrayList<Integer>(p.getPositions().size() + 1);
 			posSequence = p.getPositions();
 			ArrayList<String[]> nameSequence = new ArrayList<String[]>(p.getNames().size() + 1);
 			nameSequence = p.getNames();
 			ArrayList<String> refactoringInfo = new ArrayList<String>(p.getRefactoringInfo().size() + 1);
 			refactoringInfo = p.getRefactoringInfo();
+			ArrayList<String> affectedClasses = new ArrayList<String>(p.getAffectedClasses().size() + 1);
+			affectedClasses = p.getAffectedClasses();
 			
 			refSequence.add(result[0]);
-			posSequence.add(position);
-			nameSequence.add(new String[]{super.sc.getSourceFileRepository().getKnownCompilationUnits().get(position[0]).getName(),
-                                          this.refactorings.get(result[0]).getName(position[0], position[1])});
+			posSequence.add(result[2]);
+			nameSequence.add(new String[]{super.sc.getSourceFileRepository().getKnownCompilationUnits().get(result[1]).getName(),
+                                          this.refactorings.get(result[0]).getName(result[1], result[2])});
 			this.refactorings.get(result[0]).transform(this.refactorings.get(result[0])
-					         .analyze((refSequence.size()), position[0], position[1]));
+					         .analyze((refSequence.size()), result[1], result[2]));
 			refactoringInfo.add(this.refactorings.get(result[0]).getRefactoringInfo());
+			affectedClasses.addAll(this.refactorings.get(result[0]).getAffectedClasses());
 			p.setRefactorings(refSequence);
 			p.setPositions(posSequence);
 			p.setNames(nameSequence);
 			p.setRefactoringInfo(refactoringInfo);
+			p.setAffectedClasses(affectedClasses);
 		
 			// Calculate fitness up front so program model isn't needed at a later point.
-			Metrics m = new Metrics(super.sc.getSourceFileRepository().getKnownCompilationUnits());	
+			Metrics m = new Metrics(super.sc.getSourceFileRepository().getKnownCompilationUnits(), affectedClasses);	
 			float finalScore[] = new float[this.c.length];
 
 			for (int j = 0; j < this.c.length; j++)
 				finalScore[j] = this.ff[j].calculateNormalizedScore(m);
 			p.setMOFitness(finalScore);
 		}
+		else
+			System.out.printf("\r\n    Mutation N/A");
 		
 		return p;
 	}
@@ -635,7 +630,10 @@ public class ManyObjectiveSearch extends Search
 			bw.append("\r\n\r\n======== Applied Refactorings ========");
 
 			for (int i = 0; i < refactoringInfo.size(); i++) 
-				bw.append(String.format("\r\n%s", refactoringInfo.get(i)));
+			{
+				String info = "Iteration " + (i + 1) + refactoringInfo.get(i).substring(refactoringInfo.get(i).indexOf(':'));
+				bw.append(String.format("\r\n%s", info));
+			}
 
 			bw.append(String.format("\r\n\r\nTime taken to refactor: %.2fs", time));
 			bw.close();
