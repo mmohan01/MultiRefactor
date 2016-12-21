@@ -1,0 +1,49 @@
+======== Search Information ========
+Search: Multi-Objective Genetic Algorithm
+Generations: 100
+Population Size: 50
+Crossover Probability: 0.200000
+Mutation Probability: 0.800000
+
+======== Initial Metric Info ========
+Fitness function 1 score: 0.000000
+Fitness function 2 score: 0.000000
+
+======== Applied Refactorings ========
+Iteration 1: "Make Class Abstract" applied to class HandlerBase
+Iteration 2: "Make Class Concrete" applied to class HandlerBase
+Iteration 3: "Decrease Method Security" applied at class XmlRpcWorker to method invokeHandler from protected to public
+Iteration 4: "Decrease Method Security" applied at class XmlRpcServer to method createWorker from protected to public
+Iteration 5: "Decrease Method Security" applied at class MinML to method fatalError from private to package
+Iteration 6: "Decrease Method Security" applied at class XmlRpc to method objectParsed from protected to public
+Iteration 7: "Decrease Method Security" applied at class XmlRpcClientResponseProcessor to method canReUse from protected to public
+Iteration 8: "Decrease Method Security" applied at class XmlRpcWorker to method defaultContext from protected to public
+Iteration 9: "Decrease Method Security" applied at class XmlRpcClientLite to method createTransport from protected to public
+Iteration 10: "Make Method Final" applied at class LiteXmlRpcTransport to method finalize
+Iteration 11: "Make Field Final" applied at class TypeDecoder to ParameterDeclaration o
+Iteration 12: "Make Method Final" applied at class XmlRpcClientWorker to method execute
+Iteration 13: "Remove Field" applied at class SecurityConstants to field DEFAULT_KEY_STORE_TYPE
+Iteration 14: "Remove Method" applied at class XmlRpcClient to method executeAsync
+Iteration 15: "Move Method Down" applied to method error from XmlRpc to XmlRpcClientResponseProcessor
+Iteration 16: "Decrease Method Security" applied at class XmlRpcResponseProcessor to method writeError from package to protected
+Iteration 17: "Increase Field Security" applied at class LiteXmlRpcTransport to field uri from package to private
+Iteration 18: "Decrease Method Security" applied at class DocumentHandler to method startElement from package to protected
+Iteration 19: "Move Field Down" applied to field RECOVERABLE from XmlRpc to XmlRpcClientResponseProcessor
+Iteration 20: "Decrease Method Security" applied at class DocumentHandler to method startElement from protected to public
+Iteration 21: "Decrease Method Security" applied at class XmlRpcResponseProcessor to method writeError from protected to public
+Iteration 22: "Make Method Final" applied at class DefaultXmlRpcTransport to method setBasicAuthentication
+Iteration 23: "Make Field Final" applied at class AuthenticatedXmlRpcHandler to ParameterDeclaration params
+Iteration 24: "Make Field Final" applied at class AsyncCallback to ParameterDeclaration exception
+Iteration 25: "Make Field Non Static" applied at class SunSSLTransportFactory to field openHostnameVerifier
+Iteration 26: "Decrease Method Security" applied at class WebServer to method determinePort from protected to public
+Iteration 27: "Decrease Field Security" applied at class SAXParseException to field systemId from private to package
+Iteration 28: "Make Field Static" applied at class XmlRpcClient to field call
+Iteration 29: "Make Field Non Final" applied at class XmlRpcClientResponseProcessor to FieldDeclaration RECOVERABLE
+Iteration 30: "Make Class Final" applied to class SecureWebServer
+Iteration 31: "Make Field Static" applied at class DefaultXmlRpcTransportFactory to field auth
+
+Time taken to refactor: 327.54s
+
+======== Final Metric Info ========
+Fitness function 1 score: 0.503454
+Fitness function 2 score: 37.000000
