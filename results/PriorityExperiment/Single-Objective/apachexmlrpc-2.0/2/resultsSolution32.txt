@@ -1,0 +1,926 @@
+======== Search Information ========
+Search: Genetic Algorithm
+Generations: 100
+Population Size: 50
+Crossover Probability: 0.200000
+Mutation Probability: 0.800000
+
+======== Initial Metric Info ========
+Average ratio of private/package/protected attributes to overall attributes per class: 0.540530
+Average coupling per class: 0.911392
+Average cohesion among methods per class: 0.448840
+Average amount of user defined attributes declared per class: 0.392405
+Average functional abstraction per class: 0.078615
+Average amount of polymorphic methods per class: 0.886076
+Average amount of public methods per class: 5.240506
+Average amount of methods per class: 6.075949
+Average amount of complexity of methods per class: 65.734177
+Ratio of interfaces to overall amount of classes: 0.278481
+Average ratio of abstract classes/methods per class: 0.279536
+Average ratio of final classes/methods/variables per class: 0.059396
+Average ratio of constant classes/methods/variables per class: 0.055104
+Ratio of inner classes to overall amount of ordinary classes in project: 0.113924
+Average inherited referenced methods ratio per class: 0.076793
+Average visibility ratio per class: 0.743118
+Amount of lines of code in project: 11616
+Overall fitness function score: 0.000000
+
+======== Applied Refactorings ========
+Iteration 1: "Decrease Method Security" applied at class XmlRpcClientRequestProcessor to method canReUse from protected to public
+Iteration 2: "Decrease Field Security" applied at class LiteXmlRpcTransport to field socket from package to protected
+Iteration 3: "Decrease Method Security" applied at class XmlWriter to method forceUnicode from private to package
+Iteration 4: "Make Class Final" applied to class SAXParseException
+Iteration 5: "Make Method Final" applied at class DefaultTypeDecoder to method isXmlRpcI4
+Iteration 6: "Decrease Method Security" applied at class XmlRpcClientLite to method createTransport from protected to public
+Iteration 7: "Increase Field Security" applied at class ParseFailed to field cause from protected to package
+Iteration 8: "Make Field Final" applied at class SecurityTool to ParameterDeclaration x
+Iteration 9: "Increase Field Security" applied at class ParseFailed to field cause from package to private
+Iteration 10: "Make Field Static" applied at class XmlRpcClientWorker to field requestProcessor
+Iteration 11: "Make Class Final" applied to class HttpUtil
+Iteration 12: "Make Field Final" applied at class Echo to ParameterDeclaration method
+Iteration 13: "Move Field Up" applied to field loaded from JSXmlRpcApplet to XmlRpcApplet
+Iteration 14: "Move Method Up" applied to method decodeException from XmlRpcClientResponseProcessor to XmlRpc
+Iteration 15: "Decrease Method Security" applied at class XmlRpcServer to method createWorker from protected to public
+Iteration 16: "Increase Field Security" applied at class XmlWriter to field PROLOG_START from protected to package
+Iteration 17: "Make Field Static" applied at class WebServer to field base64Codec
+Iteration 18: "Make Class Abstract" applied to class XmlRpcApplet
+Iteration 19: "Make Field Final" applied at class SecurityTool to ParameterDeclaration x
+Iteration 20: "Make Class Concrete" applied to class XmlRpcApplet
+Iteration 21: "Make Field Final" applied at class SecurityTool to ParameterDeclaration x
+Iteration 22: "Increase Field Security" applied at class XmlWriter to field PROLOG_START from package to private
+Iteration 23: "Make Field Static" applied at class DefaultHandlerMapping to field handlers
+Iteration 24: "Remove Method" applied at class DefaultXmlRpcTransportFactory to method setBasicAuthentication
+Iteration 25: "Make Method Final" applied at class ParseFailed to method getCause
+Iteration 26: "Make Field Final" applied at class XmlRpcClientRequest to ParameterDeclaration index
+Iteration 27: "Make Method Non Static" applied at class DefaultXmlRpcTransportFactory to method createTransportFactory
+Iteration 28: "Make Method Final" applied at class XmlRpcException to method getCause
+Iteration 29: "Decrease Method Security" applied at class Parser to method setDocumentHandler from package to protected
+Iteration 30: "Decrease Method Security" applied at class Parser to method setDocumentHandler from protected to public
+Iteration 31: "Decrease Method Security" applied at class SystemHandler to method SystemHandler from protected to public
+Iteration 32: "Make Method Non Static" applied at class DefaultXmlRpcTransportFactory to method setHTTPSTransport
+Iteration 33: "Make Field Non Static" applied at class DefaultTypeFactory to field dateTool
+Iteration 34: "Move Method Up" applied to method setup from SecureXmlRpcClient to XmlRpcClient
+Iteration 35: "Make Method Final" applied at class DefaultXmlRpcTransport to method endClientRequest
+Iteration 36: "Make Field Final" applied at class TypeDecoder to ParameterDeclaration o
+Iteration 37: "Decrease Method Security" applied at class SimpleXmlRpcClient to method parse from package to protected
+Iteration 38: "Decrease Method Security" applied at class XmlRpcClientResponseProcessor to method canReUse from protected to public
+Iteration 39: "Make Field Static" applied at class ServerInputStream to field in
+Iteration 40: "Make Field Final" applied at class SecurityTool to ParameterDeclaration x
+Iteration 41: "Make Field Final" applied at class TypeDecoder to ParameterDeclaration o
+Iteration 42: "Decrease Method Security" applied at class SimpleXmlRpcClient to method parse from protected to public
+Iteration 43: "Make Method Final" applied at class DefaultXmlRpcContext to method getUserName
+Iteration 44: "Increase Field Security" applied at class XmlRpcException to field code from public to protected
+Iteration 45: "Remove Method" applied at class XmlRpcClient to method executeAsync
+Iteration 46: "Increase Field Security" applied at class XmlRpcException to field code from protected to package
+Iteration 47: "Make Class Abstract" applied to class XmlRpcApplet
+Iteration 48: "Make Field Final" applied at class SecurityTool to ParameterDeclaration x
+Iteration 49: "Make Class Concrete" applied to class XmlRpcApplet
+Iteration 50: "Make Field Final" applied at class SecurityTool to ParameterDeclaration x
+Iteration 51: "Increase Field Security" applied at class XmlRpcException to field code from package to private
+Iteration 52: "Remove Method" applied at class XmlRpcClient to method executeAsync
+Iteration 53: "Remove Method" applied at class XmlRpcClient to method executeAsync
+Iteration 54: "Decrease Method Security" applied at class DocumentHandler to method startDocument from package to protected
+Iteration 55: "Decrease Method Security" applied at class DocumentHandler to method startDocument from protected to public
+Iteration 56: "Decrease Method Security" applied at class MinML to method fatalError from private to package
+Iteration 57: "Make Class Abstract" applied to class XmlRpcApplet
+Iteration 58: "Make Field Final" applied at class SecurityTool to ParameterDeclaration x
+Iteration 59: "Decrease Method Security" applied at class MinML to method fatalError from package to protected
+Iteration 60: "Make Field Final" applied at class SecurityTool to ParameterDeclaration x
+Iteration 61: "Make Class Concrete" applied to class XmlRpcApplet
+Iteration 62: "Make Field Final" applied at class SecurityTool to ParameterDeclaration x
+Iteration 63: "Make Field Final" applied at class SecurityTool to ParameterDeclaration x
+Iteration 64: "Make Class Abstract" applied to class XmlRpcApplet
+Iteration 65: "Make Class Concrete" applied to class XmlRpcApplet
+Iteration 66: "Make Method Non Final" applied at class DefaultXmlRpcTransport to method endClientRequest
+Iteration 67: "Make Method Final" applied at class DefaultXmlRpcTransport to method endClientRequest
+Iteration 68: "Make Class Abstract" applied to class XmlRpcApplet
+Iteration 69: "Make Class Concrete" applied to class XmlRpcApplet
+Iteration 70: "Make Class Abstract" applied to class XmlRpcApplet
+Iteration 71: "Make Class Concrete" applied to class XmlRpcApplet
+Iteration 72: "Make Class Abstract" applied to class XmlRpcApplet
+Iteration 73: "Make Class Concrete" applied to class XmlRpcApplet
+Iteration 74: "Make Class Abstract" applied to class XmlRpcApplet
+Iteration 75: "Make Class Concrete" applied to class XmlRpcApplet
+Iteration 76: "Make Method Non Final" applied at class DefaultXmlRpcTransport to method endClientRequest
+Iteration 77: "Make Method Final" applied at class DefaultXmlRpcTransport to method endClientRequest
+Iteration 78: "Make Class Abstract" applied to class XmlRpcApplet
+Iteration 79: "Make Class Concrete" applied to class XmlRpcApplet
+Iteration 80: "Make Method Non Final" applied at class DefaultXmlRpcTransport to method endClientRequest
+Iteration 81: "Make Method Final" applied at class DefaultXmlRpcTransport to method endClientRequest
+Iteration 82: "Make Method Non Final" applied at class DefaultXmlRpcTransport to method endClientRequest
+Iteration 83: "Make Method Static" applied at class DefaultTypeDecoder to method isXmlRpcI4
+Iteration 84: "Remove Field" applied at class SecurityConstants to field DEFAULT_TRUST_STORE_TYPE
+Iteration 85: "Remove Method" applied at class XmlRpcClientWorker to method canReUse
+Iteration 86: "Decrease Method Security" applied at class WebServer to method readLine from private to package
+Iteration 87: "Make Method Final" applied at class DefaultXmlRpcTransport to method endClientRequest
+Iteration 88: "Make Class Abstract" applied to class XmlRpcApplet
+Iteration 89: "Make Class Concrete" applied to class XmlRpcApplet
+Iteration 90: "Make Method Non Final" applied at class DefaultXmlRpcTransport to method endClientRequest
+Iteration 91: "Make Method Final" applied at class DefaultXmlRpcTransport to method endClientRequest
+Iteration 92: "Make Method Non Final" applied at class DefaultXmlRpcTransport to method endClientRequest
+Iteration 93: "Decrease Field Security" applied at class XmlRpcException to field code from private to package
+Iteration 94: "Make Method Final" applied at class DefaultXmlRpcTransport to method endClientRequest
+Iteration 95: "Increase Field Security" applied at class XmlRpcException to field code from package to private
+Iteration 96: "Make Class Abstract" applied to class XmlRpcApplet
+Iteration 97: "Make Class Concrete" applied to class XmlRpcApplet
+Iteration 98: "Make Class Abstract" applied to class XmlRpcApplet
+Iteration 99: "Make Class Concrete" applied to class XmlRpcApplet
+Iteration 100: "Make Class Abstract" applied to class XmlRpcApplet
+Iteration 101: "Make Class Concrete" applied to class XmlRpcApplet
+Iteration 102: "Make Class Abstract" applied to class XmlRpcApplet
+Iteration 103: "Make Class Concrete" applied to class XmlRpcApplet
+Iteration 104: "Make Method Non Final" applied at class DefaultXmlRpcTransport to method endClientRequest
+Iteration 105: "Make Method Final" applied at class DefaultXmlRpcTransport to method endClientRequest
+Iteration 106: "Make Class Abstract" applied to class XmlRpcApplet
+Iteration 107: "Make Class Concrete" applied to class XmlRpcApplet
+Iteration 108: "Make Method Non Final" applied at class DefaultXmlRpcTransport to method endClientRequest
+Iteration 109: "Make Method Final" applied at class DefaultXmlRpcTransport to method endClientRequest
+Iteration 110: "Decrease Field Security" applied at class XmlRpcException to field code from private to package
+Iteration 112: "Increase Field Security" applied at class XmlRpcException to field code from package to private
+Iteration 113: "Make Class Abstract" applied to class XmlRpcApplet
+Iteration 114: "Make Class Concrete" applied to class XmlRpcApplet
+Iteration 115: "Make Class Abstract" applied to class XmlRpcApplet
+Iteration 116: "Make Class Concrete" applied to class XmlRpcApplet
+Iteration 117: "Make Class Abstract" applied to class XmlRpcApplet
+Iteration 118: "Make Class Concrete" applied to class XmlRpcApplet
+Iteration 119: "Make Class Abstract" applied to class XmlRpcApplet
+Iteration 120: "Make Class Concrete" applied to class XmlRpcApplet
+Iteration 121: "Make Method Non Final" applied at class DefaultXmlRpcTransport to method endClientRequest
+Iteration 122: "Make Method Final" applied at class DefaultXmlRpcTransport to method endClientRequest
+Iteration 123: "Make Class Abstract" applied to class XmlRpcApplet
+Iteration 124: "Make Class Concrete" applied to class XmlRpcApplet
+Iteration 125: "Make Method Non Final" applied at class DefaultXmlRpcTransport to method endClientRequest
+Iteration 126: "Make Method Final" applied at class DefaultXmlRpcTransport to method endClientRequest
+Iteration 127: "Make Method Non Final" applied at class DefaultXmlRpcTransport to method endClientRequest
+Iteration 128: "Decrease Field Security" applied at class XmlRpcException to field code from private to package
+Iteration 129: "Make Class Abstract" applied to class XmlRpcApplet
+Iteration 130: "Make Class Non Final" applied to class HttpUtil
+Iteration 131: "Move Field Down" applied to field loaded from XmlRpcApplet to JSXmlRpcApplet
+Iteration 132: "Make Class Final" applied to class HttpUtil
+Iteration 133: "Move Field Up" applied to field loaded from JSXmlRpcApplet to XmlRpcApplet
+Iteration 134: "Make Class Concrete" applied to class XmlRpcApplet
+Iteration 135: "Make Method Final" applied at class DefaultXmlRpcTransport to method endClientRequest
+Iteration 136: "Increase Field Security" applied at class XmlRpcException to field code from package to private
+Iteration 137: "Make Class Abstract" applied to class XmlRpcApplet
+Iteration 138: "Make Class Concrete" applied to class XmlRpcApplet
+Iteration 139: "Make Class Abstract" applied to class XmlRpcApplet
+Iteration 140: "Make Class Concrete" applied to class XmlRpcApplet
+Iteration 141: "Make Method Non Final" applied at class DefaultXmlRpcTransport to method endClientRequest
+Iteration 142: "Make Method Final" applied at class DefaultXmlRpcTransport to method endClientRequest
+Iteration 143: "Make Class Abstract" applied to class XmlRpcApplet
+Iteration 144: "Make Class Concrete" applied to class XmlRpcApplet
+Iteration 145: "Make Method Non Final" applied at class DefaultXmlRpcTransport to method endClientRequest
+Iteration 146: "Make Method Final" applied at class DefaultXmlRpcTransport to method endClientRequest
+Iteration 147: "Decrease Method Security" applied at class SecureWebServer to method createServerSocket from protected to public
+Iteration 148: "Move Method Up" applied to method addIntArgToStruct from JSXmlRpcApplet to XmlRpcApplet
+Iteration 149: "Move Method Up" applied to method addIntArgToArray from JSXmlRpcApplet to XmlRpcApplet
+Iteration 150: "Decrease Field Security" applied at class XmlRpcException to field code from private to package
+Iteration 151: "Increase Field Security" applied at class XmlRpcException to field code from package to private
+Iteration 152: "Make Class Abstract" applied to class XmlRpcApplet
+Iteration 153: "Make Class Concrete" applied to class XmlRpcApplet
+Iteration 154: "Make Class Abstract" applied to class XmlRpcApplet
+Iteration 155: "Make Class Concrete" applied to class XmlRpcApplet
+Iteration 156: "Make Class Abstract" applied to class XmlRpcApplet
+Iteration 157: "Make Class Concrete" applied to class XmlRpcApplet
+Iteration 158: "Make Class Abstract" applied to class XmlRpcApplet
+Iteration 159: "Make Class Concrete" applied to class XmlRpcApplet
+Iteration 160: "Make Method Non Final" applied at class DefaultXmlRpcTransport to method endClientRequest
+Iteration 161: "Make Method Final" applied at class DefaultXmlRpcTransport to method endClientRequest
+Iteration 162: "Make Class Abstract" applied to class XmlRpcApplet
+Iteration 163: "Make Class Concrete" applied to class XmlRpcApplet
+Iteration 164: "Make Method Non Final" applied at class DefaultXmlRpcTransport to method endClientRequest
+Iteration 165: "Make Method Final" applied at class DefaultXmlRpcTransport to method endClientRequest
+Iteration 166: "Decrease Method Security" applied at class WebServer to method readLine from package to protected
+Iteration 167: "Decrease Field Security" applied at class XmlRpcException to field code from private to package
+Iteration 168: "Increase Field Security" applied at class XmlRpcException to field code from package to private
+Iteration 169: "Make Class Abstract" applied to class XmlRpcApplet
+Iteration 170: "Make Class Concrete" applied to class XmlRpcApplet
+Iteration 171: "Make Class Abstract" applied to class XmlRpcApplet
+Iteration 172: "Make Class Concrete" applied to class XmlRpcApplet
+Iteration 173: "Make Class Abstract" applied to class XmlRpcApplet
+Iteration 174: "Make Class Concrete" applied to class XmlRpcApplet
+Iteration 175: "Make Class Abstract" applied to class XmlRpcApplet
+Iteration 176: "Make Class Concrete" applied to class XmlRpcApplet
+Iteration 177: "Make Method Non Final" applied at class DefaultXmlRpcTransport to method endClientRequest
+Iteration 178: "Make Method Final" applied at class DefaultXmlRpcTransport to method endClientRequest
+Iteration 179: "Make Class Abstract" applied to class XmlRpcApplet
+Iteration 180: "Make Class Concrete" applied to class XmlRpcApplet
+Iteration 181: "Make Method Non Final" applied at class DefaultXmlRpcTransport to method endClientRequest
+Iteration 182: "Make Method Final" applied at class DefaultXmlRpcTransport to method endClientRequest
+Iteration 183: "Make Method Non Final" applied at class DefaultXmlRpcTransport to method endClientRequest
+Iteration 184: "Decrease Method Security" applied at class WebServer to method readLine from protected to public
+Iteration 185: "Decrease Field Security" applied at class XmlRpcException to field code from private to package
+Iteration 186: "Decrease Method Security" applied at class XmlRpcRequestProcessor to method objectParsed from protected to public
+Iteration 187: "Make Class Abstract" applied to class XmlRpcApplet
+Iteration 188: "Make Class Non Final" applied to class HttpUtil
+Iteration 189: "Move Field Down" applied to field loaded from XmlRpcApplet to JSXmlRpcApplet
+Iteration 190: "Decrease Method Security" applied at class XmlRpc to method decodeException from protected to public
+Iteration 191: "Make Class Final" applied to class XmlRpcRequestProcessor
+Iteration 192: "Remove Field" applied at class SecurityConstants to field DEFAULT_KEY_STORE_TYPE
+Iteration 193: "Decrease Field Security" applied at class XmlRpcException to field code from package to protected
+Iteration 194: "Decrease Method Security" applied at class XmlWriter to method chardata from protected to public
+Iteration 195: "Make Class Final" applied to class HttpUtil
+Iteration 196: "Move Field Up" applied to field loaded from JSXmlRpcApplet to XmlRpcApplet
+Iteration 197: "Make Class Concrete" applied to class XmlRpcApplet
+Iteration 198: "Make Method Final" applied at class DefaultXmlRpcTransport to method endClientRequest
+Iteration 199: "Increase Field Security" applied at class XmlRpcException to field code from protected to package
+Iteration 200: "Increase Field Security" applied at class XmlRpcException to field code from package to private
+Iteration 201: "Make Class Abstract" applied to class XmlRpcApplet
+Iteration 202: "Make Class Concrete" applied to class XmlRpcApplet
+Iteration 203: "Make Class Abstract" applied to class XmlRpcApplet
+Iteration 204: "Make Class Concrete" applied to class XmlRpcApplet
+Iteration 205: "Make Class Abstract" applied to class XmlRpcApplet
+Iteration 206: "Make Class Concrete" applied to class XmlRpcApplet
+Iteration 207: "Make Method Non Final" applied at class DefaultXmlRpcTransport to method endClientRequest
+Iteration 208: "Make Method Final" applied at class DefaultXmlRpcTransport to method endClientRequest
+Iteration 209: "Make Class Abstract" applied to class XmlRpcApplet
+Iteration 210: "Make Class Concrete" applied to class XmlRpcApplet
+Iteration 211: "Make Class Abstract" applied to class XmlRpcApplet
+Iteration 212: "Make Class Concrete" applied to class XmlRpcApplet
+Iteration 213: "Make Class Abstract" applied to class XmlRpcApplet
+Iteration 214: "Make Class Concrete" applied to class XmlRpcApplet
+Iteration 215: "Make Class Abstract" applied to class XmlRpcApplet
+Iteration 216: "Make Class Concrete" applied to class XmlRpcApplet
+Iteration 217: "Make Method Non Final" applied at class DefaultXmlRpcTransport to method endClientRequest
+Iteration 218: "Make Method Final" applied at class DefaultXmlRpcTransport to method endClientRequest
+Iteration 219: "Make Class Abstract" applied to class XmlRpcApplet
+Iteration 220: "Make Class Concrete" applied to class XmlRpcApplet
+Iteration 221: "Make Method Non Final" applied at class DefaultXmlRpcTransport to method endClientRequest
+Iteration 222: "Make Method Final" applied at class DefaultXmlRpcTransport to method endClientRequest
+Iteration 223: "Make Method Non Final" applied at class DefaultXmlRpcTransport to method endClientRequest
+Iteration 224: "Decrease Field Security" applied at class XmlRpcException to field code from private to package
+Iteration 225: "Make Method Final" applied at class DefaultXmlRpcTransport to method endClientRequest
+Iteration 226: "Increase Field Security" applied at class XmlRpcException to field code from package to private
+Iteration 227: "Make Class Abstract" applied to class XmlRpcApplet
+Iteration 228: "Make Class Concrete" applied to class XmlRpcApplet
+Iteration 229: "Make Class Abstract" applied to class XmlRpcApplet
+Iteration 230: "Make Class Concrete" applied to class XmlRpcApplet
+Iteration 231: "Make Class Abstract" applied to class XmlRpcApplet
+Iteration 232: "Make Class Concrete" applied to class XmlRpcApplet
+Iteration 233: "Make Class Abstract" applied to class XmlRpcApplet
+Iteration 234: "Make Class Concrete" applied to class XmlRpcApplet
+Iteration 235: "Make Method Non Final" applied at class DefaultXmlRpcTransport to method endClientRequest
+Iteration 236: "Make Method Final" applied at class DefaultXmlRpcTransport to method endClientRequest
+Iteration 237: "Make Class Abstract" applied to class XmlRpcApplet
+Iteration 238: "Make Class Concrete" applied to class XmlRpcApplet
+Iteration 239: "Make Method Non Final" applied at class DefaultXmlRpcTransport to method endClientRequest
+Iteration 240: "Make Method Final" applied at class DefaultXmlRpcTransport to method endClientRequest
+Iteration 241: "Make Method Non Final" applied at class DefaultXmlRpcTransport to method endClientRequest
+Iteration 242: "Decrease Field Security" applied at class XmlRpcException to field code from private to package
+Iteration 243: "Make Class Abstract" applied to class XmlRpcApplet
+Iteration 244: "Make Class Non Final" applied to class HttpUtil
+Iteration 245: "Move Field Down" applied to field loaded from XmlRpcApplet to JSXmlRpcApplet
+Iteration 246: "Make Class Final" applied to class HttpUtil
+Iteration 247: "Move Field Up" applied to field loaded from JSXmlRpcApplet to XmlRpcApplet
+Iteration 248: "Make Class Concrete" applied to class XmlRpcApplet
+Iteration 249: "Make Method Final" applied at class DefaultXmlRpcTransport to method endClientRequest
+Iteration 250: "Increase Field Security" applied at class XmlRpcException to field code from package to private
+Iteration 251: "Make Class Abstract" applied to class XmlRpcApplet
+Iteration 252: "Make Class Concrete" applied to class XmlRpcApplet
+Iteration 253: "Make Class Abstract" applied to class XmlRpcApplet
+Iteration 254: "Make Class Concrete" applied to class XmlRpcApplet
+Iteration 255: "Make Method Non Final" applied at class DefaultXmlRpcTransport to method endClientRequest
+Iteration 256: "Decrease Method Security" applied at class XmlWriter to method forceUnicode from package to protected
+Iteration 257: "Make Class Abstract" applied to class XmlRpcApplet
+Iteration 258: "Make Class Concrete" applied to class XmlRpcApplet
+Iteration 259: "Make Method Final" applied at class DefaultXmlRpcTransport to method endClientRequest
+Iteration 260: "Make Class Abstract" applied to class XmlRpcApplet
+Iteration 261: "Make Class Concrete" applied to class XmlRpcApplet
+Iteration 262: "Make Class Abstract" applied to class XmlRpcApplet
+Iteration 263: "Make Class Concrete" applied to class XmlRpcApplet
+Iteration 264: "Make Class Abstract" applied to class XmlRpcApplet
+Iteration 265: "Make Class Concrete" applied to class XmlRpcApplet
+Iteration 266: "Make Method Non Final" applied at class DefaultXmlRpcTransport to method endClientRequest
+Iteration 267: "Make Method Final" applied at class DefaultXmlRpcTransport to method endClientRequest
+Iteration 268: "Make Class Abstract" applied to class XmlRpcApplet
+Iteration 269: "Make Class Concrete" applied to class XmlRpcApplet
+Iteration 270: "Make Method Non Final" applied at class DefaultXmlRpcTransport to method endClientRequest
+Iteration 271: "Make Method Final" applied at class DefaultXmlRpcTransport to method endClientRequest
+Iteration 272: "Make Method Non Final" applied at class DefaultXmlRpcTransport to method endClientRequest
+Iteration 273: "Decrease Field Security" applied at class XmlRpcException to field code from private to package
+Iteration 274: "Make Method Final" applied at class DefaultXmlRpcTransport to method endClientRequest
+Iteration 275: "Increase Field Security" applied at class XmlRpcException to field code from package to private
+Iteration 276: "Make Class Abstract" applied to class XmlRpcApplet
+Iteration 277: "Make Class Concrete" applied to class XmlRpcApplet
+Iteration 278: "Make Class Abstract" applied to class XmlRpcApplet
+Iteration 279: "Make Class Concrete" applied to class XmlRpcApplet
+Iteration 280: "Make Class Abstract" applied to class XmlRpcApplet
+Iteration 281: "Make Class Concrete" applied to class XmlRpcApplet
+Iteration 282: "Make Class Abstract" applied to class XmlRpcApplet
+Iteration 283: "Make Class Concrete" applied to class XmlRpcApplet
+Iteration 284: "Make Method Non Final" applied at class DefaultXmlRpcTransport to method endClientRequest
+Iteration 285: "Make Method Final" applied at class DefaultXmlRpcTransport to method endClientRequest
+Iteration 286: "Make Class Abstract" applied to class XmlRpcApplet
+Iteration 287: "Make Class Concrete" applied to class XmlRpcApplet
+Iteration 288: "Make Method Non Final" applied at class DefaultXmlRpcTransport to method endClientRequest
+Iteration 289: "Make Method Final" applied at class DefaultXmlRpcTransport to method endClientRequest
+Iteration 290: "Make Method Non Final" applied at class DefaultXmlRpcTransport to method endClientRequest
+Iteration 291: "Decrease Field Security" applied at class XmlRpcException to field code from private to package
+Iteration 292: "Make Class Abstract" applied to class XmlRpcApplet
+Iteration 293: "Make Class Non Final" applied to class HttpUtil
+Iteration 294: "Move Field Down" applied to field loaded from XmlRpcApplet to JSXmlRpcApplet
+Iteration 295: "Make Class Final" applied to class HttpUtil
+Iteration 296: "Move Field Up" applied to field loaded from JSXmlRpcApplet to XmlRpcApplet
+Iteration 297: "Make Class Concrete" applied to class XmlRpcApplet
+Iteration 298: "Make Method Final" applied at class DefaultXmlRpcTransport to method endClientRequest
+Iteration 299: "Increase Field Security" applied at class XmlRpcException to field code from package to private
+Iteration 300: "Make Class Abstract" applied to class XmlRpcApplet
+Iteration 301: "Make Class Concrete" applied to class XmlRpcApplet
+Iteration 302: "Make Class Abstract" applied to class XmlRpcApplet
+Iteration 303: "Make Class Concrete" applied to class XmlRpcApplet
+Iteration 304: "Make Method Non Final" applied at class DefaultXmlRpcTransport to method endClientRequest
+Iteration 305: "Make Method Final" applied at class DefaultXmlRpcTransport to method endClientRequest
+Iteration 306: "Make Class Abstract" applied to class XmlRpcApplet
+Iteration 307: "Make Class Concrete" applied to class XmlRpcApplet
+Iteration 308: "Make Method Non Final" applied at class DefaultXmlRpcTransport to method endClientRequest
+Iteration 309: "Make Method Final" applied at class DefaultXmlRpcTransport to method endClientRequest
+Iteration 310: "Decrease Field Security" applied at class XmlRpcException to field code from private to package
+Iteration 311: "Increase Field Security" applied at class XmlRpcException to field code from package to private
+Iteration 312: "Make Class Abstract" applied to class XmlRpcApplet
+Iteration 313: "Make Class Concrete" applied to class XmlRpcApplet
+Iteration 314: "Make Class Abstract" applied to class XmlRpcApplet
+Iteration 315: "Make Class Concrete" applied to class XmlRpcApplet
+Iteration 316: "Make Class Abstract" applied to class XmlRpcApplet
+Iteration 317: "Make Class Concrete" applied to class XmlRpcApplet
+Iteration 318: "Make Class Abstract" applied to class XmlRpcApplet
+Iteration 319: "Make Class Concrete" applied to class XmlRpcApplet
+Iteration 320: "Decrease Method Security" applied at class MinML to method fatalError from protected to public
+Iteration 321: "Make Class Abstract" applied to class XmlRpcApplet
+Iteration 322: "Make Class Concrete" applied to class XmlRpcApplet
+Iteration 323: "Make Class Abstract" applied to class XmlRpcApplet
+Iteration 324: "Make Class Concrete" applied to class XmlRpcApplet
+Iteration 325: "Make Method Non Final" applied at class DefaultXmlRpcTransport to method endClientRequest
+Iteration 326: "Make Method Final" applied at class DefaultXmlRpcTransport to method endClientRequest
+Iteration 327: "Make Class Abstract" applied to class XmlRpcApplet
+Iteration 328: "Make Class Concrete" applied to class XmlRpcApplet
+Iteration 329: "Make Class Abstract" applied to class XmlRpcApplet
+Iteration 330: "Make Class Concrete" applied to class XmlRpcApplet
+Iteration 331: "Make Class Abstract" applied to class XmlRpcApplet
+Iteration 332: "Make Class Concrete" applied to class XmlRpcApplet
+Iteration 333: "Make Class Abstract" applied to class XmlRpcApplet
+Iteration 334: "Make Class Concrete" applied to class XmlRpcApplet
+Iteration 335: "Make Method Non Final" applied at class DefaultXmlRpcTransport to method endClientRequest
+Iteration 336: "Make Method Final" applied at class DefaultXmlRpcTransport to method endClientRequest
+Iteration 337: "Make Class Abstract" applied to class XmlRpcApplet
+Iteration 338: "Make Class Concrete" applied to class XmlRpcApplet
+Iteration 339: "Make Method Non Final" applied at class DefaultXmlRpcTransport to method endClientRequest
+Iteration 340: "Make Method Final" applied at class DefaultXmlRpcTransport to method endClientRequest
+Iteration 341: "Make Method Non Final" applied at class DefaultXmlRpcTransport to method endClientRequest
+Iteration 342: "Make Method Final" applied at class DefaultXmlRpcTransport to method endClientRequest
+Iteration 343: "Make Class Abstract" applied to class XmlRpcApplet
+Iteration 344: "Make Class Concrete" applied to class XmlRpcApplet
+Iteration 345: "Make Method Non Final" applied at class DefaultXmlRpcTransport to method endClientRequest
+Iteration 346: "Make Method Final" applied at class DefaultXmlRpcTransport to method endClientRequest
+Iteration 347: "Make Method Non Final" applied at class DefaultXmlRpcTransport to method endClientRequest
+Iteration 348: "Decrease Field Security" applied at class XmlRpcException to field code from private to package
+Iteration 349: "Make Method Final" applied at class DefaultXmlRpcTransport to method endClientRequest
+Iteration 350: "Increase Field Security" applied at class XmlRpcException to field code from package to private
+Iteration 351: "Make Class Abstract" applied to class XmlRpcApplet
+Iteration 352: "Make Class Concrete" applied to class XmlRpcApplet
+Iteration 353: "Make Class Abstract" applied to class XmlRpcApplet
+Iteration 354: "Make Class Concrete" applied to class XmlRpcApplet
+Iteration 355: "Make Class Abstract" applied to class XmlRpcApplet
+Iteration 356: "Make Class Concrete" applied to class XmlRpcApplet
+Iteration 357: "Make Class Abstract" applied to class XmlRpcApplet
+Iteration 358: "Make Class Concrete" applied to class XmlRpcApplet
+Iteration 359: "Make Method Non Final" applied at class DefaultXmlRpcTransport to method endClientRequest
+Iteration 360: "Make Method Final" applied at class DefaultXmlRpcTransport to method endClientRequest
+Iteration 361: "Make Class Abstract" applied to class XmlRpcApplet
+Iteration 362: "Make Class Concrete" applied to class XmlRpcApplet
+Iteration 363: "Make Method Non Final" applied at class DefaultXmlRpcTransport to method endClientRequest
+Iteration 364: "Make Method Final" applied at class DefaultXmlRpcTransport to method endClientRequest
+Iteration 365: "Make Method Non Final" applied at class DefaultXmlRpcTransport to method endClientRequest
+Iteration 366: "Decrease Field Security" applied at class XmlRpcException to field code from private to package
+Iteration 367: "Make Class Abstract" applied to class XmlRpcApplet
+Iteration 368: "Make Class Non Final" applied to class HttpUtil
+Iteration 369: "Move Field Down" applied to field loaded from XmlRpcApplet to JSXmlRpcApplet
+Iteration 370: "Make Class Final" applied to class HttpUtil
+Iteration 371: "Move Field Up" applied to field loaded from JSXmlRpcApplet to XmlRpcApplet
+Iteration 372: "Make Class Concrete" applied to class XmlRpcApplet
+Iteration 373: "Make Method Final" applied at class DefaultXmlRpcTransport to method endClientRequest
+Iteration 374: "Increase Field Security" applied at class XmlRpcException to field code from package to private
+Iteration 375: "Make Class Abstract" applied to class XmlRpcApplet
+Iteration 376: "Make Class Concrete" applied to class XmlRpcApplet
+Iteration 377: "Make Class Abstract" applied to class XmlRpcApplet
+Iteration 378: "Make Class Concrete" applied to class XmlRpcApplet
+Iteration 379: "Make Method Non Final" applied at class DefaultXmlRpcTransport to method endClientRequest
+Iteration 380: "Make Method Final" applied at class DefaultXmlRpcTransport to method endClientRequest
+Iteration 381: "Make Class Abstract" applied to class XmlRpcApplet
+Iteration 382: "Make Class Concrete" applied to class XmlRpcApplet
+Iteration 383: "Make Method Non Final" applied at class DefaultXmlRpcTransport to method endClientRequest
+Iteration 384: "Make Method Final" applied at class DefaultXmlRpcTransport to method endClientRequest
+Iteration 385: "Decrease Field Security" applied at class XmlRpcException to field code from private to package
+Iteration 386: "Increase Field Security" applied at class XmlRpcException to field code from package to private
+Iteration 387: "Make Class Abstract" applied to class XmlRpcApplet
+Iteration 388: "Make Class Concrete" applied to class XmlRpcApplet
+Iteration 389: "Make Class Abstract" applied to class XmlRpcApplet
+Iteration 390: "Make Class Concrete" applied to class XmlRpcApplet
+Iteration 391: "Make Class Abstract" applied to class XmlRpcApplet
+Iteration 392: "Make Class Concrete" applied to class XmlRpcApplet
+Iteration 393: "Make Class Abstract" applied to class XmlRpcApplet
+Iteration 394: "Make Class Concrete" applied to class XmlRpcApplet
+Iteration 395: "Make Method Non Final" applied at class DefaultXmlRpcTransport to method endClientRequest
+Iteration 396: "Make Method Final" applied at class DefaultXmlRpcTransport to method endClientRequest
+Iteration 397: "Make Class Abstract" applied to class XmlRpcApplet
+Iteration 398: "Make Class Concrete" applied to class XmlRpcApplet
+Iteration 399: "Make Method Non Final" applied at class DefaultXmlRpcTransport to method endClientRequest
+Iteration 400: "Make Method Final" applied at class DefaultXmlRpcTransport to method endClientRequest
+Iteration 401: "Decrease Field Security" applied at class XmlRpcException to field code from private to package
+Iteration 402: "Increase Field Security" applied at class XmlRpcException to field code from package to private
+Iteration 403: "Make Class Abstract" applied to class XmlRpcApplet
+Iteration 404: "Make Class Concrete" applied to class XmlRpcApplet
+Iteration 405: "Make Class Abstract" applied to class XmlRpcApplet
+Iteration 406: "Make Class Concrete" applied to class XmlRpcApplet
+Iteration 407: "Make Class Abstract" applied to class XmlRpcApplet
+Iteration 408: "Make Class Concrete" applied to class XmlRpcApplet
+Iteration 409: "Make Class Abstract" applied to class XmlRpcApplet
+Iteration 410: "Make Class Concrete" applied to class XmlRpcApplet
+Iteration 411: "Make Method Non Final" applied at class DefaultXmlRpcTransport to method endClientRequest
+Iteration 412: "Make Method Final" applied at class DefaultXmlRpcTransport to method endClientRequest
+Iteration 413: "Make Class Abstract" applied to class XmlRpcApplet
+Iteration 414: "Make Class Concrete" applied to class XmlRpcApplet
+Iteration 415: "Make Method Non Final" applied at class DefaultXmlRpcTransport to method endClientRequest
+Iteration 416: "Make Method Final" applied at class DefaultXmlRpcTransport to method endClientRequest
+Iteration 417: "Make Method Non Final" applied at class DefaultXmlRpcTransport to method endClientRequest
+Iteration 418: "Decrease Field Security" applied at class XmlRpcException to field code from private to package
+Iteration 419: "Make Class Abstract" applied to class XmlRpcApplet
+Iteration 420: "Make Class Non Final" applied to class HttpUtil
+Iteration 421: "Move Field Down" applied to field loaded from XmlRpcApplet to JSXmlRpcApplet
+Iteration 422: "Decrease Field Security" applied at class XmlRpcException to field code from package to protected
+Iteration 423: "Make Class Final" applied to class HttpUtil
+Iteration 424: "Move Field Up" applied to field loaded from JSXmlRpcApplet to XmlRpcApplet
+Iteration 425: "Make Class Concrete" applied to class XmlRpcApplet
+Iteration 426: "Make Method Final" applied at class DefaultXmlRpcTransport to method endClientRequest
+Iteration 427: "Increase Field Security" applied at class XmlRpcException to field code from protected to package
+Iteration 428: "Increase Field Security" applied at class XmlRpcException to field code from package to private
+Iteration 429: "Make Class Abstract" applied to class XmlRpcApplet
+Iteration 430: "Make Class Concrete" applied to class XmlRpcApplet
+Iteration 431: "Make Class Abstract" applied to class XmlRpcApplet
+Iteration 432: "Make Class Concrete" applied to class XmlRpcApplet
+Iteration 433: "Make Class Abstract" applied to class XmlRpcApplet
+Iteration 434: "Make Class Concrete" applied to class XmlRpcApplet
+Iteration 435: "Make Method Non Final" applied at class DefaultXmlRpcTransport to method endClientRequest
+Iteration 436: "Make Method Final" applied at class DefaultXmlRpcTransport to method endClientRequest
+Iteration 437: "Make Class Abstract" applied to class XmlRpcApplet
+Iteration 438: "Make Class Concrete" applied to class XmlRpcApplet
+Iteration 439: "Make Class Abstract" applied to class XmlRpcApplet
+Iteration 440: "Make Class Concrete" applied to class XmlRpcApplet
+Iteration 441: "Make Class Abstract" applied to class XmlRpcApplet
+Iteration 442: "Make Class Concrete" applied to class XmlRpcApplet
+Iteration 443: "Make Class Abstract" applied to class XmlRpcApplet
+Iteration 444: "Make Class Concrete" applied to class XmlRpcApplet
+Iteration 445: "Make Method Non Final" applied at class DefaultXmlRpcTransport to method endClientRequest
+Iteration 446: "Make Method Final" applied at class DefaultXmlRpcTransport to method endClientRequest
+Iteration 447: "Make Class Abstract" applied to class XmlRpcApplet
+Iteration 448: "Make Class Concrete" applied to class XmlRpcApplet
+Iteration 449: "Make Method Non Final" applied at class DefaultXmlRpcTransport to method endClientRequest
+Iteration 450: "Make Method Final" applied at class DefaultXmlRpcTransport to method endClientRequest
+Iteration 451: "Make Method Non Final" applied at class DefaultXmlRpcTransport to method endClientRequest
+Iteration 452: "Decrease Field Security" applied at class XmlRpcException to field code from private to package
+Iteration 453: "Make Method Final" applied at class DefaultXmlRpcTransport to method endClientRequest
+Iteration 454: "Increase Field Security" applied at class XmlRpcException to field code from package to private
+Iteration 455: "Make Class Abstract" applied to class XmlRpcApplet
+Iteration 456: "Make Class Concrete" applied to class XmlRpcApplet
+Iteration 457: "Make Class Abstract" applied to class XmlRpcApplet
+Iteration 458: "Make Class Concrete" applied to class XmlRpcApplet
+Iteration 459: "Make Class Abstract" applied to class XmlRpcApplet
+Iteration 460: "Make Class Concrete" applied to class XmlRpcApplet
+Iteration 461: "Make Class Abstract" applied to class XmlRpcApplet
+Iteration 462: "Make Class Concrete" applied to class XmlRpcApplet
+Iteration 463: "Make Method Non Final" applied at class DefaultXmlRpcTransport to method endClientRequest
+Iteration 464: "Make Method Final" applied at class DefaultXmlRpcTransport to method endClientRequest
+Iteration 465: "Make Class Abstract" applied to class XmlRpcApplet
+Iteration 466: "Make Class Concrete" applied to class XmlRpcApplet
+Iteration 467: "Make Method Non Final" applied at class DefaultXmlRpcTransport to method endClientRequest
+Iteration 468: "Make Method Final" applied at class DefaultXmlRpcTransport to method endClientRequest
+Iteration 469: "Make Method Non Final" applied at class DefaultXmlRpcTransport to method endClientRequest
+Iteration 470: "Decrease Field Security" applied at class XmlRpcException to field code from private to package
+Iteration 471: "Make Class Abstract" applied to class XmlRpcApplet
+Iteration 472: "Make Class Non Final" applied to class HttpUtil
+Iteration 473: "Move Field Down" applied to field loaded from XmlRpcApplet to JSXmlRpcApplet
+Iteration 474: "Make Class Final" applied to class HttpUtil
+Iteration 475: "Move Field Up" applied to field loaded from JSXmlRpcApplet to XmlRpcApplet
+Iteration 476: "Make Class Concrete" applied to class XmlRpcApplet
+Iteration 477: "Make Method Final" applied at class DefaultXmlRpcTransport to method endClientRequest
+Iteration 478: "Increase Field Security" applied at class XmlRpcException to field code from package to private
+Iteration 479: "Make Class Abstract" applied to class XmlRpcApplet
+Iteration 480: "Make Class Concrete" applied to class XmlRpcApplet
+Iteration 481: "Make Class Abstract" applied to class XmlRpcApplet
+Iteration 482: "Make Class Concrete" applied to class XmlRpcApplet
+Iteration 483: "Make Method Non Final" applied at class DefaultXmlRpcTransport to method endClientRequest
+Iteration 484: "Decrease Method Security" applied at class XmlWriter to method forceUnicode from protected to public
+Iteration 485: "Make Class Abstract" applied to class XmlRpcApplet
+Iteration 486: "Make Class Concrete" applied to class XmlRpcApplet
+Iteration 487: "Make Method Final" applied at class DefaultXmlRpcTransport to method endClientRequest
+Iteration 488: "Make Class Abstract" applied to class XmlRpcApplet
+Iteration 489: "Make Class Concrete" applied to class XmlRpcApplet
+Iteration 490: "Make Class Abstract" applied to class XmlRpcApplet
+Iteration 491: "Make Class Concrete" applied to class XmlRpcApplet
+Iteration 492: "Make Class Abstract" applied to class XmlRpcApplet
+Iteration 493: "Make Class Concrete" applied to class XmlRpcApplet
+Iteration 494: "Make Method Non Final" applied at class DefaultXmlRpcTransport to method endClientRequest
+Iteration 495: "Make Method Final" applied at class DefaultXmlRpcTransport to method endClientRequest
+Iteration 496: "Make Class Abstract" applied to class XmlRpcApplet
+Iteration 497: "Make Class Concrete" applied to class XmlRpcApplet
+Iteration 498: "Make Method Non Final" applied at class DefaultXmlRpcTransport to method endClientRequest
+Iteration 499: "Make Method Final" applied at class DefaultXmlRpcTransport to method endClientRequest
+Iteration 500: "Make Method Non Final" applied at class DefaultXmlRpcTransport to method endClientRequest
+Iteration 501: "Decrease Field Security" applied at class XmlRpcException to field code from private to package
+Iteration 502: "Make Method Final" applied at class DefaultXmlRpcTransport to method endClientRequest
+Iteration 503: "Increase Field Security" applied at class XmlRpcException to field code from package to private
+Iteration 504: "Make Class Abstract" applied to class XmlRpcApplet
+Iteration 505: "Make Class Concrete" applied to class XmlRpcApplet
+Iteration 506: "Make Class Abstract" applied to class XmlRpcApplet
+Iteration 507: "Make Class Concrete" applied to class XmlRpcApplet
+Iteration 508: "Make Class Abstract" applied to class XmlRpcApplet
+Iteration 509: "Make Class Concrete" applied to class XmlRpcApplet
+Iteration 510: "Make Class Abstract" applied to class XmlRpcApplet
+Iteration 511: "Make Class Concrete" applied to class XmlRpcApplet
+Iteration 512: "Make Method Non Final" applied at class DefaultXmlRpcTransport to method endClientRequest
+Iteration 513: "Make Method Final" applied at class DefaultXmlRpcTransport to method endClientRequest
+Iteration 514: "Make Class Abstract" applied to class XmlRpcApplet
+Iteration 515: "Make Class Concrete" applied to class XmlRpcApplet
+Iteration 516: "Make Method Non Final" applied at class DefaultXmlRpcTransport to method endClientRequest
+Iteration 517: "Make Method Final" applied at class DefaultXmlRpcTransport to method endClientRequest
+Iteration 518: "Make Method Non Final" applied at class DefaultXmlRpcTransport to method endClientRequest
+Iteration 519: "Decrease Field Security" applied at class XmlRpcException to field code from private to package
+Iteration 520: "Make Class Abstract" applied to class XmlRpcApplet
+Iteration 521: "Make Class Non Final" applied to class HttpUtil
+Iteration 522: "Move Field Down" applied to field loaded from XmlRpcApplet to JSXmlRpcApplet
+Iteration 523: "Make Class Final" applied to class HttpUtil
+Iteration 524: "Move Field Up" applied to field loaded from JSXmlRpcApplet to XmlRpcApplet
+Iteration 525: "Make Class Concrete" applied to class XmlRpcApplet
+Iteration 526: "Make Method Final" applied at class DefaultXmlRpcTransport to method endClientRequest
+Iteration 527: "Make Class Abstract" applied to class XmlRpcApplet
+Iteration 528: "Make Class Concrete" applied to class XmlRpcApplet
+Iteration 529: "Make Method Non Final" applied at class DefaultXmlRpcTransport to method endClientRequest
+Iteration 530: "Make Method Final" applied at class DefaultXmlRpcTransport to method endClientRequest
+Iteration 531: "Make Class Abstract" applied to class XmlRpcApplet
+Iteration 532: "Make Class Concrete" applied to class XmlRpcApplet
+Iteration 533: "Make Method Non Final" applied at class DefaultXmlRpcTransport to method endClientRequest
+Iteration 534: "Make Method Final" applied at class DefaultXmlRpcTransport to method endClientRequest
+Iteration 535: "Decrease Field Security" applied at class XmlRpcException to field code from package to protected
+Iteration 536: "Increase Field Security" applied at class XmlRpcException to field code from protected to package
+Iteration 537: "Make Class Abstract" applied to class XmlRpcApplet
+Iteration 538: "Make Class Concrete" applied to class XmlRpcApplet
+Iteration 539: "Make Class Abstract" applied to class XmlRpcApplet
+Iteration 540: "Make Class Concrete" applied to class XmlRpcApplet
+Iteration 541: "Make Class Abstract" applied to class XmlRpcApplet
+Iteration 542: "Make Class Concrete" applied to class XmlRpcApplet
+Iteration 543: "Make Class Abstract" applied to class XmlRpcApplet
+Iteration 544: "Make Class Concrete" applied to class XmlRpcApplet
+Iteration 545: "Make Method Non Final" applied at class DefaultXmlRpcTransport to method endClientRequest
+Iteration 546: "Make Method Final" applied at class DefaultXmlRpcTransport to method endClientRequest
+Iteration 547: "Make Class Abstract" applied to class XmlRpcApplet
+Iteration 548: "Make Class Concrete" applied to class XmlRpcApplet
+Iteration 549: "Make Method Non Final" applied at class DefaultXmlRpcTransport to method endClientRequest
+Iteration 550: "Make Method Final" applied at class DefaultXmlRpcTransport to method endClientRequest
+Iteration 551: "Make Method Non Final" applied at class DefaultXmlRpcTransport to method endClientRequest
+Iteration 552: "Decrease Field Security" applied at class XmlRpcException to field code from package to protected
+Iteration 553: "Make Class Abstract" applied to class XmlRpcApplet
+Iteration 554: "Make Class Non Final" applied to class HttpUtil
+Iteration 555: "Move Field Down" applied to field loaded from XmlRpcApplet to JSXmlRpcApplet
+Iteration 556: "Decrease Field Security" applied at class XmlRpcException to field code from protected to public
+Iteration 557: "Make Class Final" applied to class HttpUtil
+Iteration 558: "Move Field Up" applied to field loaded from JSXmlRpcApplet to XmlRpcApplet
+Iteration 559: "Make Class Concrete" applied to class XmlRpcApplet
+Iteration 560: "Make Method Final" applied at class DefaultXmlRpcTransport to method endClientRequest
+Iteration 561: "Increase Field Security" applied at class XmlRpcException to field code from public to protected
+Iteration 562: "Increase Field Security" applied at class XmlRpcException to field code from protected to package
+Iteration 563: "Make Class Abstract" applied to class XmlRpcApplet
+Iteration 564: "Make Class Concrete" applied to class XmlRpcApplet
+Iteration 565: "Make Class Abstract" applied to class XmlRpcApplet
+Iteration 566: "Make Class Concrete" applied to class XmlRpcApplet
+Iteration 567: "Make Class Abstract" applied to class XmlRpcApplet
+Iteration 568: "Make Class Concrete" applied to class XmlRpcApplet
+Iteration 569: "Make Method Non Final" applied at class DefaultXmlRpcTransport to method endClientRequest
+Iteration 570: "Make Method Final" applied at class DefaultXmlRpcTransport to method endClientRequest
+Iteration 571: "Make Class Abstract" applied to class XmlRpcApplet
+Iteration 572: "Make Class Concrete" applied to class XmlRpcApplet
+Iteration 573: "Make Class Abstract" applied to class XmlRpcApplet
+Iteration 574: "Make Class Concrete" applied to class XmlRpcApplet
+Iteration 575: "Make Class Abstract" applied to class XmlRpcApplet
+Iteration 576: "Make Class Concrete" applied to class XmlRpcApplet
+Iteration 577: "Make Class Abstract" applied to class XmlRpcApplet
+Iteration 578: "Make Class Concrete" applied to class XmlRpcApplet
+Iteration 579: "Make Method Non Final" applied at class DefaultXmlRpcTransport to method endClientRequest
+Iteration 580: "Make Method Final" applied at class DefaultXmlRpcTransport to method endClientRequest
+Iteration 581: "Make Class Abstract" applied to class XmlRpcApplet
+Iteration 582: "Make Class Concrete" applied to class XmlRpcApplet
+Iteration 583: "Make Method Non Final" applied at class DefaultXmlRpcTransport to method endClientRequest
+Iteration 584: "Make Method Final" applied at class DefaultXmlRpcTransport to method endClientRequest
+Iteration 585: "Make Method Non Final" applied at class DefaultXmlRpcTransport to method endClientRequest
+Iteration 586: "Decrease Field Security" applied at class XmlRpcException to field code from package to protected
+Iteration 587: "Make Method Final" applied at class DefaultXmlRpcTransport to method endClientRequest
+Iteration 588: "Increase Field Security" applied at class XmlRpcException to field code from protected to package
+Iteration 589: "Make Class Abstract" applied to class XmlRpcApplet
+Iteration 590: "Make Class Concrete" applied to class XmlRpcApplet
+Iteration 591: "Make Class Abstract" applied to class XmlRpcApplet
+Iteration 592: "Make Class Concrete" applied to class XmlRpcApplet
+Iteration 593: "Make Class Abstract" applied to class XmlRpcApplet
+Iteration 594: "Make Class Concrete" applied to class XmlRpcApplet
+Iteration 595: "Make Class Abstract" applied to class XmlRpcApplet
+Iteration 596: "Make Class Concrete" applied to class XmlRpcApplet
+Iteration 597: "Make Method Non Final" applied at class DefaultXmlRpcTransport to method endClientRequest
+Iteration 598: "Make Method Final" applied at class DefaultXmlRpcTransport to method endClientRequest
+Iteration 599: "Make Class Abstract" applied to class XmlRpcApplet
+Iteration 600: "Make Class Concrete" applied to class XmlRpcApplet
+Iteration 601: "Make Method Non Final" applied at class DefaultXmlRpcTransport to method endClientRequest
+Iteration 602: "Make Method Final" applied at class DefaultXmlRpcTransport to method endClientRequest
+Iteration 603: "Make Method Non Final" applied at class DefaultXmlRpcTransport to method endClientRequest
+Iteration 604: "Decrease Field Security" applied at class XmlRpcException to field code from package to protected
+Iteration 605: "Make Class Abstract" applied to class XmlRpcApplet
+Iteration 606: "Make Class Non Final" applied to class HttpUtil
+Iteration 607: "Move Field Down" applied to field loaded from XmlRpcApplet to JSXmlRpcApplet
+Iteration 608: "Make Class Final" applied to class HttpUtil
+Iteration 609: "Move Field Up" applied to field loaded from JSXmlRpcApplet to XmlRpcApplet
+Iteration 610: "Make Class Concrete" applied to class XmlRpcApplet
+Iteration 611: "Make Method Final" applied at class DefaultXmlRpcTransport to method endClientRequest
+Iteration 612: "Increase Field Security" applied at class XmlRpcException to field code from protected to package
+Iteration 613: "Make Class Abstract" applied to class XmlRpcApplet
+Iteration 614: "Make Class Concrete" applied to class XmlRpcApplet
+Iteration 615: "Make Class Abstract" applied to class XmlRpcApplet
+Iteration 616: "Make Class Concrete" applied to class XmlRpcApplet
+Iteration 617: "Make Method Non Final" applied at class DefaultXmlRpcTransport to method endClientRequest
+Iteration 618: "Make Class Abstract" applied to class XmlRpcApplet
+Iteration 619: "Make Class Concrete" applied to class XmlRpcApplet
+Iteration 620: "Make Method Final" applied at class DefaultXmlRpcTransport to method endClientRequest
+Iteration 621: "Make Class Abstract" applied to class XmlRpcApplet
+Iteration 622: "Make Class Concrete" applied to class XmlRpcApplet
+Iteration 623: "Make Class Abstract" applied to class XmlRpcApplet
+Iteration 624: "Make Class Concrete" applied to class XmlRpcApplet
+Iteration 625: "Make Class Abstract" applied to class XmlRpcApplet
+Iteration 626: "Make Class Concrete" applied to class XmlRpcApplet
+Iteration 627: "Make Method Non Final" applied at class DefaultXmlRpcTransport to method endClientRequest
+Iteration 628: "Make Method Final" applied at class DefaultXmlRpcTransport to method endClientRequest
+Iteration 629: "Make Class Abstract" applied to class XmlRpcApplet
+Iteration 630: "Make Class Concrete" applied to class XmlRpcApplet
+Iteration 631: "Make Method Non Final" applied at class DefaultXmlRpcTransport to method endClientRequest
+Iteration 632: "Make Method Final" applied at class DefaultXmlRpcTransport to method endClientRequest
+Iteration 633: "Make Method Non Final" applied at class DefaultXmlRpcTransport to method endClientRequest
+Iteration 634: "Decrease Field Security" applied at class XmlRpcException to field code from package to protected
+Iteration 635: "Make Method Final" applied at class DefaultXmlRpcTransport to method endClientRequest
+Iteration 636: "Increase Field Security" applied at class XmlRpcException to field code from protected to package
+Iteration 637: "Make Class Abstract" applied to class XmlRpcApplet
+Iteration 638: "Make Class Concrete" applied to class XmlRpcApplet
+Iteration 639: "Make Class Abstract" applied to class XmlRpcApplet
+Iteration 640: "Make Class Concrete" applied to class XmlRpcApplet
+Iteration 641: "Make Class Abstract" applied to class XmlRpcApplet
+Iteration 642: "Make Class Concrete" applied to class XmlRpcApplet
+Iteration 643: "Make Class Abstract" applied to class XmlRpcApplet
+Iteration 644: "Make Class Concrete" applied to class XmlRpcApplet
+Iteration 645: "Make Method Non Final" applied at class DefaultXmlRpcTransport to method endClientRequest
+Iteration 646: "Make Method Final" applied at class DefaultXmlRpcTransport to method endClientRequest
+Iteration 647: "Make Class Abstract" applied to class XmlRpcApplet
+Iteration 648: "Make Class Concrete" applied to class XmlRpcApplet
+Iteration 649: "Make Method Non Final" applied at class DefaultXmlRpcTransport to method endClientRequest
+Iteration 650: "Make Method Final" applied at class DefaultXmlRpcTransport to method endClientRequest
+Iteration 651: "Make Method Non Final" applied at class DefaultXmlRpcTransport to method endClientRequest
+Iteration 652: "Decrease Field Security" applied at class XmlRpcException to field code from package to protected
+Iteration 653: "Make Class Abstract" applied to class XmlRpcApplet
+Iteration 654: "Make Class Non Final" applied to class HttpUtil
+Iteration 655: "Move Field Down" applied to field loaded from XmlRpcApplet to JSXmlRpcApplet
+Iteration 656: "Make Class Final" applied to class HttpUtil
+Iteration 657: "Move Field Up" applied to field loaded from JSXmlRpcApplet to XmlRpcApplet
+Iteration 658: "Make Class Concrete" applied to class XmlRpcApplet
+Iteration 659: "Make Method Final" applied at class DefaultXmlRpcTransport to method endClientRequest
+Iteration 660: "Increase Field Security" applied at class XmlRpcException to field code from protected to package
+Iteration 661: "Make Class Abstract" applied to class XmlRpcApplet
+Iteration 662: "Make Class Concrete" applied to class XmlRpcApplet
+Iteration 663: "Make Class Abstract" applied to class XmlRpcApplet
+Iteration 664: "Make Class Concrete" applied to class XmlRpcApplet
+Iteration 665: "Make Method Non Final" applied at class DefaultXmlRpcTransport to method endClientRequest
+Iteration 666: "Make Method Final" applied at class DefaultXmlRpcTransport to method endClientRequest
+Iteration 667: "Make Class Abstract" applied to class XmlRpcApplet
+Iteration 668: "Make Class Concrete" applied to class XmlRpcApplet
+Iteration 669: "Make Method Non Final" applied at class DefaultXmlRpcTransport to method endClientRequest
+Iteration 670: "Make Method Final" applied at class DefaultXmlRpcTransport to method endClientRequest
+Iteration 671: "Decrease Field Security" applied at class XmlRpcException to field code from package to protected
+Iteration 672: "Increase Field Security" applied at class XmlRpcException to field code from protected to package
+Iteration 673: "Make Class Abstract" applied to class XmlRpcApplet
+Iteration 674: "Make Class Concrete" applied to class XmlRpcApplet
+Iteration 675: "Make Class Abstract" applied to class XmlRpcApplet
+Iteration 676: "Make Class Concrete" applied to class XmlRpcApplet
+Iteration 677: "Make Class Abstract" applied to class XmlRpcApplet
+Iteration 678: "Make Class Concrete" applied to class XmlRpcApplet
+Iteration 679: "Make Class Abstract" applied to class XmlRpcApplet
+Iteration 680: "Make Class Concrete" applied to class XmlRpcApplet
+Iteration 681: "Make Method Non Final" applied at class DefaultXmlRpcTransport to method endClientRequest
+Iteration 682: "Make Method Final" applied at class DefaultXmlRpcTransport to method endClientRequest
+Iteration 683: "Make Class Abstract" applied to class XmlRpcApplet
+Iteration 684: "Make Class Concrete" applied to class XmlRpcApplet
+Iteration 685: "Make Method Non Final" applied at class DefaultXmlRpcTransport to method endClientRequest
+Iteration 686: "Make Method Final" applied at class DefaultXmlRpcTransport to method endClientRequest
+Iteration 687: "Decrease Field Security" applied at class XmlRpcException to field code from package to protected
+Iteration 688: "Increase Field Security" applied at class XmlRpcException to field code from protected to package
+Iteration 689: "Make Class Abstract" applied to class XmlRpcApplet
+Iteration 690: "Make Class Concrete" applied to class XmlRpcApplet
+Iteration 691: "Make Class Abstract" applied to class XmlRpcApplet
+Iteration 692: "Make Class Concrete" applied to class XmlRpcApplet
+Iteration 693: "Make Class Abstract" applied to class XmlRpcApplet
+Iteration 694: "Make Class Concrete" applied to class XmlRpcApplet
+Iteration 695: "Make Class Abstract" applied to class XmlRpcApplet
+Iteration 696: "Make Class Concrete" applied to class XmlRpcApplet
+Iteration 697: "Make Method Non Final" applied at class DefaultXmlRpcTransport to method endClientRequest
+Iteration 698: "Make Method Final" applied at class DefaultXmlRpcTransport to method endClientRequest
+Iteration 699: "Make Class Abstract" applied to class XmlRpcApplet
+Iteration 700: "Make Class Concrete" applied to class XmlRpcApplet
+Iteration 701: "Make Method Non Final" applied at class DefaultXmlRpcTransport to method endClientRequest
+Iteration 702: "Make Method Final" applied at class DefaultXmlRpcTransport to method endClientRequest
+Iteration 703: "Make Method Non Final" applied at class DefaultXmlRpcTransport to method endClientRequest
+Iteration 704: "Decrease Field Security" applied at class XmlRpcException to field code from package to protected
+Iteration 705: "Make Class Abstract" applied to class XmlRpcApplet
+Iteration 706: "Make Class Non Final" applied to class HttpUtil
+Iteration 707: "Move Field Down" applied to field loaded from XmlRpcApplet to JSXmlRpcApplet
+Iteration 708: "Decrease Field Security" applied at class XmlRpcException to field code from protected to public
+Iteration 709: "Make Class Final" applied to class HttpUtil
+Iteration 710: "Move Field Up" applied to field loaded from JSXmlRpcApplet to XmlRpcApplet
+Iteration 711: "Make Class Concrete" applied to class XmlRpcApplet
+Iteration 712: "Make Method Final" applied at class DefaultXmlRpcTransport to method endClientRequest
+Iteration 713: "Increase Field Security" applied at class XmlRpcException to field code from public to protected
+Iteration 714: "Increase Field Security" applied at class XmlRpcException to field code from protected to package
+Iteration 715: "Make Class Abstract" applied to class XmlRpcApplet
+Iteration 716: "Make Class Concrete" applied to class XmlRpcApplet
+Iteration 717: "Make Class Abstract" applied to class XmlRpcApplet
+Iteration 718: "Make Class Concrete" applied to class XmlRpcApplet
+Iteration 719: "Make Class Abstract" applied to class XmlRpcApplet
+Iteration 720: "Make Class Concrete" applied to class XmlRpcApplet
+Iteration 721: "Make Method Non Final" applied at class DefaultXmlRpcTransport to method endClientRequest
+Iteration 722: "Make Method Final" applied at class DefaultXmlRpcTransport to method endClientRequest
+Iteration 723: "Make Class Abstract" applied to class XmlRpcApplet
+Iteration 724: "Make Class Concrete" applied to class XmlRpcApplet
+Iteration 725: "Make Class Abstract" applied to class XmlRpcApplet
+Iteration 726: "Make Class Concrete" applied to class XmlRpcApplet
+Iteration 727: "Make Class Abstract" applied to class XmlRpcApplet
+Iteration 728: "Make Class Concrete" applied to class XmlRpcApplet
+Iteration 729: "Make Class Abstract" applied to class XmlRpcApplet
+Iteration 730: "Make Class Concrete" applied to class XmlRpcApplet
+Iteration 731: "Make Method Non Final" applied at class DefaultXmlRpcTransport to method endClientRequest
+Iteration 732: "Make Method Final" applied at class DefaultXmlRpcTransport to method endClientRequest
+Iteration 733: "Make Class Abstract" applied to class XmlRpcApplet
+Iteration 734: "Make Class Concrete" applied to class XmlRpcApplet
+Iteration 735: "Make Method Non Final" applied at class DefaultXmlRpcTransport to method endClientRequest
+Iteration 736: "Make Method Final" applied at class DefaultXmlRpcTransport to method endClientRequest
+Iteration 737: "Make Method Non Final" applied at class DefaultXmlRpcTransport to method endClientRequest
+Iteration 738: "Decrease Field Security" applied at class XmlRpcException to field code from package to protected
+Iteration 739: "Make Method Final" applied at class DefaultXmlRpcTransport to method endClientRequest
+Iteration 740: "Increase Field Security" applied at class XmlRpcException to field code from protected to package
+Iteration 741: "Make Class Abstract" applied to class XmlRpcApplet
+Iteration 742: "Make Class Concrete" applied to class XmlRpcApplet
+Iteration 743: "Make Class Abstract" applied to class XmlRpcApplet
+Iteration 744: "Make Class Concrete" applied to class XmlRpcApplet
+Iteration 745: "Make Class Abstract" applied to class XmlRpcApplet
+Iteration 746: "Make Class Concrete" applied to class XmlRpcApplet
+Iteration 747: "Make Class Abstract" applied to class XmlRpcApplet
+Iteration 748: "Make Class Concrete" applied to class XmlRpcApplet
+Iteration 749: "Make Method Non Final" applied at class DefaultXmlRpcTransport to method endClientRequest
+Iteration 750: "Make Method Final" applied at class DefaultXmlRpcTransport to method endClientRequest
+Iteration 751: "Make Class Abstract" applied to class XmlRpcApplet
+Iteration 752: "Make Class Concrete" applied to class XmlRpcApplet
+Iteration 753: "Make Method Non Final" applied at class DefaultXmlRpcTransport to method endClientRequest
+Iteration 754: "Make Method Final" applied at class DefaultXmlRpcTransport to method endClientRequest
+Iteration 755: "Make Method Non Final" applied at class DefaultXmlRpcTransport to method endClientRequest
+Iteration 756: "Decrease Field Security" applied at class XmlRpcException to field code from package to protected
+Iteration 757: "Make Class Abstract" applied to class XmlRpcApplet
+Iteration 758: "Make Class Non Final" applied to class HttpUtil
+Iteration 759: "Move Field Down" applied to field loaded from XmlRpcApplet to JSXmlRpcApplet
+Iteration 760: "Make Class Final" applied to class HttpUtil
+Iteration 761: "Move Field Up" applied to field loaded from JSXmlRpcApplet to XmlRpcApplet
+Iteration 762: "Make Class Concrete" applied to class XmlRpcApplet
+Iteration 763: "Make Method Final" applied at class DefaultXmlRpcTransport to method endClientRequest
+Iteration 764: "Increase Field Security" applied at class XmlRpcException to field code from protected to package
+Iteration 765: "Make Class Abstract" applied to class XmlRpcApplet
+Iteration 766: "Make Class Concrete" applied to class XmlRpcApplet
+Iteration 767: "Make Class Abstract" applied to class XmlRpcApplet
+Iteration 768: "Make Class Concrete" applied to class XmlRpcApplet
+Iteration 769: "Make Method Non Final" applied at class DefaultXmlRpcTransport to method endClientRequest
+Iteration 770: "Make Class Abstract" applied to class XmlRpcApplet
+Iteration 771: "Make Class Concrete" applied to class XmlRpcApplet
+Iteration 772: "Make Method Final" applied at class DefaultXmlRpcTransport to method endClientRequest
+Iteration 773: "Make Class Abstract" applied to class XmlRpcApplet
+Iteration 774: "Make Class Concrete" applied to class XmlRpcApplet
+Iteration 775: "Make Class Abstract" applied to class XmlRpcApplet
+Iteration 776: "Make Class Concrete" applied to class XmlRpcApplet
+Iteration 777: "Make Class Abstract" applied to class XmlRpcApplet
+Iteration 778: "Make Class Concrete" applied to class XmlRpcApplet
+Iteration 779: "Make Method Non Final" applied at class DefaultXmlRpcTransport to method endClientRequest
+Iteration 780: "Make Method Final" applied at class DefaultXmlRpcTransport to method endClientRequest
+Iteration 781: "Make Class Abstract" applied to class XmlRpcApplet
+Iteration 782: "Make Class Concrete" applied to class XmlRpcApplet
+Iteration 783: "Make Class Abstract" applied to class XmlRpcApplet
+Iteration 784: "Make Class Concrete" applied to class XmlRpcApplet
+Iteration 785: "Make Class Abstract" applied to class XmlRpcApplet
+Iteration 786: "Make Class Concrete" applied to class XmlRpcApplet
+Iteration 787: "Make Class Abstract" applied to class XmlRpcApplet
+Iteration 788: "Make Class Concrete" applied to class XmlRpcApplet
+Iteration 789: "Make Class Abstract" applied to class XmlRpcApplet
+Iteration 790: "Make Class Concrete" applied to class XmlRpcApplet
+Iteration 791: "Make Class Abstract" applied to class XmlRpcApplet
+Iteration 792: "Make Class Concrete" applied to class XmlRpcApplet
+Iteration 793: "Make Class Abstract" applied to class XmlRpcApplet
+Iteration 794: "Make Class Concrete" applied to class XmlRpcApplet
+Iteration 795: "Make Class Abstract" applied to class XmlRpcApplet
+Iteration 796: "Make Class Concrete" applied to class XmlRpcApplet
+Iteration 797: "Make Method Non Final" applied at class DefaultXmlRpcTransport to method endClientRequest
+Iteration 798: "Make Method Final" applied at class DefaultXmlRpcTransport to method endClientRequest
+Iteration 799: "Make Class Abstract" applied to class XmlRpcApplet
+Iteration 800: "Make Class Concrete" applied to class XmlRpcApplet
+Iteration 801: "Make Method Non Final" applied at class DefaultXmlRpcTransport to method endClientRequest
+Iteration 802: "Make Method Final" applied at class DefaultXmlRpcTransport to method endClientRequest
+Iteration 803: "Make Method Non Final" applied at class DefaultXmlRpcTransport to method endClientRequest
+Iteration 804: "Decrease Field Security" applied at class XmlRpcException to field code from package to protected
+Iteration 805: "Make Class Abstract" applied to class XmlRpcApplet
+Iteration 806: "Make Class Non Final" applied to class HttpUtil
+Iteration 807: "Move Field Down" applied to field loaded from XmlRpcApplet to JSXmlRpcApplet
+Iteration 808: "Make Class Final" applied to class HttpUtil
+Iteration 809: "Move Field Up" applied to field loaded from JSXmlRpcApplet to XmlRpcApplet
+Iteration 810: "Make Class Concrete" applied to class XmlRpcApplet
+Iteration 811: "Make Method Final" applied at class DefaultXmlRpcTransport to method endClientRequest
+Iteration 812: "Increase Field Security" applied at class XmlRpcException to field code from protected to package
+Iteration 813: "Make Class Abstract" applied to class XmlRpcApplet
+Iteration 814: "Make Class Concrete" applied to class XmlRpcApplet
+Iteration 815: "Make Class Abstract" applied to class XmlRpcApplet
+Iteration 816: "Make Class Concrete" applied to class XmlRpcApplet
+Iteration 817: "Make Method Non Final" applied at class DefaultXmlRpcTransport to method endClientRequest
+Iteration 818: "Make Method Final" applied at class DefaultXmlRpcTransport to method endClientRequest
+Iteration 819: "Make Class Abstract" applied to class XmlRpcApplet
+Iteration 820: "Make Class Concrete" applied to class XmlRpcApplet
+Iteration 821: "Make Method Non Final" applied at class DefaultXmlRpcTransport to method endClientRequest
+Iteration 822: "Make Method Final" applied at class DefaultXmlRpcTransport to method endClientRequest
+Iteration 823: "Make Method Non Final" applied at class DefaultXmlRpcTransport to method endClientRequest
+Iteration 824: "Decrease Field Security" applied at class XmlRpcException to field code from package to protected
+Iteration 825: "Make Class Abstract" applied to class XmlRpcApplet
+Iteration 826: "Make Class Non Final" applied to class HttpUtil
+Iteration 827: "Move Field Down" applied to field loaded from XmlRpcApplet to JSXmlRpcApplet
+Iteration 828: "Make Method Final" applied at class DefaultXmlRpcTransport to method endClientRequest
+Iteration 829: "Increase Field Security" applied at class XmlRpcException to field code from protected to package
+Iteration 830: "Make Class Concrete" applied to class XmlRpcApplet
+Iteration 831: "Make Class Abstract" applied to class XmlRpcApplet
+Iteration 832: "Make Class Concrete" applied to class XmlRpcApplet
+Iteration 833: "Make Class Abstract" applied to class XmlRpcApplet
+Iteration 834: "Make Class Concrete" applied to class XmlRpcApplet
+Iteration 835: "Make Method Non Final" applied at class DefaultXmlRpcTransport to method endClientRequest
+Iteration 836: "Make Method Final" applied at class DefaultXmlRpcTransport to method endClientRequest
+Iteration 837: "Make Class Abstract" applied to class XmlRpcApplet
+Iteration 838: "Make Class Concrete" applied to class XmlRpcApplet
+Iteration 839: "Make Method Non Final" applied at class DefaultXmlRpcTransport to method endClientRequest
+Iteration 840: "Make Method Final" applied at class DefaultXmlRpcTransport to method endClientRequest
+Iteration 841: "Make Method Non Final" applied at class DefaultXmlRpcTransport to method endClientRequest
+Iteration 842: "Decrease Field Security" applied at class XmlRpcException to field code from package to protected
+Iteration 843: "Make Class Abstract" applied to class XmlRpcApplet
+Iteration 844: "Make Method Final" applied at class JSXmlRpcApplet to method execute
+Iteration 845: "Make Method Static" applied at class XmlRpcResponseProcessor to method writeResponse
+Iteration 846: "Make Method Final" applied at class SAXException to method toString
+Iteration 847: "Increase Field Security" applied at class SunSSLTransportFactory to field TRANSPORT_HOSTNAMEVERIFIER from public to protected
+Iteration 848: "Make Field Final" applied at class AuthenticatedXmlRpcHandler to ParameterDeclaration method
+Iteration 849: "Increase Field Security" applied at class XmlRpcException to field code from protected to package
+Iteration 850: "Increase Field Security" applied at class XmlRpcApplet to field client from package to private
+Iteration 851: "Decrease Method Security" applied at class XmlRpcClientResponseProcessor to method objectParsed from protected to public
+Iteration 852: "Make Class Final" applied to class Echo
+Iteration 853: "Decrease Method Security" applied at class LiteXmlRpcTransport to method initConnection from protected to public
+Iteration 854: "Decrease Method Security" applied at class XmlRpcWorker to method invokeHandler from protected to public
+Iteration 855: "Remove Field" applied at class SimpleXmlRpcClient to field enc
+Iteration 856: "Make Field Static" applied at class XmlRpcException to field code
+Iteration 857: "Remove Method" applied at class SystemHandler to method removeSystemHandler
+Iteration 858: "Make Field Non Static" applied at class XmlRpcClientWorker to field requestProcessor
+Iteration 859: "Decrease Field Security" applied at class XmlRpcApplet to field client from private to package
+Iteration 860: "Remove Field" applied at class MinML to field inSTag
+Iteration 861: "Decrease Method Security" applied at class XmlRpcResponseProcessor to method writeResponse from package to protected
+Iteration 862: "Decrease Field Security" applied at class SystemHandler to field systemMapping from private to package
+Iteration 863: "Make Method Non Static" applied at class SimpleXmlRpcClient to method setDebug
+Iteration 864: "Make Method Final" applied at class XmlRpcApplet to method addIntArgToStruct
+Iteration 865: "Move Field Up" applied to field result from XmlRpcClientResponseProcessor to XmlRpc
+Iteration 866: "Move Field Down" applied to field result from XmlRpc to XmlRpcClientResponseProcessor
+Iteration 867: "Make Class Final" applied to class MinML
+Iteration 868: "Decrease Method Security" applied at class XmlRpcResponseProcessor to method writeError from package to protected
+Iteration 869: "Move Method Up" applied to method addStructArgToArray from JSXmlRpcApplet to XmlRpcApplet
+Iteration 870: "Make Method Static" applied at class AuthDemo to method execute
+Iteration 871: "Decrease Method Security" applied at class XmlRpc to method objectParsed from protected to public
+Iteration 872: "Make Method Static" applied at class DefaultTypeFactory to method createInteger
+Iteration 873: "Make Method Final" applied at class HttpUtil to method encodeBasicAuthentication
+Iteration 874: "Decrease Method Security" applied at class XmlWriter to method canonicalizeEncoding from protected to public
+
+Score has improved overall by 0.924910
+Time taken to refactor: 483.62s
+
+======== Final Metric Info ========
+Average ratio of private/package/protected attributes to overall attributes per class: 0.555342
+Average coupling per class: 0.898734
+Average cohesion among methods per class: 0.450255
+Average amount of user defined attributes declared per class: 0.392405
+Average functional abstraction per class: 0.078989
+Average amount of polymorphic methods per class: 0.886076
+Average amount of public methods per class: 5.430380
+Average amount of methods per class: 6.000000
+Average amount of complexity of methods per class: 65.075951
+Ratio of interfaces to overall amount of classes: 0.278481
+Average ratio of abstract classes/methods per class: 0.281076
+Average ratio of final classes/methods/variables per class: 0.089599
+Average ratio of constant classes/methods/variables per class: 0.065774
+Ratio of inner classes to overall amount of ordinary classes in project: 0.113924
+Average inherited referenced methods ratio per class: 0.087975
+Average visibility ratio per class: 0.770076
+Amount of lines of code in project: 11616
+Overall fitness function score: 0.924910
+
+**Priority objective score: 43.000000**
