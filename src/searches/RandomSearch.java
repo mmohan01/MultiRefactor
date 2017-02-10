@@ -36,7 +36,6 @@ public class RandomSearch extends Search
 		this.getBest = true;
 	}
 
-
 	public void run()
 	{
 		Metrics m = new Metrics(super.sc.getSourceFileRepository().getKnownCompilationUnits());				
@@ -49,8 +48,7 @@ public class RandomSearch extends Search
 		float best = benchmark;
 		float newValue = 0;
 		int bestIteration = 1;
-		int randomRef = -1;
-		int[] position = new int[2];
+		int[] position = new int[3];
 
 		String runInfo = String.format("Search: Random\r\nIterations: %d", this.iterations);
 		super.outputSearchInfo(super.resultsPath, runInfo);
@@ -58,7 +56,6 @@ public class RandomSearch extends Search
 		System.out.printf("\r\n\r\nRefactoring...");
 		long timeTaken, startTime = System.currentTimeMillis();
 		double time;
-		boolean progress = true;
 
 		// Apply refactorings for the given amount of iterations.
 		// If a refactoring does not improve on the initial visibility,
@@ -67,54 +64,24 @@ public class RandomSearch extends Search
 		{
 			// Random refactoring chosen and random class chosen to refactor.
 			// Random element is then chosen from the available amount.
-			if (super.c.getRefactorings().size() > 0)
-			{
-				randomRef = (int) (Math.random() * super.c.getRefactorings().size());
-				position = super.randomElement(super.c.getRefactorings().get(randomRef));
-			}
-			else
-			{
-				position[0] = -1;
-				position[1] = -1;
-			}
-			
-			// Checks in case no elements are returned for the refactoring.
-			// Will check again for each available refactoring in the search and 
-			// if there are still no applicable elements returned the search will terminate.
-			if ((position[0] == -1) && (position[1] == -1))
-			{
-				int exclude = randomRef;
-				for (randomRef = 0; randomRef < super.c.getRefactorings().size(); randomRef++)
-				{
-					// Stops the loop from repeating the check for the previous refactoring.
-					if ((randomRef == exclude) && ((randomRef + 1) < super.c.getRefactorings().size()))
-						randomRef++;
-					else if (randomRef == exclude)
-						break;
-					
-					position = super.randomElement(super.c.getRefactorings().get(randomRef));
-					if ((position[0] != -1) && (position[1] != -1))
-						break;
-				}
+			position = super.randomRefactoring(super.c.getRefactorings());
 				
-				if ((position[0] == -1) && (position[1] == -1))
-				{
-					System.out.printf("\r\nSearch terminated before specified number of iterations due to lack of available refactorings");
-					this.iterations = i - 1;
-					progress = false;
-					break;
-				}
+			if (position[2] == -1)
+			{
+				System.out.printf("\r\nSearch terminated before specified number of iterations due to lack of available refactorings");
+				this.iterations = i - 1;
+				break;
 			}
 
 			// Refactoring is applied to that element.
-			super.c.getRefactorings().get(randomRef).transform(super.c.getRefactorings().get(randomRef).analyze(i, position[0], position[1]));
-			super.refactoringInfo.add(super.c.getRefactorings().get(randomRef).getRefactoringInfo());
-			System.out.printf("\r\n%s", super.c.getRefactorings().get(randomRef).getRefactoringInfo());
-			newValue = ff.calculateNormalizedScore(m);
+			super.c.getRefactorings().get(position[2]).transform(super.c.getRefactorings().get(position[2]).analyze(i, position[0], position[1]));
+			super.refactoringInfo.add(super.c.getRefactorings().get(position[2]).getRefactoringInfo());
+			System.out.printf("\r\n%s", super.c.getRefactorings().get(position[2]).getRefactoringInfo());
+			newValue = ff.calculateNormalisedScore(m);
 				
 			if (this.getBest)
 			{
-				refactorings.add(randomRef);
+				refactorings.add(position[2]);
 				positions.add(position);
 			}
 
@@ -124,7 +91,7 @@ public class RandomSearch extends Search
 				bestIteration = i;
 			}
 			
-			if ((i % 25 == 0) && (progress))
+			if (i % 25 == 0)
 			{
 				timeTaken = System.currentTimeMillis() - startTime;
 				time = timeTaken / 1000.0;

@@ -11,7 +11,7 @@ public class FitnessFunction
 	private ArrayList<String> priorityClasses;
 	private ArrayList<String> nonPriorityClasses;
 
-	// Only use if normalization functions (calculateBenchmark, calculateNormalizedScore) are not being used.
+	// Only use if normalisation functions (calculateBenchmark, calculateNormalisedScore) are not being used.
 	public FitnessFunction(ArrayList<Triple<String, Boolean, Float>> configuration)
 	{
 		this.configuration = configuration;
@@ -46,7 +46,8 @@ public class FitnessFunction
 		initialMetrics.put("visibilityRatio", m.visibilityRatio() == 0 ? baseline : m.visibilityRatio());
 		initialMetrics.put("linesOfCode", (float) m.linesOfCode() == 0 ? baseline : (float) m.linesOfCode());
 		initialMetrics.put("numberOfFiles", (float) m.numberOfFiles() == 0 ? baseline : (float) m.numberOfFiles());
-		initialMetrics.put("priorityClasses", baseline);
+		initialMetrics.put("priority", baseline);
+		initialMetrics.put("diversity", baseline);
 	}
 	
 	public float calculateBenchmark()
@@ -74,7 +75,7 @@ public class FitnessFunction
 		return amount;
 	}
 	
-	public float calculateNormalizedScore(Metrics m)
+	public float calculateNormalisedScore(Metrics m)
 	{
 		float amount = 0;
 		float value = 0;
@@ -83,8 +84,8 @@ public class FitnessFunction
 		{
 			// Don't want to compare improvement as the metric starts at
 			// zero and the metric is being used alone in a separate 
-			// objective so it doesn't necessarily need to be normalized.
-			if (metric.getFirst().equals("priorityClasses"))
+			// objective so it doesn't necessarily need to be normalised.
+			if ((metric.getFirst().equals("priority")) || (metric.getFirst().equals("diversity")))
 			{
 				amount += findMetricValue(m, metric.getFirst());
 			}
@@ -205,11 +206,14 @@ public class FitnessFunction
 		case "numberOfFiles":
 			value = m.numberOfFiles();
 			break;		
-		case "priorityClasses":
+		case "priority":
 			if (this.nonPriorityClasses == null)
-				value = m.priorityClasses(this.priorityClasses);
+				value = m.priority(this.priorityClasses);
 			else
-				value = m.priorityClasses(this.priorityClasses, this.nonPriorityClasses);
+				value = m.priority(this.priorityClasses, this.nonPriorityClasses);
+			break;	
+		case "diversity":
+			value = m.diversity();
 			break;	
 		default:
 			value = 0;
@@ -295,11 +299,14 @@ public class FitnessFunction
 			case "numberOfFiles":
 				outputs[i] = String.format("Amount of source files in project: %d", m.numberOfFiles());
 				break;	
-			case "priorityClasses":
+			case "priority":
 				if (this.nonPriorityClasses == null)
-					outputs[i] = String.format("Instances of priority classes used in solution: %d", m.priorityClasses(this.priorityClasses));
+					outputs[i] = String.format("Measure of priority class instances in refactoring solution: %d", m.priority(this.priorityClasses));
 				else
-					outputs[i] = String.format("Instances of priority classes and non priority classes used in solution: %d", m.priorityClasses(this.priorityClasses, this.nonPriorityClasses));
+					outputs[i] = String.format("Measure of priority class and non priority class instances in refactoring solution: %d", m.priority(this.priorityClasses, this.nonPriorityClasses));
+				break;	
+			case "diversity":
+				outputs[i] = String.format("Measure of refactoring diversity in refactoring solution: %d", m.diversity());
 				break;	
 			default:
 				outputs[i] = "STRING INPUT DOES NOT RELATE TO A METRIC";

@@ -19,8 +19,8 @@ public interface AccessFlags
 	public static final int ANNOTATION = 0x2000; // As of Java 5
     
 	// Others
-	public static final int SUPER = 0x0020; // Shared with SYNCHRONIZED
-	public static final int SYNCHRONIZED = 0x0020;
+	public static final int SUPER = 0x0020; // Shared with SYNCHRONISED
+	public static final int SYNCHRONISED = 0x0020;
 	public static final int VOLATILE = 0x0040; // Shared with BRIDGE
 	public static final int TRANSIENT = 0x0080; // Shared with VARARG
     public static final int NATIVE = 0x0100;

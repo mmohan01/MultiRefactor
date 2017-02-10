@@ -14,15 +14,15 @@ import searches.MonoObjectiveSearch;
 import searches.MultiObjectiveSearch;
 import searches.Search;
 
-public class PriorityTasks extends Tasks
+public class DiversityTasks extends Tasks
 {
 	// No attributes - empty constructor.
-	public PriorityTasks()
+	public DiversityTasks()
 	{
 		super();
 	}
 
-	public PriorityTasks(String pathway)
+	public DiversityTasks(String pathway)
 	{
 		super(pathway);		
 	}
@@ -52,13 +52,7 @@ public class PriorityTasks extends Tasks
 		// Reads the metric configuration in from a specified text file.
 		ArrayList<Refactoring> refactorings = new ArrayList<Refactoring>();
 		Configuration c = new Configuration("./configurations/qualityfunction.txt", refactorings);
-		
-		Configuration[] cMO1 = {new Configuration("./configurations/qualityfunction.txt"), new Configuration("./configurations/prioritymango.txt")};
-		Configuration[] cMO2 = {new Configuration("./configurations/qualityfunction.txt"), new Configuration("./configurations/prioritybeaver.txt")};
-		Configuration[] cMO3 = {new Configuration("./configurations/qualityfunction.txt"), new Configuration("./configurations/priorityapachexmlrpc.txt")};
-		Configuration[] cMO4 = {new Configuration("./configurations/qualityfunction.txt"), new Configuration("./configurations/priorityjhotdraw.txt")};
-		Configuration[] cMO5 = {new Configuration("./configurations/qualityfunction.txt"), new Configuration("./configurations/priorityganttproject.txt")};
-		Configuration[] cMO6 = {new Configuration("./configurations/qualityfunction.txt"), new Configuration("./configurations/priorityxom.txt")};
+		Configuration[] cM = {new Configuration("./configurations/qualityfunction.txt"), new Configuration("./configurations/diversity.txt")};
 		
 		// Initialise search tasks.
 		ArrayList<Search> searches = new ArrayList<Search>();
@@ -158,113 +152,113 @@ public class PriorityTasks extends Tasks
 		geneticAlgorithm30.setInitialRefactoringRange(50);
 		searches.add(geneticAlgorithm30);
 		
-		MultiObjectiveSearch MultiObjectiveGeneticAlgorithm1 = new MultiObjectiveSearch(sc, cMO1, refactorings, sourceFiles[0], 100, 50, 0.2f, 0.8f);
+		MultiObjectiveSearch MultiObjectiveGeneticAlgorithm1 = new MultiObjectiveSearch(sc, cM, refactorings, sourceFiles[0], 100, 50, 0.2f, 0.8f);
 		MultiObjectiveGeneticAlgorithm1.setInitialRefactoringRange(50);
 		searches.add(MultiObjectiveGeneticAlgorithm1);
-		MultiObjectiveSearch MultiObjectiveGeneticAlgorithm2 = new MultiObjectiveSearch(sc, cMO1, refactorings, sourceFiles[0], 100, 50, 0.2f, 0.8f);
+		MultiObjectiveSearch MultiObjectiveGeneticAlgorithm2 = new MultiObjectiveSearch(sc, cM, refactorings, sourceFiles[0], 100, 50, 0.2f, 0.8f);
 		MultiObjectiveGeneticAlgorithm2.setInitialRefactoringRange(50);
 		searches.add(MultiObjectiveGeneticAlgorithm2);
-		MultiObjectiveSearch MultiObjectiveGeneticAlgorithm3 = new MultiObjectiveSearch(sc, cMO1, refactorings, sourceFiles[0], 100, 50, 0.2f, 0.8f);
+		MultiObjectiveSearch MultiObjectiveGeneticAlgorithm3 = new MultiObjectiveSearch(sc, cM, refactorings, sourceFiles[0], 100, 50, 0.2f, 0.8f);
 		MultiObjectiveGeneticAlgorithm3.setInitialRefactoringRange(50);
 		searches.add(MultiObjectiveGeneticAlgorithm3);
-		MultiObjectiveSearch MultiObjectiveGeneticAlgorithm4 = new MultiObjectiveSearch(sc, cMO1, refactorings, sourceFiles[0], 100, 50, 0.2f, 0.8f);
+		MultiObjectiveSearch MultiObjectiveGeneticAlgorithm4 = new MultiObjectiveSearch(sc, cM, refactorings, sourceFiles[0], 100, 50, 0.2f, 0.8f);
 		MultiObjectiveGeneticAlgorithm4.setInitialRefactoringRange(50);
 		searches.add(MultiObjectiveGeneticAlgorithm4);
-		MultiObjectiveSearch MultiObjectiveGeneticAlgorithm5 = new MultiObjectiveSearch(sc, cMO1, refactorings, sourceFiles[0], 100, 50, 0.2f, 0.8f);
+		MultiObjectiveSearch MultiObjectiveGeneticAlgorithm5 = new MultiObjectiveSearch(sc, cM, refactorings, sourceFiles[0], 100, 50, 0.2f, 0.8f);
 		MultiObjectiveGeneticAlgorithm5.setInitialRefactoringRange(50);
 		searches.add(MultiObjectiveGeneticAlgorithm5);
 		
-		MultiObjectiveSearch MultiObjectiveGeneticAlgorithm6 = new MultiObjectiveSearch(sc, cMO2, refactorings, sourceFiles[1], 100, 50, 0.2f, 0.8f);
+		MultiObjectiveSearch MultiObjectiveGeneticAlgorithm6 = new MultiObjectiveSearch(sc, cM, refactorings, sourceFiles[1], 100, 50, 0.2f, 0.8f);
 		MultiObjectiveGeneticAlgorithm6.setInitialRefactoringRange(50);
 		searches.add(MultiObjectiveGeneticAlgorithm6);
-		MultiObjectiveSearch MultiObjectiveGeneticAlgorithm7 = new MultiObjectiveSearch(sc, cMO2, refactorings, sourceFiles[1], 100, 50, 0.2f, 0.8f);
+		MultiObjectiveSearch MultiObjectiveGeneticAlgorithm7 = new MultiObjectiveSearch(sc, cM, refactorings, sourceFiles[1], 100, 50, 0.2f, 0.8f);
 		MultiObjectiveGeneticAlgorithm7.setInitialRefactoringRange(50);
 		searches.add(MultiObjectiveGeneticAlgorithm7);
-		MultiObjectiveSearch MultiObjectiveGeneticAlgorithm8 = new MultiObjectiveSearch(sc, cMO2, refactorings, sourceFiles[1], 100, 50, 0.2f, 0.8f);
+		MultiObjectiveSearch MultiObjectiveGeneticAlgorithm8 = new MultiObjectiveSearch(sc, cM, refactorings, sourceFiles[1], 100, 50, 0.2f, 0.8f);
 		MultiObjectiveGeneticAlgorithm8.setInitialRefactoringRange(50);
 		searches.add(MultiObjectiveGeneticAlgorithm8);
-		MultiObjectiveSearch MultiObjectiveGeneticAlgorithm9 = new MultiObjectiveSearch(sc, cMO2, refactorings, sourceFiles[1], 100, 50, 0.2f, 0.8f);
+		MultiObjectiveSearch MultiObjectiveGeneticAlgorithm9 = new MultiObjectiveSearch(sc, cM, refactorings, sourceFiles[1], 100, 50, 0.2f, 0.8f);
 		MultiObjectiveGeneticAlgorithm9.setInitialRefactoringRange(50);
 		searches.add(MultiObjectiveGeneticAlgorithm9);
-		MultiObjectiveSearch MultiObjectiveGeneticAlgorithm10 = new MultiObjectiveSearch(sc, cMO2, refactorings, sourceFiles[1], 100, 50, 0.2f, 0.8f);
+		MultiObjectiveSearch MultiObjectiveGeneticAlgorithm10 = new MultiObjectiveSearch(sc, cM, refactorings, sourceFiles[1], 100, 50, 0.2f, 0.8f);
 		MultiObjectiveGeneticAlgorithm10.setInitialRefactoringRange(50);
 		searches.add(MultiObjectiveGeneticAlgorithm10);
 		
-		MultiObjectiveSearch MultiObjectiveGeneticAlgorithm11 = new MultiObjectiveSearch(sc, cMO3, refactorings, sourceFiles[2], 100, 50, 0.2f, 0.8f);
+		MultiObjectiveSearch MultiObjectiveGeneticAlgorithm11 = new MultiObjectiveSearch(sc, cM, refactorings, sourceFiles[2], 100, 50, 0.2f, 0.8f);
 		MultiObjectiveGeneticAlgorithm11.setInitialRefactoringRange(50);
 		searches.add(MultiObjectiveGeneticAlgorithm11);
-		MultiObjectiveSearch MultiObjectiveGeneticAlgorithm12 = new MultiObjectiveSearch(sc, cMO3, refactorings, sourceFiles[2], 100, 50, 0.2f, 0.8f);
+		MultiObjectiveSearch MultiObjectiveGeneticAlgorithm12 = new MultiObjectiveSearch(sc, cM, refactorings, sourceFiles[2], 100, 50, 0.2f, 0.8f);
 		MultiObjectiveGeneticAlgorithm12.setInitialRefactoringRange(50);
 		searches.add(MultiObjectiveGeneticAlgorithm12);
-		MultiObjectiveSearch MultiObjectiveGeneticAlgorithm13 = new MultiObjectiveSearch(sc, cMO3, refactorings, sourceFiles[2], 100, 50, 0.2f, 0.8f);
+		MultiObjectiveSearch MultiObjectiveGeneticAlgorithm13 = new MultiObjectiveSearch(sc, cM, refactorings, sourceFiles[2], 100, 50, 0.2f, 0.8f);
 		MultiObjectiveGeneticAlgorithm13.setInitialRefactoringRange(50);
 		searches.add(MultiObjectiveGeneticAlgorithm13);
-		MultiObjectiveSearch MultiObjectiveGeneticAlgorithm14 = new MultiObjectiveSearch(sc, cMO3, refactorings, sourceFiles[2], 100, 50, 0.2f, 0.8f);
+		MultiObjectiveSearch MultiObjectiveGeneticAlgorithm14 = new MultiObjectiveSearch(sc, cM, refactorings, sourceFiles[2], 100, 50, 0.2f, 0.8f);
 		MultiObjectiveGeneticAlgorithm14.setInitialRefactoringRange(50);
 		searches.add(MultiObjectiveGeneticAlgorithm14);
-		MultiObjectiveSearch MultiObjectiveGeneticAlgorithm15 = new MultiObjectiveSearch(sc, cMO3, refactorings, sourceFiles[2], 100, 50, 0.2f, 0.8f);
+		MultiObjectiveSearch MultiObjectiveGeneticAlgorithm15 = new MultiObjectiveSearch(sc, cM, refactorings, sourceFiles[2], 100, 50, 0.2f, 0.8f);
 		MultiObjectiveGeneticAlgorithm15.setInitialRefactoringRange(50);
 		searches.add(MultiObjectiveGeneticAlgorithm15);
 		
-		MultiObjectiveSearch MultiObjectiveGeneticAlgorithm16 = new MultiObjectiveSearch(sc, cMO4, refactorings, sourceFiles[3], 100, 50, 0.2f, 0.8f);
+		MultiObjectiveSearch MultiObjectiveGeneticAlgorithm16 = new MultiObjectiveSearch(sc, cM, refactorings, sourceFiles[3], 100, 50, 0.2f, 0.8f);
 		MultiObjectiveGeneticAlgorithm16.setInitialRefactoringRange(50);
 		searches.add(MultiObjectiveGeneticAlgorithm16);
-		MultiObjectiveSearch MultiObjectiveGeneticAlgorithm17 = new MultiObjectiveSearch(sc, cMO4, refactorings, sourceFiles[3], 100, 50, 0.2f, 0.8f);
+		MultiObjectiveSearch MultiObjectiveGeneticAlgorithm17 = new MultiObjectiveSearch(sc, cM, refactorings, sourceFiles[3], 100, 50, 0.2f, 0.8f);
 		MultiObjectiveGeneticAlgorithm17.setInitialRefactoringRange(50);
 		searches.add(MultiObjectiveGeneticAlgorithm17);
-		MultiObjectiveSearch MultiObjectiveGeneticAlgorithm18 = new MultiObjectiveSearch(sc, cMO4, refactorings, sourceFiles[3], 100, 50, 0.2f, 0.8f);
+		MultiObjectiveSearch MultiObjectiveGeneticAlgorithm18 = new MultiObjectiveSearch(sc, cM, refactorings, sourceFiles[3], 100, 50, 0.2f, 0.8f);
 		MultiObjectiveGeneticAlgorithm18.setInitialRefactoringRange(50);
 		searches.add(MultiObjectiveGeneticAlgorithm18);
-		MultiObjectiveSearch MultiObjectiveGeneticAlgorithm19 = new MultiObjectiveSearch(sc, cMO4, refactorings, sourceFiles[3], 100, 50, 0.2f, 0.8f);
+		MultiObjectiveSearch MultiObjectiveGeneticAlgorithm19 = new MultiObjectiveSearch(sc, cM, refactorings, sourceFiles[3], 100, 50, 0.2f, 0.8f);
 		MultiObjectiveGeneticAlgorithm19.setInitialRefactoringRange(50);
 		searches.add(MultiObjectiveGeneticAlgorithm19);
-		MultiObjectiveSearch MultiObjectiveGeneticAlgorithm20 = new MultiObjectiveSearch(sc, cMO4, refactorings, sourceFiles[3], 100, 50, 0.2f, 0.8f);
+		MultiObjectiveSearch MultiObjectiveGeneticAlgorithm20 = new MultiObjectiveSearch(sc, cM, refactorings, sourceFiles[3], 100, 50, 0.2f, 0.8f);
 		MultiObjectiveGeneticAlgorithm20.setInitialRefactoringRange(50);
 		searches.add(MultiObjectiveGeneticAlgorithm20);
 		
-		MultiObjectiveSearch MultiObjectiveGeneticAlgorithm21 = new MultiObjectiveSearch(sc, cMO5, refactorings, sourceFiles[4], 100, 50, 0.2f, 0.8f);
+		MultiObjectiveSearch MultiObjectiveGeneticAlgorithm21 = new MultiObjectiveSearch(sc, cM, refactorings, sourceFiles[4], 100, 50, 0.2f, 0.8f);
 		MultiObjectiveGeneticAlgorithm21.setInitialRefactoringRange(50);
 		searches.add(MultiObjectiveGeneticAlgorithm21);
-		MultiObjectiveSearch MultiObjectiveGeneticAlgorithm22 = new MultiObjectiveSearch(sc, cMO5, refactorings, sourceFiles[4], 100, 50, 0.2f, 0.8f);
+		MultiObjectiveSearch MultiObjectiveGeneticAlgorithm22 = new MultiObjectiveSearch(sc, cM, refactorings, sourceFiles[4], 100, 50, 0.2f, 0.8f);
 		MultiObjectiveGeneticAlgorithm22.setInitialRefactoringRange(50);
 		searches.add(MultiObjectiveGeneticAlgorithm22);
-		MultiObjectiveSearch MultiObjectiveGeneticAlgorithm23 = new MultiObjectiveSearch(sc, cMO5, refactorings, sourceFiles[4], 100, 50, 0.2f, 0.8f);
+		MultiObjectiveSearch MultiObjectiveGeneticAlgorithm23 = new MultiObjectiveSearch(sc, cM, refactorings, sourceFiles[4], 100, 50, 0.2f, 0.8f);
 		MultiObjectiveGeneticAlgorithm23.setInitialRefactoringRange(50);
 		searches.add(MultiObjectiveGeneticAlgorithm23);
-		MultiObjectiveSearch MultiObjectiveGeneticAlgorithm24 = new MultiObjectiveSearch(sc, cMO5, refactorings, sourceFiles[4], 100, 50, 0.2f, 0.8f);
+		MultiObjectiveSearch MultiObjectiveGeneticAlgorithm24 = new MultiObjectiveSearch(sc, cM, refactorings, sourceFiles[4], 100, 50, 0.2f, 0.8f);
 		MultiObjectiveGeneticAlgorithm24.setInitialRefactoringRange(50);
 		searches.add(MultiObjectiveGeneticAlgorithm24);
-		MultiObjectiveSearch MultiObjectiveGeneticAlgorithm25 = new MultiObjectiveSearch(sc, cMO5, refactorings, sourceFiles[4], 100, 50, 0.2f, 0.8f);
+		MultiObjectiveSearch MultiObjectiveGeneticAlgorithm25 = new MultiObjectiveSearch(sc, cM, refactorings, sourceFiles[4], 100, 50, 0.2f, 0.8f);
 		MultiObjectiveGeneticAlgorithm25.setInitialRefactoringRange(50);
 		searches.add(MultiObjectiveGeneticAlgorithm25);
 		
-		MultiObjectiveSearch MultiObjectiveGeneticAlgorithm26 = new MultiObjectiveSearch(sc, cMO6, refactorings, sourceFiles[5], 100, 50, 0.2f, 0.8f);
+		MultiObjectiveSearch MultiObjectiveGeneticAlgorithm26 = new MultiObjectiveSearch(sc, cM, refactorings, sourceFiles[5], 100, 50, 0.2f, 0.8f);
 		MultiObjectiveGeneticAlgorithm26.setInitialRefactoringRange(50);
 		searches.add(MultiObjectiveGeneticAlgorithm26);
-		MultiObjectiveSearch MultiObjectiveGeneticAlgorithm27 = new MultiObjectiveSearch(sc, cMO6, refactorings, sourceFiles[5], 100, 50, 0.2f, 0.8f);
+		MultiObjectiveSearch MultiObjectiveGeneticAlgorithm27 = new MultiObjectiveSearch(sc, cM, refactorings, sourceFiles[5], 100, 50, 0.2f, 0.8f);
 		MultiObjectiveGeneticAlgorithm27.setInitialRefactoringRange(50);
 		searches.add(MultiObjectiveGeneticAlgorithm27);
-		MultiObjectiveSearch MultiObjectiveGeneticAlgorithm28 = new MultiObjectiveSearch(sc, cMO6, refactorings, sourceFiles[5], 100, 50, 0.2f, 0.8f);
+		MultiObjectiveSearch MultiObjectiveGeneticAlgorithm28 = new MultiObjectiveSearch(sc, cM, refactorings, sourceFiles[5], 100, 50, 0.2f, 0.8f);
 		MultiObjectiveGeneticAlgorithm28.setInitialRefactoringRange(50);
 		searches.add(MultiObjectiveGeneticAlgorithm28);
-		MultiObjectiveSearch MultiObjectiveGeneticAlgorithm29 = new MultiObjectiveSearch(sc, cMO6, refactorings, sourceFiles[5], 100, 50, 0.2f, 0.8f);
+		MultiObjectiveSearch MultiObjectiveGeneticAlgorithm29 = new MultiObjectiveSearch(sc, cM, refactorings, sourceFiles[5], 100, 50, 0.2f, 0.8f);
 		MultiObjectiveGeneticAlgorithm29.setInitialRefactoringRange(50);
 		searches.add(MultiObjectiveGeneticAlgorithm29);
-		MultiObjectiveSearch MultiObjectiveGeneticAlgorithm30 = new MultiObjectiveSearch(sc, cMO6, refactorings, sourceFiles[5], 100, 50, 0.2f, 0.8f);
+		MultiObjectiveSearch MultiObjectiveGeneticAlgorithm30 = new MultiObjectiveSearch(sc, cM, refactorings, sourceFiles[5], 100, 50, 0.2f, 0.8f);
 		MultiObjectiveGeneticAlgorithm30.setInitialRefactoringRange(50);
 		searches.add(MultiObjectiveGeneticAlgorithm30);
 		
 		// Create list of output directories for
 		// each refactored project to be written to.
 		String[] output = new String[]{
-				"./data/refactored/PriorityExperiment/Single-Objective/",
-				"./data/refactored/PriorityExperiment/Multi-Objective/"};
+				"./data/refactored/DiversityExperiment/Mono-Objective/",
+				"./data/refactored/DiversityExperiment/Multi-Objective/"};
 
 		// Create list of output directories for
 		// each result data output to be written to.
 		String[] resultsDir = new String[]{
-				"./results/PriorityExperiment/Single-Objective/",
-				"./results/PriorityExperiment/Multi-Objective/"};
+				"./results/DiversityExperiment/Mono-Objective/",
+				"./results/DiversityExperiment/Multi-Objective/"};
 
 		long timeTaken, startTime = System.currentTimeMillis();
 		double time;
@@ -334,6 +328,8 @@ public class PriorityTasks extends Tasks
 			refactorings.add(rm);
 			RemoveField rf = new RemoveField(sc);
 			refactorings.add(rf);
+			ExtractSubclass es = new ExtractSubclass(sc);
+			refactorings.add(es);
 			CollapseHierarchy ch = new CollapseHierarchy(sc);
 			refactorings.add(ch);
 			

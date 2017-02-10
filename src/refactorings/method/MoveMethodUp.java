@@ -9,11 +9,9 @@ import recoder.abstraction.Method;
 import recoder.abstraction.Package;
 import recoder.abstraction.Type;
 import recoder.bytecode.ClassFile;
-import recoder.convenience.AbstractTreeWalker;
 import recoder.convenience.TreeWalker;
 import recoder.java.Identifier;
 import recoder.java.Import;
-import recoder.java.ProgramElement;
 import recoder.java.declaration.ClassDeclaration;
 import recoder.java.declaration.ConstructorDeclaration;
 import recoder.java.declaration.MemberDeclaration;
@@ -32,9 +30,9 @@ import recoder.kit.ProblemReport;
 import recoder.kit.UnitKit;
 import recoder.list.generic.ASTList;
 import recoder.service.CrossReferenceSourceInfo;
-import refactorings.Refactoring;
+import refactorings.MethodRefactoring;
 
-public class MoveMethodUp extends Refactoring 
+public class MoveMethodUp extends MethodRefactoring 
 {
 	private TypeDeclaration currentDeclaration, superDeclaration;
 	private MethodDeclaration abstractMethodDeclaration;
@@ -59,16 +57,15 @@ public class MoveMethodUp extends Refactoring
 		super.tw = new TreeWalker(getSourceFileRepository().getKnownCompilationUnits().get(unit));
 		
 		for (int i = 0; i < element; i++)
-		{
 			super.tw.next(MethodDeclaration.class);
-			MethodDeclaration md = (MethodDeclaration) super.tw.getProgramElement();
-			if (!mayRefactor(md))
-				i--;
-		}
 		
-		ProgramElement pe = super.tw.getProgramElement();
-		MethodDeclaration md = (MethodDeclaration) pe;
+		MethodDeclaration md = (MethodDeclaration) super.tw.getProgramElement();
 		this.currentDeclaration = md.getMemberParent();
+		
+		// Prevents "Zero Service" outputs logged to the console.
+		if (this.currentDeclaration.getProgramModelInfo() == null)
+			this.currentDeclaration.getFactory().getServiceConfiguration().getChangeHistory().updateModel();
+		
 		this.superDeclaration = (TypeDeclaration) this.currentDeclaration.getSupertypes().get(0);
 		this.sisterClasses = new ArrayList<TypeDeclaration>(si.getSubtypes(this.superDeclaration).size());
 		this.sisterPositions = new ArrayList<Integer>(si.getSubtypes(this.superDeclaration).size());
@@ -205,7 +202,7 @@ public class MoveMethodUp extends Refactoring
 		for (Type t : types)
 		{
 			if ((t instanceof TypeDeclaration) && (((TypeDeclaration) t).getContainingClassType() instanceof TypeDeclaration) &&
-					(((TypeDeclaration) t).getContainingClassType().equals(this.currentDeclaration)))
+				(((TypeDeclaration) t).getContainingClassType().equals(this.currentDeclaration)))
 			{
 				PackageReference proto = PackageKit.createPackageReference(getProgramFactory(), pack);
 				ArrayList<Identifier> identifiers = new ArrayList<Identifier>();
@@ -231,12 +228,13 @@ public class MoveMethodUp extends Refactoring
 		
 		// Specify refactoring information for results information.
 		super.refactoringInfo = "Iteration " + iteration + ": \"Move Method Up\" applied to method " 
-				+ ((MethodDeclaration) pe).getName() + " from " + this.currentDeclaration.getName() + " to " + this.superDeclaration.getName();
+				+ md.getName() + " from " + this.currentDeclaration.getName() + " to " + this.superDeclaration.getName();
 		
 		// Stores list of names of classes affected by refactoring.
 		super.affectedClasses = new ArrayList<String>(2);
 		super.affectedClasses.add(this.currentDeclaration.getName());
 		super.affectedClasses.add(this.superDeclaration.getName());
+		super.affectedElement = md.getName();
 
 		return setProblemReport(EQUIVALENCE);
 	}
@@ -278,7 +276,7 @@ public class MoveMethodUp extends Refactoring
 		return setProblemReport(EQUIVALENCE);
 	}
 	
-	public boolean mayRefactor(MethodDeclaration md)
+	protected boolean mayRefactor(MethodDeclaration md)
 	{
 		TypeDeclaration td = md.getMemberParent();
 		CrossReferenceSourceInfo si = getCrossReferenceSourceInfo();
@@ -442,39 +440,5 @@ public class MoveMethodUp extends Refactoring
 			
 			return true;
 		}
-	}
-
-	// Count the amount of available elements in the chosen class for refactoring.
-	// If an element is not applicable for the current refactoring it is not counted.
-	public int getAmount(int unit)
-	{
-		int counter = 0;
-		AbstractTreeWalker tw = new TreeWalker(getSourceFileRepository().getKnownCompilationUnits().get(unit));
-
-		// Only counts the relevant program element.
-		while (tw.next(MethodDeclaration.class))
-		{
-			MethodDeclaration md = (MethodDeclaration) tw.getProgramElement();
-			if (mayRefactor(md))
-				counter++;
-		}
-
-		return counter;
-	}
-	
-	public String getName(int unit, int element)
-	{		
-		AbstractTreeWalker tw = new TreeWalker(getSourceFileRepository().getKnownCompilationUnits().get(unit));
-
-		for (int i = 0; i < element; i++)
-		{
-			tw.next(MethodDeclaration.class);
-			MethodDeclaration md = (MethodDeclaration) tw.getProgramElement();
-			if (!mayRefactor(md))
-				i--;
-		}
-
-		MethodDeclaration md = (MethodDeclaration) tw.getProgramElement();
-		return md.getName();
 	}
 }

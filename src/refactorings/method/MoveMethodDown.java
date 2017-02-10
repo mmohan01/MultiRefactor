@@ -12,10 +12,8 @@ import recoder.abstraction.Method;
 import recoder.abstraction.Package;
 import recoder.abstraction.Type;
 import recoder.bytecode.ClassFile;
-import recoder.convenience.AbstractTreeWalker;
 import recoder.convenience.TreeWalker;
 import recoder.java.Import;
-import recoder.java.ProgramElement;
 import recoder.java.declaration.ClassDeclaration;
 import recoder.java.declaration.ConstructorDeclaration;
 import recoder.java.declaration.MemberDeclaration;
@@ -33,9 +31,9 @@ import recoder.kit.ProblemReport;
 import recoder.kit.UnitKit;
 import recoder.list.generic.ASTList;
 import recoder.service.CrossReferenceSourceInfo;
-import refactorings.Refactoring;
+import refactorings.MethodRefactoring;
 
-public class MoveMethodDown extends Refactoring 
+public class MoveMethodDown extends MethodRefactoring 
 {
 	private TypeDeclaration currentDeclaration, subDeclaration;
 	private List<MemberReference> superReferences;
@@ -61,15 +59,10 @@ public class MoveMethodDown extends Refactoring
 		super.tw = new TreeWalker(getSourceFileRepository().getKnownCompilationUnits().get(unit));
 		
 		for (int i = 0; i < element; i++)
-		{
 			super.tw.next(MethodDeclaration.class);
-			MethodDeclaration md = (MethodDeclaration) super.tw.getProgramElement();
-			if (!mayRefactor(md))
-				i--;
-		}
 		
-		ProgramElement pe = super.tw.getProgramElement();
-		MethodDeclaration md = (MethodDeclaration) pe;
+		MethodDeclaration md = (MethodDeclaration) super.tw.getProgramElement();
+		mayRefactor(md);
 		this.currentDeclaration = md.getMemberParent();
 		ArrayList<Type> types = super.getTypes(md, si);
 		this.position = super.getPosition(this.currentDeclaration, md);
@@ -187,12 +180,13 @@ public class MoveMethodDown extends Refactoring
 
 		// Specify refactoring information for results information.
 		super.refactoringInfo = "Iteration " + iteration + ": \"Move Method Down\" applied to method " 
-				+ ((MethodDeclaration) pe).getName() + " from " + this.currentDeclaration.getName() + " to " + this.subDeclaration.getName();
+				+ md.getName() + " from " + this.currentDeclaration.getName() + " to " + this.subDeclaration.getName();
 		
 		// Stores list of names of classes affected by refactoring.
 		super.affectedClasses = new ArrayList<String>(2);
 		super.affectedClasses.add(this.currentDeclaration.getName());
 		super.affectedClasses.add(this.subDeclaration.getName());
+		super.affectedElement = md.getName();
 		
 		return setProblemReport(EQUIVALENCE);
 	}
@@ -229,7 +223,7 @@ public class MoveMethodDown extends Refactoring
 		return setProblemReport(EQUIVALENCE);
 	}
 	
-	public boolean mayRefactor(MethodDeclaration md)
+	protected boolean mayRefactor(MethodDeclaration md)
 	{							
 		TypeDeclaration td = md.getMemberParent();
 		CrossReferenceSourceInfo si = getCrossReferenceSourceInfo();
@@ -492,41 +486,7 @@ public class MoveMethodDown extends Refactoring
 			return false;
 		}
 	}
-	
-	// Count the amount of available elements in the chosen class for refactoring.
-	// If an element is not applicable for the current refactoring it is not counted.
-	public int getAmount(int unit)
-	{
-		int counter = 0;
-		AbstractTreeWalker tw = new TreeWalker(getSourceFileRepository().getKnownCompilationUnits().get(unit));
-
-		// Only counts the relevant program element.
-		while (tw.next(MethodDeclaration.class))
-		{
-			MethodDeclaration md = (MethodDeclaration) tw.getProgramElement();
-			if (mayRefactor(md))
-				counter++;
-		}
-
-		return counter;
-	}
-	
-	public String getName(int unit, int element)
-	{		
-		AbstractTreeWalker tw = new TreeWalker(getSourceFileRepository().getKnownCompilationUnits().get(unit));
-
-		for (int i = 0; i < element; i++)
-		{
-			tw.next(MethodDeclaration.class);
-			MethodDeclaration md = (MethodDeclaration) tw.getProgramElement();
-			if (!mayRefactor(md))
-				i--;
-		}
-
-		MethodDeclaration md = (MethodDeclaration) tw.getProgramElement();
-		return md.getName();
-	}
-	
+		
 	// This inner class allows sorting by name so that the list is sorted alphanumerically by the class names.
 	private class NameComparator implements Comparator<ClassType> 
 	{

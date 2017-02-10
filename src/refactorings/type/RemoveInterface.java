@@ -3,10 +3,8 @@ package refactorings.type;
 import java.util.ArrayList;
 
 import recoder.CrossReferenceServiceConfiguration;
-import recoder.convenience.AbstractTreeWalker;
 import recoder.convenience.TreeWalker;
 import recoder.java.CompilationUnit;
-import recoder.java.ProgramElement;
 import recoder.java.declaration.ConstructorDeclaration;
 import recoder.java.declaration.InterfaceDeclaration;
 import recoder.java.declaration.MemberDeclaration;
@@ -36,15 +34,9 @@ public class RemoveInterface extends Refactoring
 		super.tw = new TreeWalker(getSourceFileRepository().getKnownCompilationUnits().get(unit));
 		
 		for (int i = 0; i < element; i++)
-		{
 			super.tw.next(InterfaceDeclaration.class);
-			InterfaceDeclaration id = (InterfaceDeclaration) super.tw.getProgramElement();
-			if (!mayRefactor(id))
-				i--;
-		}
 		
-		ProgramElement pe = super.tw.getProgramElement();
-		this.type = (InterfaceDeclaration) pe;
+		this.type = (InterfaceDeclaration) super.tw.getProgramElement();
 		this.unit = getSourceFileRepository().getKnownCompilationUnits().get(unit);
 
 		if (this.type.getContainingClassType() == null)
@@ -79,11 +71,12 @@ public class RemoveInterface extends Refactoring
 			detach(this.type);
 		
 		// Specify refactoring information for results information.
-		super.refactoringInfo = "Iteration " + iteration + ": \"Remove Interface\" applied to interface " + ((InterfaceDeclaration) pe).getName();
+		super.refactoringInfo = "Iteration " + iteration + ": \"Remove Interface\" applied to interface " + this.type.getName();
 		
 		// Stores list of names of classes affected by refactoring.
 		super.affectedClasses = new ArrayList<String>(1);
-		super.affectedClasses.add(((InterfaceDeclaration) pe).getName());
+		super.affectedClasses.add(this.type.getName());
+		super.affectedElement = this.type.getName();
 
 		getChangeHistory().updateModel();
 		return setProblemReport(EQUIVALENCE);
@@ -107,7 +100,7 @@ public class RemoveInterface extends Refactoring
 		return setProblemReport(EQUIVALENCE);
 	}
 
-	public boolean mayRefactor(InterfaceDeclaration id)
+	private boolean mayRefactor(InterfaceDeclaration id)
 	{		
 		if ((getCrossReferenceSourceInfo().getSubtypes(id).size() > 0) || (id.getName() == null) ||
 			(getCrossReferenceSourceInfo().getReferences(id, true).size() > 0))
@@ -127,12 +120,10 @@ public class RemoveInterface extends Refactoring
 		}
 	}
 	
-	// Count the amount of available elements in the chosen class for refactoring.
-	// If an element is not applicable for the current refactoring it is not counted.
 	public int getAmount(int unit)
 	{
 		int counter = 0;
-		AbstractTreeWalker tw = new TreeWalker(getSourceFileRepository().getKnownCompilationUnits().get(unit));
+		TreeWalker tw = new TreeWalker(getSourceFileRepository().getKnownCompilationUnits().get(unit));
 
 		// Only counts the relevant program element.
 		while (tw.next(InterfaceDeclaration.class))
@@ -145,19 +136,49 @@ public class RemoveInterface extends Refactoring
 		return counter;
 	}
 	
-	public String getName(int unit, int element)
-	{
-		AbstractTreeWalker tw = new TreeWalker(getSourceFileRepository().getKnownCompilationUnits().get(unit));
+	public int getAbsolutePosition(int unit, int element)
+	{		
+		TreeWalker tw = new TreeWalker(getSourceFileRepository().getKnownCompilationUnits().get(unit));
+		int absolutePosition = 0;
 
 		for (int i = 0; i < element; i++)
 		{
 			tw.next(InterfaceDeclaration.class);
-			InterfaceDeclaration id = (InterfaceDeclaration) tw.getProgramElement();
-			if (!mayRefactor(id))
+			InterfaceDeclaration fd = (InterfaceDeclaration) tw.getProgramElement();
+			if (!mayRefactor(fd))
 				i--;
+
+			absolutePosition++;
 		}
+
+		return absolutePosition;
+	}
+	
+	public String getName(int unit, int element)
+	{
+		TreeWalker tw = new TreeWalker(getSourceFileRepository().getKnownCompilationUnits().get(unit));
+
+		for (int i = 0; i < element; i++)
+			tw.next(InterfaceDeclaration.class);
 		
 		InterfaceDeclaration id = (InterfaceDeclaration) tw.getProgramElement();
 		return id.getName();
+	}
+	
+	public int checkElements(int unit, String name)
+	{		
+		TreeWalker tw = new TreeWalker(getSourceFileRepository().getKnownCompilationUnits().get(unit));
+		int element = 0;
+
+		while (tw.next(InterfaceDeclaration.class))
+		{
+			element++;
+			InterfaceDeclaration id = (InterfaceDeclaration) tw.getProgramElement();
+			
+			if ((id.getName() != null) && (id.getName().equals(name)))
+				return (mayRefactor(id)) ? element : -1;
+		}
+		
+		return -1;
 	}
 }

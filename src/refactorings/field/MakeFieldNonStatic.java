@@ -4,9 +4,7 @@ import java.util.ArrayList;
 
 import multirefactor.AccessFlags;
 import recoder.CrossReferenceServiceConfiguration;
-import recoder.convenience.AbstractTreeWalker;
 import recoder.convenience.TreeWalker;
-import recoder.java.ProgramElement;
 import recoder.java.declaration.EnumConstantDeclaration;
 import recoder.java.declaration.FieldDeclaration;
 import recoder.java.declaration.FieldSpecification;
@@ -17,9 +15,9 @@ import recoder.kit.MiscKit;
 import recoder.kit.Problem;
 import recoder.kit.ProblemReport;
 import recoder.kit.transformation.Modify;
-import refactorings.Refactoring;
+import refactorings.FieldRefactoring;
 
-public class MakeFieldNonStatic extends Refactoring 
+public class MakeFieldNonStatic extends FieldRefactoring 
 {	
 	public MakeFieldNonStatic(CrossReferenceServiceConfiguration sc) 
 	{
@@ -37,16 +35,10 @@ public class MakeFieldNonStatic extends Refactoring
 		super.tw = new TreeWalker(getSourceFileRepository().getKnownCompilationUnits().get(unit));
 		
 		for (int i = 0; i < element; i++)
-		{
 			super.tw.next(FieldDeclaration.class);
-			FieldDeclaration fd = (FieldDeclaration) super.tw.getProgramElement();
-			if (!mayRefactor(fd))
-				i--;
-		}
 			
-		ProgramElement pe = super.tw.getProgramElement();
-		FieldDeclaration fd = (FieldDeclaration) pe;
-		int last = pe.toString().lastIndexOf(">");
+		FieldDeclaration fd = (FieldDeclaration) super.tw.getProgramElement();
+		int last = fd.toString().lastIndexOf(">");
 		
 		// Find iterator in declaration list.
 		int counter = -1;
@@ -64,11 +56,12 @@ public class MakeFieldNonStatic extends Refactoring
 		// Specify refactoring information for results information.
 		super.refactoringInfo = "Iteration " + iteration + ": \"Make Field Non Static\" applied at class " 
 				+ super.getFileName(getSourceFileRepository().getKnownCompilationUnits().get(unit).getName())
-				+ " to field " + pe.toString().substring(last + 2);
+				+ " to field " + fd.toString().substring(last + 2);
 		
 		// Stores list of names of classes affected by refactoring.
 		super.affectedClasses = new ArrayList<String>(1);
 		super.affectedClasses.add(super.getFileName(getSourceFileRepository().getKnownCompilationUnits().get(unit).getName()));
+		super.affectedElement = fd.toString().substring(last + 2);
 		
 		return setProblemReport(EQUIVALENCE);
 	}
@@ -89,7 +82,7 @@ public class MakeFieldNonStatic extends Refactoring
 		return setProblemReport(EQUIVALENCE);
 	}
 
-	public boolean mayRefactor(FieldDeclaration fd)
+	protected boolean mayRefactor(FieldDeclaration fd)
 	{
 		if (!fd.isStatic() || (fd instanceof EnumConstantDeclaration) || (MiscKit.getParentTypeDeclaration(fd) instanceof InterfaceDeclaration))
 			return false;
@@ -102,39 +95,5 @@ public class MakeFieldNonStatic extends Refactoring
 			
 			return true;
 		}	
-	}
-	
-	// Count the amount of available elements in the chosen class for refactoring.
-	// If an element is not applicable for the current refactoring it is not counted.
-	public int getAmount(int unit)
-	{
-		int counter = 0;
-		AbstractTreeWalker tw = new TreeWalker(getSourceFileRepository().getKnownCompilationUnits().get(unit));
-
-		// Only counts the relevant program element.
-		while (tw.next(FieldDeclaration.class))
-		{
-			FieldDeclaration fd = (FieldDeclaration) tw.getProgramElement();
-			if (mayRefactor(fd))
-				counter++;
-		}
-
-		return counter;
-	}
-	
-	public String getName(int unit, int element)
-	{		
-		AbstractTreeWalker tw = new TreeWalker(getSourceFileRepository().getKnownCompilationUnits().get(unit));
-
-		for (int i = 0; i < element; i++)
-		{
-			tw.next(FieldDeclaration.class);
-			FieldDeclaration fd = (FieldDeclaration) tw.getProgramElement();
-			if (!mayRefactor(fd))
-				i--;
-		}
-
-		FieldDeclaration fd = (FieldDeclaration) tw.getProgramElement();
-		return fd.toString();
 	}
 }

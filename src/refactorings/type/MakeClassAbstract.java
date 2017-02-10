@@ -4,18 +4,16 @@ import java.util.ArrayList;
 
 import multirefactor.AccessFlags;
 import recoder.CrossReferenceServiceConfiguration;
-import recoder.convenience.AbstractTreeWalker;
 import recoder.convenience.TreeWalker;
-import recoder.java.ProgramElement;
 import recoder.java.declaration.TypeDeclaration;
 import recoder.java.expression.operator.New;
 import recoder.java.reference.TypeReference;
 import recoder.kit.Problem;
 import recoder.kit.ProblemReport;
 import recoder.kit.transformation.Modify;
-import refactorings.Refactoring;
+import refactorings.TypeRefactoring;
 
-public class MakeClassAbstract extends Refactoring 
+public class MakeClassAbstract extends TypeRefactoring 
 {
 	public MakeClassAbstract(CrossReferenceServiceConfiguration sc) 
 	{
@@ -35,15 +33,9 @@ public class MakeClassAbstract extends Refactoring
 		super.tw = new TreeWalker(getSourceFileRepository().getKnownCompilationUnits().get(unit));
 		
 		for (int i = 0; i < element; i++)
-		{
 			super.tw.next(TypeDeclaration.class);
-			TypeDeclaration td = (TypeDeclaration) super.tw.getProgramElement();
-			if (!mayRefactor(td))
-				i--;
-		}
 		
-		ProgramElement pe = super.tw.getProgramElement();
-		TypeDeclaration td = (TypeDeclaration) pe;
+		TypeDeclaration td = (TypeDeclaration) super.tw.getProgramElement();
 
 		// Construct refactoring transformation.
 		super.transformation = new Modify(config, true, td, AccessFlags.ABSTRACT);
@@ -52,11 +44,12 @@ public class MakeClassAbstract extends Refactoring
 			return setProblemReport(report);
 		
 		// Specify refactoring information for results information.
-		super.refactoringInfo = "Iteration " + iteration + ": \"Make Class Abstract\" applied to class "  + ((TypeDeclaration) pe).getName();
+		super.refactoringInfo = "Iteration " + iteration + ": \"Make Class Abstract\" applied to class "  + td.getName();
 
 		// Stores list of names of classes affected by refactoring.
 		super.affectedClasses = new ArrayList<String>(1);
-		super.affectedClasses.add(((TypeDeclaration) pe).getName());
+		super.affectedClasses.add(td.getName());
+		super.affectedElement = td.getName();
 
 		return setProblemReport(EQUIVALENCE);
 	}
@@ -78,7 +71,7 @@ public class MakeClassAbstract extends Refactoring
 		return setProblemReport(EQUIVALENCE);
 	}
 
-	public boolean mayRefactor(TypeDeclaration td)
+	protected boolean mayRefactor(TypeDeclaration td)
 	{
 		if ((td.getName() == null) || (td.isAbstract()) || (td.isFinal()) || !(td.isOrdinaryClass()) || 
 			(getCrossReferenceSourceInfo().getSubtypes(td).size() == 0))
@@ -91,39 +84,5 @@ public class MakeClassAbstract extends Refactoring
 
 			return true;	
 		}
-	}
-	
-	// Count the amount of available elements in the chosen class for refactoring.
-	// If an element is not applicable for the current refactoring it is not counted.
-	public int getAmount(int unit)
-	{
-		int counter = 0;
-		AbstractTreeWalker tw = new TreeWalker(getSourceFileRepository().getKnownCompilationUnits().get(unit));
-
-		// Only counts the relevant program element.
-		while (tw.next(TypeDeclaration.class))
-		{
-			TypeDeclaration td = (TypeDeclaration) tw.getProgramElement();
-			if (mayRefactor(td))
-				counter++;
-		}
-
-		return counter;
-	}
-	
-	public String getName(int unit, int element)
-	{
-		AbstractTreeWalker tw = new TreeWalker(getSourceFileRepository().getKnownCompilationUnits().get(unit));
-
-		for (int i = 0; i < element; i++)
-		{
-			tw.next(TypeDeclaration.class);
-			TypeDeclaration td = (TypeDeclaration) tw.getProgramElement();
-			if (!mayRefactor(td))
-				i--;
-		}
-		
-		TypeDeclaration td = (TypeDeclaration) tw.getProgramElement();
-		return td.getName();
 	}
 }

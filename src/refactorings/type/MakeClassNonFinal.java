@@ -4,16 +4,14 @@ import java.util.ArrayList;
 
 import multirefactor.AccessFlags;
 import recoder.CrossReferenceServiceConfiguration;
-import recoder.convenience.AbstractTreeWalker;
 import recoder.convenience.TreeWalker;
-import recoder.java.ProgramElement;
 import recoder.java.declaration.TypeDeclaration;
 import recoder.kit.Problem;
 import recoder.kit.ProblemReport;
 import recoder.kit.transformation.Modify;
-import refactorings.Refactoring;
+import refactorings.TypeRefactoring;
 
-public class MakeClassNonFinal extends Refactoring 
+public class MakeClassNonFinal extends TypeRefactoring 
 {
 	public MakeClassNonFinal(CrossReferenceServiceConfiguration sc) 
 	{
@@ -31,18 +29,12 @@ public class MakeClassNonFinal extends Refactoring
 		super.tw = new TreeWalker(getSourceFileRepository().getKnownCompilationUnits().get(unit));
 		
 		for (int i = 0; i < element; i++)
-		{
 			super.tw.next(TypeDeclaration.class);
-			TypeDeclaration td = (TypeDeclaration) super.tw.getProgramElement();
-			if (!mayRefactor(td))
-				i--;
-		}
 		
-		ProgramElement pe = super.tw.getProgramElement();
-		TypeDeclaration td = (TypeDeclaration) pe;
-
-		// Find iterator in declaration list.
+		TypeDeclaration td = (TypeDeclaration) super.tw.getProgramElement();
 		int counter = -1;
+		
+		// Find iterator in declaration list.		
 		for (int i = 0; i < td.getDeclarationSpecifiers().size(); i++)
 			if (td.getDeclarationSpecifiers().get(i).toString().contains("Final"))
 				counter = i;
@@ -55,11 +47,12 @@ public class MakeClassNonFinal extends Refactoring
 		detach(td.getDeclarationSpecifiers().get(counter));
 
 		// Specify refactoring information for results information.
-		super.refactoringInfo = "Iteration " + iteration + ": \"Make Class Non Final\" applied to class " + ((TypeDeclaration) pe).getName();
+		super.refactoringInfo = "Iteration " + iteration + ": \"Make Class Non Final\" applied to class " + td.getName();
 		
 		// Stores list of names of classes affected by refactoring.
 		super.affectedClasses = new ArrayList<String>(1);
-		super.affectedClasses.add(((TypeDeclaration) pe).getName());
+		super.affectedClasses.add(td.getName());
+		super.affectedElement = td.getName();
 
 		return setProblemReport(EQUIVALENCE);
 	}
@@ -80,45 +73,11 @@ public class MakeClassNonFinal extends Refactoring
 		return setProblemReport(EQUIVALENCE);
 	}
 
-	public boolean mayRefactor(TypeDeclaration td)
+	protected boolean mayRefactor(TypeDeclaration td)
 	{
 		if ((td.getName() == null) || (!td.isFinal()) || !(td.isOrdinaryClass()))
 			return false;
 		else
 			return true;	
-	}
-
-	// Count the amount of available elements in the chosen class for refactoring.
-	// If an element is not applicable for the current refactoring it is not counted.
-	public int getAmount(int unit)
-	{
-		int counter = 0;
-		AbstractTreeWalker tw = new TreeWalker(getSourceFileRepository().getKnownCompilationUnits().get(unit));
-
-		// Only counts the relevant program element.
-		while (tw.next(TypeDeclaration.class))
-		{
-			TypeDeclaration td = (TypeDeclaration) tw.getProgramElement();
-			if (mayRefactor(td))
-				counter++;
-		}
-
-		return counter;
-	}
-	
-	public String getName(int unit, int element)
-	{		
-		AbstractTreeWalker tw = new TreeWalker(getSourceFileRepository().getKnownCompilationUnits().get(unit));
-
-		for (int i = 0; i < element; i++)
-		{
-			tw.next(TypeDeclaration.class);
-			TypeDeclaration td = (TypeDeclaration) tw.getProgramElement();
-			if (!mayRefactor(td))
-				i--;
-		}
-		
-		TypeDeclaration td = (TypeDeclaration) tw.getProgramElement();
-		return td.getName();
 	}
 }

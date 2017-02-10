@@ -9,11 +9,9 @@ import recoder.abstraction.Method;
 import recoder.abstraction.Package;
 import recoder.abstraction.Type;
 import recoder.bytecode.ClassFile;
-import recoder.convenience.AbstractTreeWalker;
 import recoder.convenience.TreeWalker;
 import recoder.java.Identifier;
 import recoder.java.Import;
-import recoder.java.ProgramElement;
 import recoder.java.declaration.ClassDeclaration;
 import recoder.java.declaration.FieldDeclaration;
 import recoder.java.declaration.MemberDeclaration;
@@ -33,9 +31,9 @@ import recoder.kit.UnitKit;
 import recoder.kit.VariableKit;
 import recoder.list.generic.ASTList;
 import recoder.service.CrossReferenceSourceInfo;
-import refactorings.Refactoring;
+import refactorings.FieldRefactoring;
 
-public class MoveFieldUp extends Refactoring 
+public class MoveFieldUp extends FieldRefactoring 
 {
 	private TypeDeclaration currentDeclaration, superDeclaration;
 	private int position, newPosition;
@@ -58,20 +56,20 @@ public class MoveFieldUp extends Refactoring
 		// Initialise and pick the element to visit.
 		CrossReferenceSourceInfo si = getCrossReferenceSourceInfo();
 		super.tw = new TreeWalker(getSourceFileRepository().getKnownCompilationUnits().get(unit));
-		for (int i = 0; i < element; i++)
-		{
-			super.tw.next(FieldDeclaration.class);
-			FieldDeclaration fd = (FieldDeclaration) super.tw.getProgramElement();
-			if (!mayRefactor(fd))
-				i--;
-		}
 		
-		ProgramElement pe = super.tw.getProgramElement();
-		FieldDeclaration fd = (FieldDeclaration) pe;
-		int last = pe.toString().lastIndexOf(">");
+		for (int i = 0; i < element; i++)
+			super.tw.next(FieldDeclaration.class);
+		
+		FieldDeclaration fd = (FieldDeclaration) super.tw.getProgramElement();
 		this.currentDeclaration = MiscKit.getParentTypeDeclaration(fd);
-		this.superDeclaration = (TypeDeclaration) this.currentDeclaration.getSupertypes().get(0);
+		
+		// Prevents "Zero Service" outputs logged to the console.
+		if (this.currentDeclaration.getProgramModelInfo() == null)
+			this.currentDeclaration.getFactory().getServiceConfiguration().getChangeHistory().updateModel();
+		
+		int last = fd.toString().lastIndexOf(">");
 		this.position = super.getPosition(this.currentDeclaration, fd);
+		this.superDeclaration = (TypeDeclaration) this.currentDeclaration.getSupertypes().get(0);
 		this.newPosition = -1;
 		sisterClasses = new ArrayList<TypeDeclaration>();
 		sisterPositions = new ArrayList<Integer>();
@@ -232,12 +230,13 @@ public class MoveFieldUp extends Refactoring
 		
 		// Specify refactoring information for results information.
 		super.refactoringInfo = "Iteration " + iteration + ": \"Move Field Up\" applied to field " 
-				+ pe.toString().substring(last + 2)	+ " from " + this.currentDeclaration.getName() + " to " + this.superDeclaration.getName();
+				+ fd.toString().substring(last + 2)	+ " from " + this.currentDeclaration.getName() + " to " + this.superDeclaration.getName();
 		
 		// Stores list of names of classes affected by refactoring.
 		super.affectedClasses = new ArrayList<String>(2);
 		super.affectedClasses.add(this.currentDeclaration.getName());
 		super.affectedClasses.add(this.superDeclaration.getName());
+		super.affectedElement = fd.toString().substring(last + 2);
 		
 		return setProblemReport(EQUIVALENCE);
 	}
@@ -277,7 +276,7 @@ public class MoveFieldUp extends Refactoring
 		return setProblemReport(EQUIVALENCE);
 	}
 	
-	public boolean mayRefactor(FieldDeclaration fd)
+	protected boolean mayRefactor(FieldDeclaration fd)
 	{		
 		TypeDeclaration td =  MiscKit.getParentTypeDeclaration(fd);
 		CrossReferenceSourceInfo si = getCrossReferenceSourceInfo();
@@ -433,39 +432,5 @@ public class MoveFieldUp extends Refactoring
 			
 			return true;
 		}
-	}
-
-	// Count the amount of available elements in the chosen class for refactoring.
-	// If an element is not applicable for the current refactoring it is not counted.
-	public int getAmount(int unit)
-	{
-		int counter = 0;
-		AbstractTreeWalker tw = new TreeWalker(getSourceFileRepository().getKnownCompilationUnits().get(unit));
-
-		// Only counts the relevant program element.
-		while (tw.next(FieldDeclaration.class))
-		{
-			FieldDeclaration fd = (FieldDeclaration) tw.getProgramElement();
-			if (mayRefactor(fd))
-				counter++;
-		}
-
-		return counter;
-	}
-	
-	public String getName(int unit, int element)
-	{		
-		AbstractTreeWalker tw = new TreeWalker(getSourceFileRepository().getKnownCompilationUnits().get(unit));
-
-		for (int i = 0; i < element; i++)
-		{
-			tw.next(FieldDeclaration.class);
-			FieldDeclaration fd = (FieldDeclaration) tw.getProgramElement();
-			if (!mayRefactor(fd))
-				i--;
-		}
-
-		FieldDeclaration fd = (FieldDeclaration) tw.getProgramElement();
-		return fd.toString();
 	}
 }

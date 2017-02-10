@@ -11,13 +11,11 @@ import recoder.abstraction.ClassType;
 import recoder.abstraction.Constructor;
 import recoder.abstraction.Method;
 import recoder.abstraction.Type;
-import recoder.convenience.AbstractTreeWalker;
 import recoder.convenience.ForestWalker;
 import recoder.convenience.TreeWalker;
 import recoder.java.CompilationUnit;
 import recoder.java.Identifier;
 import recoder.java.Import;
-import recoder.java.ProgramElement;
 import recoder.java.declaration.ClassDeclaration;
 import recoder.java.declaration.ConstructorDeclaration;
 import recoder.java.declaration.DeclarationSpecifier;
@@ -48,9 +46,9 @@ import recoder.kit.VariableKit;
 import recoder.list.generic.ASTArrayList;
 import recoder.list.generic.ASTList;
 import recoder.service.CrossReferenceSourceInfo;
-import refactorings.Refactoring;
+import refactorings.TypeRefactoring;
 
-public class ExtractSubclass extends Refactoring 
+public class ExtractSubclass extends TypeRefactoring 
 {
 	private TypeDeclaration currentDeclaration, subDeclaration;
 	private CompilationUnit unit;
@@ -77,17 +75,10 @@ public class ExtractSubclass extends Refactoring
 		super.tw = new TreeWalker(getSourceFileRepository().getKnownCompilationUnits().get(unit));		
 		
 		for (int i = 0; i < element; i++)
-		{
 			super.tw.next(TypeDeclaration.class);
-			TypeDeclaration td = (TypeDeclaration) super.tw.getProgramElement();
-			if (!mayRefactor(td))
-			{
-				i--;
-			}
-		}
 				
-		ProgramElement pe = super.tw.getProgramElement();
-		this.currentDeclaration = (TypeDeclaration) pe;
+		this.currentDeclaration = (TypeDeclaration) super.tw.getProgramElement();
+		mayRefactor(this.currentDeclaration);
 		CrossReferenceSourceInfo si = getCrossReferenceSourceInfo();
 		this.importSizes = new int[this.subClasses.size()];
 		Set<Type> distinctTypes = new HashSet<Type>();
@@ -201,12 +192,13 @@ public class ExtractSubclass extends Refactoring
 				super.refactoringInfo = super.refactoringInfo + ", ";
 		}
 		
-		super.refactoringInfo = super.refactoringInfo + "\" in class " + ((TypeDeclaration) pe).getName() + " to " + this.subDeclaration.getName();
+		super.refactoringInfo = super.refactoringInfo + "\" in class " + this.currentDeclaration.getName() + " to " + this.subDeclaration.getName();
 		
 		// Stores list of names of classes affected by refactoring.
 		super.affectedClasses = new ArrayList<String>(2);
-		super.affectedClasses.add(((TypeDeclaration) pe).getName());
+		super.affectedClasses.add(this.currentDeclaration.getName());
 		super.affectedClasses.add(this.subDeclaration.getName());
+		super.affectedElement = this.currentDeclaration.getName();
 		
 		return setProblemReport(EQUIVALENCE);
 	}
@@ -252,7 +244,7 @@ public class ExtractSubclass extends Refactoring
 		return setProblemReport(EQUIVALENCE);
 	}
 
-	public boolean mayRefactor(TypeDeclaration td)
+	protected boolean mayRefactor(TypeDeclaration td)
 	{		
 		// Makes a number of initial checks against the class 
 		// in order to quickly exclude insufficient candidates. 
@@ -666,7 +658,7 @@ public class ExtractSubclass extends Refactoring
 				// a constructor with parameters, the group will be discarded.
 				for (ClassDeclaration ct : this.subClasses)
 				{
-					AbstractTreeWalker tw = new TreeWalker((TypeDeclaration) ct);
+					TreeWalker tw = new TreeWalker((TypeDeclaration) ct);
 					while (tw.next(SuperConstructorReference.class)) 
 					{
 						SuperConstructorReference ref = (SuperConstructorReference) tw.getProgramElement();
@@ -701,7 +693,6 @@ public class ExtractSubclass extends Refactoring
 				{ 
 					this.methods = methodList;
 					this.fields = fieldsToMove;
-					this.currentDeclaration = td;
 					return true;
 				}
 			}
@@ -709,44 +700,10 @@ public class ExtractSubclass extends Refactoring
 			return false;
 		}
 	}
-
-	// Count the amount of available elements in the chosen class for refactoring.
-	// If an element is not applicable for the current refactoring it is not counted.
-	public int getAmount(int unit)
-	{
-		int counter = 0;
-		AbstractTreeWalker tw = new TreeWalker(getSourceFileRepository().getKnownCompilationUnits().get(unit));
-
-		// Only counts the relevant program element.
-		while (tw.next(TypeDeclaration.class))
-		{
-			TypeDeclaration td = (TypeDeclaration) tw.getProgramElement();
-			if (mayRefactor(td))
-				counter++;
-		}
-
-		return counter;
-	}
-	
-	public String getName(int unit, int element)
-	{		
-		AbstractTreeWalker tw = new TreeWalker(getSourceFileRepository().getKnownCompilationUnits().get(unit));
-
-		for (int i = 0; i < element; i++)
-		{
-			tw.next(TypeDeclaration.class);
-			TypeDeclaration td = (TypeDeclaration) tw.getProgramElement();
-			if (!mayRefactor(td))
-				i--;
-		}
-		
-		TypeDeclaration td = (TypeDeclaration) tw.getProgramElement();
-		return td.getName();
-	}
 	
 	private ArrayList<String> getAllTypeNames()
 	{
-		AbstractTreeWalker tw = new ForestWalker(getSourceFileRepository().getKnownCompilationUnits());
+		ForestWalker tw = new ForestWalker(getSourceFileRepository().getKnownCompilationUnits());
 		ArrayList<String> names = new ArrayList<String>(getSourceFileRepository().getKnownCompilationUnits().size());
 
 		while (tw.next(TypeDeclaration.class))

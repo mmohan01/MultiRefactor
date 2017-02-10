@@ -59,8 +59,7 @@ public class SimulatedAnnealingSearch extends Search
 		float newScore;
 		float currentTemperature = this.temperature;
 		int bestIteration = 1; 
-		int r = -1;
-		int[] position = new int[2];
+		int[] position = new int[3];
 		boolean findNeighbour;
 		int counter;
 		boolean progress = true;
@@ -86,51 +85,19 @@ public class SimulatedAnnealingSearch extends Search
 				if (!this.alwaysMove)
 					findNeighbour = false;
 				
-				// Find element to refactor. A random element will be chosen.
-				if (super.c.getRefactorings().size() > 0)
-				{
-					r = (int) (Math.random() * super.c.getRefactorings().size());
-					position = super.randomElement(super.c.getRefactorings().get(r));
-				}
-				else
-				{
-					position[0] = -1;
-					position[1] = -1;
-				}
-
-				// Checks in case no elements are returned for the refactoring.
-				// Will check again for each available refactoring in the search and 
-				// if there are still no applicable elements returned the search will terminate.
-				if ((position[0] == -1) && (position[1] == -1))
-				{
-					int exclude = r;
-					for (r = 0; r < super.c.getRefactorings().size(); r++)
-					{
-						// Stops the loop from repeating the check for the previous refactoring.
-						if ((r == exclude) && ((r + 1) < super.c.getRefactorings().size()))
-							r++;
-						else if (r == exclude)
-							break;
-
-						position = super.randomElement(super.c.getRefactorings().get(r));
-						if ((position[0] != -1) && (position[1] != -1))
-							break;
-					}
-
-					if ((position[0] == -1) && (position[1] == -1))
-						r = -1;
-				}
+				position = super.randomRefactoring(super.c.getRefactorings());
 
 				// If a random element could be found.
 				if ((position[0] != -1) && (position[1] != -1))
 				{
-					super.c.getRefactorings().get(r).transform(super.c.getRefactorings().get(r).analyze(i, position[0], position[1]));
-					newScore = ff.calculateNormalizedScore(m);
+					super.c.getRefactorings().get(position[2]).transform(super.c.getRefactorings().get(position[2])
+							                                  .analyze(i, position[0], position[1]));
+					newScore = ff.calculateNormalisedScore(m);
 
 					if (newScore > current)
 					{
-						super.refactoringInfo.add(super.c.getRefactorings().get(r).getRefactoringInfo());
-						System.out.printf("\r\n%s", super.c.getRefactorings().get(r).getRefactoringInfo());
+						super.refactoringInfo.add(super.c.getRefactorings().get(position[2]).getRefactoringInfo());
+						System.out.printf("\r\n%s", super.c.getRefactorings().get(position[2]).getRefactoringInfo());
 						current = newScore;
 						findNeighbour = false;
 
@@ -142,7 +109,7 @@ public class SimulatedAnnealingSearch extends Search
 						
 						if (this.getBest)
 						{
-							refactorings.add(r);
+							refactorings.add(position[2]);
 							positions.add(position);
 						}
 					}
@@ -163,20 +130,20 @@ public class SimulatedAnnealingSearch extends Search
 
 						if (probability > Math.random())
 						{
-							super.refactoringInfo.add(super.c.getRefactorings().get(r).getRefactoringInfo());
-							System.out.printf("\r\n%s", super.c.getRefactorings().get(r).getRefactoringInfo());
+							super.refactoringInfo.add(super.c.getRefactorings().get(position[2]).getRefactoringInfo());
+							System.out.printf("\r\n%s", super.c.getRefactorings().get(position[2]).getRefactoringInfo());
 							current = newScore;
 							findNeighbour = false;
 							
 							if (this.getBest)
 							{
-								refactorings.add(r);
+								refactorings.add(position[2]);
 								positions.add(position);
 							}
 						}
 						else
 						{
-							super.c.getRefactorings().get(r).transform(super.c.getRefactorings().get(r).analyzeReverse());
+							super.c.getRefactorings().get(position[2]).transform(super.c.getRefactorings().get(position[2]).analyzeReverse());
 							
 							if (this.alwaysMove)
 							{

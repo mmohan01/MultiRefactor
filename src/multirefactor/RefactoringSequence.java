@@ -1,6 +1,7 @@
 package multirefactor;
 
 import java.util.ArrayList;
+import java.util.HashMap;
 
 public class RefactoringSequence
 {
@@ -14,9 +15,24 @@ public class RefactoringSequence
 	private ArrayList<String[]> names;
 	private ArrayList<String> refactoringInfo;
 	private ArrayList<String> affectedClasses;
+	private HashMap<String, Integer> elementDiversity;
 
-	public RefactoringSequence(ArrayList<Integer> refactorings, ArrayList<Integer> positions, 
-							   ArrayList<String[]> names, ArrayList<String> refactoringInfo, ArrayList<String> affectedClasses) 
+	public RefactoringSequence(ArrayList<Integer> refactorings, ArrayList<Integer> positions, ArrayList<String[]> names, 
+			                   ArrayList<String> refactoringInfo) 
+	{
+		this.fitness = 1.0f;
+		this.rank = 0;
+		this.crowdingDistance = -1.0f;
+
+		this.refactorings = refactorings;
+		this.positions = positions;
+		this.names = names;
+		this.refactoringInfo = refactoringInfo;
+	}
+
+	// Constructor used to store information for priority objective.
+	public RefactoringSequence(ArrayList<Integer> refactorings, ArrayList<Integer> positions, ArrayList<String[]> names, 
+							   ArrayList<String> refactoringInfo, ArrayList<String> affectedClasses) 
 	{
 		this.fitness = 1.0f;
 		this.rank = 0;
@@ -27,6 +43,37 @@ public class RefactoringSequence
 		this.names = names;
 		this.refactoringInfo = refactoringInfo;
 		this.affectedClasses = affectedClasses;
+	}
+
+	// Constructor used to store information for diversity objective.
+	public RefactoringSequence(ArrayList<Integer> refactorings, ArrayList<Integer> positions, ArrayList<String[]> names, 
+			                   ArrayList<String> refactoringInfo, HashMap<String, Integer> elementDiversity) 
+	{
+		this.fitness = 1.0f;
+		this.rank = 0;
+		this.crowdingDistance = -1.0f;
+
+		this.refactorings = refactorings;
+		this.positions = positions;
+		this.names = names;
+		this.refactoringInfo = refactoringInfo;
+		this.elementDiversity = elementDiversity;
+	}
+	
+	// Constructor used to store information for both the priority and diversity objectives.
+	public RefactoringSequence(ArrayList<Integer> refactorings, ArrayList<Integer> positions, ArrayList<String[]> names, 
+							   ArrayList<String> refactoringInfo, ArrayList<String> affectedClasses, HashMap<String, Integer> elementDiversity) 
+	{
+		this.fitness = 1.0f;
+		this.rank = 0;
+		this.crowdingDistance = -1.0f;
+
+		this.refactorings = refactorings;
+		this.positions = positions;
+		this.names = names;
+		this.refactoringInfo = refactoringInfo;
+		this.affectedClasses = affectedClasses;
+		this.elementDiversity = elementDiversity;
 	}
 	
 	public float getFitness()
@@ -108,7 +155,7 @@ public class RefactoringSequence
 	{
 		this.refactoringInfo = refactoringInfo;
 	}
-	
+
 	public ArrayList<String> getAffectedClasses()
 	{
 		return this.affectedClasses;
@@ -117,5 +164,15 @@ public class RefactoringSequence
 	public void setAffectedClasses(ArrayList<String> affectedClasses)
 	{
 		this.affectedClasses = affectedClasses;
+	}
+	
+	public HashMap<String, Integer> getElementDiversity()
+	{
+		return this.elementDiversity;
+	}
+	
+	public void setElementDiversity(HashMap<String, Integer> elementDiversity)
+	{
+		this.elementDiversity = elementDiversity;
 	}
 }

@@ -54,9 +54,8 @@ public class HillClimbingSearch extends Search
 		float currentScore = benchmark;
 		float newScore;
 		int iteration = 1;
-		int r = -2;
 		String unit;
-		int[] position = new int[2];
+		int[] position = new int[3];
 		int steepestElement = 0, steepestRefactoring = 0;
 		String steepestUnit = "";
 
@@ -88,41 +87,7 @@ public class HillClimbingSearch extends Search
 				// the amount of which is denoted by neighbour count.
 				for (int j = 0; j < this.neighbourCount; j++)
 				{
-					// Find element to refactor. A random element and refactoring will be chosen.
-					if (super.c.getRefactorings().size() > 0)
-					{
-						r = (int) (Math.random() * super.c.getRefactorings().size());
-						position = super.randomElement(super.c.getRefactorings().get(r));
-					}
-					else
-					{
-						position[0] = -1;
-						position[1] = -1;
-					}
-
-					// Checks in case no elements are returned for the refactoring.
-					// Will check again for each available refactoring in the search and 
-					// if there are still no applicable elements returned the search will terminate.
-					if ((position[0] == -1) && (position[1] == -1))
-					{
-						int exclude = r;
-						for (r = 0; r < super.c.getRefactorings().size(); r++)
-						{
-							// Stops the loop from repeating the check for the previous refactoring.
-							if (r == exclude)
-								if ((r + 1) < super.c.getRefactorings().size())
-									r++;
-								else
-									break;
-
-							position = super.randomElement(super.c.getRefactorings().get(r));
-							if ((position[0] != -1) && (position[1] != -1))
-								break;
-						}
-
-						if ((position[0] == -1) && (position[1] == -1))
-							r = -1;
-					}
+					position = super.randomRefactoring(super.c.getRefactorings());
 					
 					// If an element could be found to refactor.
 					// If the search is first ascent, the first neighbour to give a 
@@ -132,8 +97,9 @@ public class HillClimbingSearch extends Search
 					if ((position[0] != -1) && (position[1] != -1))
 					{
 						unit = super.sc.getSourceFileRepository().getKnownCompilationUnits().get(position[0]).getName();
-						super.c.getRefactorings().get(r).transform(super.c.getRefactorings().get(r).analyze(iteration, position[0], position[1]));
-						newScore = ff.calculateNormalizedScore(m);
+						super.c.getRefactorings().get(position[2]).transform(super.c.getRefactorings().get(position[2])
+								                                  .analyze(iteration, position[0], position[1]));
+						newScore = ff.calculateNormalisedScore(m);
 						
 						if (j == 0)
 							System.out.printf("\r\nNeighbours: %d", j + 1);
@@ -144,7 +110,7 @@ public class HillClimbingSearch extends Search
 						{	
 							improved = true;
 							currentScore = newScore;
-							currentRefactoringInfo = super.c.getRefactorings().get(r).getRefactoringInfo();
+							currentRefactoringInfo = super.c.getRefactorings().get(position[2]).getRefactoringInfo();
 							
 							// Notes element so the refactoring can be 
 							// applied after evaluating each available solution.
@@ -152,14 +118,14 @@ public class HillClimbingSearch extends Search
 							{
 								steepestUnit = unit;
 								steepestElement = position[1];
-								steepestRefactoring = r;
+								steepestRefactoring = position[2];
 							}
 							else
 								break;
 						}
 						
 						// Refactoring reversed so the next neighbour can be evaluated.
-						super.c.getRefactorings().get(r).transform(super.c.getRefactorings().get(r).analyzeReverse());
+						super.c.getRefactorings().get(position[2]).transform(super.c.getRefactorings().get(position[2]).analyzeReverse());
 					}
 					else
 						break;
@@ -167,7 +133,7 @@ public class HillClimbingSearch extends Search
 				
 				// Either there were no initial refactorings available 
 				// or there are no refactorings left to apply.
-				if (r == -1)
+				if (position[2] == -1)
 				{
 					if (iteration == 1)
 						System.out.printf("\r\nThere are no refactorings available - search terminating.");
@@ -192,7 +158,7 @@ public class HillClimbingSearch extends Search
 						System.out.printf("\r\n%s", currentRefactoringInfo);
 				}
 
-				if ((iteration % 25 == 0) && (r != -1))
+				if ((iteration % 25 == 0) && (position[2] != -1))
 				{
 					timeTaken = System.currentTimeMillis() - startTime;
 					time = timeTaken / 1000.0;
@@ -206,7 +172,7 @@ public class HillClimbingSearch extends Search
 			}
 			
 			// Stops search if the specified maximum iterations have been reached.
-			if (((maxIterations != -1) && (iteration == maxIterations)) || (r == -1))
+			if (((maxIterations != -1) && (iteration == maxIterations)) || (position[2] == -1))
 				break;	
 		}
 

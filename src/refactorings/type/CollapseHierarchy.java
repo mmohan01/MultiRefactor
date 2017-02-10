@@ -10,11 +10,9 @@ import recoder.abstraction.Method;
 import recoder.abstraction.Package;
 import recoder.abstraction.Type;
 import recoder.bytecode.ClassFile;
-import recoder.convenience.AbstractTreeWalker;
 import recoder.convenience.TreeWalker;
 import recoder.java.CompilationUnit;
 import recoder.java.Import;
-import recoder.java.ProgramElement;
 import recoder.java.declaration.ClassDeclaration;
 import recoder.java.declaration.ConstructorDeclaration;
 import recoder.java.declaration.Extends;
@@ -35,9 +33,9 @@ import recoder.kit.ProblemReport;
 import recoder.kit.UnitKit;
 import recoder.list.generic.ASTList;
 import recoder.service.CrossReferenceSourceInfo;
-import refactorings.Refactoring;
+import refactorings.TypeRefactoring;
 
-public class CollapseHierarchy extends Refactoring 
+public class CollapseHierarchy extends TypeRefactoring 
 {
 	private TypeDeclaration currentDeclaration, superDeclaration, containingType;
 	private ArrayList<MemberDeclaration> members, sisterMembers;
@@ -66,15 +64,9 @@ public class CollapseHierarchy extends Refactoring
 		super.tw = new TreeWalker(getSourceFileRepository().getKnownCompilationUnits().get(unit));
 		
 		for (int i = 0; i < element; i++)
-		{
 			super.tw.next(TypeDeclaration.class);
-			TypeDeclaration td = (TypeDeclaration) super.tw.getProgramElement();
-			if (!mayRefactor(td))
-				i--;
-		}
 		
-		ProgramElement pe = super.tw.getProgramElement();
-		this.currentDeclaration = (TypeDeclaration) pe;
+		this.currentDeclaration = (TypeDeclaration) super.tw.getProgramElement();
 		this.superDeclaration = (TypeDeclaration) this.currentDeclaration.getSupertypes().get(0);
 		this.unit = UnitKit.getCompilationUnit(this.currentDeclaration);
 		CrossReferenceSourceInfo si = getCrossReferenceSourceInfo();
@@ -255,12 +247,13 @@ public class CollapseHierarchy extends Refactoring
 
 		// Specify refactoring information for results information.		
 		super.refactoringInfo = "Iteration " + iteration + ": \"Collapse Hierarchy\" applied from all elements in " 
-				+ ((TypeDeclaration) pe).getName() + " to " + this.superDeclaration.getName();
+				+ this.currentDeclaration.getName() + " to " + this.superDeclaration.getName();
 		
 		// Stores list of names of classes affected by refactoring.
 		super.affectedClasses = new ArrayList<String>(2);
-		super.affectedClasses.add(((TypeDeclaration) pe).getName());
+		super.affectedClasses.add(this.currentDeclaration.getName());
 		super.affectedClasses.add(this.superDeclaration.getName());
+		super.affectedElement = this.currentDeclaration.getName();
 
 		getChangeHistory().updateModel();
 		return setProblemReport(EQUIVALENCE);
@@ -312,7 +305,7 @@ public class CollapseHierarchy extends Refactoring
 		return setProblemReport(EQUIVALENCE);
 	}
 
-	public boolean mayRefactor(TypeDeclaration td)
+	protected boolean mayRefactor(TypeDeclaration td)
 	{
 		// Prevents "Zero Service" outputs logged to the console.
 		if (td.getProgramModelInfo() == null)
@@ -340,7 +333,7 @@ public class CollapseHierarchy extends Refactoring
 				if (!(ct.isOrdinaryClass()))
 					return false;
 			
-				AbstractTreeWalker tw = new TreeWalker((TypeDeclaration) ct);
+				TreeWalker tw = new TreeWalker((TypeDeclaration) ct);
 				if (tw.next(SuperConstructorReference.class)) 
 					return false;
 			}
@@ -481,39 +474,5 @@ public class CollapseHierarchy extends Refactoring
 			
 			return true;
 		}
-	}
-
-	// Count the amount of available elements in the chosen class for refactoring.
-	// If an element is not applicable for the current refactoring it is not counted.
-	public int getAmount(int unit)
-	{
-		int counter = 0;
-		AbstractTreeWalker tw = new TreeWalker(getSourceFileRepository().getKnownCompilationUnits().get(unit));
-
-		// Only counts the relevant program element.
-		while (tw.next(TypeDeclaration.class))
-		{
-			TypeDeclaration td = (TypeDeclaration) tw.getProgramElement();
-			if (mayRefactor(td))
-				counter++;
-		}
-
-		return counter;
-	}
-	
-	public String getName(int unit, int element)
-	{		
-		AbstractTreeWalker tw = new TreeWalker(getSourceFileRepository().getKnownCompilationUnits().get(unit));
-
-		for (int i = 0; i < element; i++)
-		{
-			tw.next(TypeDeclaration.class);
-			TypeDeclaration td = (TypeDeclaration) tw.getProgramElement();
-			if (!mayRefactor(td))
-				i--;
-		}
-		
-		TypeDeclaration td = (TypeDeclaration) tw.getProgramElement();
-		return td.getName();
 	}
 }

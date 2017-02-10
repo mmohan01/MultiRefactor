@@ -1,0 +1,82 @@
+package refactorings;
+
+import recoder.CrossReferenceServiceConfiguration;
+import recoder.convenience.TreeWalker;
+import recoder.java.declaration.MethodDeclaration;
+
+public abstract class MethodRefactoring extends Refactoring 
+{	
+	public MethodRefactoring(CrossReferenceServiceConfiguration sc) 
+	{
+		super(sc);
+	}
+	
+	public MethodRefactoring() 
+	{
+		super();
+	}
+	
+	protected abstract boolean mayRefactor(MethodDeclaration md);
+
+	public int getAmount(int unit)
+	{
+		int counter = 0;
+		TreeWalker tw = new TreeWalker(getSourceFileRepository().getKnownCompilationUnits().get(unit));
+
+		// Only counts the relevant program element.
+		while (tw.next(MethodDeclaration.class))
+		{
+			MethodDeclaration md = (MethodDeclaration) tw.getProgramElement();
+			if (mayRefactor(md))
+				counter++;
+		}
+
+		return counter;
+	}
+	
+	public int getAbsolutePosition(int unit, int element)
+	{		
+		TreeWalker tw = new TreeWalker(getSourceFileRepository().getKnownCompilationUnits().get(unit));
+		int absolutePosition = 0;
+
+		for (int i = 0; i < element; i++)
+		{
+			tw.next(MethodDeclaration.class);
+			MethodDeclaration fd = (MethodDeclaration) tw.getProgramElement();
+			if (!mayRefactor(fd))
+				i--;
+
+			absolutePosition++;
+		}
+
+		return absolutePosition;
+	}
+	
+	public String getName(int unit, int element)
+	{		
+		TreeWalker tw = new TreeWalker(getSourceFileRepository().getKnownCompilationUnits().get(unit));
+
+		for (int i = 0; i < element; i++)
+			tw.next(MethodDeclaration.class);
+
+		MethodDeclaration md = (MethodDeclaration) tw.getProgramElement();
+		return md.getName();
+	}
+	
+	public int checkElements(int unit, String name)
+	{		
+		TreeWalker tw = new TreeWalker(getSourceFileRepository().getKnownCompilationUnits().get(unit));
+		int element = 0;
+
+		while (tw.next(MethodDeclaration.class))
+		{
+			element++;
+			MethodDeclaration md = (MethodDeclaration) tw.getProgramElement();
+			
+			if ((md.getName() != null) && (md.getName().equals(name)))
+				return (mayRefactor(md)) ? element : -1;
+		}
+		
+		return -1;
+	}
+}

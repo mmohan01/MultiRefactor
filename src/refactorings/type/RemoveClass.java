@@ -3,17 +3,15 @@ package refactorings.type;
 import java.util.ArrayList;
 
 import recoder.CrossReferenceServiceConfiguration;
-import recoder.convenience.AbstractTreeWalker;
 import recoder.convenience.TreeWalker;
 import recoder.java.CompilationUnit;
-import recoder.java.ProgramElement;
 import recoder.java.declaration.ConstructorDeclaration;
 import recoder.java.declaration.MemberDeclaration;
 import recoder.java.declaration.TypeDeclaration;
 import recoder.kit.ProblemReport;
-import refactorings.Refactoring;
+import refactorings.TypeRefactoring;
 
-public class RemoveClass extends Refactoring 
+public class RemoveClass extends TypeRefactoring 
 {
 	TypeDeclaration type, containingType;
 	CompilationUnit unit;
@@ -36,15 +34,9 @@ public class RemoveClass extends Refactoring
 		super.tw = new TreeWalker(getSourceFileRepository().getKnownCompilationUnits().get(unit));
 		
 		for (int i = 0; i < element; i++)
-		{
 			super.tw.next(TypeDeclaration.class);
-			TypeDeclaration td = (TypeDeclaration) super.tw.getProgramElement();
-			if (!mayRefactor(td))
-				i--;
-		}
 		
-		ProgramElement pe = super.tw.getProgramElement();
-		this.type = (TypeDeclaration) pe;
+		this.type = (TypeDeclaration) super.tw.getProgramElement();
 		this.unit = getSourceFileRepository().getKnownCompilationUnits().get(unit);
 		this.unitPosition = unit;
 		
@@ -77,11 +69,12 @@ public class RemoveClass extends Refactoring
 			detach(this.type);
 		
 		// Specify refactoring information for results information.
-		super.refactoringInfo = "Iteration " + iteration + ": \"Remove Class\" applied to class " + ((TypeDeclaration) pe).getName();
+		super.refactoringInfo = "Iteration " + iteration + ": \"Remove Class\" applied to class " + this.type.getName();
 		
 		// Stores list of names of classes affected by refactoring.
 		super.affectedClasses = new ArrayList<String>(1);
-		super.affectedClasses.add(((TypeDeclaration) pe).getName());
+		super.affectedClasses.add(this.type.getName());
+		super.affectedElement = this.type.getName();
 				
 		getChangeHistory().updateModel();
 		return setProblemReport(EQUIVALENCE);
@@ -104,7 +97,7 @@ public class RemoveClass extends Refactoring
 		return setProblemReport(EQUIVALENCE);
 	}
 
-	public boolean mayRefactor(TypeDeclaration td)
+	protected boolean mayRefactor(TypeDeclaration td)
 	{		
 		if (!(td.isOrdinaryClass()) || (getCrossReferenceSourceInfo().getSubtypes(td).size() > 0) || (td.getName() == null) ||
 			(getCrossReferenceSourceInfo().getReferences(td, true).size() > 0))
@@ -122,39 +115,5 @@ public class RemoveClass extends Refactoring
 			
 			return true;	
 		}
-	}
-	
-	// Count the amount of available elements in the chosen class for refactoring.
-	// If an element is not applicable for the current refactoring it is not counted.
-	public int getAmount(int unit)
-	{
-		int counter = 0;
-		AbstractTreeWalker tw = new TreeWalker(getSourceFileRepository().getKnownCompilationUnits().get(unit));
-
-		// Only counts the relevant program element.
-		while (tw.next(TypeDeclaration.class))
-		{
-			TypeDeclaration td = (TypeDeclaration) tw.getProgramElement();
-			if (mayRefactor(td))
-				counter++;
-		}
-
-		return counter;
-	}
-	
-	public String getName(int unit, int element)
-	{
-		AbstractTreeWalker tw = new TreeWalker(getSourceFileRepository().getKnownCompilationUnits().get(unit));
-
-		for (int i = 0; i < element; i++)
-		{
-			tw.next(TypeDeclaration.class);
-			TypeDeclaration td = (TypeDeclaration) tw.getProgramElement();
-			if (!mayRefactor(td))
-				i--;
-		}
-		
-		TypeDeclaration td = (TypeDeclaration) tw.getProgramElement();
-		return td.getName();
 	}
 }

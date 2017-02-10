@@ -40,13 +40,13 @@ public class Main
 			else
 			{
 				System.out.print("\r\n\r\nArgument not applicable. Input arguments must consist of one of the following:\r\n"
-						+ " -f to pass in a directory containing the input\r\n"
-						+ " -r to read in a file containing the input directory");
+								  + " -f to pass in a directory containing the input\r\n"
+								  + " -r to read in a file containing the input directory");
 			}
 		} 
 		else 
-		{
-			Tasks run = new Tasks();
+		{		
+			DiversityTasks run = new DiversityTasks();
 			run.run();
 		}
 		

@@ -1,6 +1,7 @@
 package multirefactor;
 
 import java.util.ArrayList;
+import java.util.HashMap;
 import java.util.HashSet;
 import java.util.List;
 import java.util.Set;
@@ -37,18 +38,34 @@ public class Metrics
 {
 	private List<CompilationUnit> units;
 	private ArrayList<String> affectedClasses;
+	private HashMap<String, Integer> elementDiversity;
 	private AbstractTreeWalker tw;
 	
 	public Metrics(List<CompilationUnit> units)
 	{
 		this.units = units;
-		affectedClasses = new ArrayList<String>(0);
 	}
 	
+	// Constructor used to store information for priority objective.
 	public Metrics(List<CompilationUnit> units, ArrayList<String> affectedClasses)
 	{
 		this.units = units;
 		this.affectedClasses = affectedClasses;
+	}
+	
+	// Constructor used to store information for diversity objective.
+	public Metrics(List<CompilationUnit> units, HashMap<String, Integer> elementDiversity)
+	{
+		this.units = units;
+		this.elementDiversity = elementDiversity;
+	}
+	
+	// Constructor used to store information for both the priority and diversity objectives.
+	public Metrics(List<CompilationUnit> units, ArrayList<String> affectedClasses, HashMap<String, Integer> elementDiversity)
+	{
+		this.units = units;
+		this.affectedClasses = affectedClasses;
+		this.elementDiversity = elementDiversity;
 	}
 
 	// Amount of classes in the project.
@@ -556,7 +573,7 @@ public class Metrics
 				if ((td instanceof ClassDeclaration) || (td instanceof InterfaceDeclaration))
 				{
 					counter = 1;
-				    staticCounter = 0;
+				   	staticCounter = 0;
 					classCounter++;
 					
 					if (td.isStatic())
@@ -825,7 +842,7 @@ public class Metrics
 	
 	// Instances of priority classes (most important classes determined 
 	// by the user) affected by the refactorings of a solution.
-	public int priorityClasses(ArrayList<String> priorityClasses)
+	public int priority(ArrayList<String> priorityClasses)
 	{		
 		int priorityAmount = 0;
 		
@@ -840,16 +857,33 @@ public class Metrics
 	// override also incorporates a list of non priority classes (classes where
 	// modifications are undesirable). The instances of non priority classes are also 
 	// calculated and then taken away from the priority classes amount to give an overall value.
-	public int priorityClasses(ArrayList<String> priorityClasses, ArrayList<String> nonPriorityClasses)
+	public int priority(ArrayList<String> priorityClasses, ArrayList<String> nonPriorityClasses)
 	{				
 		int nonPriorityAmount = 0;
-		int priorityAmount = priorityClasses(priorityClasses);
+		int priorityAmount = priority(priorityClasses);
 
 		for (String s : this.affectedClasses)
 			if (nonPriorityClasses.contains(s))
 				nonPriorityAmount++;
 		
 		return priorityAmount - nonPriorityAmount;
+	}
+	
+	// Diversity of refactorings in refactoring solution. This is calculated by
+	// finding the average amount of refactorings per refactored element, and then
+	// dividing the amount of distinct refactored element by this average. In the method
+	// this calculation is a little more streamlined average = refactoring count / elements.
+	// Therefore elements / average = elements * (elements / refactoring count).
+	// The metric is calculated by finding elements squared over refactoring count.
+	public float diversity()
+	{
+		int denominator = 0;
+		int numerator = this.elementDiversity.size() * this.elementDiversity.size();
+		
+		for (Integer value : this.elementDiversity.values()) 
+			denominator += value;
+		
+		return (float) numerator / (float) denominator;
 	}
 	
 	// Returns a value to represent the visibility of a modifier.

@@ -10,7 +10,6 @@ import recoder.abstraction.Field;
 import recoder.abstraction.Package;
 import recoder.abstraction.PrimitiveType;
 import recoder.abstraction.Type;
-import recoder.convenience.AbstractTreeWalker;
 import recoder.convenience.TreeWalker;
 import recoder.java.CompilationUnit;
 import recoder.java.Import;
@@ -40,7 +39,8 @@ public abstract class Refactoring extends TwoPassTransformation
 	protected TwoPassTransformation transformation;
 	protected String refactoringInfo; 
 	protected ArrayList<String> affectedClasses;
-	protected AbstractTreeWalker tw;
+	protected String affectedElement;
+	protected TreeWalker tw;
 	
 	public Refactoring(CrossReferenceServiceConfiguration sc) 
 	{
@@ -56,9 +56,22 @@ public abstract class Refactoring extends TwoPassTransformation
 	
 	public abstract ProblemReport analyzeReverse();
 	
+	// Count the amount of available elements in the 
+	// chosen class for refactoring. If an element is not
+	// applicable for the current refactoring it is not counted.
 	public abstract int getAmount(int unit);
 	
+	// Find the position in a class that the element 
+	// is in relation to the other elements of that type
+	// type and not to whether they can be refactored or not.
+	public abstract int getAbsolutePosition(int unit, int element);
+
+	// Returns a string to represent a name for the corresponding element.
 	public abstract String getName(int unit, int element);
+	
+	// Finds the relevant element in the compilation unit using its name and
+	// returns its position if it can be refactored with the current refactoring.
+	public abstract int checkElements(int unit, String name);
 	
 	public ProblemReport analyze(int iteration, String name, int element)
 	{
@@ -139,7 +152,7 @@ public abstract class Refactoring extends TwoPassTransformation
 			return AccessFlags.PRIVATE;
 	}
 	
-	public String refactoredDownModifier(VisibilityModifier vm)
+	protected String refactoredDownModifier(VisibilityModifier vm)
 	{		
 		if (vm instanceof Public)
 			return "protected";
@@ -387,6 +400,11 @@ public abstract class Refactoring extends TwoPassTransformation
 	public ArrayList<String> getAffectedClasses()
 	{
 		return this.affectedClasses;
+	}
+	
+	public String getAffectedElement()
+	{
+		return this.affectedElement;
 	}
 	
 	public void setServiceConfiguration(CrossReferenceServiceConfiguration sc)
