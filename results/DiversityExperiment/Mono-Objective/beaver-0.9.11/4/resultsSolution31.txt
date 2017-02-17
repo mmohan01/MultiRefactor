@@ -1,0 +1,426 @@
+======== Search Information ========
+Search: Genetic Algorithm
+Generations: 100
+Population Size: 50
+Crossover Probability: 0.200000
+Mutation Probability: 0.800000
+
+======== Initial Metric Info ========
+Average ratio of private/package/protected attributes to overall attributes per class: 0.406288
+Average coupling per class: 1.728571
+Average cohesion among methods per class: 0.429654
+Average amount of user defined attributes declared per class: 1.000000
+Average functional abstraction per class: 0.295238
+Average amount of polymorphic methods per class: 0.357143
+Average amount of public methods per class: 2.314286
+Average amount of methods per class: 4.457143
+Average amount of complexity of methods per class: 63.942856
+Ratio of interfaces to overall amount of classes: 0.000000
+Average ratio of abstract classes/methods per class: 0.058333
+Average ratio of static classes/methods/variables per class: 0.256991
+Average ratio of final classes/methods/variables per class: 0.087795
+Average ratio of constant classes/methods/variables per class: 0.054747
+Ratio of inner classes to overall amount of ordinary classes in project: 0.657143
+Average inherited referenced methods ratio per class: 0.022487
+Average visibility ratio per class: 0.603762
+Amount of lines of code in project: 6493
+Overall fitness function score: 0.000000
+
+======== Applied Refactorings ========
+Iteration 1: "Make Method Final" applied at class ParsingTables to method findOffset
+Iteration 2: "Decrease Method Security" applied at class Action to method ShiftReduce from package to protected
+Iteration 3: "Make Method Non Static" applied at class Action to method makeDescription
+Iteration 4: "Make Class Abstract" applied to class Action
+Iteration 5: "Make Field Non Final" applied at class ParserGenerator to FieldDeclaration VERSION
+Iteration 6: "Make Field Static" applied at class Log to field first,last
+Iteration 7: "Make Method Non Final" applied at class GrammarScanner to method yyreset
+Iteration 8: "Make Class Final" applied to class ListType
+Iteration 9: "Make Class Final" applied to class GrammarBuilder
+Iteration 10: "Make Method Final" applied at class Configuration to method reset
+Iteration 11: "Make Method Final" applied at class Production to method start
+Iteration 12: "Remove Method" applied at class GrammarScanner to method yyreset
+Iteration 13: "Increase Method Security" applied at class GrammarScanner to method yybegin from public to protected
+Iteration 14: "Make Method Final" applied at class State to method getState
+Iteration 15: "Make Field Static" applied at class GrammarParser to field log
+Iteration 16: "Increase Method Security" applied at class GrammarScanner to method yybegin from protected to package
+Iteration 17: "Increase Method Security" applied at class GrammarScanner to method yybegin from package to private
+Iteration 18: "Make Method Non Final" applied at class ParsingTables to method findOffset
+Iteration 19: "Decrease Method Security" applied at class ParserGenerator to method encode from private to package
+Iteration 20: "Move Field Up" applied to field lhs_sym from Rule to Node
+Iteration 21: "Decrease Method Security" applied at class ParserGenerator to method encode from package to protected
+Iteration 22: "Decrease Method Security" applied at class ParserGenerator to method encode from protected to public
+Iteration 23: "Decrease Method Security" applied at class Action to method ShiftReduce from protected to public
+Iteration 24: "Make Field Non Final" applied at class GrammarSymbol to FieldDeclaration name
+Iteration 25: "Move Field Up" applied to field found from null to RuleWalker
+Iteration 26: "Decrease Method Security" applied at class State to method Factory from package to protected
+Iteration 27: "Make Field Final" applied at class Grammar to FieldDeclaration impls
+Iteration 28: "Make Method Non Final" applied at class State to method getState
+Iteration 29: "Decrease Method Security" applied at class State to method Factory from protected to public
+Iteration 30: "Make Class Abstract" applied to class Conflict
+Iteration 31: "Remove Method" applied at class Node to method setLocation
+Iteration 32: "Make Method Non Final" applied at class GrammarScanner to method yyclose
+Iteration 33: "Move Method Down" applied to method toString from GrammarSymbol to NonTerminal
+Iteration 34: "Decrease Method Security" applied at class Make to method printVersion from package to protected
+Iteration 35: "Make Field Final" applied at class Declaration to ParameterDeclaration code
+Iteration 36: "Make Method Final" applied at class Declaration to method accept
+Iteration 37: "Decrease Method Security" applied at class State to method findLookaheads from package to protected
+Iteration 38: "Decrease Method Security" applied at class Terminal to method Terminal from package to protected
+Iteration 39: "Make Method Final" applied at class State to method getState
+Iteration 40: "Make Method Non Final" applied at class State to method getState
+Iteration 41: "Decrease Method Security" applied at class Make to method printVersion from protected to public
+Iteration 42: "Decrease Method Security" applied at class State to method findLookaheads from protected to public
+Iteration 43: "Decrease Method Security" applied at class Terminal to method Terminal from protected to public
+Iteration 44: "Make Method Final" applied at class State to method getState
+Iteration 45: "Make Method Non Final" applied at class State to method getState
+Iteration 46: "Make Method Final" applied at class State to method getState
+Iteration 47: "Make Method Non Final" applied at class State to method getState
+Iteration 48: "Make Class Non Final" applied to class GrammarBuilder
+Iteration 49: "Make Class Final" applied to class Terminal
+Iteration 50: "Decrease Method Security" applied at class Make to method printUsage from package to protected
+Iteration 51: "Decrease Method Security" applied at class BitSet to method expandCapacity from private to package
+Iteration 52: "Decrease Method Security" applied at class GrammarBuilder to method writeListsCode from private to package
+Iteration 53: "Remove Method" applied at class IntArray to method compact
+Iteration 54: "Make Method Final" applied at class State to method getState
+Iteration 55: "Make Method Non Final" applied at class State to method getState
+Iteration 56: "Make Method Final" applied at class State to method getState
+Iteration 57: "Make Method Non Final" applied at class State to method getState
+Iteration 58: "Decrease Method Security" applied at class Make to method printUsage from protected to public
+Iteration 59: "Make Method Final" applied at class State to method getState
+Iteration 60: "Decrease Method Security" applied at class BitSet to method expandCapacity from package to protected
+Iteration 61: "Decrease Method Security" applied at class GrammarBuilder to method writeListsCode from package to protected
+Iteration 62: "Make Field Static" applied at class Configuration to field bck_propagation,last_bck_propagation
+Iteration 63: "Make Method Final" applied at class ParsingTables to method hasCollisions
+Iteration 64: "Make Class Final" applied to class GrammarBuilder
+Iteration 65: "Make Method Non Final" applied at class State to method getState
+Iteration 66: "Make Method Final" applied at class State to method getState
+Iteration 67: "Make Method Non Final" applied at class State to method getState
+Iteration 68: "Make Class Non Final" applied to class GrammarBuilder
+Iteration 69: "Decrease Method Security" applied at class BitSet to method expandCapacity from protected to public
+Iteration 70: "Decrease Method Security" applied at class GrammarBuilder to method writeListsCode from protected to public
+Iteration 71: "Make Method Final" applied at class State to method getState
+Iteration 72: "Make Method Non Final" applied at class State to method getState
+Iteration 73: "Make Method Final" applied at class State to method getState
+Iteration 74: "Make Method Non Final" applied at class State to method getState
+Iteration 75: "Make Method Final" applied at class State to method getState
+Iteration 76: "Make Class Final" applied to class GrammarBuilder
+Iteration 77: "Make Method Non Final" applied at class State to method getState
+Iteration 78: "Make Method Final" applied at class State to method getState
+Iteration 79: "Make Method Non Final" applied at class State to method getState
+Iteration 80: "Make Method Final" applied at class State to method getState
+Iteration 81: "Make Method Non Final" applied at class State to method getState
+Iteration 82: "Make Class Non Final" applied to class GrammarBuilder
+Iteration 83: "Make Method Final" applied at class State to method getState
+Iteration 84: "Make Method Non Final" applied at class State to method getState
+Iteration 85: "Make Method Final" applied at class State to method getState
+Iteration 86: "Make Method Non Final" applied at class State to method getState
+Iteration 87: "Make Method Final" applied at class State to method getState
+Iteration 88: "Make Method Non Final" applied at class State to method getState
+Iteration 89: "Make Method Final" applied at class State to method getState
+Iteration 90: "Make Method Non Final" applied at class State to method getState
+Iteration 91: "Make Method Final" applied at class State to method getState
+Iteration 92: "Make Method Non Final" applied at class State to method getState
+Iteration 93: "Make Method Final" applied at class State to method getState
+Iteration 94: "Make Method Non Final" applied at class State to method getState
+Iteration 95: "Make Method Final" applied at class State to method getState
+Iteration 96: "Make Method Non Final" applied at class State to method getState
+Iteration 97: "Make Method Final" applied at class State to method getState
+Iteration 98: "Make Method Non Final" applied at class State to method getState
+Iteration 99: "Make Method Final" applied at class State to method getState
+Iteration 100: "Make Method Non Final" applied at class State to method getState
+Iteration 101: "Make Method Final" applied at class State to method getState
+Iteration 102: "Make Method Non Final" applied at class State to method getState
+Iteration 103: "Make Method Final" applied at class State to method getState
+Iteration 104: "Make Method Non Final" applied at class State to method getState
+Iteration 105: "Make Method Final" applied at class State to method getState
+Iteration 106: "Make Class Final" applied to class GrammarBuilder
+Iteration 107: "Decrease Method Security" applied at class GrammarParser to method Events from package to protected
+Iteration 108: "Make Class Final" applied to class Definition
+Iteration 109: "Make Field Non Final" applied at class ParserGenerator to LocalVariableDeclaration text
+Iteration 110: "Make Method Static" applied at class Rule to method accept
+Iteration 111: "Decrease Method Security" applied at class Declaration to method NameContainer from protected to public
+Iteration 112: "Decrease Method Security" applied at class State to method getState from package to protected
+Iteration 113: "Make Class Non Final" applied to class GrammarBuilder
+Iteration 114: "Make Method Non Final" applied at class State to method getState
+Iteration 115: "Make Method Final" applied at class State to method getState
+Iteration 116: "Make Method Non Final" applied at class State to method getState
+Iteration 117: "Make Method Final" applied at class State to method getState
+Iteration 118: "Make Method Non Final" applied at class State to method getState
+Iteration 119: "Make Method Final" applied at class State to method getState
+Iteration 120: "Make Method Non Final" applied at class State to method getState
+Iteration 121: "Make Method Final" applied at class State to method getState
+Iteration 122: "Make Class Final" applied to class GrammarBuilder
+Iteration 123: "Make Method Final" applied at class BitSet to method add
+Iteration 124: "Make Method Non Final" applied at class State to method getState
+Iteration 125: "Make Method Final" applied at class State to method getState
+Iteration 126: "Make Method Non Final" applied at class State to method getState
+Iteration 127: "Make Method Final" applied at class State to method getState
+Iteration 128: "Make Method Non Final" applied at class State to method getState
+Iteration 129: "Make Class Non Final" applied to class GrammarBuilder
+Iteration 130: "Make Method Final" applied at class State to method getState
+Iteration 131: "Make Method Non Final" applied at class State to method getState
+Iteration 132: "Make Method Final" applied at class State to method getState
+Iteration 133: "Make Method Non Final" applied at class State to method getState
+Iteration 134: "Make Method Final" applied at class State to method getState
+Iteration 135: "Make Method Non Final" applied at class State to method getState
+Iteration 136: "Make Method Final" applied at class State to method getState
+Iteration 137: "Make Class Final" applied to class GrammarBuilder
+Iteration 138: "Make Method Non Final" applied at class State to method getState
+Iteration 139: "Make Method Final" applied at class State to method getState
+Iteration 140: "Make Method Non Final" applied at class State to method getState
+Iteration 141: "Make Method Final" applied at class State to method getState
+Iteration 142: "Make Method Non Final" applied at class State to method getState
+Iteration 143: "Make Class Non Final" applied to class GrammarBuilder
+Iteration 144: "Make Method Final" applied at class State to method getState
+Iteration 145: "Make Method Non Final" applied at class State to method getState
+Iteration 146: "Make Method Final" applied at class State to method getState
+Iteration 147: "Make Method Non Final" applied at class State to method getState
+Iteration 148: "Make Method Final" applied at class State to method getState
+Iteration 149: "Make Method Non Final" applied at class State to method getState
+Iteration 150: "Make Method Final" applied at class State to method getState
+Iteration 151: "Make Method Non Final" applied at class State to method getState
+Iteration 152: "Make Method Final" applied at class State to method getState
+Iteration 153: "Make Method Non Final" applied at class State to method getState
+Iteration 154: "Make Method Final" applied at class State to method getState
+Iteration 155: "Make Method Non Final" applied at class State to method getState
+Iteration 156: "Make Method Final" applied at class State to method getState
+Iteration 157: "Make Class Final" applied to class GrammarBuilder
+Iteration 158: "Make Method Non Final" applied at class State to method getState
+Iteration 159: "Make Method Final" applied at class State to method getState
+Iteration 160: "Make Method Non Final" applied at class State to method getState
+Iteration 161: "Make Method Final" applied at class State to method getState
+Iteration 162: "Make Method Non Final" applied at class State to method getState
+Iteration 163: "Make Class Non Final" applied to class GrammarBuilder
+Iteration 164: "Make Class Final" applied to class GrammarBuilder
+Iteration 165: "Make Method Final" applied at class State to method getState
+Iteration 166: "Make Method Non Final" applied at class State to method getState
+Iteration 167: "Make Method Final" applied at class State to method getState
+Iteration 168: "Make Method Non Final" applied at class State to method getState
+Iteration 169: "Make Method Final" applied at class State to method getState
+Iteration 170: "Make Method Non Final" applied at class State to method getState
+Iteration 171: "Make Class Non Final" applied to class GrammarBuilder
+Iteration 172: "Make Method Final" applied at class State to method getState
+Iteration 173: "Make Method Non Final" applied at class State to method getState
+Iteration 174: "Make Method Final" applied at class State to method getState
+Iteration 175: "Make Method Non Final" applied at class State to method getState
+Iteration 176: "Make Method Final" applied at class State to method getState
+Iteration 177: "Make Class Final" applied to class GrammarBuilder
+Iteration 178: "Make Method Non Final" applied at class State to method getState
+Iteration 179: "Make Method Final" applied at class State to method getState
+Iteration 180: "Make Method Non Final" applied at class State to method getState
+Iteration 181: "Make Class Non Final" applied to class GrammarBuilder
+Iteration 182: "Make Method Final" applied at class State to method getState
+Iteration 183: "Make Method Non Final" applied at class State to method getState
+Iteration 184: "Make Method Final" applied at class State to method getState
+Iteration 185: "Make Method Non Final" applied at class State to method getState
+Iteration 186: "Make Method Final" applied at class State to method getState
+Iteration 187: "Make Method Non Final" applied at class State to method getState
+Iteration 188: "Make Method Final" applied at class State to method getState
+Iteration 189: "Make Class Final" applied to class GrammarBuilder
+Iteration 190: "Make Method Non Final" applied at class State to method getState
+Iteration 191: "Make Method Final" applied at class State to method getState
+Iteration 192: "Make Method Non Final" applied at class State to method getState
+Iteration 193: "Make Class Non Final" applied to class GrammarBuilder
+Iteration 194: "Make Method Final" applied at class State to method getState
+Iteration 195: "Make Method Non Final" applied at class State to method getState
+Iteration 196: "Make Method Final" applied at class State to method getState
+Iteration 197: "Make Method Non Final" applied at class State to method getState
+Iteration 198: "Make Method Final" applied at class State to method getState
+Iteration 199: "Make Class Final" applied to class GrammarBuilder
+Iteration 200: "Make Method Non Final" applied at class State to method getState
+Iteration 201: "Make Method Final" applied at class State to method getState
+Iteration 202: "Make Method Non Final" applied at class State to method getState
+Iteration 203: "Make Class Non Final" applied to class GrammarBuilder
+Iteration 204: "Make Method Final" applied at class State to method getState
+Iteration 205: "Make Method Non Final" applied at class State to method getState
+Iteration 206: "Make Method Final" applied at class State to method getState
+Iteration 207: "Make Method Non Final" applied at class State to method getState
+Iteration 208: "Make Method Final" applied at class State to method getState
+Iteration 209: "Make Class Final" applied to class GrammarBuilder
+Iteration 210: "Make Method Non Final" applied at class State to method getState
+Iteration 211: "Make Method Final" applied at class State to method getState
+Iteration 212: "Make Method Non Final" applied at class State to method getState
+Iteration 213: "Make Method Final" applied at class State to method getState
+Iteration 214: "Make Method Non Final" applied at class State to method getState
+Iteration 215: "Make Class Non Final" applied to class GrammarBuilder
+Iteration 216: "Make Method Final" applied at class State to method getState
+Iteration 217: "Make Method Non Final" applied at class State to method getState
+Iteration 218: "Make Method Final" applied at class State to method getState
+Iteration 219: "Make Method Non Final" applied at class State to method getState
+Iteration 220: "Make Method Final" applied at class State to method getState
+Iteration 221: "Make Method Non Final" applied at class State to method getState
+Iteration 222: "Make Method Final" applied at class State to method getState
+Iteration 223: "Make Method Non Final" applied at class State to method getState
+Iteration 224: "Make Method Final" applied at class State to method getState
+Iteration 225: "Make Class Final" applied to class GrammarBuilder
+Iteration 226: "Make Method Non Final" applied at class State to method getState
+Iteration 227: "Make Method Final" applied at class State to method getState
+Iteration 228: "Make Method Non Final" applied at class State to method getState
+Iteration 229: "Make Method Final" applied at class State to method getState
+Iteration 230: "Make Method Non Final" applied at class State to method getState
+Iteration 231: "Make Class Non Final" applied to class GrammarBuilder
+Iteration 232: "Make Method Final" applied at class State to method getState
+Iteration 233: "Make Method Non Final" applied at class State to method getState
+Iteration 234: "Make Method Final" applied at class State to method getState
+Iteration 235: "Make Method Non Final" applied at class State to method getState
+Iteration 236: "Make Method Final" applied at class State to method getState
+Iteration 237: "Make Method Non Final" applied at class State to method getState
+Iteration 238: "Make Method Final" applied at class State to method getState
+Iteration 239: "Make Method Non Final" applied at class State to method getState
+Iteration 240: "Make Method Final" applied at class State to method getState
+Iteration 241: "Make Method Non Final" applied at class State to method getState
+Iteration 242: "Make Method Final" applied at class State to method getState
+Iteration 243: "Make Method Non Final" applied at class State to method getState
+Iteration 244: "Make Method Final" applied at class State to method getState
+Iteration 245: "Make Class Final" applied to class GrammarBuilder
+Iteration 246: "Make Method Non Final" applied at class State to method getState
+Iteration 247: "Make Method Final" applied at class State to method getState
+Iteration 248: "Make Method Non Final" applied at class State to method getState
+Iteration 249: "Make Method Final" applied at class State to method getState
+Iteration 250: "Make Method Non Final" applied at class State to method getState
+Iteration 251: "Make Class Non Final" applied to class GrammarBuilder
+Iteration 252: "Make Class Final" applied to class GrammarBuilder
+Iteration 253: "Make Method Final" applied at class State to method getState
+Iteration 254: "Make Method Non Final" applied at class State to method getState
+Iteration 255: "Make Method Final" applied at class State to method getState
+Iteration 256: "Make Method Non Final" applied at class State to method getState
+Iteration 257: "Make Method Final" applied at class State to method getState
+Iteration 258: "Make Method Non Final" applied at class State to method getState
+Iteration 259: "Make Class Non Final" applied to class GrammarBuilder
+Iteration 260: "Make Method Final" applied at class State to method getState
+Iteration 261: "Make Method Non Final" applied at class State to method getState
+Iteration 262: "Make Method Final" applied at class State to method getState
+Iteration 263: "Make Method Non Final" applied at class State to method getState
+Iteration 264: "Make Method Final" applied at class State to method getState
+Iteration 265: "Make Class Final" applied to class GrammarBuilder
+Iteration 266: "Make Method Non Final" applied at class State to method getState
+Iteration 267: "Make Method Final" applied at class State to method getState
+Iteration 268: "Make Method Non Final" applied at class State to method getState
+Iteration 269: "Make Class Non Final" applied to class GrammarBuilder
+Iteration 270: "Make Method Final" applied at class State to method getState
+Iteration 271: "Make Method Non Final" applied at class State to method getState
+Iteration 272: "Make Method Final" applied at class State to method getState
+Iteration 273: "Make Method Non Final" applied at class State to method getState
+Iteration 274: "Make Method Final" applied at class State to method getState
+Iteration 275: "Make Method Non Final" applied at class State to method getState
+Iteration 276: "Make Method Final" applied at class State to method getState
+Iteration 277: "Make Class Final" applied to class GrammarBuilder
+Iteration 278: "Make Method Non Final" applied at class State to method getState
+Iteration 279: "Make Method Final" applied at class State to method getState
+Iteration 280: "Make Method Non Final" applied at class State to method getState
+Iteration 281: "Make Class Non Final" applied to class GrammarBuilder
+Iteration 282: "Make Method Final" applied at class State to method getState
+Iteration 283: "Make Method Non Final" applied at class State to method getState
+Iteration 284: "Make Method Final" applied at class State to method getState
+Iteration 285: "Make Method Non Final" applied at class State to method getState
+Iteration 286: "Make Method Final" applied at class State to method getState
+Iteration 287: "Make Class Final" applied to class GrammarBuilder
+Iteration 288: "Make Method Non Final" applied at class State to method getState
+Iteration 289: "Make Method Final" applied at class State to method getState
+Iteration 290: "Make Method Non Final" applied at class State to method getState
+Iteration 291: "Make Class Non Final" applied to class GrammarBuilder
+Iteration 292: "Make Method Final" applied at class State to method getState
+Iteration 293: "Make Method Non Final" applied at class State to method getState
+Iteration 294: "Make Method Final" applied at class State to method getState
+Iteration 295: "Make Method Non Final" applied at class State to method getState
+Iteration 296: "Make Method Final" applied at class State to method getState
+Iteration 297: "Make Class Final" applied to class GrammarBuilder
+Iteration 298: "Make Method Non Final" applied at class State to method getState
+Iteration 299: "Make Method Final" applied at class State to method getState
+Iteration 300: "Make Method Non Final" applied at class State to method getState
+Iteration 301: "Make Method Final" applied at class State to method getState
+Iteration 302: "Make Method Non Final" applied at class State to method getState
+Iteration 303: "Make Class Non Final" applied to class GrammarBuilder
+Iteration 304: "Make Method Final" applied at class State to method getState
+Iteration 305: "Make Method Non Final" applied at class State to method getState
+Iteration 306: "Make Method Final" applied at class State to method getState
+Iteration 307: "Make Method Non Final" applied at class State to method getState
+Iteration 308: "Make Method Final" applied at class State to method getState
+Iteration 309: "Make Method Non Final" applied at class State to method getState
+Iteration 310: "Make Method Final" applied at class State to method getState
+Iteration 311: "Make Method Non Final" applied at class State to method getState
+Iteration 312: "Make Method Final" applied at class State to method getState
+Iteration 313: "Make Method Non Final" applied at class State to method getState
+Iteration 314: "Make Method Final" applied at class State to method getState
+Iteration 315: "Make Method Non Final" applied at class State to method getState
+Iteration 316: "Make Method Final" applied at class State to method getState
+Iteration 317: "Make Method Non Final" applied at class State to method getState
+Iteration 318: "Make Method Final" applied at class State to method getState
+Iteration 319: "Make Method Non Final" applied at class State to method getState
+Iteration 320: "Make Method Final" applied at class State to method getState
+Iteration 321: "Make Method Non Final" applied at class State to method getState
+Iteration 322: "Make Method Final" applied at class State to method getState
+Iteration 323: "Make Method Non Final" applied at class State to method getState
+Iteration 324: "Make Method Final" applied at class State to method getState
+Iteration 325: "Make Method Non Final" applied at class State to method getState
+Iteration 326: "Make Method Final" applied at class State to method getState
+Iteration 327: "Make Class Final" applied to class GrammarBuilder
+Iteration 328: "Make Class Non Final" applied to class GrammarBuilder
+Iteration 329: "Make Method Non Final" applied at class State to method getState
+Iteration 330: "Make Method Final" applied at class State to method getState
+Iteration 331: "Make Method Non Final" applied at class State to method getState
+Iteration 332: "Make Method Final" applied at class State to method getState
+Iteration 333: "Make Method Non Final" applied at class State to method getState
+Iteration 334: "Make Method Final" applied at class State to method getState
+Iteration 335: "Make Method Non Final" applied at class State to method getState
+Iteration 336: "Make Method Final" applied at class State to method getState
+Iteration 337: "Make Class Final" applied to class GrammarBuilder
+Iteration 338: "Make Method Non Final" applied at class State to method getState
+Iteration 339: "Make Method Final" applied at class State to method getState
+Iteration 340: "Make Method Non Final" applied at class State to method getState
+Iteration 341: "Make Method Final" applied at class State to method getState
+Iteration 342: "Make Method Non Final" applied at class State to method getState
+Iteration 343: "Make Class Non Final" applied to class GrammarBuilder
+Iteration 344: "Make Method Final" applied at class State to method getState
+Iteration 345: "Make Method Non Final" applied at class State to method getState
+Iteration 346: "Make Method Final" applied at class State to method getState
+Iteration 347: "Make Method Non Final" applied at class State to method getState
+Iteration 348: "Make Method Final" applied at class State to method getState
+Iteration 349: "Make Method Non Final" applied at class State to method getState
+Iteration 350: "Make Method Final" applied at class State to method getState
+Iteration 351: "Make Method Non Final" applied at class State to method getState
+Iteration 352: "Make Method Final" applied at class State to method getState
+Iteration 353: "Make Method Non Final" applied at class State to method getState
+Iteration 354: "Make Method Final" applied at class State to method getState
+Iteration 355: "Make Method Non Final" applied at class State to method getState
+Iteration 356: "Remove Field" applied at class GrammarScanner to field zzEOFDone
+Iteration 357: "Make Method Static" applied at class Declaration to method accept
+Iteration 358: "Make Class Final" applied to class Grammar
+Iteration 359: "Make Field Static" applied at class GrammarTreeRoot to field declarations
+Iteration 360: "Make Class Final" applied to class Exception
+Iteration 361: "Decrease Field Security" applied at class ParserGenerator to field rule_descr from private to package
+Iteration 362: "Make Class Concrete" applied to class GrammarSymbol
+Iteration 363: "Make Field Non Static" applied at class Production to field NONE
+Iteration 364: "Remove Field" applied at class GrammarScanner to field yychar
+Iteration 365: "Make Class Final" applied to class ParserGenerator
+Iteration 366: "Make Class Abstract" applied to class GrammarSymbol
+Iteration 367: "Make Class Non Final" applied to class ParserGenerator
+Iteration 368: "Decrease Method Security" applied at class State to method buildShiftsFrom from private to package
+Iteration 369: "Decrease Method Security" applied at class Terminal to method Associativity from private to package
+Iteration 370: "Make Class Final" applied to class ShiftReduce
+Iteration 371: "Decrease Field Security" applied at class ParserGenerator to field rule_descr from package to protected
+Iteration 372: "Make Class Final" applied to class Make
+Iteration 373: "Make Method Non Final" applied at class Production to method start
+
+Score has improved overall by 1.061221
+Time taken to refactor: 170.50s
+
+======== Final Metric Info ========
+Average ratio of private/package/protected attributes to overall attributes per class: 0.420412
+Average coupling per class: 1.728571
+Average cohesion among methods per class: 0.440603
+Average amount of user defined attributes declared per class: 1.000000
+Average functional abstraction per class: 0.296062
+Average amount of polymorphic methods per class: 0.357143
+Average amount of public methods per class: 2.400000
+Average amount of methods per class: 4.414286
+Average amount of complexity of methods per class: 63.599998
+Ratio of interfaces to overall amount of classes: 0.000000
+Average ratio of abstract classes/methods per class: 0.071905
+Average ratio of static classes/methods/variables per class: 0.265098
+Average ratio of final classes/methods/variables per class: 0.108703
+Average ratio of constant classes/methods/variables per class: 0.080666
+Ratio of inner classes to overall amount of ordinary classes in project: 0.657143
+Average inherited referenced methods ratio per class: 0.022487
+Average visibility ratio per class: 0.621640
+Amount of lines of code in project: 6493
+Overall fitness function score: 1.061221
