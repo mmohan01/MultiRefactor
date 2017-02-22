@@ -153,22 +153,13 @@ public class RemoveInterface extends Refactoring
 
 		return absolutePosition;
 	}
-	
-	public String getName(int unit, int element)
-	{
-		TreeWalker tw = new TreeWalker(getSourceFileRepository().getKnownCompilationUnits().get(unit));
-
-		for (int i = 0; i < element; i++)
-			tw.next(InterfaceDeclaration.class);
 		
-		InterfaceDeclaration id = (InterfaceDeclaration) tw.getProgramElement();
-		return id.getName();
-	}
-	
-	public int checkElements(int unit, String name)
+	public int checkElements(int unit, String refactoringInfo)
 	{		
 		TreeWalker tw = new TreeWalker(getSourceFileRepository().getKnownCompilationUnits().get(unit));
 		int element = 0;
+		int from  = refactoringInfo.indexOf(" interface ") + 11;
+		String name = refactoringInfo.substring(from,  refactoringInfo.length());
 
 		while (tw.next(InterfaceDeclaration.class))
 		{

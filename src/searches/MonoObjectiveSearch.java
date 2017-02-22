@@ -251,7 +251,7 @@ public class MonoObjectiveSearch extends GeneticAlgorithmSearch
 		
 		for (int i = 0; i < p.getRefactorings().size(); i++)
 		{
-			int unitPosition = super.unitPosition(p.getNames().get(i)[0]);
+			int unitPosition = super.unitPosition(p.getNames().get(i));
 			super.c.getRefactorings().get(p.getRefactorings().get(i)).transform(super.c.getRefactorings().get(p.getRefactorings().get(i))
 				   .analyze((i + 1), unitPosition, p.getPositions().get(i)));
 		}
@@ -441,7 +441,7 @@ public class MonoObjectiveSearch extends GeneticAlgorithmSearch
 		// Reconstruct model so it can be printed.
 		for (int i = 0; i < solution.getRefactorings().size(); i++)
 		{
-			unitPosition = super.unitPosition(solution.getNames().get(i)[0]);
+			unitPosition = super.unitPosition(solution.getNames().get(i));
 			super.c.getRefactorings().get(solution.getRefactorings().get(i)).transform(super.c.getRefactorings().get(solution.getRefactorings().get(i))
 				   .analyze((i + 1), unitPosition, solution.getPositions().get(i)));
 		}

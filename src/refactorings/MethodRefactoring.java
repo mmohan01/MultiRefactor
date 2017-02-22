@@ -51,22 +51,14 @@ public abstract class MethodRefactoring extends Refactoring
 
 		return absolutePosition;
 	}
-	
-	public String getName(int unit, int element)
-	{		
-		TreeWalker tw = new TreeWalker(getSourceFileRepository().getKnownCompilationUnits().get(unit));
-
-		for (int i = 0; i < element; i++)
-			tw.next(MethodDeclaration.class);
-
-		MethodDeclaration md = (MethodDeclaration) tw.getProgramElement();
-		return md.getName();
-	}
-	
-	public int checkElements(int unit, String name)
+		
+	public int checkElements(int unit, String refactoringInfo)
 	{		
 		TreeWalker tw = new TreeWalker(getSourceFileRepository().getKnownCompilationUnits().get(unit));
 		int element = 0;
+		int from  = refactoringInfo.indexOf(" to method ") + 11;
+		int to = (refactoringInfo.indexOf(' ', from) == -1) ? refactoringInfo.length() : refactoringInfo.indexOf(' ', from);
+		String name = refactoringInfo.substring(from,  to);
 
 		while (tw.next(MethodDeclaration.class))
 		{

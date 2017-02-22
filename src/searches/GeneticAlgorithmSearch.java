@@ -72,7 +72,7 @@ public abstract class GeneticAlgorithmSearch extends Search
 		int refactoringAmount = ((int)(Math.random() * initialRefactoringRange)) + 1;
 		ArrayList<Integer> posSequence = new ArrayList<Integer>(refactoringAmount);
 		ArrayList<Integer> refSequence = new ArrayList<Integer>(refactoringAmount);
-		ArrayList<String[]> nameSequence = new ArrayList<String[]>(refactoringAmount);
+		ArrayList<String> nameSequence = new ArrayList<String>(refactoringAmount);
 		ArrayList<String> refactoringInfo = new ArrayList<String>(refactoringAmount);
 		ArrayList<String> affectedClasses = new ArrayList<String>(refactoringAmount);
 		HashMap<String, Integer> elementDiversity = new HashMap<String, Integer>();
@@ -89,8 +89,7 @@ public abstract class GeneticAlgorithmSearch extends Search
 			}
 			else
 			{						
-				nameSequence.add(new String[]{super.sc.getSourceFileRepository().getKnownCompilationUnits().get(result[1]).getName(),
-						         refactorings.get(result[0]).getName(result[1], result[2])});
+				nameSequence.add(super.sc.getSourceFileRepository().getKnownCompilationUnits().get(result[1]).getName());
 				refactorings.get(result[0]).transform(refactorings.get(result[0]).analyze((j + 1), result[1], result[2]));
 				refactoringInfo.add(refactorings.get(result[0]).getRefactoringInfo());
 				affectedClasses.addAll(refactorings.get(result[0]).getAffectedClasses());
@@ -139,7 +138,7 @@ public abstract class GeneticAlgorithmSearch extends Search
 		int size = cutPoint1 + (p2.getRefactorings().size() - cutPoint2);
 		ArrayList<Integer> refactorings = new ArrayList<Integer>(size);
 		ArrayList<Integer> positions = new ArrayList<Integer>(size);
-		ArrayList<String[]> names = new ArrayList<String[]>(size);
+		ArrayList<String> names = new ArrayList<String>(size);
 		ArrayList<String> refactoringInfo = new ArrayList<String>(size);
 		ArrayList<String> affectedClasses = new ArrayList<String>(size);
 		HashMap<String, Integer> elementDiversity = new HashMap<String, Integer>();
@@ -152,7 +151,7 @@ public abstract class GeneticAlgorithmSearch extends Search
 			// so refactorings can be applied without checking.
 			if (i < cutPoint1)
 			{
-				unitPosition = unitPosition(p1.getNames().get(i)[0]);
+				unitPosition = unitPosition(p1.getNames().get(i));
 				refactoringList.get(p1.getRefactorings().get(i)).transform(refactoringList.get(p1.getRefactorings().get(i))
 						       .analyze((i + 1), unitPosition, p1.getPositions().get(i)));
 				refactoringInfo.add(p1.getRefactoringInfo().get(i));
@@ -168,12 +167,12 @@ public abstract class GeneticAlgorithmSearch extends Search
 			{		
 				elementPosition = -1;
 				i2 = cutPoint2 + (i - cutPoint1);
-				unitPosition = unitPosition(p2.getNames().get(i2)[0]);
+				unitPosition = unitPosition(p2.getNames().get(i2));
 
 				// Checks for the relevant program element by comparing the names of each element in the class
 				//  with the desired element name and returning the position if it can be found and refactored.
 				if (unitPosition != -1)
-					elementPosition = refactoringList.get(p2.getRefactorings().get(i2)).checkElements(unitPosition, p2.getNames().get(i2)[1]);
+					elementPosition = refactoringList.get(p2.getRefactorings().get(i2)).checkElements(unitPosition, p2.getRefactoringInfo().get(i2));
 
 				// If the element exists and can be refactored.
 				if (elementPosition != -1)
@@ -258,7 +257,7 @@ public abstract class GeneticAlgorithmSearch extends Search
 				
 		for (int i = 0; i < p.getRefactorings().size(); i++)
 		{
-			int unitPosition = unitPosition(p.getNames().get(i)[0]);
+			int unitPosition = unitPosition(p.getNames().get(i));
 			refactorings.get(p.getRefactorings().get(i)).transform(refactorings.get(p.getRefactorings().get(i))
 					    .analyze((i + 1), unitPosition, p.getPositions().get(i)));
 		}
@@ -473,7 +472,7 @@ public abstract class GeneticAlgorithmSearch extends Search
  		refSequence = p.getRefactorings();
  		ArrayList<Integer> posSequence = new ArrayList<Integer>(p.getPositions().size() + 1);
  		posSequence = p.getPositions();
- 		ArrayList<String[]> nameSequence = new ArrayList<String[]>(p.getNames().size() + 1);
+ 		ArrayList<String> nameSequence = new ArrayList<String>(p.getNames().size() + 1);
  		nameSequence = p.getNames();
  		ArrayList<String> refactoringInfo = new ArrayList<String>(p.getRefactoringInfo().size() + 1);
  		refactoringInfo = p.getRefactoringInfo();
@@ -484,8 +483,7 @@ public abstract class GeneticAlgorithmSearch extends Search
 
  		refSequence.add(result[0]);
  		posSequence.add(result[2]);
- 		nameSequence.add(new String[]{super.sc.getSourceFileRepository().getKnownCompilationUnits().get(result[1]).getName(),
- 				         refactorings.get(result[0]).getName(result[1], result[2])});
+ 		nameSequence.add(super.sc.getSourceFileRepository().getKnownCompilationUnits().get(result[1]).getName());
  		refactorings.get(result[0]).transform(refactorings.get(result[0]).analyze(refSequence.size(), result[1], result[2]));
  		refactoringInfo.add(refactorings.get(result[0]).getRefactoringInfo());
  		affectedClasses.addAll(refactorings.get(result[0]).getAffectedClasses());

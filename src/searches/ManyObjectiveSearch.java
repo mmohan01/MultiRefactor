@@ -153,7 +153,7 @@ public class ManyObjectiveSearch extends GeneticAlgorithmSearch
 			// Reconstruct model so it can be printed.
 			for (int j = 0; j < population.get(i).getRefactorings().size(); j++)
 			{
-				unitPosition = super.unitPosition(population.get(i).getNames().get(j)[0]);
+				unitPosition = super.unitPosition(population.get(i).getNames().get(j));
 				this.refactorings.get(population.get(i).getRefactorings().get(j))
 				                 .transform(this.refactorings.get(population.get(i).getRefactorings().get(j))
 						         .analyze((j + 1), unitPosition, population.get(i).getPositions().get(j)));

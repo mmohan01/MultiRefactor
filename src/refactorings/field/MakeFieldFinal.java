@@ -141,21 +141,12 @@ public class MakeFieldFinal extends Refactoring
 		return absolutePosition;
 	}
 	
-	public String getName(int unit, int element)
-	{
-		TreeWalker tw = new TreeWalker(getSourceFileRepository().getKnownCompilationUnits().get(unit));
-
-		for (int i = 0; i < element; i++)
-			tw.next(VariableDeclaration.class);
-			
-		VariableDeclaration vd = (VariableDeclaration) tw.getProgramElement();
-		return vd.toString();
-	}
-	
-	public int checkElements(int unit, String name)
+	public int checkElements(int unit, String refactoringInfo)
 	{		
 		TreeWalker tw = new TreeWalker(getSourceFileRepository().getKnownCompilationUnits().get(unit));
 		int element = 0;
+		int from  = refactoringInfo.lastIndexOf(' ') + 1;
+		String name = refactoringInfo.substring(from,  refactoringInfo.length());
 
 		while (tw.next(VariableDeclaration.class))
 		{

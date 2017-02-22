@@ -65,13 +65,10 @@ public abstract class Refactoring extends TwoPassTransformation
 	// is in relation to the other elements of that type
 	// type and not to whether they can be refactored or not.
 	public abstract int getAbsolutePosition(int unit, int element);
-
-	// Returns a string to represent a name for the corresponding element.
-	public abstract String getName(int unit, int element);
 	
 	// Finds the relevant element in the compilation unit using its name and
 	// returns its position if it can be refactored with the current refactoring.
-	public abstract int checkElements(int unit, String name);
+	public abstract int checkElements(int unit, String refactoringInfo);
 	
 	public ProblemReport analyze(int iteration, String name, int element)
 	{

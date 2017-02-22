@@ -244,7 +244,7 @@ public class MoveFieldDown extends FieldRefactoring
 			List<ClassType> exclude = new ArrayList<ClassType>();
 
 			for (ClassType ct : subtypes)
-				if (ct.getName() == null)
+				if ((ct.getName() == null) || !(ct instanceof ClassDeclaration))
 					exclude.add(ct);
 
 			subtypes.removeAll(exclude);
@@ -253,10 +253,7 @@ public class MoveFieldDown extends FieldRefactoring
 			// Check each child class to see if the field can be accessed from the class.
 			for (int i = 0; i < subtypes.size(); i++)
 			{
-				if (subtypes.get(i) instanceof ClassDeclaration)
-					std = (TypeDeclaration) si.getSubtypes(td).get(i);
-				else continue;
-				
+				std = (TypeDeclaration) subtypes.get(i);
 				boolean next = false;
 				
 				// Checks if a field with the same name is in the sub class that isn't identical.
@@ -476,7 +473,35 @@ public class MoveFieldDown extends FieldRefactoring
 			return false;
 		}
 	}
+	
+	// For this refactoring a subclass is chosen to move to if there are multiple options.
+	// This override of the method checks that, not only is the refactoring applicable,
+	// but it is also being applied in the same way by moving to the same subclass.
+	public int checkElements(int unit, String refactoringInfo)
+	{		
+		TreeWalker tw = new TreeWalker(getSourceFileRepository().getKnownCompilationUnits().get(unit));
+		int element = 0;
+		int from  = refactoringInfo.indexOf(" to field ") + 10;
+		int to = refactoringInfo.indexOf(' ', from);
+		String name = refactoringInfo.substring(from,  to);
+		
+		from = refactoringInfo.lastIndexOf(" to ") + 4; 
+		String subclassName = refactoringInfo.substring(from, refactoringInfo.length());
 
+		while (tw.next(FieldDeclaration.class))
+		{
+			element++;
+			FieldDeclaration fd = (FieldDeclaration) tw.getProgramElement();
+			
+			if ((fd.toString() != null) && (fd.toString().equals(name)))
+			{
+				return ((mayRefactor(fd)) && (this.subDeclaration.getName().equals(subclassName))) ? element : -1;
+			}
+		}
+		
+		return -1;
+	}
+	
 	// This inner class allows sorting by name so that the list is sorted alphanumerically by the class names.
 	private class NameComparator implements Comparator<ClassType> 
 	{

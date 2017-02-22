@@ -12,12 +12,12 @@ public class RefactoringSequence
 	
 	private ArrayList<Integer> refactorings;
 	private ArrayList<Integer> positions;
-	private ArrayList<String[]> names;
+	private ArrayList<String> names;
 	private ArrayList<String> refactoringInfo;
 	private ArrayList<String> affectedClasses;
 	private HashMap<String, Integer> elementDiversity;
 
-	public RefactoringSequence(ArrayList<Integer> refactorings, ArrayList<Integer> positions, ArrayList<String[]> names, 
+	public RefactoringSequence(ArrayList<Integer> refactorings, ArrayList<Integer> positions, ArrayList<String> names, 
 			                   ArrayList<String> refactoringInfo) 
 	{
 		this.fitness = 1.0f;
@@ -31,7 +31,7 @@ public class RefactoringSequence
 	}
 
 	// Constructor used to store information for priority objective.
-	public RefactoringSequence(ArrayList<Integer> refactorings, ArrayList<Integer> positions, ArrayList<String[]> names, 
+	public RefactoringSequence(ArrayList<Integer> refactorings, ArrayList<Integer> positions, ArrayList<String> names, 
 							   ArrayList<String> refactoringInfo, ArrayList<String> affectedClasses) 
 	{
 		this.fitness = 1.0f;
@@ -46,7 +46,7 @@ public class RefactoringSequence
 	}
 
 	// Constructor used to store information for diversity objective.
-	public RefactoringSequence(ArrayList<Integer> refactorings, ArrayList<Integer> positions, ArrayList<String[]> names, 
+	public RefactoringSequence(ArrayList<Integer> refactorings, ArrayList<Integer> positions, ArrayList<String> names, 
 			                   ArrayList<String> refactoringInfo, HashMap<String, Integer> elementDiversity) 
 	{
 		this.fitness = 1.0f;
@@ -61,7 +61,7 @@ public class RefactoringSequence
 	}
 	
 	// Constructor used to store information for both the priority and diversity objectives.
-	public RefactoringSequence(ArrayList<Integer> refactorings, ArrayList<Integer> positions, ArrayList<String[]> names, 
+	public RefactoringSequence(ArrayList<Integer> refactorings, ArrayList<Integer> positions, ArrayList<String> names, 
 							   ArrayList<String> refactoringInfo, ArrayList<String> affectedClasses, HashMap<String, Integer> elementDiversity) 
 	{
 		this.fitness = 1.0f;
@@ -136,12 +136,12 @@ public class RefactoringSequence
 		this.positions = positions;
 	}
 	
-	public ArrayList<String[]> getNames()
+	public ArrayList<String> getNames()
 	{
 		return this.names;
 	}
 	
-	public void setNames(ArrayList<String[]> names)
+	public void setNames(ArrayList<String> names)
 	{
 		this.names = names;
 	}

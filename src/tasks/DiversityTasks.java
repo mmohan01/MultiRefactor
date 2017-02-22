@@ -328,8 +328,6 @@ public class DiversityTasks extends Tasks
 			refactorings.add(rm);
 			RemoveField rf = new RemoveField(sc);
 			refactorings.add(rf);
-			ExtractSubclass es = new ExtractSubclass(sc);
-			refactorings.add(es);
 			CollapseHierarchy ch = new CollapseHierarchy(sc);
 			refactorings.add(ch);
 			

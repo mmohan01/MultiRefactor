@@ -259,7 +259,7 @@ public class MoveMethodDown extends MethodRefactoring
 			List<ClassType> exclude = new ArrayList<ClassType>();
 
 			for (ClassType ct : subtypes)
-				if (ct.getName() == null)
+				if ((ct.getName() == null) || !(ct instanceof ClassDeclaration))
 					exclude.add(ct);
 
 			subtypes.removeAll(exclude);
@@ -269,10 +269,7 @@ public class MoveMethodDown extends MethodRefactoring
 			// of the method can be accessed from the class.
 			for (int i = 0; i < subtypes.size(); i++)
 			{
-				if (subtypes.get(i) instanceof ClassDeclaration)
-					std = (TypeDeclaration) subtypes.get(i);
-				else continue;
-				
+				std = (TypeDeclaration) subtypes.get(i);
 				boolean next = false;
 				
 				// Check if the sub class contains an unrelated method with the same name.
@@ -486,7 +483,33 @@ public class MoveMethodDown extends MethodRefactoring
 			return false;
 		}
 	}
+	
+	// For this refactoring a subclass is chosen to move to if there are multiple options.
+	// This override of the method checks that, not only is the refactoring applicable,
+	// but it is also being applied in the same way by moving to the same subclass.
+	public int checkElements(int unit, String refactoringInfo)
+	{		
+		TreeWalker tw = new TreeWalker(getSourceFileRepository().getKnownCompilationUnits().get(unit));
+		int element = 0;
+		int from  = refactoringInfo.indexOf(" to method ") + 11;
+		int to = (refactoringInfo.indexOf(' ', from) == -1) ? refactoringInfo.length() : refactoringInfo.indexOf(' ', from);
+		String name = refactoringInfo.substring(from,  to);
 		
+		from = refactoringInfo.lastIndexOf(" to ") + 4; 
+		String subclassName = refactoringInfo.substring(from,  refactoringInfo.length());
+
+		while (tw.next(MethodDeclaration.class))
+		{
+			element++;
+			MethodDeclaration md = (MethodDeclaration) tw.getProgramElement();
+			
+			if ((md.getName() != null) && (md.getName().equals(name)))
+				return ((mayRefactor(md)) && (this.subDeclaration.getName().equals(subclassName))) ? element : -1;
+		}
+		
+		return -1;
+	}
+	
 	// This inner class allows sorting by name so that the list is sorted alphanumerically by the class names.
 	private class NameComparator implements Comparator<ClassType> 
 	{

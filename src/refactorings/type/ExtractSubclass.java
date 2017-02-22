@@ -1,6 +1,8 @@
 package refactorings.type;
 
 import java.util.ArrayList;
+import java.util.Arrays;
+import java.util.Collections;
 import java.util.HashSet;
 import java.util.Map;
 import java.util.Set;
@@ -699,6 +701,48 @@ public class ExtractSubclass extends TypeRefactoring
 
 			return false;
 		}
+	}
+	
+	// For this refactoring a selection of elements is to be chosen to extract. This
+	// override of the method checks that, not only is the refactoring applicable, but
+	// it is also being applied in the same way by extracting the same list of elements.
+	public int checkElements(int unit, String refactoringInfo)
+	{		
+		TreeWalker tw = new TreeWalker(getSourceFileRepository().getKnownCompilationUnits().get(unit));
+		int element = 0, last;
+		int from  = refactoringInfo.indexOf(" class ") + 7;
+		int to = (refactoringInfo.indexOf(' ', from) == -1) ? refactoringInfo.length() : refactoringInfo.indexOf(' ', from);
+		String name = refactoringInfo.substring(from,  to);
+		
+		from = refactoringInfo.indexOf(" element(s) ") + 13; 
+		to = refactoringInfo.indexOf(" in class ") - 1;
+		String[] elementNames = refactoringInfo.substring(from, to).split(", ");
+		Arrays.sort(elementNames);
+		
+		while (tw.next(TypeDeclaration.class))
+		{
+			element++;
+			TypeDeclaration td = (TypeDeclaration) tw.getProgramElement();
+			
+			if ((td.getName() != null) && (td.getName().equals(name)) && (mayRefactor(td)))
+			{
+				ArrayList<String> elements = new ArrayList<String>();				
+
+				for (MethodDeclaration md : this.methods)
+					elements.add(md.getName());
+
+				for (FieldDeclaration fd : this.fields)
+				{
+					last = fd.toString().lastIndexOf(">");
+					elements.add(fd.toString().substring(last + 2));
+				}
+
+				Collections.sort(elements);
+				return (Arrays.equals(elements.toArray(), elementNames)) ? element : -1;
+			}
+		}
+
+		return -1;
 	}
 	
 	private ArrayList<String> getAllTypeNames()
