@@ -10,113 +10,74 @@ Fitness function 1 score: 0.000000
 Fitness function 2 score: 0.000000
 
 ======== Applied Refactorings ========
-Iteration 1: "Decrease Method Security" applied at class ElementLister to method printSpaces from private to package
-Iteration 2: "Move Method Down" applied to method findActualBaseURI from ParentNode to Element
-Iteration 3: "Make Class Final" applied to class StreamingTextExtractor
-Iteration 4: "Make Class Final" applied to class NodeLister
-Iteration 5: "Make Field Non Static" applied at class InnerElement to field builders
-Iteration 6: "Make Method Non Final" applied at class ParsingException to method initCause
-Iteration 7: "Increase Method Security" applied at class EncodingHeuristics to method readEncodingFromStream from public to protected
-Iteration 8: "Increase Method Security" applied at class Canonicalizer to method setInclusiveNamespacePrefixList from public to protected
-Iteration 9: "Remove Field" applied at class BadHrefAttributeException to field serialVersionUID
-Iteration 10: "Decrease Method Security" applied at class URIUtil to method relativize from package to protected
-Iteration 11: "Make Method Final" applied at class FibonacciEBCDIC to method main
-Iteration 12: "Decrease Method Security" applied at class FibonacciXMLRPCClient to method handleFault from private to package
-Iteration 13: "Remove Method" applied at class Nodes to method insert
-Iteration 14: "Decrease Method Security" applied at class TextWriter to method writeName from package to protected
-Iteration 15: "Decrease Method Security" applied at class Account to method Account from private to package
-Iteration 16: "Decrease Method Security" applied at class UnicodeWriter to method writePCDATA from package to protected
-Iteration 17: "Make Field Non Final" applied at class XOMSource to FieldDeclaration source
-Iteration 18: "Decrease Method Security" applied at class Builder to method findParser from package to protected
-Iteration 19: "Make Method Non Final" applied at class XSLException to method initCause
-Iteration 20: "Move Method Up" applied to method rot13 from StreamingROT13 to NodeFactory
-Iteration 21: "Move Method Down" applied to method toString from Text to CDATASection
-Iteration 22: "Make Field Static" applied at class IllegalDataException to field data
-Iteration 23: "Decrease Method Security" applied at class Latin3Writer to method Latin3Writer from package to protected
-Iteration 24: "Increase Field Security" applied at class StreamingXHTMLPurifier to field XHTML_NAMESPACE from public to protected
-Iteration 25: "Make Method Non Final" applied at class Canonicalizer to method setInclusiveNamespacePrefixList
-Iteration 26: "Make Field Static" applied at class Elements to field elements
-Iteration 27: "Make Field Static" applied at class Account to field code
-Iteration 28: "Make Field Static" applied at class XPathTypeException to field returnValue
-Iteration 29: "Make Method Non Final" applied at class Serializer to method writeEscaped
-Iteration 30: "Remove Method" applied at class XPathContext to method makeNamespaceContext
-Iteration 31: "Decrease Method Security" applied at class Comment to method isComment from package to protected
-Iteration 32: "Make Method Static" applied at class StreamingROT13 to method makeAttribute
-Iteration 33: "Decrease Method Security" applied at class WrappingSerializer to method writeStartTag from protected to public
-Iteration 34: "Make Method Static" applied at class XPathContext to method getJaxenContext
-Iteration 35: "Make Method Final" applied at class HelloWorld to method main
-Iteration 36: "Make Field Non Final" applied at class XPointerResourceException to FieldDeclaration serialVersionUID
-Iteration 37: "Make Method Non Static" applied at class XHTMLPurifier to method strip
-Iteration 38: "Make Method Static" applied at class DocType to method getValue
-Iteration 39: "Make Method Static" applied at class XSLTransform to method warning
-Iteration 40: "Decrease Method Security" applied at class ExampleLister to method printExample from private to package
-Iteration 41: "Remove Field" applied at class NoIncludeLocationException to field serialVersionUID
-Iteration 42: "Make Method Static" applied at class DatabaseBuilder to method escapeChar
-Iteration 43: "Make Method Non Static" applied at class SourceCodeSerializer to method escapeText
-Iteration 44: "Move Method Up" applied to method getInnerXML from InnerElement to Element
-Iteration 45: "Make Class Final" applied to class CrimsonPrinter
-Iteration 46: "Make Method Non Static" applied at class ROT13XML to method rot13
-Iteration 47: "Make Class Non Final" applied to class XPathContext
-Iteration 48: "Increase Field Security" applied at class URIJoiner to field schemeSpecificPart from package to private
-Iteration 49: "Make Method Non Static" applied at class Attribute to method normalize
-Iteration 50: "Make Class Final" applied to class AttributesXMLBudget
-Iteration 51: "Increase Field Security" applied at class FibonacciSOAPClient to field defaultServer from public to protected
-Iteration 52: "Make Class Abstract" applied to class XPointerException
-Iteration 53: "Decrease Method Security" applied at class StreamingElementLister to method printSpaces from private to package
-Iteration 54: "Decrease Method Security" applied at class Latin3Writer to method needsEscaping from package to protected
-Iteration 55: "Make Method Static" applied at class DocumentFragment to method isDocumentFragment
-Iteration 56: "Remove Field" applied at class JaxenConnector to field serialVersionUID
-Iteration 57: "Decrease Method Security" applied at class ASCIIWriter to method ASCIIWriter from package to protected
-Iteration 58: "Increase Field Security" applied at class FibonacciXOMXMLRPCServlet to field MALFORMED_REQUEST_DOCUMENT from public to protected
-Iteration 59: "Make Method Non Static" applied at class FibonacciXOMXMLRPCServlet to method calculateFibonacci
-Iteration 60: "Make Method Static" applied at class Element to method attributeIterator
-Iteration 61: "Make Field Static" applied at class Nodes to field nodes
-Iteration 62: "Remove Field" applied at class ParsingException to field serialVersionUID
-Iteration 63: "Make Method Final" applied at class ExampleExtractor to method extract
-Iteration 64: "Decrease Field Security" applied at class TextWriter to field _128 from private to package
-Iteration 65: "Make Method Static" applied at class Serializer to method hasNonTextChildren
-Iteration 66: "Make Method Non Static" applied at class Verifier to method loadFlags
-Iteration 67: "Decrease Field Security" applied at class NamespaceConflictException to field serialVersionUID from private to package
-Iteration 68: "Decrease Method Security" applied at class Latin4Writer to method needsEscaping from package to protected
-Iteration 69: "Make Method Final" applied at class XHTMLPurifier to method main
-Iteration 70: "Make Method Static" applied at class Builder to method fatalError
-Iteration 71: "Decrease Method Security" applied at class Agency to method Agency from private to package
-Iteration 72: "Make Method Static" applied at class Latin7Writer to method needsEscaping
-Iteration 73: "Make Field Final" applied at class SchemaValidator to ParameterDeclaration ex
-Iteration 74: "Make Class Non Final" applied to class XSLTransform
-Iteration 75: "Make Class Non Final" applied to class Type
-Iteration 76: "Remove Method" applied at class DatabaseConverter to method extract
-Iteration 77: "Decrease Method Security" applied at class Latin9Writer to method needsEscaping from package to protected
-Iteration 78: "Make Class Concrete" applied to class XPointerException
-Iteration 79: "Move Method Up" applied to method writeText from TextSerializer to Serializer
-Iteration 80: "Make Field Non Static" applied at class IllegalNameException to field serialVersionUID
-Iteration 81: "Move Method Up" applied to method isDocument from Document to ParentNode
-Iteration 82: "Increase Method Security" applied at class ExampleExtractor to method extract from public to protected
-Iteration 83: "Increase Method Security" applied at class XHTMLValidator to method main from public to protected
-Iteration 84: "Decrease Method Security" applied at class EncodingHeuristics to method EncodingHeuristics from private to package
-Iteration 85: "Make Method Final" applied at class PureValidator to method main
-Iteration 86: "Decrease Method Security" applied at class StreamingElementLister to method printSpaces from package to protected
-Iteration 87: "Decrease Method Security" applied at class StreamingElementLister to method printSpaces from protected to public
-Iteration 88: "Make Method Final" applied at class XOMHandler to method inInternalSubset
-Iteration 89: "Move Method Down" applied to method isText from Text to CDATASection
-Iteration 90: "Make Method Non Final" applied at class XOMHandler to method inInternalSubset
-Iteration 91: "Decrease Method Security" applied at class JaxenNavigator to method NamedChildIterator from package to protected
-Iteration 92: "Decrease Method Security" applied at class XOMInputSource to method XOMInputSource from package to protected
-Iteration 93: "Decrease Field Security" applied at class Text to field data from private to package
-Iteration 94: "Make Class Final" applied to class ManyNamespaces
-Iteration 95: "Increase Field Security" applied at class TextWriter to field justBroke from protected to package
-Iteration 96: "Make Class Final" applied to class MalformedURIException
-Iteration 97: "Make Method Final" applied at class PseudoAttributes to method getAttributes
-Iteration 98: "Make Class Abstract" applied to class XPointerException
-Iteration 99: "Move Field Up" applied to field data from Text to Node
-Iteration 100: "Make Method Non Static" applied at class XPointer to method findByID
-Iteration 101: "Make Method Non Final" applied at class ProcessingInstruction to method toString
-Iteration 102: "Remove Method" applied at class Element to method insertChild
-Iteration 103: "Decrease Method Security" applied at class Agency to method Agency from package to protected
-Iteration 104: "Decrease Field Security" applied at class JaxenNavigator to field serialVersionUID from private to package
+Iteration 1: "Make Field Non Final" applied at class XSLException to FieldDeclaration serialVersionUID
+Iteration 2: "Decrease Method Security" applied at class Comment to method isComment from package to protected
+Iteration 3: "Decrease Method Security" applied at class Builder to method setupParser from private to package
+Iteration 4: "Make Method Final" applied at class EncodingDemo to method main
+Iteration 5: "Decrease Method Security" applied at class Bureau to method Bureau from private to package
+Iteration 6: "Decrease Method Security" applied at class StreamingXHTMLPurifier to method inXHTML from private to package
+Iteration 7: "Remove Method" applied at class XIncludeException to method getURI
+Iteration 8: "Move Method Down" applied to method hashCode from Node to Attribute
+Iteration 9: "Decrease Method Security" applied at class TreeWalker to method serializeUTF16 from private to package
+Iteration 10: "Make Class Final" applied to class EmptyNamespaceContext
+Iteration 11: "Make Method Non Final" applied at class CanonicalizationException to method getCause
+Iteration 12: "Move Method Down" applied to method toString from Text to CDATASection
+Iteration 13: "Increase Method Security" applied at class HelloXMLBase to method main from public to protected
+Iteration 14: "Remove Method" applied at class ValidityException to method getDocument
+Iteration 15: "Decrease Method Security" applied at class Namespaces to method put from package to protected
+Iteration 16: "Decrease Method Security" applied at class StreamingNodeLister to method printSpaces from private to package
+Iteration 17: "Decrease Method Security" applied at class ISOCyrillicWriter to method needsEscaping from package to protected
+Iteration 18: "Make Class Final" applied to class Latin8Writer
+Iteration 19: "Make Class Final" applied to class FibonacciXMLRPCClient
+Iteration 20: "Make Method Static" applied at class ISOArabicWriter to method needsEscaping
+Iteration 21: "Make Method Static" applied at class StreamingROT13 to method makeComment
+Iteration 22: "Remove Method" applied at class DatabaseConverter to method extract
+Iteration 23: "Make Method Static" applied at class StreamingProcessingInstructionLister to method makeRootElement
+Iteration 24: "Make Class Final" applied to class FibonacciXOMXMLRPCServlet
+Iteration 25: "Decrease Method Security" applied at class ExampleExtractor to method extractExample from private to package
+Iteration 26: "Decrease Method Security" applied at class StreamingNodeLister to method printSpaces from package to protected
+Iteration 27: "Make Class Non Final" applied to class XPathContext
+Iteration 28: "Make Method Non Static" applied at class ExampleLister to method findExamples
+Iteration 29: "Make Class Abstract" applied to class XPointerException
+Iteration 30: "Decrease Method Security" applied at class StreamingElementLister to method printSpaces from private to package
+Iteration 31: "Decrease Method Security" applied at class Elements to method Elements from package to protected
+Iteration 32: "Make Method Non Static" applied at class Reproducer to method bench
+Iteration 33: "Make Method Final" applied at class XOMChecker to method main
+Iteration 34: "Move Method Up" applied to method writeText from TextSerializer to Serializer
+Iteration 35: "Move Method Up" applied to method isCDATASection from Text to Node
+Iteration 36: "Decrease Method Security" applied at class XOMHandler to method XOMHandler from package to protected
+Iteration 37: "Make Class Final" applied to class ISOCyrillicWriter
+Iteration 38: "Make Method Final" applied at class ExampleExtractor to method extract
+Iteration 39: "Move Method Down" applied to method findActualBaseURI from ParentNode to Element
+Iteration 40: "Decrease Method Security" applied at class BigText to method makeFullUnicode from package to protected
+Iteration 41: "Decrease Method Security" applied at class Namespaces to method put from protected to public
+Iteration 42: "Decrease Method Security" applied at class StreamingNodeLister to method printSpaces from protected to public
+Iteration 43: "Decrease Method Security" applied at class ISOCyrillicWriter to method needsEscaping from protected to public
+Iteration 44: "Decrease Method Security" applied at class NodeFactory to method makeCDATASection from package to protected
+Iteration 45: "Make Method Final" applied at class Nodes to method remove
+Iteration 46: "Decrease Method Security" applied at class ExampleExtractor to method extractExample from package to protected
+Iteration 47: "Decrease Method Security" applied at class Latin4Writer to method needsEscaping from package to protected
+Iteration 48: "Decrease Method Security" applied at class FibonacciSOAPClient to method handleFault from private to package
+Iteration 49: "Move Method Down" applied to method makeRootElement from MinimalNodeFactory to RSSHeadlines
+Iteration 50: "Increase Method Security" applied at class XHTMLJavaDoc to method main from public to protected
+Iteration 51: "Decrease Method Security" applied at class XSLTHandler to method XSLTHandler from package to protected
+Iteration 52: "Make Method Non Static" applied at class ElementLister to method listChildren
+Iteration 53: "Decrease Method Security" applied at class ExampleExtractor to method extractExample from protected to public
+Iteration 54: "Decrease Method Security" applied at class StreamingElementLister to method printSpaces from package to protected
+Iteration 55: "Decrease Method Security" applied at class Elements to method Elements from protected to public
+Iteration 56: "Decrease Method Security" applied at class XOMHandler to method XOMHandler from protected to public
+Iteration 57: "Decrease Method Security" applied at class BigText to method makeFullUnicode from protected to public
+Iteration 58: "Decrease Method Security" applied at class NodeFactory to method makeCDATASection from protected to public
+Iteration 59: "Decrease Method Security" applied at class Latin4Writer to method needsEscaping from protected to public
+Iteration 60: "Decrease Method Security" applied at class FibonacciSOAPClient to method handleFault from package to protected
+Iteration 61: "Increase Method Security" applied at class XHTMLJavaDoc to method main from protected to package
+Iteration 62: "Decrease Method Security" applied at class XSLTHandler to method XSLTHandler from protected to public
+Iteration 63: "Decrease Method Security" applied at class UnicodeWriter to method writeName from package to protected
+Iteration 64: "Decrease Method Security" applied at class AttributesXMLBudget to method setYear from private to package
+Iteration 65: "Remove Method" applied at class Nodes to method insert
 
-Time taken to refactor: 1062.73s
+Time taken to refactor: 1086.41s
 
 ======== Final Metric Info ========
-Fitness function 1 score: 0.562586
-Fitness function 2 score: 54.086540
+Fitness function 1 score: 0.711410
+Fitness function 2 score: 27.138462

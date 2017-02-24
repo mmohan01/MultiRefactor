@@ -10,127 +10,77 @@ Fitness function 1 score: 0.000000
 Fitness function 2 score: 0.000000
 
 ======== Applied Refactorings ========
-Iteration 1: "Increase Method Security" applied at class ParserGenerator to method getOutputFileName from public to protected
-Iteration 2: "Decrease Method Security" applied at class Make to method printVersion from package to protected
-Iteration 3: "Decrease Method Security" applied at class GrammarSymbol to method GrammarSymbol from package to protected
-Iteration 4: "Decrease Method Security" applied at class GrammarScanner to method zzUnpackAttribute from private to package
-Iteration 5: "Make Field Static" applied at class ParserGenerator to field tables
-Iteration 6: "Decrease Method Security" applied at class Log to method Record from package to protected
-Iteration 7: "Decrease Method Security" applied at class Declaration to method SymbolsContainer from protected to public
-Iteration 8: "Make Field Static" applied at class GrammarTreeRoot to field declarations
-Iteration 9: "Make Field Non Final" applied at class GrammarSymbol to FieldDeclaration name
-Iteration 10: "Make Method Non Static" applied at class ParserGenerator to method splitActions
-Iteration 11: "Make Field Final" applied at class Log to ParameterDeclaration rec
-Iteration 12: "Make Field Non Static" applied at class GrammarScanner to field YYEOF
-Iteration 13: "Move Field Up" applied to field rules from GrammarTreeRoot to Node
-Iteration 14: "Move Method Down" applied to method setLocation from Node to Declaration
-Iteration 15: "Make Class Final" applied to class ParserGenerator
-Iteration 16: "Increase Field Security" applied at class GrammarBuilder to field found from package to private
-Iteration 17: "Make Class Abstract" applied to class Conflict
-Iteration 18: "Decrease Method Security" applied at class Action to method resolveConflict from package to protected
-Iteration 19: "Decrease Method Security" applied at class State to method buildShiftsFrom from private to package
-Iteration 20: "Decrease Method Security" applied at class BitSet to method expandCapacity from private to package
-Iteration 21: "Decrease Method Security" applied at class Configuration to method equals from private to package
-Iteration 22: "Increase Field Security" applied at class SrcReader to field txt from protected to package
-Iteration 23: "Make Class Final" applied to class ShiftReduce
-Iteration 24: "Make Field Static" applied at class Rule to field code
-Iteration 25: "Decrease Field Security" applied at class GrammarParser to field PARSING_TABLES from package to protected
-Iteration 26: "Make Class Final" applied to class List
-Iteration 27: "Make Class Abstract" applied to class Action
-Iteration 28: "Remove Method" applied at class GrammarScanner to method yycharat
-Iteration 29: "Make Field Final" applied at class Make to ParameterDeclaration name
-Iteration 30: "Decrease Method Security" applied at class State to method Factory from package to protected
-Iteration 31: "Make Method Final" applied at class Terminal to method toString
-Iteration 32: "Make Class Final" applied to class ParsingTables
-Iteration 33: "Make Method Non Final" applied at class GrammarScanner to method yylength
-Iteration 34: "Make Method Non Final" applied at class GrammarScanner to method yytext
-Iteration 35: "Decrease Field Security" applied at class Production to field NUM_NONTERM_CMP from package to protected
-Iteration 36: "Remove Method" applied at class IntArray to method compact
-Iteration 37: "Make Field Non Static" applied at class Action to field LOOKAHEAD_ID_COMPARATOR
-Iteration 38: "Move Field Up" applied to field declarations from GrammarTreeRoot to Node
-Iteration 39: "Make Class Final" applied to class Log
-Iteration 40: "Make Method Non Final" applied at class GrammarScanner to method yybegin
-Iteration 41: "Decrease Method Security" applied at class ParsingTables to method tryInsertActions from private to package
-Iteration 42: "Decrease Field Security" applied at class State to field actions from package to protected
-Iteration 43: "Make Method Non Static" applied at class GrammarScanner to method zzUnpackTrans
-Iteration 44: "Make Method Static" applied at class GrammarSymbol to method compare
-Iteration 45: "Make Method Final" applied at class ParserGenerator to method encode
-Iteration 46: "Decrease Method Security" applied at class Make to method printVersion from protected to public
-Iteration 47: "Increase Field Security" applied at class GrammarParser to field EOF from public to protected
-Iteration 48: "Decrease Method Security" applied at class Grammar to method Grammar from package to protected
-Iteration 49: "Decrease Method Security" applied at class GrammarBuilder to method writeListsCode from private to package
-Iteration 50: "Remove Method" applied at class GrammarScanner to method yystate
-Iteration 51: "Decrease Method Security" applied at class State to method findLookaheads from package to protected
-Iteration 52: "Decrease Method Security" applied at class ParsingTables to method hasCollisions from private to package
-Iteration 53: "Decrease Method Security" applied at class ParsingTables to method hasCollisions from package to protected
-Iteration 54: "Make Field Final" applied at class Configuration to ParameterDeclaration obj
-Iteration 55: "Decrease Method Security" applied at class State to method Factory from protected to public
-Iteration 56: "Make Method Static" applied at class Declaration to method accept
-Iteration 57: "Make Field Static" applied at class Terminal to field prec
-Iteration 58: "Decrease Method Security" applied at class State to method State from package to protected
-Iteration 59: "Decrease Method Security" applied at class ParsingTables to method findOffset from private to package
-Iteration 60: "Decrease Field Security" applied at class Action to field lookahead from package to protected
-Iteration 61: "Make Field Final" applied at class GrammarTreeRoot to ParameterDeclaration declarations
-Iteration 62: "Decrease Method Security" applied at class Action to method ShiftReduce from package to protected
-Iteration 63: "Make Field Non Final" applied at class ParsingTables to FieldDeclaration first_state
-Iteration 64: "Decrease Method Security" applied at class GrammarParser to method Events from package to protected
-Iteration 65: "Make Field Final" applied at class GrammarSymbol to ParameterDeclaration type
-Iteration 66: "Decrease Method Security" applied at class Action to method ShiftReduce from protected to public
-Iteration 67: "Decrease Method Security" applied at class ParsingTables to method insertActions from private to package
-Iteration 68: "Decrease Method Security" applied at class NonTerminal to method NonTerminal from package to protected
-Iteration 69: "Decrease Method Security" applied at class Production to method Item from package to protected
-Iteration 70: "Make Field Final" applied at class Production to LocalVariableDeclaration i
-Iteration 71: "Decrease Method Security" applied at class Terminal to method Terminal from package to protected
-Iteration 72: "Make Method Static" applied at class ParsingTables to method renumberSymbols
-Iteration 73: "Decrease Method Security" applied at class GrammarScanner to method zzUnpackAction from private to package
-Iteration 74: "Make Method Static" applied at class GrammarBuilder to method propagateTypes
-Iteration 75: "Decrease Method Security" applied at class GrammarSymbol to method GrammarSymbol from protected to public
-Iteration 76: "Decrease Method Security" applied at class Production to method extendFirstSet from package to protected
-Iteration 77: "Increase Field Security" applied at class SrcReader to field lines from protected to package
-Iteration 78: "Increase Field Security" applied at class SrcReader to field txt from package to private
-Iteration 79: "Make Field Static" applied at class Production to field rhs
-Iteration 80: "Decrease Method Security" applied at class Production to method extendFirstSet from protected to public
-Iteration 81: "Decrease Method Security" applied at class GrammarBuilder to method checkBraces from private to package
-Iteration 82: "Increase Field Security" applied at class Production to field NONE from public to protected
-Iteration 83: "Decrease Method Security" applied at class ParserGenerator to method countReferencedSymbols from private to package
-Iteration 84: "Decrease Method Security" applied at class GrammarBuilder to method getExtendedSymbol from private to package
-Iteration 85: "Make Class Final" applied to class NonTerminal
-Iteration 86: "Make Method Non Static" applied at class Action to method makeDescription
-Iteration 87: "Make Class Final" applied to class PackageName
-Iteration 88: "Decrease Method Security" applied at class Configuration to method Factory from package to protected
-Iteration 89: "Make Field Final" applied at class GrammarSymbol to FieldDeclaration nrefs
-Iteration 90: "Decrease Method Security" applied at class ParsingTables to method ParsingTables from package to protected
-Iteration 91: "Decrease Method Security" applied at class GrammarBuilder to method getNonTerminals from private to package
-Iteration 92: "Decrease Method Security" applied at class State to method buildShiftsFrom from package to protected
-Iteration 93: "Decrease Method Security" applied at class BitSet to method expandCapacity from package to protected
-Iteration 94: "Decrease Method Security" applied at class Configuration to method getCore from package to protected
-Iteration 95: "Increase Field Security" applied at class Terminal to field NONE from public to protected
-Iteration 96: "Decrease Method Security" applied at class ParsingTables to method tryInsertActions from package to protected
-Iteration 97: "Decrease Field Security" applied at class State to field actions from protected to public
-Iteration 98: "Increase Field Security" applied at class GrammarParser to field EOF from protected to package
-Iteration 99: "Decrease Method Security" applied at class BitSet to method expandCapacity from protected to public
-Iteration 100: "Decrease Method Security" applied at class Configuration to method equals from package to protected
-Iteration 101: "Decrease Field Security" applied at class GrammarParser to field PARSING_TABLES from protected to public
-Iteration 102: "Decrease Field Security" applied at class Production to field NUM_NONTERM_CMP from protected to public
-Iteration 103: "Decrease Method Security" applied at class ParsingTables to method insertActions from package to protected
-Iteration 104: "Decrease Method Security" applied at class Production to method Item from protected to public
-Iteration 105: "Decrease Method Security" applied at class GrammarScanner to method zzUnpackAction from package to protected
-Iteration 106: "Increase Field Security" applied at class SrcReader to field lines from package to private
-Iteration 107: "Decrease Method Security" applied at class GrammarBuilder to method checkBraces from package to protected
-Iteration 108: "Decrease Method Security" applied at class ParserGenerator to method countReferencedSymbols from package to protected
-Iteration 109: "Decrease Method Security" applied at class GrammarParser to method Events from protected to public
-Iteration 110: "Increase Method Security" applied at class ParserGenerator to method writeActionsReport from public to protected
-Iteration 111: "Make Field Final" applied at class Grammar to FieldDeclaration impls
-Iteration 112: "Make Method Final" applied at class GrammarParser to method unexpectedTokenRemoved
-Iteration 113: "Increase Method Security" applied at class Terminal to method setPrecedence from public to protected
-Iteration 114: "Decrease Method Security" applied at class Production to method startFirstSet from package to protected
-Iteration 115: "Increase Method Security" applied at class ParserGenerator to method writeActionsReport from protected to package
-Iteration 116: "Increase Method Security" applied at class Terminal to method setPrecedence from protected to package
-Iteration 117: "Decrease Method Security" applied at class Production to method startFirstSet from protected to public
-Iteration 118: "Make Method Non Static" applied at class ParsingTables to method countStates
+Iteration 1: "Decrease Method Security" applied at class Production to method Production from package to protected
+Iteration 2: "Move Method Down" applied to method toString from GrammarSymbol to NonTerminal
+Iteration 3: "Decrease Method Security" applied at class Action to method ShiftReduce from package to protected
+Iteration 4: "Make Class Abstract" applied to class Conflict
+Iteration 5: "Make Method Non Final" applied at class GrammarScanner to method yyclose
+Iteration 6: "Make Method Non Final" applied at class GrammarScanner to method yylength
+Iteration 7: "Decrease Method Security" applied at class GrammarScanner to method zzUnpackAction from private to package
+Iteration 8: "Make Class Abstract" applied to class Action
+Iteration 9: "Make Class Final" applied to class GrammarTreeRoot
+Iteration 10: "Remove Method" applied at class BitSet to method isEmpty
+Iteration 11: "Decrease Method Security" applied at class Log to method Record from package to protected
+Iteration 12: "Decrease Method Security" applied at class Make to method printVersion from package to protected
+Iteration 13: "Decrease Method Security" applied at class Make to method printVersion from protected to public
+Iteration 14: "Remove Method" applied at class IntArray to method compact
+Iteration 15: "Decrease Method Security" applied at class NonTerminal to method NonTerminal from package to protected
+Iteration 16: "Decrease Method Security" applied at class ParserGenerator to method encode from private to package
+Iteration 17: "Make Method Final" applied at class GrammarTreeRoot to method accept
+Iteration 18: "Make Method Non Static" applied at class ParserGenerator to method makeProductionDescriptors
+Iteration 19: "Decrease Method Security" applied at class Grammar to method Grammar from package to protected
+Iteration 20: "Make Method Static" applied at class Production to method compare
+Iteration 21: "Decrease Method Security" applied at class GrammarBuilder to method writeListsCode from private to package
+Iteration 22: "Make Method Static" applied at class Declaration to method accept
+Iteration 23: "Remove Method" applied at class Node to method setLocation
+Iteration 24: "Decrease Method Security" applied at class State to method findLookaheads from package to protected
+Iteration 25: "Decrease Method Security" applied at class BitSet to method ensureIndexWithinRange from private to package
+Iteration 26: "Decrease Method Security" applied at class BitSet to method process from protected to public
+Iteration 27: "Decrease Method Security" applied at class Grammar to method Grammar from protected to public
+Iteration 28: "Decrease Method Security" applied at class GrammarScanner to method zzUnpackAction from package to protected
+Iteration 29: "Decrease Method Security" applied at class Log to method Record from protected to public
+Iteration 30: "Decrease Method Security" applied at class Action to method ShiftReduce from protected to public
+Iteration 31: "Decrease Method Security" applied at class Action to method resolveConflict from package to protected
+Iteration 32: "Increase Method Security" applied at class ParsingTables to method countStates from package to private
+Iteration 33: "Remove Method" applied at class GrammarScanner to method yyclose
+Iteration 34: "Make Method Non Static" applied at class GrammarBuilder to method trimCode
+Iteration 35: "Decrease Method Security" applied at class State to method Factory from package to protected
+Iteration 36: "Decrease Method Security" applied at class GrammarParser to method Events from package to protected
+Iteration 37: "Make Method Final" applied at class NonTerminal to method checkNullability
+Iteration 38: "Make Method Non Static" applied at class Make to method printVersion
+Iteration 39: "Increase Method Security" applied at class Terminal to method setPrecedence from public to protected
+Iteration 40: "Decrease Method Security" applied at class State to method getState from package to protected
+Iteration 41: "Make Class Final" applied to class Log
+Iteration 42: "Decrease Method Security" applied at class GrammarSymbol to method GrammarSymbol from package to protected
+Iteration 43: "Decrease Method Security" applied at class Terminal to method Terminal from package to protected
+Iteration 44: "Make Class Non Final" applied to class Log
+Iteration 45: "Make Method Static" applied at class Make to method printVersion
+Iteration 46: "Make Method Non Static" applied at class GrammarBuilder to method checkBraces
+Iteration 47: "Decrease Method Security" applied at class BitSet to method ensureIndexWithinRange from package to protected
+Iteration 48: "Decrease Method Security" applied at class Configuration to method getSymbolAfterDot from package to protected
+Iteration 49: "Make Method Final" applied at class Grammar to method markNullableProductions
+Iteration 50: "Make Class Concrete" applied to class Conflict
+Iteration 51: "Decrease Method Security" applied at class Make to method printUsage from package to protected
+Iteration 52: "Decrease Method Security" applied at class Terminal to method Terminal from protected to public
+Iteration 53: "Make Class Abstract" applied to class Conflict
+Iteration 54: "Decrease Method Security" applied at class Configuration to method Factory from package to protected
+Iteration 55: "Decrease Method Security" applied at class GrammarBuilder to method getNonTerminals from private to package
+Iteration 56: "Make Method Non Static" applied at class GrammarScanner to method zzUnpackAction
+Iteration 57: "Decrease Method Security" applied at class ParserGenerator to method findLookaheads from private to package
+Iteration 58: "Make Class Final" applied to class Options
+Iteration 59: "Decrease Method Security" applied at class State to method State from package to protected
+Iteration 60: "Decrease Method Security" applied at class GrammarScanner to method zzUnpackCMap from private to package
+Iteration 61: "Make Method Static" applied at class ParsingTables to method renumberSymbols
+Iteration 62: "Make Method Final" applied at class Terminal to method setPrecedence
+Iteration 63: "Decrease Method Security" applied at class NonTerminal to method NonTerminal from protected to public
+Iteration 64: "Make Method Final" applied at class Make to method parseOptions
+Iteration 65: "Decrease Method Security" applied at class GrammarScanner to method newSymbol from private to package
+Iteration 66: "Decrease Method Security" applied at class Declaration to method SymbolsContainer from protected to public
+Iteration 67: "Make Method Non Static" applied at class ParsingTables to method countStates
+Iteration 68: "Decrease Method Security" applied at class State to method Factory from protected to public
 
-Time taken to refactor: 251.09s
+Time taken to refactor: 205.02s
 
 ======== Final Metric Info ========
-Fitness function 1 score: 0.739744
-Fitness function 2 score: 59.796612
+Fitness function 1 score: 0.418635
+Fitness function 2 score: 32.485294

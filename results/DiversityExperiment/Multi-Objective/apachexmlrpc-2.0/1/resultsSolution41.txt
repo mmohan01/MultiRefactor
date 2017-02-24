@@ -10,111 +10,90 @@ Fitness function 1 score: 0.000000
 Fitness function 2 score: 0.000000
 
 ======== Applied Refactorings ========
-Iteration 1: "Increase Method Security" applied at class SystemHandler to method addDefaultSystemHandlers from public to protected
-Iteration 2: "Make Field Final" applied at class DefaultTypeDecoder to ParameterDeclaration o
-Iteration 3: "Move Field Up" applied to field result from XmlRpcClientResponseProcessor to XmlRpc
-Iteration 4: "Decrease Method Security" applied at class HttpUtil to method HttpUtil from private to package
-Iteration 5: "Remove Method" applied at class SecureXmlRpcClient to method setup
-Iteration 6: "Decrease Method Security" applied at class XmlRpcServer to method createWorker from protected to public
-Iteration 7: "Increase Method Security" applied at class DefaultXmlRpcTransport to method setBasicAuthentication from public to protected
-Iteration 8: "Make Field Static" applied at class XmlRpcException to field code
-Iteration 9: "Make Field Non Static" applied at class XmlRpcClientWorker to field PROCESSING_ERROR_FLAG
-Iteration 10: "Decrease Method Security" applied at class XmlRpcClientLite to method createTransport from protected to public
-Iteration 11: "Remove Field" applied at class SimpleXmlRpcClient to field enc
-Iteration 12: "Decrease Method Security" applied at class XmlRpc to method objectParsed from protected to public
-Iteration 13: "Make Class Abstract" applied to class HandlerBase
-Iteration 14: "Move Field Up" applied to field loaded from JSXmlRpcApplet to XmlRpcApplet
-Iteration 15: "Decrease Method Security" applied at class LiteXmlRpcTransport to method finalize from protected to public
-Iteration 16: "Move Field Down" applied to field result from XmlRpc to XmlRpcClientResponseProcessor
-Iteration 17: "Increase Field Security" applied at class XmlRpcClientWorker to field responseProcessor from protected to package
-Iteration 18: "Make Field Final" applied at class SecureXmlRpcClient to ParameterDeclaration port
-Iteration 19: "Remove Method" applied at class SunSSLTransportFactory to method getProperties
-Iteration 20: "Increase Method Security" applied at class XmlRpcClientWorker to method canReUse from protected to package
-Iteration 21: "Decrease Field Security" applied at class XmlRpcClientResponseProcessor to field fault from protected to public
-Iteration 22: "Make Class Final" applied to class SAXParseException
-Iteration 23: "Make Field Final" applied at class XmlRpcException to ParameterDeclaration code
-Iteration 24: "Decrease Method Security" applied at class XmlRpcClientRequestProcessor to method canReUse from protected to public
-Iteration 25: "Decrease Method Security" applied at class LiteXmlRpcTransport to method readLine from private to package
-Iteration 26: "Make Method Non Static" applied at class DefaultXmlRpcTransportFactory to method createTransportFactory
-Iteration 27: "Make Field Static" applied at class LiteXmlRpcTransport to field input
-Iteration 28: "Make Method Non Static" applied at class WebServer to method determinePort
-Iteration 29: "Make Method Non Final" applied at class WebServer to method toHTTPBytes
-Iteration 30: "Decrease Method Security" applied at class LiteXmlRpcTransport to method initConnection from protected to public
-Iteration 31: "Make Class Concrete" applied to class HandlerBase
-Iteration 32: "Make Class Abstract" applied to class XmlRpcApplet
-Iteration 33: "Decrease Method Security" applied at class XmlRpc to method parse from package to protected
-Iteration 34: "Make Class Concrete" applied to class XmlRpcApplet
-Iteration 35: "Decrease Method Security" applied at class XmlRpcWorker to method invokeHandler from protected to public
-Iteration 36: "Move Method Up" applied to method decodeException from XmlRpcClientResponseProcessor to XmlRpc
-Iteration 37: "Remove Method" applied at class JSXmlRpcApplet to method addIntArg
-Iteration 38: "Make Field Non Static" applied at class DefaultXmlRpcTransportFactory to field transports
-Iteration 39: "Move Field Up" applied to field debug from XmlRpcSupport to HandlerBase
-Iteration 40: "Move Method Down" applied to method execute from XmlRpcApplet to JSXmlRpcApplet
-Iteration 41: "Decrease Method Security" applied at class XmlRpc to method decodeException from protected to public
-Iteration 42: "Make Class Final" applied to class Value
-Iteration 43: "Make Class Final" applied to class DefaultTypeFactory
-Iteration 44: "Decrease Method Security" applied at class XmlRpcResponseProcessor to method writeResponse from package to protected
-Iteration 45: "Remove Field" applied at class SecurityConstants to field DEFAULT_KEY_STORE_TYPE
-Iteration 46: "Remove Field" applied at class SecurityConstants to field DEFAULT_TRUST_STORE_TYPE
-Iteration 47: "Decrease Method Security" applied at class Parser to method setDocumentHandler from package to protected
-Iteration 48: "Decrease Method Security" applied at class XmlRpcRequestProcessor to method objectParsed from protected to public
-Iteration 49: "Increase Method Security" applied at class XmlRpcClientRequestProcessor to method encodeRequest from public to protected
-Iteration 50: "Decrease Method Security" applied at class SimpleXmlRpcClient to method parse from package to protected
-Iteration 51: "Move Field Down" applied to field loaded from XmlRpcApplet to JSXmlRpcApplet
-Iteration 52: "Remove Field" applied at class MinML to field inDTD
-Iteration 53: "Make Field Static" applied at class SunSSLTransportFactory to field auth
-Iteration 54: "Decrease Method Security" applied at class XmlRpcClientWorker to method canReUse from package to protected
-Iteration 55: "Move Field Up" applied to field result from XmlRpcClientResponseProcessor to XmlRpc
-Iteration 56: "Make Field Final" applied at class Parser to ParameterDeclaration handler
-Iteration 57: "Move Field Down" applied to field result from XmlRpc to XmlRpcClientResponseProcessor
-Iteration 58: "Make Field Non Static" applied at class DefaultTypeFactory to field dateTool
-Iteration 59: "Make Field Non Static" applied at class WebServer to field ctype
-Iteration 60: "Make Field Non Static" applied at class WebServer to field conkeep
-Iteration 61: "Decrease Method Security" applied at class HttpUtil to method HttpUtil from package to protected
-Iteration 62: "Remove Method" applied at class LiteXmlRpcTransport to method setBasicAuthentication
-Iteration 63: "Make Method Final" applied at class ServerInputStream to method read
-Iteration 64: "Make Method Static" applied at class DefaultTypeFactory to method createInteger
-Iteration 65: "Make Method Final" applied at class DefaultXmlRpcTransport to method setBasicAuthentication
-Iteration 66: "Make Field Static" applied at class SystemHandler to field systemMapping
-Iteration 67: "Make Method Static" applied at class XmlRpcResponseProcessor to method writeError
-Iteration 68: "Make Method Static" applied at class XmlRpcResponseProcessor to method writeResponse
-Iteration 69: "Decrease Field Security" applied at class DefaultTypeFactory to field base64Codec from private to package
-Iteration 70: "Increase Field Security" applied at class XmlRpcClientWorker to field responseProcessor from package to private
-Iteration 71: "Increase Method Security" applied at class XmlRpcClientWorker to method canReUse from protected to package
-Iteration 72: "Make Field Non Final" applied at class XmlWriter to FieldDeclaration ISO8859_1
-Iteration 73: "Increase Field Security" applied at class LiteXmlRpcTransport to field port from package to private
-Iteration 74: "Make Class Final" applied to class XmlRpcRequestProcessor
-Iteration 75: "Make Field Non Final" applied at class XmlRpcClientWorker to FieldDeclaration PROCESSING_ERROR_FLAG
-Iteration 76: "Make Class Final" applied to class XmlRpcClientException
-Iteration 77: "Move Method Up" applied to method addIntArgToStruct from JSXmlRpcApplet to XmlRpcApplet
-Iteration 78: "Make Method Final" applied at class DefaultTypeDecoder to method isXmlRpcI4
-Iteration 79: "Decrease Method Security" applied at class DocumentHandler to method startDocument from package to protected
-Iteration 80: "Make Class Final" applied to class XmlRpcServer
-Iteration 81: "Decrease Method Security" applied at class HttpUtil to method HttpUtil from protected to public
-Iteration 82: "Make Field Static" applied at class XmlWriter to field hasWrittenProlog
-Iteration 83: "Make Field Final" applied at class DefaultXmlRpcTransport to ParameterDeclaration url
-Iteration 84: "Make Class Final" applied to class XmlWriter
-Iteration 85: "Make Method Static" applied at class DefaultTypeDecoder to method isXmlRpcI4
-Iteration 86: "Move Field Up" applied to field loaded from JSXmlRpcApplet to XmlRpcApplet
-Iteration 87: "Make Class Final" applied to class XmlRpcClientWorker
-Iteration 88: "Make Class Abstract" applied to class XmlRpcApplet
-Iteration 89: "Remove Method" applied at class XmlRpcClientWorker to method canReUse
-Iteration 90: "Make Method Final" applied at class HttpUtil to method encodeBasicAuthentication
-Iteration 91: "Make Field Static" applied at class DefaultHandlerMapping to field handlers
-Iteration 92: "Make Field Static" applied at class XmlRpcClient to field transport
-Iteration 93: "Remove Method" applied at class XmlRpcClient to method getURL
-Iteration 94: "Move Field Down" applied to field loaded from XmlRpcApplet to JSXmlRpcApplet
-Iteration 95: "Decrease Method Security" applied at class XmlRpcServer to method getWorker from protected to public
-Iteration 96: "Increase Field Security" applied at class XmlRpcWorker to field requestProcessor from protected to package
-Iteration 97: "Decrease Field Security" applied at class SAXException to field exception from private to package
-Iteration 98: "Make Method Non Static" applied at class WebServer to method toHTTPBytes
-Iteration 99: "Make Field Static" applied at class InputSource to field characterStream
-Iteration 100: "Decrease Method Security" applied at class XmlRpcResponseProcessor to method writeError from package to protected
-Iteration 101: "Make Field Static" applied at class XmlRpcApplet to field client
-Iteration 102: "Decrease Method Security" applied at class DocumentHandler to method startDocument from protected to public
+Iteration 1: "Move Method Up" applied to method setup from SecureXmlRpcClient to XmlRpcClient
+Iteration 2: "Make Field Non Final" applied at class DocumentHandler to ParameterDeclaration writer
+Iteration 3: "Make Method Static" applied at class DefaultTypeFactory to method createString
+Iteration 4: "Decrease Method Security" applied at class XmlWriter to method setTypeDecoder from protected to public
+Iteration 5: "Make Method Final" applied at class SecurityTool to method setup
+Iteration 6: "Increase Field Security" applied at class DefaultXmlRpcContext to field userName,password from protected to package
+Iteration 7: "Move Field Up" applied to field loaded from JSXmlRpcApplet to XmlRpcApplet
+Iteration 8: "Move Method Up" applied to method decodeException from XmlRpcClientResponseProcessor to XmlRpc
+Iteration 9: "Move Method Up" applied to method addStructArgToArray from JSXmlRpcApplet to XmlRpcApplet
+Iteration 10: "Make Method Static" applied at class AuthDemo to method execute
+Iteration 11: "Make Field Non Static" applied at class XmlRpc to field defaultInputEncoding
+Iteration 12: "Decrease Method Security" applied at class XmlRpcClientResponseProcessor to method objectParsed from protected to public
+Iteration 13: "Decrease Method Security" applied at class SimpleXmlRpcClient to method parse from package to protected
+Iteration 14: "Decrease Method Security" applied at class LiteXmlRpcTransport to method initConnection from protected to public
+Iteration 15: "Decrease Method Security" applied at class DocumentHandler to method startElement from package to protected
+Iteration 16: "Make Method Non Static" applied at class DefaultXmlRpcTransportFactory to method setHTTPSTransport
+Iteration 17: "Make Class Final" applied to class SAXParseException
+Iteration 18: "Make Method Non Final" applied at class WebServer to method toHTTPBytes
+Iteration 19: "Make Class Abstract" applied to class XmlRpcApplet
+Iteration 20: "Decrease Method Security" applied at class XmlRpc to method objectParsed from protected to public
+Iteration 21: "Decrease Method Security" applied at class DocumentHandler to method startElement from protected to public
+Iteration 22: "Decrease Method Security" applied at class LiteXmlRpcTransport to method closeConnection from protected to public
+Iteration 23: "Make Class Concrete" applied to class XmlRpcApplet
+Iteration 24: "Decrease Method Security" applied at class XmlRpcResponseProcessor to method writeError from package to protected
+Iteration 25: "Make Method Non Static" applied at class WebServer to method determinePort
+Iteration 26: "Remove Method" applied at class DefaultXmlRpcTransportFactory to method setBasicAuthentication
+Iteration 27: "Remove Method" applied at class WebServer to method removeHandler
+Iteration 28: "Remove Method" applied at class MinML to method getLength
+Iteration 29: "Increase Method Security" applied at class XmlRpcClientRequestProcessor to method encodeRequest from public to protected
+Iteration 30: "Make Class Final" applied to class ParseFailed
+Iteration 31: "Decrease Method Security" applied at class SecureWebServer to method createServerSocket from protected to public
+Iteration 32: "Make Method Non Static" applied at class SunSSLTransportFactory to method getProperties
+Iteration 33: "Increase Method Security" applied at class SecurityTool to method getKeyStoreType from public to protected
+Iteration 34: "Make Class Final" applied to class Value
+Iteration 35: "Make Class Abstract" applied to class XmlRpcApplet
+Iteration 36: "Make Class Concrete" applied to class XmlRpcApplet
+Iteration 37: "Make Class Final" applied to class InputSource
+Iteration 38: "Move Method Down" applied to method fatalError from XmlRpc to XmlRpcClientResponseProcessor
+Iteration 39: "Move Method Down" applied to method setEncoding from XmlRpc to XmlRpcClientResponseProcessor
+Iteration 40: "Increase Method Security" applied at class JSXmlRpcApplet to method addStringArg from public to protected
+Iteration 41: "Decrease Method Security" applied at class XmlRpcClientRequestProcessor to method canReUse from protected to public
+Iteration 42: "Make Class Non Final" applied to class InputSource
+Iteration 43: "Make Class Final" applied to class XmlRpcException
+Iteration 44: "Decrease Method Security" applied at class JSXmlRpcApplet to method addStringArg from protected to public
+Iteration 45: "Remove Method" applied at class SunSSLTransportFactory to method getProperties
+Iteration 46: "Remove Method" applied at class JSXmlRpcApplet to method addIntArg
+Iteration 47: "Move Method Up" applied to method addDateArgToStruct from JSXmlRpcApplet to XmlRpcApplet
+Iteration 48: "Make Class Final" applied to class Runner
+Iteration 49: "Make Method Static" applied at class XmlRpc to method getEncoding
+Iteration 50: "Make Class Final" applied to class SecureXmlRpcClient
+Iteration 51: "Decrease Method Security" applied at class XmlRpcClient to method createDefaultTransport from private to package
+Iteration 52: "Make Method Final" applied at class SecureWebServer to method main
+Iteration 53: "Decrease Method Security" applied at class XmlRpcServer to method createWorker from protected to public
+Iteration 54: "Remove Method" applied at class MinML to method setDTDHandler
+Iteration 55: "Make Method Final" applied at class HttpUtil to method encodeBasicAuthentication
+Iteration 56: "Make Method Final" applied at class XmlRpc to method toString
+Iteration 57: "Increase Method Security" applied at class XmlRpcClientRequestProcessor to method encodeRequest from protected to package
+Iteration 58: "Make Class Final" applied to class SecureWebServer
+Iteration 59: "Make Class Non Final" applied to class SecureWebServer
+Iteration 60: "Decrease Method Security" applied at class XmlRpcResponseProcessor to method writeError from protected to public
+Iteration 61: "Increase Method Security" applied at class XmlRpcClientRequestProcessor to method encodeRequest from package to private
+Iteration 62: "Make Class Abstract" applied to class XmlRpcApplet
+Iteration 63: "Make Class Concrete" applied to class XmlRpcApplet
+Iteration 64: "Increase Method Security" applied at class SecurityTool to method getKeyStoreType from protected to package
+Iteration 65: "Decrease Method Security" applied at class XmlRpcClientWorker to method canReUse from protected to public
+Iteration 66: "Increase Method Security" applied at class XmlRpcClientResponseProcessor to method canReUse from protected to package
+Iteration 67: "Make Method Non Final" applied at class XmlWriter to method isValidXMLChar
+Iteration 68: "Make Method Non Static" applied at class DefaultXmlRpcTransportFactory to method createTransportFactory
+Iteration 69: "Make Class Final" applied to class DefaultXmlRpcTransport
+Iteration 70: "Decrease Method Security" applied at class XmlRpcServer to method getWorker from protected to public
+Iteration 71: "Make Class Final" applied to class DefaultTypeFactory
+Iteration 72: "Decrease Method Security" applied at class XmlRpcResponseProcessor to method writeResponse from package to protected
+Iteration 73: "Decrease Method Security" applied at class XmlRpcClientLite to method createTransport from protected to public
+Iteration 74: "Make Method Static" applied at class DefaultTypeFactory to method createInteger
+Iteration 75: "Move Method Down" applied to method execute from XmlRpcApplet to JSXmlRpcApplet
+Iteration 76: "Remove Method" applied at class SAXParseException to method getPublicId
+Iteration 77: "Make Method Final" applied at class JSXmlRpcApplet to method addStringArgToStruct
+Iteration 78: "Move Method Down" applied to method getDefaultInputEncoding from XmlRpc to XmlRpcClientResponseProcessor
+Iteration 79: "Move Field Down" applied to field loaded from XmlRpcApplet to JSXmlRpcApplet
+Iteration 80: "Remove Field" applied at class SimpleXmlRpcClient to field enc
+Iteration 81: "Decrease Method Security" applied at class XmlWriter to method write from protected to public
 
-Time taken to refactor: 403.95s
+Time taken to refactor: 327.59s
 
 ======== Final Metric Info ========
-Fitness function 1 score: 0.657667
-Fitness function 2 score: 52.245098
+Fitness function 1 score: 0.388956
+Fitness function 2 score: 45.938271
