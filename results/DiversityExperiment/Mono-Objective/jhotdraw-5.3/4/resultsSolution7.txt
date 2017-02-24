@@ -27,136 +27,1709 @@ Amount of lines of code in project: 27824
 Overall fitness function score: 0.000000
 
 ======== Applied Refactorings ========
-Iteration 1: "Move Method Up" applied to method createUndoActivity from CreationTool to AbstractTool
-Iteration 2: "Remove Field" applied at class StandardDrawing to field drawingSerializedDataVersion
-Iteration 3: "Make Class Concrete" applied to class AbstractTool
-Iteration 4: "Decrease Method Security" applied at class RadiusHandle to method createUndoActivity from protected to public
-Iteration 5: "Move Field Up" applied to field fRelativeX from RelativeLocator to AbstractLocator
-Iteration 6: "Make Class Abstract" applied to class DrawApplet
-Iteration 7: "Remove Class" applied to class JHotDrawException
-Iteration 8: "Move Field Up" applied to field LENGTH_FACTOR from GraphLayout to FigureChangeAdapter
-Iteration 9: "Make Method Non Final" applied at class DrawApplication to method setStorageFormatManager
-Iteration 10: "Make Method Non Final" applied at class CompositeFigure to method figuresReverse
-Iteration 11: "Remove Method" applied at class MDIDesktopPane to method add
-Iteration 12: "Move Field Down" applied to field fLocator from NullHandle to GroupHandle
-Iteration 13: "Decrease Method Security" applied at class RoundRectangleFigure to method basicMoveBy from protected to public
-Iteration 14: "Make Class Abstract" applied to class ResizeHandle
-Iteration 15: "Make Field Non Static" applied at class OffsetLocator to field serialVersionUID
-Iteration 16: "Make Field Final" applied at class ToolListener to ParameterDeclaration toolEvent
-Iteration 17: "Make Field Final" applied at class UndoableCommand to ParameterDeclaration newCommandListener
-Iteration 18: "Make Field Final" applied at class ToolListener to ParameterDeclaration toolEvent
-Iteration 19: "Make Field Static" applied at class SingleFigureEnumerator to field mySingleFigure
-Iteration 20: "Remove Method" applied at class DNDInterface to method getDefaultDNDActions
-Iteration 21: "Remove Method" applied at class Bounds to method getWest
-Iteration 22: "Make Class Final" applied to class URLTool
-Iteration 23: "Make Method Non Static" applied at class DragNDropTool to method ProcessReceivedData
-Iteration 24: "Make Field Final" applied at class Clipboard to FieldDeclaration fContents
-Iteration 25: "Make Field Final" applied at class Clipboard to FieldDeclaration fgClipboard
-Iteration 26: "Decrease Field Security" applied at class PertApplet to field PERTIMAGES from private to package
-Iteration 27: "Make Class Final" applied to class CutCommand
-Iteration 28: "Decrease Field Security" applied at class PertApplet to field PERTIMAGES from package to protected
-Iteration 29: "Decrease Field Security" applied at class PertApplet to field PERTIMAGES from protected to public
-Iteration 30: "Make Class Concrete" applied to class AttributeFigure
-Iteration 31: "Make Method Final" applied at class StandardFigureSelection to method getType
-Iteration 32: "Make Field Static" applied at class AnimationDecorator to field fXVelocity
-Iteration 33: "Make Method Non Static" applied at class AttributeFigure to method initializeAttributes
-Iteration 34: "Make Method Final" applied at class CopyCommand to method isExecutableWithView
-Iteration 35: "Make Class Abstract" applied to class AbstractTool
-Iteration 36: "Make Field Final" applied at class Clipboard to ParameterDeclaration contents
-Iteration 37: "Decrease Method Security" applied at class ScribbleTool to method point from private to package
-Iteration 38: "Make Field Final" applied at class StandardVersionControlStrategy to LocalVariableDeclaration i
-Iteration 39: "Make Class Non Final" applied to class URLTool
-Iteration 40: "Make Field Final" applied at class DeleteCommand to ParameterDeclaration name
-Iteration 41: "Make Field Final" applied at class FigureChangeListener to ParameterDeclaration e
-Iteration 42: "Make Class Final" applied to class URLTool
-Iteration 43: "Decrease Method Security" applied at class ScribbleTool to method point from package to protected
-Iteration 44: "Make Class Non Final" applied to class URLTool
-Iteration 45: "Make Class Final" applied to class URLTool
-Iteration 46: "Decrease Method Security" applied at class ScribbleTool to method point from protected to public
-Iteration 47: "Make Class Non Final" applied to class URLTool
-Iteration 48: "Make Class Final" applied to class URLTool
-Iteration 49: "Make Class Non Final" applied to class URLTool
-Iteration 50: "Make Method Non Final" applied at class SplitPaneDrawApplication to method setLeftComponent
-Iteration 51: "Make Field Static" applied at class PertFigure to field fDisplayBox
-Iteration 52: "Make Field Final" applied at class Locator to ParameterDeclaration owner
-Iteration 53: "Move Field Up" applied to field FRICTION_FACTOR from GraphLayout to FigureChangeAdapter
-Iteration 54: "Make Class Final" applied to class URLTool
-Iteration 55: "Make Class Non Final" applied to class URLTool
-Iteration 56: "Make Class Final" applied to class URLTool
-Iteration 57: "Make Class Non Final" applied to class URLTool
-Iteration 58: "Make Class Final" applied to class URLTool
-Iteration 59: "Make Class Non Final" applied to class URLTool
-Iteration 60: "Make Class Final" applied to class URLTool
-Iteration 61: "Make Class Non Final" applied to class URLTool
-Iteration 62: "Decrease Method Security" applied at class ColorMap to method ColorEntry from package to protected
-Iteration 63: "Make Class Final" applied to class GridConstrainer
-Iteration 64: "Make Class Final" applied to class ToggleGridCommand
-Iteration 65: "Move Method Down" applied to method undo from UndoActivity to UndoActivity
-Iteration 66: "Decrease Method Security" applied at class ColorMap to method ColorEntry from protected to public
-Iteration 67: "Make Method Non Static" applied at class UndoRedoActivity to method createUndoRedoActivity
-Iteration 68: "Increase Method Security" applied at class LineFigure to method startPoint from public to protected
-Iteration 69: "Increase Method Security" applied at class FloatingTextField to method removeActionListener from public to protected
-Iteration 70: "Make Method Final" applied at class BorderTool to method action
-Iteration 71: "Increase Method Security" applied at class PertDependency to method handleConnect from public to protected
-Iteration 72: "Remove Field" applied at class GroupHandle to field fLocator
-Iteration 73: "Make Field Final" applied at class DNDInterface to ParameterDeclaration flavor
-Iteration 74: "Decrease Field Security" applied at class JavaDrawApp to field fAnimator from private to package
-Iteration 75: "Make Class Final" applied to class URLTool
-Iteration 76: "Make Class Non Final" applied to class URLTool
-Iteration 77: "Make Class Final" applied to class URLTool
-Iteration 78: "Make Class Non Final" applied to class URLTool
-Iteration 79: "Make Class Final" applied to class URLTool
-Iteration 80: "Make Class Non Final" applied to class URLTool
-Iteration 81: "Make Class Final" applied to class URLTool
-Iteration 82: "Make Class Non Final" applied to class URLTool
-Iteration 83: "Make Class Final" applied to class URLTool
-Iteration 84: "Make Class Non Final" applied to class URLTool
-Iteration 85: "Increase Method Security" applied at class LineFigure to method startPoint from protected to package
-Iteration 86: "Increase Method Security" applied at class FloatingTextField to method removeActionListener from protected to package
-Iteration 87: "Decrease Field Security" applied at class JavaDrawApp to field fAnimator from package to protected
-Iteration 88: "Decrease Method Security" applied at class CreationTool to method createFigure from protected to public
-Iteration 89: "Make Field Final" applied at class StorageFormat to ParameterDeclaration saveDrawing
-Iteration 90: "Increase Method Security" applied at class LineFigure to method startPoint from package to private
-Iteration 91: "Increase Method Security" applied at class FloatingTextField to method removeActionListener from package to private
-Iteration 92: "Decrease Field Security" applied at class JavaDrawApp to field fAnimator from protected to public
-Iteration 93: "Make Class Final" applied to class URLTool
-Iteration 94: "Make Class Non Final" applied to class URLTool
-Iteration 95: "Make Class Final" applied to class URLTool
-Iteration 96: "Make Class Non Final" applied to class URLTool
-Iteration 97: "Make Class Final" applied to class URLTool
-Iteration 98: "Make Class Non Final" applied to class URLTool
-Iteration 99: "Make Class Final" applied to class URLTool
-Iteration 100: "Make Class Non Final" applied to class URLTool
-Iteration 101: "Make Class Final" applied to class URLTool
-Iteration 102: "Make Class Non Final" applied to class URLTool
-Iteration 103: "Make Class Abstract" applied to class FigureChangeAdapter
-Iteration 104: "Decrease Method Security" applied at class FigureTransferCommand to method FigureTransferCommand from protected to public
-Iteration 105: "Make Field Final" applied at class Connector to ParameterDeclaration x
-Iteration 106: "Make Class Final" applied to class PaletteIcon
-Iteration 107: "Make Class Abstract" applied to class LocatorHandle
-Iteration 108: "Increase Field Security" applied at class JavaDrawApp to field fAnimator from public to protected
-Iteration 109: "Move Field Up" applied to field fRelativeY from RelativeLocator to AbstractLocator
+Iteration 1: "Decrease Method Security" applied at class Geom to method Geom from private to package
+Iteration 2: "Make Class Concrete" applied to class FigureTransferCommand
+Iteration 3: "Make Class Final" applied to class DragNDropTool
+Iteration 4: "Decrease Method Security" applied at class SerializationStorageFormat to method createFileExtension from protected to public
+Iteration 5: "Make Field Final" applied at class ColorMap to ParameterDeclaration name
+Iteration 6: "Make Field Final" applied at class DuplicateCommand to ParameterDeclaration name
+Iteration 7: "Move Method Down" applied to method redo from UndoActivity to UndoActivity
+Iteration 8: "Decrease Method Security" applied at class StandardVersionControlStrategy to method getVersionRequester from protected to public
+Iteration 9: "Make Class Final" applied to class PertFigureCreationTool
+Iteration 10: "Make Class Abstract" applied to class DrawApplet
+Iteration 11: "Decrease Method Security" applied at class PolygonScaleHandle to method createUndoActivity from protected to public
+Iteration 12: "Make Class Final" applied to class ToggleGridCommand
+Iteration 13: "Move Method Down" applied to method undo from UndoActivity to UndoActivity
+Iteration 14: "Decrease Method Security" applied at class DragNDropTool to method createDragGestureRecognizer from private to package
+Iteration 15: "Make Class Final" applied to class DrawingChangeEvent
+Iteration 16: "Make Method Non Final" applied at class CompositeFigure to method figures
+Iteration 17: "Make Class Final" applied to class RoundRectangleFigure
+Iteration 18: "Decrease Method Security" applied at class DragNDropTool to method createDragGestureRecognizer from package to protected
+Iteration 19: "Decrease Method Security" applied at class MDI_InternalFrame to method findDrawingView from protected to public
+Iteration 20: "Make Class Final" applied to class UndoActivity
+Iteration 21: "Make Class Concrete" applied to class DrawApplet
+Iteration 22: "Decrease Method Security" applied at class EllipseFigure to method basicMoveBy from protected to public
+Iteration 23: "Decrease Method Security" applied at class BringToFrontCommand to method createUndoActivity from protected to public
+Iteration 24: "Make Class Abstract" applied to class DrawApplet
+Iteration 25: "Decrease Method Security" applied at class DragNDropTool to method createDragGestureRecognizer from protected to public
+Iteration 26: "Make Class Concrete" applied to class DrawApplet
+Iteration 27: "Make Class Abstract" applied to class DrawApplet
+Iteration 28: "Make Class Concrete" applied to class DrawApplet
+Iteration 29: "Move Method Down" applied to method redo from UndoActivity to UndoActivity
+Iteration 30: "Make Method Non Final" applied at class CompositeFigure to method figuresReverse
+Iteration 31: "Remove Class" applied to class JHotDrawException
+Iteration 32: "Make Method Static" applied at class AbstractTool to method keyDown
+Iteration 33: "Make Method Non Static" applied at class UndoRedoActivity to method createUndoRedoActivity
+Iteration 34: "Decrease Method Security" applied at class CopyCommand to method isExecutableWithView from protected to public
+Iteration 35: "Decrease Method Security" applied at class SelectAreaTracker to method eraseRubberBand from private to package
+Iteration 36: "Make Method Final" applied at class UngroupCommand to method ungroupFigures
+Iteration 37: "Increase Method Security" applied at class Animator to method end from public to protected
+Iteration 38: "Decrease Method Security" applied at class NothingApp to method NothingApp from package to protected
+Iteration 39: "Remove Method" applied at class TextFigure to method setCurrentFontSize
+Iteration 40: "Move Method Up" applied to method createHandleTracker from SelectionTool to AbstractTool
+Iteration 41: "Make Class Abstract" applied to class FigureChangeAdapter
+Iteration 42: "Make Method Non Final" applied at class UngroupCommand to method ungroupFigures
+Iteration 43: "Make Class Abstract" applied to class DrawApplet
+Iteration 44: "Make Class Concrete" applied to class DrawApplet
+Iteration 45: "Decrease Method Security" applied at class Animator to method end from protected to public
+Iteration 46: "Make Class Abstract" applied to class DrawApplet
+Iteration 47: "Make Class Concrete" applied to class DrawApplet
+Iteration 48: "Make Class Abstract" applied to class DrawApplet
+Iteration 49: "Make Class Concrete" applied to class DrawApplet
+Iteration 50: "Make Class Abstract" applied to class DrawApplet
+Iteration 51: "Make Class Concrete" applied to class DrawApplet
+Iteration 52: "Make Class Abstract" applied to class DrawApplet
+Iteration 53: "Make Class Concrete" applied to class DrawApplet
+Iteration 54: "Make Class Abstract" applied to class DrawApplet
+Iteration 55: "Make Class Concrete" applied to class DrawApplet
+Iteration 56: "Make Method Final" applied at class UngroupCommand to method ungroupFigures
+Iteration 57: "Make Method Non Final" applied at class UngroupCommand to method ungroupFigures
+Iteration 58: "Make Class Abstract" applied to class DrawApplet
+Iteration 59: "Make Class Concrete" applied to class DrawApplet
+Iteration 60: "Make Class Abstract" applied to class DrawApplet
+Iteration 61: "Make Class Concrete" applied to class DrawApplet
+Iteration 62: "Make Method Final" applied at class UngroupCommand to method ungroupFigures
+Iteration 63: "Increase Method Security" applied at class Animator to method end from public to protected
+Iteration 64: "Make Method Non Final" applied at class UngroupCommand to method ungroupFigures
+Iteration 65: "Make Method Final" applied at class UngroupCommand to method ungroupFigures
+Iteration 66: "Make Method Non Final" applied at class UngroupCommand to method ungroupFigures
+Iteration 67: "Make Class Abstract" applied to class DrawApplet
+Iteration 68: "Make Class Concrete" applied to class DrawApplet
+Iteration 69: "Make Class Abstract" applied to class DrawApplet
+Iteration 70: "Make Class Concrete" applied to class DrawApplet
+Iteration 71: "Decrease Method Security" applied at class SelectAreaTracker to method eraseRubberBand from package to protected
+Iteration 72: "Make Method Final" applied at class UngroupCommand to method ungroupFigures
+Iteration 73: "Increase Method Security" applied at class Animator to method end from protected to package
+Iteration 74: "Decrease Method Security" applied at class NothingApp to method NothingApp from protected to public
+Iteration 75: "Make Method Non Final" applied at class UngroupCommand to method ungroupFigures
+Iteration 76: "Make Class Abstract" applied to class DrawApplet
+Iteration 77: "Make Class Concrete" applied to class DrawApplet
+Iteration 78: "Decrease Method Security" applied at class SelectAreaTracker to method eraseRubberBand from protected to public
+Iteration 79: "Make Method Final" applied at class UngroupCommand to method ungroupFigures
+Iteration 80: "Make Method Non Final" applied at class UngroupCommand to method ungroupFigures
+Iteration 81: "Make Class Abstract" applied to class DrawApplet
+Iteration 82: "Make Class Concrete" applied to class DrawApplet
+Iteration 83: "Decrease Method Security" applied at class Animator to method end from package to protected
+Iteration 84: "Make Class Abstract" applied to class DrawApplet
+Iteration 85: "Make Class Concrete" applied to class DrawApplet
+Iteration 86: "Make Class Abstract" applied to class DrawApplet
+Iteration 87: "Make Class Concrete" applied to class DrawApplet
+Iteration 88: "Make Class Abstract" applied to class DrawApplet
+Iteration 89: "Make Class Concrete" applied to class DrawApplet
+Iteration 90: "Make Class Abstract" applied to class DrawApplet
+Iteration 91: "Make Class Concrete" applied to class DrawApplet
+Iteration 92: "Make Class Abstract" applied to class DrawApplet
+Iteration 93: "Make Class Concrete" applied to class DrawApplet
+Iteration 94: "Make Method Final" applied at class UngroupCommand to method ungroupFigures
+Iteration 95: "Make Method Non Final" applied at class UngroupCommand to method ungroupFigures
+Iteration 96: "Make Method Final" applied at class UngroupCommand to method ungroupFigures
+Iteration 97: "Make Method Non Final" applied at class UngroupCommand to method ungroupFigures
+Iteration 98: "Make Class Abstract" applied to class DrawApplet
+Iteration 99: "Make Class Concrete" applied to class DrawApplet
+Iteration 100: "Make Class Abstract" applied to class DrawApplet
+Iteration 101: "Make Class Concrete" applied to class DrawApplet
+Iteration 102: "Make Method Final" applied at class UngroupCommand to method ungroupFigures
+Iteration 103: "Increase Method Security" applied at class Animator to method end from protected to package
+Iteration 104: "Make Method Non Final" applied at class UngroupCommand to method ungroupFigures
+Iteration 105: "Make Method Final" applied at class UngroupCommand to method ungroupFigures
+Iteration 106: "Make Method Non Final" applied at class UngroupCommand to method ungroupFigures
+Iteration 107: "Make Class Abstract" applied to class DrawApplet
+Iteration 108: "Make Class Concrete" applied to class DrawApplet
+Iteration 109: "Decrease Method Security" applied at class Animator to method end from package to protected
+Iteration 110: "Make Class Abstract" applied to class DrawApplet
+Iteration 111: "Make Class Concrete" applied to class DrawApplet
+Iteration 112: "Make Method Final" applied at class UngroupCommand to method ungroupFigures
+Iteration 113: "Increase Method Security" applied at class Animator to method end from protected to package
+Iteration 114: "Make Class Abstract" applied to class DrawApplet
+Iteration 115: "Make Class Concrete" applied to class DrawApplet
+Iteration 116: "Make Class Abstract" applied to class DrawApplet
+Iteration 117: "Make Class Concrete" applied to class DrawApplet
+Iteration 118: "Make Class Abstract" applied to class DrawApplet
+Iteration 119: "Make Class Concrete" applied to class DrawApplet
+Iteration 120: "Make Method Non Final" applied at class UngroupCommand to method ungroupFigures
+Iteration 121: "Make Class Abstract" applied to class DrawApplet
+Iteration 122: "Make Class Concrete" applied to class DrawApplet
+Iteration 123: "Decrease Method Security" applied at class Animator to method end from package to protected
+Iteration 124: "Make Class Abstract" applied to class DrawApplet
+Iteration 125: "Make Class Concrete" applied to class DrawApplet
+Iteration 126: "Make Method Final" applied at class UngroupCommand to method ungroupFigures
+Iteration 127: "Make Method Non Final" applied at class UngroupCommand to method ungroupFigures
+Iteration 128: "Make Class Abstract" applied to class DrawApplet
+Iteration 129: "Make Class Concrete" applied to class DrawApplet
+Iteration 130: "Make Class Abstract" applied to class DrawApplet
+Iteration 131: "Make Class Concrete" applied to class DrawApplet
+Iteration 132: "Make Method Final" applied at class UngroupCommand to method ungroupFigures
+Iteration 133: "Increase Method Security" applied at class Animator to method end from protected to package
+Iteration 134: "Make Method Non Final" applied at class UngroupCommand to method ungroupFigures
+Iteration 135: "Make Method Final" applied at class UngroupCommand to method ungroupFigures
+Iteration 136: "Make Method Non Final" applied at class UngroupCommand to method ungroupFigures
+Iteration 137: "Make Class Abstract" applied to class DrawApplet
+Iteration 138: "Make Class Concrete" applied to class DrawApplet
+Iteration 139: "Decrease Method Security" applied at class Animator to method end from package to protected
+Iteration 140: "Make Class Abstract" applied to class DrawApplet
+Iteration 141: "Make Class Concrete" applied to class DrawApplet
+Iteration 142: "Make Method Final" applied at class UngroupCommand to method ungroupFigures
+Iteration 143: "Increase Method Security" applied at class Animator to method end from protected to package
+Iteration 144: "Make Method Non Static" applied at class AttributeFigure to method initializeAttributes
+Iteration 145: "Make Class Concrete" applied to class CompositeFigure
+Iteration 146: "Make Class Abstract" applied to class ResizeHandle
+Iteration 147: "Make Method Static" applied at class CustomSelectionTool to method handleMouseDown
+Iteration 148: "Move Method Down" applied to method mouseUp from ActionTool to BorderTool
+Iteration 149: "Make Class Abstract" applied to class DrawApplet
+Iteration 150: "Make Class Concrete" applied to class DrawApplet
+Iteration 151: "Make Method Non Final" applied at class UngroupCommand to method ungroupFigures
+Iteration 152: "Make Method Final" applied at class UngroupCommand to method ungroupFigures
+Iteration 153: "Make Method Non Final" applied at class UngroupCommand to method ungroupFigures
+Iteration 154: "Make Class Abstract" applied to class DrawApplet
+Iteration 155: "Make Class Concrete" applied to class DrawApplet
+Iteration 156: "Decrease Method Security" applied at class Animator to method end from package to protected
+Iteration 157: "Make Class Abstract" applied to class DrawApplet
+Iteration 158: "Make Class Concrete" applied to class DrawApplet
+Iteration 159: "Make Method Final" applied at class UngroupCommand to method ungroupFigures
+Iteration 160: "Increase Method Security" applied at class Animator to method end from protected to package
+Iteration 161: "Decrease Method Security" applied at class Animator to method end from package to protected
+Iteration 162: "Make Class Abstract" applied to class DrawApplet
+Iteration 163: "Make Class Concrete" applied to class DrawApplet
+Iteration 164: "Increase Method Security" applied at class Animator to method end from protected to package
+Iteration 165: "Make Class Final" applied to class FloatingTextField
+Iteration 166: "Make Class Non Final" applied to class DragNDropTool
+Iteration 167: "Make Method Static" applied at class PolygonTool to method mouseUp
+Iteration 168: "Decrease Method Security" applied at class DragNDropTool to method ProcessRemotelyReceivedData from protected to public
+Iteration 169: "Make Class Final" applied to class DeleteCommand
+Iteration 170: "Make Class Final" applied to class ConnectedTextTool
+Iteration 171: "Make Class Abstract" applied to class CompositeFigure
+Iteration 172: "Decrease Method Security" applied at class GroupCommand to method createUndoActivity from protected to public
+Iteration 173: "Make Class Abstract" applied to class LocatorHandle
+Iteration 174: "Make Method Static" applied at class PolygonFigure to method connectorAt
+Iteration 175: "Make Class Abstract" applied to class DrawApplet
+Iteration 176: "Make Method Non Static" applied at class DragNDropTool to method supportDropTargetDragEvent
+Iteration 177: "Remove Method" applied at class Bounds to method getWest
+Iteration 178: "Make Method Non Static" applied at class DragNDropTool to method ProcessReceivedData
+Iteration 179: "Make Method Final" applied at class StorageFormatManager to method setDefaultStorageFormat
+Iteration 180: "Make Class Concrete" applied to class DrawApplet
+Iteration 181: "Decrease Method Security" applied at class Animator to method end from package to protected
+Iteration 182: "Make Class Abstract" applied to class DrawApplet
+Iteration 183: "Make Class Concrete" applied to class DrawApplet
+Iteration 184: "Make Method Non Final" applied at class UngroupCommand to method ungroupFigures
+Iteration 185: "Make Class Abstract" applied to class DrawApplet
+Iteration 186: "Make Class Concrete" applied to class DrawApplet
+Iteration 187: "Make Class Abstract" applied to class DrawApplet
+Iteration 188: "Make Class Concrete" applied to class DrawApplet
+Iteration 189: "Make Method Final" applied at class UngroupCommand to method ungroupFigures
+Iteration 190: "Increase Method Security" applied at class Animator to method end from protected to package
+Iteration 191: "Make Method Non Final" applied at class UngroupCommand to method ungroupFigures
+Iteration 192: "Make Method Final" applied at class UngroupCommand to method ungroupFigures
+Iteration 193: "Make Method Non Final" applied at class UngroupCommand to method ungroupFigures
+Iteration 194: "Make Class Abstract" applied to class DrawApplet
+Iteration 195: "Make Class Concrete" applied to class DrawApplet
+Iteration 196: "Make Class Abstract" applied to class DrawApplet
+Iteration 197: "Make Class Concrete" applied to class DrawApplet
+Iteration 198: "Decrease Method Security" applied at class Animator to method end from package to protected
+Iteration 199: "Make Class Abstract" applied to class DrawApplet
+Iteration 200: "Make Class Concrete" applied to class DrawApplet
+Iteration 201: "Make Class Abstract" applied to class DrawApplet
+Iteration 202: "Make Class Concrete" applied to class DrawApplet
+Iteration 203: "Make Class Abstract" applied to class DrawApplet
+Iteration 204: "Make Class Concrete" applied to class DrawApplet
+Iteration 205: "Make Class Abstract" applied to class DrawApplet
+Iteration 206: "Make Class Concrete" applied to class DrawApplet
+Iteration 207: "Make Method Final" applied at class UngroupCommand to method ungroupFigures
+Iteration 208: "Increase Method Security" applied at class Animator to method end from protected to package
+Iteration 209: "Make Method Non Final" applied at class UngroupCommand to method ungroupFigures
+Iteration 210: "Make Class Abstract" applied to class DrawApplet
+Iteration 211: "Make Class Concrete" applied to class DrawApplet
+Iteration 212: "Decrease Method Security" applied at class Animator to method end from package to protected
+Iteration 213: "Make Class Abstract" applied to class DrawApplet
+Iteration 214: "Make Class Concrete" applied to class DrawApplet
+Iteration 215: "Make Class Abstract" applied to class DrawApplet
+Iteration 216: "Make Class Concrete" applied to class DrawApplet
+Iteration 217: "Make Class Abstract" applied to class DrawApplet
+Iteration 218: "Make Class Concrete" applied to class DrawApplet
+Iteration 219: "Make Class Abstract" applied to class DrawApplet
+Iteration 220: "Make Class Concrete" applied to class DrawApplet
+Iteration 221: "Make Class Abstract" applied to class DrawApplet
+Iteration 222: "Make Class Concrete" applied to class DrawApplet
+Iteration 223: "Make Method Final" applied at class UngroupCommand to method ungroupFigures
+Iteration 224: "Make Method Non Final" applied at class UngroupCommand to method ungroupFigures
+Iteration 225: "Make Class Abstract" applied to class DrawApplet
+Iteration 226: "Make Class Concrete" applied to class DrawApplet
+Iteration 227: "Make Class Abstract" applied to class DrawApplet
+Iteration 228: "Make Class Concrete" applied to class DrawApplet
+Iteration 229: "Make Method Final" applied at class UngroupCommand to method ungroupFigures
+Iteration 230: "Increase Method Security" applied at class Animator to method end from protected to package
+Iteration 231: "Make Method Non Final" applied at class UngroupCommand to method ungroupFigures
+Iteration 232: "Make Method Final" applied at class UngroupCommand to method ungroupFigures
+Iteration 233: "Make Method Non Final" applied at class UngroupCommand to method ungroupFigures
+Iteration 234: "Make Class Abstract" applied to class DrawApplet
+Iteration 235: "Make Class Concrete" applied to class DrawApplet
+Iteration 236: "Decrease Method Security" applied at class Animator to method end from package to protected
+Iteration 237: "Make Class Abstract" applied to class DrawApplet
+Iteration 238: "Make Class Concrete" applied to class DrawApplet
+Iteration 239: "Make Method Final" applied at class UngroupCommand to method ungroupFigures
+Iteration 240: "Increase Method Security" applied at class Animator to method end from protected to package
+Iteration 241: "Decrease Method Security" applied at class Animator to method end from package to protected
+Iteration 242: "Make Class Abstract" applied to class DrawApplet
+Iteration 243: "Make Class Concrete" applied to class DrawApplet
+Iteration 244: "Increase Method Security" applied at class Animator to method end from protected to package
+Iteration 245: "Make Class Abstract" applied to class DrawApplet
+Iteration 246: "Make Class Concrete" applied to class DrawApplet
+Iteration 247: "Decrease Method Security" applied at class Animator to method end from package to protected
+Iteration 248: "Make Class Abstract" applied to class DrawApplet
+Iteration 249: "Make Class Concrete" applied to class DrawApplet
+Iteration 250: "Increase Method Security" applied at class Animator to method end from protected to package
+Iteration 251: "Make Class Concrete" applied to class CompositeFigure
+Iteration 252: "Make Class Abstract" applied to class DrawApplet
+Iteration 253: "Make Class Concrete" applied to class DrawApplet
+Iteration 254: "Make Method Non Final" applied at class UngroupCommand to method ungroupFigures
+Iteration 255: "Make Method Final" applied at class UngroupCommand to method ungroupFigures
+Iteration 256: "Make Method Non Final" applied at class UngroupCommand to method ungroupFigures
+Iteration 257: "Make Class Abstract" applied to class DrawApplet
+Iteration 258: "Make Class Concrete" applied to class DrawApplet
+Iteration 259: "Make Method Final" applied at class UngroupCommand to method ungroupFigures
+Iteration 260: "Make Method Non Final" applied at class UngroupCommand to method ungroupFigures
+Iteration 261: "Make Class Abstract" applied to class DrawApplet
+Iteration 262: "Make Class Concrete" applied to class DrawApplet
+Iteration 263: "Make Method Final" applied at class UngroupCommand to method ungroupFigures
+Iteration 264: "Make Method Non Final" applied at class UngroupCommand to method ungroupFigures
+Iteration 265: "Make Class Abstract" applied to class DrawApplet
+Iteration 266: "Make Class Concrete" applied to class DrawApplet
+Iteration 267: "Decrease Method Security" applied at class Animator to method end from package to protected
+Iteration 268: "Make Class Abstract" applied to class DrawApplet
+Iteration 269: "Make Class Concrete" applied to class DrawApplet
+Iteration 270: "Make Class Abstract" applied to class DrawApplet
+Iteration 271: "Make Class Concrete" applied to class DrawApplet
+Iteration 272: "Make Class Abstract" applied to class DrawApplet
+Iteration 273: "Make Class Concrete" applied to class DrawApplet
+Iteration 274: "Make Class Abstract" applied to class DrawApplet
+Iteration 275: "Make Class Concrete" applied to class DrawApplet
+Iteration 276: "Make Method Final" applied at class UngroupCommand to method ungroupFigures
+Iteration 277: "Increase Method Security" applied at class Animator to method end from protected to package
+Iteration 278: "Make Class Abstract" applied to class DrawApplet
+Iteration 279: "Make Class Concrete" applied to class DrawApplet
+Iteration 280: "Make Method Non Final" applied at class UngroupCommand to method ungroupFigures
+Iteration 281: "Make Method Final" applied at class UngroupCommand to method ungroupFigures
+Iteration 282: "Make Method Non Final" applied at class UngroupCommand to method ungroupFigures
+Iteration 283: "Make Class Abstract" applied to class DrawApplet
+Iteration 284: "Make Class Concrete" applied to class DrawApplet
+Iteration 285: "Decrease Method Security" applied at class Animator to method end from package to protected
+Iteration 286: "Make Class Abstract" applied to class DrawApplet
+Iteration 287: "Make Class Concrete" applied to class DrawApplet
+Iteration 288: "Make Method Final" applied at class UngroupCommand to method ungroupFigures
+Iteration 289: "Increase Method Security" applied at class Animator to method end from protected to package
+Iteration 290: "Decrease Method Security" applied at class Animator to method end from package to protected
+Iteration 291: "Make Class Abstract" applied to class DrawApplet
+Iteration 292: "Make Class Concrete" applied to class DrawApplet
+Iteration 293: "Increase Method Security" applied at class Animator to method end from protected to package
+Iteration 294: "Make Class Abstract" applied to class CompositeFigure
+Iteration 295: "Make Class Abstract" applied to class DrawApplet
+Iteration 296: "Make Class Concrete" applied to class DrawApplet
+Iteration 297: "Decrease Method Security" applied at class Animator to method end from package to protected
+Iteration 298: "Make Class Abstract" applied to class DrawApplet
+Iteration 299: "Make Class Concrete" applied to class DrawApplet
+Iteration 300: "Make Method Non Final" applied at class UngroupCommand to method ungroupFigures
+Iteration 301: "Make Class Abstract" applied to class DrawApplet
+Iteration 302: "Make Class Concrete" applied to class DrawApplet
+Iteration 303: "Make Class Abstract" applied to class DrawApplet
+Iteration 304: "Make Class Concrete" applied to class DrawApplet
+Iteration 305: "Make Method Final" applied at class UngroupCommand to method ungroupFigures
+Iteration 306: "Increase Method Security" applied at class Animator to method end from protected to package
+Iteration 307: "Make Method Non Final" applied at class UngroupCommand to method ungroupFigures
+Iteration 308: "Make Method Final" applied at class UngroupCommand to method ungroupFigures
+Iteration 309: "Make Method Non Final" applied at class UngroupCommand to method ungroupFigures
+Iteration 310: "Make Class Abstract" applied to class DrawApplet
+Iteration 311: "Make Class Concrete" applied to class DrawApplet
+Iteration 312: "Make Class Abstract" applied to class DrawApplet
+Iteration 313: "Make Class Concrete" applied to class DrawApplet
+Iteration 314: "Decrease Method Security" applied at class Animator to method end from package to protected
+Iteration 315: "Make Class Abstract" applied to class DrawApplet
+Iteration 316: "Make Class Concrete" applied to class DrawApplet
+Iteration 317: "Make Class Abstract" applied to class DrawApplet
+Iteration 318: "Make Class Concrete" applied to class DrawApplet
+Iteration 319: "Make Class Abstract" applied to class DrawApplet
+Iteration 320: "Make Class Concrete" applied to class DrawApplet
+Iteration 321: "Make Class Abstract" applied to class DrawApplet
+Iteration 322: "Make Class Concrete" applied to class DrawApplet
+Iteration 323: "Make Method Final" applied at class UngroupCommand to method ungroupFigures
+Iteration 324: "Increase Method Security" applied at class Animator to method end from protected to package
+Iteration 325: "Make Method Non Final" applied at class UngroupCommand to method ungroupFigures
+Iteration 326: "Make Class Abstract" applied to class DrawApplet
+Iteration 327: "Make Class Concrete" applied to class DrawApplet
+Iteration 328: "Decrease Method Security" applied at class Animator to method end from package to protected
+Iteration 329: "Make Class Abstract" applied to class DrawApplet
+Iteration 330: "Make Class Concrete" applied to class DrawApplet
+Iteration 331: "Make Class Abstract" applied to class DrawApplet
+Iteration 332: "Make Class Concrete" applied to class DrawApplet
+Iteration 333: "Make Class Abstract" applied to class DrawApplet
+Iteration 334: "Make Class Concrete" applied to class DrawApplet
+Iteration 335: "Make Class Abstract" applied to class DrawApplet
+Iteration 336: "Make Class Concrete" applied to class DrawApplet
+Iteration 337: "Make Class Abstract" applied to class DrawApplet
+Iteration 338: "Make Class Concrete" applied to class DrawApplet
+Iteration 339: "Make Method Final" applied at class UngroupCommand to method ungroupFigures
+Iteration 340: "Make Method Non Final" applied at class UngroupCommand to method ungroupFigures
+Iteration 341: "Make Class Abstract" applied to class DrawApplet
+Iteration 342: "Make Class Concrete" applied to class DrawApplet
+Iteration 343: "Make Class Abstract" applied to class DrawApplet
+Iteration 344: "Make Class Concrete" applied to class DrawApplet
+Iteration 345: "Make Method Final" applied at class UngroupCommand to method ungroupFigures
+Iteration 346: "Increase Method Security" applied at class Animator to method end from protected to package
+Iteration 347: "Make Method Non Final" applied at class UngroupCommand to method ungroupFigures
+Iteration 348: "Make Method Final" applied at class UngroupCommand to method ungroupFigures
+Iteration 349: "Make Method Non Final" applied at class UngroupCommand to method ungroupFigures
+Iteration 350: "Make Class Abstract" applied to class DrawApplet
+Iteration 351: "Make Class Concrete" applied to class DrawApplet
+Iteration 352: "Make Class Abstract" applied to class DrawApplet
+Iteration 353: "Make Class Concrete" applied to class DrawApplet
+Iteration 354: "Make Method Final" applied at class UngroupCommand to method ungroupFigures
+Iteration 355: "Make Method Non Final" applied at class UngroupCommand to method ungroupFigures
+Iteration 356: "Make Class Abstract" applied to class DrawApplet
+Iteration 357: "Make Class Concrete" applied to class DrawApplet
+Iteration 358: "Make Method Final" applied at class UngroupCommand to method ungroupFigures
+Iteration 359: "Make Method Non Final" applied at class UngroupCommand to method ungroupFigures
+Iteration 360: "Make Class Abstract" applied to class DrawApplet
+Iteration 361: "Make Class Concrete" applied to class DrawApplet
+Iteration 362: "Decrease Method Security" applied at class Animator to method end from package to protected
+Iteration 363: "Make Class Abstract" applied to class DrawApplet
+Iteration 364: "Make Class Concrete" applied to class DrawApplet
+Iteration 365: "Make Class Abstract" applied to class DrawApplet
+Iteration 366: "Make Class Concrete" applied to class DrawApplet
+Iteration 367: "Make Class Abstract" applied to class DrawApplet
+Iteration 368: "Make Class Concrete" applied to class DrawApplet
+Iteration 369: "Make Class Abstract" applied to class DrawApplet
+Iteration 370: "Make Class Concrete" applied to class DrawApplet
+Iteration 371: "Make Class Abstract" applied to class DrawApplet
+Iteration 372: "Make Class Concrete" applied to class DrawApplet
+Iteration 373: "Make Method Final" applied at class UngroupCommand to method ungroupFigures
+Iteration 374: "Make Method Non Final" applied at class UngroupCommand to method ungroupFigures
+Iteration 375: "Make Method Final" applied at class UngroupCommand to method ungroupFigures
+Iteration 376: "Make Method Non Final" applied at class UngroupCommand to method ungroupFigures
+Iteration 377: "Make Class Abstract" applied to class DrawApplet
+Iteration 378: "Make Class Concrete" applied to class DrawApplet
+Iteration 379: "Make Class Abstract" applied to class DrawApplet
+Iteration 380: "Make Class Concrete" applied to class DrawApplet
+Iteration 381: "Make Method Final" applied at class UngroupCommand to method ungroupFigures
+Iteration 382: "Increase Method Security" applied at class Animator to method end from protected to package
+Iteration 383: "Make Method Non Final" applied at class UngroupCommand to method ungroupFigures
+Iteration 384: "Make Method Final" applied at class UngroupCommand to method ungroupFigures
+Iteration 385: "Make Method Non Final" applied at class UngroupCommand to method ungroupFigures
+Iteration 386: "Make Class Abstract" applied to class DrawApplet
+Iteration 387: "Make Class Concrete" applied to class DrawApplet
+Iteration 388: "Decrease Method Security" applied at class Animator to method end from package to protected
+Iteration 389: "Make Class Abstract" applied to class DrawApplet
+Iteration 390: "Make Class Concrete" applied to class DrawApplet
+Iteration 391: "Make Method Final" applied at class UngroupCommand to method ungroupFigures
+Iteration 392: "Increase Method Security" applied at class Animator to method end from protected to package
+Iteration 393: "Make Class Abstract" applied to class DrawApplet
+Iteration 394: "Make Class Concrete" applied to class DrawApplet
+Iteration 395: "Make Class Abstract" applied to class DrawApplet
+Iteration 396: "Make Class Concrete" applied to class DrawApplet
+Iteration 397: "Make Class Abstract" applied to class DrawApplet
+Iteration 398: "Make Class Concrete" applied to class DrawApplet
+Iteration 399: "Make Method Non Final" applied at class UngroupCommand to method ungroupFigures
+Iteration 400: "Make Class Abstract" applied to class DrawApplet
+Iteration 401: "Make Class Concrete" applied to class DrawApplet
+Iteration 402: "Decrease Method Security" applied at class Animator to method end from package to protected
+Iteration 403: "Make Class Abstract" applied to class DrawApplet
+Iteration 404: "Make Class Concrete" applied to class DrawApplet
+Iteration 405: "Make Method Final" applied at class UngroupCommand to method ungroupFigures
+Iteration 406: "Make Method Non Final" applied at class UngroupCommand to method ungroupFigures
+Iteration 407: "Make Class Abstract" applied to class DrawApplet
+Iteration 408: "Make Class Concrete" applied to class DrawApplet
+Iteration 409: "Make Class Abstract" applied to class DrawApplet
+Iteration 410: "Make Class Concrete" applied to class DrawApplet
+Iteration 411: "Make Method Final" applied at class UngroupCommand to method ungroupFigures
+Iteration 412: "Increase Method Security" applied at class Animator to method end from protected to package
+Iteration 413: "Make Method Non Final" applied at class UngroupCommand to method ungroupFigures
+Iteration 414: "Make Method Final" applied at class UngroupCommand to method ungroupFigures
+Iteration 415: "Make Method Non Final" applied at class UngroupCommand to method ungroupFigures
+Iteration 416: "Make Class Abstract" applied to class DrawApplet
+Iteration 417: "Make Class Concrete" applied to class DrawApplet
+Iteration 418: "Decrease Method Security" applied at class Animator to method end from package to protected
+Iteration 419: "Make Class Abstract" applied to class DrawApplet
+Iteration 420: "Make Class Concrete" applied to class DrawApplet
+Iteration 421: "Make Method Final" applied at class UngroupCommand to method ungroupFigures
+Iteration 422: "Increase Method Security" applied at class Animator to method end from protected to package
+Iteration 423: "Make Class Concrete" applied to class CompositeFigure
+Iteration 424: "Make Class Abstract" applied to class DrawApplet
+Iteration 425: "Make Class Concrete" applied to class DrawApplet
+Iteration 426: "Make Method Non Final" applied at class UngroupCommand to method ungroupFigures
+Iteration 427: "Make Method Final" applied at class UngroupCommand to method ungroupFigures
+Iteration 428: "Make Method Non Final" applied at class UngroupCommand to method ungroupFigures
+Iteration 429: "Make Class Abstract" applied to class DrawApplet
+Iteration 430: "Make Class Concrete" applied to class DrawApplet
+Iteration 431: "Decrease Method Security" applied at class Animator to method end from package to protected
+Iteration 432: "Make Class Abstract" applied to class DrawApplet
+Iteration 433: "Make Class Concrete" applied to class DrawApplet
+Iteration 434: "Make Method Final" applied at class UngroupCommand to method ungroupFigures
+Iteration 435: "Increase Method Security" applied at class Animator to method end from protected to package
+Iteration 436: "Decrease Method Security" applied at class Animator to method end from package to protected
+Iteration 437: "Make Class Abstract" applied to class DrawApplet
+Iteration 438: "Make Class Concrete" applied to class DrawApplet
+Iteration 439: "Increase Method Security" applied at class Animator to method end from protected to package
+Iteration 440: "Make Class Abstract" applied to class CompositeFigure
+Iteration 441: "Make Class Abstract" applied to class DrawApplet
+Iteration 442: "Make Class Concrete" applied to class DrawApplet
+Iteration 443: "Decrease Method Security" applied at class Animator to method end from package to protected
+Iteration 444: "Make Class Abstract" applied to class DrawApplet
+Iteration 445: "Make Class Concrete" applied to class DrawApplet
+Iteration 446: "Make Method Non Final" applied at class UngroupCommand to method ungroupFigures
+Iteration 447: "Make Class Abstract" applied to class DrawApplet
+Iteration 448: "Make Class Concrete" applied to class DrawApplet
+Iteration 449: "Make Class Abstract" applied to class DrawApplet
+Iteration 450: "Make Class Concrete" applied to class DrawApplet
+Iteration 451: "Make Method Final" applied at class UngroupCommand to method ungroupFigures
+Iteration 452: "Increase Method Security" applied at class Animator to method end from protected to package
+Iteration 453: "Make Method Non Final" applied at class UngroupCommand to method ungroupFigures
+Iteration 454: "Make Method Final" applied at class UngroupCommand to method ungroupFigures
+Iteration 455: "Make Method Non Final" applied at class UngroupCommand to method ungroupFigures
+Iteration 456: "Make Class Abstract" applied to class DrawApplet
+Iteration 457: "Make Class Concrete" applied to class DrawApplet
+Iteration 458: "Make Class Abstract" applied to class DrawApplet
+Iteration 459: "Make Class Concrete" applied to class DrawApplet
+Iteration 460: "Decrease Method Security" applied at class Animator to method end from package to protected
+Iteration 461: "Make Class Abstract" applied to class DrawApplet
+Iteration 462: "Make Class Concrete" applied to class DrawApplet
+Iteration 463: "Make Class Abstract" applied to class DrawApplet
+Iteration 464: "Make Class Concrete" applied to class DrawApplet
+Iteration 465: "Make Class Abstract" applied to class DrawApplet
+Iteration 466: "Make Class Concrete" applied to class DrawApplet
+Iteration 467: "Make Method Final" applied at class UngroupCommand to method ungroupFigures
+Iteration 468: "Increase Method Security" applied at class Animator to method end from protected to package
+Iteration 469: "Make Method Non Final" applied at class UngroupCommand to method ungroupFigures
+Iteration 470: "Make Method Final" applied at class UngroupCommand to method ungroupFigures
+Iteration 471: "Make Method Non Final" applied at class UngroupCommand to method ungroupFigures
+Iteration 472: "Make Class Abstract" applied to class DrawApplet
+Iteration 473: "Make Class Concrete" applied to class DrawApplet
+Iteration 474: "Decrease Method Security" applied at class Animator to method end from package to protected
+Iteration 475: "Make Class Abstract" applied to class DrawApplet
+Iteration 476: "Make Class Concrete" applied to class DrawApplet
+Iteration 477: "Make Method Final" applied at class UngroupCommand to method ungroupFigures
+Iteration 478: "Increase Method Security" applied at class Animator to method end from protected to package
+Iteration 479: "Make Class Concrete" applied to class CompositeFigure
+Iteration 480: "Make Class Abstract" applied to class DrawApplet
+Iteration 481: "Make Class Concrete" applied to class DrawApplet
+Iteration 482: "Make Method Non Final" applied at class UngroupCommand to method ungroupFigures
+Iteration 483: "Make Method Final" applied at class UngroupCommand to method ungroupFigures
+Iteration 484: "Make Method Non Final" applied at class UngroupCommand to method ungroupFigures
+Iteration 485: "Make Class Abstract" applied to class DrawApplet
+Iteration 486: "Make Class Concrete" applied to class DrawApplet
+Iteration 487: "Decrease Method Security" applied at class Animator to method end from package to protected
+Iteration 488: "Make Class Abstract" applied to class DrawApplet
+Iteration 489: "Make Class Concrete" applied to class DrawApplet
+Iteration 490: "Make Method Final" applied at class UngroupCommand to method ungroupFigures
+Iteration 491: "Increase Method Security" applied at class Animator to method end from protected to package
+Iteration 492: "Decrease Method Security" applied at class Animator to method end from package to protected
+Iteration 493: "Make Class Abstract" applied to class DrawApplet
+Iteration 494: "Make Class Concrete" applied to class DrawApplet
+Iteration 495: "Increase Method Security" applied at class Animator to method end from protected to package
+Iteration 496: "Make Class Abstract" applied to class CompositeFigure
+Iteration 497: "Make Class Abstract" applied to class DrawApplet
+Iteration 498: "Make Class Concrete" applied to class DrawApplet
+Iteration 499: "Decrease Method Security" applied at class Animator to method end from package to protected
+Iteration 500: "Make Class Abstract" applied to class DrawApplet
+Iteration 501: "Make Class Concrete" applied to class DrawApplet
+Iteration 502: "Increase Method Security" applied at class Animator to method end from protected to package
+Iteration 503: "Make Class Concrete" applied to class CompositeFigure
+Iteration 504: "Make Class Abstract" applied to class DrawApplet
+Iteration 505: "Make Class Concrete" applied to class DrawApplet
+Iteration 506: "Make Method Non Final" applied at class UngroupCommand to method ungroupFigures
+Iteration 507: "Make Method Final" applied at class UngroupCommand to method ungroupFigures
+Iteration 508: "Make Method Non Final" applied at class UngroupCommand to method ungroupFigures
+Iteration 509: "Make Class Abstract" applied to class DrawApplet
+Iteration 510: "Make Class Concrete" applied to class DrawApplet
+Iteration 511: "Decrease Method Security" applied at class Animator to method end from package to protected
+Iteration 512: "Make Class Abstract" applied to class DrawApplet
+Iteration 513: "Make Class Concrete" applied to class DrawApplet
+Iteration 514: "Make Method Final" applied at class UngroupCommand to method ungroupFigures
+Iteration 515: "Increase Method Security" applied at class Animator to method end from protected to package
+Iteration 516: "Decrease Method Security" applied at class Animator to method end from package to protected
+Iteration 517: "Make Class Abstract" applied to class DrawApplet
+Iteration 518: "Make Class Concrete" applied to class DrawApplet
+Iteration 519: "Increase Method Security" applied at class Animator to method end from protected to package
+Iteration 520: "Make Class Abstract" applied to class CompositeFigure
+Iteration 521: "Make Class Abstract" applied to class DrawApplet
+Iteration 522: "Decrease Method Security" applied at class PolyLineConnector to method chop from protected to public
+Iteration 523: "Make Method Final" applied at class ColorMap to method color
+Iteration 524: "Decrease Method Security" applied at class RoundRectangleFigure to method basicMoveBy from protected to public
+Iteration 525: "Make Method Static" applied at class StandardDrawingView to method getDefaultDNDActions
+Iteration 526: "Make Class Concrete" applied to class AbstractTool
+Iteration 527: "Make Class Final" applied to class NumberTextFigure
+Iteration 528: "Make Method Non Static" applied at class BoxHandleKit to method west
+Iteration 529: "Move Method Down" applied to method mouseDrag from TextTool to ConnectedTextTool
+Iteration 530: "Make Method Static" applied at class AbstractTool to method createEventDispatcher
+Iteration 531: "Move Method Down" applied to method setAffectedFigures from UndoActivity to UndoActivity
+Iteration 532: "Decrease Method Security" applied at class DrawApplication to method createApplication from protected to public
+Iteration 533: "Make Class Abstract" applied to class FigureTransferCommand
+Iteration 534: "Move Method Down" applied to method draw from ChangeConnectionHandle to ChangeConnectionEndHandle
+Iteration 535: "Decrease Method Security" applied at class Bounds to method max from private to package
+Iteration 536: "Make Class Concrete" applied to class DrawApplet
+Iteration 537: "Decrease Method Security" applied at class Animator to method end from package to protected
+Iteration 538: "Make Class Abstract" applied to class DrawApplet
+Iteration 539: "Make Class Concrete" applied to class DrawApplet
+Iteration 540: "Increase Method Security" applied at class Animator to method end from protected to package
+Iteration 541: "Decrease Method Security" applied at class Animator to method end from package to protected
+Iteration 542: "Make Class Abstract" applied to class DrawApplet
+Iteration 543: "Make Class Concrete" applied to class DrawApplet
+Iteration 544: "Increase Method Security" applied at class Animator to method end from protected to package
+Iteration 545: "Make Class Abstract" applied to class DrawApplet
+Iteration 546: "Make Class Concrete" applied to class DrawApplet
+Iteration 547: "Decrease Method Security" applied at class Animator to method end from package to protected
+Iteration 548: "Make Class Abstract" applied to class DrawApplet
+Iteration 549: "Make Class Concrete" applied to class DrawApplet
+Iteration 550: "Increase Method Security" applied at class Animator to method end from protected to package
+Iteration 551: "Make Class Abstract" applied to class DrawApplet
+Iteration 552: "Make Class Concrete" applied to class DrawApplet
+Iteration 553: "Decrease Method Security" applied at class Animator to method end from package to protected
+Iteration 554: "Make Class Abstract" applied to class DrawApplet
+Iteration 555: "Make Class Concrete" applied to class DrawApplet
+Iteration 556: "Increase Method Security" applied at class Animator to method end from protected to package
+Iteration 557: "Make Class Concrete" applied to class CompositeFigure
+Iteration 558: "Make Class Abstract" applied to class DrawApplet
+Iteration 559: "Make Class Concrete" applied to class DrawApplet
+Iteration 560: "Make Method Non Final" applied at class UngroupCommand to method ungroupFigures
+Iteration 561: "Make Method Final" applied at class UngroupCommand to method ungroupFigures
+Iteration 562: "Make Method Non Final" applied at class UngroupCommand to method ungroupFigures
+Iteration 563: "Make Class Abstract" applied to class DrawApplet
+Iteration 564: "Make Class Concrete" applied to class DrawApplet
+Iteration 565: "Decrease Method Security" applied at class Animator to method end from package to protected
+Iteration 566: "Make Class Abstract" applied to class DrawApplet
+Iteration 567: "Make Class Concrete" applied to class DrawApplet
+Iteration 568: "Make Method Final" applied at class UngroupCommand to method ungroupFigures
+Iteration 569: "Increase Method Security" applied at class Animator to method end from protected to package
+Iteration 570: "Decrease Method Security" applied at class Animator to method end from package to protected
+Iteration 571: "Make Class Abstract" applied to class DrawApplet
+Iteration 572: "Make Class Concrete" applied to class DrawApplet
+Iteration 573: "Increase Method Security" applied at class Animator to method end from protected to package
+Iteration 574: "Make Class Abstract" applied to class CompositeFigure
+Iteration 575: "Make Class Abstract" applied to class DrawApplet
+Iteration 576: "Decrease Method Security" applied at class Bounds to method max from package to protected
+Iteration 577: "Decrease Method Security" applied at class ImageFigure to method drawGhost from private to package
+Iteration 578: "Make Method Final" applied at class AbstractLocator to method clone
+Iteration 579: "Move Method Down" applied to method mouseMove from SelectionTool to CustomSelectionTool
+Iteration 580: "Decrease Method Security" applied at class PatternPainter to method drawPattern from private to package
+Iteration 581: "Make Class Concrete" applied to class DrawApplet
+Iteration 582: "Decrease Method Security" applied at class ChangeAttributeCommand to method createUndoActivity from protected to public
+Iteration 583: "Decrease Method Security" applied at class ColorMap to method ColorEntry from package to protected
+Iteration 584: "Make Class Final" applied to class UndoableCommand
+Iteration 585: "Decrease Method Security" applied at class ConnectedTextTool to method createUndoActivity from protected to public
+Iteration 586: "Make Method Non Static" applied at class BoxHandleKit to method east
+Iteration 587: "Make Class Abstract" applied to class DrawApplet
+Iteration 588: "Make Class Concrete" applied to class DrawApplet
+Iteration 589: "Decrease Method Security" applied at class Animator to method end from package to protected
+Iteration 590: "Make Class Abstract" applied to class DrawApplet
+Iteration 591: "Make Class Concrete" applied to class DrawApplet
+Iteration 592: "Make Method Non Final" applied at class UngroupCommand to method ungroupFigures
+Iteration 593: "Make Class Abstract" applied to class DrawApplet
+Iteration 594: "Make Class Concrete" applied to class DrawApplet
+Iteration 595: "Make Class Abstract" applied to class DrawApplet
+Iteration 596: "Make Class Concrete" applied to class DrawApplet
+Iteration 597: "Make Method Final" applied at class UngroupCommand to method ungroupFigures
+Iteration 598: "Increase Method Security" applied at class Animator to method end from protected to package
+Iteration 599: "Make Method Non Final" applied at class UngroupCommand to method ungroupFigures
+Iteration 600: "Make Method Final" applied at class UngroupCommand to method ungroupFigures
+Iteration 601: "Make Method Non Final" applied at class UngroupCommand to method ungroupFigures
+Iteration 602: "Make Class Abstract" applied to class DrawApplet
+Iteration 603: "Make Class Concrete" applied to class DrawApplet
+Iteration 604: "Make Class Abstract" applied to class DrawApplet
+Iteration 605: "Make Class Concrete" applied to class DrawApplet
+Iteration 606: "Decrease Method Security" applied at class Animator to method end from package to protected
+Iteration 607: "Make Class Abstract" applied to class DrawApplet
+Iteration 608: "Make Class Concrete" applied to class DrawApplet
+Iteration 609: "Make Class Abstract" applied to class DrawApplet
+Iteration 610: "Make Class Concrete" applied to class DrawApplet
+Iteration 611: "Make Class Abstract" applied to class DrawApplet
+Iteration 612: "Make Class Concrete" applied to class DrawApplet
+Iteration 613: "Make Class Abstract" applied to class DrawApplet
+Iteration 614: "Make Class Concrete" applied to class DrawApplet
+Iteration 615: "Make Method Final" applied at class UngroupCommand to method ungroupFigures
+Iteration 616: "Increase Method Security" applied at class Animator to method end from protected to package
+Iteration 617: "Make Method Non Final" applied at class UngroupCommand to method ungroupFigures
+Iteration 618: "Make Class Abstract" applied to class DrawApplet
+Iteration 619: "Make Class Concrete" applied to class DrawApplet
+Iteration 620: "Decrease Method Security" applied at class Animator to method end from package to protected
+Iteration 621: "Make Class Abstract" applied to class DrawApplet
+Iteration 622: "Make Class Concrete" applied to class DrawApplet
+Iteration 623: "Make Class Abstract" applied to class DrawApplet
+Iteration 624: "Make Class Concrete" applied to class DrawApplet
+Iteration 625: "Make Class Abstract" applied to class DrawApplet
+Iteration 626: "Make Class Concrete" applied to class DrawApplet
+Iteration 627: "Make Class Abstract" applied to class DrawApplet
+Iteration 628: "Make Class Concrete" applied to class DrawApplet
+Iteration 629: "Make Class Abstract" applied to class DrawApplet
+Iteration 630: "Make Class Concrete" applied to class DrawApplet
+Iteration 631: "Make Method Final" applied at class UngroupCommand to method ungroupFigures
+Iteration 632: "Make Method Non Final" applied at class UngroupCommand to method ungroupFigures
+Iteration 633: "Make Class Abstract" applied to class DrawApplet
+Iteration 634: "Make Class Concrete" applied to class DrawApplet
+Iteration 635: "Make Class Abstract" applied to class DrawApplet
+Iteration 636: "Make Class Concrete" applied to class DrawApplet
+Iteration 637: "Make Method Final" applied at class UngroupCommand to method ungroupFigures
+Iteration 638: "Increase Method Security" applied at class Animator to method end from protected to package
+Iteration 639: "Make Method Non Final" applied at class UngroupCommand to method ungroupFigures
+Iteration 640: "Make Method Final" applied at class UngroupCommand to method ungroupFigures
+Iteration 641: "Make Method Non Final" applied at class UngroupCommand to method ungroupFigures
+Iteration 642: "Make Class Abstract" applied to class DrawApplet
+Iteration 643: "Make Class Concrete" applied to class DrawApplet
+Iteration 644: "Decrease Method Security" applied at class Animator to method end from package to protected
+Iteration 645: "Make Class Abstract" applied to class DrawApplet
+Iteration 646: "Make Class Concrete" applied to class DrawApplet
+Iteration 647: "Make Method Final" applied at class UngroupCommand to method ungroupFigures
+Iteration 648: "Increase Method Security" applied at class Animator to method end from protected to package
+Iteration 649: "Decrease Method Security" applied at class Animator to method end from package to protected
+Iteration 650: "Make Class Abstract" applied to class DrawApplet
+Iteration 651: "Make Class Concrete" applied to class DrawApplet
+Iteration 652: "Increase Method Security" applied at class Animator to method end from protected to package
+Iteration 653: "Make Class Abstract" applied to class DrawApplet
+Iteration 654: "Make Class Concrete" applied to class DrawApplet
+Iteration 655: "Decrease Method Security" applied at class Animator to method end from package to protected
+Iteration 656: "Make Class Abstract" applied to class DrawApplet
+Iteration 657: "Make Class Concrete" applied to class DrawApplet
+Iteration 658: "Increase Method Security" applied at class Animator to method end from protected to package
+Iteration 659: "Make Class Concrete" applied to class CompositeFigure
+Iteration 660: "Make Class Abstract" applied to class DrawApplet
+Iteration 661: "Make Class Concrete" applied to class DrawApplet
+Iteration 662: "Make Method Non Final" applied at class UngroupCommand to method ungroupFigures
+Iteration 663: "Make Method Final" applied at class UngroupCommand to method ungroupFigures
+Iteration 664: "Make Method Non Final" applied at class UngroupCommand to method ungroupFigures
+Iteration 665: "Make Class Abstract" applied to class DrawApplet
+Iteration 666: "Make Class Concrete" applied to class DrawApplet
+Iteration 667: "Make Method Final" applied at class UngroupCommand to method ungroupFigures
+Iteration 668: "Make Method Non Final" applied at class UngroupCommand to method ungroupFigures
+Iteration 669: "Make Class Abstract" applied to class DrawApplet
+Iteration 670: "Make Class Concrete" applied to class DrawApplet
+Iteration 671: "Make Method Final" applied at class UngroupCommand to method ungroupFigures
+Iteration 672: "Make Method Non Final" applied at class UngroupCommand to method ungroupFigures
+Iteration 673: "Make Class Abstract" applied to class DrawApplet
+Iteration 674: "Make Class Concrete" applied to class DrawApplet
+Iteration 675: "Decrease Method Security" applied at class Animator to method end from package to protected
+Iteration 676: "Make Class Abstract" applied to class DrawApplet
+Iteration 677: "Make Class Concrete" applied to class DrawApplet
+Iteration 678: "Make Class Abstract" applied to class DrawApplet
+Iteration 679: "Make Class Concrete" applied to class DrawApplet
+Iteration 680: "Decrease Method Security" applied at class Animator to method end from protected to public
+Iteration 681: "Make Class Abstract" applied to class DrawApplet
+Iteration 682: "Make Class Concrete" applied to class DrawApplet
+Iteration 683: "Make Method Final" applied at class UngroupCommand to method ungroupFigures
+Iteration 684: "Make Method Non Final" applied at class UngroupCommand to method ungroupFigures
+Iteration 685: "Make Class Abstract" applied to class DrawApplet
+Iteration 686: "Make Class Concrete" applied to class DrawApplet
+Iteration 687: "Make Class Abstract" applied to class DrawApplet
+Iteration 688: "Make Class Concrete" applied to class DrawApplet
+Iteration 689: "Make Method Final" applied at class UngroupCommand to method ungroupFigures
+Iteration 690: "Increase Method Security" applied at class Animator to method end from public to protected
+Iteration 691: "Make Method Non Final" applied at class UngroupCommand to method ungroupFigures
+Iteration 692: "Make Method Final" applied at class UngroupCommand to method ungroupFigures
+Iteration 693: "Make Method Non Final" applied at class UngroupCommand to method ungroupFigures
+Iteration 694: "Make Class Abstract" applied to class DrawApplet
+Iteration 695: "Make Class Concrete" applied to class DrawApplet
+Iteration 696: "Decrease Method Security" applied at class Animator to method end from protected to public
+Iteration 697: "Make Class Abstract" applied to class DrawApplet
+Iteration 698: "Make Class Concrete" applied to class DrawApplet
+Iteration 699: "Make Method Final" applied at class UngroupCommand to method ungroupFigures
+Iteration 700: "Increase Method Security" applied at class Animator to method end from public to protected
+Iteration 701: "Make Class Abstract" applied to class DrawApplet
+Iteration 702: "Make Class Concrete" applied to class DrawApplet
+Iteration 703: "Make Method Non Final" applied at class UngroupCommand to method ungroupFigures
+Iteration 704: "Make Method Final" applied at class UngroupCommand to method ungroupFigures
+Iteration 705: "Make Method Non Final" applied at class UngroupCommand to method ungroupFigures
+Iteration 706: "Make Class Abstract" applied to class DrawApplet
+Iteration 707: "Make Class Concrete" applied to class DrawApplet
+Iteration 708: "Decrease Method Security" applied at class Animator to method end from protected to public
+Iteration 709: "Make Class Abstract" applied to class DrawApplet
+Iteration 710: "Make Class Concrete" applied to class DrawApplet
+Iteration 711: "Make Method Final" applied at class UngroupCommand to method ungroupFigures
+Iteration 712: "Increase Method Security" applied at class Animator to method end from public to protected
+Iteration 713: "Decrease Method Security" applied at class Animator to method end from protected to public
+Iteration 714: "Make Class Abstract" applied to class DrawApplet
+Iteration 715: "Make Class Concrete" applied to class DrawApplet
+Iteration 716: "Increase Method Security" applied at class Animator to method end from public to protected
+Iteration 717: "Make Class Abstract" applied to class CompositeFigure
+Iteration 718: "Make Class Abstract" applied to class DrawApplet
+Iteration 719: "Make Class Concrete" applied to class DrawApplet
+Iteration 720: "Decrease Method Security" applied at class Animator to method end from protected to public
+Iteration 721: "Make Class Abstract" applied to class DrawApplet
+Iteration 722: "Make Class Concrete" applied to class DrawApplet
+Iteration 723: "Make Method Non Final" applied at class UngroupCommand to method ungroupFigures
+Iteration 724: "Make Class Abstract" applied to class DrawApplet
+Iteration 725: "Make Class Concrete" applied to class DrawApplet
+Iteration 726: "Make Class Abstract" applied to class DrawApplet
+Iteration 727: "Make Class Concrete" applied to class DrawApplet
+Iteration 728: "Make Method Final" applied at class UngroupCommand to method ungroupFigures
+Iteration 729: "Increase Method Security" applied at class Animator to method end from public to protected
+Iteration 730: "Make Method Non Final" applied at class UngroupCommand to method ungroupFigures
+Iteration 731: "Make Method Final" applied at class UngroupCommand to method ungroupFigures
+Iteration 732: "Make Method Non Final" applied at class UngroupCommand to method ungroupFigures
+Iteration 733: "Make Class Abstract" applied to class DrawApplet
+Iteration 734: "Make Class Concrete" applied to class DrawApplet
+Iteration 735: "Make Class Abstract" applied to class DrawApplet
+Iteration 736: "Make Class Concrete" applied to class DrawApplet
+Iteration 737: "Decrease Method Security" applied at class Animator to method end from protected to public
+Iteration 738: "Make Class Abstract" applied to class DrawApplet
+Iteration 739: "Make Class Concrete" applied to class DrawApplet
+Iteration 740: "Make Class Abstract" applied to class DrawApplet
+Iteration 741: "Make Class Concrete" applied to class DrawApplet
+Iteration 742: "Make Class Abstract" applied to class DrawApplet
+Iteration 743: "Make Class Concrete" applied to class DrawApplet
+Iteration 744: "Make Class Abstract" applied to class DrawApplet
+Iteration 745: "Make Class Concrete" applied to class DrawApplet
+Iteration 746: "Make Method Final" applied at class UngroupCommand to method ungroupFigures
+Iteration 747: "Increase Method Security" applied at class Animator to method end from public to protected
+Iteration 748: "Make Method Non Final" applied at class UngroupCommand to method ungroupFigures
+Iteration 749: "Make Class Abstract" applied to class DrawApplet
+Iteration 750: "Make Class Concrete" applied to class DrawApplet
+Iteration 751: "Decrease Method Security" applied at class Animator to method end from protected to public
+Iteration 752: "Make Class Abstract" applied to class DrawApplet
+Iteration 753: "Make Class Concrete" applied to class DrawApplet
+Iteration 754: "Make Class Abstract" applied to class DrawApplet
+Iteration 755: "Make Class Concrete" applied to class DrawApplet
+Iteration 756: "Make Class Abstract" applied to class DrawApplet
+Iteration 757: "Make Class Concrete" applied to class DrawApplet
+Iteration 758: "Make Class Abstract" applied to class DrawApplet
+Iteration 759: "Make Class Concrete" applied to class DrawApplet
+Iteration 760: "Make Class Abstract" applied to class DrawApplet
+Iteration 761: "Make Class Concrete" applied to class DrawApplet
+Iteration 762: "Make Method Final" applied at class UngroupCommand to method ungroupFigures
+Iteration 763: "Make Method Non Final" applied at class UngroupCommand to method ungroupFigures
+Iteration 764: "Make Class Abstract" applied to class DrawApplet
+Iteration 765: "Make Class Concrete" applied to class DrawApplet
+Iteration 766: "Make Class Abstract" applied to class DrawApplet
+Iteration 767: "Make Class Concrete" applied to class DrawApplet
+Iteration 768: "Make Method Final" applied at class UngroupCommand to method ungroupFigures
+Iteration 769: "Increase Method Security" applied at class Animator to method end from public to protected
+Iteration 770: "Make Method Non Final" applied at class UngroupCommand to method ungroupFigures
+Iteration 771: "Make Method Final" applied at class UngroupCommand to method ungroupFigures
+Iteration 772: "Make Method Non Final" applied at class UngroupCommand to method ungroupFigures
+Iteration 773: "Make Class Abstract" applied to class DrawApplet
+Iteration 774: "Make Class Concrete" applied to class DrawApplet
+Iteration 775: "Make Class Abstract" applied to class DrawApplet
+Iteration 776: "Make Class Concrete" applied to class DrawApplet
+Iteration 777: "Make Method Final" applied at class UngroupCommand to method ungroupFigures
+Iteration 778: "Make Method Non Final" applied at class UngroupCommand to method ungroupFigures
+Iteration 779: "Make Class Abstract" applied to class DrawApplet
+Iteration 780: "Make Class Concrete" applied to class DrawApplet
+Iteration 781: "Make Method Final" applied at class UngroupCommand to method ungroupFigures
+Iteration 782: "Make Method Non Final" applied at class UngroupCommand to method ungroupFigures
+Iteration 783: "Make Class Abstract" applied to class DrawApplet
+Iteration 784: "Make Class Concrete" applied to class DrawApplet
+Iteration 785: "Decrease Method Security" applied at class Animator to method end from protected to public
+Iteration 786: "Make Class Abstract" applied to class DrawApplet
+Iteration 787: "Make Class Concrete" applied to class DrawApplet
+Iteration 788: "Make Class Abstract" applied to class DrawApplet
+Iteration 789: "Make Class Concrete" applied to class DrawApplet
+Iteration 790: "Make Class Abstract" applied to class DrawApplet
+Iteration 791: "Make Class Concrete" applied to class DrawApplet
+Iteration 792: "Make Class Abstract" applied to class DrawApplet
+Iteration 793: "Make Class Concrete" applied to class DrawApplet
+Iteration 794: "Make Class Abstract" applied to class DrawApplet
+Iteration 795: "Make Class Concrete" applied to class DrawApplet
+Iteration 796: "Make Method Final" applied at class UngroupCommand to method ungroupFigures
+Iteration 797: "Make Method Non Final" applied at class UngroupCommand to method ungroupFigures
+Iteration 798: "Make Method Final" applied at class UngroupCommand to method ungroupFigures
+Iteration 799: "Make Method Non Final" applied at class UngroupCommand to method ungroupFigures
+Iteration 800: "Make Class Abstract" applied to class DrawApplet
+Iteration 801: "Make Class Concrete" applied to class DrawApplet
+Iteration 802: "Make Class Abstract" applied to class DrawApplet
+Iteration 803: "Make Class Concrete" applied to class DrawApplet
+Iteration 804: "Make Method Final" applied at class UngroupCommand to method ungroupFigures
+Iteration 805: "Increase Method Security" applied at class Animator to method end from public to protected
+Iteration 806: "Make Method Non Final" applied at class UngroupCommand to method ungroupFigures
+Iteration 807: "Make Method Final" applied at class UngroupCommand to method ungroupFigures
+Iteration 808: "Make Method Non Final" applied at class UngroupCommand to method ungroupFigures
+Iteration 809: "Make Class Abstract" applied to class DrawApplet
+Iteration 810: "Make Class Concrete" applied to class DrawApplet
+Iteration 811: "Decrease Method Security" applied at class Animator to method end from protected to public
+Iteration 812: "Make Class Abstract" applied to class DrawApplet
+Iteration 813: "Make Class Concrete" applied to class DrawApplet
+Iteration 814: "Make Method Final" applied at class UngroupCommand to method ungroupFigures
+Iteration 815: "Increase Method Security" applied at class Animator to method end from public to protected
+Iteration 816: "Make Class Abstract" applied to class DrawApplet
+Iteration 817: "Make Class Concrete" applied to class DrawApplet
+Iteration 818: "Make Class Abstract" applied to class DrawApplet
+Iteration 819: "Make Class Concrete" applied to class DrawApplet
+Iteration 820: "Make Class Abstract" applied to class DrawApplet
+Iteration 821: "Make Class Concrete" applied to class DrawApplet
+Iteration 822: "Make Method Non Final" applied at class UngroupCommand to method ungroupFigures
+Iteration 823: "Make Class Abstract" applied to class DrawApplet
+Iteration 824: "Make Class Concrete" applied to class DrawApplet
+Iteration 825: "Decrease Method Security" applied at class Animator to method end from protected to public
+Iteration 826: "Make Class Abstract" applied to class DrawApplet
+Iteration 827: "Make Class Concrete" applied to class DrawApplet
+Iteration 828: "Make Method Final" applied at class UngroupCommand to method ungroupFigures
+Iteration 829: "Make Method Non Final" applied at class UngroupCommand to method ungroupFigures
+Iteration 830: "Make Class Abstract" applied to class DrawApplet
+Iteration 831: "Make Class Concrete" applied to class DrawApplet
+Iteration 832: "Make Class Abstract" applied to class DrawApplet
+Iteration 833: "Make Class Concrete" applied to class DrawApplet
+Iteration 834: "Make Method Final" applied at class UngroupCommand to method ungroupFigures
+Iteration 835: "Increase Method Security" applied at class Animator to method end from public to protected
+Iteration 836: "Make Method Non Final" applied at class UngroupCommand to method ungroupFigures
+Iteration 837: "Make Method Final" applied at class UngroupCommand to method ungroupFigures
+Iteration 838: "Make Method Non Final" applied at class UngroupCommand to method ungroupFigures
+Iteration 839: "Make Class Abstract" applied to class DrawApplet
+Iteration 840: "Make Class Concrete" applied to class DrawApplet
+Iteration 841: "Decrease Method Security" applied at class Animator to method end from protected to public
+Iteration 842: "Make Class Abstract" applied to class DrawApplet
+Iteration 843: "Make Class Concrete" applied to class DrawApplet
+Iteration 844: "Make Method Final" applied at class UngroupCommand to method ungroupFigures
+Iteration 845: "Increase Method Security" applied at class Animator to method end from public to protected
+Iteration 846: "Make Class Concrete" applied to class CompositeFigure
+Iteration 847: "Make Class Abstract" applied to class DrawApplet
+Iteration 848: "Make Class Concrete" applied to class DrawApplet
+Iteration 849: "Make Method Non Final" applied at class UngroupCommand to method ungroupFigures
+Iteration 850: "Make Method Final" applied at class UngroupCommand to method ungroupFigures
+Iteration 851: "Make Method Non Final" applied at class UngroupCommand to method ungroupFigures
+Iteration 852: "Make Class Abstract" applied to class DrawApplet
+Iteration 853: "Make Class Concrete" applied to class DrawApplet
+Iteration 854: "Decrease Method Security" applied at class Animator to method end from protected to public
+Iteration 855: "Make Class Abstract" applied to class DrawApplet
+Iteration 856: "Make Class Concrete" applied to class DrawApplet
+Iteration 857: "Make Method Final" applied at class UngroupCommand to method ungroupFigures
+Iteration 858: "Increase Method Security" applied at class Animator to method end from public to protected
+Iteration 859: "Decrease Method Security" applied at class Animator to method end from protected to public
+Iteration 860: "Make Class Abstract" applied to class DrawApplet
+Iteration 861: "Make Class Concrete" applied to class DrawApplet
+Iteration 862: "Increase Method Security" applied at class Animator to method end from public to protected
+Iteration 863: "Make Class Abstract" applied to class CompositeFigure
+Iteration 864: "Make Class Abstract" applied to class DrawApplet
+Iteration 865: "Make Class Concrete" applied to class DrawApplet
+Iteration 866: "Decrease Method Security" applied at class Animator to method end from protected to public
+Iteration 867: "Make Class Abstract" applied to class DrawApplet
+Iteration 868: "Make Class Concrete" applied to class DrawApplet
+Iteration 869: "Make Method Non Final" applied at class UngroupCommand to method ungroupFigures
+Iteration 870: "Make Class Abstract" applied to class DrawApplet
+Iteration 871: "Make Class Concrete" applied to class DrawApplet
+Iteration 872: "Make Class Abstract" applied to class DrawApplet
+Iteration 873: "Make Class Concrete" applied to class DrawApplet
+Iteration 874: "Make Method Final" applied at class UngroupCommand to method ungroupFigures
+Iteration 875: "Increase Method Security" applied at class Animator to method end from public to protected
+Iteration 876: "Make Method Non Final" applied at class UngroupCommand to method ungroupFigures
+Iteration 877: "Make Method Final" applied at class UngroupCommand to method ungroupFigures
+Iteration 878: "Make Method Non Final" applied at class UngroupCommand to method ungroupFigures
+Iteration 879: "Make Class Abstract" applied to class DrawApplet
+Iteration 880: "Make Class Concrete" applied to class DrawApplet
+Iteration 881: "Make Class Abstract" applied to class DrawApplet
+Iteration 882: "Make Class Concrete" applied to class DrawApplet
+Iteration 883: "Decrease Method Security" applied at class Animator to method end from protected to public
+Iteration 884: "Make Class Abstract" applied to class DrawApplet
+Iteration 885: "Make Class Concrete" applied to class DrawApplet
+Iteration 886: "Make Class Abstract" applied to class DrawApplet
+Iteration 887: "Make Class Concrete" applied to class DrawApplet
+Iteration 888: "Make Class Abstract" applied to class DrawApplet
+Iteration 889: "Make Class Concrete" applied to class DrawApplet
+Iteration 890: "Make Method Final" applied at class UngroupCommand to method ungroupFigures
+Iteration 891: "Increase Method Security" applied at class Animator to method end from public to protected
+Iteration 892: "Make Method Non Final" applied at class UngroupCommand to method ungroupFigures
+Iteration 893: "Make Method Final" applied at class UngroupCommand to method ungroupFigures
+Iteration 894: "Make Method Non Final" applied at class UngroupCommand to method ungroupFigures
+Iteration 895: "Make Class Abstract" applied to class DrawApplet
+Iteration 896: "Make Class Concrete" applied to class DrawApplet
+Iteration 897: "Decrease Method Security" applied at class Animator to method end from protected to public
+Iteration 898: "Make Class Abstract" applied to class DrawApplet
+Iteration 899: "Make Class Concrete" applied to class DrawApplet
+Iteration 900: "Make Method Final" applied at class UngroupCommand to method ungroupFigures
+Iteration 901: "Increase Method Security" applied at class Animator to method end from public to protected
+Iteration 902: "Make Class Concrete" applied to class CompositeFigure
+Iteration 903: "Make Class Abstract" applied to class DrawApplet
+Iteration 904: "Make Class Concrete" applied to class DrawApplet
+Iteration 905: "Make Method Non Final" applied at class UngroupCommand to method ungroupFigures
+Iteration 906: "Make Method Final" applied at class UngroupCommand to method ungroupFigures
+Iteration 907: "Make Method Non Final" applied at class UngroupCommand to method ungroupFigures
+Iteration 908: "Make Class Abstract" applied to class DrawApplet
+Iteration 909: "Make Class Concrete" applied to class DrawApplet
+Iteration 910: "Decrease Method Security" applied at class Animator to method end from protected to public
+Iteration 911: "Make Class Abstract" applied to class DrawApplet
+Iteration 912: "Make Class Concrete" applied to class DrawApplet
+Iteration 913: "Make Method Final" applied at class UngroupCommand to method ungroupFigures
+Iteration 914: "Increase Method Security" applied at class Animator to method end from public to protected
+Iteration 915: "Decrease Method Security" applied at class Animator to method end from protected to public
+Iteration 916: "Make Class Abstract" applied to class DrawApplet
+Iteration 917: "Make Class Concrete" applied to class DrawApplet
+Iteration 918: "Increase Method Security" applied at class Animator to method end from public to protected
+Iteration 919: "Make Class Abstract" applied to class CompositeFigure
+Iteration 920: "Make Class Abstract" applied to class DrawApplet
+Iteration 921: "Make Class Concrete" applied to class DrawApplet
+Iteration 922: "Decrease Method Security" applied at class Animator to method end from protected to public
+Iteration 923: "Make Class Abstract" applied to class DrawApplet
+Iteration 924: "Make Class Concrete" applied to class DrawApplet
+Iteration 925: "Increase Method Security" applied at class Animator to method end from public to protected
+Iteration 926: "Make Class Concrete" applied to class CompositeFigure
+Iteration 927: "Make Class Abstract" applied to class DrawApplet
+Iteration 928: "Make Class Concrete" applied to class DrawApplet
+Iteration 929: "Make Method Non Final" applied at class UngroupCommand to method ungroupFigures
+Iteration 930: "Make Method Final" applied at class UngroupCommand to method ungroupFigures
+Iteration 931: "Make Method Non Final" applied at class UngroupCommand to method ungroupFigures
+Iteration 932: "Make Class Abstract" applied to class DrawApplet
+Iteration 933: "Make Class Concrete" applied to class DrawApplet
+Iteration 934: "Decrease Method Security" applied at class Animator to method end from protected to public
+Iteration 935: "Make Class Abstract" applied to class DrawApplet
+Iteration 936: "Make Class Concrete" applied to class DrawApplet
+Iteration 937: "Make Method Final" applied at class UngroupCommand to method ungroupFigures
+Iteration 938: "Increase Method Security" applied at class Animator to method end from public to protected
+Iteration 939: "Decrease Method Security" applied at class Animator to method end from protected to public
+Iteration 940: "Make Class Abstract" applied to class DrawApplet
+Iteration 941: "Make Class Concrete" applied to class DrawApplet
+Iteration 942: "Increase Method Security" applied at class Animator to method end from public to protected
+Iteration 943: "Make Class Abstract" applied to class CompositeFigure
+Iteration 944: "Make Class Abstract" applied to class DrawApplet
+Iteration 945: "Make Method Non Final" applied at class UngroupCommand to method ungroupFigures
+Iteration 946: "Make Class Concrete" applied to class DrawApplet
+Iteration 947: "Decrease Method Security" applied at class Animator to method end from protected to public
+Iteration 948: "Make Class Abstract" applied to class DrawApplet
+Iteration 949: "Make Class Concrete" applied to class DrawApplet
+Iteration 950: "Make Method Final" applied at class UngroupCommand to method ungroupFigures
+Iteration 951: "Increase Method Security" applied at class Animator to method end from public to protected
+Iteration 952: "Make Class Abstract" applied to class DrawApplet
+Iteration 953: "Make Class Concrete" applied to class DrawApplet
+Iteration 954: "Make Class Abstract" applied to class DrawApplet
+Iteration 955: "Make Class Concrete" applied to class DrawApplet
+Iteration 956: "Make Class Abstract" applied to class DrawApplet
+Iteration 957: "Make Class Concrete" applied to class DrawApplet
+Iteration 958: "Make Method Non Final" applied at class UngroupCommand to method ungroupFigures
+Iteration 959: "Make Class Abstract" applied to class DrawApplet
+Iteration 960: "Make Class Concrete" applied to class DrawApplet
+Iteration 961: "Decrease Method Security" applied at class Animator to method end from protected to public
+Iteration 962: "Make Class Abstract" applied to class DrawApplet
+Iteration 963: "Make Class Concrete" applied to class DrawApplet
+Iteration 964: "Make Method Final" applied at class UngroupCommand to method ungroupFigures
+Iteration 965: "Make Method Non Final" applied at class UngroupCommand to method ungroupFigures
+Iteration 966: "Make Class Abstract" applied to class DrawApplet
+Iteration 967: "Make Class Concrete" applied to class DrawApplet
+Iteration 968: "Make Class Abstract" applied to class DrawApplet
+Iteration 969: "Make Class Concrete" applied to class DrawApplet
+Iteration 970: "Make Method Final" applied at class UngroupCommand to method ungroupFigures
+Iteration 971: "Increase Method Security" applied at class Animator to method end from public to protected
+Iteration 972: "Make Method Non Final" applied at class UngroupCommand to method ungroupFigures
+Iteration 973: "Make Method Final" applied at class UngroupCommand to method ungroupFigures
+Iteration 974: "Make Method Non Final" applied at class UngroupCommand to method ungroupFigures
+Iteration 975: "Make Method Final" applied at class UngroupCommand to method ungroupFigures
+Iteration 976: "Increase Method Security" applied at class Animator to method end from protected to package
+Iteration 977: "Make Method Non Final" applied at class UngroupCommand to method ungroupFigures
+Iteration 978: "Make Method Final" applied at class UngroupCommand to method ungroupFigures
+Iteration 979: "Make Method Non Final" applied at class UngroupCommand to method ungroupFigures
+Iteration 980: "Make Class Abstract" applied to class DrawApplet
+Iteration 981: "Make Class Concrete" applied to class DrawApplet
+Iteration 982: "Decrease Method Security" applied at class Animator to method end from package to protected
+Iteration 983: "Make Class Abstract" applied to class DrawApplet
+Iteration 984: "Make Class Concrete" applied to class DrawApplet
+Iteration 985: "Make Method Final" applied at class UngroupCommand to method ungroupFigures
+Iteration 986: "Increase Method Security" applied at class Animator to method end from protected to package
+Iteration 987: "Make Class Concrete" applied to class CompositeFigure
+Iteration 988: "Make Class Abstract" applied to class DrawApplet
+Iteration 989: "Make Class Concrete" applied to class DrawApplet
+Iteration 990: "Make Method Non Final" applied at class UngroupCommand to method ungroupFigures
+Iteration 991: "Make Method Final" applied at class UngroupCommand to method ungroupFigures
+Iteration 992: "Make Method Non Final" applied at class UngroupCommand to method ungroupFigures
+Iteration 993: "Make Class Abstract" applied to class DrawApplet
+Iteration 994: "Make Class Concrete" applied to class DrawApplet
+Iteration 995: "Decrease Method Security" applied at class Animator to method end from package to protected
+Iteration 996: "Make Class Abstract" applied to class DrawApplet
+Iteration 997: "Make Class Concrete" applied to class DrawApplet
+Iteration 998: "Make Method Final" applied at class UngroupCommand to method ungroupFigures
+Iteration 999: "Increase Method Security" applied at class Animator to method end from protected to package
+Iteration 1000: "Decrease Method Security" applied at class Animator to method end from package to protected
+Iteration 1001: "Make Class Abstract" applied to class DrawApplet
+Iteration 1002: "Make Class Concrete" applied to class DrawApplet
+Iteration 1003: "Increase Method Security" applied at class Animator to method end from protected to package
+Iteration 1004: "Make Class Abstract" applied to class CompositeFigure
+Iteration 1005: "Make Class Abstract" applied to class DrawApplet
+Iteration 1006: "Make Class Concrete" applied to class DrawApplet
+Iteration 1007: "Decrease Method Security" applied at class Animator to method end from package to protected
+Iteration 1008: "Make Class Abstract" applied to class DrawApplet
+Iteration 1009: "Make Class Concrete" applied to class DrawApplet
+Iteration 1010: "Make Method Non Final" applied at class UngroupCommand to method ungroupFigures
+Iteration 1011: "Make Class Abstract" applied to class DrawApplet
+Iteration 1012: "Make Class Concrete" applied to class DrawApplet
+Iteration 1013: "Make Class Abstract" applied to class DrawApplet
+Iteration 1014: "Make Class Concrete" applied to class DrawApplet
+Iteration 1015: "Make Method Final" applied at class UngroupCommand to method ungroupFigures
+Iteration 1016: "Increase Method Security" applied at class Animator to method end from protected to package
+Iteration 1017: "Make Method Non Final" applied at class UngroupCommand to method ungroupFigures
+Iteration 1018: "Make Method Final" applied at class UngroupCommand to method ungroupFigures
+Iteration 1019: "Make Method Non Final" applied at class UngroupCommand to method ungroupFigures
+Iteration 1020: "Make Class Abstract" applied to class DrawApplet
+Iteration 1021: "Make Class Concrete" applied to class DrawApplet
+Iteration 1022: "Make Class Abstract" applied to class DrawApplet
+Iteration 1023: "Make Class Concrete" applied to class DrawApplet
+Iteration 1024: "Decrease Method Security" applied at class Animator to method end from package to protected
+Iteration 1025: "Make Class Abstract" applied to class DrawApplet
+Iteration 1026: "Make Class Concrete" applied to class DrawApplet
+Iteration 1027: "Make Class Abstract" applied to class DrawApplet
+Iteration 1028: "Make Class Concrete" applied to class DrawApplet
+Iteration 1029: "Make Class Abstract" applied to class DrawApplet
+Iteration 1030: "Make Class Concrete" applied to class DrawApplet
+Iteration 1031: "Make Method Final" applied at class UngroupCommand to method ungroupFigures
+Iteration 1032: "Increase Method Security" applied at class Animator to method end from protected to package
+Iteration 1033: "Make Method Non Final" applied at class UngroupCommand to method ungroupFigures
+Iteration 1034: "Make Method Final" applied at class UngroupCommand to method ungroupFigures
+Iteration 1035: "Make Method Non Final" applied at class UngroupCommand to method ungroupFigures
+Iteration 1036: "Make Class Abstract" applied to class DrawApplet
+Iteration 1037: "Make Class Concrete" applied to class DrawApplet
+Iteration 1038: "Decrease Method Security" applied at class Animator to method end from package to protected
+Iteration 1039: "Make Class Abstract" applied to class DrawApplet
+Iteration 1040: "Make Class Concrete" applied to class DrawApplet
+Iteration 1041: "Make Method Final" applied at class UngroupCommand to method ungroupFigures
+Iteration 1042: "Increase Method Security" applied at class Animator to method end from protected to package
+Iteration 1043: "Make Class Concrete" applied to class CompositeFigure
+Iteration 1044: "Make Class Abstract" applied to class DrawApplet
+Iteration 1045: "Make Class Concrete" applied to class DrawApplet
+Iteration 1046: "Make Method Non Final" applied at class UngroupCommand to method ungroupFigures
+Iteration 1047: "Make Method Final" applied at class UngroupCommand to method ungroupFigures
+Iteration 1048: "Make Method Non Final" applied at class UngroupCommand to method ungroupFigures
+Iteration 1049: "Make Class Abstract" applied to class DrawApplet
+Iteration 1050: "Make Class Concrete" applied to class DrawApplet
+Iteration 1051: "Decrease Method Security" applied at class Animator to method end from package to protected
+Iteration 1052: "Make Class Abstract" applied to class DrawApplet
+Iteration 1053: "Make Class Concrete" applied to class DrawApplet
+Iteration 1054: "Make Method Final" applied at class UngroupCommand to method ungroupFigures
+Iteration 1055: "Increase Method Security" applied at class Animator to method end from protected to package
+Iteration 1056: "Decrease Method Security" applied at class Animator to method end from package to protected
+Iteration 1057: "Make Class Abstract" applied to class DrawApplet
+Iteration 1058: "Make Class Concrete" applied to class DrawApplet
+Iteration 1059: "Increase Method Security" applied at class Animator to method end from protected to package
+Iteration 1060: "Make Class Abstract" applied to class CompositeFigure
+Iteration 1061: "Make Class Abstract" applied to class DrawApplet
+Iteration 1062: "Make Class Concrete" applied to class DrawApplet
+Iteration 1063: "Decrease Method Security" applied at class Animator to method end from package to protected
+Iteration 1064: "Make Class Abstract" applied to class DrawApplet
+Iteration 1065: "Make Class Concrete" applied to class DrawApplet
+Iteration 1066: "Increase Method Security" applied at class Animator to method end from protected to package
+Iteration 1067: "Make Class Concrete" applied to class CompositeFigure
+Iteration 1068: "Make Class Abstract" applied to class DrawApplet
+Iteration 1069: "Make Class Concrete" applied to class DrawApplet
+Iteration 1070: "Make Method Non Final" applied at class UngroupCommand to method ungroupFigures
+Iteration 1071: "Make Method Final" applied at class UngroupCommand to method ungroupFigures
+Iteration 1072: "Make Method Non Final" applied at class UngroupCommand to method ungroupFigures
+Iteration 1073: "Make Class Abstract" applied to class DrawApplet
+Iteration 1074: "Make Class Concrete" applied to class DrawApplet
+Iteration 1075: "Decrease Method Security" applied at class Animator to method end from package to protected
+Iteration 1076: "Make Class Abstract" applied to class DrawApplet
+Iteration 1077: "Make Class Concrete" applied to class DrawApplet
+Iteration 1078: "Make Method Final" applied at class UngroupCommand to method ungroupFigures
+Iteration 1079: "Increase Method Security" applied at class Animator to method end from protected to package
+Iteration 1080: "Decrease Method Security" applied at class Animator to method end from package to protected
+Iteration 1081: "Make Class Abstract" applied to class DrawApplet
+Iteration 1082: "Make Class Concrete" applied to class DrawApplet
+Iteration 1083: "Increase Method Security" applied at class Animator to method end from protected to package
+Iteration 1084: "Make Class Abstract" applied to class CompositeFigure
+Iteration 1085: "Make Class Abstract" applied to class DrawApplet
+Iteration 1086: "Make Method Non Final" applied at class UngroupCommand to method ungroupFigures
+Iteration 1087: "Make Class Concrete" applied to class DrawApplet
+Iteration 1088: "Decrease Method Security" applied at class Animator to method end from package to protected
+Iteration 1089: "Make Class Abstract" applied to class DrawApplet
+Iteration 1090: "Make Class Concrete" applied to class DrawApplet
+Iteration 1091: "Make Method Final" applied at class UngroupCommand to method ungroupFigures
+Iteration 1092: "Increase Method Security" applied at class Animator to method end from protected to package
+Iteration 1093: "Make Class Abstract" applied to class DrawApplet
+Iteration 1094: "Make Class Concrete" applied to class DrawApplet
+Iteration 1095: "Make Class Abstract" applied to class DrawApplet
+Iteration 1096: "Make Class Concrete" applied to class DrawApplet
+Iteration 1097: "Make Class Abstract" applied to class DrawApplet
+Iteration 1098: "Make Class Concrete" applied to class DrawApplet
+Iteration 1099: "Make Method Non Final" applied at class UngroupCommand to method ungroupFigures
+Iteration 1100: "Make Class Abstract" applied to class DrawApplet
+Iteration 1101: "Make Class Concrete" applied to class DrawApplet
+Iteration 1102: "Decrease Method Security" applied at class Animator to method end from package to protected
+Iteration 1103: "Make Class Abstract" applied to class DrawApplet
+Iteration 1104: "Make Class Concrete" applied to class DrawApplet
+Iteration 1105: "Make Method Final" applied at class UngroupCommand to method ungroupFigures
+Iteration 1106: "Make Method Non Final" applied at class UngroupCommand to method ungroupFigures
+Iteration 1107: "Make Class Abstract" applied to class DrawApplet
+Iteration 1108: "Make Class Concrete" applied to class DrawApplet
+Iteration 1109: "Make Class Abstract" applied to class DrawApplet
+Iteration 1110: "Make Class Concrete" applied to class DrawApplet
+Iteration 1111: "Make Method Final" applied at class UngroupCommand to method ungroupFigures
+Iteration 1112: "Increase Method Security" applied at class Animator to method end from protected to package
+Iteration 1113: "Make Method Non Final" applied at class UngroupCommand to method ungroupFigures
+Iteration 1114: "Make Method Final" applied at class UngroupCommand to method ungroupFigures
+Iteration 1115: "Make Method Non Final" applied at class UngroupCommand to method ungroupFigures
+Iteration 1116: "Make Class Abstract" applied to class DrawApplet
+Iteration 1117: "Make Class Concrete" applied to class DrawApplet
+Iteration 1118: "Decrease Method Security" applied at class Animator to method end from package to protected
+Iteration 1119: "Make Class Abstract" applied to class DrawApplet
+Iteration 1120: "Make Class Concrete" applied to class DrawApplet
+Iteration 1121: "Make Method Final" applied at class UngroupCommand to method ungroupFigures
+Iteration 1122: "Increase Method Security" applied at class Animator to method end from protected to package
+Iteration 1123: "Make Class Concrete" applied to class CompositeFigure
+Iteration 1124: "Make Class Abstract" applied to class DrawApplet
+Iteration 1125: "Make Class Concrete" applied to class DrawApplet
+Iteration 1126: "Make Method Non Final" applied at class UngroupCommand to method ungroupFigures
+Iteration 1127: "Make Method Final" applied at class UngroupCommand to method ungroupFigures
+Iteration 1128: "Make Method Non Final" applied at class UngroupCommand to method ungroupFigures
+Iteration 1129: "Make Class Abstract" applied to class DrawApplet
+Iteration 1130: "Make Class Concrete" applied to class DrawApplet
+Iteration 1131: "Decrease Method Security" applied at class Animator to method end from package to protected
+Iteration 1132: "Make Class Abstract" applied to class DrawApplet
+Iteration 1133: "Make Class Concrete" applied to class DrawApplet
+Iteration 1134: "Make Method Final" applied at class UngroupCommand to method ungroupFigures
+Iteration 1135: "Increase Method Security" applied at class Animator to method end from protected to package
+Iteration 1136: "Decrease Method Security" applied at class Animator to method end from package to protected
+Iteration 1137: "Make Class Abstract" applied to class DrawApplet
+Iteration 1138: "Make Class Concrete" applied to class DrawApplet
+Iteration 1139: "Increase Method Security" applied at class Animator to method end from protected to package
+Iteration 1140: "Make Class Abstract" applied to class CompositeFigure
+Iteration 1141: "Make Class Abstract" applied to class DrawApplet
+Iteration 1142: "Make Class Concrete" applied to class DrawApplet
+Iteration 1143: "Decrease Method Security" applied at class Animator to method end from package to protected
+Iteration 1144: "Make Class Abstract" applied to class DrawApplet
+Iteration 1145: "Make Class Concrete" applied to class DrawApplet
+Iteration 1146: "Make Method Non Final" applied at class UngroupCommand to method ungroupFigures
+Iteration 1147: "Make Class Abstract" applied to class DrawApplet
+Iteration 1148: "Make Class Concrete" applied to class DrawApplet
+Iteration 1149: "Make Class Abstract" applied to class DrawApplet
+Iteration 1150: "Make Class Concrete" applied to class DrawApplet
+Iteration 1151: "Make Method Final" applied at class UngroupCommand to method ungroupFigures
+Iteration 1152: "Increase Method Security" applied at class Animator to method end from protected to package
+Iteration 1153: "Make Method Non Final" applied at class UngroupCommand to method ungroupFigures
+Iteration 1154: "Make Method Final" applied at class UngroupCommand to method ungroupFigures
+Iteration 1155: "Make Method Non Final" applied at class UngroupCommand to method ungroupFigures
+Iteration 1156: "Make Class Abstract" applied to class DrawApplet
+Iteration 1157: "Make Class Concrete" applied to class DrawApplet
+Iteration 1158: "Make Class Abstract" applied to class DrawApplet
+Iteration 1159: "Make Class Concrete" applied to class DrawApplet
+Iteration 1160: "Decrease Method Security" applied at class Animator to method end from package to protected
+Iteration 1161: "Make Class Abstract" applied to class DrawApplet
+Iteration 1162: "Make Class Concrete" applied to class DrawApplet
+Iteration 1163: "Make Class Abstract" applied to class DrawApplet
+Iteration 1164: "Make Class Concrete" applied to class DrawApplet
+Iteration 1165: "Make Class Abstract" applied to class DrawApplet
+Iteration 1166: "Make Class Concrete" applied to class DrawApplet
+Iteration 1167: "Make Class Abstract" applied to class DrawApplet
+Iteration 1168: "Make Class Concrete" applied to class DrawApplet
+Iteration 1169: "Make Method Final" applied at class UngroupCommand to method ungroupFigures
+Iteration 1170: "Increase Method Security" applied at class Animator to method end from protected to package
+Iteration 1171: "Make Method Non Final" applied at class UngroupCommand to method ungroupFigures
+Iteration 1172: "Make Class Abstract" applied to class DrawApplet
+Iteration 1173: "Make Class Concrete" applied to class DrawApplet
+Iteration 1174: "Decrease Method Security" applied at class Animator to method end from package to protected
+Iteration 1175: "Make Class Abstract" applied to class DrawApplet
+Iteration 1176: "Make Class Concrete" applied to class DrawApplet
+Iteration 1177: "Make Class Abstract" applied to class DrawApplet
+Iteration 1178: "Make Class Concrete" applied to class DrawApplet
+Iteration 1179: "Make Class Abstract" applied to class DrawApplet
+Iteration 1180: "Make Class Concrete" applied to class DrawApplet
+Iteration 1181: "Make Class Abstract" applied to class DrawApplet
+Iteration 1182: "Make Class Concrete" applied to class DrawApplet
+Iteration 1183: "Make Class Abstract" applied to class DrawApplet
+Iteration 1184: "Make Class Concrete" applied to class DrawApplet
+Iteration 1185: "Make Method Final" applied at class UngroupCommand to method ungroupFigures
+Iteration 1186: "Make Method Non Final" applied at class UngroupCommand to method ungroupFigures
+Iteration 1187: "Make Class Abstract" applied to class DrawApplet
+Iteration 1188: "Make Class Concrete" applied to class DrawApplet
+Iteration 1189: "Make Class Abstract" applied to class DrawApplet
+Iteration 1190: "Make Class Concrete" applied to class DrawApplet
+Iteration 1191: "Make Method Final" applied at class UngroupCommand to method ungroupFigures
+Iteration 1192: "Increase Method Security" applied at class Animator to method end from protected to package
+Iteration 1193: "Make Method Non Final" applied at class UngroupCommand to method ungroupFigures
+Iteration 1194: "Make Method Final" applied at class UngroupCommand to method ungroupFigures
+Iteration 1195: "Make Method Non Final" applied at class UngroupCommand to method ungroupFigures
+Iteration 1196: "Make Class Abstract" applied to class DrawApplet
+Iteration 1197: "Make Class Concrete" applied to class DrawApplet
+Iteration 1198: "Make Class Abstract" applied to class DrawApplet
+Iteration 1199: "Make Class Concrete" applied to class DrawApplet
+Iteration 1200: "Make Method Final" applied at class UngroupCommand to method ungroupFigures
+Iteration 1201: "Make Method Non Final" applied at class UngroupCommand to method ungroupFigures
+Iteration 1202: "Make Class Abstract" applied to class DrawApplet
+Iteration 1203: "Make Class Concrete" applied to class DrawApplet
+Iteration 1204: "Make Method Final" applied at class UngroupCommand to method ungroupFigures
+Iteration 1205: "Make Method Non Final" applied at class UngroupCommand to method ungroupFigures
+Iteration 1206: "Make Class Abstract" applied to class DrawApplet
+Iteration 1207: "Make Class Concrete" applied to class DrawApplet
+Iteration 1208: "Decrease Method Security" applied at class Animator to method end from package to protected
+Iteration 1209: "Make Class Abstract" applied to class DrawApplet
+Iteration 1210: "Increase Method Security" applied at class Animator to method end from protected to package
+Iteration 1211: "Make Method Final" applied at class UngroupCommand to method ungroupFigures
+Iteration 1212: "Make Method Non Final" applied at class UngroupCommand to method ungroupFigures
+Iteration 1213: "Make Class Concrete" applied to class DrawApplet
+Iteration 1214: "Decrease Method Security" applied at class Animator to method end from package to protected
+Iteration 1215: "Make Class Abstract" applied to class DrawApplet
+Iteration 1216: "Make Class Concrete" applied to class DrawApplet
+Iteration 1217: "Make Method Final" applied at class UngroupCommand to method ungroupFigures
+Iteration 1218: "Increase Method Security" applied at class Animator to method end from protected to package
+Iteration 1219: "Make Class Concrete" applied to class CompositeFigure
+Iteration 1220: "Make Class Abstract" applied to class DrawApplet
+Iteration 1221: "Make Class Concrete" applied to class DrawApplet
+Iteration 1222: "Make Method Non Final" applied at class UngroupCommand to method ungroupFigures
+Iteration 1223: "Make Method Final" applied at class UngroupCommand to method ungroupFigures
+Iteration 1224: "Make Method Non Final" applied at class UngroupCommand to method ungroupFigures
+Iteration 1225: "Make Class Abstract" applied to class DrawApplet
+Iteration 1226: "Make Class Concrete" applied to class DrawApplet
+Iteration 1227: "Decrease Method Security" applied at class Animator to method end from package to protected
+Iteration 1228: "Make Class Abstract" applied to class DrawApplet
+Iteration 1229: "Make Class Concrete" applied to class DrawApplet
+Iteration 1230: "Make Method Final" applied at class UngroupCommand to method ungroupFigures
+Iteration 1231: "Increase Method Security" applied at class Animator to method end from protected to package
+Iteration 1232: "Decrease Method Security" applied at class Animator to method end from package to protected
+Iteration 1233: "Make Class Abstract" applied to class DrawApplet
+Iteration 1234: "Make Class Concrete" applied to class DrawApplet
+Iteration 1235: "Increase Method Security" applied at class Animator to method end from protected to package
+Iteration 1236: "Make Class Abstract" applied to class CompositeFigure
+Iteration 1237: "Make Class Abstract" applied to class DrawApplet
+Iteration 1238: "Make Class Concrete" applied to class DrawApplet
+Iteration 1239: "Decrease Method Security" applied at class Animator to method end from package to protected
+Iteration 1240: "Make Class Abstract" applied to class DrawApplet
+Iteration 1241: "Make Class Concrete" applied to class DrawApplet
+Iteration 1242: "Increase Method Security" applied at class Animator to method end from protected to package
+Iteration 1243: "Make Class Abstract" applied to class DrawApplet
+Iteration 1244: "Make Class Concrete" applied to class DrawApplet
+Iteration 1245: "Make Method Non Final" applied at class UngroupCommand to method ungroupFigures
+Iteration 1246: "Make Class Abstract" applied to class DrawApplet
+Iteration 1247: "Make Class Concrete" applied to class DrawApplet
+Iteration 1248: "Make Class Abstract" applied to class DrawApplet
+Iteration 1249: "Make Class Concrete" applied to class DrawApplet
+Iteration 1250: "Make Method Final" applied at class UngroupCommand to method ungroupFigures
+Iteration 1251: "Make Method Non Final" applied at class UngroupCommand to method ungroupFigures
+Iteration 1252: "Make Method Final" applied at class UngroupCommand to method ungroupFigures
+Iteration 1253: "Make Method Non Final" applied at class UngroupCommand to method ungroupFigures
+Iteration 1254: "Make Class Abstract" applied to class DrawApplet
+Iteration 1255: "Make Class Concrete" applied to class DrawApplet
+Iteration 1256: "Make Class Abstract" applied to class DrawApplet
+Iteration 1257: "Make Class Concrete" applied to class DrawApplet
+Iteration 1258: "Decrease Method Security" applied at class Animator to method end from package to protected
+Iteration 1259: "Make Class Abstract" applied to class DrawApplet
+Iteration 1260: "Make Class Concrete" applied to class DrawApplet
+Iteration 1261: "Make Class Abstract" applied to class DrawApplet
+Iteration 1262: "Make Class Concrete" applied to class DrawApplet
+Iteration 1263: "Make Class Abstract" applied to class DrawApplet
+Iteration 1264: "Make Class Concrete" applied to class DrawApplet
+Iteration 1265: "Make Class Abstract" applied to class DrawApplet
+Iteration 1266: "Make Class Concrete" applied to class DrawApplet
+Iteration 1267: "Make Method Final" applied at class UngroupCommand to method ungroupFigures
+Iteration 1268: "Increase Method Security" applied at class Animator to method end from protected to package
+Iteration 1269: "Make Method Non Final" applied at class UngroupCommand to method ungroupFigures
+Iteration 1270: "Make Class Abstract" applied to class DrawApplet
+Iteration 1271: "Make Class Concrete" applied to class DrawApplet
+Iteration 1272: "Decrease Method Security" applied at class Animator to method end from package to protected
+Iteration 1273: "Make Class Abstract" applied to class DrawApplet
+Iteration 1274: "Make Class Concrete" applied to class DrawApplet
+Iteration 1275: "Make Class Abstract" applied to class DrawApplet
+Iteration 1276: "Make Class Concrete" applied to class DrawApplet
+Iteration 1277: "Make Class Abstract" applied to class DrawApplet
+Iteration 1278: "Make Class Concrete" applied to class DrawApplet
+Iteration 1279: "Make Class Abstract" applied to class DrawApplet
+Iteration 1280: "Make Class Concrete" applied to class DrawApplet
+Iteration 1281: "Make Class Abstract" applied to class DrawApplet
+Iteration 1282: "Make Class Concrete" applied to class DrawApplet
+Iteration 1283: "Make Method Final" applied at class UngroupCommand to method ungroupFigures
+Iteration 1284: "Make Method Non Final" applied at class UngroupCommand to method ungroupFigures
+Iteration 1285: "Make Class Abstract" applied to class DrawApplet
+Iteration 1286: "Make Class Concrete" applied to class DrawApplet
+Iteration 1287: "Make Class Abstract" applied to class DrawApplet
+Iteration 1288: "Make Class Concrete" applied to class DrawApplet
+Iteration 1289: "Make Method Final" applied at class UngroupCommand to method ungroupFigures
+Iteration 1290: "Increase Method Security" applied at class Animator to method end from protected to package
+Iteration 1291: "Make Method Non Final" applied at class UngroupCommand to method ungroupFigures
+Iteration 1292: "Make Method Final" applied at class UngroupCommand to method ungroupFigures
+Iteration 1293: "Make Method Non Final" applied at class UngroupCommand to method ungroupFigures
+Iteration 1294: "Make Class Abstract" applied to class DrawApplet
+Iteration 1295: "Make Class Concrete" applied to class DrawApplet
+Iteration 1296: "Make Class Abstract" applied to class DrawApplet
+Iteration 1297: "Make Class Concrete" applied to class DrawApplet
+Iteration 1298: "Make Method Final" applied at class UngroupCommand to method ungroupFigures
+Iteration 1299: "Make Method Non Final" applied at class UngroupCommand to method ungroupFigures
+Iteration 1300: "Make Class Abstract" applied to class DrawApplet
+Iteration 1301: "Make Class Concrete" applied to class DrawApplet
+Iteration 1302: "Make Method Final" applied at class UngroupCommand to method ungroupFigures
+Iteration 1303: "Make Method Non Final" applied at class UngroupCommand to method ungroupFigures
+Iteration 1304: "Make Class Abstract" applied to class DrawApplet
+Iteration 1305: "Make Class Concrete" applied to class DrawApplet
+Iteration 1306: "Decrease Method Security" applied at class Animator to method end from package to protected
+Iteration 1307: "Make Class Abstract" applied to class DrawApplet
+Iteration 1308: "Make Class Concrete" applied to class DrawApplet
+Iteration 1309: "Make Class Abstract" applied to class DrawApplet
+Iteration 1310: "Make Class Concrete" applied to class DrawApplet
+Iteration 1311: "Make Class Abstract" applied to class DrawApplet
+Iteration 1312: "Make Class Concrete" applied to class DrawApplet
+Iteration 1313: "Make Class Abstract" applied to class DrawApplet
+Iteration 1314: "Make Class Concrete" applied to class DrawApplet
+Iteration 1315: "Make Class Abstract" applied to class DrawApplet
+Iteration 1316: "Make Class Concrete" applied to class DrawApplet
+Iteration 1317: "Make Method Final" applied at class UngroupCommand to method ungroupFigures
+Iteration 1318: "Make Method Non Final" applied at class UngroupCommand to method ungroupFigures
+Iteration 1319: "Make Method Final" applied at class UngroupCommand to method ungroupFigures
+Iteration 1320: "Make Method Non Final" applied at class UngroupCommand to method ungroupFigures
+Iteration 1321: "Make Class Abstract" applied to class DrawApplet
+Iteration 1322: "Make Class Concrete" applied to class DrawApplet
+Iteration 1323: "Make Class Abstract" applied to class DrawApplet
+Iteration 1324: "Make Class Concrete" applied to class DrawApplet
+Iteration 1325: "Make Method Final" applied at class UngroupCommand to method ungroupFigures
+Iteration 1326: "Increase Method Security" applied at class Animator to method end from protected to package
+Iteration 1327: "Make Method Non Final" applied at class UngroupCommand to method ungroupFigures
+Iteration 1328: "Make Method Final" applied at class UngroupCommand to method ungroupFigures
+Iteration 1329: "Make Method Non Final" applied at class UngroupCommand to method ungroupFigures
+Iteration 1330: "Make Class Abstract" applied to class DrawApplet
+Iteration 1331: "Make Class Concrete" applied to class DrawApplet
+Iteration 1332: "Decrease Method Security" applied at class Animator to method end from package to protected
+Iteration 1333: "Make Class Abstract" applied to class DrawApplet
+Iteration 1334: "Make Class Concrete" applied to class DrawApplet
+Iteration 1335: "Make Method Final" applied at class UngroupCommand to method ungroupFigures
+Iteration 1336: "Increase Method Security" applied at class Animator to method end from protected to package
+Iteration 1337: "Make Class Abstract" applied to class DrawApplet
+Iteration 1338: "Make Class Concrete" applied to class DrawApplet
+Iteration 1339: "Make Class Abstract" applied to class DrawApplet
+Iteration 1340: "Make Class Concrete" applied to class DrawApplet
+Iteration 1341: "Make Class Abstract" applied to class DrawApplet
+Iteration 1342: "Make Class Concrete" applied to class DrawApplet
+Iteration 1343: "Make Method Non Final" applied at class UngroupCommand to method ungroupFigures
+Iteration 1344: "Make Class Abstract" applied to class DrawApplet
+Iteration 1345: "Make Class Concrete" applied to class DrawApplet
+Iteration 1346: "Decrease Method Security" applied at class Animator to method end from package to protected
+Iteration 1347: "Make Class Abstract" applied to class DrawApplet
+Iteration 1348: "Make Class Concrete" applied to class DrawApplet
+Iteration 1349: "Make Method Final" applied at class UngroupCommand to method ungroupFigures
+Iteration 1350: "Make Method Non Final" applied at class UngroupCommand to method ungroupFigures
+Iteration 1351: "Make Class Abstract" applied to class DrawApplet
+Iteration 1352: "Make Class Concrete" applied to class DrawApplet
+Iteration 1353: "Make Class Abstract" applied to class DrawApplet
+Iteration 1354: "Make Class Concrete" applied to class DrawApplet
+Iteration 1355: "Make Method Final" applied at class UngroupCommand to method ungroupFigures
+Iteration 1356: "Increase Method Security" applied at class Animator to method end from protected to package
+Iteration 1357: "Make Method Non Final" applied at class UngroupCommand to method ungroupFigures
+Iteration 1358: "Make Method Final" applied at class UngroupCommand to method ungroupFigures
+Iteration 1359: "Make Method Non Final" applied at class UngroupCommand to method ungroupFigures
+Iteration 1360: "Make Class Abstract" applied to class DrawApplet
+Iteration 1361: "Make Class Concrete" applied to class DrawApplet
+Iteration 1362: "Decrease Method Security" applied at class Animator to method end from package to protected
+Iteration 1363: "Make Class Abstract" applied to class DrawApplet
+Iteration 1364: "Make Class Concrete" applied to class DrawApplet
+Iteration 1365: "Make Method Final" applied at class UngroupCommand to method ungroupFigures
+Iteration 1366: "Increase Method Security" applied at class Animator to method end from protected to package
+Iteration 1367: "Make Class Concrete" applied to class CompositeFigure
+Iteration 1368: "Make Class Abstract" applied to class DrawApplet
+Iteration 1369: "Make Class Concrete" applied to class DrawApplet
+Iteration 1370: "Make Method Non Final" applied at class UngroupCommand to method ungroupFigures
+Iteration 1371: "Make Method Final" applied at class UngroupCommand to method ungroupFigures
+Iteration 1372: "Make Method Non Final" applied at class UngroupCommand to method ungroupFigures
+Iteration 1373: "Make Class Abstract" applied to class DrawApplet
+Iteration 1374: "Make Class Concrete" applied to class DrawApplet
+Iteration 1375: "Decrease Method Security" applied at class Animator to method end from package to protected
+Iteration 1376: "Make Class Abstract" applied to class DrawApplet
+Iteration 1377: "Make Class Concrete" applied to class DrawApplet
+Iteration 1378: "Make Method Final" applied at class UngroupCommand to method ungroupFigures
+Iteration 1379: "Increase Method Security" applied at class Animator to method end from protected to package
+Iteration 1380: "Decrease Method Security" applied at class Animator to method end from package to protected
+Iteration 1381: "Make Class Abstract" applied to class DrawApplet
+Iteration 1382: "Make Class Concrete" applied to class DrawApplet
+Iteration 1383: "Increase Method Security" applied at class Animator to method end from protected to package
+Iteration 1384: "Make Class Abstract" applied to class CompositeFigure
+Iteration 1385: "Make Class Abstract" applied to class DrawApplet
+Iteration 1386: "Make Class Concrete" applied to class DrawApplet
+Iteration 1387: "Decrease Method Security" applied at class Animator to method end from package to protected
+Iteration 1388: "Make Class Abstract" applied to class DrawApplet
+Iteration 1389: "Make Class Concrete" applied to class DrawApplet
+Iteration 1390: "Make Method Non Final" applied at class UngroupCommand to method ungroupFigures
+Iteration 1391: "Make Class Abstract" applied to class DrawApplet
+Iteration 1392: "Make Class Concrete" applied to class DrawApplet
+Iteration 1393: "Make Class Abstract" applied to class DrawApplet
+Iteration 1394: "Make Class Concrete" applied to class DrawApplet
+Iteration 1395: "Make Method Final" applied at class UngroupCommand to method ungroupFigures
+Iteration 1396: "Increase Method Security" applied at class Animator to method end from protected to package
+Iteration 1397: "Make Method Non Final" applied at class UngroupCommand to method ungroupFigures
+Iteration 1398: "Make Method Final" applied at class UngroupCommand to method ungroupFigures
+Iteration 1399: "Make Method Non Final" applied at class UngroupCommand to method ungroupFigures
+Iteration 1400: "Make Class Abstract" applied to class DrawApplet
+Iteration 1401: "Make Class Concrete" applied to class DrawApplet
+Iteration 1402: "Make Class Abstract" applied to class DrawApplet
+Iteration 1403: "Make Class Concrete" applied to class DrawApplet
+Iteration 1404: "Decrease Method Security" applied at class Animator to method end from package to protected
+Iteration 1405: "Make Class Abstract" applied to class DrawApplet
+Iteration 1406: "Make Class Concrete" applied to class DrawApplet
+Iteration 1407: "Make Class Abstract" applied to class DrawApplet
+Iteration 1408: "Make Class Concrete" applied to class DrawApplet
+Iteration 1409: "Make Class Abstract" applied to class DrawApplet
+Iteration 1410: "Make Class Concrete" applied to class DrawApplet
+Iteration 1411: "Make Method Final" applied at class UngroupCommand to method ungroupFigures
+Iteration 1412: "Increase Method Security" applied at class Animator to method end from protected to package
+Iteration 1413: "Make Method Non Final" applied at class UngroupCommand to method ungroupFigures
+Iteration 1414: "Make Method Final" applied at class UngroupCommand to method ungroupFigures
+Iteration 1415: "Make Method Non Final" applied at class UngroupCommand to method ungroupFigures
+Iteration 1416: "Make Class Abstract" applied to class DrawApplet
+Iteration 1417: "Make Class Concrete" applied to class DrawApplet
+Iteration 1418: "Decrease Method Security" applied at class Animator to method end from package to protected
+Iteration 1419: "Make Class Abstract" applied to class DrawApplet
+Iteration 1420: "Make Class Concrete" applied to class DrawApplet
+Iteration 1421: "Make Method Final" applied at class UngroupCommand to method ungroupFigures
+Iteration 1422: "Increase Method Security" applied at class Animator to method end from protected to package
+Iteration 1423: "Make Class Concrete" applied to class CompositeFigure
+Iteration 1424: "Make Class Abstract" applied to class DrawApplet
+Iteration 1425: "Make Class Concrete" applied to class DrawApplet
+Iteration 1426: "Make Method Non Final" applied at class UngroupCommand to method ungroupFigures
+Iteration 1427: "Make Method Final" applied at class UngroupCommand to method ungroupFigures
+Iteration 1428: "Make Method Non Final" applied at class UngroupCommand to method ungroupFigures
+Iteration 1429: "Make Class Abstract" applied to class DrawApplet
+Iteration 1430: "Make Class Concrete" applied to class DrawApplet
+Iteration 1431: "Decrease Method Security" applied at class Animator to method end from package to protected
+Iteration 1432: "Make Class Abstract" applied to class DrawApplet
+Iteration 1433: "Make Class Concrete" applied to class DrawApplet
+Iteration 1434: "Make Method Final" applied at class UngroupCommand to method ungroupFigures
+Iteration 1435: "Increase Method Security" applied at class Animator to method end from protected to package
+Iteration 1436: "Decrease Method Security" applied at class Animator to method end from package to protected
+Iteration 1437: "Make Class Abstract" applied to class DrawApplet
+Iteration 1438: "Make Class Concrete" applied to class DrawApplet
+Iteration 1439: "Increase Method Security" applied at class Animator to method end from protected to package
+Iteration 1440: "Make Class Abstract" applied to class CompositeFigure
+Iteration 1441: "Make Class Abstract" applied to class DrawApplet
+Iteration 1442: "Make Class Concrete" applied to class DrawApplet
+Iteration 1443: "Decrease Method Security" applied at class Animator to method end from package to protected
+Iteration 1444: "Make Class Abstract" applied to class DrawApplet
+Iteration 1445: "Make Class Concrete" applied to class DrawApplet
+Iteration 1446: "Increase Method Security" applied at class Animator to method end from protected to package
+Iteration 1447: "Make Class Concrete" applied to class CompositeFigure
+Iteration 1448: "Make Class Abstract" applied to class DrawApplet
+Iteration 1449: "Make Class Concrete" applied to class DrawApplet
+Iteration 1450: "Make Method Non Final" applied at class UngroupCommand to method ungroupFigures
+Iteration 1451: "Make Method Final" applied at class UngroupCommand to method ungroupFigures
+Iteration 1452: "Make Method Non Final" applied at class UngroupCommand to method ungroupFigures
+Iteration 1453: "Make Class Abstract" applied to class DrawApplet
+Iteration 1454: "Make Class Concrete" applied to class DrawApplet
+Iteration 1455: "Decrease Method Security" applied at class Animator to method end from package to protected
+Iteration 1456: "Make Class Abstract" applied to class DrawApplet
+Iteration 1457: "Make Class Concrete" applied to class DrawApplet
+Iteration 1458: "Make Method Final" applied at class UngroupCommand to method ungroupFigures
+Iteration 1459: "Increase Method Security" applied at class Animator to method end from protected to package
+Iteration 1460: "Decrease Method Security" applied at class Animator to method end from package to protected
+Iteration 1461: "Make Class Abstract" applied to class DrawApplet
+Iteration 1462: "Make Class Concrete" applied to class DrawApplet
+Iteration 1463: "Increase Method Security" applied at class Animator to method end from protected to package
+Iteration 1464: "Make Class Abstract" applied to class CompositeFigure
+Iteration 1465: "Make Class Abstract" applied to class DrawApplet
+Iteration 1466: "Make Method Non Final" applied at class UngroupCommand to method ungroupFigures
+Iteration 1467: "Make Class Concrete" applied to class DrawApplet
+Iteration 1468: "Decrease Method Security" applied at class Animator to method end from package to protected
+Iteration 1469: "Make Class Abstract" applied to class DrawApplet
+Iteration 1470: "Make Class Concrete" applied to class DrawApplet
+Iteration 1471: "Make Method Final" applied at class UngroupCommand to method ungroupFigures
+Iteration 1472: "Increase Method Security" applied at class Animator to method end from protected to package
+Iteration 1473: "Make Class Abstract" applied to class DrawApplet
+Iteration 1474: "Make Class Concrete" applied to class DrawApplet
+Iteration 1475: "Make Class Abstract" applied to class DrawApplet
+Iteration 1476: "Make Class Concrete" applied to class DrawApplet
+Iteration 1477: "Make Class Abstract" applied to class DrawApplet
+Iteration 1478: "Make Class Concrete" applied to class DrawApplet
+Iteration 1479: "Make Method Non Final" applied at class UngroupCommand to method ungroupFigures
+Iteration 1480: "Make Class Abstract" applied to class DrawApplet
+Iteration 1481: "Make Class Concrete" applied to class DrawApplet
+Iteration 1482: "Decrease Method Security" applied at class Animator to method end from package to protected
+Iteration 1483: "Make Class Abstract" applied to class DrawApplet
+Iteration 1484: "Make Class Concrete" applied to class DrawApplet
+Iteration 1485: "Make Method Final" applied at class UngroupCommand to method ungroupFigures
+Iteration 1486: "Make Method Non Final" applied at class UngroupCommand to method ungroupFigures
+Iteration 1487: "Make Class Abstract" applied to class DrawApplet
+Iteration 1488: "Make Class Concrete" applied to class DrawApplet
+Iteration 1489: "Make Class Abstract" applied to class DrawApplet
+Iteration 1490: "Make Class Concrete" applied to class DrawApplet
+Iteration 1491: "Make Method Final" applied at class UngroupCommand to method ungroupFigures
+Iteration 1492: "Increase Method Security" applied at class Animator to method end from protected to package
+Iteration 1493: "Make Method Non Final" applied at class UngroupCommand to method ungroupFigures
+Iteration 1494: "Make Method Final" applied at class UngroupCommand to method ungroupFigures
+Iteration 1495: "Make Method Non Final" applied at class UngroupCommand to method ungroupFigures
+Iteration 1496: "Make Class Abstract" applied to class DrawApplet
+Iteration 1497: "Make Class Concrete" applied to class DrawApplet
+Iteration 1498: "Decrease Method Security" applied at class Animator to method end from package to protected
+Iteration 1499: "Make Class Abstract" applied to class DrawApplet
+Iteration 1500: "Make Class Concrete" applied to class DrawApplet
+Iteration 1501: "Make Method Final" applied at class UngroupCommand to method ungroupFigures
+Iteration 1502: "Increase Method Security" applied at class Animator to method end from protected to package
+Iteration 1503: "Make Class Concrete" applied to class CompositeFigure
+Iteration 1504: "Make Class Abstract" applied to class DrawApplet
+Iteration 1505: "Make Class Concrete" applied to class DrawApplet
+Iteration 1506: "Make Method Non Final" applied at class UngroupCommand to method ungroupFigures
+Iteration 1507: "Make Method Final" applied at class UngroupCommand to method ungroupFigures
+Iteration 1508: "Make Method Non Final" applied at class UngroupCommand to method ungroupFigures
+Iteration 1509: "Make Class Abstract" applied to class DrawApplet
+Iteration 1510: "Make Class Concrete" applied to class DrawApplet
+Iteration 1511: "Decrease Method Security" applied at class Animator to method end from package to protected
+Iteration 1512: "Make Class Abstract" applied to class DrawApplet
+Iteration 1513: "Make Class Concrete" applied to class DrawApplet
+Iteration 1514: "Make Class Abstract" applied to class DrawApplet
+Iteration 1515: "Make Class Concrete" applied to class DrawApplet
+Iteration 1516: "Make Method Final" applied at class UngroupCommand to method ungroupFigures
+Iteration 1517: "Increase Method Security" applied at class Animator to method end from protected to package
+Iteration 1518: "Make Method Non Final" applied at class UngroupCommand to method ungroupFigures
+Iteration 1519: "Make Method Final" applied at class UngroupCommand to method ungroupFigures
+Iteration 1520: "Make Method Non Final" applied at class UngroupCommand to method ungroupFigures
+Iteration 1521: "Make Class Abstract" applied to class DrawApplet
+Iteration 1522: "Make Class Concrete" applied to class DrawApplet
+Iteration 1523: "Decrease Method Security" applied at class Animator to method end from package to protected
+Iteration 1524: "Make Class Abstract" applied to class DrawApplet
+Iteration 1525: "Make Class Concrete" applied to class DrawApplet
+Iteration 1526: "Make Method Final" applied at class UngroupCommand to method ungroupFigures
+Iteration 1527: "Increase Method Security" applied at class Animator to method end from protected to package
+Iteration 1528: "Make Class Abstract" applied to class DrawApplet
+Iteration 1529: "Make Class Concrete" applied to class DrawApplet
+Iteration 1530: "Make Method Non Final" applied at class UngroupCommand to method ungroupFigures
+Iteration 1531: "Make Method Final" applied at class UngroupCommand to method ungroupFigures
+Iteration 1532: "Make Method Non Final" applied at class UngroupCommand to method ungroupFigures
+Iteration 1533: "Make Class Abstract" applied to class DrawApplet
+Iteration 1534: "Make Class Concrete" applied to class DrawApplet
+Iteration 1535: "Decrease Method Security" applied at class Animator to method end from package to protected
+Iteration 1536: "Make Class Abstract" applied to class DrawApplet
+Iteration 1537: "Make Class Concrete" applied to class DrawApplet
+Iteration 1538: "Make Method Final" applied at class UngroupCommand to method ungroupFigures
+Iteration 1539: "Increase Method Security" applied at class Animator to method end from protected to package
+Iteration 1540: "Decrease Method Security" applied at class Animator to method end from package to protected
+Iteration 1541: "Make Class Abstract" applied to class DrawApplet
+Iteration 1542: "Make Class Concrete" applied to class DrawApplet
+Iteration 1543: "Increase Method Security" applied at class Animator to method end from protected to package
+Iteration 1544: "Make Class Abstract" applied to class CompositeFigure
+Iteration 1545: "Make Class Abstract" applied to class DrawApplet
+Iteration 1546: "Make Class Concrete" applied to class DrawApplet
+Iteration 1547: "Decrease Method Security" applied at class Animator to method end from package to protected
+Iteration 1548: "Make Class Abstract" applied to class DrawApplet
+Iteration 1549: "Make Class Concrete" applied to class DrawApplet
+Iteration 1550: "Make Method Non Final" applied at class UngroupCommand to method ungroupFigures
+Iteration 1551: "Make Class Abstract" applied to class DrawApplet
+Iteration 1552: "Make Class Concrete" applied to class DrawApplet
+Iteration 1553: "Make Class Abstract" applied to class DrawApplet
+Iteration 1554: "Make Class Concrete" applied to class DrawApplet
+Iteration 1555: "Make Method Final" applied at class UngroupCommand to method ungroupFigures
+Iteration 1556: "Increase Method Security" applied at class Animator to method end from protected to package
+Iteration 1557: "Make Method Non Final" applied at class UngroupCommand to method ungroupFigures
+Iteration 1558: "Make Method Final" applied at class UngroupCommand to method ungroupFigures
+Iteration 1559: "Make Method Non Final" applied at class UngroupCommand to method ungroupFigures
+Iteration 1560: "Make Class Abstract" applied to class DrawApplet
+Iteration 1561: "Make Class Concrete" applied to class DrawApplet
+Iteration 1562: "Make Class Abstract" applied to class DrawApplet
+Iteration 1563: "Make Class Concrete" applied to class DrawApplet
+Iteration 1564: "Decrease Method Security" applied at class Animator to method end from package to protected
+Iteration 1565: "Make Class Abstract" applied to class DrawApplet
+Iteration 1566: "Make Class Concrete" applied to class DrawApplet
+Iteration 1567: "Make Class Abstract" applied to class DrawApplet
+Iteration 1568: "Make Class Concrete" applied to class DrawApplet
+Iteration 1569: "Make Class Abstract" applied to class DrawApplet
+Iteration 1570: "Make Class Concrete" applied to class DrawApplet
+Iteration 1571: "Make Method Final" applied at class UngroupCommand to method ungroupFigures
+Iteration 1572: "Increase Method Security" applied at class Animator to method end from protected to package
+Iteration 1573: "Make Method Non Final" applied at class UngroupCommand to method ungroupFigures
+Iteration 1574: "Make Method Final" applied at class UngroupCommand to method ungroupFigures
+Iteration 1575: "Make Method Non Final" applied at class UngroupCommand to method ungroupFigures
+Iteration 1576: "Make Class Abstract" applied to class DrawApplet
+Iteration 1577: "Make Class Concrete" applied to class DrawApplet
+Iteration 1578: "Decrease Method Security" applied at class Animator to method end from package to protected
+Iteration 1579: "Make Class Abstract" applied to class DrawApplet
+Iteration 1580: "Make Class Concrete" applied to class DrawApplet
+Iteration 1581: "Make Method Final" applied at class UngroupCommand to method ungroupFigures
+Iteration 1582: "Increase Method Security" applied at class Animator to method end from protected to package
+Iteration 1583: "Make Class Concrete" applied to class CompositeFigure
+Iteration 1584: "Make Class Abstract" applied to class DrawApplet
+Iteration 1585: "Make Class Concrete" applied to class DrawApplet
+Iteration 1586: "Make Method Non Final" applied at class UngroupCommand to method ungroupFigures
+Iteration 1587: "Make Method Final" applied at class UngroupCommand to method ungroupFigures
+Iteration 1588: "Make Method Non Final" applied at class UngroupCommand to method ungroupFigures
+Iteration 1589: "Make Class Abstract" applied to class DrawApplet
+Iteration 1590: "Make Class Concrete" applied to class DrawApplet
+Iteration 1591: "Decrease Method Security" applied at class Animator to method end from package to protected
+Iteration 1592: "Make Class Abstract" applied to class DrawApplet
+Iteration 1593: "Make Class Concrete" applied to class DrawApplet
+Iteration 1594: "Make Method Final" applied at class UngroupCommand to method ungroupFigures
+Iteration 1595: "Increase Method Security" applied at class Animator to method end from protected to package
+Iteration 1596: "Decrease Method Security" applied at class Animator to method end from package to protected
+Iteration 1597: "Make Class Abstract" applied to class DrawApplet
+Iteration 1598: "Make Class Concrete" applied to class DrawApplet
+Iteration 1599: "Increase Method Security" applied at class Animator to method end from protected to package
+Iteration 1600: "Make Class Abstract" applied to class CompositeFigure
+Iteration 1601: "Make Class Abstract" applied to class DrawApplet
+Iteration 1602: "Make Class Concrete" applied to class DrawApplet
+Iteration 1603: "Decrease Method Security" applied at class Animator to method end from package to protected
+Iteration 1604: "Make Class Abstract" applied to class DrawApplet
+Iteration 1605: "Make Class Concrete" applied to class DrawApplet
+Iteration 1606: "Increase Method Security" applied at class Animator to method end from protected to package
+Iteration 1607: "Make Class Concrete" applied to class CompositeFigure
+Iteration 1608: "Make Class Abstract" applied to class DrawApplet
+Iteration 1609: "Make Class Concrete" applied to class DrawApplet
+Iteration 1610: "Make Method Non Final" applied at class UngroupCommand to method ungroupFigures
+Iteration 1611: "Make Method Final" applied at class UngroupCommand to method ungroupFigures
+Iteration 1612: "Make Method Non Final" applied at class UngroupCommand to method ungroupFigures
+Iteration 1613: "Make Class Abstract" applied to class DrawApplet
+Iteration 1614: "Make Class Concrete" applied to class DrawApplet
+Iteration 1615: "Decrease Method Security" applied at class Animator to method end from package to protected
+Iteration 1616: "Make Class Abstract" applied to class DrawApplet
+Iteration 1617: "Make Class Concrete" applied to class DrawApplet
+Iteration 1618: "Make Method Final" applied at class UngroupCommand to method ungroupFigures
+Iteration 1619: "Increase Method Security" applied at class Animator to method end from protected to package
+Iteration 1620: "Decrease Method Security" applied at class Animator to method end from package to protected
+Iteration 1621: "Make Class Abstract" applied to class DrawApplet
+Iteration 1622: "Make Class Concrete" applied to class DrawApplet
+Iteration 1623: "Increase Method Security" applied at class Animator to method end from protected to package
+Iteration 1624: "Make Class Abstract" applied to class CompositeFigure
+Iteration 1625: "Make Class Abstract" applied to class DrawApplet
+Iteration 1626: "Decrease Method Security" applied at class Bounds to method max from protected to public
+Iteration 1627: "Make Class Concrete" applied to class DrawApplet
+Iteration 1628: "Decrease Method Security" applied at class Animator to method end from package to protected
+Iteration 1629: "Make Class Abstract" applied to class DrawApplet
+Iteration 1630: "Make Class Concrete" applied to class DrawApplet
+Iteration 1631: "Increase Method Security" applied at class Animator to method end from protected to package
+Iteration 1632: "Decrease Method Security" applied at class Animator to method end from package to protected
+Iteration 1633: "Make Class Abstract" applied to class DrawApplet
+Iteration 1634: "Make Class Concrete" applied to class DrawApplet
+Iteration 1635: "Increase Method Security" applied at class Animator to method end from protected to package
+Iteration 1636: "Make Class Abstract" applied to class DrawApplet
+Iteration 1637: "Make Class Concrete" applied to class DrawApplet
+Iteration 1638: "Decrease Method Security" applied at class Animator to method end from package to protected
+Iteration 1639: "Make Class Abstract" applied to class DrawApplet
+Iteration 1640: "Make Class Concrete" applied to class DrawApplet
+Iteration 1641: "Increase Method Security" applied at class Animator to method end from protected to package
+Iteration 1642: "Make Class Abstract" applied to class DrawApplet
+Iteration 1643: "Make Class Concrete" applied to class DrawApplet
+Iteration 1644: "Decrease Method Security" applied at class Animator to method end from package to protected
+Iteration 1645: "Make Class Abstract" applied to class DrawApplet
+Iteration 1646: "Make Class Concrete" applied to class DrawApplet
+Iteration 1647: "Increase Method Security" applied at class Animator to method end from protected to package
+Iteration 1648: "Make Class Concrete" applied to class CompositeFigure
+Iteration 1649: "Make Class Abstract" applied to class DrawApplet
+Iteration 1650: "Make Class Concrete" applied to class DrawApplet
+Iteration 1651: "Make Method Non Final" applied at class UngroupCommand to method ungroupFigures
+Iteration 1652: "Make Method Final" applied at class UngroupCommand to method ungroupFigures
+Iteration 1653: "Make Method Non Final" applied at class UngroupCommand to method ungroupFigures
+Iteration 1654: "Make Class Abstract" applied to class DrawApplet
+Iteration 1655: "Make Class Concrete" applied to class DrawApplet
+Iteration 1656: "Decrease Method Security" applied at class Animator to method end from package to protected
+Iteration 1657: "Make Class Abstract" applied to class DrawApplet
+Iteration 1658: "Make Class Concrete" applied to class DrawApplet
+Iteration 1659: "Make Method Final" applied at class UngroupCommand to method ungroupFigures
+Iteration 1660: "Increase Method Security" applied at class Animator to method end from protected to package
+Iteration 1661: "Decrease Method Security" applied at class Animator to method end from package to protected
+Iteration 1662: "Make Class Abstract" applied to class DrawApplet
+Iteration 1663: "Make Class Concrete" applied to class DrawApplet
+Iteration 1664: "Increase Method Security" applied at class Animator to method end from protected to package
+Iteration 1665: "Make Class Abstract" applied to class CompositeFigure
+Iteration 1666: "Make Class Abstract" applied to class DrawApplet
+Iteration 1667: "Decrease Method Security" applied at class ImageFigure to method drawGhost from package to protected
+Iteration 1668: "Decrease Method Security" applied at class PatternPainter to method drawPattern from package to protected
+Iteration 1669: "Make Class Concrete" applied to class DrawApplet
+Iteration 1670: "Decrease Method Security" applied at class ColorMap to method ColorEntry from protected to public
+Iteration 1671: "Make Method Static" applied at class CutCommand to method createUndoActivity
+Iteration 1672: "Decrease Method Security" applied at class PertFigure to method needsLayout from private to package
+Iteration 1673: "Make Method Final" applied at class GroupFigure to method basicDisplayBox
+Iteration 1674: "Make Method Final" applied at class ScribbleTool to method mouseDrag
+Iteration 1675: "Make Class Final" applied to class RadiusHandle
+Iteration 1676: "Move Method Down" applied to method undo from UndoActivity to UndoActivity
+Iteration 1677: "Make Method Final" applied at class UngroupCommand to method redo
+Iteration 1678: "Make Method Final" applied at class MDI_InternalFrame to method getDrawingView
+Iteration 1679: "Move Method Down" applied to method invokeStart from ResizeHandle to EastHandle
+Iteration 1680: "Make Method Static" applied at class DragNDropTool to method ProcessRemotelyReceivedData
+Iteration 1681: "Decrease Method Security" applied at class FollowURLTool to method FollowURLTool from package to protected
+Iteration 1682: "Move Method Up" applied to method isExecutableWithView from DeleteCommand to FigureTransferCommand
 
-Score has improved overall by 0.596422
-Time taken to refactor: 1289.94s
+Score has improved overall by 0.614188
+Time taken to refactor: 1396.68s
 
 ======== Final Metric Info ========
-Average ratio of private/package/protected attributes to overall attributes per class: 0.608125
-Average coupling per class: 1.729167
-Average cohesion among methods per class: 0.316242
-Average amount of user defined attributes declared per class: 0.570833
-Average functional abstraction per class: 0.335926
-Average amount of polymorphic methods per class: 1.625000
-Average amount of public methods per class: 7.387500
-Average amount of methods per class: 9.316667
-Average amount of complexity of methods per class: 56.137501
+Average ratio of private/package/protected attributes to overall attributes per class: 0.616111
+Average coupling per class: 1.725000
+Average cohesion among methods per class: 0.315372
+Average amount of user defined attributes declared per class: 0.575000
+Average functional abstraction per class: 0.337112
+Average amount of polymorphic methods per class: 1.629167
+Average amount of public methods per class: 7.454167
+Average amount of methods per class: 9.320833
+Average amount of complexity of methods per class: 56.287498
 Ratio of interfaces to overall amount of classes: 0.137500
-Average ratio of abstract classes/methods per class: 0.152229
-Average ratio of static classes/methods/variables per class: 0.074280
-Average ratio of final classes/methods/variables per class: 0.026433
-Average ratio of constant classes/methods/variables per class: 0.026418
+Average ratio of abstract classes/methods per class: 0.152846
+Average ratio of static classes/methods/variables per class: 0.073787
+Average ratio of final classes/methods/variables per class: 0.025061
+Average ratio of constant classes/methods/variables per class: 0.028196
 Ratio of inner classes to overall amount of ordinary classes in project: 0.133333
-Average inherited referenced methods ratio per class: 0.276111
-Average visibility ratio per class: 0.698632
+Average inherited referenced methods ratio per class: 0.279181
+Average visibility ratio per class: 0.705329
 Amount of lines of code in project: 27794
-Overall fitness function score: 0.596422
+Overall fitness function score: 0.614188

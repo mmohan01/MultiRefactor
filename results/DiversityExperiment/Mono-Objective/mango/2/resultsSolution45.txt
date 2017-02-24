@@ -27,348 +27,138 @@ Amount of lines of code in project: 3470
 Overall fitness function score: 0.000000
 
 ======== Applied Refactorings ========
-Iteration 1: "Decrease Method Security" applied at class Remove to method Remove from private to package
-Iteration 2: "Make Method Static" applied at class GreaterThanEquals to method test
-Iteration 3: "Decrease Method Security" applied at class Count to method execute_null from private to package
-Iteration 4: "Decrease Method Security" applied at class Intersection to method Intersection from private to package
-Iteration 5: "Decrease Method Security" applied at class Bind to method Bind from private to package
-Iteration 6: "Decrease Method Security" applied at class Collections to method Collections from private to package
-Iteration 7: "Make Method Non Static" applied at class Count to method execute_null
-Iteration 8: "Decrease Method Security" applied at class BinaryPredicates to method BinaryPredicates from private to package
-Iteration 9: "Decrease Method Security" applied at class RemoveIf to method RemoveIf from private to package
-Iteration 10: "Decrease Method Security" applied at class FindPosition to method FindPosition from private to package
-Iteration 11: "Make Method Non Static" applied at class Algorithms to method intersection
-Iteration 12: "Make Field Final" applied at class Or to ParameterDeclaration x
-Iteration 13: "Make Field Non Final" applied at class Iterators to ParameterDeclaration generator
-Iteration 14: "Decrease Method Security" applied at class SymmetricDifference to method SymmetricDifference from private to package
-Iteration 15: "Make Field Final" applied at class Collections to ParameterDeclaration v
-Iteration 16: "Increase Field Security" applied at class TeeIterator to field item from public to protected
-Iteration 17: "Make Class Final" applied to class ArrayIterator
+Iteration 1: "Remove Method" applied at class Adapt to method ArgumentMethod
+Iteration 2: "Make Field Final" applied at class StringIterator to LocalVariableDeclaration c
+Iteration 3: "Decrease Method Security" applied at class FindPositionIf to method FindPositionIf from private to package
+Iteration 4: "Decrease Method Security" applied at class ForEach to method ForEach from private to package
+Iteration 5: "Decrease Method Security" applied at class BinaryPredicates to method BinaryPredicates from private to package
+Iteration 6: "Decrease Method Security" applied at class Count to method execute_null from private to package
+Iteration 7: "Make Method Non Static" applied at class Functions to method Compose
+Iteration 8: "Decrease Method Security" applied at class Algorithms to method Algorithms from private to package
+Iteration 9: "Make Class Final" applied to class Not
+Iteration 10: "Decrease Field Security" applied at class OneOf to field preds_ from private to package
+Iteration 11: "Make Method Final" applied at class GreaterThanEquals to method test
+Iteration 12: "Decrease Method Security" applied at class CountIfNot to method CountIfNot from private to package
+Iteration 13: "Make Method Final" applied at class ReverseIterator to method next
+Iteration 14: "Decrease Method Security" applied at class MapFactory to method Builder from private to package
+Iteration 15: "Decrease Method Security" applied at class Predicates to method Predicates from private to package
+Iteration 16: "Make Field Final" applied at class BoundedIterator to ParameterDeclaration iterator
+Iteration 17: "Make Method Final" applied at class StringIterator to method hasNext
 Iteration 18: "Decrease Method Security" applied at class BinaryPredicates to method BinaryPredicates from package to protected
-Iteration 19: "Decrease Method Security" applied at class FindIfNot to method FindIfNot from private to package
-Iteration 20: "Make Method Non Static" applied at class Predicates to method True
-Iteration 21: "Decrease Method Security" applied at class FindIfNot to method FindIfNot from package to protected
-Iteration 22: "Make Method Final" applied at class ReverseIterator to method next
-Iteration 23: "Decrease Method Security" applied at class Algorithms to method Algorithms from private to package
-Iteration 24: "Increase Field Security" applied at class TeeIterator to field item from protected to package
-Iteration 25: "Decrease Method Security" applied at class Predicates to method Predicates from private to package
-Iteration 26: "Make Class Final" applied to class SingletonIterator
-Iteration 27: "Decrease Method Security" applied at class Remove to method Remove from package to protected
-Iteration 28: "Make Field Final" applied at class All to ParameterDeclaration preds
-Iteration 29: "Decrease Method Security" applied at class SkippingIterator to method findNext from private to package
-Iteration 30: "Make Class Non Final" applied to class ArrayIterator
-Iteration 31: "Make Class Final" applied to class ArrayIterator
-Iteration 32: "Decrease Method Security" applied at class BinaryPredicates to method BinaryPredicates from protected to public
-Iteration 33: "Decrease Method Security" applied at class FindIfNot to method FindIfNot from protected to public
-Iteration 34: "Decrease Method Security" applied at class Algorithms to method Algorithms from package to protected
-Iteration 35: "Decrease Method Security" applied at class CountIfNot to method CountIfNot from private to package
-Iteration 36: "Increase Method Security" applied at class Helpers to method toIterator from public to protected
-Iteration 37: "Make Method Non Final" applied at class ReverseIterator to method next
-Iteration 38: "Decrease Method Security" applied at class Helpers to method toIterator from protected to public
-Iteration 39: "Make Class Non Final" applied to class ArrayIterator
-Iteration 40: "Make Method Final" applied at class ReverseIterator to method next
-Iteration 41: "Increase Method Security" applied at class Helpers to method toIterator from public to protected
-Iteration 42: "Make Method Non Final" applied at class ReverseIterator to method next
-Iteration 43: "Decrease Method Security" applied at class Helpers to method toIterator from protected to public
-Iteration 44: "Make Class Non Final" applied to class SingletonIterator
-Iteration 45: "Make Class Final" applied to class And
-Iteration 46: "Make Class Non Final" applied to class And
-Iteration 47: "Increase Method Security" applied at class Predicates to method True from public to protected
-Iteration 48: "Decrease Method Security" applied at class Predicates to method True from protected to public
-Iteration 49: "Make Method Non Static" applied at class Bind to method First
-Iteration 50: "Make Method Static" applied at class Bind to method First
-Iteration 51: "Make Class Final" applied to class ArrayIterator
-Iteration 52: "Make Method Final" applied at class ReverseIterator to method next
-Iteration 53: "Increase Method Security" applied at class Helpers to method toIterator from public to protected
-Iteration 54: "Make Method Non Final" applied at class ReverseIterator to method next
-Iteration 55: "Decrease Method Security" applied at class Helpers to method toIterator from protected to public
-Iteration 56: "Make Class Non Final" applied to class ArrayIterator
-Iteration 57: "Make Class Final" applied to class And
-Iteration 58: "Make Class Non Final" applied to class And
-Iteration 59: "Increase Method Security" applied at class Predicates to method True from public to protected
-Iteration 60: "Decrease Method Security" applied at class Predicates to method True from protected to public
-Iteration 61: "Make Method Non Static" applied at class Bind to method First
-Iteration 62: "Make Method Static" applied at class Bind to method First
-Iteration 63: "Increase Field Security" applied at class TeeIterator to field index from public to protected
-Iteration 64: "Decrease Field Security" applied at class StringIterator to field s_ from private to package
-Iteration 65: "Make Class Final" applied to class GeneratorIterator
-Iteration 66: "Make Field Final" applied at class And to ParameterDeclaration y
-Iteration 67: "Decrease Method Security" applied at class BinaryFunctions to method BinaryFunctions from private to package
-Iteration 68: "Make Class Final" applied to class FindPosition
-Iteration 69: "Decrease Method Security" applied at class Intersection to method Intersection from package to protected
-Iteration 70: "Increase Field Security" applied at class StringIterator to field s_ from package to private
-Iteration 71: "Decrease Method Security" applied at class Adapt to method wrapMethod from private to package
-Iteration 72: "Make Field Final" applied at class Bind to FieldDeclaration test_
-Iteration 73: "Decrease Method Security" applied at class Transform to method Transform from private to package
-Iteration 74: "Decrease Method Security" applied at class BinaryFunctions to method BinaryFunctions from package to protected
-Iteration 75: "Decrease Method Security" applied at class BinaryFunctions to method BinaryFunctions from protected to public
-Iteration 76: "Make Field Final" applied at class Not to ParameterDeclaration p
-Iteration 77: "Decrease Method Security" applied at class Adapt to method wrapMethod from package to protected
-Iteration 78: "Make Method Static" applied at class LessThanEquals to method test
-Iteration 79: "Make Method Non Static" applied at class Unique to method match
-Iteration 80: "Make Method Final" applied at class EqualTo to method test
-Iteration 81: "Increase Method Security" applied at class Helpers to method toIterator from public to protected
-Iteration 82: "Make Class Final" applied to class SingletonIterator
-Iteration 83: "Decrease Method Security" applied at class Helpers to method toIterator from protected to public
-Iteration 84: "Make Method Non Static" applied at class Bind to method First
-Iteration 85: "Make Method Static" applied at class Bind to method First
-Iteration 86: "Make Class Final" applied to class ArrayIterator
-Iteration 87: "Make Method Final" applied at class ReverseIterator to method next
-Iteration 88: "Increase Method Security" applied at class Helpers to method toIterator from public to protected
-Iteration 89: "Make Method Non Final" applied at class ReverseIterator to method next
-Iteration 90: "Make Class Final" applied to class And
-Iteration 91: "Make Class Non Final" applied to class And
-Iteration 92: "Increase Method Security" applied at class Predicates to method True from public to protected
-Iteration 93: "Decrease Method Security" applied at class Predicates to method True from protected to public
-Iteration 94: "Make Method Non Static" applied at class Bind to method First
-Iteration 95: "Increase Method Security" applied at class Helpers to method toIterator from protected to package
-Iteration 96: "Decrease Method Security" applied at class Helpers to method toIterator from package to protected
-Iteration 97: "Make Class Non Final" applied to class ArrayIterator
-Iteration 98: "Make Class Final" applied to class And
-Iteration 99: "Make Class Non Final" applied to class And
-Iteration 100: "Increase Method Security" applied at class Predicates to method True from public to protected
-Iteration 101: "Decrease Method Security" applied at class Predicates to method True from protected to public
-Iteration 102: "Make Class Final" applied to class ArrayIterator
-Iteration 103: "Make Method Final" applied at class ReverseIterator to method next
-Iteration 104: "Increase Method Security" applied at class Helpers to method toIterator from protected to package
-Iteration 105: "Make Method Non Final" applied at class ReverseIterator to method next
-Iteration 106: "Decrease Method Security" applied at class Helpers to method toIterator from package to protected
-Iteration 107: "Make Class Non Final" applied to class ArrayIterator
-Iteration 108: "Make Class Final" applied to class ArrayIterator
-Iteration 109: "Make Method Final" applied at class ReverseIterator to method next
-Iteration 110: "Increase Method Security" applied at class Helpers to method toIterator from protected to package
-Iteration 111: "Make Method Non Final" applied at class ReverseIterator to method next
-Iteration 112: "Decrease Method Security" applied at class Helpers to method toIterator from package to protected
-Iteration 113: "Make Class Non Final" applied to class ArrayIterator
-Iteration 114: "Make Class Non Final" applied to class SingletonIterator
-Iteration 115: "Make Class Final" applied to class And
-Iteration 116: "Make Class Non Final" applied to class And
-Iteration 117: "Increase Method Security" applied at class Predicates to method True from public to protected
-Iteration 118: "Decrease Method Security" applied at class Predicates to method True from protected to public
-Iteration 119: "Make Method Static" applied at class Bind to method First
-Iteration 120: "Make Method Non Static" applied at class Bind to method First
-Iteration 121: "Make Method Static" applied at class Bind to method First
-Iteration 122: "Increase Method Security" applied at class Predicates to method True from public to protected
-Iteration 123: "Decrease Method Security" applied at class Predicates to method True from protected to public
-Iteration 124: "Make Method Non Static" applied at class Bind to method First
-Iteration 125: "Make Class Final" applied to class ArrayIterator
-Iteration 126: "Increase Method Security" applied at class Helpers to method toIterator from protected to package
-Iteration 127: "Decrease Method Security" applied at class Helpers to method toIterator from package to protected
-Iteration 128: "Make Class Non Final" applied to class ArrayIterator
-Iteration 129: "Make Class Final" applied to class ArrayIterator
-Iteration 130: "Make Method Final" applied at class ReverseIterator to method next
-Iteration 131: "Increase Method Security" applied at class Helpers to method toIterator from protected to package
-Iteration 132: "Make Method Non Final" applied at class ReverseIterator to method next
-Iteration 133: "Make Class Final" applied to class SingletonIterator
-Iteration 134: "Decrease Method Security" applied at class Helpers to method toIterator from package to protected
-Iteration 135: "Make Class Non Final" applied to class ArrayIterator
-Iteration 136: "Make Method Static" applied at class Bind to method First
-Iteration 137: "Make Method Non Static" applied at class Bind to method First
-Iteration 138: "Make Method Static" applied at class Bind to method First
-Iteration 139: "Make Class Final" applied to class ArrayIterator
-Iteration 140: "Make Method Final" applied at class ReverseIterator to method next
-Iteration 141: "Increase Method Security" applied at class Helpers to method toIterator from protected to package
-Iteration 142: "Make Method Non Final" applied at class ReverseIterator to method next
-Iteration 143: "Make Class Final" applied to class And
-Iteration 144: "Make Class Non Final" applied to class And
-Iteration 145: "Increase Method Security" applied at class Predicates to method True from public to protected
-Iteration 146: "Decrease Method Security" applied at class Predicates to method True from protected to public
-Iteration 147: "Make Method Non Static" applied at class Bind to method First
-Iteration 148: "Decrease Method Security" applied at class Helpers to method toIterator from package to protected
-Iteration 149: "Make Class Non Final" applied to class ArrayIterator
-Iteration 150: "Make Class Final" applied to class And
-Iteration 151: "Make Class Non Final" applied to class And
-Iteration 152: "Increase Method Security" applied at class Predicates to method True from public to protected
-Iteration 153: "Decrease Method Security" applied at class Predicates to method True from protected to public
-Iteration 154: "Make Class Final" applied to class ArrayIterator
-Iteration 155: "Make Method Final" applied at class ReverseIterator to method next
-Iteration 156: "Make Method Non Final" applied at class ReverseIterator to method next
-Iteration 157: "Decrease Method Security" applied at class Helpers to method toIterator from protected to public
-Iteration 158: "Make Class Non Final" applied to class ArrayIterator
-Iteration 159: "Make Class Non Final" applied to class SingletonIterator
-Iteration 160: "Make Class Final" applied to class And
-Iteration 161: "Make Class Non Final" applied to class And
-Iteration 162: "Increase Method Security" applied at class Predicates to method True from public to protected
-Iteration 163: "Decrease Method Security" applied at class Predicates to method True from protected to public
-Iteration 164: "Make Class Final" applied to class And
-Iteration 165: "Make Class Non Final" applied to class And
-Iteration 166: "Increase Method Security" applied at class Predicates to method True from public to protected
-Iteration 167: "Decrease Method Security" applied at class Predicates to method True from protected to public
-Iteration 168: "Make Method Static" applied at class Bind to method First
-Iteration 169: "Make Method Non Static" applied at class Bind to method First
-Iteration 170: "Make Class Final" applied to class ArrayIterator
-Iteration 171: "Increase Method Security" applied at class Helpers to method toIterator from public to protected
-Iteration 172: "Decrease Method Security" applied at class Helpers to method toIterator from protected to public
-Iteration 173: "Make Class Non Final" applied to class ArrayIterator
-Iteration 174: "Make Class Final" applied to class And
-Iteration 175: "Make Class Non Final" applied to class And
-Iteration 176: "Increase Method Security" applied at class Predicates to method True from public to protected
-Iteration 177: "Decrease Method Security" applied at class Predicates to method True from protected to public
-Iteration 178: "Make Class Final" applied to class ArrayIterator
-Iteration 179: "Make Method Final" applied at class ReverseIterator to method next
-Iteration 180: "Increase Method Security" applied at class Helpers to method toIterator from public to protected
-Iteration 181: "Make Method Non Final" applied at class ReverseIterator to method next
-Iteration 182: "Decrease Method Security" applied at class Helpers to method toIterator from protected to public
-Iteration 183: "Make Class Non Final" applied to class ArrayIterator
-Iteration 184: "Make Class Final" applied to class And
-Iteration 185: "Make Class Non Final" applied to class And
-Iteration 186: "Increase Method Security" applied at class Predicates to method True from public to protected
-Iteration 187: "Decrease Method Security" applied at class Predicates to method True from protected to public
-Iteration 188: "Make Method Static" applied at class Bind to method First
-Iteration 189: "Make Method Non Static" applied at class Bind to method First
-Iteration 190: "Make Method Static" applied at class Bind to method First
-Iteration 191: "Increase Method Security" applied at class Predicates to method True from public to protected
-Iteration 192: "Decrease Method Security" applied at class Predicates to method True from protected to public
-Iteration 193: "Make Method Non Static" applied at class Bind to method First
-Iteration 194: "Make Class Final" applied to class ArrayIterator
-Iteration 195: "Increase Method Security" applied at class Helpers to method toIterator from public to protected
-Iteration 196: "Decrease Method Security" applied at class Helpers to method toIterator from protected to public
-Iteration 197: "Make Class Non Final" applied to class ArrayIterator
-Iteration 198: "Make Class Final" applied to class ArrayIterator
-Iteration 199: "Make Method Final" applied at class ReverseIterator to method next
-Iteration 200: "Increase Method Security" applied at class Helpers to method toIterator from public to protected
-Iteration 201: "Make Method Non Final" applied at class ReverseIterator to method next
-Iteration 202: "Make Class Final" applied to class SingletonIterator
-Iteration 203: "Decrease Method Security" applied at class Helpers to method toIterator from protected to public
-Iteration 204: "Make Class Non Final" applied to class ArrayIterator
-Iteration 205: "Make Method Static" applied at class Bind to method First
-Iteration 206: "Make Method Non Static" applied at class Bind to method First
-Iteration 207: "Make Method Static" applied at class Bind to method First
-Iteration 208: "Make Class Final" applied to class ArrayIterator
-Iteration 209: "Make Method Final" applied at class ReverseIterator to method next
-Iteration 210: "Increase Method Security" applied at class Helpers to method toIterator from public to protected
-Iteration 211: "Make Method Non Final" applied at class ReverseIterator to method next
-Iteration 212: "Make Class Final" applied to class And
-Iteration 213: "Make Class Non Final" applied to class And
-Iteration 214: "Increase Method Security" applied at class Predicates to method True from public to protected
-Iteration 215: "Decrease Method Security" applied at class Predicates to method True from protected to public
-Iteration 216: "Make Class Final" applied to class And
-Iteration 217: "Make Class Non Final" applied to class And
-Iteration 218: "Increase Method Security" applied at class Predicates to method True from public to protected
-Iteration 219: "Decrease Method Security" applied at class Predicates to method True from protected to public
-Iteration 220: "Make Method Non Static" applied at class Bind to method First
-Iteration 221: "Increase Method Security" applied at class Helpers to method toIterator from protected to package
-Iteration 222: "Decrease Method Security" applied at class Helpers to method toIterator from package to protected
-Iteration 223: "Make Class Non Final" applied to class ArrayIterator
-Iteration 224: "Make Class Final" applied to class And
-Iteration 225: "Make Class Non Final" applied to class And
-Iteration 226: "Increase Method Security" applied at class Predicates to method True from public to protected
-Iteration 227: "Decrease Method Security" applied at class Predicates to method True from protected to public
-Iteration 228: "Make Class Final" applied to class ArrayIterator
-Iteration 229: "Make Method Final" applied at class ReverseIterator to method next
-Iteration 230: "Increase Method Security" applied at class Helpers to method toIterator from protected to package
-Iteration 231: "Make Method Non Final" applied at class ReverseIterator to method next
-Iteration 232: "Decrease Method Security" applied at class Helpers to method toIterator from package to protected
-Iteration 233: "Make Class Non Final" applied to class ArrayIterator
-Iteration 234: "Make Class Final" applied to class ArrayIterator
-Iteration 235: "Make Method Final" applied at class ReverseIterator to method next
-Iteration 236: "Increase Method Security" applied at class Helpers to method toIterator from protected to package
-Iteration 237: "Make Method Non Final" applied at class ReverseIterator to method next
-Iteration 238: "Decrease Method Security" applied at class Helpers to method toIterator from package to protected
-Iteration 239: "Make Class Non Final" applied to class ArrayIterator
-Iteration 240: "Make Class Non Final" applied to class SingletonIterator
-Iteration 241: "Make Class Final" applied to class And
-Iteration 242: "Make Class Non Final" applied to class And
-Iteration 243: "Increase Method Security" applied at class Predicates to method True from public to protected
-Iteration 244: "Decrease Method Security" applied at class Predicates to method True from protected to public
-Iteration 245: "Make Method Static" applied at class Bind to method First
-Iteration 246: "Make Method Non Static" applied at class Bind to method First
-Iteration 247: "Make Method Static" applied at class Bind to method First
-Iteration 248: "Increase Method Security" applied at class Predicates to method True from public to protected
-Iteration 249: "Decrease Method Security" applied at class Predicates to method True from protected to public
-Iteration 250: "Make Method Non Static" applied at class Bind to method First
-Iteration 251: "Make Class Final" applied to class ArrayIterator
-Iteration 252: "Increase Method Security" applied at class Helpers to method toIterator from protected to package
-Iteration 253: "Decrease Method Security" applied at class Helpers to method toIterator from package to protected
-Iteration 254: "Make Class Non Final" applied to class ArrayIterator
-Iteration 255: "Make Class Final" applied to class ArrayIterator
-Iteration 256: "Make Method Final" applied at class ReverseIterator to method next
-Iteration 257: "Increase Method Security" applied at class Helpers to method toIterator from protected to package
-Iteration 258: "Make Method Non Final" applied at class ReverseIterator to method next
-Iteration 259: "Make Class Final" applied to class SingletonIterator
-Iteration 260: "Decrease Method Security" applied at class Helpers to method toIterator from package to protected
-Iteration 261: "Make Class Non Final" applied to class ArrayIterator
-Iteration 262: "Make Method Static" applied at class Bind to method First
-Iteration 263: "Make Method Non Static" applied at class Bind to method First
-Iteration 264: "Make Method Static" applied at class Bind to method First
-Iteration 265: "Make Class Final" applied to class ArrayIterator
-Iteration 266: "Make Method Final" applied at class ReverseIterator to method next
-Iteration 267: "Increase Method Security" applied at class Helpers to method toIterator from protected to package
-Iteration 268: "Make Method Non Final" applied at class ReverseIterator to method next
-Iteration 269: "Make Class Final" applied to class And
-Iteration 270: "Make Class Non Final" applied to class And
-Iteration 271: "Increase Method Security" applied at class Predicates to method True from public to protected
-Iteration 272: "Decrease Method Security" applied at class Predicates to method True from protected to public
-Iteration 273: "Make Method Non Static" applied at class Bind to method First
-Iteration 274: "Decrease Method Security" applied at class Helpers to method toIterator from package to protected
-Iteration 275: "Make Class Non Final" applied to class ArrayIterator
-Iteration 276: "Make Class Final" applied to class And
-Iteration 277: "Make Class Non Final" applied to class And
-Iteration 278: "Increase Method Security" applied at class Predicates to method True from public to protected
-Iteration 279: "Decrease Method Security" applied at class Predicates to method True from protected to public
-Iteration 280: "Make Class Final" applied to class ArrayIterator
-Iteration 281: "Make Method Final" applied at class ReverseIterator to method next
-Iteration 282: "Increase Method Security" applied at class Helpers to method toIterator from protected to package
-Iteration 283: "Make Method Non Final" applied at class ReverseIterator to method next
-Iteration 284: "Decrease Method Security" applied at class Helpers to method toIterator from package to protected
-Iteration 285: "Make Class Non Final" applied to class ArrayIterator
-Iteration 286: "Make Class Final" applied to class ArrayIterator
-Iteration 287: "Make Method Final" applied at class ReverseIterator to method next
-Iteration 288: "Make Class Non Final" applied to class ArrayIterator
-Iteration 289: "Make Class Final" applied to class And
-Iteration 290: "Make Class Non Final" applied to class And
-Iteration 291: "Increase Method Security" applied at class Predicates to method True from public to protected
-Iteration 292: "Decrease Method Security" applied at class Predicates to method True from protected to public
-Iteration 293: "Make Method Static" applied at class Bind to method First
-Iteration 294: "Decrease Field Security" applied at class StringIterator to field s_ from private to package
-Iteration 295: "Increase Field Security" applied at class StringIterator to field s_ from package to private
-Iteration 296: "Decrease Method Security" applied at class Helpers to method toIterator from protected to public
-Iteration 297: "Decrease Field Security" applied at class OneOf to field preds_ from private to package
-Iteration 298: "Make Method Non Static" applied at class Generators to method IntegerSequence
-Iteration 299: "Increase Method Security" applied at class Helpers to method toIterators from public to protected
-Iteration 300: "Make Class Final" applied to class Remove
-Iteration 301: "Decrease Method Security" applied at class ForEach to method ForEach from private to package
-Iteration 302: "Decrease Method Security" applied at class Helpers to method toIterators from protected to public
-Iteration 303: "Make Field Final" applied at class Remove to ParameterDeclaration value
-Iteration 304: "Make Method Static" applied at class LessThan to method test
-Iteration 305: "Make Method Non Final" applied at class ReverseIterator to method next
-Iteration 306: "Decrease Method Security" applied at class BoundedIterator to method listIterator from package to protected
-Iteration 307: "Make Field Final" applied at class BinaryPredicate to ParameterDeclaration x
-Iteration 308: "Make Field Final" applied at class TransformIterator to ParameterDeclaration iterator
-Iteration 309: "Decrease Method Security" applied at class CountIf to method CountIf from private to package
-Iteration 310: "Remove Method" applied at class Generators to method IntegerSequence
-Iteration 311: "Decrease Method Security" applied at class Intersection to method Intersection from protected to public
-Iteration 312: "Decrease Method Security" applied at class CountIf to method CountIf from package to protected
-Iteration 313: "Decrease Method Security" applied at class Unique to method Unique from private to package
-Iteration 314: "Increase Method Security" applied at class Generators to method IntegerSequence from public to protected
-Iteration 315: "Decrease Method Security" applied at class ForEach to method ForEach from package to protected
-Iteration 316: "Decrease Field Security" applied at class NotNull to field INSTANCE from package to protected
-Iteration 317: "Make Field Final" applied at class Predicate to ParameterDeclaration x
-Iteration 318: "Decrease Method Security" applied at class ForEach to method ForEach from protected to public
-Iteration 319: "Decrease Method Security" applied at class FindPosition to method FindPosition from package to protected
-Iteration 320: "Increase Field Security" applied at class OneOf to field preds_ from package to private
-Iteration 321: "Decrease Method Security" applied at class SymmetricDifference to method SymmetricDifference from package to protected
+Iteration 19: "Increase Field Security" applied at class OneOf to field preds_ from package to private
+Iteration 20: "Decrease Method Security" applied at class Algorithms to method Algorithms from package to protected
+Iteration 21: "Decrease Method Security" applied at class Bind to method Bind from private to package
+Iteration 22: "Decrease Method Security" applied at class MapFactory to method Builder from package to protected
+Iteration 23: "Decrease Method Security" applied at class Bind to method Bind from package to protected
+Iteration 24: "Decrease Method Security" applied at class BinaryPredicates to method BinaryPredicates from protected to public
+Iteration 25: "Make Method Non Final" applied at class ReverseIterator to method next
+Iteration 26: "Make Field Final" applied at class Algorithms to ParameterDeclaration list
+Iteration 27: "Increase Method Security" applied at class Bind to method First from public to protected
+Iteration 28: "Make Method Non Final" applied at class StringIterator to method hasNext
+Iteration 29: "Decrease Method Security" applied at class FindPositionIf to method FindPositionIf from package to protected
+Iteration 30: "Decrease Method Security" applied at class Collections to method Collections from private to package
+Iteration 31: "Make Field Final" applied at class SingletonIterator to ParameterDeclaration object
+Iteration 32: "Make Method Static" applied at class GreaterThan to method test
+Iteration 33: "Decrease Method Security" applied at class FindPosition to method FindPosition from private to package
+Iteration 34: "Make Method Static" applied at class LessThan to method test
+Iteration 35: "Decrease Field Security" applied at class Constant to field value_ from private to package
+Iteration 36: "Make Class Final" applied to class GreaterThanEquals
+Iteration 37: "Increase Field Security" applied at class TeeIterator to field item from public to protected
+Iteration 38: "Decrease Method Security" applied at class ForEach to method ForEach from package to protected
+Iteration 39: "Decrease Method Security" applied at class Count to method execute_null from package to protected
+Iteration 40: "Decrease Method Security" applied at class Algorithms to method Algorithms from protected to public
+Iteration 41: "Decrease Method Security" applied at class CountIfNot to method CountIfNot from package to protected
+Iteration 42: "Make Method Final" applied at class ReverseIterator to method next
+Iteration 43: "Decrease Method Security" applied at class MapFactory to method Builder from protected to public
+Iteration 44: "Decrease Method Security" applied at class Predicates to method Predicates from package to protected
+Iteration 45: "Make Method Final" applied at class StringIterator to method hasNext
+Iteration 46: "Decrease Method Security" applied at class CountIfNot to method CountIfNot from protected to public
+Iteration 47: "Decrease Method Security" applied at class Predicates to method Predicates from protected to public
+Iteration 48: "Decrease Method Security" applied at class Bind to method Bind from protected to public
+Iteration 49: "Make Method Non Final" applied at class ReverseIterator to method next
+Iteration 50: "Increase Method Security" applied at class Bind to method First from protected to package
+Iteration 51: "Make Method Non Final" applied at class StringIterator to method hasNext
+Iteration 52: "Decrease Method Security" applied at class FindPositionIf to method FindPositionIf from protected to public
+Iteration 53: "Decrease Method Security" applied at class Collections to method Collections from package to protected
+Iteration 54: "Decrease Method Security" applied at class FindPosition to method FindPosition from package to protected
+Iteration 55: "Decrease Method Security" applied at class ForEach to method ForEach from protected to public
+Iteration 56: "Decrease Method Security" applied at class Count to method execute_null from protected to public
+Iteration 57: "Make Method Final" applied at class ReverseIterator to method next
+Iteration 58: "Make Method Final" applied at class StringIterator to method hasNext
+Iteration 59: "Make Method Non Final" applied at class ReverseIterator to method next
+Iteration 60: "Increase Method Security" applied at class Bind to method First from package to private
+Iteration 61: "Make Method Non Final" applied at class StringIterator to method hasNext
+Iteration 62: "Decrease Method Security" applied at class Collections to method Collections from protected to public
+Iteration 63: "Decrease Method Security" applied at class FindPosition to method FindPosition from protected to public
+Iteration 64: "Make Method Final" applied at class StringIterator to method hasNext
+Iteration 65: "Make Method Final" applied at class ReverseIterator to method next
+Iteration 66: "Make Method Non Final" applied at class ReverseIterator to method next
+Iteration 67: "Make Method Non Final" applied at class StringIterator to method hasNext
+Iteration 68: "Make Method Non Final" applied at class GreaterThanEquals to method test
+Iteration 69: "Make Method Final" applied at class LessThanEquals to method test
+Iteration 70: "Make Method Final" applied at class GreaterThanEquals to method test
+Iteration 71: "Make Method Final" applied at class ReverseIterator to method next
+Iteration 72: "Decrease Method Security" applied at class Adapt to method wrapMethod from private to package
+Iteration 73: "Make Class Final" applied to class Helpers
+Iteration 74: "Make Method Non Final" applied at class GreaterThanEquals to method test
+Iteration 75: "Make Method Final" applied at class GreaterThanEquals to method test
+Iteration 76: "Make Method Final" applied at class StringIterator to method hasNext
+Iteration 77: "Make Method Non Final" applied at class ReverseIterator to method next
+Iteration 78: "Make Method Non Final" applied at class StringIterator to method hasNext
+Iteration 79: "Make Method Final" applied at class ReverseIterator to method next
+Iteration 80: "Make Method Final" applied at class StringIterator to method hasNext
+Iteration 81: "Make Method Non Final" applied at class ReverseIterator to method next
+Iteration 82: "Make Method Non Final" applied at class StringIterator to method hasNext
+Iteration 83: "Make Method Final" applied at class StringIterator to method hasNext
+Iteration 84: "Make Method Final" applied at class ReverseIterator to method next
+Iteration 85: "Make Method Non Final" applied at class ReverseIterator to method next
+Iteration 86: "Make Method Non Final" applied at class StringIterator to method hasNext
+Iteration 87: "Make Method Non Final" applied at class GreaterThanEquals to method test
+Iteration 88: "Make Method Final" applied at class GreaterThanEquals to method test
+Iteration 89: "Make Method Final" applied at class ReverseIterator to method next
+Iteration 90: "Decrease Method Security" applied at class Adapt to method wrapMethod from package to protected
+Iteration 91: "Make Method Non Final" applied at class GreaterThanEquals to method test
+Iteration 92: "Make Method Final" applied at class GreaterThanEquals to method test
+Iteration 93: "Decrease Method Security" applied at class Adapt to method wrapMethod from protected to public
+Iteration 94: "Decrease Method Security" applied at class Intersection to method Intersection from private to package
+Iteration 95: "Make Method Static" applied at class IsNull to method test
+Iteration 96: "Make Method Final" applied at class StringIterator to method hasNext
+Iteration 97: "Make Method Non Final" applied at class ReverseIterator to method next
+Iteration 98: "Make Method Non Final" applied at class StringIterator to method hasNext
+Iteration 99: "Make Method Non Final" applied at class GreaterThanEquals to method test
+Iteration 100: "Make Method Final" applied at class GreaterThanEquals to method test
+Iteration 101: "Make Method Final" applied at class ReverseIterator to method next
+Iteration 102: "Decrease Method Security" applied at class BinaryFunctions to method BinaryFunctions from private to package
+Iteration 103: "Make Class Final" applied to class Partition
+Iteration 104: "Decrease Method Security" applied at class BinaryFunctions to method BinaryFunctions from package to protected
+Iteration 105: "Decrease Method Security" applied at class Remove to method Remove from private to package
+Iteration 106: "Make Class Final" applied to class Not
+Iteration 107: "Decrease Method Security" applied at class FindIfNot to method FindIfNot from private to package
+Iteration 108: "Decrease Method Security" applied at class SymmetricDifference to method SymmetricDifference from private to package
+Iteration 109: "Decrease Field Security" applied at class Or to field p1_ from private to package
+Iteration 110: "Decrease Method Security" applied at class Intersection to method Intersection from package to protected
+Iteration 111: "Increase Field Security" applied at class Constant to field value_ from package to private
 
-Score has improved overall by 0.294133
-Time taken to refactor: 152.99s
+Score has improved overall by 0.217123
+Time taken to refactor: 98.74s
 
 ======== Final Metric Info ========
-Average ratio of private/package/protected attributes to overall attributes per class: 0.457265
+Average ratio of private/package/protected attributes to overall attributes per class: 0.452991
 Average coupling per class: 0.000000
-Average cohesion among methods per class: 0.492063
+Average cohesion among methods per class: 0.491422
 Average amount of user defined attributes declared per class: 0.000000
 Average functional abstraction per class: 0.000000
 Average amount of polymorphic methods per class: 0.076923
-Average amount of public methods per class: 3.884615
+Average amount of public methods per class: 3.974359
 Average amount of methods per class: 4.307693
-Average amount of complexity of methods per class: 18.051283
+Average amount of complexity of methods per class: 18.012821
 Ratio of interfaces to overall amount of classes: 0.076923
 Average ratio of abstract classes/methods per class: 0.076923
-Average ratio of static classes/methods/variables per class: 0.242353
-Average ratio of final classes/methods/variables per class: 0.174463
+Average ratio of static classes/methods/variables per class: 0.240150
+Average ratio of final classes/methods/variables per class: 0.165374
 Average ratio of constant classes/methods/variables per class: 0.000000
 Ratio of inner classes to overall amount of ordinary classes in project: 0.128205
 Average inherited referenced methods ratio per class: 0.000000
-Average visibility ratio per class: 0.750818
+Average visibility ratio per class: 0.764489
 Amount of lines of code in project: 3470
-Overall fitness function score: 0.294133
+Overall fitness function score: 0.217123

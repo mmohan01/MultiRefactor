@@ -27,737 +27,190 @@ Amount of lines of code in project: 11616
 Overall fitness function score: 0.000000
 
 ======== Applied Refactorings ========
-Iteration 1: "Make Field Static" applied at class DefaultXmlRpcTransportFactory to field url
-Iteration 2: "Move Method Up" applied to method decodeException from XmlRpcClientResponseProcessor to XmlRpc
-Iteration 3: "Make Class Final" applied to class SAXParseException
-Iteration 4: "Make Field Static" applied at class SunSSLTransportFactory to field url
-Iteration 5: "Decrease Method Security" applied at class XmlRpcClientLite to method createTransport from protected to public
-Iteration 6: "Decrease Method Security" applied at class XmlRpcClientRequestProcessor to method canReUse from protected to public
-Iteration 7: "Decrease Method Security" applied at class SimpleXmlRpcClient to method parse from package to protected
-Iteration 8: "Move Field Up" applied to field loaded from JSXmlRpcApplet to XmlRpcApplet
-Iteration 9: "Increase Field Security" applied at class LiteXmlRpcTransport to field hostname from package to private
-Iteration 10: "Make Method Static" applied at class DefaultTypeFactory to method createInteger
-Iteration 11: "Make Class Final" applied to class SunSSLTransportFactory
-Iteration 12: "Make Method Static" applied at class SunSSLTransportFactory to method isClientTrusted
-Iteration 13: "Move Method Up" applied to method setup from SecureXmlRpcClient to XmlRpcClient
-Iteration 14: "Make Method Non Static" applied at class WebServer to method toHTTPBytes
-Iteration 15: "Make Class Non Final" applied to class SunSSLTransportFactory
-Iteration 16: "Decrease Method Security" applied at class XmlRpc to method decodeException from protected to public
-Iteration 17: "Make Field Final" applied at class XmlRpcServerRequest to ParameterDeclaration index
-Iteration 18: "Increase Field Security" applied at class ParseFailed to field cause from protected to package
-Iteration 19: "Remove Method" applied at class SAXParseException to method getColumnNumber
-Iteration 20: "Decrease Method Security" applied at class XmlRpc to method objectParsed from protected to public
-Iteration 21: "Increase Field Security" applied at class ParseFailed to field cause from package to private
-Iteration 22: "Make Class Final" applied to class Echo
-Iteration 23: "Make Field Final" applied at class XmlRpc to ParameterDeclaration child
-Iteration 24: "Remove Field" applied at class MinML to field inDTD
-Iteration 25: "Make Method Final" applied at class SunSSLTransportFactory to method setProperty
-Iteration 26: "Make Method Non Final" applied at class SunSSLTransportFactory to method setProperty
-Iteration 27: "Increase Field Security" applied at class DefaultXmlRpcContext to field handlerMapping from protected to package
-Iteration 28: "Move Field Up" applied to field debug from XmlRpcSupport to HandlerBase
-Iteration 29: "Make Method Final" applied at class SunSSLTransportFactory to method setProperty
-Iteration 30: "Make Method Non Final" applied at class SunSSLTransportFactory to method setProperty
-Iteration 31: "Make Method Final" applied at class SunSSLTransportFactory to method setProperty
-Iteration 32: "Make Method Non Final" applied at class SunSSLTransportFactory to method setProperty
-Iteration 33: "Make Class Final" applied to class SunSSLTransportFactory
-Iteration 34: "Make Class Non Final" applied to class SunSSLTransportFactory
-Iteration 35: "Make Method Final" applied at class SunSSLTransportFactory to method setProperty
-Iteration 36: "Make Method Non Final" applied at class SunSSLTransportFactory to method setProperty
-Iteration 37: "Make Method Final" applied at class SunSSLTransportFactory to method setProperty
-Iteration 38: "Make Method Non Final" applied at class SunSSLTransportFactory to method setProperty
-Iteration 39: "Decrease Method Security" applied at class HttpUtil to method HttpUtil from private to package
-Iteration 40: "Increase Method Security" applied at class DefaultXmlRpcTransport to method setBasicAuthentication from public to protected
-Iteration 41: "Decrease Method Security" applied at class XmlWriter to method startElement from protected to public
-Iteration 42: "Move Field Down" applied to field loaded from XmlRpcApplet to JSXmlRpcApplet
-Iteration 43: "Make Method Non Static" applied at class SunSSLTransportFactory to method isClientTrusted
-Iteration 44: "Make Field Static" applied at class SAXParseException to field columnNumber
-Iteration 45: "Make Method Non Static" applied at class DefaultXmlRpcTransportFactory to method setHTTPSTransport
-Iteration 46: "Make Field Static" applied at class XmlRpcApplet to field client
-Iteration 47: "Make Method Non Static" applied at class SimpleXmlRpcClient to method setDebug
-Iteration 48: "Make Field Static" applied at class XmlRpcRequest to field methodName
-Iteration 49: "Make Field Final" applied at class XmlRpcException to FieldDeclaration cause
-Iteration 50: "Decrease Field Security" applied at class XmlRpcResponseProcessor to field EMPTY_BYTE_ARRAY from private to package
-Iteration 51: "Make Class Final" applied to class SunSSLTransportFactory
-Iteration 52: "Make Class Non Final" applied to class SunSSLTransportFactory
-Iteration 53: "Increase Field Security" applied at class DefaultXmlRpcContext to field handlerMapping from package to private
-Iteration 54: "Make Method Final" applied at class SunSSLTransportFactory to method setProperty
-Iteration 55: "Make Method Non Final" applied at class SunSSLTransportFactory to method setProperty
-Iteration 56: "Make Method Final" applied at class SunSSLTransportFactory to method setProperty
-Iteration 57: "Make Method Non Final" applied at class SunSSLTransportFactory to method setProperty
-Iteration 58: "Make Method Non Static" applied at class DefaultXmlRpcTransportFactory to method createTransportFactory
-Iteration 59: "Make Method Static" applied at class XmlRpcResponseProcessor to method writeResponse
-Iteration 60: "Make Class Final" applied to class SunSSLTransportFactory
-Iteration 61: "Make Class Non Final" applied to class SunSSLTransportFactory
-Iteration 62: "Make Method Final" applied at class SunSSLTransportFactory to method setProperty
-Iteration 63: "Make Class Final" applied to class SunSSLTransportFactory
-Iteration 64: "Make Class Non Final" applied to class SunSSLTransportFactory
-Iteration 65: "Make Class Final" applied to class SunSSLTransportFactory
-Iteration 66: "Make Class Non Final" applied to class SunSSLTransportFactory
-Iteration 67: "Make Class Final" applied to class SunSSLTransportFactory
-Iteration 68: "Make Class Non Final" applied to class SunSSLTransportFactory
-Iteration 69: "Make Method Non Final" applied at class SunSSLTransportFactory to method setProperty
-Iteration 70: "Make Method Final" applied at class SunSSLTransportFactory to method setProperty
-Iteration 71: "Make Method Non Final" applied at class SunSSLTransportFactory to method setProperty
-Iteration 72: "Make Method Final" applied at class SunSSLTransportFactory to method setProperty
-Iteration 73: "Make Method Non Final" applied at class SunSSLTransportFactory to method setProperty
-Iteration 74: "Make Class Final" applied to class SunSSLTransportFactory
-Iteration 75: "Make Class Non Final" applied to class SunSSLTransportFactory
-Iteration 76: "Make Method Final" applied at class SunSSLTransportFactory to method setProperty
-Iteration 77: "Make Method Non Final" applied at class SunSSLTransportFactory to method setProperty
-Iteration 78: "Make Method Final" applied at class SunSSLTransportFactory to method setProperty
-Iteration 79: "Make Method Non Final" applied at class SunSSLTransportFactory to method setProperty
-Iteration 80: "Make Class Final" applied to class SunSSLTransportFactory
-Iteration 81: "Make Class Non Final" applied to class SunSSLTransportFactory
-Iteration 82: "Make Method Final" applied at class SunSSLTransportFactory to method setProperty
-Iteration 83: "Make Method Non Final" applied at class SunSSLTransportFactory to method setProperty
-Iteration 84: "Make Method Final" applied at class SunSSLTransportFactory to method setProperty
-Iteration 85: "Make Method Non Final" applied at class SunSSLTransportFactory to method setProperty
-Iteration 86: "Decrease Method Security" applied at class HttpUtil to method HttpUtil from package to protected
-Iteration 87: "Make Class Final" applied to class HttpUtil
-Iteration 88: "Make Method Non Final" applied at class WebServer to method toHTTPBytes
-Iteration 89: "Decrease Method Security" applied at class XmlRpcResponseProcessor to method writeResponse from package to protected
+Iteration 1: "Remove Method" applied at class WebServer to method shutdown
+Iteration 2: "Remove Field" applied at class MinML to field inDTD
+Iteration 3: "Move Method Up" applied to method addStructArgToArray from JSXmlRpcApplet to XmlRpcApplet
+Iteration 4: "Increase Method Security" applied at class MinML to method popWriter from public to protected
+Iteration 5: "Decrease Method Security" applied at class HttpUtil to method HttpUtil from private to package
+Iteration 6: "Move Method Up" applied to method setup from SecureXmlRpcClient to XmlRpcClient
+Iteration 7: "Remove Method" applied at class DefaultXmlRpcTransportFactory to method setBasicAuthentication
+Iteration 8: "Make Class Final" applied to class XmlRpcRequestProcessor
+Iteration 9: "Decrease Method Security" applied at class HttpUtil to method HttpUtil from package to protected
+Iteration 10: "Make Method Final" applied at class HttpUtil to method encodeBasicAuthentication
+Iteration 11: "Make Method Static" applied at class DefaultTypeDecoder to method isXmlRpcDouble
+Iteration 12: "Make Class Final" applied to class XmlRpcClientException
+Iteration 13: "Increase Method Security" applied at class XmlRpcApplet to method execute from public to protected
+Iteration 14: "Move Method Down" applied to method addStructArgToArray from XmlRpcApplet to JSXmlRpcApplet
+Iteration 15: "Decrease Method Security" applied at class XmlRpcClientRequestProcessor to method canReUse from protected to public
+Iteration 16: "Make Method Static" applied at class HandlerBase to method resolveEntity
+Iteration 17: "Make Class Abstract" applied to class HandlerBase
+Iteration 18: "Make Field Final" applied at class XmlRpcException to ParameterDeclaration code
+Iteration 19: "Make Class Abstract" applied to class XmlRpcApplet
+Iteration 20: "Make Class Concrete" applied to class HandlerBase
+Iteration 21: "Increase Method Security" applied at class XmlRpcApplet to method execute from protected to package
+Iteration 22: "Make Class Abstract" applied to class HandlerBase
+Iteration 23: "Make Class Concrete" applied to class HandlerBase
+Iteration 24: "Decrease Method Security" applied at class HttpUtil to method HttpUtil from protected to public
+Iteration 25: "Make Class Abstract" applied to class HandlerBase
+Iteration 26: "Make Class Concrete" applied to class HandlerBase
+Iteration 27: "Make Method Static" applied at class Echo to method execute
+Iteration 28: "Make Method Final" applied at class XmlRpcResponseProcessor to method writeResponse
+Iteration 29: "Decrease Method Security" applied at class XmlRpc to method objectParsed from protected to public
+Iteration 30: "Increase Method Security" applied at class MinML to method popWriter from protected to package
+Iteration 31: "Make Class Abstract" applied to class HandlerBase
+Iteration 32: "Make Class Concrete" applied to class HandlerBase
+Iteration 33: "Make Class Abstract" applied to class HandlerBase
+Iteration 34: "Make Class Concrete" applied to class HandlerBase
+Iteration 35: "Make Class Abstract" applied to class HandlerBase
+Iteration 36: "Make Class Concrete" applied to class HandlerBase
+Iteration 37: "Make Class Abstract" applied to class HandlerBase
+Iteration 38: "Make Class Concrete" applied to class HandlerBase
+Iteration 39: "Make Class Abstract" applied to class HandlerBase
+Iteration 40: "Make Class Concrete" applied to class HandlerBase
+Iteration 41: "Make Class Abstract" applied to class HandlerBase
+Iteration 42: "Make Class Concrete" applied to class HandlerBase
+Iteration 43: "Make Class Abstract" applied to class HandlerBase
+Iteration 44: "Make Class Concrete" applied to class HandlerBase
+Iteration 45: "Make Class Abstract" applied to class HandlerBase
+Iteration 46: "Make Class Concrete" applied to class HandlerBase
+Iteration 47: "Make Class Abstract" applied to class HandlerBase
+Iteration 48: "Make Class Concrete" applied to class HandlerBase
+Iteration 49: "Decrease Method Security" applied at class DocumentHandler to method startDocument from package to protected
+Iteration 50: "Make Method Static" applied at class DefaultTypeFactory to method createInteger
+Iteration 51: "Make Class Final" applied to class MultiCall
+Iteration 52: "Make Method Static" applied at class XmlRpcResponseProcessor to method writeError
+Iteration 53: "Make Class Final" applied to class XmlRpcServer
+Iteration 54: "Decrease Method Security" applied at class XmlRpcWorker to method invokeHandler from protected to public
+Iteration 55: "Make Class Abstract" applied to class HandlerBase
+Iteration 56: "Make Class Concrete" applied to class HandlerBase
+Iteration 57: "Make Class Abstract" applied to class HandlerBase
+Iteration 58: "Make Class Concrete" applied to class HandlerBase
+Iteration 59: "Make Class Abstract" applied to class HandlerBase
+Iteration 60: "Make Class Concrete" applied to class HandlerBase
+Iteration 61: "Make Class Abstract" applied to class HandlerBase
+Iteration 62: "Make Class Concrete" applied to class HandlerBase
+Iteration 63: "Make Class Abstract" applied to class HandlerBase
+Iteration 64: "Make Class Concrete" applied to class HandlerBase
+Iteration 65: "Make Class Abstract" applied to class HandlerBase
+Iteration 66: "Make Class Concrete" applied to class HandlerBase
+Iteration 67: "Decrease Method Security" applied at class DocumentHandler to method startDocument from protected to public
+Iteration 68: "Make Class Abstract" applied to class HandlerBase
+Iteration 69: "Make Class Concrete" applied to class HandlerBase
+Iteration 70: "Make Class Abstract" applied to class HandlerBase
+Iteration 71: "Make Class Concrete" applied to class HandlerBase
+Iteration 72: "Make Class Abstract" applied to class HandlerBase
+Iteration 73: "Make Class Concrete" applied to class HandlerBase
+Iteration 74: "Make Class Abstract" applied to class HandlerBase
+Iteration 75: "Make Class Concrete" applied to class HandlerBase
+Iteration 76: "Make Class Abstract" applied to class HandlerBase
+Iteration 77: "Make Class Concrete" applied to class HandlerBase
+Iteration 78: "Make Class Abstract" applied to class HandlerBase
+Iteration 79: "Make Class Concrete" applied to class HandlerBase
+Iteration 80: "Make Class Abstract" applied to class HandlerBase
+Iteration 81: "Make Class Concrete" applied to class HandlerBase
+Iteration 82: "Make Class Abstract" applied to class HandlerBase
+Iteration 83: "Make Class Concrete" applied to class HandlerBase
+Iteration 84: "Make Class Abstract" applied to class HandlerBase
+Iteration 85: "Make Class Concrete" applied to class HandlerBase
+Iteration 86: "Make Class Abstract" applied to class HandlerBase
+Iteration 87: "Make Class Concrete" applied to class HandlerBase
+Iteration 88: "Make Class Abstract" applied to class HandlerBase
+Iteration 89: "Make Class Concrete" applied to class HandlerBase
 Iteration 90: "Make Class Abstract" applied to class HandlerBase
-Iteration 91: "Decrease Field Security" applied at class ParseFailed to field cause from private to package
-Iteration 92: "Make Method Non Final" applied at class XmlWriter to method isValidXMLChar
-Iteration 93: "Make Class Abstract" applied to class XmlRpcApplet
-Iteration 94: "Move Field Up" applied to field result from XmlRpcClientResponseProcessor to XmlRpc
-Iteration 95: "Make Field Final" applied at class AuthenticationFailed to ParameterDeclaration msg
-Iteration 96: "Decrease Field Security" applied at class XmlRpcRequestProcessor to field requestParams from private to package
-Iteration 97: "Make Method Static" applied at class ServerInputStream to method markSupported
-Iteration 98: "Decrease Field Security" applied at class XmlRpcResponseProcessor to field EMPTY_BYTE_ARRAY from package to protected
-Iteration 99: "Make Class Final" applied to class SunSSLTransportFactory
-Iteration 100: "Make Class Non Final" applied to class SunSSLTransportFactory
-Iteration 101: "Make Method Final" applied at class SunSSLTransportFactory to method setProperty
-Iteration 102: "Make Method Non Final" applied at class SunSSLTransportFactory to method setProperty
-Iteration 103: "Make Method Final" applied at class SunSSLTransportFactory to method setProperty
-Iteration 104: "Make Method Non Final" applied at class SunSSLTransportFactory to method setProperty
-Iteration 105: "Make Class Final" applied to class SunSSLTransportFactory
-Iteration 106: "Make Class Non Final" applied to class SunSSLTransportFactory
-Iteration 107: "Make Method Final" applied at class SunSSLTransportFactory to method setProperty
-Iteration 108: "Make Class Final" applied to class SunSSLTransportFactory
-Iteration 109: "Make Class Non Final" applied to class SunSSLTransportFactory
-Iteration 110: "Make Class Final" applied to class SunSSLTransportFactory
-Iteration 111: "Make Class Non Final" applied to class SunSSLTransportFactory
-Iteration 112: "Make Class Final" applied to class SunSSLTransportFactory
-Iteration 113: "Make Class Non Final" applied to class SunSSLTransportFactory
-Iteration 114: "Make Method Non Final" applied at class SunSSLTransportFactory to method setProperty
-Iteration 115: "Make Method Final" applied at class SunSSLTransportFactory to method setProperty
-Iteration 116: "Make Method Non Final" applied at class SunSSLTransportFactory to method setProperty
-Iteration 117: "Make Class Final" applied to class SunSSLTransportFactory
-Iteration 118: "Make Class Non Final" applied to class SunSSLTransportFactory
-Iteration 119: "Make Method Final" applied at class SunSSLTransportFactory to method setProperty
-Iteration 120: "Make Class Final" applied to class SunSSLTransportFactory
-Iteration 121: "Make Class Non Final" applied to class SunSSLTransportFactory
-Iteration 122: "Make Method Non Final" applied at class SunSSLTransportFactory to method setProperty
-Iteration 123: "Make Method Final" applied at class SunSSLTransportFactory to method setProperty
-Iteration 124: "Make Method Non Final" applied at class SunSSLTransportFactory to method setProperty
-Iteration 125: "Make Class Final" applied to class SunSSLTransportFactory
-Iteration 126: "Make Class Non Final" applied to class SunSSLTransportFactory
-Iteration 127: "Make Method Final" applied at class SunSSLTransportFactory to method setProperty
-Iteration 128: "Make Class Final" applied to class SunSSLTransportFactory
-Iteration 129: "Make Class Non Final" applied to class SunSSLTransportFactory
-Iteration 130: "Make Class Final" applied to class SunSSLTransportFactory
-Iteration 131: "Make Class Non Final" applied to class SunSSLTransportFactory
-Iteration 132: "Make Method Non Final" applied at class SunSSLTransportFactory to method setProperty
-Iteration 133: "Make Method Final" applied at class SunSSLTransportFactory to method setProperty
-Iteration 134: "Make Method Non Final" applied at class SunSSLTransportFactory to method setProperty
-Iteration 135: "Make Method Final" applied at class SunSSLTransportFactory to method setProperty
-Iteration 136: "Make Method Non Final" applied at class SunSSLTransportFactory to method setProperty
-Iteration 137: "Make Class Final" applied to class SunSSLTransportFactory
-Iteration 138: "Make Class Non Final" applied to class SunSSLTransportFactory
-Iteration 139: "Decrease Method Security" applied at class WebServer to method determinePort from protected to public
-Iteration 140: "Decrease Method Security" applied at class XmlRpcRequestProcessor to method objectParsed from protected to public
-Iteration 141: "Decrease Method Security" applied at class XmlRpcClientResponseProcessor to method canReUse from protected to public
-Iteration 142: "Make Method Non Static" applied at class WebServer to method determinePort
-Iteration 143: "Move Field Up" applied to field loaded from JSXmlRpcApplet to XmlRpcApplet
-Iteration 144: "Make Method Final" applied at class HandlerBase to method startDocument
-Iteration 145: "Make Class Non Final" applied to class Echo
-Iteration 146: "Make Class Final" applied to class XmlRpcClientException
-Iteration 147: "Make Method Static" applied at class XmlRpcClientRequestProcessor to method encodeRequest
-Iteration 148: "Make Method Final" applied at class SunSSLTransportFactory to method isClientTrusted
-Iteration 149: "Increase Field Security" applied at class XmlRpcClientWorker to field requestProcessor from protected to package
-Iteration 150: "Make Field Static" applied at class XmlRpcApplet to field loaded
-Iteration 151: "Make Method Non Final" applied at class HandlerBase to method startDocument
-Iteration 152: "Remove Method" applied at class SAXException to method getException
-Iteration 153: "Make Field Static" applied at class JSXmlRpcApplet to field errorMessage
-Iteration 154: "Decrease Method Security" applied at class XmlRpc to method parse from package to protected
-Iteration 155: "Make Method Final" applied at class SAXException to method getMessage
-Iteration 156: "Make Field Static" applied at class SimpleXmlRpcClient to field url
-Iteration 157: "Remove Field" applied at class SimpleXmlRpcClient to field enc
-Iteration 158: "Make Field Non Final" applied at class XmlWriter to FieldDeclaration PROLOG_START
-Iteration 159: "Make Class Final" applied to class SunSSLTransportFactory
-Iteration 160: "Make Class Non Final" applied to class SunSSLTransportFactory
-Iteration 161: "Make Method Final" applied at class SunSSLTransportFactory to method setProperty
-Iteration 162: "Make Class Final" applied to class SunSSLTransportFactory
-Iteration 163: "Make Class Non Final" applied to class SunSSLTransportFactory
-Iteration 164: "Make Method Non Final" applied at class SunSSLTransportFactory to method setProperty
-Iteration 165: "Make Method Final" applied at class SunSSLTransportFactory to method setProperty
-Iteration 166: "Make Method Non Final" applied at class SunSSLTransportFactory to method setProperty
-Iteration 167: "Make Class Final" applied to class SunSSLTransportFactory
-Iteration 168: "Make Class Non Final" applied to class SunSSLTransportFactory
-Iteration 169: "Make Method Final" applied at class SunSSLTransportFactory to method setProperty
-Iteration 170: "Make Class Final" applied to class SunSSLTransportFactory
-Iteration 171: "Make Class Non Final" applied to class SunSSLTransportFactory
-Iteration 172: "Make Class Final" applied to class SunSSLTransportFactory
-Iteration 173: "Make Method Non Final" applied at class SunSSLTransportFactory to method setProperty
-Iteration 174: "Make Class Non Final" applied to class SunSSLTransportFactory
-Iteration 175: "Make Method Final" applied at class SunSSLTransportFactory to method setProperty
-Iteration 176: "Make Method Non Final" applied at class SunSSLTransportFactory to method setProperty
-Iteration 177: "Make Method Final" applied at class SunSSLTransportFactory to method setProperty
-Iteration 178: "Make Method Non Final" applied at class SunSSLTransportFactory to method setProperty
-Iteration 179: "Make Class Final" applied to class SunSSLTransportFactory
-Iteration 180: "Make Class Non Final" applied to class SunSSLTransportFactory
-Iteration 181: "Make Method Final" applied at class SunSSLTransportFactory to method setProperty
-Iteration 182: "Make Method Non Final" applied at class SunSSLTransportFactory to method setProperty
-Iteration 183: "Make Class Final" applied to class SunSSLTransportFactory
-Iteration 184: "Make Class Non Final" applied to class SunSSLTransportFactory
-Iteration 185: "Make Method Final" applied at class SunSSLTransportFactory to method setProperty
-Iteration 186: "Make Class Final" applied to class SunSSLTransportFactory
-Iteration 187: "Make Class Non Final" applied to class SunSSLTransportFactory
-Iteration 188: "Make Method Non Final" applied at class SunSSLTransportFactory to method setProperty
-Iteration 189: "Make Method Final" applied at class SunSSLTransportFactory to method setProperty
-Iteration 190: "Make Method Non Final" applied at class SunSSLTransportFactory to method setProperty
-Iteration 191: "Make Class Final" applied to class SunSSLTransportFactory
-Iteration 192: "Make Class Non Final" applied to class SunSSLTransportFactory
-Iteration 193: "Make Method Final" applied at class SunSSLTransportFactory to method setProperty
-Iteration 194: "Make Class Final" applied to class SunSSLTransportFactory
-Iteration 195: "Make Class Non Final" applied to class SunSSLTransportFactory
-Iteration 196: "Make Class Final" applied to class SunSSLTransportFactory
-Iteration 197: "Make Class Non Final" applied to class SunSSLTransportFactory
-Iteration 198: "Make Method Non Final" applied at class SunSSLTransportFactory to method setProperty
-Iteration 199: "Make Method Final" applied at class SunSSLTransportFactory to method setProperty
-Iteration 200: "Make Method Non Final" applied at class SunSSLTransportFactory to method setProperty
-Iteration 201: "Make Method Final" applied at class SunSSLTransportFactory to method setProperty
-Iteration 202: "Make Method Non Final" applied at class SunSSLTransportFactory to method setProperty
-Iteration 203: "Make Class Final" applied to class SunSSLTransportFactory
-Iteration 204: "Make Class Non Final" applied to class SunSSLTransportFactory
-Iteration 205: "Make Method Final" applied at class HandlerBase to method startDocument
-Iteration 206: "Make Method Final" applied at class SunSSLTransportFactory to method setProperty
-Iteration 207: "Make Method Non Final" applied at class SunSSLTransportFactory to method setProperty
-Iteration 208: "Make Class Final" applied to class SunSSLTransportFactory
-Iteration 209: "Make Class Non Final" applied to class SunSSLTransportFactory
-Iteration 210: "Increase Field Security" applied at class XmlRpcClientWorker to field requestProcessor from package to private
-Iteration 211: "Make Method Non Final" applied at class HandlerBase to method startDocument
-Iteration 212: "Decrease Method Security" applied at class XmlRpc to method parse from protected to public
-Iteration 213: "Make Class Final" applied to class SunSSLTransportFactory
-Iteration 214: "Make Class Non Final" applied to class SunSSLTransportFactory
-Iteration 215: "Make Method Final" applied at class SunSSLTransportFactory to method setProperty
-Iteration 216: "Make Class Final" applied to class SunSSLTransportFactory
-Iteration 217: "Make Class Non Final" applied to class SunSSLTransportFactory
-Iteration 218: "Make Method Non Final" applied at class SunSSLTransportFactory to method setProperty
-Iteration 219: "Make Method Final" applied at class SunSSLTransportFactory to method setProperty
-Iteration 220: "Make Method Non Final" applied at class SunSSLTransportFactory to method setProperty
-Iteration 221: "Make Class Final" applied to class SunSSLTransportFactory
-Iteration 222: "Make Class Non Final" applied to class SunSSLTransportFactory
-Iteration 223: "Make Method Final" applied at class SunSSLTransportFactory to method setProperty
-Iteration 224: "Make Class Final" applied to class SunSSLTransportFactory
-Iteration 225: "Make Class Non Final" applied to class SunSSLTransportFactory
-Iteration 226: "Make Class Final" applied to class SunSSLTransportFactory
-Iteration 227: "Make Method Non Final" applied at class SunSSLTransportFactory to method setProperty
-Iteration 228: "Make Class Non Final" applied to class SunSSLTransportFactory
-Iteration 229: "Make Method Final" applied at class SunSSLTransportFactory to method setProperty
-Iteration 230: "Make Method Non Final" applied at class SunSSLTransportFactory to method setProperty
-Iteration 231: "Make Method Final" applied at class SunSSLTransportFactory to method setProperty
-Iteration 232: "Make Method Non Final" applied at class SunSSLTransportFactory to method setProperty
-Iteration 233: "Make Class Final" applied to class SunSSLTransportFactory
-Iteration 234: "Make Class Non Final" applied to class SunSSLTransportFactory
-Iteration 235: "Make Method Final" applied at class SunSSLTransportFactory to method setProperty
-Iteration 236: "Make Method Non Final" applied at class SunSSLTransportFactory to method setProperty
-Iteration 237: "Make Class Final" applied to class SunSSLTransportFactory
-Iteration 238: "Make Class Non Final" applied to class SunSSLTransportFactory
-Iteration 239: "Make Method Final" applied at class SunSSLTransportFactory to method setProperty
-Iteration 240: "Make Class Final" applied to class SunSSLTransportFactory
-Iteration 241: "Make Class Non Final" applied to class SunSSLTransportFactory
-Iteration 242: "Make Method Non Final" applied at class SunSSLTransportFactory to method setProperty
-Iteration 243: "Make Method Final" applied at class SunSSLTransportFactory to method setProperty
-Iteration 244: "Make Method Non Final" applied at class SunSSLTransportFactory to method setProperty
-Iteration 245: "Make Class Final" applied to class SunSSLTransportFactory
-Iteration 246: "Make Class Non Final" applied to class SunSSLTransportFactory
-Iteration 247: "Make Method Final" applied at class SunSSLTransportFactory to method setProperty
-Iteration 248: "Make Class Final" applied to class SunSSLTransportFactory
-Iteration 249: "Make Class Non Final" applied to class SunSSLTransportFactory
-Iteration 250: "Make Class Final" applied to class SunSSLTransportFactory
-Iteration 251: "Make Class Non Final" applied to class SunSSLTransportFactory
-Iteration 252: "Make Method Non Final" applied at class SunSSLTransportFactory to method setProperty
-Iteration 253: "Make Method Final" applied at class SunSSLTransportFactory to method setProperty
-Iteration 254: "Make Method Non Final" applied at class SunSSLTransportFactory to method setProperty
-Iteration 255: "Make Method Final" applied at class SunSSLTransportFactory to method setProperty
-Iteration 256: "Make Method Non Final" applied at class SunSSLTransportFactory to method setProperty
-Iteration 257: "Make Class Final" applied to class SunSSLTransportFactory
-Iteration 258: "Make Class Non Final" applied to class SunSSLTransportFactory
-Iteration 259: "Make Method Final" applied at class HandlerBase to method startDocument
-Iteration 260: "Make Method Non Final" applied at class HandlerBase to method startDocument
-Iteration 261: "Make Class Final" applied to class SunSSLTransportFactory
-Iteration 262: "Make Class Non Final" applied to class SunSSLTransportFactory
-Iteration 263: "Make Method Final" applied at class SunSSLTransportFactory to method setProperty
-Iteration 264: "Make Class Final" applied to class SunSSLTransportFactory
-Iteration 265: "Make Class Non Final" applied to class SunSSLTransportFactory
-Iteration 266: "Make Method Non Final" applied at class SunSSLTransportFactory to method setProperty
-Iteration 267: "Make Method Final" applied at class SunSSLTransportFactory to method setProperty
-Iteration 268: "Make Method Non Final" applied at class SunSSLTransportFactory to method setProperty
-Iteration 269: "Make Class Final" applied to class SunSSLTransportFactory
-Iteration 270: "Make Class Non Final" applied to class SunSSLTransportFactory
-Iteration 271: "Make Method Final" applied at class SunSSLTransportFactory to method setProperty
-Iteration 272: "Make Class Final" applied to class SunSSLTransportFactory
-Iteration 273: "Make Class Non Final" applied to class SunSSLTransportFactory
-Iteration 274: "Make Class Final" applied to class SunSSLTransportFactory
-Iteration 275: "Make Method Non Final" applied at class SunSSLTransportFactory to method setProperty
-Iteration 276: "Make Class Non Final" applied to class SunSSLTransportFactory
-Iteration 277: "Make Method Final" applied at class SunSSLTransportFactory to method setProperty
-Iteration 278: "Make Method Non Final" applied at class SunSSLTransportFactory to method setProperty
-Iteration 279: "Make Method Final" applied at class SunSSLTransportFactory to method setProperty
-Iteration 280: "Make Method Non Final" applied at class SunSSLTransportFactory to method setProperty
-Iteration 281: "Make Class Final" applied to class SunSSLTransportFactory
-Iteration 282: "Make Class Non Final" applied to class SunSSLTransportFactory
-Iteration 283: "Make Method Final" applied at class SunSSLTransportFactory to method setProperty
-Iteration 284: "Make Method Non Final" applied at class SunSSLTransportFactory to method setProperty
-Iteration 285: "Make Method Final" applied at class SunSSLTransportFactory to method setProperty
-Iteration 286: "Increase Field Security" applied at class ParseFailed to field cause from package to private
-Iteration 287: "Make Class Final" applied to class Echo
-Iteration 288: "Make Method Non Final" applied at class SunSSLTransportFactory to method setProperty
-Iteration 289: "Make Method Final" applied at class SunSSLTransportFactory to method setProperty
-Iteration 290: "Make Method Non Final" applied at class SunSSLTransportFactory to method setProperty
-Iteration 291: "Make Method Final" applied at class SunSSLTransportFactory to method setProperty
-Iteration 292: "Make Method Non Final" applied at class SunSSLTransportFactory to method setProperty
-Iteration 293: "Make Class Final" applied to class SunSSLTransportFactory
-Iteration 294: "Make Class Non Final" applied to class SunSSLTransportFactory
-Iteration 295: "Make Method Final" applied at class SunSSLTransportFactory to method setProperty
-Iteration 296: "Make Method Non Final" applied at class SunSSLTransportFactory to method setProperty
-Iteration 297: "Make Method Final" applied at class SunSSLTransportFactory to method setProperty
-Iteration 298: "Make Method Non Final" applied at class SunSSLTransportFactory to method setProperty
-Iteration 299: "Move Field Down" applied to field loaded from XmlRpcApplet to JSXmlRpcApplet
-Iteration 300: "Make Class Final" applied to class SunSSLTransportFactory
-Iteration 301: "Make Class Non Final" applied to class SunSSLTransportFactory
-Iteration 302: "Make Method Final" applied at class SunSSLTransportFactory to method setProperty
-Iteration 303: "Make Method Non Final" applied at class SunSSLTransportFactory to method setProperty
-Iteration 304: "Make Method Final" applied at class SunSSLTransportFactory to method setProperty
-Iteration 305: "Make Method Non Final" applied at class SunSSLTransportFactory to method setProperty
-Iteration 306: "Make Class Final" applied to class SunSSLTransportFactory
-Iteration 307: "Make Class Non Final" applied to class SunSSLTransportFactory
-Iteration 308: "Make Method Final" applied at class SunSSLTransportFactory to method setProperty
-Iteration 309: "Make Method Non Final" applied at class SunSSLTransportFactory to method setProperty
-Iteration 310: "Make Method Final" applied at class SunSSLTransportFactory to method setProperty
-Iteration 311: "Make Method Non Final" applied at class SunSSLTransportFactory to method setProperty
-Iteration 312: "Decrease Method Security" applied at class HttpUtil to method HttpUtil from protected to public
-Iteration 313: "Increase Method Security" applied at class DefaultXmlRpcTransport to method setBasicAuthentication from protected to package
-Iteration 314: "Decrease Field Security" applied at class XmlRpcResponseProcessor to field EMPTY_BYTE_ARRAY from protected to public
-Iteration 315: "Make Class Final" applied to class SunSSLTransportFactory
-Iteration 316: "Make Class Non Final" applied to class SunSSLTransportFactory
-Iteration 317: "Make Method Final" applied at class SunSSLTransportFactory to method setProperty
-Iteration 318: "Make Method Non Final" applied at class SunSSLTransportFactory to method setProperty
-Iteration 319: "Make Method Final" applied at class SunSSLTransportFactory to method setProperty
-Iteration 320: "Make Method Non Final" applied at class SunSSLTransportFactory to method setProperty
-Iteration 321: "Make Class Final" applied to class SunSSLTransportFactory
-Iteration 322: "Make Class Non Final" applied to class SunSSLTransportFactory
-Iteration 323: "Make Method Final" applied at class SunSSLTransportFactory to method setProperty
-Iteration 324: "Make Class Final" applied to class SunSSLTransportFactory
-Iteration 325: "Make Class Non Final" applied to class SunSSLTransportFactory
-Iteration 326: "Make Class Final" applied to class SunSSLTransportFactory
-Iteration 327: "Make Class Non Final" applied to class SunSSLTransportFactory
-Iteration 328: "Make Class Final" applied to class SunSSLTransportFactory
-Iteration 329: "Make Class Non Final" applied to class SunSSLTransportFactory
-Iteration 330: "Make Method Non Final" applied at class SunSSLTransportFactory to method setProperty
-Iteration 331: "Make Method Final" applied at class SunSSLTransportFactory to method setProperty
-Iteration 332: "Make Method Non Final" applied at class SunSSLTransportFactory to method setProperty
-Iteration 333: "Make Method Final" applied at class SunSSLTransportFactory to method setProperty
-Iteration 334: "Make Method Non Final" applied at class SunSSLTransportFactory to method setProperty
-Iteration 335: "Make Class Final" applied to class SunSSLTransportFactory
-Iteration 336: "Make Class Non Final" applied to class SunSSLTransportFactory
-Iteration 337: "Make Method Final" applied at class SunSSLTransportFactory to method setProperty
-Iteration 338: "Make Method Non Final" applied at class SunSSLTransportFactory to method setProperty
-Iteration 339: "Make Method Final" applied at class SunSSLTransportFactory to method setProperty
-Iteration 340: "Make Method Non Final" applied at class SunSSLTransportFactory to method setProperty
-Iteration 341: "Make Class Final" applied to class SunSSLTransportFactory
-Iteration 342: "Make Class Non Final" applied to class SunSSLTransportFactory
-Iteration 343: "Make Method Final" applied at class SunSSLTransportFactory to method setProperty
-Iteration 344: "Make Method Non Final" applied at class SunSSLTransportFactory to method setProperty
-Iteration 345: "Make Method Final" applied at class SunSSLTransportFactory to method setProperty
-Iteration 346: "Make Method Non Final" applied at class SunSSLTransportFactory to method setProperty
-Iteration 347: "Decrease Method Security" applied at class XmlRpcResponseProcessor to method writeResponse from protected to public
-Iteration 348: "Decrease Field Security" applied at class ParseFailed to field cause from private to package
-Iteration 349: "Decrease Field Security" applied at class XmlRpcRequestProcessor to field requestParams from package to protected
-Iteration 350: "Make Class Final" applied to class SunSSLTransportFactory
-Iteration 351: "Make Class Non Final" applied to class SunSSLTransportFactory
-Iteration 352: "Make Method Final" applied at class SunSSLTransportFactory to method setProperty
-Iteration 353: "Make Method Non Final" applied at class SunSSLTransportFactory to method setProperty
-Iteration 354: "Make Method Final" applied at class SunSSLTransportFactory to method setProperty
-Iteration 355: "Make Method Non Final" applied at class SunSSLTransportFactory to method setProperty
-Iteration 356: "Make Class Final" applied to class SunSSLTransportFactory
-Iteration 357: "Make Class Non Final" applied to class SunSSLTransportFactory
-Iteration 358: "Make Method Final" applied at class SunSSLTransportFactory to method setProperty
-Iteration 359: "Make Class Final" applied to class SunSSLTransportFactory
-Iteration 360: "Make Class Non Final" applied to class SunSSLTransportFactory
-Iteration 361: "Make Class Final" applied to class SunSSLTransportFactory
-Iteration 362: "Make Class Non Final" applied to class SunSSLTransportFactory
-Iteration 363: "Make Class Final" applied to class SunSSLTransportFactory
-Iteration 364: "Make Class Non Final" applied to class SunSSLTransportFactory
-Iteration 365: "Make Method Non Final" applied at class SunSSLTransportFactory to method setProperty
-Iteration 366: "Make Method Final" applied at class SunSSLTransportFactory to method setProperty
-Iteration 367: "Make Method Non Final" applied at class SunSSLTransportFactory to method setProperty
-Iteration 368: "Make Class Final" applied to class SunSSLTransportFactory
-Iteration 369: "Make Class Non Final" applied to class SunSSLTransportFactory
-Iteration 370: "Make Method Final" applied at class SunSSLTransportFactory to method setProperty
-Iteration 371: "Make Class Final" applied to class SunSSLTransportFactory
-Iteration 372: "Make Class Non Final" applied to class SunSSLTransportFactory
-Iteration 373: "Make Method Non Final" applied at class SunSSLTransportFactory to method setProperty
-Iteration 374: "Make Method Final" applied at class SunSSLTransportFactory to method setProperty
-Iteration 375: "Make Method Non Final" applied at class SunSSLTransportFactory to method setProperty
-Iteration 376: "Make Class Final" applied to class SunSSLTransportFactory
-Iteration 377: "Make Class Non Final" applied to class SunSSLTransportFactory
-Iteration 378: "Make Method Final" applied at class SunSSLTransportFactory to method setProperty
-Iteration 379: "Make Class Final" applied to class SunSSLTransportFactory
-Iteration 380: "Make Class Non Final" applied to class SunSSLTransportFactory
-Iteration 381: "Make Class Final" applied to class SunSSLTransportFactory
-Iteration 382: "Make Class Non Final" applied to class SunSSLTransportFactory
-Iteration 383: "Make Method Non Final" applied at class SunSSLTransportFactory to method setProperty
-Iteration 384: "Make Method Final" applied at class SunSSLTransportFactory to method setProperty
-Iteration 385: "Make Method Non Final" applied at class SunSSLTransportFactory to method setProperty
-Iteration 386: "Make Method Final" applied at class SunSSLTransportFactory to method setProperty
-Iteration 387: "Make Method Non Final" applied at class SunSSLTransportFactory to method setProperty
-Iteration 388: "Make Class Final" applied to class SunSSLTransportFactory
-Iteration 389: "Make Class Non Final" applied to class SunSSLTransportFactory
-Iteration 390: "Move Field Up" applied to field loaded from JSXmlRpcApplet to XmlRpcApplet
-Iteration 391: "Make Method Final" applied at class HandlerBase to method startDocument
-Iteration 392: "Make Class Non Final" applied to class Echo
-Iteration 393: "Make Method Non Final" applied at class HandlerBase to method startDocument
-Iteration 394: "Make Class Final" applied to class SunSSLTransportFactory
-Iteration 395: "Make Class Non Final" applied to class SunSSLTransportFactory
-Iteration 396: "Make Method Final" applied at class SunSSLTransportFactory to method setProperty
-Iteration 397: "Make Class Final" applied to class SunSSLTransportFactory
-Iteration 398: "Make Class Non Final" applied to class SunSSLTransportFactory
-Iteration 399: "Make Method Non Final" applied at class SunSSLTransportFactory to method setProperty
-Iteration 400: "Make Method Final" applied at class SunSSLTransportFactory to method setProperty
-Iteration 401: "Make Method Non Final" applied at class SunSSLTransportFactory to method setProperty
-Iteration 402: "Make Class Final" applied to class SunSSLTransportFactory
-Iteration 403: "Make Class Non Final" applied to class SunSSLTransportFactory
-Iteration 404: "Make Method Final" applied at class SunSSLTransportFactory to method setProperty
-Iteration 405: "Make Class Final" applied to class SunSSLTransportFactory
-Iteration 406: "Make Class Non Final" applied to class SunSSLTransportFactory
-Iteration 407: "Make Class Final" applied to class SunSSLTransportFactory
-Iteration 408: "Make Method Non Final" applied at class SunSSLTransportFactory to method setProperty
-Iteration 409: "Make Class Non Final" applied to class SunSSLTransportFactory
-Iteration 410: "Make Method Final" applied at class SunSSLTransportFactory to method setProperty
-Iteration 411: "Make Method Non Final" applied at class SunSSLTransportFactory to method setProperty
-Iteration 412: "Make Method Final" applied at class SunSSLTransportFactory to method setProperty
-Iteration 413: "Make Method Non Final" applied at class SunSSLTransportFactory to method setProperty
-Iteration 414: "Make Class Final" applied to class SunSSLTransportFactory
-Iteration 415: "Make Class Non Final" applied to class SunSSLTransportFactory
-Iteration 416: "Make Method Final" applied at class SunSSLTransportFactory to method setProperty
-Iteration 417: "Make Method Non Final" applied at class SunSSLTransportFactory to method setProperty
-Iteration 418: "Make Class Final" applied to class SunSSLTransportFactory
-Iteration 419: "Make Class Non Final" applied to class SunSSLTransportFactory
-Iteration 420: "Make Method Final" applied at class SunSSLTransportFactory to method setProperty
-Iteration 421: "Make Class Final" applied to class SunSSLTransportFactory
-Iteration 422: "Make Class Non Final" applied to class SunSSLTransportFactory
-Iteration 423: "Make Method Non Final" applied at class SunSSLTransportFactory to method setProperty
-Iteration 424: "Make Method Final" applied at class SunSSLTransportFactory to method setProperty
-Iteration 425: "Make Method Non Final" applied at class SunSSLTransportFactory to method setProperty
-Iteration 426: "Make Class Final" applied to class SunSSLTransportFactory
-Iteration 427: "Make Class Non Final" applied to class SunSSLTransportFactory
-Iteration 428: "Make Method Final" applied at class SunSSLTransportFactory to method setProperty
-Iteration 429: "Make Class Final" applied to class SunSSLTransportFactory
-Iteration 430: "Make Class Non Final" applied to class SunSSLTransportFactory
-Iteration 431: "Make Class Final" applied to class SunSSLTransportFactory
-Iteration 432: "Make Class Non Final" applied to class SunSSLTransportFactory
-Iteration 433: "Make Method Non Final" applied at class SunSSLTransportFactory to method setProperty
-Iteration 434: "Make Method Final" applied at class SunSSLTransportFactory to method setProperty
-Iteration 435: "Make Method Non Final" applied at class SunSSLTransportFactory to method setProperty
-Iteration 436: "Make Method Final" applied at class SunSSLTransportFactory to method setProperty
-Iteration 437: "Make Method Non Final" applied at class SunSSLTransportFactory to method setProperty
-Iteration 438: "Make Class Final" applied to class SunSSLTransportFactory
-Iteration 439: "Make Class Non Final" applied to class SunSSLTransportFactory
-Iteration 440: "Make Method Final" applied at class HandlerBase to method startDocument
-Iteration 441: "Make Method Non Final" applied at class HandlerBase to method startDocument
-Iteration 442: "Make Class Final" applied to class SunSSLTransportFactory
-Iteration 443: "Make Class Non Final" applied to class SunSSLTransportFactory
-Iteration 444: "Make Method Final" applied at class SunSSLTransportFactory to method setProperty
-Iteration 445: "Make Class Final" applied to class SunSSLTransportFactory
-Iteration 446: "Make Class Non Final" applied to class SunSSLTransportFactory
-Iteration 447: "Make Method Non Final" applied at class SunSSLTransportFactory to method setProperty
-Iteration 448: "Make Method Final" applied at class SunSSLTransportFactory to method setProperty
-Iteration 449: "Make Method Non Final" applied at class SunSSLTransportFactory to method setProperty
-Iteration 450: "Make Class Final" applied to class SunSSLTransportFactory
-Iteration 451: "Make Class Non Final" applied to class SunSSLTransportFactory
-Iteration 452: "Make Method Final" applied at class SunSSLTransportFactory to method setProperty
-Iteration 453: "Make Class Final" applied to class SunSSLTransportFactory
-Iteration 454: "Make Class Non Final" applied to class SunSSLTransportFactory
-Iteration 455: "Make Class Final" applied to class SunSSLTransportFactory
-Iteration 456: "Make Method Non Final" applied at class SunSSLTransportFactory to method setProperty
-Iteration 457: "Make Class Non Final" applied to class SunSSLTransportFactory
-Iteration 458: "Make Method Final" applied at class SunSSLTransportFactory to method setProperty
-Iteration 459: "Make Method Non Final" applied at class SunSSLTransportFactory to method setProperty
-Iteration 460: "Make Method Final" applied at class SunSSLTransportFactory to method setProperty
-Iteration 461: "Make Method Non Final" applied at class SunSSLTransportFactory to method setProperty
-Iteration 462: "Make Class Final" applied to class SunSSLTransportFactory
-Iteration 463: "Make Class Non Final" applied to class SunSSLTransportFactory
-Iteration 464: "Make Method Final" applied at class SunSSLTransportFactory to method setProperty
-Iteration 465: "Make Method Non Final" applied at class SunSSLTransportFactory to method setProperty
-Iteration 466: "Make Method Final" applied at class SunSSLTransportFactory to method setProperty
-Iteration 467: "Increase Field Security" applied at class ParseFailed to field cause from package to private
-Iteration 468: "Make Class Final" applied to class Echo
-Iteration 469: "Make Method Non Final" applied at class SunSSLTransportFactory to method setProperty
-Iteration 470: "Make Method Final" applied at class SunSSLTransportFactory to method setProperty
-Iteration 471: "Make Method Non Final" applied at class SunSSLTransportFactory to method setProperty
-Iteration 472: "Make Method Final" applied at class SunSSLTransportFactory to method setProperty
-Iteration 473: "Make Method Non Final" applied at class SunSSLTransportFactory to method setProperty
-Iteration 474: "Make Class Final" applied to class SunSSLTransportFactory
-Iteration 475: "Make Class Non Final" applied to class SunSSLTransportFactory
-Iteration 476: "Make Method Final" applied at class SunSSLTransportFactory to method setProperty
-Iteration 477: "Make Method Non Final" applied at class SunSSLTransportFactory to method setProperty
-Iteration 478: "Make Method Final" applied at class SunSSLTransportFactory to method setProperty
-Iteration 479: "Make Method Non Final" applied at class SunSSLTransportFactory to method setProperty
-Iteration 480: "Move Field Down" applied to field loaded from XmlRpcApplet to JSXmlRpcApplet
-Iteration 481: "Make Class Final" applied to class SunSSLTransportFactory
-Iteration 482: "Make Class Non Final" applied to class SunSSLTransportFactory
-Iteration 483: "Make Method Final" applied at class SunSSLTransportFactory to method setProperty
-Iteration 484: "Make Method Non Final" applied at class SunSSLTransportFactory to method setProperty
-Iteration 485: "Make Method Final" applied at class SunSSLTransportFactory to method setProperty
-Iteration 486: "Make Method Non Final" applied at class SunSSLTransportFactory to method setProperty
-Iteration 487: "Make Class Final" applied to class SunSSLTransportFactory
-Iteration 488: "Make Class Non Final" applied to class SunSSLTransportFactory
-Iteration 489: "Make Method Final" applied at class SunSSLTransportFactory to method setProperty
-Iteration 490: "Make Class Final" applied to class SunSSLTransportFactory
-Iteration 491: "Make Class Non Final" applied to class SunSSLTransportFactory
-Iteration 492: "Make Class Final" applied to class SunSSLTransportFactory
-Iteration 493: "Make Class Non Final" applied to class SunSSLTransportFactory
-Iteration 494: "Make Class Final" applied to class SunSSLTransportFactory
-Iteration 495: "Make Class Non Final" applied to class SunSSLTransportFactory
-Iteration 496: "Make Method Non Final" applied at class SunSSLTransportFactory to method setProperty
-Iteration 497: "Make Method Final" applied at class SunSSLTransportFactory to method setProperty
-Iteration 498: "Make Method Non Final" applied at class SunSSLTransportFactory to method setProperty
-Iteration 499: "Make Method Final" applied at class SunSSLTransportFactory to method setProperty
-Iteration 500: "Make Method Non Final" applied at class SunSSLTransportFactory to method setProperty
-Iteration 501: "Make Class Final" applied to class SunSSLTransportFactory
-Iteration 502: "Make Class Non Final" applied to class SunSSLTransportFactory
-Iteration 503: "Make Method Final" applied at class SunSSLTransportFactory to method setProperty
-Iteration 504: "Make Class Final" applied to class SunSSLTransportFactory
-Iteration 505: "Make Class Non Final" applied to class SunSSLTransportFactory
-Iteration 506: "Make Class Final" applied to class SunSSLTransportFactory
-Iteration 507: "Make Class Non Final" applied to class SunSSLTransportFactory
-Iteration 508: "Make Method Non Final" applied at class SunSSLTransportFactory to method setProperty
-Iteration 509: "Make Method Final" applied at class SunSSLTransportFactory to method setProperty
-Iteration 510: "Make Method Non Final" applied at class SunSSLTransportFactory to method setProperty
-Iteration 511: "Make Method Final" applied at class SunSSLTransportFactory to method setProperty
-Iteration 512: "Make Method Non Final" applied at class SunSSLTransportFactory to method setProperty
-Iteration 513: "Make Class Final" applied to class SunSSLTransportFactory
-Iteration 514: "Make Class Non Final" applied to class SunSSLTransportFactory
-Iteration 515: "Make Method Final" applied at class SunSSLTransportFactory to method setProperty
-Iteration 516: "Make Method Non Final" applied at class SunSSLTransportFactory to method setProperty
-Iteration 517: "Make Method Final" applied at class SunSSLTransportFactory to method setProperty
-Iteration 518: "Make Method Non Final" applied at class SunSSLTransportFactory to method setProperty
-Iteration 519: "Make Class Final" applied to class SunSSLTransportFactory
-Iteration 520: "Make Field Non Static" applied at class XmlWriter to field PROLOG_START
-Iteration 521: "Decrease Method Security" applied at class DefaultXmlRpcTransport to method setBasicAuthentication from package to protected
-Iteration 522: "Make Field Final" applied at class Parser to ParameterDeclaration handler
-Iteration 523: "Make Method Static" applied at class DefaultTypeFactory to method createDouble
-Iteration 524: "Decrease Method Security" applied at class WebServer to method writeResponse from private to package
-Iteration 525: "Remove Field" applied at class SecurityConstants to field DEFAULT_KEY_STORE_TYPE
-Iteration 526: "Make Class Non Final" applied to class SunSSLTransportFactory
-Iteration 527: "Make Method Final" applied at class SunSSLTransportFactory to method setProperty
-Iteration 528: "Make Method Non Final" applied at class SunSSLTransportFactory to method setProperty
-Iteration 529: "Make Class Final" applied to class SunSSLTransportFactory
-Iteration 530: "Make Class Non Final" applied to class SunSSLTransportFactory
-Iteration 531: "Make Method Final" applied at class SunSSLTransportFactory to method setProperty
-Iteration 532: "Make Class Final" applied to class SunSSLTransportFactory
-Iteration 533: "Make Class Non Final" applied to class SunSSLTransportFactory
-Iteration 534: "Make Method Non Final" applied at class SunSSLTransportFactory to method setProperty
-Iteration 535: "Make Method Final" applied at class SunSSLTransportFactory to method setProperty
-Iteration 536: "Make Method Non Final" applied at class SunSSLTransportFactory to method setProperty
-Iteration 537: "Make Class Final" applied to class SunSSLTransportFactory
-Iteration 538: "Make Class Non Final" applied to class SunSSLTransportFactory
-Iteration 539: "Make Method Final" applied at class SunSSLTransportFactory to method setProperty
-Iteration 540: "Make Class Final" applied to class SunSSLTransportFactory
-Iteration 541: "Make Class Non Final" applied to class SunSSLTransportFactory
-Iteration 542: "Make Class Final" applied to class SunSSLTransportFactory
-Iteration 543: "Make Class Non Final" applied to class SunSSLTransportFactory
-Iteration 544: "Make Method Non Final" applied at class SunSSLTransportFactory to method setProperty
-Iteration 545: "Make Method Final" applied at class SunSSLTransportFactory to method setProperty
-Iteration 546: "Make Method Non Final" applied at class SunSSLTransportFactory to method setProperty
-Iteration 547: "Make Method Final" applied at class SunSSLTransportFactory to method setProperty
-Iteration 548: "Make Method Non Final" applied at class SunSSLTransportFactory to method setProperty
-Iteration 549: "Make Class Final" applied to class SunSSLTransportFactory
-Iteration 550: "Make Class Non Final" applied to class SunSSLTransportFactory
-Iteration 551: "Move Field Up" applied to field loaded from JSXmlRpcApplet to XmlRpcApplet
-Iteration 552: "Make Method Final" applied at class HandlerBase to method startDocument
-Iteration 553: "Make Class Non Final" applied to class Echo
-Iteration 554: "Make Method Non Final" applied at class HandlerBase to method startDocument
-Iteration 555: "Make Class Final" applied to class SunSSLTransportFactory
-Iteration 556: "Make Class Non Final" applied to class SunSSLTransportFactory
-Iteration 557: "Make Method Final" applied at class SunSSLTransportFactory to method setProperty
-Iteration 558: "Make Class Final" applied to class SunSSLTransportFactory
-Iteration 559: "Make Class Non Final" applied to class SunSSLTransportFactory
-Iteration 560: "Make Method Non Final" applied at class SunSSLTransportFactory to method setProperty
-Iteration 561: "Make Method Final" applied at class SunSSLTransportFactory to method setProperty
-Iteration 562: "Make Method Non Final" applied at class SunSSLTransportFactory to method setProperty
-Iteration 563: "Make Class Final" applied to class SunSSLTransportFactory
-Iteration 564: "Make Class Non Final" applied to class SunSSLTransportFactory
-Iteration 565: "Make Method Final" applied at class SunSSLTransportFactory to method setProperty
-Iteration 566: "Make Class Final" applied to class SunSSLTransportFactory
-Iteration 567: "Make Class Non Final" applied to class SunSSLTransportFactory
-Iteration 568: "Make Class Final" applied to class SunSSLTransportFactory
-Iteration 569: "Make Method Non Final" applied at class SunSSLTransportFactory to method setProperty
-Iteration 570: "Make Class Non Final" applied to class SunSSLTransportFactory
-Iteration 571: "Make Method Final" applied at class SunSSLTransportFactory to method setProperty
-Iteration 572: "Make Method Non Final" applied at class SunSSLTransportFactory to method setProperty
-Iteration 573: "Make Method Final" applied at class SunSSLTransportFactory to method setProperty
-Iteration 574: "Make Method Non Final" applied at class SunSSLTransportFactory to method setProperty
-Iteration 575: "Make Class Final" applied to class SunSSLTransportFactory
-Iteration 576: "Make Class Non Final" applied to class SunSSLTransportFactory
-Iteration 577: "Make Method Final" applied at class SunSSLTransportFactory to method setProperty
-Iteration 578: "Make Method Non Final" applied at class SunSSLTransportFactory to method setProperty
-Iteration 579: "Make Class Final" applied to class SunSSLTransportFactory
-Iteration 580: "Make Class Non Final" applied to class SunSSLTransportFactory
-Iteration 581: "Make Method Final" applied at class SunSSLTransportFactory to method setProperty
-Iteration 582: "Make Class Final" applied to class SunSSLTransportFactory
-Iteration 583: "Make Class Non Final" applied to class SunSSLTransportFactory
-Iteration 584: "Make Method Non Final" applied at class SunSSLTransportFactory to method setProperty
-Iteration 585: "Make Method Final" applied at class SunSSLTransportFactory to method setProperty
-Iteration 586: "Make Method Non Final" applied at class SunSSLTransportFactory to method setProperty
-Iteration 587: "Make Class Final" applied to class SunSSLTransportFactory
-Iteration 588: "Make Class Non Final" applied to class SunSSLTransportFactory
-Iteration 589: "Make Method Final" applied at class SunSSLTransportFactory to method setProperty
-Iteration 590: "Make Class Final" applied to class SunSSLTransportFactory
-Iteration 591: "Make Class Non Final" applied to class SunSSLTransportFactory
-Iteration 592: "Make Class Final" applied to class SunSSLTransportFactory
-Iteration 593: "Make Class Non Final" applied to class SunSSLTransportFactory
-Iteration 594: "Make Method Non Final" applied at class SunSSLTransportFactory to method setProperty
-Iteration 595: "Make Method Final" applied at class SunSSLTransportFactory to method setProperty
-Iteration 596: "Make Method Non Final" applied at class SunSSLTransportFactory to method setProperty
-Iteration 597: "Make Method Final" applied at class SunSSLTransportFactory to method setProperty
-Iteration 598: "Make Method Non Final" applied at class SunSSLTransportFactory to method setProperty
-Iteration 599: "Make Class Final" applied to class SunSSLTransportFactory
-Iteration 600: "Make Class Non Final" applied to class SunSSLTransportFactory
-Iteration 601: "Make Method Final" applied at class HandlerBase to method startDocument
-Iteration 602: "Make Method Non Final" applied at class HandlerBase to method startDocument
-Iteration 603: "Make Class Final" applied to class SunSSLTransportFactory
-Iteration 604: "Make Class Non Final" applied to class SunSSLTransportFactory
-Iteration 605: "Make Method Final" applied at class SunSSLTransportFactory to method setProperty
-Iteration 606: "Make Class Final" applied to class SunSSLTransportFactory
-Iteration 607: "Make Class Non Final" applied to class SunSSLTransportFactory
-Iteration 608: "Make Method Non Final" applied at class SunSSLTransportFactory to method setProperty
-Iteration 609: "Make Method Final" applied at class SunSSLTransportFactory to method setProperty
-Iteration 610: "Make Method Non Final" applied at class SunSSLTransportFactory to method setProperty
-Iteration 611: "Make Class Final" applied to class SunSSLTransportFactory
-Iteration 612: "Make Class Non Final" applied to class SunSSLTransportFactory
-Iteration 613: "Make Method Final" applied at class SunSSLTransportFactory to method setProperty
-Iteration 614: "Make Class Final" applied to class SunSSLTransportFactory
-Iteration 615: "Make Class Non Final" applied to class SunSSLTransportFactory
-Iteration 616: "Make Class Final" applied to class SunSSLTransportFactory
-Iteration 617: "Make Method Non Final" applied at class SunSSLTransportFactory to method setProperty
-Iteration 618: "Make Class Non Final" applied to class SunSSLTransportFactory
-Iteration 619: "Make Method Final" applied at class SunSSLTransportFactory to method setProperty
-Iteration 620: "Make Method Non Final" applied at class SunSSLTransportFactory to method setProperty
-Iteration 621: "Make Method Final" applied at class SunSSLTransportFactory to method setProperty
-Iteration 622: "Make Method Non Final" applied at class SunSSLTransportFactory to method setProperty
-Iteration 623: "Make Class Final" applied to class SunSSLTransportFactory
-Iteration 624: "Make Class Non Final" applied to class SunSSLTransportFactory
-Iteration 625: "Make Method Final" applied at class SunSSLTransportFactory to method setProperty
-Iteration 626: "Make Method Non Final" applied at class SunSSLTransportFactory to method setProperty
-Iteration 627: "Make Method Final" applied at class SunSSLTransportFactory to method setProperty
-Iteration 628: "Make Class Final" applied to class Echo
-Iteration 629: "Make Method Non Final" applied at class SunSSLTransportFactory to method setProperty
-Iteration 630: "Make Method Final" applied at class SunSSLTransportFactory to method setProperty
-Iteration 631: "Make Method Non Final" applied at class SunSSLTransportFactory to method setProperty
-Iteration 632: "Make Method Final" applied at class SunSSLTransportFactory to method setProperty
-Iteration 633: "Make Method Non Final" applied at class SunSSLTransportFactory to method setProperty
-Iteration 634: "Make Class Final" applied to class SunSSLTransportFactory
-Iteration 635: "Make Class Non Final" applied to class SunSSLTransportFactory
-Iteration 636: "Make Method Final" applied at class SunSSLTransportFactory to method setProperty
-Iteration 637: "Make Method Non Final" applied at class SunSSLTransportFactory to method setProperty
-Iteration 638: "Make Method Final" applied at class SunSSLTransportFactory to method setProperty
-Iteration 639: "Make Method Non Final" applied at class SunSSLTransportFactory to method setProperty
-Iteration 640: "Move Field Down" applied to field loaded from XmlRpcApplet to JSXmlRpcApplet
-Iteration 641: "Make Class Final" applied to class SunSSLTransportFactory
-Iteration 642: "Make Class Non Final" applied to class SunSSLTransportFactory
-Iteration 643: "Make Method Final" applied at class SunSSLTransportFactory to method setProperty
-Iteration 644: "Make Method Non Final" applied at class SunSSLTransportFactory to method setProperty
-Iteration 645: "Make Method Final" applied at class SunSSLTransportFactory to method setProperty
-Iteration 646: "Make Method Non Final" applied at class SunSSLTransportFactory to method setProperty
-Iteration 647: "Make Class Final" applied to class SunSSLTransportFactory
-Iteration 648: "Make Class Non Final" applied to class SunSSLTransportFactory
-Iteration 649: "Make Method Final" applied at class SunSSLTransportFactory to method setProperty
-Iteration 650: "Make Class Final" applied to class SunSSLTransportFactory
-Iteration 651: "Make Class Non Final" applied to class SunSSLTransportFactory
-Iteration 652: "Make Class Final" applied to class SunSSLTransportFactory
-Iteration 653: "Make Class Non Final" applied to class SunSSLTransportFactory
-Iteration 654: "Make Class Final" applied to class SunSSLTransportFactory
-Iteration 655: "Make Class Non Final" applied to class SunSSLTransportFactory
-Iteration 656: "Make Method Non Final" applied at class SunSSLTransportFactory to method setProperty
-Iteration 657: "Make Method Final" applied at class SunSSLTransportFactory to method setProperty
-Iteration 658: "Make Method Non Final" applied at class SunSSLTransportFactory to method setProperty
-Iteration 659: "Make Method Final" applied at class SunSSLTransportFactory to method setProperty
-Iteration 660: "Make Method Non Final" applied at class SunSSLTransportFactory to method setProperty
-Iteration 661: "Make Class Final" applied to class SunSSLTransportFactory
-Iteration 662: "Make Class Non Final" applied to class SunSSLTransportFactory
-Iteration 663: "Make Method Final" applied at class SunSSLTransportFactory to method setProperty
-Iteration 664: "Make Class Final" applied to class SunSSLTransportFactory
-Iteration 665: "Make Class Non Final" applied to class SunSSLTransportFactory
-Iteration 666: "Make Class Final" applied to class SunSSLTransportFactory
-Iteration 667: "Make Class Non Final" applied to class SunSSLTransportFactory
-Iteration 668: "Make Method Non Final" applied at class SunSSLTransportFactory to method setProperty
-Iteration 669: "Make Method Final" applied at class SunSSLTransportFactory to method setProperty
-Iteration 670: "Make Method Non Final" applied at class SunSSLTransportFactory to method setProperty
-Iteration 671: "Make Method Final" applied at class SunSSLTransportFactory to method setProperty
-Iteration 672: "Make Method Non Final" applied at class SunSSLTransportFactory to method setProperty
-Iteration 673: "Make Class Final" applied to class SunSSLTransportFactory
-Iteration 674: "Make Class Non Final" applied to class SunSSLTransportFactory
-Iteration 675: "Make Method Final" applied at class SunSSLTransportFactory to method setProperty
-Iteration 676: "Make Method Non Final" applied at class SunSSLTransportFactory to method setProperty
-Iteration 677: "Make Method Final" applied at class SunSSLTransportFactory to method setProperty
-Iteration 678: "Make Method Non Final" applied at class SunSSLTransportFactory to method setProperty
-Iteration 679: "Make Class Final" applied to class SunSSLTransportFactory
-Iteration 680: "Decrease Method Security" applied at class WebServer to method writeResponse from package to protected
-Iteration 681: "Make Field Final" applied at class InputSource to ParameterDeclaration encoding
-Iteration 682: "Move Method Up" applied to method setDebug from XmlRpcSupport to HandlerBase
-Iteration 683: "Decrease Method Security" applied at class XmlRpcWorker to method invokeHandler from protected to public
-Iteration 684: "Make Field Final" applied at class XmlRpcHandler to ParameterDeclaration method
-Iteration 685: "Increase Method Security" applied at class LiteXmlRpcTransport to method setBasicAuthentication from public to protected
-Iteration 686: "Make Field Final" applied at class TypeDecoder to ParameterDeclaration o
-Iteration 687: "Make Field Non Final" applied at class AuthenticationFailed to ParameterDeclaration msg
-Iteration 688: "Decrease Method Security" applied at class XmlRpcClientResponseProcessor to method objectParsed from protected to public
-Iteration 689: "Move Method Up" applied to method decodeException from XmlRpc to HandlerBase
-Iteration 690: "Make Method Final" applied at class XmlRpcClientRequestProcessor to method encodeRequestBytes
-Iteration 691: "Decrease Method Security" applied at class LiteXmlRpcTransport to method initConnection from protected to public
-Iteration 692: "Make Method Static" applied at class DefaultTypeFactory to method createString
-Iteration 693: "Decrease Method Security" applied at class XmlRpcWorker to method defaultContext from protected to public
-Iteration 694: "Make Field Final" applied at class InputSource to FieldDeclaration publicId
-Iteration 695: "Make Field Final" applied at class XmlRpcResponseProcessor to LocalVariableDeclaration writer
-Iteration 696: "Make Field Non Final" applied at class TypeDecoder to ParameterDeclaration o
-Iteration 697: "Move Method Up" applied to method addIntArgToStruct from JSXmlRpcApplet to XmlRpcApplet
-Iteration 698: "Make Field Final" applied at class DefaultXmlRpcTransport to ParameterDeclaration password
-Iteration 699: "Make Field Final" applied at class AuthenticationFailed to ParameterDeclaration msg
-Iteration 700: "Move Method Down" applied to method setEncoding from XmlRpc to XmlRpcClientResponseProcessor
-Iteration 701: "Make Class Non Final" applied to class SunSSLTransportFactory
-Iteration 702: "Decrease Method Security" applied at class SimpleXmlRpcClient to method parse from protected to public
-Iteration 703: "Decrease Method Security" applied at class LiteXmlRpcTransport to method closeConnection from protected to public
-Iteration 704: "Decrease Method Security" applied at class XmlRpcServer to method getWorker from protected to public
-Iteration 705: "Remove Field" applied at class MinML to field inComment
-Iteration 706: "Increase Field Security" applied at class XmlRpcRequestProcessor to field requestParams from protected to package
-Iteration 707: "Decrease Method Security" applied at class XmlRpcServer to method createWorker from protected to public
-Iteration 708: "Increase Field Security" applied at class JSXmlRpcApplet to field loaded from public to protected
-Iteration 709: "Make Class Final" applied to class SecureXmlRpcClient
-Iteration 710: "Remove Method" applied at class InputSource to method setEncoding
+Iteration 91: "Make Class Concrete" applied to class HandlerBase
+Iteration 92: "Make Class Abstract" applied to class HandlerBase
+Iteration 93: "Make Class Concrete" applied to class HandlerBase
+Iteration 94: "Make Class Abstract" applied to class HandlerBase
+Iteration 95: "Make Class Concrete" applied to class HandlerBase
+Iteration 96: "Make Class Abstract" applied to class HandlerBase
+Iteration 97: "Make Class Concrete" applied to class HandlerBase
+Iteration 98: "Make Class Abstract" applied to class HandlerBase
+Iteration 99: "Make Class Concrete" applied to class HandlerBase
+Iteration 100: "Make Class Abstract" applied to class HandlerBase
+Iteration 101: "Make Class Concrete" applied to class HandlerBase
+Iteration 102: "Make Class Abstract" applied to class HandlerBase
+Iteration 103: "Make Class Concrete" applied to class HandlerBase
+Iteration 104: "Decrease Method Security" applied at class XmlRpcWorker to method defaultContext from protected to public
+Iteration 105: "Make Method Non Final" applied at class WebServer to method toHTTPBytes
+Iteration 106: "Make Class Abstract" applied to class HandlerBase
+Iteration 107: "Decrease Method Security" applied at class Parser to method setDocumentHandler from package to protected
+Iteration 108: "Decrease Method Security" applied at class XmlRpcClientLite to method createTransport from protected to public
+Iteration 109: "Make Method Final" applied at class SystemHandler to method addSystemHandler
+Iteration 110: "Make Method Static" applied at class DefaultTypeDecoder to method isXmlRpcI4
+Iteration 111: "Make Method Non Final" applied at class XmlWriter to method isValidXMLChar
+Iteration 112: "Remove Method" applied at class XmlRpcClient to method setup
+Iteration 113: "Make Method Static" applied at class XmlRpcResponseProcessor to method writeResponse
+Iteration 114: "Make Class Concrete" applied to class HandlerBase
+Iteration 115: "Make Class Abstract" applied to class HandlerBase
+Iteration 116: "Make Class Concrete" applied to class HandlerBase
+Iteration 117: "Make Class Abstract" applied to class HandlerBase
+Iteration 118: "Make Class Concrete" applied to class HandlerBase
+Iteration 119: "Make Class Abstract" applied to class HandlerBase
+Iteration 120: "Make Class Concrete" applied to class HandlerBase
+Iteration 121: "Move Method Down" applied to method setEncoding from XmlRpc to XmlRpcClientResponseProcessor
+Iteration 122: "Make Class Abstract" applied to class HandlerBase
+Iteration 123: "Make Class Concrete" applied to class HandlerBase
+Iteration 124: "Make Class Abstract" applied to class HandlerBase
+Iteration 125: "Make Class Concrete" applied to class HandlerBase
+Iteration 126: "Make Class Abstract" applied to class HandlerBase
+Iteration 127: "Make Class Concrete" applied to class HandlerBase
+Iteration 128: "Make Class Abstract" applied to class HandlerBase
+Iteration 129: "Make Class Concrete" applied to class HandlerBase
+Iteration 130: "Make Class Abstract" applied to class HandlerBase
+Iteration 131: "Make Class Concrete" applied to class HandlerBase
+Iteration 132: "Make Class Abstract" applied to class HandlerBase
+Iteration 133: "Make Class Concrete" applied to class HandlerBase
+Iteration 134: "Make Class Abstract" applied to class HandlerBase
+Iteration 135: "Make Class Concrete" applied to class HandlerBase
+Iteration 136: "Make Class Abstract" applied to class HandlerBase
+Iteration 137: "Make Class Concrete" applied to class HandlerBase
+Iteration 138: "Make Class Abstract" applied to class HandlerBase
+Iteration 139: "Make Class Concrete" applied to class HandlerBase
+Iteration 140: "Make Class Abstract" applied to class HandlerBase
+Iteration 141: "Make Class Concrete" applied to class HandlerBase
+Iteration 142: "Make Class Abstract" applied to class HandlerBase
+Iteration 143: "Make Class Concrete" applied to class HandlerBase
+Iteration 144: "Make Class Abstract" applied to class HandlerBase
+Iteration 145: "Decrease Method Security" applied at class Parser to method setDocumentHandler from protected to public
+Iteration 146: "Make Class Concrete" applied to class HandlerBase
+Iteration 147: "Make Class Final" applied to class SystemHandler
+Iteration 148: "Make Class Abstract" applied to class HandlerBase
+Iteration 149: "Make Class Concrete" applied to class HandlerBase
+Iteration 150: "Make Class Abstract" applied to class HandlerBase
+Iteration 151: "Make Class Concrete" applied to class HandlerBase
+Iteration 152: "Make Class Abstract" applied to class HandlerBase
+Iteration 153: "Make Class Concrete" applied to class HandlerBase
+Iteration 154: "Make Class Abstract" applied to class HandlerBase
+Iteration 155: "Make Class Concrete" applied to class HandlerBase
+Iteration 156: "Decrease Method Security" applied at class XmlRpcClientResponseProcessor to method objectParsed from protected to public
+Iteration 157: "Decrease Method Security" applied at class XmlRpc to method parse from package to protected
+Iteration 158: "Make Class Final" applied to class XmlRpcException
+Iteration 159: "Make Method Static" applied at class XmlRpcResponseProcessor to method encodeResponse
+Iteration 160: "Make Method Static" applied at class MinML to method getSystemId
+Iteration 161: "Decrease Method Security" applied at class LiteXmlRpcTransport to method initConnection from protected to public
+Iteration 162: "Make Class Non Final" applied to class XmlRpcServer
+Iteration 163: "Increase Method Security" applied at class XmlRpcResponseProcessor to method encodeException from public to protected
 
-Score has improved overall by 0.758251
-Time taken to refactor: 326.34s
+Score has improved overall by 0.671659
+Time taken to refactor: 255.95s
 
 ======== Final Metric Info ========
-Average ratio of private/package/protected attributes to overall attributes per class: 0.532841
+Average ratio of private/package/protected attributes to overall attributes per class: 0.540574
 Average coupling per class: 0.911392
-Average cohesion among methods per class: 0.450183
+Average cohesion among methods per class: 0.449995
 Average amount of user defined attributes declared per class: 0.392405
-Average functional abstraction per class: 0.079022
-Average amount of polymorphic methods per class: 0.898734
-Average amount of public methods per class: 5.417722
+Average functional abstraction per class: 0.078756
+Average amount of polymorphic methods per class: 0.886076
+Average amount of public methods per class: 5.291139
 Average amount of methods per class: 6.037975
-Average amount of complexity of methods per class: 65.582275
+Average amount of complexity of methods per class: 65.506332
 Ratio of interfaces to overall amount of classes: 0.278481
-Average ratio of abstract classes/methods per class: 0.282436
-Average ratio of static classes/methods/variables per class: 0.112307
-Average ratio of final classes/methods/variables per class: 0.086356
-Average ratio of constant classes/methods/variables per class: 0.055675
+Average ratio of abstract classes/methods per class: 0.282113
+Average ratio of static classes/methods/variables per class: 0.116710
+Average ratio of final classes/methods/variables per class: 0.072596
+Average ratio of constant classes/methods/variables per class: 0.059309
 Ratio of inner classes to overall amount of ordinary classes in project: 0.113924
-Average inherited referenced methods ratio per class: 0.083122
-Average visibility ratio per class: 0.766425
+Average inherited referenced methods ratio per class: 0.087342
+Average visibility ratio per class: 0.762128
 Amount of lines of code in project: 11616
-Overall fitness function score: 0.758251
+Overall fitness function score: 0.671659

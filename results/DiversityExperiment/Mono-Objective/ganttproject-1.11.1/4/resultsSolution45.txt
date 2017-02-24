@@ -27,1010 +27,168 @@ Amount of lines of code in project: 39527
 Overall fitness function score: 0.000000
 
 ======== Applied Refactorings ========
-Iteration 1: "Make Field Non Static" applied at class OpenDocumentAction to field MNEMONIC_KEYS
-Iteration 2: "Decrease Method Security" applied at class CalendarSaver to method save from package to protected
-Iteration 3: "Make Field Final" applied at class TextLengthCalculator to ParameterDeclaration text
-Iteration 4: "Make Method Static" applied at class ProjectResource to method getResource
-Iteration 5: "Make Class Abstract" applied to class GraphicPrimitive
-Iteration 6: "Make Field Static" applied at class NewProjectWizard to field myMainFrame
-Iteration 7: "Increase Method Security" applied at class GanttMSPDISaver to method save from public to protected
-Iteration 8: "Make Class Concrete" applied to class GraphicPrimitive
-Iteration 9: "Make Method Final" applied at class Shape to method addActionListener
-Iteration 10: "Make Method Non Static" applied at class DialogAligner to method centerOnScreen
-Iteration 11: "Make Field Non Final" applied at class ResourceTagHandler to FieldDeclaration myRoleManager
-Iteration 12: "Make Field Static" applied at class TaskBoundaryChartItem to field isStart
-Iteration 13: "Make Field Non Static" applied at class ChartComponentBase to field DEFAULT_CURSOR
-Iteration 14: "Make Class Final" applied to class GanttExportSettings
-Iteration 15: "Remove Method" applied at class TaskScheduleEvent to method getOldStartDate
-Iteration 16: "Increase Method Security" applied at class GanttMSPDISaver to method save from protected to package
-Iteration 17: "Decrease Field Security" applied at class GanttLookAndFeelInfo to field toString from protected to public
-Iteration 18: "Make Method Static" applied at class ResourceChartExportProcessor to method run
-Iteration 19: "Make Field Non Final" applied at class TaskImpl to FieldDeclaration myManager
-Iteration 20: "Move Method Up" applied to method getPreferredSize from ResourceLoadGraphicArea to ChartComponentBase
-Iteration 21: "Remove Field" applied at class TaskManagerImpl to field myTaskContainment
-Iteration 22: "Make Method Static" applied at class GanttDialogCalendar to method actionPerformed
-Iteration 23: "Decrease Method Security" applied at class IGanttProject to method getProjectName from package to protected
-Iteration 24: "Make Class Final" applied to class GanttPreviewPrint
-Iteration 25: "Increase Method Security" applied at class AboutLibraryPanel to method getWeb from public to protected
-Iteration 26: "Decrease Method Security" applied at class GanttXMLSaver to method startElement from private to package
-Iteration 27: "Make Field Final" applied at class GanttHTMLExport to ParameterDeclaration prjInfos
-Iteration 28: "Make Field Static" applied at class GanttImagePanel to field x,y
-Iteration 29: "Make Method Static" applied at class BottomUnitLineRendererImpl to method afterProcessingTimeFrames
-Iteration 30: "Remove Method" applied at class ScrollingManagerImpl to method removeScrollingListener
-Iteration 31: "Make Method Non Final" applied at class GanttXMLOpen to method determineColor
-Iteration 32: "Make Method Final" applied at class GraphicPrimitiveContainer to method getLayer
-Iteration 33: "Make Field Non Final" applied at class ResourceAssignmentCollectionImpl to FieldDeclaration myAssignments
-Iteration 34: "Move Field Up" applied to field rolesTable from RolesSettingsPanel to GeneralOptionPanel
-Iteration 35: "Remove Field" applied at class GanttProject to field listOfCalendar
-Iteration 36: "Make Class Final" applied to class CSVOptions
-Iteration 37: "Make Method Non Final" applied at class GraphicPrimitiveContainer to method getLayer
-Iteration 38: "Move Method Up" applied to method getHeaderHeight from ResourceLoadGraphicArea to ChartComponentBase
-Iteration 39: "Decrease Method Security" applied at class ShiftTaskTreeAlgorithm to method shiftTask from private to package
-Iteration 40: "Move Field Up" applied to field cbName from ExportSettingsPanel to GeneralOptionPanel
-Iteration 41: "Make Field Static" applied at class GanttLookAndFeelInfo to field toString
-Iteration 42: "Decrease Method Security" applied at class IGanttProject to method getProjectName from protected to public
-Iteration 43: "Increase Method Security" applied at class AboutLibraryPanel to method getWeb from protected to package
-Iteration 44: "Decrease Method Security" applied at class GanttXMLSaver to method startElement from package to protected
-Iteration 45: "Make Method Final" applied at class GraphicPrimitiveContainer to method getLayer
-Iteration 46: "Make Method Non Final" applied at class GraphicPrimitiveContainer to method getLayer
-Iteration 47: "Decrease Method Security" applied at class ShiftTaskTreeAlgorithm to method shiftTask from package to protected
-Iteration 48: "Increase Field Security" applied at class GanttTXTOpen to field prj from package to private
-Iteration 49: "Make Class Final" applied to class RoleImpl
-Iteration 50: "Make Class Final" applied to class RegularFramesWithFunction
-Iteration 51: "Decrease Method Security" applied at class ZoomOutAction to method getIconFilePrefix from protected to public
-Iteration 52: "Make Method Final" applied at class RolesTableModel to method hasChanges
-Iteration 53: "Make Field Static" applied at class TimeUnitDateFrameableImpl to field myFramer
-Iteration 54: "Make Field Final" applied at class EventDispatcher to ParameterDeclaration dep
-Iteration 55: "Make Field Static" applied at class TaskTagHandler to field myManager
-Iteration 56: "Make Method Static" applied at class GanttDialogDate to method stateChanged
-Iteration 57: "Make Field Static" applied at class ProjectResource to field myAssignmentToTask
-Iteration 58: "Decrease Method Security" applied at class GanttXMLSaver to method startElement from protected to public
-Iteration 59: "Make Method Final" applied at class GraphicPrimitiveContainer to method getLayer
-Iteration 60: "Make Method Non Final" applied at class GraphicPrimitiveContainer to method getLayer
-Iteration 61: "Decrease Method Security" applied at class ShiftTaskTreeAlgorithm to method shiftTask from protected to public
-Iteration 62: "Increase Method Security" applied at class GanttMSPDISaver to method save from package to private
-Iteration 63: "Make Method Final" applied at class GraphicPrimitiveContainer to method getLayer
-Iteration 64: "Make Method Non Final" applied at class GraphicPrimitiveContainer to method getLayer
-Iteration 65: "Make Method Final" applied at class GraphicPrimitiveContainer to method getLayer
-Iteration 66: "Make Method Non Final" applied at class GraphicPrimitiveContainer to method getLayer
-Iteration 67: "Make Method Final" applied at class GraphicPrimitiveContainer to method getLayer
-Iteration 68: "Make Method Non Final" applied at class GraphicPrimitiveContainer to method getLayer
-Iteration 69: "Make Method Final" applied at class GraphicPrimitiveContainer to method getLayer
-Iteration 70: "Make Method Non Final" applied at class GraphicPrimitiveContainer to method getLayer
-Iteration 71: "Make Method Final" applied at class GraphicPrimitiveContainer to method getLayer
-Iteration 72: "Make Method Non Final" applied at class GraphicPrimitiveContainer to method getLayer
-Iteration 73: "Make Method Final" applied at class GraphicPrimitiveContainer to method getLayer
-Iteration 74: "Make Method Non Final" applied at class GraphicPrimitiveContainer to method getLayer
-Iteration 75: "Make Method Final" applied at class GraphicPrimitiveContainer to method getLayer
-Iteration 76: "Make Method Non Final" applied at class GraphicPrimitiveContainer to method getLayer
-Iteration 77: "Make Method Final" applied at class GraphicPrimitiveContainer to method getLayer
-Iteration 78: "Make Method Non Final" applied at class GraphicPrimitiveContainer to method getLayer
-Iteration 79: "Make Method Final" applied at class GraphicPrimitiveContainer to method getLayer
-Iteration 80: "Make Method Non Final" applied at class GraphicPrimitiveContainer to method getLayer
-Iteration 81: "Make Method Final" applied at class GraphicPrimitiveContainer to method getLayer
-Iteration 82: "Make Method Non Final" applied at class GraphicPrimitiveContainer to method getLayer
-Iteration 83: "Make Method Final" applied at class GraphicPrimitiveContainer to method getLayer
-Iteration 84: "Make Method Non Final" applied at class GraphicPrimitiveContainer to method getLayer
-Iteration 85: "Make Method Final" applied at class GraphicPrimitiveContainer to method getLayer
-Iteration 86: "Make Method Non Final" applied at class GraphicPrimitiveContainer to method getLayer
-Iteration 87: "Make Method Final" applied at class GraphicPrimitiveContainer to method getLayer
-Iteration 88: "Make Method Non Final" applied at class GraphicPrimitiveContainer to method getLayer
-Iteration 89: "Make Method Final" applied at class GraphicPrimitiveContainer to method getLayer
-Iteration 90: "Make Method Non Final" applied at class GraphicPrimitiveContainer to method getLayer
-Iteration 91: "Make Method Final" applied at class GraphicPrimitiveContainer to method getLayer
-Iteration 92: "Make Method Non Final" applied at class GraphicPrimitiveContainer to method getLayer
-Iteration 93: "Make Method Final" applied at class GraphicPrimitiveContainer to method getLayer
-Iteration 94: "Make Method Non Final" applied at class GraphicPrimitiveContainer to method getLayer
-Iteration 95: "Make Method Final" applied at class GraphicPrimitiveContainer to method getLayer
-Iteration 96: "Make Method Non Final" applied at class GraphicPrimitiveContainer to method getLayer
-Iteration 97: "Make Method Final" applied at class GraphicPrimitiveContainer to method getLayer
-Iteration 98: "Make Method Non Final" applied at class GraphicPrimitiveContainer to method getLayer
-Iteration 99: "Make Method Final" applied at class GraphicPrimitiveContainer to method getLayer
-Iteration 100: "Make Method Non Final" applied at class GraphicPrimitiveContainer to method getLayer
-Iteration 101: "Make Method Final" applied at class GraphicPrimitiveContainer to method getLayer
-Iteration 102: "Make Method Non Final" applied at class GraphicPrimitiveContainer to method getLayer
-Iteration 103: "Make Method Final" applied at class GraphicPrimitiveContainer to method getLayer
-Iteration 104: "Make Method Non Final" applied at class GraphicPrimitiveContainer to method getLayer
-Iteration 105: "Make Method Final" applied at class GraphicPrimitiveContainer to method getLayer
-Iteration 106: "Make Method Non Final" applied at class GraphicPrimitiveContainer to method getLayer
-Iteration 107: "Make Method Final" applied at class GraphicPrimitiveContainer to method getLayer
-Iteration 108: "Make Method Non Final" applied at class GraphicPrimitiveContainer to method getLayer
-Iteration 109: "Make Method Final" applied at class GraphicPrimitiveContainer to method getLayer
-Iteration 110: "Make Method Non Final" applied at class GraphicPrimitiveContainer to method getLayer
-Iteration 111: "Make Method Final" applied at class GraphicPrimitiveContainer to method getLayer
-Iteration 112: "Make Method Non Final" applied at class GraphicPrimitiveContainer to method getLayer
-Iteration 113: "Make Method Final" applied at class GraphicPrimitiveContainer to method getLayer
-Iteration 114: "Make Method Non Final" applied at class GraphicPrimitiveContainer to method getLayer
-Iteration 115: "Make Method Final" applied at class GraphicPrimitiveContainer to method getLayer
-Iteration 116: "Make Method Non Final" applied at class GraphicPrimitiveContainer to method getLayer
-Iteration 117: "Decrease Method Security" applied at class ChartModelResource to method enableRenderers2 from protected to public
-Iteration 118: "Make Method Final" applied at class GraphicPrimitiveContainer to method getLayer
-Iteration 119: "Make Method Non Final" applied at class GraphicPrimitiveContainer to method getLayer
-Iteration 120: "Increase Method Security" applied at class CSVOptions to method getXml from public to protected
-Iteration 121: "Make Class Concrete" applied to class ResourceAction
-Iteration 122: "Decrease Method Security" applied at class TaskDependency to method getDependantActivity from package to protected
-Iteration 123: "Increase Field Security" applied at class ProjectSettingsPanel to field tfName from package to private
-Iteration 124: "Make Field Static" applied at class GanttTXTOpen to field myTaskManager
-Iteration 125: "Decrease Method Security" applied at class AddWeekendAction to method getButtonLabel from package to protected
-Iteration 126: "Move Method Down" applied to method getComponent from GeneralOptionPanel to AboutAuthorPanel
-Iteration 127: "Make Method Non Final" applied at class Shape to method addActionListener
-Iteration 128: "Move Method Up" applied to method getExportName from ExportSettingsPanel to GeneralOptionPanel
-Iteration 129: "Make Method Non Final" applied at class RolesTableModel to method hasChanges
-Iteration 130: "Make Method Final" applied at class GraphicPrimitiveContainer to method getLayer
-Iteration 131: "Make Method Non Final" applied at class GraphicPrimitiveContainer to method getLayer
-Iteration 132: "Make Method Final" applied at class GraphicPrimitiveContainer to method getLayer
-Iteration 133: "Make Method Non Final" applied at class GraphicPrimitiveContainer to method getLayer
-Iteration 134: "Make Method Final" applied at class GraphicPrimitiveContainer to method getLayer
-Iteration 135: "Make Method Non Final" applied at class GraphicPrimitiveContainer to method getLayer
-Iteration 136: "Make Method Final" applied at class GraphicPrimitiveContainer to method getLayer
-Iteration 137: "Make Method Non Final" applied at class GraphicPrimitiveContainer to method getLayer
-Iteration 138: "Make Method Final" applied at class GraphicPrimitiveContainer to method getLayer
-Iteration 139: "Make Method Non Final" applied at class GraphicPrimitiveContainer to method getLayer
-Iteration 140: "Make Method Final" applied at class GraphicPrimitiveContainer to method getLayer
-Iteration 141: "Make Method Non Final" applied at class GraphicPrimitiveContainer to method getLayer
-Iteration 142: "Make Method Final" applied at class GraphicPrimitiveContainer to method getLayer
-Iteration 143: "Make Method Non Final" applied at class GraphicPrimitiveContainer to method getLayer
-Iteration 144: "Make Method Final" applied at class GraphicPrimitiveContainer to method getLayer
-Iteration 145: "Make Method Non Final" applied at class GraphicPrimitiveContainer to method getLayer
-Iteration 146: "Make Method Final" applied at class GraphicPrimitiveContainer to method getLayer
-Iteration 147: "Make Method Non Final" applied at class GraphicPrimitiveContainer to method getLayer
-Iteration 148: "Make Method Final" applied at class GraphicPrimitiveContainer to method getLayer
-Iteration 149: "Make Method Non Final" applied at class GraphicPrimitiveContainer to method getLayer
-Iteration 150: "Make Method Final" applied at class GraphicPrimitiveContainer to method getLayer
-Iteration 151: "Make Method Non Final" applied at class GraphicPrimitiveContainer to method getLayer
-Iteration 152: "Make Method Final" applied at class GraphicPrimitiveContainer to method getLayer
-Iteration 153: "Make Method Non Final" applied at class GraphicPrimitiveContainer to method getLayer
-Iteration 154: "Make Method Final" applied at class GraphicPrimitiveContainer to method getLayer
-Iteration 155: "Make Method Non Final" applied at class GraphicPrimitiveContainer to method getLayer
-Iteration 156: "Make Method Final" applied at class GraphicPrimitiveContainer to method getLayer
-Iteration 157: "Make Method Non Final" applied at class GraphicPrimitiveContainer to method getLayer
-Iteration 158: "Make Method Final" applied at class GraphicPrimitiveContainer to method getLayer
-Iteration 159: "Make Method Non Final" applied at class GraphicPrimitiveContainer to method getLayer
-Iteration 160: "Make Method Final" applied at class GraphicPrimitiveContainer to method getLayer
-Iteration 161: "Make Method Non Final" applied at class GraphicPrimitiveContainer to method getLayer
-Iteration 162: "Make Method Final" applied at class GraphicPrimitiveContainer to method getLayer
-Iteration 163: "Make Method Non Final" applied at class GraphicPrimitiveContainer to method getLayer
-Iteration 164: "Make Method Final" applied at class GraphicPrimitiveContainer to method getLayer
-Iteration 165: "Make Method Non Final" applied at class GraphicPrimitiveContainer to method getLayer
-Iteration 166: "Make Method Final" applied at class GraphicPrimitiveContainer to method getLayer
-Iteration 167: "Make Method Non Final" applied at class GraphicPrimitiveContainer to method getLayer
-Iteration 168: "Make Method Final" applied at class GraphicPrimitiveContainer to method getLayer
-Iteration 169: "Make Method Non Final" applied at class GraphicPrimitiveContainer to method getLayer
-Iteration 170: "Make Method Final" applied at class GraphicPrimitiveContainer to method getLayer
-Iteration 171: "Make Method Non Final" applied at class GraphicPrimitiveContainer to method getLayer
-Iteration 172: "Make Method Final" applied at class GraphicPrimitiveContainer to method getLayer
-Iteration 173: "Make Method Non Final" applied at class GraphicPrimitiveContainer to method getLayer
-Iteration 174: "Make Method Final" applied at class GraphicPrimitiveContainer to method getLayer
-Iteration 175: "Make Method Non Final" applied at class GraphicPrimitiveContainer to method getLayer
-Iteration 176: "Make Method Final" applied at class GraphicPrimitiveContainer to method getLayer
-Iteration 177: "Make Method Non Final" applied at class GraphicPrimitiveContainer to method getLayer
-Iteration 178: "Make Method Final" applied at class GraphicPrimitiveContainer to method getLayer
-Iteration 179: "Make Method Non Final" applied at class GraphicPrimitiveContainer to method getLayer
-Iteration 180: "Make Method Final" applied at class GraphicPrimitiveContainer to method getLayer
-Iteration 181: "Make Method Non Final" applied at class GraphicPrimitiveContainer to method getLayer
-Iteration 182: "Make Method Final" applied at class GraphicPrimitiveContainer to method getLayer
-Iteration 183: "Make Method Non Final" applied at class GraphicPrimitiveContainer to method getLayer
-Iteration 184: "Make Method Final" applied at class GraphicPrimitiveContainer to method getLayer
-Iteration 185: "Make Method Non Final" applied at class GraphicPrimitiveContainer to method getLayer
-Iteration 186: "Make Method Final" applied at class GraphicPrimitiveContainer to method getLayer
-Iteration 187: "Make Method Non Final" applied at class GraphicPrimitiveContainer to method getLayer
-Iteration 188: "Make Method Final" applied at class GraphicPrimitiveContainer to method getLayer
-Iteration 189: "Make Method Non Final" applied at class GraphicPrimitiveContainer to method getLayer
-Iteration 190: "Make Method Final" applied at class GraphicPrimitiveContainer to method getLayer
-Iteration 191: "Make Method Non Final" applied at class GraphicPrimitiveContainer to method getLayer
-Iteration 192: "Make Method Final" applied at class GraphicPrimitiveContainer to method getLayer
-Iteration 193: "Make Method Non Final" applied at class GraphicPrimitiveContainer to method getLayer
-Iteration 194: "Make Method Final" applied at class GraphicPrimitiveContainer to method getLayer
-Iteration 195: "Make Method Non Final" applied at class GraphicPrimitiveContainer to method getLayer
-Iteration 196: "Make Method Final" applied at class GraphicPrimitiveContainer to method getLayer
-Iteration 197: "Make Method Non Final" applied at class GraphicPrimitiveContainer to method getLayer
-Iteration 198: "Make Method Final" applied at class GraphicPrimitiveContainer to method getLayer
-Iteration 199: "Make Method Non Final" applied at class GraphicPrimitiveContainer to method getLayer
-Iteration 200: "Make Method Final" applied at class GraphicPrimitiveContainer to method getLayer
-Iteration 201: "Make Method Non Final" applied at class GraphicPrimitiveContainer to method getLayer
-Iteration 202: "Make Method Final" applied at class GraphicPrimitiveContainer to method getLayer
-Iteration 203: "Make Method Non Final" applied at class GraphicPrimitiveContainer to method getLayer
-Iteration 204: "Make Method Final" applied at class GraphicPrimitiveContainer to method getLayer
-Iteration 205: "Make Method Non Final" applied at class GraphicPrimitiveContainer to method getLayer
-Iteration 206: "Increase Method Security" applied at class CSVOptions to method getXml from protected to package
-Iteration 207: "Decrease Method Security" applied at class TaskDependency to method getDependantActivity from protected to public
-Iteration 208: "Decrease Method Security" applied at class AddWeekendAction to method getButtonLabel from protected to public
-Iteration 209: "Make Method Final" applied at class GraphicPrimitiveContainer to method getLayer
-Iteration 210: "Make Method Non Final" applied at class GraphicPrimitiveContainer to method getLayer
-Iteration 211: "Make Method Final" applied at class GraphicPrimitiveContainer to method getLayer
-Iteration 212: "Make Method Non Final" applied at class GraphicPrimitiveContainer to method getLayer
-Iteration 213: "Make Method Final" applied at class RolesTableModel to method hasChanges
-Iteration 214: "Make Method Final" applied at class GraphicPrimitiveContainer to method getLayer
-Iteration 215: "Make Method Non Final" applied at class GraphicPrimitiveContainer to method getLayer
-Iteration 216: "Make Method Final" applied at class GraphicPrimitiveContainer to method getLayer
-Iteration 217: "Make Method Non Final" applied at class GraphicPrimitiveContainer to method getLayer
-Iteration 218: "Make Method Final" applied at class GraphicPrimitiveContainer to method getLayer
-Iteration 219: "Make Method Non Final" applied at class GraphicPrimitiveContainer to method getLayer
-Iteration 220: "Make Method Final" applied at class GraphicPrimitiveContainer to method getLayer
-Iteration 221: "Make Method Non Final" applied at class GraphicPrimitiveContainer to method getLayer
-Iteration 222: "Make Method Final" applied at class GraphicPrimitiveContainer to method getLayer
-Iteration 223: "Make Method Non Final" applied at class GraphicPrimitiveContainer to method getLayer
-Iteration 224: "Make Method Final" applied at class GraphicPrimitiveContainer to method getLayer
-Iteration 225: "Make Method Non Final" applied at class GraphicPrimitiveContainer to method getLayer
-Iteration 226: "Make Method Final" applied at class GraphicPrimitiveContainer to method getLayer
-Iteration 227: "Make Method Non Final" applied at class GraphicPrimitiveContainer to method getLayer
-Iteration 228: "Make Method Final" applied at class GraphicPrimitiveContainer to method getLayer
-Iteration 229: "Make Method Non Final" applied at class GraphicPrimitiveContainer to method getLayer
-Iteration 230: "Make Method Final" applied at class GraphicPrimitiveContainer to method getLayer
-Iteration 231: "Make Method Non Final" applied at class GraphicPrimitiveContainer to method getLayer
-Iteration 232: "Make Method Final" applied at class GraphicPrimitiveContainer to method getLayer
-Iteration 233: "Make Method Non Final" applied at class GraphicPrimitiveContainer to method getLayer
-Iteration 234: "Make Method Final" applied at class GraphicPrimitiveContainer to method getLayer
-Iteration 235: "Make Method Non Final" applied at class GraphicPrimitiveContainer to method getLayer
-Iteration 236: "Make Method Final" applied at class GraphicPrimitiveContainer to method getLayer
-Iteration 237: "Make Method Non Final" applied at class GraphicPrimitiveContainer to method getLayer
-Iteration 238: "Make Method Final" applied at class GraphicPrimitiveContainer to method getLayer
-Iteration 239: "Make Method Non Final" applied at class GraphicPrimitiveContainer to method getLayer
-Iteration 240: "Make Method Final" applied at class GraphicPrimitiveContainer to method getLayer
-Iteration 241: "Make Method Non Final" applied at class GraphicPrimitiveContainer to method getLayer
-Iteration 242: "Make Method Final" applied at class GraphicPrimitiveContainer to method getLayer
-Iteration 243: "Make Method Non Final" applied at class GraphicPrimitiveContainer to method getLayer
-Iteration 244: "Make Method Final" applied at class GraphicPrimitiveContainer to method getLayer
-Iteration 245: "Make Method Non Final" applied at class GraphicPrimitiveContainer to method getLayer
-Iteration 246: "Make Method Final" applied at class GraphicPrimitiveContainer to method getLayer
-Iteration 247: "Make Method Non Final" applied at class GraphicPrimitiveContainer to method getLayer
-Iteration 248: "Make Method Final" applied at class GraphicPrimitiveContainer to method getLayer
-Iteration 249: "Make Method Non Final" applied at class GraphicPrimitiveContainer to method getLayer
-Iteration 250: "Make Method Final" applied at class GraphicPrimitiveContainer to method getLayer
-Iteration 251: "Make Method Non Final" applied at class GraphicPrimitiveContainer to method getLayer
-Iteration 252: "Make Method Final" applied at class GraphicPrimitiveContainer to method getLayer
-Iteration 253: "Make Method Non Final" applied at class GraphicPrimitiveContainer to method getLayer
-Iteration 254: "Make Method Final" applied at class GraphicPrimitiveContainer to method getLayer
-Iteration 255: "Make Method Non Final" applied at class GraphicPrimitiveContainer to method getLayer
-Iteration 256: "Make Method Final" applied at class GraphicPrimitiveContainer to method getLayer
-Iteration 257: "Make Method Non Final" applied at class GraphicPrimitiveContainer to method getLayer
-Iteration 258: "Make Method Final" applied at class GraphicPrimitiveContainer to method getLayer
-Iteration 259: "Make Method Non Final" applied at class GraphicPrimitiveContainer to method getLayer
-Iteration 260: "Make Method Final" applied at class GraphicPrimitiveContainer to method getLayer
-Iteration 261: "Make Method Non Final" applied at class GraphicPrimitiveContainer to method getLayer
-Iteration 262: "Make Method Final" applied at class GraphicPrimitiveContainer to method getLayer
-Iteration 263: "Make Method Non Final" applied at class GraphicPrimitiveContainer to method getLayer
-Iteration 264: "Make Method Final" applied at class GraphicPrimitiveContainer to method getLayer
-Iteration 265: "Make Method Non Final" applied at class GraphicPrimitiveContainer to method getLayer
-Iteration 266: "Make Method Final" applied at class GraphicPrimitiveContainer to method getLayer
-Iteration 267: "Make Method Non Final" applied at class GraphicPrimitiveContainer to method getLayer
-Iteration 268: "Make Method Final" applied at class GraphicPrimitiveContainer to method getLayer
-Iteration 269: "Make Method Non Final" applied at class GraphicPrimitiveContainer to method getLayer
-Iteration 270: "Make Method Final" applied at class GraphicPrimitiveContainer to method getLayer
-Iteration 271: "Make Method Non Final" applied at class GraphicPrimitiveContainer to method getLayer
-Iteration 272: "Make Method Final" applied at class GraphicPrimitiveContainer to method getLayer
-Iteration 273: "Make Method Non Final" applied at class GraphicPrimitiveContainer to method getLayer
-Iteration 274: "Make Method Final" applied at class GraphicPrimitiveContainer to method getLayer
-Iteration 275: "Make Method Non Final" applied at class GraphicPrimitiveContainer to method getLayer
-Iteration 276: "Make Method Final" applied at class GraphicPrimitiveContainer to method getLayer
-Iteration 277: "Make Method Non Final" applied at class GraphicPrimitiveContainer to method getLayer
-Iteration 278: "Make Method Final" applied at class GraphicPrimitiveContainer to method getLayer
-Iteration 279: "Make Method Non Final" applied at class GraphicPrimitiveContainer to method getLayer
-Iteration 280: "Make Method Final" applied at class GraphicPrimitiveContainer to method getLayer
-Iteration 281: "Make Method Non Final" applied at class GraphicPrimitiveContainer to method getLayer
-Iteration 282: "Make Method Final" applied at class GraphicPrimitiveContainer to method getLayer
-Iteration 283: "Make Method Non Final" applied at class GraphicPrimitiveContainer to method getLayer
-Iteration 284: "Make Method Final" applied at class GraphicPrimitiveContainer to method getLayer
-Iteration 285: "Make Method Non Final" applied at class GraphicPrimitiveContainer to method getLayer
-Iteration 286: "Make Method Final" applied at class GraphicPrimitiveContainer to method getLayer
-Iteration 287: "Make Method Non Final" applied at class GraphicPrimitiveContainer to method getLayer
-Iteration 288: "Make Method Final" applied at class GraphicPrimitiveContainer to method getLayer
-Iteration 289: "Make Method Non Final" applied at class GraphicPrimitiveContainer to method getLayer
-Iteration 290: "Make Method Final" applied at class GraphicPrimitiveContainer to method getLayer
-Iteration 291: "Make Method Non Final" applied at class GraphicPrimitiveContainer to method getLayer
-Iteration 292: "Make Method Final" applied at class GraphicPrimitiveContainer to method getLayer
-Iteration 293: "Make Method Non Final" applied at class GraphicPrimitiveContainer to method getLayer
-Iteration 294: "Make Method Final" applied at class GraphicPrimitiveContainer to method getLayer
-Iteration 295: "Make Method Non Final" applied at class GraphicPrimitiveContainer to method getLayer
-Iteration 296: "Make Method Final" applied at class GraphicPrimitiveContainer to method getLayer
-Iteration 297: "Make Method Non Final" applied at class GraphicPrimitiveContainer to method getLayer
-Iteration 298: "Make Method Final" applied at class GraphicPrimitiveContainer to method getLayer
-Iteration 299: "Make Method Non Final" applied at class GraphicPrimitiveContainer to method getLayer
-Iteration 300: "Make Method Final" applied at class GraphicPrimitiveContainer to method getLayer
-Iteration 301: "Make Method Non Final" applied at class GraphicPrimitiveContainer to method getLayer
-Iteration 302: "Make Method Final" applied at class GraphicPrimitiveContainer to method getLayer
-Iteration 303: "Make Method Non Final" applied at class GraphicPrimitiveContainer to method getLayer
-Iteration 304: "Make Method Final" applied at class GraphicPrimitiveContainer to method getLayer
-Iteration 305: "Make Method Non Final" applied at class GraphicPrimitiveContainer to method getLayer
-Iteration 306: "Make Method Final" applied at class GraphicPrimitiveContainer to method getLayer
-Iteration 307: "Make Method Non Final" applied at class GraphicPrimitiveContainer to method getLayer
-Iteration 308: "Make Method Final" applied at class GraphicPrimitiveContainer to method getLayer
-Iteration 309: "Make Method Non Final" applied at class GraphicPrimitiveContainer to method getLayer
-Iteration 310: "Make Method Final" applied at class GraphicPrimitiveContainer to method getLayer
-Iteration 311: "Make Method Non Final" applied at class GraphicPrimitiveContainer to method getLayer
-Iteration 312: "Make Method Final" applied at class GraphicPrimitiveContainer to method getLayer
-Iteration 313: "Make Method Non Final" applied at class GraphicPrimitiveContainer to method getLayer
-Iteration 314: "Make Method Final" applied at class GraphicPrimitiveContainer to method getLayer
-Iteration 315: "Make Method Non Final" applied at class GraphicPrimitiveContainer to method getLayer
-Iteration 316: "Make Method Final" applied at class GraphicPrimitiveContainer to method getLayer
-Iteration 317: "Make Method Non Final" applied at class GraphicPrimitiveContainer to method getLayer
-Iteration 318: "Make Method Final" applied at class GraphicPrimitiveContainer to method getLayer
-Iteration 319: "Make Method Non Final" applied at class GraphicPrimitiveContainer to method getLayer
-Iteration 320: "Make Method Final" applied at class GraphicPrimitiveContainer to method getLayer
-Iteration 321: "Make Method Non Final" applied at class GraphicPrimitiveContainer to method getLayer
-Iteration 322: "Make Method Final" applied at class GraphicPrimitiveContainer to method getLayer
-Iteration 323: "Make Method Non Final" applied at class GraphicPrimitiveContainer to method getLayer
-Iteration 324: "Make Method Final" applied at class GraphicPrimitiveContainer to method getLayer
-Iteration 325: "Make Method Non Final" applied at class GraphicPrimitiveContainer to method getLayer
-Iteration 326: "Make Method Final" applied at class GraphicPrimitiveContainer to method getLayer
-Iteration 327: "Make Method Non Final" applied at class GraphicPrimitiveContainer to method getLayer
-Iteration 328: "Make Method Final" applied at class GraphicPrimitiveContainer to method getLayer
-Iteration 329: "Make Method Non Final" applied at class GraphicPrimitiveContainer to method getLayer
-Iteration 330: "Make Method Final" applied at class GraphicPrimitiveContainer to method getLayer
-Iteration 331: "Make Method Non Final" applied at class GraphicPrimitiveContainer to method getLayer
-Iteration 332: "Make Method Final" applied at class GraphicPrimitiveContainer to method getLayer
-Iteration 333: "Make Method Non Final" applied at class GraphicPrimitiveContainer to method getLayer
-Iteration 334: "Make Method Final" applied at class GraphicPrimitiveContainer to method getLayer
-Iteration 335: "Make Method Non Final" applied at class GraphicPrimitiveContainer to method getLayer
-Iteration 336: "Increase Method Security" applied at class CSVOptions to method getXml from package to private
-Iteration 337: "Make Method Non Final" applied at class RolesTableModel to method hasChanges
-Iteration 338: "Decrease Method Security" applied at class ChartModelBase to method createAlternance from package to protected
-Iteration 339: "Decrease Method Security" applied at class EventDispatcher to method fireDependencyAdded from package to protected
-Iteration 340: "Make Method Static" applied at class GanttXFIGFileFilter to method accept
-Iteration 341: "Make Method Static" applied at class WelcomeSettingsPanel to method initialize
-Iteration 342: "Make Field Final" applied at class PDFExportData to ParameterDeclaration ganttTree
-Iteration 343: "Increase Field Security" applied at class TimeFrameImpl to field myRoundedCount from package to private
-Iteration 344: "Decrease Method Security" applied at class GanttMPXJOpen to method processResources from private to package
-Iteration 345: "Make Class Abstract" applied to class ChartItem
-Iteration 346: "Increase Field Security" applied at class GanttXMLSaver to field s from package to private
-Iteration 347: "Decrease Method Security" applied at class TaskDependencyCollectionImpl to method auxCreateDependency from private to package
-Iteration 348: "Remove Method" applied at class LoadDistribution to method getDaysOff
-Iteration 349: "Increase Method Security" applied at class ProjectSettingsPanel to method getProjectName from public to protected
-Iteration 350: "Make Class Concrete" applied to class WizardImpl
-Iteration 351: "Make Method Final" applied at class GraphicPrimitiveContainer to method getLayer
-Iteration 352: "Make Method Non Final" applied at class GraphicPrimitiveContainer to method getLayer
-Iteration 353: "Make Method Final" applied at class GraphicPrimitiveContainer to method getLayer
-Iteration 354: "Make Method Non Final" applied at class GraphicPrimitiveContainer to method getLayer
-Iteration 355: "Make Method Final" applied at class GraphicPrimitiveContainer to method getLayer
-Iteration 356: "Make Method Non Final" applied at class GraphicPrimitiveContainer to method getLayer
-Iteration 357: "Make Method Final" applied at class GraphicPrimitiveContainer to method getLayer
-Iteration 358: "Make Method Non Final" applied at class GraphicPrimitiveContainer to method getLayer
-Iteration 359: "Make Method Final" applied at class GraphicPrimitiveContainer to method getLayer
-Iteration 360: "Make Method Non Final" applied at class GraphicPrimitiveContainer to method getLayer
-Iteration 361: "Make Method Final" applied at class GraphicPrimitiveContainer to method getLayer
-Iteration 362: "Make Method Non Final" applied at class GraphicPrimitiveContainer to method getLayer
-Iteration 363: "Make Method Final" applied at class GraphicPrimitiveContainer to method getLayer
-Iteration 364: "Make Method Non Final" applied at class GraphicPrimitiveContainer to method getLayer
-Iteration 365: "Make Method Final" applied at class GraphicPrimitiveContainer to method getLayer
-Iteration 366: "Make Method Non Final" applied at class GraphicPrimitiveContainer to method getLayer
-Iteration 367: "Make Method Final" applied at class GraphicPrimitiveContainer to method getLayer
-Iteration 368: "Make Method Non Final" applied at class GraphicPrimitiveContainer to method getLayer
-Iteration 369: "Make Method Final" applied at class GraphicPrimitiveContainer to method getLayer
-Iteration 370: "Make Method Non Final" applied at class GraphicPrimitiveContainer to method getLayer
-Iteration 371: "Make Method Final" applied at class GraphicPrimitiveContainer to method getLayer
-Iteration 372: "Make Method Non Final" applied at class GraphicPrimitiveContainer to method getLayer
-Iteration 373: "Make Method Final" applied at class GraphicPrimitiveContainer to method getLayer
-Iteration 374: "Make Method Non Final" applied at class GraphicPrimitiveContainer to method getLayer
-Iteration 375: "Make Method Final" applied at class GraphicPrimitiveContainer to method getLayer
-Iteration 376: "Make Method Non Final" applied at class GraphicPrimitiveContainer to method getLayer
-Iteration 377: "Make Method Final" applied at class GraphicPrimitiveContainer to method getLayer
-Iteration 378: "Make Method Non Final" applied at class GraphicPrimitiveContainer to method getLayer
-Iteration 379: "Make Method Final" applied at class GraphicPrimitiveContainer to method getLayer
-Iteration 380: "Make Method Non Final" applied at class GraphicPrimitiveContainer to method getLayer
-Iteration 381: "Make Method Final" applied at class GraphicPrimitiveContainer to method getLayer
-Iteration 382: "Make Method Non Final" applied at class GraphicPrimitiveContainer to method getLayer
-Iteration 383: "Make Method Final" applied at class GraphicPrimitiveContainer to method getLayer
-Iteration 384: "Make Method Non Final" applied at class GraphicPrimitiveContainer to method getLayer
-Iteration 385: "Make Method Final" applied at class GraphicPrimitiveContainer to method getLayer
-Iteration 386: "Make Method Non Final" applied at class GraphicPrimitiveContainer to method getLayer
-Iteration 387: "Make Method Final" applied at class GraphicPrimitiveContainer to method getLayer
-Iteration 388: "Make Method Non Final" applied at class GraphicPrimitiveContainer to method getLayer
-Iteration 389: "Make Method Final" applied at class GraphicPrimitiveContainer to method getLayer
-Iteration 390: "Make Method Non Final" applied at class GraphicPrimitiveContainer to method getLayer
-Iteration 391: "Make Method Final" applied at class GraphicPrimitiveContainer to method getLayer
-Iteration 392: "Make Method Non Final" applied at class GraphicPrimitiveContainer to method getLayer
-Iteration 393: "Make Method Final" applied at class GraphicPrimitiveContainer to method getLayer
-Iteration 394: "Make Method Non Final" applied at class GraphicPrimitiveContainer to method getLayer
-Iteration 395: "Make Method Final" applied at class GraphicPrimitiveContainer to method getLayer
-Iteration 396: "Make Method Non Final" applied at class GraphicPrimitiveContainer to method getLayer
-Iteration 397: "Make Method Final" applied at class GraphicPrimitiveContainer to method getLayer
-Iteration 398: "Make Method Non Final" applied at class GraphicPrimitiveContainer to method getLayer
-Iteration 399: "Make Method Final" applied at class GraphicPrimitiveContainer to method getLayer
-Iteration 400: "Make Method Non Final" applied at class GraphicPrimitiveContainer to method getLayer
-Iteration 401: "Make Method Final" applied at class GraphicPrimitiveContainer to method getLayer
-Iteration 402: "Make Method Non Final" applied at class GraphicPrimitiveContainer to method getLayer
-Iteration 403: "Make Method Final" applied at class GraphicPrimitiveContainer to method getLayer
-Iteration 404: "Make Method Non Final" applied at class GraphicPrimitiveContainer to method getLayer
-Iteration 405: "Make Method Final" applied at class GraphicPrimitiveContainer to method getLayer
-Iteration 406: "Make Method Non Final" applied at class GraphicPrimitiveContainer to method getLayer
-Iteration 407: "Make Method Final" applied at class GraphicPrimitiveContainer to method getLayer
-Iteration 408: "Make Method Non Final" applied at class GraphicPrimitiveContainer to method getLayer
-Iteration 409: "Make Method Final" applied at class GraphicPrimitiveContainer to method getLayer
-Iteration 410: "Make Method Non Final" applied at class GraphicPrimitiveContainer to method getLayer
-Iteration 411: "Make Method Final" applied at class GraphicPrimitiveContainer to method getLayer
-Iteration 412: "Make Method Non Final" applied at class GraphicPrimitiveContainer to method getLayer
-Iteration 413: "Make Method Final" applied at class GraphicPrimitiveContainer to method getLayer
-Iteration 414: "Make Method Non Final" applied at class GraphicPrimitiveContainer to method getLayer
-Iteration 415: "Make Method Final" applied at class GraphicPrimitiveContainer to method getLayer
-Iteration 416: "Make Method Non Final" applied at class GraphicPrimitiveContainer to method getLayer
-Iteration 417: "Make Method Final" applied at class GraphicPrimitiveContainer to method getLayer
-Iteration 418: "Make Method Non Final" applied at class GraphicPrimitiveContainer to method getLayer
-Iteration 419: "Make Method Final" applied at class GraphicPrimitiveContainer to method getLayer
-Iteration 420: "Make Method Non Final" applied at class GraphicPrimitiveContainer to method getLayer
-Iteration 421: "Decrease Method Security" applied at class GanttMPXJOpen to method processResources from package to protected
-Iteration 422: "Decrease Method Security" applied at class TaskDependencyCollectionImpl to method auxCreateDependency from package to protected
-Iteration 423: "Increase Method Security" applied at class ProjectSettingsPanel to method getProjectName from protected to package
-Iteration 424: "Make Class Abstract" applied to class GraphicPrimitive
-Iteration 425: "Make Class Concrete" applied to class GraphicPrimitive
-Iteration 426: "Make Method Final" applied at class Shape to method addActionListener
-Iteration 427: "Make Method Final" applied at class GraphicPrimitiveContainer to method getLayer
-Iteration 428: "Make Method Non Final" applied at class GraphicPrimitiveContainer to method getLayer
-Iteration 429: "Make Method Final" applied at class GraphicPrimitiveContainer to method getLayer
-Iteration 430: "Make Method Non Final" applied at class GraphicPrimitiveContainer to method getLayer
-Iteration 431: "Make Method Final" applied at class RolesTableModel to method hasChanges
-Iteration 432: "Make Method Final" applied at class GraphicPrimitiveContainer to method getLayer
-Iteration 433: "Make Method Non Final" applied at class GraphicPrimitiveContainer to method getLayer
-Iteration 434: "Make Method Final" applied at class GraphicPrimitiveContainer to method getLayer
-Iteration 435: "Make Method Non Final" applied at class GraphicPrimitiveContainer to method getLayer
-Iteration 436: "Make Method Final" applied at class GraphicPrimitiveContainer to method getLayer
-Iteration 437: "Make Method Non Final" applied at class GraphicPrimitiveContainer to method getLayer
-Iteration 438: "Make Method Final" applied at class GraphicPrimitiveContainer to method getLayer
-Iteration 439: "Make Method Non Final" applied at class GraphicPrimitiveContainer to method getLayer
-Iteration 440: "Make Method Final" applied at class GraphicPrimitiveContainer to method getLayer
-Iteration 441: "Make Method Non Final" applied at class GraphicPrimitiveContainer to method getLayer
-Iteration 442: "Make Method Final" applied at class GraphicPrimitiveContainer to method getLayer
-Iteration 443: "Make Method Non Final" applied at class GraphicPrimitiveContainer to method getLayer
-Iteration 444: "Make Method Final" applied at class GraphicPrimitiveContainer to method getLayer
-Iteration 445: "Make Method Non Final" applied at class GraphicPrimitiveContainer to method getLayer
-Iteration 446: "Make Method Final" applied at class GraphicPrimitiveContainer to method getLayer
-Iteration 447: "Make Method Non Final" applied at class GraphicPrimitiveContainer to method getLayer
-Iteration 448: "Make Method Final" applied at class GraphicPrimitiveContainer to method getLayer
-Iteration 449: "Make Method Non Final" applied at class GraphicPrimitiveContainer to method getLayer
-Iteration 450: "Make Method Final" applied at class GraphicPrimitiveContainer to method getLayer
-Iteration 451: "Make Method Non Final" applied at class GraphicPrimitiveContainer to method getLayer
-Iteration 452: "Make Method Final" applied at class GraphicPrimitiveContainer to method getLayer
-Iteration 453: "Make Method Non Final" applied at class GraphicPrimitiveContainer to method getLayer
-Iteration 454: "Make Method Final" applied at class GraphicPrimitiveContainer to method getLayer
-Iteration 455: "Make Method Non Final" applied at class GraphicPrimitiveContainer to method getLayer
-Iteration 456: "Make Method Final" applied at class GraphicPrimitiveContainer to method getLayer
-Iteration 457: "Make Method Non Final" applied at class GraphicPrimitiveContainer to method getLayer
-Iteration 458: "Make Method Final" applied at class GraphicPrimitiveContainer to method getLayer
-Iteration 459: "Make Method Non Final" applied at class GraphicPrimitiveContainer to method getLayer
-Iteration 460: "Make Method Final" applied at class GraphicPrimitiveContainer to method getLayer
-Iteration 461: "Make Method Non Final" applied at class GraphicPrimitiveContainer to method getLayer
-Iteration 462: "Make Method Final" applied at class GraphicPrimitiveContainer to method getLayer
-Iteration 463: "Make Method Non Final" applied at class GraphicPrimitiveContainer to method getLayer
-Iteration 464: "Make Method Final" applied at class GraphicPrimitiveContainer to method getLayer
-Iteration 465: "Make Method Non Final" applied at class GraphicPrimitiveContainer to method getLayer
-Iteration 466: "Make Method Final" applied at class GraphicPrimitiveContainer to method getLayer
-Iteration 467: "Make Method Non Final" applied at class GraphicPrimitiveContainer to method getLayer
-Iteration 468: "Make Method Final" applied at class GraphicPrimitiveContainer to method getLayer
-Iteration 469: "Make Method Non Final" applied at class GraphicPrimitiveContainer to method getLayer
-Iteration 470: "Make Method Final" applied at class GraphicPrimitiveContainer to method getLayer
-Iteration 471: "Make Method Non Final" applied at class GraphicPrimitiveContainer to method getLayer
-Iteration 472: "Make Method Final" applied at class GraphicPrimitiveContainer to method getLayer
-Iteration 473: "Make Method Non Final" applied at class GraphicPrimitiveContainer to method getLayer
-Iteration 474: "Make Method Final" applied at class GraphicPrimitiveContainer to method getLayer
-Iteration 475: "Make Method Non Final" applied at class GraphicPrimitiveContainer to method getLayer
-Iteration 476: "Make Method Final" applied at class GraphicPrimitiveContainer to method getLayer
-Iteration 477: "Make Method Non Final" applied at class GraphicPrimitiveContainer to method getLayer
-Iteration 478: "Make Method Final" applied at class GraphicPrimitiveContainer to method getLayer
-Iteration 479: "Make Method Non Final" applied at class GraphicPrimitiveContainer to method getLayer
-Iteration 480: "Make Method Final" applied at class GraphicPrimitiveContainer to method getLayer
-Iteration 481: "Make Method Non Final" applied at class GraphicPrimitiveContainer to method getLayer
-Iteration 482: "Make Method Final" applied at class GraphicPrimitiveContainer to method getLayer
-Iteration 483: "Make Method Non Final" applied at class GraphicPrimitiveContainer to method getLayer
-Iteration 484: "Make Method Final" applied at class GraphicPrimitiveContainer to method getLayer
-Iteration 485: "Make Method Non Final" applied at class GraphicPrimitiveContainer to method getLayer
-Iteration 486: "Make Method Final" applied at class GraphicPrimitiveContainer to method getLayer
-Iteration 487: "Make Method Non Final" applied at class GraphicPrimitiveContainer to method getLayer
-Iteration 488: "Make Method Final" applied at class GraphicPrimitiveContainer to method getLayer
-Iteration 489: "Make Method Non Final" applied at class GraphicPrimitiveContainer to method getLayer
-Iteration 490: "Make Method Final" applied at class GraphicPrimitiveContainer to method getLayer
-Iteration 491: "Make Method Non Final" applied at class GraphicPrimitiveContainer to method getLayer
-Iteration 492: "Make Method Final" applied at class GraphicPrimitiveContainer to method getLayer
-Iteration 493: "Make Method Non Final" applied at class GraphicPrimitiveContainer to method getLayer
-Iteration 494: "Make Method Final" applied at class GraphicPrimitiveContainer to method getLayer
-Iteration 495: "Make Method Non Final" applied at class GraphicPrimitiveContainer to method getLayer
-Iteration 496: "Make Method Final" applied at class GraphicPrimitiveContainer to method getLayer
-Iteration 497: "Make Method Non Final" applied at class GraphicPrimitiveContainer to method getLayer
-Iteration 498: "Make Method Final" applied at class GraphicPrimitiveContainer to method getLayer
-Iteration 499: "Make Method Non Final" applied at class GraphicPrimitiveContainer to method getLayer
-Iteration 500: "Make Method Final" applied at class GraphicPrimitiveContainer to method getLayer
-Iteration 501: "Make Method Non Final" applied at class GraphicPrimitiveContainer to method getLayer
-Iteration 502: "Make Method Final" applied at class GraphicPrimitiveContainer to method getLayer
-Iteration 503: "Make Method Non Final" applied at class GraphicPrimitiveContainer to method getLayer
-Iteration 504: "Make Method Final" applied at class GraphicPrimitiveContainer to method getLayer
-Iteration 505: "Make Method Non Final" applied at class GraphicPrimitiveContainer to method getLayer
-Iteration 506: "Make Method Final" applied at class GraphicPrimitiveContainer to method getLayer
-Iteration 507: "Make Method Non Final" applied at class GraphicPrimitiveContainer to method getLayer
-Iteration 508: "Make Method Final" applied at class GraphicPrimitiveContainer to method getLayer
-Iteration 509: "Make Method Non Final" applied at class GraphicPrimitiveContainer to method getLayer
-Iteration 510: "Make Method Final" applied at class GraphicPrimitiveContainer to method getLayer
-Iteration 511: "Make Method Non Final" applied at class GraphicPrimitiveContainer to method getLayer
-Iteration 512: "Make Method Final" applied at class GraphicPrimitiveContainer to method getLayer
-Iteration 513: "Make Method Non Final" applied at class GraphicPrimitiveContainer to method getLayer
-Iteration 514: "Make Method Final" applied at class GraphicPrimitiveContainer to method getLayer
-Iteration 515: "Make Method Non Final" applied at class GraphicPrimitiveContainer to method getLayer
-Iteration 516: "Make Method Final" applied at class GraphicPrimitiveContainer to method getLayer
-Iteration 517: "Make Method Non Final" applied at class GraphicPrimitiveContainer to method getLayer
-Iteration 518: "Make Method Final" applied at class GraphicPrimitiveContainer to method getLayer
-Iteration 519: "Make Method Non Final" applied at class GraphicPrimitiveContainer to method getLayer
-Iteration 520: "Make Method Final" applied at class GraphicPrimitiveContainer to method getLayer
-Iteration 521: "Make Method Non Final" applied at class GraphicPrimitiveContainer to method getLayer
-Iteration 522: "Make Method Final" applied at class GraphicPrimitiveContainer to method getLayer
-Iteration 523: "Make Method Non Final" applied at class GraphicPrimitiveContainer to method getLayer
-Iteration 524: "Make Method Final" applied at class GraphicPrimitiveContainer to method getLayer
-Iteration 525: "Make Method Non Final" applied at class GraphicPrimitiveContainer to method getLayer
-Iteration 526: "Make Method Final" applied at class GraphicPrimitiveContainer to method getLayer
-Iteration 527: "Make Method Non Final" applied at class GraphicPrimitiveContainer to method getLayer
-Iteration 528: "Make Method Final" applied at class GraphicPrimitiveContainer to method getLayer
-Iteration 529: "Make Method Non Final" applied at class GraphicPrimitiveContainer to method getLayer
-Iteration 530: "Make Method Non Final" applied at class RolesTableModel to method hasChanges
-Iteration 531: "Decrease Method Security" applied at class ChartModelBase to method createAlternance from protected to public
-Iteration 532: "Decrease Method Security" applied at class EventDispatcher to method fireDependencyAdded from protected to public
-Iteration 533: "Decrease Method Security" applied at class GanttMPXJOpen to method processResources from protected to public
-Iteration 534: "Decrease Method Security" applied at class TaskDependencyCollectionImpl to method auxCreateDependency from protected to public
-Iteration 535: "Increase Method Security" applied at class ProjectSettingsPanel to method getProjectName from package to private
-Iteration 536: "Make Method Final" applied at class GraphicPrimitiveContainer to method getLayer
-Iteration 537: "Make Method Non Final" applied at class GraphicPrimitiveContainer to method getLayer
-Iteration 538: "Make Method Final" applied at class GraphicPrimitiveContainer to method getLayer
-Iteration 539: "Make Method Non Final" applied at class GraphicPrimitiveContainer to method getLayer
-Iteration 540: "Make Method Final" applied at class GraphicPrimitiveContainer to method getLayer
-Iteration 541: "Make Method Non Final" applied at class GraphicPrimitiveContainer to method getLayer
-Iteration 542: "Make Method Final" applied at class GraphicPrimitiveContainer to method getLayer
-Iteration 543: "Make Method Non Final" applied at class GraphicPrimitiveContainer to method getLayer
-Iteration 544: "Make Method Final" applied at class GraphicPrimitiveContainer to method getLayer
-Iteration 545: "Make Method Non Final" applied at class GraphicPrimitiveContainer to method getLayer
-Iteration 546: "Make Method Final" applied at class GraphicPrimitiveContainer to method getLayer
-Iteration 547: "Make Method Non Final" applied at class GraphicPrimitiveContainer to method getLayer
-Iteration 548: "Make Method Final" applied at class GraphicPrimitiveContainer to method getLayer
-Iteration 549: "Make Method Non Final" applied at class GraphicPrimitiveContainer to method getLayer
-Iteration 550: "Make Method Final" applied at class GraphicPrimitiveContainer to method getLayer
-Iteration 551: "Make Method Non Final" applied at class GraphicPrimitiveContainer to method getLayer
-Iteration 552: "Make Method Final" applied at class GraphicPrimitiveContainer to method getLayer
-Iteration 553: "Make Method Non Final" applied at class GraphicPrimitiveContainer to method getLayer
-Iteration 554: "Make Method Final" applied at class GraphicPrimitiveContainer to method getLayer
-Iteration 555: "Make Method Non Final" applied at class GraphicPrimitiveContainer to method getLayer
-Iteration 556: "Make Method Final" applied at class GraphicPrimitiveContainer to method getLayer
-Iteration 557: "Make Method Non Final" applied at class GraphicPrimitiveContainer to method getLayer
-Iteration 558: "Make Method Final" applied at class GraphicPrimitiveContainer to method getLayer
-Iteration 559: "Make Method Non Final" applied at class GraphicPrimitiveContainer to method getLayer
-Iteration 560: "Make Method Final" applied at class GraphicPrimitiveContainer to method getLayer
-Iteration 561: "Make Method Non Final" applied at class GraphicPrimitiveContainer to method getLayer
-Iteration 562: "Make Method Final" applied at class GraphicPrimitiveContainer to method getLayer
-Iteration 563: "Make Method Non Final" applied at class GraphicPrimitiveContainer to method getLayer
-Iteration 564: "Make Method Final" applied at class GraphicPrimitiveContainer to method getLayer
-Iteration 565: "Make Method Non Final" applied at class GraphicPrimitiveContainer to method getLayer
-Iteration 566: "Make Method Final" applied at class GraphicPrimitiveContainer to method getLayer
-Iteration 567: "Make Method Non Final" applied at class GraphicPrimitiveContainer to method getLayer
-Iteration 568: "Make Method Final" applied at class GraphicPrimitiveContainer to method getLayer
-Iteration 569: "Make Method Non Final" applied at class GraphicPrimitiveContainer to method getLayer
-Iteration 570: "Make Method Final" applied at class GraphicPrimitiveContainer to method getLayer
-Iteration 571: "Make Method Non Final" applied at class GraphicPrimitiveContainer to method getLayer
-Iteration 572: "Make Method Final" applied at class GraphicPrimitiveContainer to method getLayer
-Iteration 573: "Make Method Non Final" applied at class GraphicPrimitiveContainer to method getLayer
-Iteration 574: "Make Method Final" applied at class GraphicPrimitiveContainer to method getLayer
-Iteration 575: "Make Method Non Final" applied at class GraphicPrimitiveContainer to method getLayer
-Iteration 576: "Make Method Final" applied at class GraphicPrimitiveContainer to method getLayer
-Iteration 577: "Make Method Non Final" applied at class GraphicPrimitiveContainer to method getLayer
-Iteration 578: "Make Method Final" applied at class GraphicPrimitiveContainer to method getLayer
-Iteration 579: "Make Method Non Final" applied at class GraphicPrimitiveContainer to method getLayer
-Iteration 580: "Make Method Final" applied at class GraphicPrimitiveContainer to method getLayer
-Iteration 581: "Make Method Non Final" applied at class GraphicPrimitiveContainer to method getLayer
-Iteration 582: "Make Method Final" applied at class GraphicPrimitiveContainer to method getLayer
-Iteration 583: "Make Method Non Final" applied at class GraphicPrimitiveContainer to method getLayer
-Iteration 584: "Make Method Final" applied at class GraphicPrimitiveContainer to method getLayer
-Iteration 585: "Make Method Non Final" applied at class GraphicPrimitiveContainer to method getLayer
-Iteration 586: "Make Method Final" applied at class GraphicPrimitiveContainer to method getLayer
-Iteration 587: "Make Method Non Final" applied at class GraphicPrimitiveContainer to method getLayer
-Iteration 588: "Make Method Final" applied at class GraphicPrimitiveContainer to method getLayer
-Iteration 589: "Make Method Non Final" applied at class GraphicPrimitiveContainer to method getLayer
-Iteration 590: "Make Method Final" applied at class GraphicPrimitiveContainer to method getLayer
-Iteration 591: "Make Method Non Final" applied at class GraphicPrimitiveContainer to method getLayer
-Iteration 592: "Make Method Final" applied at class GraphicPrimitiveContainer to method getLayer
-Iteration 593: "Make Method Non Final" applied at class GraphicPrimitiveContainer to method getLayer
-Iteration 594: "Make Method Final" applied at class GraphicPrimitiveContainer to method getLayer
-Iteration 595: "Make Method Non Final" applied at class GraphicPrimitiveContainer to method getLayer
-Iteration 596: "Make Method Final" applied at class GraphicPrimitiveContainer to method getLayer
-Iteration 597: "Make Method Non Final" applied at class GraphicPrimitiveContainer to method getLayer
-Iteration 598: "Make Method Final" applied at class GraphicPrimitiveContainer to method getLayer
-Iteration 599: "Make Method Non Final" applied at class GraphicPrimitiveContainer to method getLayer
-Iteration 600: "Make Method Final" applied at class GraphicPrimitiveContainer to method getLayer
-Iteration 601: "Make Method Non Final" applied at class GraphicPrimitiveContainer to method getLayer
-Iteration 602: "Make Method Final" applied at class GraphicPrimitiveContainer to method getLayer
-Iteration 603: "Make Method Non Final" applied at class GraphicPrimitiveContainer to method getLayer
-Iteration 604: "Make Method Final" applied at class GraphicPrimitiveContainer to method getLayer
-Iteration 605: "Make Method Non Final" applied at class GraphicPrimitiveContainer to method getLayer
-Iteration 606: "Make Class Abstract" applied to class GraphicPrimitive
-Iteration 607: "Make Class Concrete" applied to class GraphicPrimitive
-Iteration 608: "Make Method Final" applied at class GraphicPrimitiveContainer to method getLayer
-Iteration 609: "Make Method Non Final" applied at class GraphicPrimitiveContainer to method getLayer
-Iteration 610: "Make Method Final" applied at class GraphicPrimitiveContainer to method getLayer
-Iteration 611: "Make Method Non Final" applied at class GraphicPrimitiveContainer to method getLayer
-Iteration 612: "Make Method Final" applied at class RolesTableModel to method hasChanges
-Iteration 613: "Make Method Final" applied at class GraphicPrimitiveContainer to method getLayer
-Iteration 614: "Make Method Non Final" applied at class GraphicPrimitiveContainer to method getLayer
-Iteration 615: "Make Method Final" applied at class GraphicPrimitiveContainer to method getLayer
-Iteration 616: "Make Method Non Final" applied at class GraphicPrimitiveContainer to method getLayer
-Iteration 617: "Make Method Final" applied at class GraphicPrimitiveContainer to method getLayer
-Iteration 618: "Make Method Non Final" applied at class GraphicPrimitiveContainer to method getLayer
-Iteration 619: "Make Method Final" applied at class GraphicPrimitiveContainer to method getLayer
-Iteration 620: "Make Method Non Final" applied at class GraphicPrimitiveContainer to method getLayer
-Iteration 621: "Make Method Final" applied at class GraphicPrimitiveContainer to method getLayer
-Iteration 622: "Make Method Non Final" applied at class GraphicPrimitiveContainer to method getLayer
-Iteration 623: "Make Method Final" applied at class GraphicPrimitiveContainer to method getLayer
-Iteration 624: "Make Method Non Final" applied at class GraphicPrimitiveContainer to method getLayer
-Iteration 625: "Make Method Final" applied at class GraphicPrimitiveContainer to method getLayer
-Iteration 626: "Make Method Non Final" applied at class GraphicPrimitiveContainer to method getLayer
-Iteration 627: "Make Method Final" applied at class GraphicPrimitiveContainer to method getLayer
-Iteration 628: "Make Method Non Final" applied at class GraphicPrimitiveContainer to method getLayer
-Iteration 629: "Make Method Final" applied at class GraphicPrimitiveContainer to method getLayer
-Iteration 630: "Make Method Non Final" applied at class GraphicPrimitiveContainer to method getLayer
-Iteration 631: "Make Method Final" applied at class GraphicPrimitiveContainer to method getLayer
-Iteration 632: "Make Method Non Final" applied at class GraphicPrimitiveContainer to method getLayer
-Iteration 633: "Make Method Final" applied at class GraphicPrimitiveContainer to method getLayer
-Iteration 634: "Make Method Non Final" applied at class GraphicPrimitiveContainer to method getLayer
-Iteration 635: "Make Method Final" applied at class GraphicPrimitiveContainer to method getLayer
-Iteration 636: "Make Method Non Final" applied at class GraphicPrimitiveContainer to method getLayer
-Iteration 637: "Make Method Final" applied at class GraphicPrimitiveContainer to method getLayer
-Iteration 638: "Make Method Non Final" applied at class GraphicPrimitiveContainer to method getLayer
-Iteration 639: "Make Method Final" applied at class GraphicPrimitiveContainer to method getLayer
-Iteration 640: "Make Method Non Final" applied at class GraphicPrimitiveContainer to method getLayer
-Iteration 641: "Make Method Final" applied at class GraphicPrimitiveContainer to method getLayer
-Iteration 642: "Make Method Non Final" applied at class GraphicPrimitiveContainer to method getLayer
-Iteration 643: "Make Method Final" applied at class GraphicPrimitiveContainer to method getLayer
-Iteration 644: "Make Method Non Final" applied at class GraphicPrimitiveContainer to method getLayer
-Iteration 645: "Make Method Final" applied at class GraphicPrimitiveContainer to method getLayer
-Iteration 646: "Make Method Non Final" applied at class GraphicPrimitiveContainer to method getLayer
-Iteration 647: "Make Method Final" applied at class GraphicPrimitiveContainer to method getLayer
-Iteration 648: "Make Method Non Final" applied at class GraphicPrimitiveContainer to method getLayer
-Iteration 649: "Make Method Final" applied at class GraphicPrimitiveContainer to method getLayer
-Iteration 650: "Make Method Non Final" applied at class GraphicPrimitiveContainer to method getLayer
-Iteration 651: "Make Method Final" applied at class GraphicPrimitiveContainer to method getLayer
-Iteration 652: "Make Method Non Final" applied at class GraphicPrimitiveContainer to method getLayer
-Iteration 653: "Make Method Non Final" applied at class Shape to method addActionListener
-Iteration 654: "Make Method Non Final" applied at class RolesTableModel to method hasChanges
-Iteration 655: "Move Field Down" applied to field rolesTable from GeneralOptionPanel to RolesSettingsPanel
-Iteration 656: "Increase Field Security" applied at class ColorSettingsPanel to field vb2 from package to private
-Iteration 657: "Make Class Final" applied to class TaskPropertyEvent
-Iteration 658: "Make Class Non Final" applied to class GanttPreviewPrint
-Iteration 659: "Decrease Method Security" applied at class TaskProgressRendererImpl to method TaskProgressRendererImpl from package to protected
-Iteration 660: "Make Class Abstract" applied to class ChartRendererBase
-Iteration 661: "Move Method Up" applied to method drawGPVersion from ResourceLoadGraphicArea to ChartComponentBase
-Iteration 662: "Make Class Abstract" applied to class ChartImplementationBase
-Iteration 663: "Decrease Method Security" applied at class GeneralDialog to method getProject from protected to public
-Iteration 664: "Increase Field Security" applied at class GanttGraphicArea to field date from public to protected
-Iteration 665: "Move Field Down" applied to field myFieldName from FieldChange to DurationChange
-Iteration 666: "Make Method Final" applied at class FTPSettingsPanel to method actionPerformed
-Iteration 667: "Decrease Field Security" applied at class GanttMetalTheme to field font from private to package
-Iteration 668: "Make Method Non Final" applied at class FTPSettingsPanel to method actionPerformed
-Iteration 669: "Increase Method Security" applied at class GanttApplet to method main from public to protected
-Iteration 670: "Make Field Static" applied at class GanttDialogInfo to field res
-Iteration 671: "Move Method Down" applied to method toString from ConstraintImpl to FinishFinishConstraintImpl
-Iteration 672: "Decrease Method Security" applied at class GanttCalendar to method module from private to package
-Iteration 673: "Make Class Final" applied to class TaskProgressRendererImpl
-Iteration 674: "Decrease Method Security" applied at class ZoomInAction to method getIconFilePrefix from protected to public
-Iteration 675: "Make Field Non Static" applied at class ProjectExportProcessor to field LOGGER_NAME
-Iteration 676: "Make Class Final" applied to class JPaintList
-Iteration 677: "Make Field Non Final" applied at class LoadDistribution to FieldDeclaration myResource
-Iteration 678: "Make Field Static" applied at class ConstraintImpl to field myDependency
-Iteration 679: "Make Field Final" applied at class GanttResourcePanel to LocalVariableDeclaration i
-Iteration 680: "Make Method Static" applied at class TaskTagHandler to method getManager
-Iteration 681: "Make Class Abstract" applied to class GraphicPrimitive
-Iteration 682: "Make Class Concrete" applied to class GraphicPrimitive
-Iteration 683: "Make Method Final" applied at class GraphicPrimitiveContainer to method getLayer
-Iteration 684: "Make Method Non Final" applied at class GraphicPrimitiveContainer to method getLayer
-Iteration 685: "Make Method Final" applied at class GraphicPrimitiveContainer to method getLayer
-Iteration 686: "Make Method Non Final" applied at class GraphicPrimitiveContainer to method getLayer
-Iteration 687: "Make Method Final" applied at class GraphicPrimitiveContainer to method getLayer
-Iteration 688: "Make Method Non Final" applied at class GraphicPrimitiveContainer to method getLayer
-Iteration 689: "Make Method Final" applied at class GraphicPrimitiveContainer to method getLayer
-Iteration 690: "Make Method Non Final" applied at class GraphicPrimitiveContainer to method getLayer
-Iteration 691: "Make Method Final" applied at class GraphicPrimitiveContainer to method getLayer
-Iteration 692: "Make Method Non Final" applied at class GraphicPrimitiveContainer to method getLayer
-Iteration 693: "Make Method Final" applied at class GraphicPrimitiveContainer to method getLayer
-Iteration 694: "Make Method Non Final" applied at class GraphicPrimitiveContainer to method getLayer
-Iteration 695: "Make Method Final" applied at class GraphicPrimitiveContainer to method getLayer
-Iteration 696: "Make Method Non Final" applied at class GraphicPrimitiveContainer to method getLayer
-Iteration 697: "Make Method Final" applied at class GraphicPrimitiveContainer to method getLayer
-Iteration 698: "Make Method Non Final" applied at class GraphicPrimitiveContainer to method getLayer
-Iteration 699: "Make Method Final" applied at class GraphicPrimitiveContainer to method getLayer
-Iteration 700: "Make Method Non Final" applied at class GraphicPrimitiveContainer to method getLayer
-Iteration 701: "Make Method Final" applied at class GraphicPrimitiveContainer to method getLayer
-Iteration 702: "Make Method Non Final" applied at class GraphicPrimitiveContainer to method getLayer
-Iteration 703: "Make Method Final" applied at class GraphicPrimitiveContainer to method getLayer
-Iteration 704: "Make Method Non Final" applied at class GraphicPrimitiveContainer to method getLayer
-Iteration 705: "Make Method Final" applied at class GraphicPrimitiveContainer to method getLayer
-Iteration 706: "Make Method Non Final" applied at class GraphicPrimitiveContainer to method getLayer
-Iteration 707: "Make Method Final" applied at class GraphicPrimitiveContainer to method getLayer
-Iteration 708: "Make Method Non Final" applied at class GraphicPrimitiveContainer to method getLayer
-Iteration 709: "Make Method Final" applied at class GraphicPrimitiveContainer to method getLayer
-Iteration 710: "Make Method Non Final" applied at class GraphicPrimitiveContainer to method getLayer
-Iteration 711: "Make Method Final" applied at class GraphicPrimitiveContainer to method getLayer
-Iteration 712: "Make Method Non Final" applied at class GraphicPrimitiveContainer to method getLayer
-Iteration 713: "Make Method Final" applied at class GraphicPrimitiveContainer to method getLayer
-Iteration 714: "Make Method Non Final" applied at class GraphicPrimitiveContainer to method getLayer
-Iteration 715: "Make Method Final" applied at class GraphicPrimitiveContainer to method getLayer
-Iteration 716: "Make Method Non Final" applied at class GraphicPrimitiveContainer to method getLayer
-Iteration 717: "Make Method Final" applied at class GraphicPrimitiveContainer to method getLayer
-Iteration 718: "Make Method Non Final" applied at class GraphicPrimitiveContainer to method getLayer
-Iteration 719: "Make Method Final" applied at class GraphicPrimitiveContainer to method getLayer
-Iteration 720: "Make Method Non Final" applied at class GraphicPrimitiveContainer to method getLayer
-Iteration 721: "Make Method Final" applied at class GraphicPrimitiveContainer to method getLayer
-Iteration 722: "Make Method Non Final" applied at class GraphicPrimitiveContainer to method getLayer
-Iteration 723: "Make Method Final" applied at class GraphicPrimitiveContainer to method getLayer
-Iteration 724: "Make Method Non Final" applied at class GraphicPrimitiveContainer to method getLayer
-Iteration 725: "Make Method Final" applied at class GraphicPrimitiveContainer to method getLayer
-Iteration 726: "Make Method Non Final" applied at class GraphicPrimitiveContainer to method getLayer
-Iteration 727: "Make Method Final" applied at class GraphicPrimitiveContainer to method getLayer
-Iteration 728: "Make Method Non Final" applied at class GraphicPrimitiveContainer to method getLayer
-Iteration 729: "Make Method Final" applied at class GraphicPrimitiveContainer to method getLayer
-Iteration 730: "Make Method Non Final" applied at class GraphicPrimitiveContainer to method getLayer
-Iteration 731: "Make Method Final" applied at class GraphicPrimitiveContainer to method getLayer
-Iteration 732: "Make Method Non Final" applied at class GraphicPrimitiveContainer to method getLayer
-Iteration 733: "Make Method Final" applied at class GraphicPrimitiveContainer to method getLayer
-Iteration 734: "Make Method Non Final" applied at class GraphicPrimitiveContainer to method getLayer
-Iteration 735: "Make Method Final" applied at class GraphicPrimitiveContainer to method getLayer
-Iteration 736: "Make Method Non Final" applied at class GraphicPrimitiveContainer to method getLayer
-Iteration 737: "Make Method Final" applied at class GraphicPrimitiveContainer to method getLayer
-Iteration 738: "Make Method Non Final" applied at class GraphicPrimitiveContainer to method getLayer
-Iteration 739: "Make Method Final" applied at class GraphicPrimitiveContainer to method getLayer
-Iteration 740: "Make Method Non Final" applied at class GraphicPrimitiveContainer to method getLayer
-Iteration 741: "Make Method Final" applied at class GraphicPrimitiveContainer to method getLayer
-Iteration 742: "Make Method Non Final" applied at class GraphicPrimitiveContainer to method getLayer
-Iteration 743: "Make Method Final" applied at class GraphicPrimitiveContainer to method getLayer
-Iteration 744: "Make Method Non Final" applied at class GraphicPrimitiveContainer to method getLayer
-Iteration 745: "Make Method Final" applied at class GraphicPrimitiveContainer to method getLayer
-Iteration 746: "Make Method Non Final" applied at class GraphicPrimitiveContainer to method getLayer
-Iteration 747: "Make Method Final" applied at class GraphicPrimitiveContainer to method getLayer
-Iteration 748: "Make Method Non Final" applied at class GraphicPrimitiveContainer to method getLayer
-Iteration 749: "Make Method Final" applied at class GraphicPrimitiveContainer to method getLayer
-Iteration 750: "Make Method Non Final" applied at class GraphicPrimitiveContainer to method getLayer
-Iteration 751: "Make Method Final" applied at class GraphicPrimitiveContainer to method getLayer
-Iteration 752: "Make Method Non Final" applied at class GraphicPrimitiveContainer to method getLayer
-Iteration 753: "Make Method Final" applied at class GraphicPrimitiveContainer to method getLayer
-Iteration 754: "Make Method Non Final" applied at class GraphicPrimitiveContainer to method getLayer
-Iteration 755: "Make Method Final" applied at class GraphicPrimitiveContainer to method getLayer
-Iteration 756: "Make Method Non Final" applied at class GraphicPrimitiveContainer to method getLayer
-Iteration 757: "Make Method Final" applied at class GraphicPrimitiveContainer to method getLayer
-Iteration 758: "Make Method Non Final" applied at class GraphicPrimitiveContainer to method getLayer
-Iteration 759: "Make Method Final" applied at class GraphicPrimitiveContainer to method getLayer
-Iteration 760: "Make Method Non Final" applied at class GraphicPrimitiveContainer to method getLayer
-Iteration 761: "Make Method Final" applied at class GraphicPrimitiveContainer to method getLayer
-Iteration 762: "Make Method Non Final" applied at class GraphicPrimitiveContainer to method getLayer
-Iteration 763: "Make Method Final" applied at class GraphicPrimitiveContainer to method getLayer
-Iteration 764: "Make Method Non Final" applied at class GraphicPrimitiveContainer to method getLayer
-Iteration 765: "Make Method Final" applied at class GraphicPrimitiveContainer to method getLayer
-Iteration 766: "Make Method Non Final" applied at class GraphicPrimitiveContainer to method getLayer
-Iteration 767: "Make Method Final" applied at class GraphicPrimitiveContainer to method getLayer
-Iteration 768: "Make Method Non Final" applied at class GraphicPrimitiveContainer to method getLayer
-Iteration 769: "Make Method Final" applied at class GraphicPrimitiveContainer to method getLayer
-Iteration 770: "Make Method Non Final" applied at class GraphicPrimitiveContainer to method getLayer
-Iteration 771: "Make Class Abstract" applied to class GraphicPrimitive
-Iteration 772: "Make Class Concrete" applied to class GraphicPrimitive
-Iteration 773: "Make Method Final" applied at class Shape to method addActionListener
-Iteration 774: "Make Method Final" applied at class GraphicPrimitiveContainer to method getLayer
-Iteration 775: "Move Field Up" applied to field rolesTable from RolesSettingsPanel to GeneralOptionPanel
-Iteration 776: "Make Method Non Final" applied at class GraphicPrimitiveContainer to method getLayer
-Iteration 777: "Make Method Final" applied at class GraphicPrimitiveContainer to method getLayer
-Iteration 778: "Make Method Non Final" applied at class GraphicPrimitiveContainer to method getLayer
-Iteration 779: "Make Method Final" applied at class RolesTableModel to method hasChanges
-Iteration 780: "Make Method Final" applied at class GraphicPrimitiveContainer to method getLayer
-Iteration 781: "Make Method Non Final" applied at class GraphicPrimitiveContainer to method getLayer
-Iteration 782: "Make Method Final" applied at class GraphicPrimitiveContainer to method getLayer
-Iteration 783: "Make Method Non Final" applied at class GraphicPrimitiveContainer to method getLayer
-Iteration 784: "Make Method Final" applied at class GraphicPrimitiveContainer to method getLayer
-Iteration 785: "Make Method Non Final" applied at class GraphicPrimitiveContainer to method getLayer
-Iteration 786: "Make Method Final" applied at class GraphicPrimitiveContainer to method getLayer
-Iteration 787: "Make Method Non Final" applied at class GraphicPrimitiveContainer to method getLayer
-Iteration 788: "Make Method Final" applied at class GraphicPrimitiveContainer to method getLayer
-Iteration 789: "Make Method Non Final" applied at class GraphicPrimitiveContainer to method getLayer
-Iteration 790: "Make Method Final" applied at class GraphicPrimitiveContainer to method getLayer
-Iteration 791: "Make Method Non Final" applied at class GraphicPrimitiveContainer to method getLayer
-Iteration 792: "Make Method Final" applied at class GraphicPrimitiveContainer to method getLayer
-Iteration 793: "Make Method Non Final" applied at class GraphicPrimitiveContainer to method getLayer
-Iteration 794: "Make Method Final" applied at class GraphicPrimitiveContainer to method getLayer
-Iteration 795: "Make Method Non Final" applied at class GraphicPrimitiveContainer to method getLayer
-Iteration 796: "Make Method Final" applied at class GraphicPrimitiveContainer to method getLayer
-Iteration 797: "Make Method Non Final" applied at class GraphicPrimitiveContainer to method getLayer
-Iteration 798: "Make Method Final" applied at class GraphicPrimitiveContainer to method getLayer
-Iteration 799: "Make Method Non Final" applied at class GraphicPrimitiveContainer to method getLayer
-Iteration 800: "Make Method Final" applied at class GraphicPrimitiveContainer to method getLayer
-Iteration 801: "Make Method Non Final" applied at class GraphicPrimitiveContainer to method getLayer
-Iteration 802: "Make Method Final" applied at class GraphicPrimitiveContainer to method getLayer
-Iteration 803: "Make Method Non Final" applied at class GraphicPrimitiveContainer to method getLayer
-Iteration 804: "Make Method Final" applied at class GraphicPrimitiveContainer to method getLayer
-Iteration 805: "Make Method Non Final" applied at class GraphicPrimitiveContainer to method getLayer
-Iteration 806: "Make Method Final" applied at class GraphicPrimitiveContainer to method getLayer
-Iteration 807: "Make Method Non Final" applied at class GraphicPrimitiveContainer to method getLayer
-Iteration 808: "Make Method Final" applied at class GraphicPrimitiveContainer to method getLayer
-Iteration 809: "Make Method Non Final" applied at class GraphicPrimitiveContainer to method getLayer
-Iteration 810: "Make Method Final" applied at class GraphicPrimitiveContainer to method getLayer
-Iteration 811: "Make Method Non Final" applied at class GraphicPrimitiveContainer to method getLayer
-Iteration 812: "Make Method Final" applied at class GraphicPrimitiveContainer to method getLayer
-Iteration 813: "Make Method Non Final" applied at class GraphicPrimitiveContainer to method getLayer
-Iteration 814: "Make Method Final" applied at class GraphicPrimitiveContainer to method getLayer
-Iteration 815: "Make Method Non Final" applied at class GraphicPrimitiveContainer to method getLayer
-Iteration 816: "Make Method Final" applied at class GraphicPrimitiveContainer to method getLayer
-Iteration 817: "Make Method Non Final" applied at class GraphicPrimitiveContainer to method getLayer
-Iteration 818: "Make Method Final" applied at class GraphicPrimitiveContainer to method getLayer
-Iteration 819: "Make Method Non Final" applied at class GraphicPrimitiveContainer to method getLayer
-Iteration 820: "Make Method Non Final" applied at class Shape to method addActionListener
-Iteration 821: "Make Method Non Final" applied at class RolesTableModel to method hasChanges
-Iteration 822: "Move Field Down" applied to field rolesTable from GeneralOptionPanel to RolesSettingsPanel
-Iteration 823: "Decrease Method Security" applied at class TaskProgressRendererImpl to method TaskProgressRendererImpl from protected to public
-Iteration 824: "Increase Field Security" applied at class GanttGraphicArea to field date from protected to package
-Iteration 825: "Make Method Final" applied at class FTPSettingsPanel to method actionPerformed
-Iteration 826: "Decrease Field Security" applied at class GanttMetalTheme to field font from package to protected
-Iteration 827: "Make Method Non Final" applied at class FTPSettingsPanel to method actionPerformed
-Iteration 828: "Increase Method Security" applied at class GanttApplet to method main from protected to package
-Iteration 829: "Decrease Method Security" applied at class GanttCalendar to method module from package to protected
-Iteration 830: "Make Method Non Static" applied at class TaskTagHandler to method getManager
-Iteration 831: "Move Field Up" applied to field bTaskColor from ColorSettingsPanel to GeneralOptionPanel
-Iteration 832: "Increase Field Security" applied at class ScrollingManagerImpl to field myListeners from package to private
-Iteration 833: "Make Class Final" applied to class TimeUnitText
-Iteration 834: "Make Method Final" applied at class GanttHTMLExport to method writeResources
-Iteration 835: "Make Class Abstract" applied to class WizardImpl
-Iteration 836: "Increase Field Security" applied at class TaskRendererImpl to field myDependeeRectangle from package to private
-Iteration 837: "Make Class Non Final" applied to class CSVOptions
-Iteration 838: "Make Method Final" applied at class GraphicPrimitiveContainer to method getLayer
-Iteration 839: "Make Method Non Final" applied at class GraphicPrimitiveContainer to method getLayer
-Iteration 840: "Make Method Final" applied at class GraphicPrimitiveContainer to method getLayer
-Iteration 841: "Make Method Non Final" applied at class GraphicPrimitiveContainer to method getLayer
-Iteration 842: "Make Method Final" applied at class GraphicPrimitiveContainer to method getLayer
-Iteration 843: "Make Method Non Final" applied at class GraphicPrimitiveContainer to method getLayer
-Iteration 844: "Make Method Final" applied at class GraphicPrimitiveContainer to method getLayer
-Iteration 845: "Make Method Non Final" applied at class GraphicPrimitiveContainer to method getLayer
-Iteration 846: "Make Method Final" applied at class GraphicPrimitiveContainer to method getLayer
-Iteration 847: "Make Method Non Final" applied at class GraphicPrimitiveContainer to method getLayer
-Iteration 848: "Make Method Final" applied at class GraphicPrimitiveContainer to method getLayer
-Iteration 849: "Make Method Non Final" applied at class GraphicPrimitiveContainer to method getLayer
-Iteration 850: "Make Method Final" applied at class GraphicPrimitiveContainer to method getLayer
-Iteration 851: "Make Method Non Final" applied at class GraphicPrimitiveContainer to method getLayer
-Iteration 852: "Make Method Final" applied at class GraphicPrimitiveContainer to method getLayer
-Iteration 853: "Make Method Non Final" applied at class GraphicPrimitiveContainer to method getLayer
-Iteration 854: "Make Method Final" applied at class GraphicPrimitiveContainer to method getLayer
-Iteration 855: "Make Method Non Final" applied at class GraphicPrimitiveContainer to method getLayer
-Iteration 856: "Make Method Final" applied at class GraphicPrimitiveContainer to method getLayer
-Iteration 857: "Make Method Non Final" applied at class GraphicPrimitiveContainer to method getLayer
-Iteration 858: "Make Method Final" applied at class GraphicPrimitiveContainer to method getLayer
-Iteration 859: "Make Method Non Final" applied at class GraphicPrimitiveContainer to method getLayer
-Iteration 860: "Make Method Final" applied at class GraphicPrimitiveContainer to method getLayer
-Iteration 861: "Make Method Non Final" applied at class GraphicPrimitiveContainer to method getLayer
-Iteration 862: "Make Method Final" applied at class GraphicPrimitiveContainer to method getLayer
-Iteration 863: "Make Method Non Final" applied at class GraphicPrimitiveContainer to method getLayer
-Iteration 864: "Make Method Final" applied at class GraphicPrimitiveContainer to method getLayer
-Iteration 865: "Make Method Non Final" applied at class GraphicPrimitiveContainer to method getLayer
-Iteration 866: "Make Method Final" applied at class GraphicPrimitiveContainer to method getLayer
-Iteration 867: "Make Method Non Final" applied at class GraphicPrimitiveContainer to method getLayer
-Iteration 868: "Make Method Final" applied at class GraphicPrimitiveContainer to method getLayer
-Iteration 869: "Make Method Non Final" applied at class GraphicPrimitiveContainer to method getLayer
-Iteration 870: "Make Method Final" applied at class GraphicPrimitiveContainer to method getLayer
-Iteration 871: "Make Method Non Final" applied at class GraphicPrimitiveContainer to method getLayer
-Iteration 872: "Make Method Final" applied at class GraphicPrimitiveContainer to method getLayer
-Iteration 873: "Make Method Non Final" applied at class GraphicPrimitiveContainer to method getLayer
-Iteration 874: "Make Method Final" applied at class GraphicPrimitiveContainer to method getLayer
-Iteration 875: "Make Method Non Final" applied at class GraphicPrimitiveContainer to method getLayer
-Iteration 876: "Make Method Final" applied at class GraphicPrimitiveContainer to method getLayer
-Iteration 877: "Make Method Non Final" applied at class GraphicPrimitiveContainer to method getLayer
-Iteration 878: "Make Method Final" applied at class GraphicPrimitiveContainer to method getLayer
-Iteration 879: "Make Method Non Final" applied at class GraphicPrimitiveContainer to method getLayer
-Iteration 880: "Make Method Final" applied at class GraphicPrimitiveContainer to method getLayer
-Iteration 881: "Make Method Non Final" applied at class GraphicPrimitiveContainer to method getLayer
-Iteration 882: "Make Method Final" applied at class GraphicPrimitiveContainer to method getLayer
-Iteration 883: "Make Method Non Final" applied at class GraphicPrimitiveContainer to method getLayer
-Iteration 884: "Make Method Final" applied at class GraphicPrimitiveContainer to method getLayer
-Iteration 885: "Make Method Non Final" applied at class GraphicPrimitiveContainer to method getLayer
-Iteration 886: "Make Method Final" applied at class GraphicPrimitiveContainer to method getLayer
-Iteration 887: "Make Method Non Final" applied at class GraphicPrimitiveContainer to method getLayer
-Iteration 888: "Make Method Final" applied at class GraphicPrimitiveContainer to method getLayer
-Iteration 889: "Make Method Non Final" applied at class GraphicPrimitiveContainer to method getLayer
-Iteration 890: "Make Method Final" applied at class GraphicPrimitiveContainer to method getLayer
-Iteration 891: "Make Method Non Final" applied at class GraphicPrimitiveContainer to method getLayer
-Iteration 892: "Make Method Final" applied at class GraphicPrimitiveContainer to method getLayer
-Iteration 893: "Make Method Non Final" applied at class GraphicPrimitiveContainer to method getLayer
-Iteration 894: "Make Method Final" applied at class GraphicPrimitiveContainer to method getLayer
-Iteration 895: "Make Method Non Final" applied at class GraphicPrimitiveContainer to method getLayer
-Iteration 896: "Make Method Final" applied at class GraphicPrimitiveContainer to method getLayer
-Iteration 897: "Make Method Non Final" applied at class GraphicPrimitiveContainer to method getLayer
-Iteration 898: "Make Method Final" applied at class GraphicPrimitiveContainer to method getLayer
-Iteration 899: "Make Method Non Final" applied at class GraphicPrimitiveContainer to method getLayer
-Iteration 900: "Make Method Final" applied at class GraphicPrimitiveContainer to method getLayer
-Iteration 901: "Make Method Non Final" applied at class GraphicPrimitiveContainer to method getLayer
-Iteration 902: "Make Method Final" applied at class GraphicPrimitiveContainer to method getLayer
-Iteration 903: "Make Method Non Final" applied at class GraphicPrimitiveContainer to method getLayer
-Iteration 904: "Make Method Final" applied at class GraphicPrimitiveContainer to method getLayer
-Iteration 905: "Make Method Non Final" applied at class GraphicPrimitiveContainer to method getLayer
-Iteration 906: "Make Method Final" applied at class GraphicPrimitiveContainer to method getLayer
-Iteration 907: "Make Method Non Final" applied at class GraphicPrimitiveContainer to method getLayer
-Iteration 908: "Make Method Final" applied at class GraphicPrimitiveContainer to method getLayer
-Iteration 909: "Make Method Non Final" applied at class GraphicPrimitiveContainer to method getLayer
-Iteration 910: "Make Method Final" applied at class GraphicPrimitiveContainer to method getLayer
-Iteration 911: "Make Method Non Final" applied at class GraphicPrimitiveContainer to method getLayer
-Iteration 912: "Make Method Final" applied at class GraphicPrimitiveContainer to method getLayer
-Iteration 913: "Make Method Non Final" applied at class GraphicPrimitiveContainer to method getLayer
-Iteration 914: "Make Class Abstract" applied to class GraphicPrimitive
-Iteration 915: "Make Class Concrete" applied to class GraphicPrimitive
-Iteration 916: "Make Method Final" applied at class Shape to method addActionListener
-Iteration 917: "Make Method Final" applied at class GraphicPrimitiveContainer to method getLayer
-Iteration 918: "Move Field Up" applied to field rolesTable from RolesSettingsPanel to GeneralOptionPanel
-Iteration 919: "Make Method Non Final" applied at class GraphicPrimitiveContainer to method getLayer
-Iteration 920: "Make Method Final" applied at class GraphicPrimitiveContainer to method getLayer
-Iteration 921: "Make Method Non Final" applied at class GraphicPrimitiveContainer to method getLayer
-Iteration 922: "Make Method Final" applied at class RolesTableModel to method hasChanges
-Iteration 923: "Make Method Final" applied at class GraphicPrimitiveContainer to method getLayer
-Iteration 924: "Make Method Non Final" applied at class GraphicPrimitiveContainer to method getLayer
-Iteration 925: "Make Method Final" applied at class GraphicPrimitiveContainer to method getLayer
-Iteration 926: "Make Method Non Final" applied at class GraphicPrimitiveContainer to method getLayer
-Iteration 927: "Make Method Final" applied at class GraphicPrimitiveContainer to method getLayer
-Iteration 928: "Make Method Non Final" applied at class GraphicPrimitiveContainer to method getLayer
-Iteration 929: "Make Method Final" applied at class GraphicPrimitiveContainer to method getLayer
-Iteration 930: "Make Method Non Final" applied at class GraphicPrimitiveContainer to method getLayer
-Iteration 931: "Make Method Final" applied at class GraphicPrimitiveContainer to method getLayer
-Iteration 932: "Make Method Non Final" applied at class GraphicPrimitiveContainer to method getLayer
-Iteration 933: "Make Method Final" applied at class GraphicPrimitiveContainer to method getLayer
-Iteration 934: "Make Method Non Final" applied at class GraphicPrimitiveContainer to method getLayer
-Iteration 935: "Make Method Final" applied at class GraphicPrimitiveContainer to method getLayer
-Iteration 936: "Make Method Non Final" applied at class GraphicPrimitiveContainer to method getLayer
-Iteration 937: "Make Method Final" applied at class GraphicPrimitiveContainer to method getLayer
-Iteration 938: "Make Method Non Final" applied at class GraphicPrimitiveContainer to method getLayer
-Iteration 939: "Make Method Final" applied at class GraphicPrimitiveContainer to method getLayer
-Iteration 940: "Make Method Non Final" applied at class GraphicPrimitiveContainer to method getLayer
-Iteration 941: "Make Method Final" applied at class GraphicPrimitiveContainer to method getLayer
-Iteration 942: "Make Method Non Final" applied at class GraphicPrimitiveContainer to method getLayer
-Iteration 943: "Make Method Final" applied at class GraphicPrimitiveContainer to method getLayer
-Iteration 944: "Make Method Non Final" applied at class GraphicPrimitiveContainer to method getLayer
-Iteration 945: "Make Method Final" applied at class GraphicPrimitiveContainer to method getLayer
-Iteration 946: "Make Method Non Final" applied at class GraphicPrimitiveContainer to method getLayer
-Iteration 947: "Make Method Final" applied at class GraphicPrimitiveContainer to method getLayer
-Iteration 948: "Make Method Non Final" applied at class GraphicPrimitiveContainer to method getLayer
-Iteration 949: "Make Method Final" applied at class GraphicPrimitiveContainer to method getLayer
-Iteration 950: "Make Method Non Final" applied at class GraphicPrimitiveContainer to method getLayer
-Iteration 951: "Make Method Final" applied at class GraphicPrimitiveContainer to method getLayer
-Iteration 952: "Make Method Non Final" applied at class GraphicPrimitiveContainer to method getLayer
-Iteration 953: "Make Method Final" applied at class GraphicPrimitiveContainer to method getLayer
-Iteration 954: "Make Method Non Final" applied at class GraphicPrimitiveContainer to method getLayer
-Iteration 955: "Make Method Final" applied at class GraphicPrimitiveContainer to method getLayer
-Iteration 956: "Make Method Non Final" applied at class GraphicPrimitiveContainer to method getLayer
-Iteration 957: "Make Method Final" applied at class GraphicPrimitiveContainer to method getLayer
-Iteration 958: "Make Method Non Final" applied at class GraphicPrimitiveContainer to method getLayer
-Iteration 959: "Make Method Final" applied at class GraphicPrimitiveContainer to method getLayer
-Iteration 960: "Make Method Non Final" applied at class GraphicPrimitiveContainer to method getLayer
-Iteration 961: "Make Method Final" applied at class GraphicPrimitiveContainer to method getLayer
-Iteration 962: "Make Method Non Final" applied at class GraphicPrimitiveContainer to method getLayer
-Iteration 963: "Make Method Non Final" applied at class Shape to method addActionListener
-Iteration 964: "Make Method Non Final" applied at class RolesTableModel to method hasChanges
-Iteration 965: "Move Field Down" applied to field rolesTable from GeneralOptionPanel to RolesSettingsPanel
-Iteration 966: "Increase Field Security" applied at class GanttGraphicArea to field date from package to private
-Iteration 967: "Make Method Final" applied at class FTPSettingsPanel to method actionPerformed
-Iteration 968: "Decrease Field Security" applied at class GanttMetalTheme to field font from protected to public
-Iteration 969: "Make Method Non Final" applied at class FTPSettingsPanel to method actionPerformed
-Iteration 970: "Increase Method Security" applied at class GanttApplet to method main from package to private
-Iteration 971: "Decrease Method Security" applied at class GanttCalendar to method module from protected to public
-Iteration 972: "Remove Field" applied at class StyledPainterImpl to field myGraphics2calculator
-Iteration 973: "Make Class Final" applied to class Access
-Iteration 974: "Decrease Method Security" applied at class CSVSettingsPanel to method addUsingGBL from private to package
-Iteration 975: "Increase Field Security" applied at class AlgorithmBase to field isEnabled from protected to package
-Iteration 976: "Remove Method" applied at class DayTypeAlternance to method getDuration
-Iteration 977: "Make Class Abstract" applied to class SaverBase
-Iteration 978: "Move Method Up" applied to method indexOf from ResourceLoadGraphicArea to ChartComponentBase
-Iteration 979: "Make Field Final" applied at class GanttPDFFileFilter to ParameterDeclaration f
-Iteration 980: "Make Field Static" applied at class TipsDialog to field pnPanel0
-Iteration 981: "Remove Method" applied at class GanttApplet to method main
-Iteration 982: "Increase Field Security" applied at class AboutAuthorPanel to field columnNames from package to private
-Iteration 983: "Decrease Method Security" applied at class Role to method getPersistentID from package to protected
+Iteration 1: "Make Field Static" applied at class TaskInteractionHintRenderer to field myColor
+Iteration 2: "Make Method Final" applied at class TaskLengthImpl to method getLength
+Iteration 3: "Make Class Final" applied to class ChartGridImpl
+Iteration 4: "Make Method Static" applied at class ScrollGanttChartRightAction to method getIconFilePrefix
+Iteration 5: "Remove Field" applied at class StyledPainterImpl to field myGraphics2calculator
+Iteration 6: "Move Field Up" applied to field date from GanttGraphicArea to ChartComponentBase
+Iteration 7: "Make Method Static" applied at class TaskGridRendererImpl to method startUnitLine
+Iteration 8: "Move Method Up" applied to method save from GanttMPXSaver to GanttMPXJSaver
+Iteration 9: "Make Class Non Final" applied to class ChartGridImpl
+Iteration 10: "Remove Method" applied at class RecalculateTaskScheduleAlgorithm to method isMarked
+Iteration 11: "Remove Field" applied at class TimeFrameImpl to field myNextFrameStartDate
+Iteration 12: "Move Field Down" applied to field date from ChartComponentBase to GanttGraphicArea
+Iteration 13: "Make Field Final" applied at class SettingsDialog to LocalVariableDeclaration node
+Iteration 14: "Remove Class" applied to class GanttMPXSaver
+Iteration 15: "Make Class Final" applied to class GanttMSPDIOpen
+Iteration 16: "Make Class Abstract" applied to class ChartItem
+Iteration 17: "Make Field Non Static" applied at class HttpDocument to field lockDAVMinutes
+Iteration 18: "Make Field Non Final" applied at class GraphicPrimitiveContainer to FieldDeclaration myFinishY
+Iteration 19: "Make Class Concrete" applied to class WizardImpl
+Iteration 20: "Move Method Down" applied to method beginMoveTaskInteraction from ChartImplementationBase to NewChartComponentImpl
+Iteration 21: "Move Field Up" applied to field bTaskColor from ColorSettingsPanel to GeneralOptionPanel
+Iteration 22: "Remove Method" applied at class NewHumanAction to method languageChanged
+Iteration 23: "Move Method Up" applied to method getPreferredSize from ResourceLoadGraphicArea to ChartComponentBase
+Iteration 24: "Make Method Final" applied at class AboutLibraryPanel to method getComment
+Iteration 25: "Make Method Non Final" applied at class GanttXMLOpen to method determineColor
+Iteration 26: "Decrease Method Security" applied at class GanttResourcePanel to method GanttTableModel from package to protected
+Iteration 27: "Make Field Final" applied at class JPaintList to ParameterDeclaration list
+Iteration 28: "Remove Field" applied at class TaskImpl to field myFieldName
+Iteration 29: "Move Method Up" applied to method getHeaderHeight from ResourceLoadGraphicArea to ChartComponentBase
+Iteration 30: "Decrease Method Security" applied at class GanttResourcePanel to method GanttTableModel from protected to public
+Iteration 31: "Decrease Method Security" applied at class SaverBase to method startElement from protected to public
+Iteration 32: "Make Class Final" applied to class TaskDependencySliceAsDependee
+Iteration 33: "Move Method Up" applied to method drawGPVersion from GanttGraphicArea to ChartComponentBase
+Iteration 34: "Move Method Down" applied to method info from ProjectExportProcessor to PDFExportProcessor
+Iteration 35: "Decrease Method Security" applied at class GanttGraphicArea to method beginChangeTaskEndInteraction from package to protected
+Iteration 36: "Make Class Final" applied to class ImporterFromGanttFile
+Iteration 37: "Make Method Static" applied at class ImporterBase to method acceptImport
+Iteration 38: "Make Method Final" applied at class VisibleNodesFilter to method getVisibleNodes
+Iteration 39: "Make Class Final" applied to class i18n
+Iteration 40: "Make Method Final" applied at class ColorValueParser to method parseString
+Iteration 41: "Remove Method" applied at class GanttStatusBar to method setProgressValue
+Iteration 42: "Remove Method" applied at class ChartModelImpl to method findTaskWithCoordinates
+Iteration 43: "Make Method Final" applied at class AboutDialog to method valueChanged
+Iteration 44: "Make Method Final" applied at class SearchKey to method compareTo
+Iteration 45: "Make Class Non Final" applied to class i18n
+Iteration 46: "Decrease Method Security" applied at class GanttTree to method initRootNode from private to package
+Iteration 47: "Increase Method Security" applied at class TaskLengthImpl to method setLength from public to protected
+Iteration 48: "Make Field Static" applied at class CalendarActivityImpl to field isWorkingTime
+Iteration 49: "Make Method Static" applied at class GanttJPGFileFilter to method accept
+Iteration 50: "Decrease Method Security" applied at class GanttGraphicArea to method beginChangeTaskEndInteraction from protected to public
+Iteration 51: "Make Class Final" applied to class i18n
+Iteration 52: "Make Class Non Final" applied to class i18n
+Iteration 53: "Decrease Method Security" applied at class GanttTree to method initRootNode from package to protected
+Iteration 54: "Increase Method Security" applied at class TaskLengthImpl to method setLength from protected to package
+Iteration 55: "Make Class Final" applied to class ChartGridImpl
+Iteration 56: "Decrease Method Security" applied at class GanttTree to method initRootNode from protected to public
+Iteration 57: "Increase Method Security" applied at class TaskLengthImpl to method setLength from package to private
+Iteration 58: "Make Class Final" applied to class i18n
+Iteration 59: "Make Method Static" applied at class TipsDialog to method actionPerformed
+Iteration 60: "Decrease Method Security" applied at class DeleteHumanAction to method getContext from private to package
+Iteration 61: "Decrease Method Security" applied at class ZoomOutAction to method getIconFilePrefix from protected to public
+Iteration 62: "Make Class Non Final" applied to class ChartGridImpl
+Iteration 63: "Make Class Non Final" applied to class i18n
+Iteration 64: "Make Class Final" applied to class i18n
+Iteration 65: "Make Class Non Final" applied to class i18n
+Iteration 66: "Make Class Final" applied to class ChartGridImpl
+Iteration 67: "Make Class Final" applied to class i18n
+Iteration 68: "Decrease Method Security" applied at class DeleteHumanAction to method getContext from package to protected
+Iteration 69: "Make Class Final" applied to class ShapePaint
+Iteration 70: "Make Class Abstract" applied to class ChartImplementationBase
+Iteration 71: "Make Class Non Final" applied to class i18n
+Iteration 72: "Make Class Non Final" applied to class ChartGridImpl
+Iteration 73: "Make Class Final" applied to class i18n
+Iteration 74: "Make Class Non Final" applied to class i18n
+Iteration 75: "Make Class Final" applied to class ChartGridImpl
+Iteration 76: "Make Class Non Final" applied to class ChartGridImpl
+Iteration 77: "Make Class Final" applied to class i18n
+Iteration 78: "Make Class Non Final" applied to class i18n
+Iteration 79: "Make Class Final" applied to class ChartGridImpl
+Iteration 80: "Make Class Final" applied to class i18n
+Iteration 81: "Decrease Method Security" applied at class DeleteHumanAction to method getContext from protected to public
+Iteration 82: "Make Class Non Final" applied to class i18n
+Iteration 83: "Make Class Non Final" applied to class ChartGridImpl
+Iteration 84: "Make Class Final" applied to class i18n
+Iteration 85: "Make Class Non Final" applied to class i18n
+Iteration 86: "Make Class Final" applied to class i18n
+Iteration 87: "Make Class Non Final" applied to class i18n
+Iteration 88: "Make Class Final" applied to class i18n
+Iteration 89: "Make Class Non Final" applied to class i18n
+Iteration 90: "Make Class Final" applied to class i18n
+Iteration 91: "Make Class Non Final" applied to class i18n
+Iteration 92: "Make Class Final" applied to class ChartGridImpl
+Iteration 93: "Make Class Final" applied to class i18n
+Iteration 94: "Make Class Non Final" applied to class ChartGridImpl
+Iteration 95: "Make Class Non Final" applied to class i18n
+Iteration 96: "Make Class Final" applied to class i18n
+Iteration 97: "Make Class Non Final" applied to class i18n
+Iteration 98: "Make Class Final" applied to class ChartGridImpl
+Iteration 99: "Make Class Final" applied to class i18n
+Iteration 100: "Make Class Non Final" applied to class i18n
+Iteration 101: "Make Class Non Final" applied to class ChartGridImpl
+Iteration 102: "Make Class Final" applied to class i18n
+Iteration 103: "Make Class Non Final" applied to class i18n
+Iteration 104: "Make Class Final" applied to class ChartGridImpl
+Iteration 105: "Make Class Non Final" applied to class ChartGridImpl
+Iteration 106: "Make Class Final" applied to class i18n
+Iteration 107: "Make Class Non Final" applied to class i18n
+Iteration 108: "Make Class Final" applied to class ChartGridImpl
+Iteration 109: "Make Class Final" applied to class i18n
+Iteration 110: "Make Class Non Final" applied to class i18n
+Iteration 111: "Make Class Non Final" applied to class ChartGridImpl
+Iteration 112: "Make Class Final" applied to class i18n
+Iteration 113: "Make Class Non Final" applied to class i18n
+Iteration 114: "Make Class Final" applied to class i18n
+Iteration 115: "Make Class Non Final" applied to class i18n
+Iteration 116: "Make Class Final" applied to class i18n
+Iteration 117: "Make Class Non Final" applied to class i18n
+Iteration 118: "Make Class Final" applied to class ChartGridImpl
+Iteration 119: "Make Class Final" applied to class i18n
+Iteration 120: "Make Method Non Final" applied at class SearchKey to method compareTo
+Iteration 121: "Make Method Final" applied at class TaskActivityImpl to method getStart
+Iteration 122: "Make Class Non Final" applied to class i18n
+Iteration 123: "Make Class Non Final" applied to class ChartGridImpl
+Iteration 124: "Make Class Final" applied to class i18n
+Iteration 125: "Make Class Non Final" applied to class i18n
+Iteration 126: "Make Class Final" applied to class i18n
+Iteration 127: "Make Class Non Final" applied to class i18n
+Iteration 128: "Make Class Final" applied to class i18n
+Iteration 129: "Make Class Non Final" applied to class i18n
+Iteration 130: "Make Class Final" applied to class ChartGridImpl
+Iteration 131: "Make Class Final" applied to class i18n
+Iteration 132: "Make Class Final" applied to class ConnectionPanel
+Iteration 133: "Decrease Method Security" applied at class GanttGraphicArea to method getChartImplementation from private to package
+Iteration 134: "Make Method Final" applied at class TaskHierarchyEvent to method getOldContainer
+Iteration 135: "Decrease Method Security" applied at class TaskModelModificationListener to method TaskModelModificationListener from package to protected
+Iteration 136: "Decrease Method Security" applied at class ScrollGanttChartRightAction to method getIconFilePrefix from protected to public
+Iteration 137: "Make Class Abstract" applied to class TimeUnitPair
+Iteration 138: "Decrease Method Security" applied at class EventDispatcher to method fireDependencyAdded from package to protected
+Iteration 139: "Decrease Method Security" applied at class StyledPainterImpl to method ColouredRectanglePainter from private to package
+Iteration 140: "Make Class Abstract" applied to class GraphicPrimitive
+Iteration 141: "Make Class Final" applied to class TaskRegularAreaChartItem
 
-Score has improved overall by 0.314291
-Time taken to refactor: 3698.03s
+Score has improved overall by 0.203962
+Time taken to refactor: 2756.08s
 
 ======== Final Metric Info ========
-Average ratio of private/package/protected attributes to overall attributes per class: 0.590673
-Average coupling per class: 1.464531
-Average cohesion among methods per class: 0.387008
-Average amount of user defined attributes declared per class: 1.162471
-Average functional abstraction per class: 0.121363
-Average amount of polymorphic methods per class: 0.798627
-Average amount of public methods per class: 4.215103
-Average amount of methods per class: 5.945080
-Average amount of complexity of methods per class: 54.956520
-Ratio of interfaces to overall amount of classes: 0.144165
-Average ratio of abstract classes/methods per class: 0.161342
-Average ratio of static classes/methods/variables per class: 0.074171
-Average ratio of final classes/methods/variables per class: 0.060097
-Average ratio of constant classes/methods/variables per class: 0.022256
-Ratio of inner classes to overall amount of ordinary classes in project: 0.267735
-Average inherited referenced methods ratio per class: 0.061837
-Average visibility ratio per class: 0.572950
-Amount of lines of code in project: 39527
-Overall fitness function score: 0.314291
+Average ratio of private/package/protected attributes to overall attributes per class: 0.596534
+Average coupling per class: 1.461009
+Average cohesion among methods per class: 0.387266
+Average amount of user defined attributes declared per class: 1.167431
+Average functional abstraction per class: 0.121215
+Average amount of polymorphic methods per class: 0.805046
+Average amount of public methods per class: 4.215596
+Average amount of methods per class: 5.958715
+Average amount of complexity of methods per class: 55.059631
+Ratio of interfaces to overall amount of classes: 0.144495
+Average ratio of abstract classes/methods per class: 0.162483
+Average ratio of static classes/methods/variables per class: 0.072240
+Average ratio of final classes/methods/variables per class: 0.059659
+Average ratio of constant classes/methods/variables per class: 0.020780
+Ratio of inner classes to overall amount of ordinary classes in project: 0.268349
+Average inherited referenced methods ratio per class: 0.059521
+Average visibility ratio per class: 0.569265
+Amount of lines of code in project: 39464
+Overall fitness function score: 0.203962

@@ -27,275 +27,803 @@ Amount of lines of code in project: 3470
 Overall fitness function score: 0.000000
 
 ======== Applied Refactorings ========
-Iteration 1: "Remove Method" applied at class Generators to method NullSequence
-Iteration 2: "Make Class Final" applied to class TransformIterator
-Iteration 3: "Decrease Method Security" applied at class Collections to method Collections from private to package
-Iteration 4: "Decrease Method Security" applied at class FindPosition to method FindPosition from private to package
-Iteration 5: "Decrease Method Security" applied at class Predicates to method Predicates from private to package
-Iteration 6: "Decrease Method Security" applied at class Predicates to method Predicates from package to protected
-Iteration 7: "Make Field Final" applied at class StringIterator to ParameterDeclaration s
-Iteration 8: "Decrease Field Security" applied at class Identity to field INSTANCE from package to protected
-Iteration 9: "Decrease Method Security" applied at class RemoveIf to method RemoveIf from private to package
-Iteration 10: "Make Class Final" applied to class GreaterThan
-Iteration 11: "Decrease Method Security" applied at class RemoveIf to method RemoveIf from package to protected
-Iteration 12: "Decrease Method Security" applied at class TeeIterator to method TeeIterator from private to package
-Iteration 13: "Make Class Final" applied to class SymmetricDifference
-Iteration 14: "Decrease Method Security" applied at class BinaryPredicates to method BinaryPredicates from private to package
-Iteration 15: "Decrease Method Security" applied at class FindIfNot to method FindIfNot from private to package
-Iteration 16: "Decrease Method Security" applied at class Predicates to method Predicates from protected to public
-Iteration 17: "Decrease Field Security" applied at class Identity to field INSTANCE from protected to public
-Iteration 18: "Decrease Method Security" applied at class RemoveIf to method RemoveIf from protected to public
-Iteration 19: "Decrease Method Security" applied at class TeeIterator to method TeeIterator from package to protected
-Iteration 20: "Decrease Method Security" applied at class BinaryPredicates to method BinaryPredicates from package to protected
-Iteration 21: "Decrease Method Security" applied at class FindIfNot to method FindIfNot from package to protected
-Iteration 22: "Make Class Final" applied to class Not
-Iteration 23: "Decrease Method Security" applied at class Collections to method Collections from package to protected
-Iteration 24: "Decrease Method Security" applied at class Transform to method Transform from private to package
-Iteration 25: "Decrease Method Security" applied at class SymmetricDifference to method SymmetricDifference from private to package
-Iteration 26: "Make Method Final" applied at class TransformIterator to method next
-Iteration 27: "Decrease Method Security" applied at class Transform to method Transform from package to protected
-Iteration 28: "Decrease Method Security" applied at class SymmetricDifference to method SymmetricDifference from package to protected
-Iteration 29: "Decrease Method Security" applied at class Collections to method Collections from protected to public
-Iteration 30: "Make Field Final" applied at class Any to ParameterDeclaration preds
-Iteration 31: "Increase Method Security" applied at class Unique to method match from public to protected
-Iteration 32: "Make Class Final" applied to class ForEach
-Iteration 33: "Decrease Method Security" applied at class ForEach to method ForEach from private to package
-Iteration 34: "Decrease Method Security" applied at class ForEach to method ForEach from package to protected
-Iteration 35: "Decrease Method Security" applied at class MapFactory to method Builder from private to package
-Iteration 36: "Decrease Method Security" applied at class FindIfNot to method FindIfNot from protected to public
-Iteration 37: "Decrease Method Security" applied at class Bind to method Bind from private to package
-Iteration 38: "Make Class Final" applied to class StringIterator
-Iteration 39: "Make Field Final" applied at class All to ParameterDeclaration preds
-Iteration 40: "Make Field Final" applied at class BinaryFunction to ParameterDeclaration x
-Iteration 41: "Make Field Final" applied at class IntegerSequence to ParameterDeclaration seed
-Iteration 42: "Remove Method" applied at class Iterators to method GeneratorIterator
-Iteration 43: "Decrease Method Security" applied at class Adapt to method wrapArgumentMethod from private to package
-Iteration 44: "Decrease Method Security" applied at class BinaryPredicates to method BinaryPredicates from protected to public
-Iteration 45: "Make Field Static" applied at class Not to field p_
-Iteration 46: "Remove Method" applied at class Adapt to method ArgumentMethod
-Iteration 47: "Increase Method Security" applied at class Predicates to method True from public to protected
-Iteration 48: "Decrease Method Security" applied at class BoundedIterator to method listIterator from package to protected
-Iteration 49: "Decrease Method Security" applied at class Iterators to method Iterators from private to package
-Iteration 50: "Decrease Method Security" applied at class SymmetricDifference to method SymmetricDifference from protected to public
-Iteration 51: "Decrease Method Security" applied at class Transform to method Transform from protected to public
-Iteration 52: "Make Field Non Final" applied at class Adapt to FieldDeclaration method_
-Iteration 53: "Decrease Method Security" applied at class Algorithms to method Algorithms from private to package
-Iteration 54: "Make Method Static" applied at class Identity to method fn
-Iteration 55: "Decrease Method Security" applied at class Predicates to method True from protected to public
-Iteration 56: "Remove Method" applied at class Adapt to method ArgumentMethod
-Iteration 57: "Increase Method Security" applied at class Predicates to method True from public to protected
-Iteration 58: "Decrease Method Security" applied at class BoundedIterator to method listIterator from protected to public
-Iteration 59: "Decrease Method Security" applied at class Iterators to method Iterators from package to protected
-Iteration 60: "Decrease Method Security" applied at class Algorithms to method Algorithms from package to protected
-Iteration 61: "Decrease Method Security" applied at class Predicates to method True from protected to public
-Iteration 62: "Make Field Final" applied at class SelectingIterator to LocalVariableDeclaration candidate
-Iteration 63: "Increase Method Security" applied at class Predicates to method True from public to protected
-Iteration 64: "Decrease Field Security" applied at class StringIterator to field s_ from private to package
-Iteration 65: "Decrease Method Security" applied at class Algorithms to method Algorithms from protected to public
-Iteration 66: "Decrease Method Security" applied at class Predicates to method True from protected to public
-Iteration 67: "Decrease Method Security" applied at class CountIfNot to method CountIfNot from private to package
-Iteration 68: "Make Method Static" applied at class GeneratorIterator to method hasNext
-Iteration 69: "Decrease Method Security" applied at class Intersection to method Intersection from private to package
-Iteration 70: "Make Field Final" applied at class GreaterThan to ParameterDeclaration x
-Iteration 71: "Increase Field Security" applied at class TeeIterator to field item from public to protected
-Iteration 72: "Decrease Method Security" applied at class BoundedIterator to method iteratorWrapper from package to protected
-Iteration 73: "Decrease Method Security" applied at class Partition to method Partition from private to package
-Iteration 74: "Make Method Static" applied at class LessThanEquals to method test
-Iteration 75: "Make Class Final" applied to class Generators
-Iteration 76: "Decrease Method Security" applied at class Partition to method Partition from package to protected
-Iteration 77: "Decrease Method Security" applied at class TeeIterator to method TeeIterator from protected to public
-Iteration 78: "Decrease Method Security" applied at class FindPosition to method FindPosition from package to protected
-Iteration 79: "Increase Method Security" applied at class Unique to method match from protected to package
-Iteration 80: "Decrease Method Security" applied at class ForEach to method ForEach from protected to public
-Iteration 81: "Decrease Method Security" applied at class MapFactory to method Builder from package to protected
-Iteration 82: "Decrease Method Security" applied at class Bind to method Bind from package to protected
-Iteration 83: "Decrease Method Security" applied at class Adapt to method wrapArgumentMethod from package to protected
-Iteration 84: "Remove Method" applied at class Adapt to method ArgumentMethod
-Iteration 85: "Increase Method Security" applied at class Predicates to method True from public to protected
-Iteration 86: "Decrease Method Security" applied at class Iterators to method Iterators from protected to public
-Iteration 87: "Decrease Method Security" applied at class Predicates to method True from protected to public
-Iteration 88: "Increase Method Security" applied at class Predicates to method True from public to protected
-Iteration 89: "Decrease Field Security" applied at class StringIterator to field s_ from package to protected
-Iteration 90: "Decrease Method Security" applied at class Predicates to method True from protected to public
-Iteration 91: "Decrease Method Security" applied at class CountIfNot to method CountIfNot from package to protected
-Iteration 92: "Decrease Method Security" applied at class Intersection to method Intersection from package to protected
-Iteration 93: "Increase Field Security" applied at class TeeIterator to field item from protected to package
-Iteration 94: "Decrease Method Security" applied at class BoundedIterator to method iteratorWrapper from protected to public
-Iteration 95: "Decrease Method Security" applied at class Partition to method Partition from protected to public
-Iteration 96: "Decrease Method Security" applied at class CountIfNot to method CountIfNot from protected to public
-Iteration 97: "Make Method Final" applied at class Not to method test
-Iteration 98: "Increase Method Security" applied at class Helpers to method toIterator from public to protected
-Iteration 99: "Decrease Method Security" applied at class MapFactory to method Builder from protected to public
-Iteration 100: "Make Class Final" applied to class GeneratorIterator
-Iteration 101: "Increase Method Security" applied at class Predicates to method True from public to protected
-Iteration 102: "Increase Method Security" applied at class Unique to method match from package to private
-Iteration 103: "Decrease Method Security" applied at class Predicates to method True from protected to public
-Iteration 104: "Increase Method Security" applied at class Predicates to method True from public to protected
-Iteration 105: "Decrease Method Security" applied at class Predicates to method True from protected to public
-Iteration 106: "Increase Method Security" applied at class Predicates to method True from public to protected
-Iteration 107: "Decrease Method Security" applied at class Predicates to method True from protected to public
-Iteration 108: "Increase Method Security" applied at class Predicates to method True from public to protected
-Iteration 109: "Decrease Method Security" applied at class Predicates to method True from protected to public
-Iteration 110: "Increase Method Security" applied at class Predicates to method True from public to protected
-Iteration 111: "Decrease Method Security" applied at class Predicates to method True from protected to public
-Iteration 112: "Increase Method Security" applied at class Predicates to method True from public to protected
-Iteration 113: "Decrease Method Security" applied at class Predicates to method True from protected to public
-Iteration 114: "Increase Method Security" applied at class Predicates to method True from public to protected
-Iteration 115: "Decrease Method Security" applied at class Predicates to method True from protected to public
-Iteration 116: "Increase Method Security" applied at class Predicates to method True from public to protected
-Iteration 117: "Decrease Method Security" applied at class Predicates to method True from protected to public
-Iteration 118: "Increase Method Security" applied at class Predicates to method True from public to protected
-Iteration 119: "Decrease Method Security" applied at class Predicates to method True from protected to public
-Iteration 120: "Increase Method Security" applied at class Predicates to method True from public to protected
-Iteration 121: "Decrease Method Security" applied at class Predicates to method True from protected to public
-Iteration 122: "Increase Method Security" applied at class Predicates to method True from public to protected
-Iteration 123: "Decrease Method Security" applied at class Predicates to method True from protected to public
-Iteration 124: "Increase Method Security" applied at class Predicates to method True from public to protected
-Iteration 125: "Decrease Method Security" applied at class Predicates to method True from protected to public
-Iteration 126: "Increase Method Security" applied at class Predicates to method True from public to protected
-Iteration 127: "Decrease Method Security" applied at class Predicates to method True from protected to public
-Iteration 128: "Increase Method Security" applied at class Predicates to method True from public to protected
-Iteration 129: "Decrease Method Security" applied at class Predicates to method True from protected to public
-Iteration 130: "Increase Method Security" applied at class Predicates to method True from public to protected
-Iteration 131: "Decrease Method Security" applied at class Predicates to method True from protected to public
-Iteration 132: "Make Field Final" applied at class ForEach to ParameterDeclaration fn
-Iteration 133: "Make Method Final" applied at class Any to method test
-Iteration 134: "Make Method Static" applied at class LessThan to method test
-Iteration 135: "Decrease Method Security" applied at class FindPosition to method FindPosition from protected to public
-Iteration 136: "Decrease Method Security" applied at class BoundedIterator to method checkConstraints from private to package
-Iteration 137: "Remove Method" applied at class Generators to method ConstantSequence
-Iteration 138: "Make Field Non Static" applied at class Not to field p_
-Iteration 139: "Decrease Method Security" applied at class Find to method Find from private to package
-Iteration 140: "Make Field Final" applied at class ZipIterator to LocalVariableDeclaration iter
-Iteration 141: "Make Method Final" applied at class ConstantSequence to method fn
-Iteration 142: "Decrease Field Security" applied at class True to field INSTANCE from package to protected
-Iteration 143: "Decrease Method Security" applied at class FindPositionIf to method FindPositionIf from private to package
-Iteration 144: "Increase Method Security" applied at class Predicates to method True from public to protected
-Iteration 145: "Decrease Method Security" applied at class Predicates to method True from protected to public
-Iteration 146: "Increase Method Security" applied at class Helpers to method toIterator from protected to package
-Iteration 147: "Increase Method Security" applied at class Predicates to method True from public to protected
-Iteration 148: "Decrease Method Security" applied at class Predicates to method True from protected to public
-Iteration 149: "Increase Method Security" applied at class Predicates to method True from public to protected
-Iteration 150: "Decrease Method Security" applied at class Predicates to method True from protected to public
-Iteration 151: "Increase Method Security" applied at class Predicates to method True from public to protected
-Iteration 152: "Decrease Method Security" applied at class Predicates to method True from protected to public
-Iteration 153: "Increase Method Security" applied at class Predicates to method True from public to protected
-Iteration 154: "Decrease Method Security" applied at class Predicates to method True from protected to public
-Iteration 155: "Increase Method Security" applied at class Predicates to method True from public to protected
-Iteration 156: "Decrease Method Security" applied at class Predicates to method True from protected to public
-Iteration 157: "Increase Method Security" applied at class Predicates to method True from public to protected
-Iteration 158: "Decrease Method Security" applied at class Predicates to method True from protected to public
-Iteration 159: "Increase Method Security" applied at class Predicates to method True from public to protected
-Iteration 160: "Decrease Method Security" applied at class Predicates to method True from protected to public
-Iteration 161: "Increase Method Security" applied at class Predicates to method True from public to protected
-Iteration 162: "Decrease Method Security" applied at class Intersection to method Intersection from protected to public
-Iteration 163: "Decrease Method Security" applied at class Bind to method Bind from protected to public
-Iteration 164: "Decrease Method Security" applied at class Adapt to method wrapArgumentMethod from protected to public
-Iteration 165: "Increase Method Security" applied at class Predicates to method True from protected to package
-Iteration 166: "Decrease Method Security" applied at class Predicates to method True from package to protected
-Iteration 167: "Increase Method Security" applied at class Predicates to method True from protected to package
-Iteration 168: "Decrease Field Security" applied at class StringIterator to field s_ from protected to public
-Iteration 169: "Decrease Method Security" applied at class Predicates to method True from package to protected
-Iteration 170: "Increase Method Security" applied at class Helpers to method toIterator from package to private
-Iteration 171: "Increase Method Security" applied at class Predicates to method True from protected to package
-Iteration 172: "Decrease Method Security" applied at class Predicates to method True from package to protected
-Iteration 173: "Increase Method Security" applied at class Predicates to method True from protected to package
-Iteration 174: "Decrease Method Security" applied at class Predicates to method True from package to protected
-Iteration 175: "Increase Method Security" applied at class Predicates to method True from protected to package
-Iteration 176: "Decrease Method Security" applied at class Predicates to method True from package to protected
-Iteration 177: "Increase Method Security" applied at class Predicates to method True from protected to package
-Iteration 178: "Decrease Method Security" applied at class Predicates to method True from package to protected
-Iteration 179: "Increase Method Security" applied at class Predicates to method True from protected to package
-Iteration 180: "Decrease Method Security" applied at class Predicates to method True from package to protected
-Iteration 181: "Increase Method Security" applied at class Predicates to method True from protected to package
-Iteration 182: "Decrease Method Security" applied at class Predicates to method True from package to protected
-Iteration 183: "Increase Method Security" applied at class Predicates to method True from protected to package
-Iteration 184: "Decrease Method Security" applied at class Predicates to method True from package to protected
-Iteration 185: "Increase Method Security" applied at class Predicates to method True from protected to package
-Iteration 186: "Decrease Method Security" applied at class Predicates to method True from package to protected
+Iteration 1: "Decrease Method Security" applied at class Algorithms to method Algorithms from private to package
+Iteration 2: "Make Method Static" applied at class GeneratorIterator to method hasNext
+Iteration 3: "Decrease Method Security" applied at class FindPosition to method FindPosition from private to package
+Iteration 4: "Decrease Method Security" applied at class ForEach to method ForEach from private to package
+Iteration 5: "Decrease Method Security" applied at class Remove to method Remove from private to package
+Iteration 6: "Decrease Field Security" applied at class False to field INSTANCE from package to protected
+Iteration 7: "Decrease Method Security" applied at class SkippingIterator to method findNext from private to package
+Iteration 8: "Increase Field Security" applied at class TeeIterator to field item from public to protected
+Iteration 9: "Increase Method Security" applied at class Collections to method list from public to protected
+Iteration 10: "Decrease Method Security" applied at class Algorithms to method Algorithms from package to protected
+Iteration 11: "Make Method Final" applied at class EqualTo to method test
+Iteration 12: "Decrease Method Security" applied at class FindPositionIf to method FindPositionIf from private to package
+Iteration 13: "Decrease Method Security" applied at class Adapt to method wrapMethod from private to package
+Iteration 14: "Decrease Method Security" applied at class Remove to method Remove from package to protected
+Iteration 15: "Decrease Method Security" applied at class SymmetricDifference to method SymmetricDifference from private to package
+Iteration 16: "Make Field Final" applied at class Functions to ParameterDeclaration value
+Iteration 17: "Make Field Final" applied at class BinaryPredicate to ParameterDeclaration x
+Iteration 18: "Decrease Method Security" applied at class FindIf to method FindIf from private to package
+Iteration 19: "Decrease Field Security" applied at class Xnor to field p1_ from private to package
+Iteration 20: "Decrease Method Security" applied at class Remove to method Remove from protected to public
+Iteration 21: "Decrease Method Security" applied at class Algorithms to method Algorithms from protected to public
+Iteration 22: "Decrease Method Security" applied at class TeeIterator to method TeeIterator from private to package
+Iteration 23: "Decrease Method Security" applied at class BinaryPredicates to method BinaryPredicates from private to package
+Iteration 24: "Decrease Method Security" applied at class BinaryPredicates to method BinaryPredicates from package to protected
+Iteration 25: "Make Field Final" applied at class FindPosition to LocalVariableDeclaration obj
+Iteration 26: "Remove Method" applied at class Bind to method First
+Iteration 27: "Decrease Method Security" applied at class SkippingIterator to method findNext from package to protected
+Iteration 28: "Increase Method Security" applied at class Collections to method list from public to protected
+Iteration 29: "Decrease Method Security" applied at class FindPositionIf to method FindPositionIf from package to protected
+Iteration 30: "Decrease Method Security" applied at class Adapt to method wrapMethod from package to protected
+Iteration 31: "Decrease Method Security" applied at class SymmetricDifference to method SymmetricDifference from package to protected
+Iteration 32: "Decrease Method Security" applied at class FindIf to method FindIf from package to protected
+Iteration 33: "Decrease Method Security" applied at class TeeIterator to method TeeIterator from package to protected
+Iteration 34: "Decrease Method Security" applied at class BinaryPredicates to method BinaryPredicates from protected to public
+Iteration 35: "Remove Method" applied at class Bind to method First
+Iteration 36: "Make Method Non Final" applied at class EqualTo to method test
+Iteration 37: "Decrease Method Security" applied at class Intersection to method Intersection from private to package
+Iteration 38: "Make Method Final" applied at class EqualTo to method test
+Iteration 39: "Decrease Method Security" applied at class SymmetricDifference to method SymmetricDifference from protected to public
+Iteration 40: "Decrease Method Security" applied at class Predicates to method Predicates from private to package
+Iteration 41: "Decrease Method Security" applied at class Adapt to method wrapMethod from protected to public
+Iteration 42: "Decrease Method Security" applied at class ForEach to method ForEach from package to protected
+Iteration 43: "Decrease Method Security" applied at class Predicates to method Predicates from package to protected
+Iteration 44: "Make Class Final" applied to class Transform
+Iteration 45: "Decrease Method Security" applied at class Intersection to method Intersection from package to protected
+Iteration 46: "Decrease Method Security" applied at class FindIf to method FindIf from protected to public
+Iteration 47: "Make Class Final" applied to class CountIf
+Iteration 48: "Decrease Method Security" applied at class Intersection to method Intersection from protected to public
+Iteration 49: "Make Method Final" applied at class OneOf to method test
+Iteration 50: "Decrease Method Security" applied at class Find to method Find from private to package
+Iteration 51: "Decrease Method Security" applied at class RemoveIf to method RemoveIf from private to package
+Iteration 52: "Decrease Method Security" applied at class TeeIterator to method TeeIterator from protected to public
+Iteration 53: "Decrease Method Security" applied at class Collections to method Collections from private to package
+Iteration 54: "Make Method Final" applied at class ReverseIterator to method hasNext
+Iteration 55: "Make Class Final" applied to class ZipIterator
+Iteration 56: "Make Method Non Static" applied at class Iterators to method GeneratorIterator
+Iteration 57: "Remove Method" applied at class Bind to method Second
+Iteration 58: "Make Class Final" applied to class Nor
+Iteration 59: "Decrease Method Security" applied at class MapFactory to method Builder from private to package
+Iteration 60: "Increase Method Security" applied at class Bind to method Second from public to protected
+Iteration 61: "Make Method Non Final" applied at class EqualTo to method test
+Iteration 62: "Make Method Final" applied at class EqualTo to method test
+Iteration 63: "Decrease Method Security" applied at class Predicates to method Predicates from protected to public
+Iteration 64: "Make Class Final" applied to class IntegerSequence
+Iteration 65: "Increase Method Security" applied at class Predicates to method True from public to protected
+Iteration 66: "Make Class Non Final" applied to class IntegerSequence
+Iteration 67: "Make Method Final" applied at class False to method test
+Iteration 68: "Decrease Method Security" applied at class MapFactory to method Builder from package to protected
+Iteration 69: "Decrease Method Security" applied at class FindPositionIf to method FindPositionIf from protected to public
+Iteration 70: "Increase Method Security" applied at class Predicates to method True from protected to package
+Iteration 71: "Decrease Method Security" applied at class Predicates to method True from package to protected
+Iteration 72: "Decrease Method Security" applied at class FindIfNot to method FindIfNot from private to package
+Iteration 73: "Make Method Non Final" applied at class EqualTo to method test
+Iteration 74: "Make Method Final" applied at class EqualTo to method test
+Iteration 75: "Make Method Non Final" applied at class EqualTo to method test
+Iteration 76: "Make Method Final" applied at class EqualTo to method test
+Iteration 77: "Make Method Non Final" applied at class EqualTo to method test
+Iteration 78: "Make Method Final" applied at class EqualTo to method test
+Iteration 79: "Make Method Non Final" applied at class EqualTo to method test
+Iteration 80: "Make Method Final" applied at class EqualTo to method test
+Iteration 81: "Make Class Final" applied to class IntegerSequence
+Iteration 82: "Increase Method Security" applied at class Predicates to method True from protected to package
+Iteration 83: "Make Class Non Final" applied to class IntegerSequence
+Iteration 84: "Decrease Method Security" applied at class Predicates to method True from package to protected
+Iteration 85: "Make Method Non Final" applied at class EqualTo to method test
+Iteration 86: "Make Method Final" applied at class EqualTo to method test
+Iteration 87: "Make Method Non Final" applied at class EqualTo to method test
+Iteration 88: "Make Method Final" applied at class EqualTo to method test
+Iteration 89: "Make Method Non Final" applied at class EqualTo to method test
+Iteration 90: "Make Method Final" applied at class EqualTo to method test
+Iteration 91: "Make Method Non Final" applied at class EqualTo to method test
+Iteration 92: "Make Method Final" applied at class EqualTo to method test
+Iteration 93: "Make Class Final" applied to class IntegerSequence
+Iteration 94: "Increase Method Security" applied at class Predicates to method True from protected to package
+Iteration 95: "Make Class Non Final" applied to class IntegerSequence
+Iteration 96: "Decrease Method Security" applied at class Predicates to method True from package to protected
+Iteration 97: "Make Method Non Final" applied at class EqualTo to method test
+Iteration 98: "Make Method Final" applied at class EqualTo to method test
+Iteration 99: "Make Method Non Final" applied at class EqualTo to method test
+Iteration 100: "Make Method Final" applied at class EqualTo to method test
+Iteration 101: "Make Method Non Final" applied at class EqualTo to method test
+Iteration 102: "Make Method Final" applied at class EqualTo to method test
+Iteration 103: "Make Method Non Final" applied at class EqualTo to method test
+Iteration 104: "Make Method Final" applied at class EqualTo to method test
+Iteration 105: "Make Method Non Final" applied at class EqualTo to method test
+Iteration 106: "Make Method Final" applied at class EqualTo to method test
+Iteration 107: "Make Method Non Final" applied at class EqualTo to method test
+Iteration 108: "Make Method Final" applied at class EqualTo to method test
+Iteration 109: "Make Class Final" applied to class IntegerSequence
+Iteration 110: "Increase Method Security" applied at class Predicates to method True from protected to package
+Iteration 111: "Make Class Non Final" applied to class IntegerSequence
+Iteration 112: "Decrease Method Security" applied at class Predicates to method True from package to protected
+Iteration 113: "Make Method Non Final" applied at class EqualTo to method test
+Iteration 114: "Make Class Final" applied to class IntegerSequence
+Iteration 115: "Increase Method Security" applied at class Predicates to method True from protected to package
+Iteration 116: "Make Class Non Final" applied to class IntegerSequence
+Iteration 117: "Decrease Method Security" applied at class Predicates to method True from package to protected
+Iteration 118: "Make Method Final" applied at class EqualTo to method test
+Iteration 119: "Make Method Non Final" applied at class EqualTo to method test
+Iteration 120: "Make Method Final" applied at class EqualTo to method test
+Iteration 121: "Make Method Non Final" applied at class EqualTo to method test
+Iteration 122: "Make Method Final" applied at class EqualTo to method test
+Iteration 123: "Make Method Non Final" applied at class EqualTo to method test
+Iteration 124: "Make Method Final" applied at class EqualTo to method test
+Iteration 125: "Make Class Final" applied to class IntegerSequence
+Iteration 126: "Increase Method Security" applied at class Predicates to method True from protected to package
+Iteration 127: "Make Class Non Final" applied to class IntegerSequence
+Iteration 128: "Decrease Method Security" applied at class Predicates to method True from package to protected
+Iteration 129: "Make Method Non Final" applied at class EqualTo to method test
+Iteration 130: "Make Method Final" applied at class EqualTo to method test
+Iteration 131: "Make Method Non Final" applied at class EqualTo to method test
+Iteration 132: "Make Method Final" applied at class EqualTo to method test
+Iteration 133: "Make Method Non Final" applied at class EqualTo to method test
+Iteration 134: "Make Method Final" applied at class EqualTo to method test
+Iteration 135: "Make Method Non Final" applied at class EqualTo to method test
+Iteration 136: "Make Method Final" applied at class EqualTo to method test
+Iteration 137: "Make Method Non Final" applied at class EqualTo to method test
+Iteration 138: "Make Method Final" applied at class EqualTo to method test
+Iteration 139: "Make Method Non Final" applied at class EqualTo to method test
+Iteration 140: "Make Method Final" applied at class EqualTo to method test
+Iteration 141: "Make Class Final" applied to class IntegerSequence
+Iteration 142: "Increase Method Security" applied at class Predicates to method True from protected to package
+Iteration 143: "Make Class Non Final" applied to class IntegerSequence
+Iteration 144: "Decrease Method Security" applied at class Predicates to method True from package to protected
+Iteration 145: "Make Method Non Final" applied at class EqualTo to method test
+Iteration 146: "Make Method Final" applied at class EqualTo to method test
+Iteration 147: "Make Method Non Final" applied at class EqualTo to method test
+Iteration 148: "Make Method Final" applied at class EqualTo to method test
+Iteration 149: "Make Method Non Final" applied at class EqualTo to method test
+Iteration 150: "Make Method Final" applied at class EqualTo to method test
+Iteration 151: "Make Method Non Final" applied at class EqualTo to method test
+Iteration 152: "Make Method Final" applied at class EqualTo to method test
+Iteration 153: "Make Class Final" applied to class IntegerSequence
+Iteration 154: "Increase Method Security" applied at class Predicates to method True from protected to package
+Iteration 155: "Make Class Non Final" applied to class IntegerSequence
+Iteration 156: "Decrease Method Security" applied at class Predicates to method True from package to protected
+Iteration 157: "Make Method Non Final" applied at class EqualTo to method test
+Iteration 158: "Make Method Final" applied at class EqualTo to method test
+Iteration 159: "Make Method Non Final" applied at class EqualTo to method test
+Iteration 160: "Make Method Final" applied at class EqualTo to method test
+Iteration 161: "Make Method Non Final" applied at class EqualTo to method test
+Iteration 162: "Make Method Final" applied at class EqualTo to method test
+Iteration 163: "Make Method Non Final" applied at class EqualTo to method test
+Iteration 164: "Make Method Final" applied at class EqualTo to method test
+Iteration 165: "Make Method Non Final" applied at class EqualTo to method test
+Iteration 166: "Make Method Final" applied at class EqualTo to method test
+Iteration 167: "Make Class Final" applied to class IntegerSequence
+Iteration 168: "Increase Method Security" applied at class Predicates to method True from protected to package
+Iteration 169: "Make Class Non Final" applied to class IntegerSequence
+Iteration 170: "Decrease Method Security" applied at class Predicates to method True from package to protected
+Iteration 171: "Decrease Method Security" applied at class BinaryFunctions to method BinaryFunctions from private to package
+Iteration 172: "Decrease Method Security" applied at class BoundedIterator to method listIterator from package to protected
+Iteration 173: "Make Method Final" applied at class IsNull to method test
+Iteration 174: "Make Method Final" applied at class And to method test
+Iteration 175: "Decrease Method Security" applied at class FindPosition to method FindPosition from package to protected
+Iteration 176: "Make Class Final" applied to class ReverseIterator
+Iteration 177: "Decrease Method Security" applied at class Unique to method Unique from private to package
+Iteration 178: "Make Method Non Final" applied at class EqualTo to method test
+Iteration 179: "Make Method Final" applied at class EqualTo to method test
+Iteration 180: "Make Method Non Final" applied at class EqualTo to method test
+Iteration 181: "Make Method Final" applied at class EqualTo to method test
+Iteration 182: "Make Method Non Final" applied at class EqualTo to method test
+Iteration 183: "Make Method Final" applied at class EqualTo to method test
+Iteration 184: "Make Method Non Final" applied at class EqualTo to method test
+Iteration 185: "Make Method Final" applied at class EqualTo to method test
+Iteration 186: "Make Class Final" applied to class IntegerSequence
 Iteration 187: "Increase Method Security" applied at class Predicates to method True from protected to package
-Iteration 188: "Decrease Method Security" applied at class Predicates to method True from package to protected
-Iteration 189: "Increase Method Security" applied at class Predicates to method True from protected to package
-Iteration 190: "Decrease Method Security" applied at class Predicates to method True from package to protected
-Iteration 191: "Increase Method Security" applied at class Predicates to method True from protected to package
-Iteration 192: "Decrease Method Security" applied at class Predicates to method True from package to protected
-Iteration 193: "Increase Method Security" applied at class Predicates to method True from protected to package
-Iteration 194: "Decrease Method Security" applied at class Predicates to method True from package to protected
-Iteration 195: "Increase Method Security" applied at class Predicates to method True from protected to package
-Iteration 196: "Decrease Method Security" applied at class Predicates to method True from package to protected
-Iteration 197: "Increase Method Security" applied at class Predicates to method True from protected to package
-Iteration 198: "Decrease Method Security" applied at class Predicates to method True from package to protected
-Iteration 199: "Increase Method Security" applied at class Predicates to method True from protected to package
-Iteration 200: "Decrease Method Security" applied at class Predicates to method True from package to protected
-Iteration 201: "Decrease Method Security" applied at class BoundedIterator to method checkConstraints from package to protected
-Iteration 202: "Decrease Method Security" applied at class Find to method Find from package to protected
-Iteration 203: "Decrease Field Security" applied at class True to field INSTANCE from protected to public
-Iteration 204: "Decrease Method Security" applied at class FindPositionIf to method FindPositionIf from package to protected
-Iteration 205: "Increase Method Security" applied at class Predicates to method True from protected to package
-Iteration 206: "Decrease Method Security" applied at class Predicates to method True from package to protected
+Iteration 188: "Make Class Non Final" applied to class IntegerSequence
+Iteration 189: "Decrease Method Security" applied at class Predicates to method True from package to protected
+Iteration 190: "Make Method Non Final" applied at class EqualTo to method test
+Iteration 191: "Make Method Final" applied at class EqualTo to method test
+Iteration 192: "Increase Method Security" applied at class Predicates to method True from protected to package
+Iteration 193: "Decrease Method Security" applied at class Predicates to method True from package to protected
+Iteration 194: "Make Method Non Final" applied at class EqualTo to method test
+Iteration 195: "Make Method Final" applied at class EqualTo to method test
+Iteration 196: "Make Method Non Final" applied at class EqualTo to method test
+Iteration 197: "Make Method Final" applied at class EqualTo to method test
+Iteration 198: "Make Method Non Final" applied at class EqualTo to method test
+Iteration 199: "Make Method Final" applied at class EqualTo to method test
+Iteration 200: "Make Method Non Final" applied at class EqualTo to method test
+Iteration 201: "Make Method Final" applied at class EqualTo to method test
+Iteration 202: "Make Method Non Final" applied at class EqualTo to method test
+Iteration 203: "Make Method Final" applied at class EqualTo to method test
+Iteration 204: "Make Method Non Final" applied at class EqualTo to method test
+Iteration 205: "Make Method Final" applied at class EqualTo to method test
+Iteration 206: "Make Class Final" applied to class IntegerSequence
 Iteration 207: "Increase Method Security" applied at class Predicates to method True from protected to package
-Iteration 208: "Decrease Method Security" applied at class Predicates to method True from package to protected
-Iteration 209: "Increase Method Security" applied at class Predicates to method True from protected to package
-Iteration 210: "Decrease Method Security" applied at class Predicates to method True from package to protected
-Iteration 211: "Increase Method Security" applied at class Predicates to method True from protected to package
-Iteration 212: "Decrease Method Security" applied at class Predicates to method True from package to protected
-Iteration 213: "Increase Method Security" applied at class Predicates to method True from protected to package
-Iteration 214: "Decrease Method Security" applied at class Predicates to method True from package to protected
-Iteration 215: "Increase Method Security" applied at class Predicates to method True from protected to package
-Iteration 216: "Decrease Method Security" applied at class Predicates to method True from package to protected
-Iteration 217: "Increase Method Security" applied at class Predicates to method True from protected to package
-Iteration 218: "Decrease Method Security" applied at class Predicates to method True from package to protected
+Iteration 208: "Make Class Non Final" applied to class IntegerSequence
+Iteration 209: "Decrease Method Security" applied at class Predicates to method True from package to protected
+Iteration 210: "Make Method Non Final" applied at class EqualTo to method test
+Iteration 211: "Make Method Final" applied at class EqualTo to method test
+Iteration 212: "Make Method Non Final" applied at class EqualTo to method test
+Iteration 213: "Make Method Final" applied at class EqualTo to method test
+Iteration 214: "Make Method Non Final" applied at class EqualTo to method test
+Iteration 215: "Make Method Final" applied at class EqualTo to method test
+Iteration 216: "Make Method Non Final" applied at class EqualTo to method test
+Iteration 217: "Make Method Final" applied at class EqualTo to method test
+Iteration 218: "Make Class Final" applied to class IntegerSequence
 Iteration 219: "Increase Method Security" applied at class Predicates to method True from protected to package
-Iteration 220: "Decrease Method Security" applied at class Predicates to method True from package to protected
-Iteration 221: "Increase Method Security" applied at class Predicates to method True from protected to package
-Iteration 222: "Decrease Method Security" applied at class Predicates to method True from package to protected
-Iteration 223: "Increase Method Security" applied at class Predicates to method True from protected to package
-Iteration 224: "Decrease Method Security" applied at class Predicates to method True from package to protected
-Iteration 225: "Increase Method Security" applied at class Predicates to method True from protected to package
-Iteration 226: "Decrease Method Security" applied at class Predicates to method True from package to protected
-Iteration 227: "Increase Method Security" applied at class Predicates to method True from protected to package
-Iteration 228: "Decrease Method Security" applied at class Predicates to method True from package to protected
-Iteration 229: "Increase Method Security" applied at class Predicates to method True from protected to package
-Iteration 230: "Decrease Method Security" applied at class Predicates to method True from package to protected
-Iteration 231: "Increase Method Security" applied at class Predicates to method True from protected to package
-Iteration 232: "Decrease Method Security" applied at class Predicates to method True from package to protected
-Iteration 233: "Increase Method Security" applied at class Predicates to method True from protected to package
-Iteration 234: "Decrease Method Security" applied at class Predicates to method True from package to protected
-Iteration 235: "Increase Method Security" applied at class Predicates to method True from protected to package
-Iteration 236: "Decrease Method Security" applied at class Predicates to method True from package to protected
-Iteration 237: "Decrease Method Security" applied at class BoundedIterator to method checkConstraints from protected to public
-Iteration 238: "Decrease Method Security" applied at class Find to method Find from protected to public
-Iteration 239: "Decrease Method Security" applied at class FindPositionIf to method FindPositionIf from protected to public
-Iteration 240: "Make Method Static" applied at class NotNull to method test
-Iteration 241: "Make Field Final" applied at class Predicate to ParameterDeclaration x
-Iteration 242: "Increase Method Security" applied at class Algorithms to method countIf from public to protected
-Iteration 243: "Make Method Static" applied at class GreaterThan to method test
-Iteration 244: "Increase Field Security" applied at class TeeIterator to field useCount from public to protected
-Iteration 245: "Make Method Final" applied at class GreaterThanEquals to method test
-Iteration 246: "Make Method Non Static" applied at class Predicates to method NotNull
-Iteration 247: "Decrease Method Security" applied at class BinaryFunctions to method BinaryFunctions from private to package
-Iteration 248: "Decrease Method Security" applied at class SkippingIterator to method findNext from private to package
+Iteration 220: "Make Class Non Final" applied to class IntegerSequence
+Iteration 221: "Decrease Method Security" applied at class Predicates to method True from package to protected
+Iteration 222: "Make Method Non Final" applied at class EqualTo to method test
+Iteration 223: "Make Method Final" applied at class EqualTo to method test
+Iteration 224: "Make Method Non Final" applied at class EqualTo to method test
+Iteration 225: "Make Method Final" applied at class EqualTo to method test
+Iteration 226: "Make Method Non Final" applied at class EqualTo to method test
+Iteration 227: "Make Method Final" applied at class EqualTo to method test
+Iteration 228: "Make Method Non Final" applied at class EqualTo to method test
+Iteration 229: "Make Method Final" applied at class EqualTo to method test
+Iteration 230: "Make Method Non Final" applied at class EqualTo to method test
+Iteration 231: "Make Method Final" applied at class EqualTo to method test
+Iteration 232: "Make Method Non Final" applied at class EqualTo to method test
+Iteration 233: "Make Method Final" applied at class EqualTo to method test
+Iteration 234: "Make Method Non Final" applied at class EqualTo to method test
+Iteration 235: "Decrease Method Security" applied at class Predicates to method True from protected to public
+Iteration 236: "Make Method Final" applied at class EqualTo to method test
+Iteration 237: "Make Method Non Final" applied at class EqualTo to method test
+Iteration 238: "Make Method Final" applied at class EqualTo to method test
+Iteration 239: "Make Method Non Final" applied at class EqualTo to method test
+Iteration 240: "Make Method Final" applied at class EqualTo to method test
+Iteration 241: "Make Method Non Final" applied at class EqualTo to method test
+Iteration 242: "Make Method Final" applied at class EqualTo to method test
+Iteration 243: "Make Class Final" applied to class IntegerSequence
+Iteration 244: "Increase Method Security" applied at class Predicates to method True from public to protected
+Iteration 245: "Make Class Non Final" applied to class IntegerSequence
+Iteration 246: "Decrease Method Security" applied at class Predicates to method True from protected to public
+Iteration 247: "Make Method Non Final" applied at class EqualTo to method test
+Iteration 248: "Make Method Final" applied at class EqualTo to method test
+Iteration 249: "Make Method Non Final" applied at class EqualTo to method test
+Iteration 250: "Make Method Final" applied at class EqualTo to method test
+Iteration 251: "Make Method Non Final" applied at class EqualTo to method test
+Iteration 252: "Make Method Final" applied at class EqualTo to method test
+Iteration 253: "Make Method Non Final" applied at class EqualTo to method test
+Iteration 254: "Make Method Final" applied at class EqualTo to method test
+Iteration 255: "Make Method Non Final" applied at class EqualTo to method test
+Iteration 256: "Make Method Final" applied at class EqualTo to method test
+Iteration 257: "Make Method Non Final" applied at class EqualTo to method test
+Iteration 258: "Make Method Final" applied at class EqualTo to method test
+Iteration 259: "Make Class Final" applied to class IntegerSequence
+Iteration 260: "Increase Method Security" applied at class Predicates to method True from public to protected
+Iteration 261: "Make Class Non Final" applied to class IntegerSequence
+Iteration 262: "Decrease Method Security" applied at class Predicates to method True from protected to public
+Iteration 263: "Make Method Non Final" applied at class EqualTo to method test
+Iteration 264: "Make Method Final" applied at class EqualTo to method test
+Iteration 265: "Make Method Non Final" applied at class EqualTo to method test
+Iteration 266: "Make Method Final" applied at class EqualTo to method test
+Iteration 267: "Make Method Non Final" applied at class EqualTo to method test
+Iteration 268: "Make Method Final" applied at class EqualTo to method test
+Iteration 269: "Make Method Non Final" applied at class EqualTo to method test
+Iteration 270: "Make Method Final" applied at class EqualTo to method test
+Iteration 271: "Make Class Final" applied to class IntegerSequence
+Iteration 272: "Increase Method Security" applied at class Predicates to method True from public to protected
+Iteration 273: "Make Class Non Final" applied to class IntegerSequence
+Iteration 274: "Decrease Method Security" applied at class Predicates to method True from protected to public
+Iteration 275: "Make Method Non Final" applied at class EqualTo to method test
+Iteration 276: "Make Method Final" applied at class EqualTo to method test
+Iteration 277: "Make Method Non Final" applied at class EqualTo to method test
+Iteration 278: "Make Method Final" applied at class EqualTo to method test
+Iteration 279: "Make Method Non Final" applied at class EqualTo to method test
+Iteration 280: "Make Method Final" applied at class EqualTo to method test
+Iteration 281: "Make Method Non Final" applied at class EqualTo to method test
+Iteration 282: "Make Method Final" applied at class EqualTo to method test
+Iteration 283: "Make Class Final" applied to class IntegerSequence
+Iteration 284: "Increase Method Security" applied at class Predicates to method True from public to protected
+Iteration 285: "Make Class Non Final" applied to class IntegerSequence
+Iteration 286: "Decrease Method Security" applied at class Predicates to method True from protected to public
+Iteration 287: "Make Method Non Final" applied at class EqualTo to method test
+Iteration 288: "Make Method Final" applied at class EqualTo to method test
+Iteration 289: "Make Method Non Final" applied at class EqualTo to method test
+Iteration 290: "Make Method Final" applied at class EqualTo to method test
+Iteration 291: "Make Method Non Final" applied at class EqualTo to method test
+Iteration 292: "Make Method Final" applied at class EqualTo to method test
+Iteration 293: "Make Method Non Final" applied at class EqualTo to method test
+Iteration 294: "Make Method Final" applied at class EqualTo to method test
+Iteration 295: "Make Method Non Final" applied at class EqualTo to method test
+Iteration 296: "Make Method Final" applied at class EqualTo to method test
+Iteration 297: "Make Method Non Final" applied at class EqualTo to method test
+Iteration 298: "Make Method Final" applied at class EqualTo to method test
+Iteration 299: "Make Class Final" applied to class IntegerSequence
+Iteration 300: "Increase Method Security" applied at class Predicates to method True from public to protected
+Iteration 301: "Make Class Non Final" applied to class IntegerSequence
+Iteration 302: "Decrease Method Security" applied at class Predicates to method True from protected to public
+Iteration 303: "Make Method Non Final" applied at class EqualTo to method test
+Iteration 304: "Make Method Final" applied at class EqualTo to method test
+Iteration 305: "Make Method Non Final" applied at class EqualTo to method test
+Iteration 306: "Make Method Final" applied at class EqualTo to method test
+Iteration 307: "Make Method Non Final" applied at class EqualTo to method test
+Iteration 308: "Make Method Final" applied at class EqualTo to method test
+Iteration 309: "Make Method Non Final" applied at class EqualTo to method test
+Iteration 310: "Make Method Final" applied at class EqualTo to method test
+Iteration 311: "Make Class Final" applied to class IntegerSequence
+Iteration 312: "Increase Method Security" applied at class Predicates to method True from public to protected
+Iteration 313: "Make Class Non Final" applied to class IntegerSequence
+Iteration 314: "Decrease Method Security" applied at class Predicates to method True from protected to public
+Iteration 315: "Make Method Non Final" applied at class EqualTo to method test
+Iteration 316: "Make Method Final" applied at class EqualTo to method test
+Iteration 317: "Make Method Non Final" applied at class EqualTo to method test
+Iteration 318: "Make Method Final" applied at class EqualTo to method test
+Iteration 319: "Make Method Non Final" applied at class EqualTo to method test
+Iteration 320: "Make Method Final" applied at class EqualTo to method test
+Iteration 321: "Make Method Non Final" applied at class EqualTo to method test
+Iteration 322: "Make Method Final" applied at class EqualTo to method test
+Iteration 323: "Make Method Non Final" applied at class EqualTo to method test
+Iteration 324: "Make Method Final" applied at class EqualTo to method test
+Iteration 325: "Make Method Non Final" applied at class EqualTo to method test
+Iteration 326: "Make Method Final" applied at class EqualTo to method test
+Iteration 327: "Make Class Final" applied to class IntegerSequence
+Iteration 328: "Increase Method Security" applied at class Predicates to method True from public to protected
+Iteration 329: "Make Class Non Final" applied to class IntegerSequence
+Iteration 330: "Decrease Method Security" applied at class Predicates to method True from protected to public
+Iteration 331: "Make Method Non Final" applied at class EqualTo to method test
+Iteration 332: "Make Method Final" applied at class EqualTo to method test
+Iteration 333: "Make Method Non Final" applied at class EqualTo to method test
+Iteration 334: "Make Method Final" applied at class EqualTo to method test
+Iteration 335: "Make Method Non Final" applied at class EqualTo to method test
+Iteration 336: "Make Method Final" applied at class EqualTo to method test
+Iteration 337: "Make Method Non Final" applied at class EqualTo to method test
+Iteration 338: "Make Method Final" applied at class EqualTo to method test
+Iteration 339: "Make Class Final" applied to class IntegerSequence
+Iteration 340: "Increase Method Security" applied at class Predicates to method True from public to protected
+Iteration 341: "Make Class Non Final" applied to class IntegerSequence
+Iteration 342: "Decrease Method Security" applied at class Predicates to method True from protected to public
+Iteration 343: "Make Method Non Final" applied at class EqualTo to method test
+Iteration 344: "Make Method Final" applied at class EqualTo to method test
+Iteration 345: "Make Method Non Final" applied at class EqualTo to method test
+Iteration 346: "Make Method Final" applied at class EqualTo to method test
+Iteration 347: "Make Method Non Final" applied at class EqualTo to method test
+Iteration 348: "Make Method Final" applied at class EqualTo to method test
+Iteration 349: "Make Class Final" applied to class IntegerSequence
+Iteration 350: "Increase Method Security" applied at class Predicates to method True from public to protected
+Iteration 351: "Make Class Non Final" applied to class IntegerSequence
+Iteration 352: "Decrease Method Security" applied at class Predicates to method True from protected to public
+Iteration 353: "Make Method Non Final" applied at class EqualTo to method test
+Iteration 354: "Make Method Final" applied at class EqualTo to method test
+Iteration 355: "Make Method Non Final" applied at class EqualTo to method test
+Iteration 356: "Make Method Final" applied at class EqualTo to method test
+Iteration 357: "Make Method Non Final" applied at class EqualTo to method test
+Iteration 358: "Make Method Final" applied at class EqualTo to method test
+Iteration 359: "Make Method Non Final" applied at class EqualTo to method test
+Iteration 360: "Make Method Final" applied at class EqualTo to method test
+Iteration 361: "Make Method Non Final" applied at class EqualTo to method test
+Iteration 362: "Make Method Final" applied at class EqualTo to method test
+Iteration 363: "Make Class Final" applied to class IntegerSequence
+Iteration 364: "Increase Method Security" applied at class Predicates to method True from public to protected
+Iteration 365: "Make Class Non Final" applied to class IntegerSequence
+Iteration 366: "Decrease Method Security" applied at class Predicates to method True from protected to public
+Iteration 367: "Make Method Non Final" applied at class EqualTo to method test
+Iteration 368: "Make Method Final" applied at class EqualTo to method test
+Iteration 369: "Make Method Non Final" applied at class EqualTo to method test
+Iteration 370: "Make Method Final" applied at class EqualTo to method test
+Iteration 371: "Make Method Non Final" applied at class EqualTo to method test
+Iteration 372: "Make Method Final" applied at class EqualTo to method test
+Iteration 373: "Make Method Non Final" applied at class EqualTo to method test
+Iteration 374: "Make Method Final" applied at class EqualTo to method test
+Iteration 375: "Make Class Final" applied to class IntegerSequence
+Iteration 376: "Increase Method Security" applied at class Predicates to method True from public to protected
+Iteration 377: "Make Class Non Final" applied to class IntegerSequence
+Iteration 378: "Decrease Method Security" applied at class Predicates to method True from protected to public
+Iteration 379: "Make Method Non Final" applied at class EqualTo to method test
+Iteration 380: "Make Method Final" applied at class EqualTo to method test
+Iteration 381: "Make Method Non Final" applied at class EqualTo to method test
+Iteration 382: "Make Method Final" applied at class EqualTo to method test
+Iteration 383: "Make Method Non Final" applied at class EqualTo to method test
+Iteration 384: "Make Method Final" applied at class EqualTo to method test
+Iteration 385: "Make Method Non Final" applied at class EqualTo to method test
+Iteration 386: "Make Method Final" applied at class EqualTo to method test
+Iteration 387: "Make Method Non Final" applied at class EqualTo to method test
+Iteration 388: "Make Method Final" applied at class EqualTo to method test
+Iteration 389: "Make Method Non Final" applied at class EqualTo to method test
+Iteration 390: "Make Method Final" applied at class EqualTo to method test
+Iteration 391: "Make Class Final" applied to class IntegerSequence
+Iteration 392: "Increase Method Security" applied at class Predicates to method True from public to protected
+Iteration 393: "Make Class Non Final" applied to class IntegerSequence
+Iteration 394: "Decrease Method Security" applied at class Predicates to method True from protected to public
+Iteration 395: "Make Method Non Final" applied at class EqualTo to method test
+Iteration 396: "Make Method Final" applied at class EqualTo to method test
+Iteration 397: "Make Method Non Final" applied at class EqualTo to method test
+Iteration 398: "Make Method Final" applied at class EqualTo to method test
+Iteration 399: "Make Method Non Final" applied at class EqualTo to method test
+Iteration 400: "Make Method Final" applied at class EqualTo to method test
+Iteration 401: "Make Method Non Final" applied at class EqualTo to method test
+Iteration 402: "Make Method Final" applied at class EqualTo to method test
+Iteration 403: "Make Class Final" applied to class IntegerSequence
+Iteration 404: "Increase Method Security" applied at class Predicates to method True from public to protected
+Iteration 405: "Make Method Non Final" applied at class EqualTo to method test
+Iteration 406: "Make Method Final" applied at class EqualTo to method test
+Iteration 407: "Make Class Non Final" applied to class IntegerSequence
+Iteration 408: "Decrease Method Security" applied at class Predicates to method True from protected to public
+Iteration 409: "Make Method Non Final" applied at class EqualTo to method test
+Iteration 410: "Make Method Final" applied at class EqualTo to method test
+Iteration 411: "Make Method Non Final" applied at class EqualTo to method test
+Iteration 412: "Make Method Final" applied at class EqualTo to method test
+Iteration 413: "Make Method Non Final" applied at class EqualTo to method test
+Iteration 414: "Make Method Final" applied at class EqualTo to method test
+Iteration 415: "Make Method Non Final" applied at class EqualTo to method test
+Iteration 416: "Make Method Final" applied at class EqualTo to method test
+Iteration 417: "Make Method Non Final" applied at class EqualTo to method test
+Iteration 418: "Make Method Final" applied at class EqualTo to method test
+Iteration 419: "Make Method Non Final" applied at class EqualTo to method test
+Iteration 420: "Make Method Final" applied at class EqualTo to method test
+Iteration 421: "Make Class Final" applied to class IntegerSequence
+Iteration 422: "Increase Method Security" applied at class Predicates to method True from public to protected
+Iteration 423: "Make Class Non Final" applied to class IntegerSequence
+Iteration 424: "Decrease Method Security" applied at class Predicates to method True from protected to public
+Iteration 425: "Make Method Non Final" applied at class EqualTo to method test
+Iteration 426: "Make Method Final" applied at class EqualTo to method test
+Iteration 427: "Make Method Non Final" applied at class EqualTo to method test
+Iteration 428: "Make Method Final" applied at class EqualTo to method test
+Iteration 429: "Make Method Non Final" applied at class EqualTo to method test
+Iteration 430: "Make Method Final" applied at class EqualTo to method test
+Iteration 431: "Make Method Non Final" applied at class EqualTo to method test
+Iteration 432: "Make Method Final" applied at class EqualTo to method test
+Iteration 433: "Make Class Final" applied to class IntegerSequence
+Iteration 434: "Increase Method Security" applied at class Predicates to method True from public to protected
+Iteration 435: "Make Class Non Final" applied to class IntegerSequence
+Iteration 436: "Decrease Method Security" applied at class Predicates to method True from protected to public
+Iteration 437: "Make Method Non Final" applied at class EqualTo to method test
+Iteration 438: "Make Method Final" applied at class EqualTo to method test
+Iteration 439: "Make Method Non Final" applied at class EqualTo to method test
+Iteration 440: "Make Method Final" applied at class EqualTo to method test
+Iteration 441: "Make Method Non Final" applied at class EqualTo to method test
+Iteration 442: "Make Method Final" applied at class EqualTo to method test
+Iteration 443: "Make Method Non Final" applied at class EqualTo to method test
+Iteration 444: "Make Method Final" applied at class EqualTo to method test
+Iteration 445: "Make Method Non Final" applied at class EqualTo to method test
+Iteration 446: "Make Method Final" applied at class EqualTo to method test
+Iteration 447: "Make Method Non Final" applied at class EqualTo to method test
+Iteration 448: "Make Method Final" applied at class EqualTo to method test
+Iteration 449: "Make Class Final" applied to class IntegerSequence
+Iteration 450: "Increase Method Security" applied at class Predicates to method True from public to protected
+Iteration 451: "Make Class Non Final" applied to class IntegerSequence
+Iteration 452: "Decrease Method Security" applied at class Predicates to method True from protected to public
+Iteration 453: "Make Method Non Final" applied at class EqualTo to method test
+Iteration 454: "Make Class Final" applied to class IntegerSequence
+Iteration 455: "Increase Method Security" applied at class Predicates to method True from public to protected
+Iteration 456: "Make Class Non Final" applied to class IntegerSequence
+Iteration 457: "Decrease Method Security" applied at class Predicates to method True from protected to public
+Iteration 458: "Make Method Final" applied at class EqualTo to method test
+Iteration 459: "Make Method Non Final" applied at class EqualTo to method test
+Iteration 460: "Make Method Final" applied at class EqualTo to method test
+Iteration 461: "Make Method Non Final" applied at class EqualTo to method test
+Iteration 462: "Make Method Final" applied at class EqualTo to method test
+Iteration 463: "Make Method Non Final" applied at class EqualTo to method test
+Iteration 464: "Make Method Final" applied at class EqualTo to method test
+Iteration 465: "Make Class Final" applied to class IntegerSequence
+Iteration 466: "Increase Method Security" applied at class Predicates to method True from public to protected
+Iteration 467: "Make Class Non Final" applied to class IntegerSequence
+Iteration 468: "Decrease Method Security" applied at class Predicates to method True from protected to public
+Iteration 469: "Make Method Non Final" applied at class EqualTo to method test
+Iteration 470: "Make Method Final" applied at class EqualTo to method test
+Iteration 471: "Make Method Non Final" applied at class EqualTo to method test
+Iteration 472: "Make Method Final" applied at class EqualTo to method test
+Iteration 473: "Make Method Non Final" applied at class EqualTo to method test
+Iteration 474: "Make Method Final" applied at class EqualTo to method test
+Iteration 475: "Make Method Non Final" applied at class EqualTo to method test
+Iteration 476: "Make Method Final" applied at class EqualTo to method test
+Iteration 477: "Make Method Non Final" applied at class EqualTo to method test
+Iteration 478: "Make Method Final" applied at class EqualTo to method test
+Iteration 479: "Make Method Non Final" applied at class EqualTo to method test
+Iteration 480: "Make Method Final" applied at class EqualTo to method test
+Iteration 481: "Make Class Final" applied to class IntegerSequence
+Iteration 482: "Increase Method Security" applied at class Predicates to method True from public to protected
+Iteration 483: "Make Class Non Final" applied to class IntegerSequence
+Iteration 484: "Decrease Method Security" applied at class Predicates to method True from protected to public
+Iteration 485: "Make Method Non Final" applied at class EqualTo to method test
+Iteration 486: "Make Method Final" applied at class EqualTo to method test
+Iteration 487: "Make Method Non Final" applied at class EqualTo to method test
+Iteration 488: "Make Method Final" applied at class EqualTo to method test
+Iteration 489: "Make Method Non Final" applied at class EqualTo to method test
+Iteration 490: "Make Method Final" applied at class EqualTo to method test
+Iteration 491: "Make Method Non Final" applied at class EqualTo to method test
+Iteration 492: "Make Method Final" applied at class EqualTo to method test
+Iteration 493: "Make Class Final" applied to class IntegerSequence
+Iteration 494: "Increase Method Security" applied at class Predicates to method True from public to protected
+Iteration 495: "Make Class Non Final" applied to class IntegerSequence
+Iteration 496: "Decrease Method Security" applied at class Predicates to method True from protected to public
+Iteration 497: "Make Method Non Final" applied at class EqualTo to method test
+Iteration 498: "Make Method Final" applied at class EqualTo to method test
+Iteration 499: "Make Method Non Final" applied at class EqualTo to method test
+Iteration 500: "Make Method Final" applied at class EqualTo to method test
+Iteration 501: "Make Method Non Final" applied at class EqualTo to method test
+Iteration 502: "Make Method Final" applied at class EqualTo to method test
+Iteration 503: "Make Method Non Final" applied at class EqualTo to method test
+Iteration 504: "Make Method Final" applied at class EqualTo to method test
+Iteration 505: "Make Method Non Final" applied at class EqualTo to method test
+Iteration 506: "Make Method Final" applied at class EqualTo to method test
+Iteration 507: "Make Class Final" applied to class IntegerSequence
+Iteration 508: "Increase Method Security" applied at class Predicates to method True from public to protected
+Iteration 509: "Make Class Non Final" applied to class IntegerSequence
+Iteration 510: "Decrease Method Security" applied at class Predicates to method True from protected to public
+Iteration 511: "Decrease Method Security" applied at class BinaryFunctions to method BinaryFunctions from package to protected
+Iteration 512: "Decrease Method Security" applied at class BoundedIterator to method listIterator from protected to public
+Iteration 513: "Decrease Method Security" applied at class FindPosition to method FindPosition from protected to public
+Iteration 514: "Decrease Method Security" applied at class Unique to method Unique from package to protected
+Iteration 515: "Make Method Non Final" applied at class EqualTo to method test
+Iteration 516: "Make Method Final" applied at class EqualTo to method test
+Iteration 517: "Make Method Non Final" applied at class EqualTo to method test
+Iteration 518: "Make Method Final" applied at class EqualTo to method test
+Iteration 519: "Make Method Non Final" applied at class EqualTo to method test
+Iteration 520: "Make Method Final" applied at class EqualTo to method test
+Iteration 521: "Make Method Non Final" applied at class EqualTo to method test
+Iteration 522: "Make Method Final" applied at class EqualTo to method test
+Iteration 523: "Make Class Final" applied to class IntegerSequence
+Iteration 524: "Increase Method Security" applied at class Predicates to method True from public to protected
+Iteration 525: "Make Class Non Final" applied to class IntegerSequence
+Iteration 526: "Decrease Method Security" applied at class Predicates to method True from protected to public
+Iteration 527: "Make Method Non Final" applied at class EqualTo to method test
+Iteration 528: "Make Method Final" applied at class EqualTo to method test
+Iteration 529: "Make Method Non Final" applied at class EqualTo to method test
+Iteration 530: "Make Method Final" applied at class EqualTo to method test
+Iteration 531: "Make Method Non Final" applied at class EqualTo to method test
+Iteration 532: "Make Method Final" applied at class EqualTo to method test
+Iteration 533: "Make Method Non Final" applied at class EqualTo to method test
+Iteration 534: "Make Method Final" applied at class EqualTo to method test
+Iteration 535: "Make Class Final" applied to class IntegerSequence
+Iteration 536: "Increase Method Security" applied at class Predicates to method True from public to protected
+Iteration 537: "Make Class Non Final" applied to class IntegerSequence
+Iteration 538: "Decrease Method Security" applied at class Predicates to method True from protected to public
+Iteration 539: "Make Method Non Final" applied at class EqualTo to method test
+Iteration 540: "Make Method Final" applied at class EqualTo to method test
+Iteration 541: "Make Method Non Final" applied at class EqualTo to method test
+Iteration 542: "Make Method Final" applied at class EqualTo to method test
+Iteration 543: "Make Method Non Final" applied at class EqualTo to method test
+Iteration 544: "Make Method Final" applied at class EqualTo to method test
+Iteration 545: "Make Method Non Final" applied at class EqualTo to method test
+Iteration 546: "Make Method Final" applied at class EqualTo to method test
+Iteration 547: "Make Method Non Final" applied at class EqualTo to method test
+Iteration 548: "Make Method Final" applied at class EqualTo to method test
+Iteration 549: "Make Class Final" applied to class IntegerSequence
+Iteration 550: "Increase Method Security" applied at class Predicates to method True from public to protected
+Iteration 551: "Make Class Non Final" applied to class IntegerSequence
+Iteration 552: "Decrease Method Security" applied at class Predicates to method True from protected to public
+Iteration 553: "Decrease Method Security" applied at class BinaryFunctions to method BinaryFunctions from protected to public
+Iteration 554: "Make Method Non Final" applied at class EqualTo to method test
+Iteration 555: "Make Method Final" applied at class EqualTo to method test
+Iteration 556: "Make Method Non Final" applied at class EqualTo to method test
+Iteration 557: "Make Method Final" applied at class EqualTo to method test
+Iteration 558: "Make Class Final" applied to class IntegerSequence
+Iteration 559: "Increase Method Security" applied at class Predicates to method True from public to protected
+Iteration 560: "Make Class Non Final" applied to class IntegerSequence
+Iteration 561: "Decrease Method Security" applied at class Predicates to method True from protected to public
+Iteration 562: "Make Method Non Final" applied at class EqualTo to method test
+Iteration 563: "Make Method Final" applied at class EqualTo to method test
+Iteration 564: "Make Method Non Final" applied at class EqualTo to method test
+Iteration 565: "Make Method Final" applied at class EqualTo to method test
+Iteration 566: "Make Method Non Final" applied at class EqualTo to method test
+Iteration 567: "Make Method Final" applied at class EqualTo to method test
+Iteration 568: "Make Method Non Final" applied at class EqualTo to method test
+Iteration 569: "Make Method Final" applied at class EqualTo to method test
+Iteration 570: "Make Class Final" applied to class IntegerSequence
+Iteration 571: "Increase Method Security" applied at class Predicates to method True from public to protected
+Iteration 572: "Make Class Non Final" applied to class IntegerSequence
+Iteration 573: "Decrease Method Security" applied at class Predicates to method True from protected to public
+Iteration 574: "Make Method Non Final" applied at class EqualTo to method test
+Iteration 575: "Make Method Final" applied at class EqualTo to method test
+Iteration 576: "Make Method Non Final" applied at class EqualTo to method test
+Iteration 577: "Make Method Final" applied at class EqualTo to method test
+Iteration 578: "Make Method Non Final" applied at class EqualTo to method test
+Iteration 579: "Make Method Final" applied at class EqualTo to method test
+Iteration 580: "Make Method Non Final" applied at class EqualTo to method test
+Iteration 581: "Make Method Final" applied at class EqualTo to method test
+Iteration 582: "Make Method Non Final" applied at class EqualTo to method test
+Iteration 583: "Make Method Final" applied at class EqualTo to method test
+Iteration 584: "Make Class Final" applied to class IntegerSequence
+Iteration 585: "Increase Method Security" applied at class Predicates to method True from public to protected
+Iteration 586: "Make Class Non Final" applied to class IntegerSequence
+Iteration 587: "Decrease Method Security" applied at class Predicates to method True from protected to public
+Iteration 588: "Decrease Method Security" applied at class Unique to method Unique from protected to public
+Iteration 589: "Make Method Non Final" applied at class EqualTo to method test
+Iteration 590: "Make Method Final" applied at class EqualTo to method test
+Iteration 591: "Make Method Non Final" applied at class EqualTo to method test
+Iteration 592: "Make Method Final" applied at class EqualTo to method test
+Iteration 593: "Make Method Non Final" applied at class EqualTo to method test
+Iteration 594: "Make Method Final" applied at class EqualTo to method test
+Iteration 595: "Make Method Non Final" applied at class EqualTo to method test
+Iteration 596: "Make Method Final" applied at class EqualTo to method test
+Iteration 597: "Make Class Final" applied to class IntegerSequence
+Iteration 598: "Increase Method Security" applied at class Predicates to method True from public to protected
+Iteration 599: "Make Class Non Final" applied to class IntegerSequence
+Iteration 600: "Decrease Method Security" applied at class Predicates to method True from protected to public
+Iteration 601: "Make Method Non Final" applied at class EqualTo to method test
+Iteration 602: "Make Method Final" applied at class EqualTo to method test
+Iteration 603: "Increase Method Security" applied at class Predicates to method True from public to protected
+Iteration 604: "Decrease Method Security" applied at class Predicates to method True from protected to public
+Iteration 605: "Make Method Non Final" applied at class EqualTo to method test
+Iteration 606: "Make Method Final" applied at class EqualTo to method test
+Iteration 607: "Make Method Non Final" applied at class EqualTo to method test
+Iteration 608: "Make Method Final" applied at class EqualTo to method test
+Iteration 609: "Make Method Non Final" applied at class EqualTo to method test
+Iteration 610: "Make Method Final" applied at class EqualTo to method test
+Iteration 611: "Make Method Non Final" applied at class EqualTo to method test
+Iteration 612: "Make Method Final" applied at class EqualTo to method test
+Iteration 613: "Make Method Non Final" applied at class EqualTo to method test
+Iteration 614: "Make Method Final" applied at class EqualTo to method test
+Iteration 615: "Make Method Non Final" applied at class EqualTo to method test
+Iteration 616: "Make Method Final" applied at class EqualTo to method test
+Iteration 617: "Make Class Final" applied to class IntegerSequence
+Iteration 618: "Increase Method Security" applied at class Predicates to method True from public to protected
+Iteration 619: "Make Class Non Final" applied to class IntegerSequence
+Iteration 620: "Decrease Method Security" applied at class Predicates to method True from protected to public
+Iteration 621: "Make Method Non Final" applied at class EqualTo to method test
+Iteration 622: "Make Method Final" applied at class EqualTo to method test
+Iteration 623: "Make Method Non Final" applied at class EqualTo to method test
+Iteration 624: "Make Method Final" applied at class EqualTo to method test
+Iteration 625: "Make Method Non Final" applied at class EqualTo to method test
+Iteration 626: "Make Method Final" applied at class EqualTo to method test
+Iteration 627: "Make Method Non Final" applied at class EqualTo to method test
+Iteration 628: "Make Method Final" applied at class EqualTo to method test
+Iteration 629: "Make Class Final" applied to class IntegerSequence
+Iteration 630: "Increase Method Security" applied at class Predicates to method True from public to protected
+Iteration 631: "Make Class Non Final" applied to class IntegerSequence
+Iteration 632: "Decrease Method Security" applied at class Predicates to method True from protected to public
+Iteration 633: "Make Method Non Final" applied at class EqualTo to method test
+Iteration 634: "Make Method Final" applied at class EqualTo to method test
+Iteration 635: "Make Method Non Final" applied at class EqualTo to method test
+Iteration 636: "Make Method Final" applied at class EqualTo to method test
+Iteration 637: "Make Method Non Final" applied at class EqualTo to method test
+Iteration 638: "Make Method Final" applied at class EqualTo to method test
+Iteration 639: "Make Method Non Final" applied at class EqualTo to method test
+Iteration 640: "Make Method Final" applied at class EqualTo to method test
+Iteration 641: "Make Method Non Final" applied at class EqualTo to method test
+Iteration 642: "Make Method Final" applied at class EqualTo to method test
+Iteration 643: "Make Method Non Final" applied at class EqualTo to method test
+Iteration 644: "Make Method Final" applied at class EqualTo to method test
+Iteration 645: "Make Method Non Final" applied at class EqualTo to method test
+Iteration 646: "Make Method Final" applied at class EqualTo to method test
+Iteration 647: "Make Class Final" applied to class IntegerSequence
+Iteration 648: "Increase Method Security" applied at class Predicates to method True from public to protected
+Iteration 649: "Make Class Non Final" applied to class IntegerSequence
+Iteration 650: "Decrease Method Security" applied at class Predicates to method True from protected to public
+Iteration 651: "Make Method Non Final" applied at class EqualTo to method test
+Iteration 652: "Make Method Final" applied at class EqualTo to method test
+Iteration 653: "Make Method Non Final" applied at class EqualTo to method test
+Iteration 654: "Make Method Final" applied at class EqualTo to method test
+Iteration 655: "Make Method Non Final" applied at class EqualTo to method test
+Iteration 656: "Make Method Final" applied at class EqualTo to method test
+Iteration 657: "Make Method Non Final" applied at class EqualTo to method test
+Iteration 658: "Make Method Final" applied at class EqualTo to method test
+Iteration 659: "Make Method Non Final" applied at class EqualTo to method test
+Iteration 660: "Make Method Final" applied at class EqualTo to method test
+Iteration 661: "Make Method Non Final" applied at class EqualTo to method test
+Iteration 662: "Make Method Final" applied at class EqualTo to method test
+Iteration 663: "Make Class Final" applied to class IntegerSequence
+Iteration 664: "Increase Method Security" applied at class Predicates to method True from public to protected
+Iteration 665: "Make Class Non Final" applied to class IntegerSequence
+Iteration 666: "Decrease Method Security" applied at class Predicates to method True from protected to public
+Iteration 667: "Make Method Non Final" applied at class EqualTo to method test
+Iteration 668: "Make Class Final" applied to class IntegerSequence
+Iteration 669: "Increase Method Security" applied at class Predicates to method True from public to protected
+Iteration 670: "Make Class Non Final" applied to class IntegerSequence
+Iteration 671: "Decrease Method Security" applied at class Predicates to method True from protected to public
+Iteration 672: "Make Method Final" applied at class EqualTo to method test
+Iteration 673: "Make Method Non Final" applied at class EqualTo to method test
+Iteration 674: "Make Method Final" applied at class EqualTo to method test
+Iteration 675: "Make Method Non Final" applied at class EqualTo to method test
+Iteration 676: "Make Method Final" applied at class EqualTo to method test
+Iteration 677: "Make Method Non Final" applied at class EqualTo to method test
+Iteration 678: "Make Method Final" applied at class EqualTo to method test
+Iteration 679: "Make Class Final" applied to class IntegerSequence
+Iteration 680: "Increase Method Security" applied at class Predicates to method True from public to protected
+Iteration 681: "Make Class Non Final" applied to class IntegerSequence
+Iteration 682: "Decrease Method Security" applied at class Predicates to method True from protected to public
+Iteration 683: "Make Method Non Final" applied at class EqualTo to method test
+Iteration 684: "Make Method Final" applied at class EqualTo to method test
+Iteration 685: "Make Method Non Final" applied at class EqualTo to method test
+Iteration 686: "Make Method Final" applied at class EqualTo to method test
+Iteration 687: "Make Method Non Final" applied at class EqualTo to method test
+Iteration 688: "Make Method Final" applied at class EqualTo to method test
+Iteration 689: "Make Method Non Final" applied at class EqualTo to method test
+Iteration 690: "Make Method Final" applied at class EqualTo to method test
+Iteration 691: "Make Method Non Final" applied at class EqualTo to method test
+Iteration 692: "Make Method Final" applied at class EqualTo to method test
+Iteration 693: "Make Method Non Final" applied at class EqualTo to method test
+Iteration 694: "Make Method Final" applied at class EqualTo to method test
+Iteration 695: "Make Class Final" applied to class IntegerSequence
+Iteration 696: "Increase Method Security" applied at class Predicates to method True from public to protected
+Iteration 697: "Make Class Non Final" applied to class IntegerSequence
+Iteration 698: "Decrease Method Security" applied at class Predicates to method True from protected to public
+Iteration 699: "Make Method Non Final" applied at class EqualTo to method test
+Iteration 700: "Make Method Final" applied at class EqualTo to method test
+Iteration 701: "Make Method Non Final" applied at class EqualTo to method test
+Iteration 702: "Make Method Final" applied at class EqualTo to method test
+Iteration 703: "Make Method Non Final" applied at class EqualTo to method test
+Iteration 704: "Make Method Final" applied at class EqualTo to method test
+Iteration 705: "Make Method Non Final" applied at class EqualTo to method test
+Iteration 706: "Make Method Final" applied at class EqualTo to method test
+Iteration 707: "Make Class Final" applied to class IntegerSequence
+Iteration 708: "Increase Method Security" applied at class Predicates to method True from public to protected
+Iteration 709: "Make Class Non Final" applied to class IntegerSequence
+Iteration 710: "Decrease Method Security" applied at class Predicates to method True from protected to public
+Iteration 711: "Make Method Non Final" applied at class EqualTo to method test
+Iteration 712: "Make Method Final" applied at class EqualTo to method test
+Iteration 713: "Make Method Non Final" applied at class EqualTo to method test
+Iteration 714: "Make Method Final" applied at class EqualTo to method test
+Iteration 715: "Make Method Non Final" applied at class EqualTo to method test
+Iteration 716: "Make Method Final" applied at class EqualTo to method test
+Iteration 717: "Make Method Non Final" applied at class EqualTo to method test
+Iteration 718: "Make Method Final" applied at class EqualTo to method test
+Iteration 719: "Make Method Non Final" applied at class EqualTo to method test
+Iteration 720: "Make Method Final" applied at class EqualTo to method test
+Iteration 721: "Make Class Final" applied to class IntegerSequence
+Iteration 722: "Increase Method Security" applied at class Predicates to method True from public to protected
+Iteration 723: "Make Class Non Final" applied to class IntegerSequence
+Iteration 724: "Decrease Method Security" applied at class Predicates to method True from protected to public
+Iteration 725: "Make Method Non Final" applied at class EqualTo to method test
+Iteration 726: "Make Method Final" applied at class EqualTo to method test
+Iteration 727: "Make Method Non Final" applied at class EqualTo to method test
+Iteration 728: "Make Method Final" applied at class EqualTo to method test
+Iteration 729: "Make Method Non Final" applied at class EqualTo to method test
+Iteration 730: "Make Method Final" applied at class EqualTo to method test
+Iteration 731: "Make Method Non Final" applied at class EqualTo to method test
+Iteration 732: "Make Method Final" applied at class EqualTo to method test
+Iteration 733: "Make Class Final" applied to class IntegerSequence
+Iteration 734: "Increase Method Security" applied at class Predicates to method True from public to protected
+Iteration 735: "Make Class Non Final" applied to class IntegerSequence
+Iteration 736: "Decrease Method Security" applied at class Predicates to method True from protected to public
+Iteration 737: "Make Method Non Final" applied at class EqualTo to method test
+Iteration 738: "Make Method Final" applied at class EqualTo to method test
+Iteration 739: "Make Method Non Final" applied at class EqualTo to method test
+Iteration 740: "Make Method Final" applied at class EqualTo to method test
+Iteration 741: "Make Method Non Final" applied at class EqualTo to method test
+Iteration 742: "Make Method Final" applied at class EqualTo to method test
+Iteration 743: "Make Method Non Final" applied at class EqualTo to method test
+Iteration 744: "Make Method Final" applied at class EqualTo to method test
+Iteration 745: "Make Class Final" applied to class IntegerSequence
+Iteration 746: "Increase Method Security" applied at class Predicates to method True from public to protected
+Iteration 747: "Make Class Non Final" applied to class IntegerSequence
+Iteration 748: "Decrease Method Security" applied at class Predicates to method True from protected to public
+Iteration 749: "Make Method Non Final" applied at class EqualTo to method test
+Iteration 750: "Make Method Final" applied at class EqualTo to method test
+Iteration 751: "Make Method Non Final" applied at class EqualTo to method test
+Iteration 752: "Make Method Final" applied at class EqualTo to method test
+Iteration 753: "Make Method Non Final" applied at class EqualTo to method test
+Iteration 754: "Make Method Final" applied at class EqualTo to method test
+Iteration 755: "Make Method Non Final" applied at class EqualTo to method test
+Iteration 756: "Make Method Final" applied at class EqualTo to method test
+Iteration 757: "Make Method Non Final" applied at class EqualTo to method test
+Iteration 758: "Make Method Final" applied at class EqualTo to method test
+Iteration 759: "Make Class Final" applied to class IntegerSequence
+Iteration 760: "Increase Method Security" applied at class Predicates to method True from public to protected
+Iteration 761: "Make Class Non Final" applied to class IntegerSequence
+Iteration 762: "Decrease Method Security" applied at class Predicates to method True from protected to public
+Iteration 763: "Decrease Method Security" applied at class CountIfNot to method CountIfNot from private to package
+Iteration 764: "Make Class Final" applied to class RemoveIf
+Iteration 765: "Make Method Non Final" applied at class IsNull to method test
+Iteration 766: "Make Method Static" applied at class LessThanEquals to method test
+Iteration 767: "Make Class Final" applied to class LessThan
+Iteration 768: "Make Method Final" applied at class TransformIterator to method hasNext
+Iteration 769: "Decrease Method Security" applied at class Iterators to method Iterators from private to package
+Iteration 770: "Make Method Static" applied at class NotNull to method test
+Iteration 771: "Make Class Non Final" applied to class Nor
+Iteration 772: "Make Method Static" applied at class GreaterThanEquals to method test
+Iteration 773: "Decrease Method Security" applied at class Iterators to method Iterators from package to protected
+Iteration 774: "Increase Method Security" applied at class Generators to method NullSequence from public to protected
+Iteration 775: "Make Class Final" applied to class Remove
+Iteration 776: "Decrease Method Security" applied at class Iterators to method Iterators from protected to public
 
-Score has improved overall by 0.455810
-Time taken to refactor: 159.67s
+Score has improved overall by 0.291170
+Time taken to refactor: 135.73s
 
 ======== Final Metric Info ========
-Average ratio of private/package/protected attributes to overall attributes per class: 0.450855
+Average ratio of private/package/protected attributes to overall attributes per class: 0.452991
 Average coupling per class: 0.000000
-Average cohesion among methods per class: 0.493659
+Average cohesion among methods per class: 0.494413
 Average amount of user defined attributes declared per class: 0.000000
 Average functional abstraction per class: 0.000000
 Average amount of polymorphic methods per class: 0.076923
-Average amount of public methods per class: 4.012821
-Average amount of methods per class: 4.243590
-Average amount of complexity of methods per class: 17.564102
+Average amount of public methods per class: 3.948718
+Average amount of methods per class: 4.282051
+Average amount of complexity of methods per class: 17.717949
 Ratio of interfaces to overall amount of classes: 0.076923
 Average ratio of abstract classes/methods per class: 0.076923
-Average ratio of static classes/methods/variables per class: 0.249811
-Average ratio of final classes/methods/variables per class: 0.191633
+Average ratio of static classes/methods/variables per class: 0.240558
+Average ratio of final classes/methods/variables per class: 0.172965
 Average ratio of constant classes/methods/variables per class: 0.000000
 Ratio of inner classes to overall amount of ordinary classes in project: 0.128205
 Average inherited referenced methods ratio per class: 0.000000
-Average visibility ratio per class: 0.791616
+Average visibility ratio per class: 0.766392
 Amount of lines of code in project: 3470
-Overall fitness function score: 0.455810
+Overall fitness function score: 0.291170

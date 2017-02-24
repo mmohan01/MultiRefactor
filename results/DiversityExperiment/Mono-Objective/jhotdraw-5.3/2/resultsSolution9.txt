@@ -27,116 +27,94 @@ Amount of lines of code in project: 27824
 Overall fitness function score: 0.000000
 
 ======== Applied Refactorings ========
-Iteration 1: "Make Method Non Static" applied at class DragNDropTool to method ProcessReceivedData
-Iteration 2: "Decrease Method Security" applied at class JavaDrawViewer to method loadDrawing from private to package
-Iteration 3: "Make Field Final" applied at class RedoCommand to ParameterDeclaration name
-Iteration 4: "Move Method Up" applied to method bounds from PolygonFigure to AttributeFigure
-Iteration 5: "Remove Class" applied to class JHotDrawException
-Iteration 6: "Increase Method Security" applied at class SendToBackCommand to method createUndoActivity from protected to package
-Iteration 7: "Make Method Final" applied at class LocatorHandle to method getLocator
-Iteration 8: "Increase Method Security" applied at class CustomSelectionTool to method handleMouseDown from protected to package
-Iteration 9: "Make Class Final" applied to class ArrowTip
-Iteration 10: "Make Method Final" applied at class UngroupCommand to method ungroupFigures
-Iteration 11: "Make Field Final" applied at class PaletteListener to ParameterDeclaration button
-Iteration 12: "Move Field Down" applied to field fLocator from NullHandle to GroupHandle
-Iteration 13: "Increase Field Security" applied at class CompositeFigure to field _nLowestZ from protected to package
-Iteration 14: "Move Method Up" applied to method moveAffectedFigures from UndoActivity to UndoableAdapter
-Iteration 15: "Increase Method Security" applied at class PolyLineHandle to method getOldPoint from public to protected
-Iteration 16: "Move Method Down" applied to method mouseDown from ActionTool to BorderTool
-Iteration 17: "Increase Method Security" applied at class CustomSelectionTool to method handleMouseDown from package to private
-Iteration 18: "Increase Field Security" applied at class CompositeFigure to field _nLowestZ from package to private
-Iteration 19: "Move Method Up" applied to method invokeStep from NorthEastHandle to ResizeHandle
-Iteration 20: "Increase Field Security" applied at class Geom to field WEST from public to protected
-Iteration 21: "Remove Field" applied at class TextFigure to field textFigureSerializedDataVersion
-Iteration 22: "Decrease Method Security" applied at class PolygonScaleHandle to method setPolygon from protected to public
-Iteration 23: "Make Field Static" applied at class BouncingDrawing to field bouncingDrawingSerializedDataVersion
-Iteration 24: "Increase Field Security" applied at class Geom to field WEST from protected to package
-Iteration 25: "Increase Field Security" applied at class Geom to field WEST from package to private
-Iteration 26: "Increase Method Security" applied at class ShortestDistanceConnector to method findPoint from protected to package
-Iteration 27: "Make Method Final" applied at class CustomToolBar to method switchToStandardTools
-Iteration 28: "Make Class Final" applied to class NothingApplet
-Iteration 29: "Make Method Final" applied at class ReverseFigureEnumerator to method nextElement
-Iteration 30: "Increase Method Security" applied at class SendToBackCommand to method createUndoActivity from package to private
+Iteration 1: "Increase Method Security" applied at class MDI_InternalFrame to method setDrawingView from public to protected
+Iteration 2: "Make Field Final" applied at class PertDependency to LocalVariableDeclaration target
+Iteration 3: "Make Field Non Static" applied at class PertApplication to field PERTIMAGES
+Iteration 4: "Move Field Down" applied to field fLocator from NullHandle to GroupHandle
+Iteration 5: "Make Class Concrete" applied to class AbstractLocator
+Iteration 6: "Increase Method Security" applied at class FigureTransferCommand to method copyFigures from protected to package
+Iteration 7: "Decrease Method Security" applied at class GroupCommand to method createUndoActivity from protected to public
+Iteration 8: "Move Method Down" applied to method mouseUp from ActionTool to BorderTool
+Iteration 9: "Remove Class" applied to class JHotDrawException
+Iteration 10: "Increase Method Security" applied at class SendToBackCommand to method createUndoActivity from protected to package
+Iteration 11: "Make Class Non Final" applied to class FigureEnumerator
+Iteration 12: "Decrease Method Security" applied at class ArrowTip to method setAngle from protected to public
+Iteration 13: "Make Method Non Static" applied at class UndoRedoActivity to method createUndoRedoActivity
+Iteration 14: "Make Field Non Final" applied at class StandardDrawing to FieldDeclaration serialVersionUID
+Iteration 15: "Make Field Final" applied at class PertFigureCreationTool to ParameterDeclaration newDrawingEditor
+Iteration 16: "Decrease Method Security" applied at class Iconkit to method basicGetImage from private to package
+Iteration 17: "Make Field Final" applied at class Clipboard to FieldDeclaration fgClipboard
+Iteration 18: "Make Class Final" applied to class TriangleFigure
+Iteration 19: "Increase Method Security" applied at class SendToBackCommand to method createUndoActivity from package to private
+Iteration 20: "Decrease Method Security" applied at class Iconkit to method basicGetImage from package to protected
+Iteration 21: "Decrease Method Security" applied at class Iconkit to method basicGetImage from protected to public
+Iteration 22: "Make Class Final" applied to class ChopPolygonConnector
+Iteration 23: "Decrease Method Security" applied at class ImageFigure to method drawGhost from private to package
+Iteration 24: "Remove Method" applied at class Bounds to method cropLine
+Iteration 25: "Decrease Method Security" applied at class ImageFigure to method drawGhost from package to protected
+Iteration 26: "Make Method Non Static" applied at class AttributeFigure to method initializeAttributes
+Iteration 27: "Make Method Final" applied at class LineFigure to method endPoint
+Iteration 28: "Move Method Up" applied to method invokeStep from NorthEastHandle to ResizeHandle
+Iteration 29: "Make Class Final" applied to class PertFigureCreationTool
+Iteration 30: "Make Class Abstract" applied to class ResizeHandle
 Iteration 31: "Move Method Up" applied to method invokeStep from ResizeHandle to LocatorHandle
-Iteration 32: "Increase Method Security" applied at class ShortestDistanceConnector to method findPoint from package to private
-Iteration 33: "Make Field Non Static" applied at class AbstractFigure to field serialVersionUID
-Iteration 34: "Move Method Up" applied to method invokeStep from EastHandle to ResizeHandle
-Iteration 35: "Make Field Non Static" applied at class FigureEnumerator to field singletonEmptyEnumerator
-Iteration 36: "Make Field Final" applied at class LineConnection to ParameterDeclaration e
-Iteration 37: "Make Class Abstract" applied to class ResizeHandle
-Iteration 38: "Make Method Final" applied at class MDI_DrawApplication to method createInternalFrame
-Iteration 39: "Make Class Final" applied to class UndoActivity
-Iteration 40: "Increase Field Security" applied at class DragNDropTool to field fChild from protected to package
-Iteration 41: "Increase Field Security" applied at class DragNDropTool to field fChild from package to private
-Iteration 42: "Increase Field Security" applied at class ReverseFigureEnumerator to field fEnumeration from package to private
-Iteration 43: "Decrease Method Security" applied at class SendToBackCommand to method isExecutableWithView from protected to public
-Iteration 44: "Decrease Method Security" applied at class StandardVersionControlStrategy to method getVersionRequester from protected to public
-Iteration 45: "Make Method Final" applied at class AbstractLocator to method clone
-Iteration 46: "Move Method Up" applied to method deleteFigures from FigureTransferCommand to AbstractCommand
-Iteration 47: "Move Method Up" applied to method draw from FontSizeHandle to LocatorHandle
-Iteration 48: "Decrease Method Security" applied at class UndoableCommand to method setEventDispatcher from private to package
-Iteration 49: "Decrease Method Security" applied at class UndoableCommand to method setEventDispatcher from package to protected
-Iteration 50: "Make Class Abstract" applied to class FigureChangeAdapter
-Iteration 51: "Decrease Method Security" applied at class Animatable to method animationStep from package to protected
-Iteration 52: "Decrease Method Security" applied at class LocatorConnector to method locate from protected to public
-Iteration 53: "Make Class Abstract" applied to class LocatorHandle
-Iteration 54: "Make Method Final" applied at class MDI_InternalFrame to method setDrawingView
-Iteration 55: "Make Class Final" applied to class SleeperThread
-Iteration 56: "Decrease Method Security" applied at class UndoableCommand to method setEventDispatcher from protected to public
-Iteration 57: "Decrease Method Security" applied at class Animatable to method animationStep from protected to public
-Iteration 58: "Remove Method" applied at class FloatingTextField to method removeActionListener
-Iteration 59: "Move Field Up" applied to field fLocator from GroupHandle to NullHandle
-Iteration 60: "Make Field Static" applied at class PaletteIcon to field fSize
-Iteration 61: "Make Class Final" applied to class Bounds
-Iteration 62: "Increase Method Security" applied at class PertFigure to method update from public to protected
-Iteration 63: "Make Class Abstract" applied to class DrawApplet
-Iteration 64: "Make Method Non Static" applied at class PolygonFigure to method locator
-Iteration 65: "Make Class Final" applied to class Animator
-Iteration 66: "Increase Field Security" applied at class InsertImageCommand to field myAffectedImageFigure from package to private
-Iteration 67: "Make Class Concrete" applied to class AttributeFigure
-Iteration 68: "Increase Method Security" applied at class PertFigure to method update from protected to package
-Iteration 69: "Make Method Final" applied at class OffsetLocator to method moveBy
-Iteration 70: "Increase Method Security" applied at class NothingApp to method main from public to protected
-Iteration 71: "Make Method Final" applied at class AbstractConnector to method owner
-Iteration 72: "Make Field Static" applied at class SingleFigureEnumerator to field mySingleFigure
-Iteration 73: "Make Field Final" applied at class GridConstrainer to ParameterDeclaration y
-Iteration 74: "Move Field Down" applied to field fLocator from NullHandle to GroupHandle
-Iteration 75: "Remove Field" applied at class ImageFigure to field imageFigureSerializedDataVersion
-Iteration 76: "Remove Method" applied at class LineConnection to method connectsSame
-Iteration 77: "Decrease Method Security" applied at class StorableOutput to method mapped from private to package
-Iteration 78: "Remove Method" applied at class StorageFormatManager to method removeStorageFormat
-Iteration 79: "Increase Method Security" applied at class NothingApp to method main from protected to package
-Iteration 80: "Decrease Method Security" applied at class StorableOutput to method mapped from package to protected
-Iteration 81: "Decrease Method Security" applied at class JavaDrawApp to method createDrawing from protected to public
-Iteration 82: "Move Method Down" applied to method drawFrame from RectangleFigure to DiamondFigure
-Iteration 83: "Decrease Method Security" applied at class CutCommand to method createUndoActivity from protected to public
-Iteration 84: "Decrease Method Security" applied at class FollowURLTool to method FollowURLTool from package to protected
-Iteration 85: "Make Field Final" applied at class FigureChangeAdapter to ParameterDeclaration e
-Iteration 86: "Move Field Up" applied to field fRelativeX from RelativeLocator to AbstractLocator
-Iteration 87: "Decrease Method Security" applied at class UndoableCommand to method setWrappedCommand from protected to public
-Iteration 88: "Make Field Final" applied at class FigureSelection to ParameterDeclaration type
-Iteration 89: "Make Method Non Static" applied at class DragNDropTool to method supportDropTargetDragEvent
+Iteration 32: "Make Method Static" applied at class NullDrawingView to method isInteractive
+Iteration 33: "Decrease Method Security" applied at class RoundRectangleFigure to method basicMoveBy from protected to public
+Iteration 34: "Make Method Static" applied at class PolygonFigure to method connectorAt
+Iteration 35: "Make Class Final" applied to class EventDispatcher
+Iteration 36: "Make Class Concrete" applied to class AttributeFigure
+Iteration 37: "Increase Method Security" applied at class MDIDesktopPane to method cascadeFrames from public to protected
+Iteration 38: "Move Method Up" applied to method invokeStep from EastHandle to ResizeHandle
+Iteration 39: "Increase Method Security" applied at class FloatingTextField to method removeActionListener from public to protected
+Iteration 40: "Increase Method Security" applied at class MDIDesktopPane to method cascadeFrames from protected to package
+Iteration 41: "Make Class Abstract" applied to class FigureChangeAdapter
+Iteration 42: "Decrease Method Security" applied at class NodeFigure to method drawBorder from private to package
+Iteration 43: "Make Field Final" applied at class JHotDrawRuntimeException to ParameterDeclaration msg
+Iteration 44: "Decrease Method Security" applied at class ImageFigure to method drawGhost from protected to public
+Iteration 45: "Decrease Method Security" applied at class RectangleFigure to method basicMoveBy from protected to public
+Iteration 46: "Increase Method Security" applied at class FloatingTextField to method removeActionListener from protected to package
+Iteration 47: "Decrease Method Security" applied at class NodeFigure to method drawBorder from package to protected
+Iteration 48: "Decrease Method Security" applied at class CommandMenu to method addMenuItem from protected to public
+Iteration 49: "Increase Method Security" applied at class FloatingTextField to method removeActionListener from package to private
+Iteration 50: "Decrease Method Security" applied at class NodeFigure to method drawBorder from protected to public
+Iteration 51: "Decrease Method Security" applied at class ColorMap to method ColorEntry from package to protected
+Iteration 52: "Remove Method" applied at class Bounds to method getWest
+Iteration 53: "Remove Method" applied at class CustomToolBar to method activateTools
+Iteration 54: "Decrease Method Security" applied at class ColorMap to method ColorEntry from protected to public
+Iteration 55: "Make Class Abstract" applied to class DrawApplet
+Iteration 56: "Make Method Final" applied at class AbstractTool to method isEnabled
+Iteration 57: "Make Class Concrete" applied to class DrawApplet
+Iteration 58: "Move Method Up" applied to method isExecutableWithView from DeleteCommand to FigureTransferCommand
+Iteration 59: "Make Class Final" applied to class PolygonFigure
+Iteration 60: "Make Class Final" applied to class ChangeConnectionEndHandle
+Iteration 61: "Move Method Down" applied to method undo from UndoActivity to UndoActivity
+Iteration 62: "Decrease Method Security" applied at class DragTracker to method createUndoActivity from protected to public
+Iteration 63: "Make Method Final" applied at class StandardDrawingView to method handleCursorKey
+Iteration 64: "Make Class Final" applied to class PertApplication
+Iteration 65: "Make Field Static" applied at class WindowMenu to field frame
+Iteration 66: "Decrease Field Security" applied at class PolyLineHandle to field myOldPoint from private to package
+Iteration 67: "Make Class Concrete" applied to class AbstractConnector
 
-Score has improved overall by 0.614620
-Time taken to refactor: 1268.79s
+Score has improved overall by 0.356163
+Time taken to refactor: 1143.31s
 
 ======== Final Metric Info ========
-Average ratio of private/package/protected attributes to overall attributes per class: 0.617152
-Average coupling per class: 1.720833
-Average cohesion among methods per class: 0.320145
+Average ratio of private/package/protected attributes to overall attributes per class: 0.616111
+Average coupling per class: 1.725000
+Average cohesion among methods per class: 0.319416
 Average amount of user defined attributes declared per class: 0.575000
-Average functional abstraction per class: 0.335083
-Average amount of polymorphic methods per class: 1.633333
-Average amount of public methods per class: 7.395833
-Average amount of methods per class: 9.312500
-Average amount of complexity of methods per class: 56.266666
+Average functional abstraction per class: 0.335866
+Average amount of polymorphic methods per class: 1.637500
+Average amount of public methods per class: 7.404167
+Average amount of methods per class: 9.316667
+Average amount of complexity of methods per class: 55.779167
 Ratio of interfaces to overall amount of classes: 0.137500
-Average ratio of abstract classes/methods per class: 0.152366
-Average ratio of static classes/methods/variables per class: 0.075206
-Average ratio of final classes/methods/variables per class: 0.025175
-Average ratio of constant classes/methods/variables per class: 0.027519
+Average ratio of abstract classes/methods per class: 0.150054
+Average ratio of static classes/methods/variables per class: 0.073935
+Average ratio of final classes/methods/variables per class: 0.022042
+Average ratio of constant classes/methods/variables per class: 0.026320
 Ratio of inner classes to overall amount of ordinary classes in project: 0.133333
-Average inherited referenced methods ratio per class: 0.274352
-Average visibility ratio per class: 0.696890
+Average inherited referenced methods ratio per class: 0.273434
+Average visibility ratio per class: 0.696316
 Amount of lines of code in project: 27794
-Overall fitness function score: 0.614620
+Overall fitness function score: 0.356163

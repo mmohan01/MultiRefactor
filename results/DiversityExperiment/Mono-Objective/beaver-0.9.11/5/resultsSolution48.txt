@@ -27,80 +27,153 @@ Amount of lines of code in project: 6493
 Overall fitness function score: 0.000000
 
 ======== Applied Refactorings ========
-Iteration 1: "Make Class Final" applied to class RHS
-Iteration 2: "Make Field Non Final" applied at class ParsingTables to FieldDeclaration first_state
-Iteration 3: "Move Method Down" applied to method setLocation from Node to Declaration
-Iteration 4: "Make Method Final" applied at class GrammarParser to method misspelledTokenReplaced
-Iteration 5: "Decrease Method Security" applied at class State to method findLookaheads from package to protected
-Iteration 6: "Remove Method" applied at class Declaration to method setLocation
-Iteration 7: "Decrease Method Security" applied at class State to method findLookaheads from protected to public
-Iteration 8: "Make Class Final" applied to class Factory
-Iteration 9: "Move Field Up" applied to field found from null to RuleWalker
-Iteration 10: "Decrease Method Security" applied at class Declaration to method NameContainer from protected to public
-Iteration 11: "Make Field Static" applied at class GrammarTreeRoot to field rules
-Iteration 12: "Decrease Field Security" applied at class Configuration to field first_conf from package to protected
-Iteration 13: "Make Class Abstract" applied to class Conflict
-Iteration 14: "Decrease Method Security" applied at class Declaration to method SymbolsContainer from protected to public
-Iteration 15: "Make Method Static" applied at class ParsingTables to method renumberSymbols
-Iteration 16: "Make Class Final" applied to class Shift
-Iteration 17: "Make Field Static" applied at class ParsingTables to field n_term
-Iteration 18: "Make Method Static" applied at class Production to method compare
-Iteration 19: "Make Class Abstract" applied to class Action
-Iteration 20: "Move Field Up" applied to field rules from GrammarTreeRoot to Node
-Iteration 21: "Make Class Final" applied to class Reduce
-Iteration 22: "Decrease Method Security" applied at class Terminal to method Associativity from private to package
-Iteration 23: "Decrease Method Security" applied at class ParserGenerator to method indexOfLastReferencedSymbol from private to package
-Iteration 24: "Make Method Final" applied at class Rule to method getExtUseMark
-Iteration 25: "Make Class Final" applied to class Configuration
-Iteration 26: "Make Class Concrete" applied to class SymbolsContainer
-Iteration 27: "Make Method Final" applied at class Make to method getSrcFile
-Iteration 28: "Decrease Method Security" applied at class Action to method resolveConflict from package to protected
-Iteration 29: "Decrease Method Security" applied at class Declaration to method CodeContainer from protected to public
-Iteration 30: "Make Field Non Static" applied at class GrammarScanner to field YYEOF
-Iteration 31: "Make Class Abstract" applied to class SymbolsContainer
-Iteration 32: "Increase Field Security" applied at class ParserGenerator to field SOURCE_FILE_EXT from public to protected
-Iteration 33: "Make Method Non Static" applied at class Make to method printVersion
-Iteration 34: "Decrease Method Security" applied at class GrammarBuilder to method writeListsCode from private to package
-Iteration 35: "Make Class Concrete" applied to class SymbolsContainer
-Iteration 36: "Make Class Abstract" applied to class SymbolsContainer
-Iteration 37: "Increase Field Security" applied at class ParserGenerator to field PARSER_ACTIONS_REPORT_FILE_EXT from public to protected
-Iteration 38: "Make Field Static" applied at class NonTerminal to field definitions
-Iteration 39: "Decrease Method Security" applied at class Log to method Record from package to protected
-Iteration 40: "Remove Method" applied at class IntArray to method compact
-Iteration 41: "Make Class Concrete" applied to class SymbolsContainer
-Iteration 42: "Make Class Abstract" applied to class SymbolsContainer
-Iteration 43: "Decrease Method Security" applied at class Action to method resolveConflict from protected to public
-Iteration 44: "Make Class Concrete" applied to class SymbolsContainer
-Iteration 45: "Make Class Abstract" applied to class SymbolsContainer
-Iteration 46: "Increase Field Security" applied at class ParserGenerator to field SOURCE_FILE_EXT from protected to package
-Iteration 47: "Decrease Method Security" applied at class GrammarBuilder to method writeListsCode from package to protected
-Iteration 48: "Make Method Non Static" applied at class ParserGenerator to method makeProductionDescriptors
-Iteration 49: "Decrease Method Security" applied at class Action to method compress from package to protected
-Iteration 50: "Make Method Non Final" applied at class GrammarScanner to method yylength
-Iteration 51: "Move Method Down" applied to method toString from GrammarSymbol to NonTerminal
-Iteration 52: "Make Field Non Final" applied at class ParserGenerator to FieldDeclaration _62_or_63
-Iteration 53: "Decrease Method Security" applied at class ParserGenerator to method writeParserActionsArray from private to package
+Iteration 1: "Make Field Final" applied at class Declaration to ParameterDeclaration walker
+Iteration 2: "Make Class Final" applied to class Log
+Iteration 3: "Increase Method Security" applied at class Terminal to method setPrecedence from public to protected
+Iteration 4: "Make Field Static" applied at class Production to field code
+Iteration 5: "Make Class Abstract" applied to class Action
+Iteration 6: "Decrease Method Security" applied at class GrammarScanner to method zzUnpackAction from private to package
+Iteration 7: "Make Class Abstract" applied to class Conflict
+Iteration 8: "Make Method Final" applied at class Make to method printVersion
+Iteration 9: "Decrease Method Security" applied at class GrammarBuilder to method trimCode from private to package
+Iteration 10: "Make Class Concrete" applied to class SymbolsContainer
+Iteration 11: "Decrease Method Security" applied at class State to method buildShiftsFrom from private to package
+Iteration 12: "Decrease Method Security" applied at class NonTerminal to method NonTerminal from package to protected
+Iteration 13: "Increase Method Security" applied at class State to method buildShiftsFrom from package to private
+Iteration 14: "Make Method Final" applied at class Declaration to method accept
+Iteration 15: "Make Method Final" applied at class ParsingTables to method findOffset
+Iteration 16: "Make Field Static" applied at class Action to field descr
+Iteration 17: "Move Field Up" applied to field is_nullable from NonTerminal to GrammarSymbol
+Iteration 18: "Make Method Static" applied at class GrammarBuilder to method propagateTypes
+Iteration 19: "Increase Method Security" applied at class ParserGenerator to method getOutputFileName from public to protected
+Iteration 20: "Decrease Method Security" applied at class NonTerminal to method NonTerminal from protected to public
+Iteration 21: "Move Field Down" applied to field is_nullable from GrammarSymbol to NonTerminal
+Iteration 22: "Increase Field Security" applied at class ParsingTables to field compressed from package to private
+Iteration 23: "Make Method Non Static" applied at class Make to method parseOptions
+Iteration 24: "Decrease Method Security" applied at class State to method State from package to protected
+Iteration 25: "Decrease Method Security" applied at class GrammarBuilder to method writeListsCode from private to package
+Iteration 26: "Decrease Method Security" applied at class ParsingTables to method removeLookaheads from private to package
+Iteration 27: "Decrease Method Security" applied at class ParserGenerator to method makeProductionDescriptors from private to package
+Iteration 28: "Decrease Method Security" applied at class Declaration to method NameContainer from protected to public
+Iteration 29: "Decrease Method Security" applied at class Log to method Record from package to protected
+Iteration 30: "Make Field Static" applied at class GrammarTreeRoot to field declarations
+Iteration 31: "Increase Method Security" applied at class BitSet to method isSet from public to protected
+Iteration 32: "Make Method Final" applied at class GrammarTreeRoot to method accept
+Iteration 33: "Decrease Method Security" applied at class GrammarScanner to method zzUnpackAction from package to protected
+Iteration 34: "Decrease Method Security" applied at class GrammarBuilder to method trimCode from package to protected
+Iteration 35: "Decrease Method Security" applied at class State to method buildShiftsFrom from private to package
+Iteration 36: "Decrease Method Security" applied at class NonTerminal to method NonTerminal from package to protected
+Iteration 37: "Increase Method Security" applied at class State to method buildShiftsFrom from package to private
+Iteration 38: "Make Method Final" applied at class Declaration to method accept
+Iteration 39: "Increase Method Security" applied at class ParserGenerator to method getOutputFileName from protected to package
+Iteration 40: "Decrease Method Security" applied at class NonTerminal to method NonTerminal from protected to public
+Iteration 41: "Decrease Method Security" applied at class State to method State from protected to public
+Iteration 42: "Decrease Method Security" applied at class GrammarBuilder to method writeListsCode from package to protected
+Iteration 43: "Decrease Method Security" applied at class ParsingTables to method removeLookaheads from package to protected
+Iteration 44: "Decrease Method Security" applied at class ParserGenerator to method makeProductionDescriptors from package to protected
+Iteration 45: "Decrease Method Security" applied at class Log to method Record from protected to public
+Iteration 46: "Increase Method Security" applied at class BitSet to method isSet from protected to package
+Iteration 47: "Increase Method Security" applied at class BitSet to method isSet from package to private
+Iteration 48: "Decrease Method Security" applied at class State to method buildShiftsFrom from private to package
+Iteration 49: "Increase Method Security" applied at class State to method buildShiftsFrom from package to private
+Iteration 50: "Decrease Method Security" applied at class State to method Factory from package to protected
+Iteration 51: "Decrease Method Security" applied at class State to method buildShiftsFrom from private to package
+Iteration 52: "Increase Method Security" applied at class State to method buildShiftsFrom from package to private
+Iteration 53: "Decrease Method Security" applied at class Terminal to method Terminal from package to protected
+Iteration 54: "Make Method Final" applied at class Declaration to method getName
+Iteration 55: "Make Method Final" applied at class ParsingTables to method writeTo
+Iteration 56: "Decrease Method Security" applied at class State to method buildShiftsFrom from private to package
+Iteration 57: "Increase Method Security" applied at class State to method buildShiftsFrom from package to private
+Iteration 58: "Decrease Method Security" applied at class GrammarBuilder to method trimCode from protected to public
+Iteration 59: "Decrease Method Security" applied at class State to method buildShiftsFrom from private to package
+Iteration 60: "Increase Method Security" applied at class State to method buildShiftsFrom from package to private
+Iteration 61: "Decrease Method Security" applied at class GrammarScanner to method zzUnpackAction from protected to public
+Iteration 62: "Decrease Method Security" applied at class State to method buildShiftsFrom from private to package
+Iteration 63: "Increase Method Security" applied at class State to method buildShiftsFrom from package to private
+Iteration 64: "Decrease Method Security" applied at class State to method buildShiftsFrom from private to package
+Iteration 65: "Increase Method Security" applied at class State to method buildShiftsFrom from package to private
+Iteration 66: "Decrease Method Security" applied at class State to method buildShiftsFrom from private to package
+Iteration 67: "Increase Method Security" applied at class State to method buildShiftsFrom from package to private
+Iteration 68: "Decrease Method Security" applied at class State to method buildShiftsFrom from private to package
+Iteration 69: "Increase Method Security" applied at class State to method buildShiftsFrom from package to private
+Iteration 70: "Decrease Method Security" applied at class State to method buildShiftsFrom from private to package
+Iteration 71: "Increase Method Security" applied at class State to method buildShiftsFrom from package to private
+Iteration 72: "Decrease Method Security" applied at class Terminal to method Terminal from protected to public
+Iteration 73: "Decrease Method Security" applied at class State to method buildShiftsFrom from private to package
+Iteration 74: "Increase Method Security" applied at class State to method buildShiftsFrom from package to private
+Iteration 75: "Decrease Method Security" applied at class State to method buildShiftsFrom from private to package
+Iteration 76: "Increase Method Security" applied at class State to method buildShiftsFrom from package to private
+Iteration 77: "Make Class Abstract" applied to class SymbolsContainer
+Iteration 78: "Remove Method" applied at class Node to method setLocation
+Iteration 79: "Decrease Method Security" applied at class GrammarScanner to method newSymbol from private to package
+Iteration 80: "Decrease Method Security" applied at class State to method buildShiftsFrom from private to package
+Iteration 81: "Increase Method Security" applied at class State to method buildShiftsFrom from package to private
+Iteration 82: "Decrease Method Security" applied at class State to method buildShiftsFrom from private to package
+Iteration 83: "Increase Method Security" applied at class State to method buildShiftsFrom from package to private
+Iteration 84: "Increase Method Security" applied at class ParserGenerator to method getOutputFileName from package to private
+Iteration 85: "Decrease Method Security" applied at class GrammarBuilder to method writeListsCode from protected to public
+Iteration 86: "Decrease Method Security" applied at class ParsingTables to method removeLookaheads from protected to public
+Iteration 87: "Decrease Method Security" applied at class ParserGenerator to method makeProductionDescriptors from protected to public
+Iteration 88: "Decrease Method Security" applied at class State to method buildShiftsFrom from private to package
+Iteration 89: "Increase Method Security" applied at class State to method buildShiftsFrom from package to private
+Iteration 90: "Decrease Method Security" applied at class State to method buildShiftsFrom from private to package
+Iteration 91: "Increase Method Security" applied at class State to method buildShiftsFrom from package to private
+Iteration 92: "Decrease Method Security" applied at class Declaration to method SymbolsContainer from protected to public
+Iteration 93: "Decrease Method Security" applied at class Configuration to method addLookaheads from package to protected
+Iteration 94: "Decrease Method Security" applied at class State to method Factory from protected to public
+Iteration 95: "Decrease Method Security" applied at class State to method buildShiftsFrom from private to package
+Iteration 96: "Increase Method Security" applied at class State to method buildShiftsFrom from package to private
+Iteration 97: "Decrease Method Security" applied at class Configuration to method addLookaheads from protected to public
+Iteration 98: "Decrease Method Security" applied at class State to method buildShiftsFrom from private to package
+Iteration 99: "Increase Method Security" applied at class State to method buildShiftsFrom from package to private
+Iteration 100: "Decrease Method Security" applied at class State to method buildShiftsFrom from private to package
+Iteration 101: "Increase Method Security" applied at class State to method buildShiftsFrom from package to private
+Iteration 102: "Make Class Concrete" applied to class SymbolsContainer
+Iteration 103: "Decrease Method Security" applied at class State to method buildShiftsFrom from private to package
+Iteration 104: "Increase Method Security" applied at class State to method buildShiftsFrom from package to private
+Iteration 105: "Decrease Method Security" applied at class State to method buildShiftsFrom from private to package
+Iteration 106: "Increase Method Security" applied at class State to method buildShiftsFrom from package to private
+Iteration 107: "Make Class Abstract" applied to class SymbolsContainer
+Iteration 108: "Decrease Method Security" applied at class GrammarScanner to method newSymbol from package to protected
+Iteration 109: "Decrease Method Security" applied at class State to method buildShiftsFrom from private to package
+Iteration 110: "Increase Method Security" applied at class State to method buildShiftsFrom from package to private
+Iteration 111: "Decrease Method Security" applied at class State to method buildShiftsFrom from private to package
+Iteration 112: "Increase Method Security" applied at class State to method buildShiftsFrom from package to private
+Iteration 113: "Make Class Concrete" applied to class SymbolsContainer
+Iteration 114: "Decrease Method Security" applied at class State to method buildShiftsFrom from private to package
+Iteration 115: "Increase Method Security" applied at class State to method buildShiftsFrom from package to private
+Iteration 116: "Decrease Method Security" applied at class State to method buildShiftsFrom from private to package
+Iteration 117: "Increase Method Security" applied at class State to method buildShiftsFrom from package to private
+Iteration 118: "Make Class Abstract" applied to class SymbolsContainer
+Iteration 119: "Decrease Method Security" applied at class GrammarScanner to method newSymbol from protected to public
+Iteration 120: "Make Method Static" applied at class GrammarTreeRoot to method accept
+Iteration 121: "Decrease Method Security" applied at class GrammarSymbol to method GrammarSymbol from package to protected
+Iteration 122: "Make Method Non Static" applied at class ParsingTables to method countStates
+Iteration 123: "Move Method Down" applied to method toString from GrammarSymbol to NonTerminal
+Iteration 124: "Make Class Final" applied to class ConstructorCode
+Iteration 125: "Make Field Final" applied at class Action to ParameterDeclaration state
+Iteration 126: "Make Field Final" applied at class State to FieldDeclaration num_states
 
-Score has improved overall by 0.680550
-Time taken to refactor: 164.73s
+Score has improved overall by 0.809035
+Time taken to refactor: 160.44s
 
 ======== Final Metric Info ========
-Average ratio of private/package/protected attributes to overall attributes per class: 0.427717
+Average ratio of private/package/protected attributes to overall attributes per class: 0.406288
 Average coupling per class: 1.728571
-Average cohesion among methods per class: 0.440607
+Average cohesion among methods per class: 0.439178
 Average amount of user defined attributes declared per class: 1.000000
-Average functional abstraction per class: 0.296062
+Average functional abstraction per class: 0.296769
 Average amount of polymorphic methods per class: 0.357143
-Average amount of public methods per class: 2.357143
-Average amount of methods per class: 4.428571
-Average amount of complexity of methods per class: 63.742859
+Average amount of public methods per class: 2.471429
+Average amount of methods per class: 4.442857
+Average amount of complexity of methods per class: 63.871429
 Ratio of interfaces to overall amount of classes: 0.000000
 Average ratio of abstract classes/methods per class: 0.071905
-Average ratio of static classes/methods/variables per class: 0.259747
-Average ratio of final classes/methods/variables per class: 0.095811
-Average ratio of constant classes/methods/variables per class: 0.068743
+Average ratio of static classes/methods/variables per class: 0.265484
+Average ratio of final classes/methods/variables per class: 0.109165
+Average ratio of constant classes/methods/variables per class: 0.067462
 Ratio of inner classes to overall amount of ordinary classes in project: 0.657143
 Average inherited referenced methods ratio per class: 0.022487
-Average visibility ratio per class: 0.615152
+Average visibility ratio per class: 0.623023
 Amount of lines of code in project: 6493
-Overall fitness function score: 0.680550
+Overall fitness function score: 0.809035

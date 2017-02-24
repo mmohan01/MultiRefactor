@@ -27,492 +27,88 @@ Amount of lines of code in project: 27824
 Overall fitness function score: 0.000000
 
 ======== Applied Refactorings ========
-Iteration 1: "Make Method Non Final" applied at class DrawApplication to method setStorageFormatManager
-Iteration 2: "Make Method Static" applied at class ChangeConnectionStartHandle to method createUndoActivity
-Iteration 3: "Move Method Up" applied to method isExecutableWithView from CutCommand to FigureTransferCommand
-Iteration 4: "Decrease Method Security" applied at class ImageFigure to method readObject from private to package
-Iteration 5: "Make Class Final" applied to class ElbowHandle
-Iteration 6: "Remove Field" applied at class LineFigure to field lineFigureSerializedDataVersion
-Iteration 7: "Move Method Down" applied to method undo from UndoActivity to UndoActivity
-Iteration 8: "Remove Field" applied at class DecoratorFigure to field decoratorFigureSerializedDataVersion
-Iteration 9: "Remove Class" applied to class JHotDrawException
-Iteration 10: "Increase Field Security" applied at class InsertImageCommand to field myAffectedImageFigure from package to private
-Iteration 11: "Make Field Final" applied at class CutCommand to ParameterDeclaration newDrawingEditor
-Iteration 12: "Decrease Field Security" applied at class SingleFigureEnumerator to field mySingleFigure from private to package
-Iteration 13: "Move Field Up" applied to field LENGTH_FACTOR from GraphLayout to FigureChangeAdapter
-Iteration 14: "Make Method Static" applied at class EllipseFigure to method connectorAt
-Iteration 15: "Remove Field" applied at class AbstractFigure to field serialVersionUID
-Iteration 16: "Make Method Static" applied at class DragNDropTool to method ProcessRemotelyReceivedData
-Iteration 17: "Decrease Method Security" applied at class StorableOutput to method decrementIndent from private to package
-Iteration 18: "Decrease Method Security" applied at class StorableOutput to method decrementIndent from package to protected
-Iteration 19: "Make Class Concrete" applied to class CompositeFigure
-Iteration 20: "Decrease Field Security" applied at class SingleFigureEnumerator to field mySingleFigure from package to protected
-Iteration 21: "Decrease Method Security" applied at class StorableOutput to method decrementIndent from protected to public
-Iteration 22: "Decrease Method Security" applied at class ImageFigure to method readObject from package to protected
-Iteration 23: "Decrease Field Security" applied at class SingleFigureEnumerator to field mySingleFigure from protected to public
-Iteration 24: "Move Field Up" applied to field FRICTION_FACTOR from GraphLayout to FigureChangeAdapter
-Iteration 25: "Move Method Down" applied to method drawFrame from RectangleFigure to DiamondFigure
-Iteration 26: "Make Field Final" applied at class JavaDrawApp to LocalVariableDeclaration name
-Iteration 27: "Decrease Method Security" applied at class QuadTree to method _makeNorthwest from private to package
-Iteration 28: "Make Field Non Final" applied at class JavaDrawApp to LocalVariableDeclaration name
-Iteration 29: "Make Field Final" applied at class SelectAllCommand to ParameterDeclaration name
-Iteration 30: "Decrease Method Security" applied at class StandardDrawingView to method selectionHandles from private to package
-Iteration 31: "Decrease Method Security" applied at class ImageFigure to method readObject from protected to public
-Iteration 32: "Make Field Final" applied at class JavaDrawApp to LocalVariableDeclaration name
-Iteration 33: "Decrease Method Security" applied at class QuadTree to method _makeNorthwest from package to protected
-Iteration 34: "Make Field Non Final" applied at class JavaDrawApp to LocalVariableDeclaration name
-Iteration 35: "Decrease Method Security" applied at class StandardDrawingView to method selectionHandles from package to protected
-Iteration 36: "Make Class Final" applied to class FastBufferedUpdateStrategy
-Iteration 37: "Make Field Static" applied at class AttributeFigure to field fAttributes
-Iteration 38: "Make Field Static" applied at class CreationTool to field fAnchorPoint
-Iteration 39: "Decrease Method Security" applied at class CommandMenu to method addMenuItem from protected to public
-Iteration 40: "Decrease Method Security" applied at class SplitPaneDrawApplication to method createContents from protected to public
-Iteration 41: "Make Method Non Static" applied at class DragNDropTool to method supportDropTargetDragEvent
-Iteration 42: "Make Method Final" applied at class FigureEnumerator to method nextFigure
-Iteration 43: "Make Field Final" applied at class JavaDrawApp to LocalVariableDeclaration name
-Iteration 44: "Decrease Method Security" applied at class QuadTree to method _makeNorthwest from protected to public
-Iteration 45: "Make Field Non Final" applied at class JavaDrawApp to LocalVariableDeclaration name
-Iteration 46: "Decrease Method Security" applied at class StandardDrawingView to method selectionHandles from protected to public
-Iteration 47: "Make Field Final" applied at class JavaDrawApp to LocalVariableDeclaration name
-Iteration 48: "Make Field Non Final" applied at class JavaDrawApp to LocalVariableDeclaration name
-Iteration 49: "Increase Method Security" applied at class JavaDrawViewer to method setUndoManager from protected to package
-Iteration 50: "Move Method Down" applied to method draw from ChangeConnectionHandle to ChangeConnectionEndHandle
-Iteration 51: "Make Field Final" applied at class JavaDrawApp to LocalVariableDeclaration name
-Iteration 52: "Make Field Non Final" applied at class JavaDrawApp to LocalVariableDeclaration name
-Iteration 53: "Make Field Final" applied at class JavaDrawApp to LocalVariableDeclaration name
-Iteration 54: "Make Field Non Final" applied at class JavaDrawApp to LocalVariableDeclaration name
-Iteration 55: "Increase Method Security" applied at class JavaDrawViewer to method setUndoManager from package to private
-Iteration 56: "Remove Method" applied at class MDI_DrawApplication to method getDrawingTitle
-Iteration 57: "Make Class Final" applied to class RedoCommand
-Iteration 58: "Remove Method" applied at class Bounds to method getWest
-Iteration 59: "Decrease Method Security" applied at class ShortestDistanceConnector to method findPoint from protected to public
-Iteration 60: "Make Field Final" applied at class ToggleGridCommand to ParameterDeclaration name
-Iteration 61: "Make Field Final" applied at class OrderedFigureElement to ParameterDeclaration aFigure
-Iteration 62: "Make Class Concrete" applied to class AbstractConnector
-Iteration 63: "Make Field Final" applied at class JavaDrawApp to LocalVariableDeclaration name
-Iteration 64: "Make Field Non Final" applied at class JavaDrawApp to LocalVariableDeclaration name
-Iteration 65: "Make Field Final" applied at class JavaDrawApp to LocalVariableDeclaration name
-Iteration 66: "Make Field Non Final" applied at class JavaDrawApp to LocalVariableDeclaration name
-Iteration 67: "Make Field Final" applied at class JavaDrawApp to LocalVariableDeclaration name
-Iteration 68: "Make Field Non Final" applied at class JavaDrawApp to LocalVariableDeclaration name
-Iteration 69: "Make Field Final" applied at class JavaDrawApp to LocalVariableDeclaration name
-Iteration 70: "Make Field Non Final" applied at class JavaDrawApp to LocalVariableDeclaration name
-Iteration 71: "Make Field Final" applied at class JavaDrawApp to LocalVariableDeclaration name
-Iteration 72: "Make Field Non Final" applied at class JavaDrawApp to LocalVariableDeclaration name
-Iteration 73: "Make Field Final" applied at class JavaDrawApp to LocalVariableDeclaration name
-Iteration 74: "Make Field Non Final" applied at class JavaDrawApp to LocalVariableDeclaration name
-Iteration 75: "Make Field Final" applied at class JavaDrawApp to LocalVariableDeclaration name
-Iteration 76: "Make Field Non Final" applied at class JavaDrawApp to LocalVariableDeclaration name
-Iteration 77: "Make Field Final" applied at class JavaDrawApp to LocalVariableDeclaration name
-Iteration 78: "Make Field Non Final" applied at class JavaDrawApp to LocalVariableDeclaration name
-Iteration 79: "Make Field Final" applied at class JavaDrawApp to LocalVariableDeclaration name
-Iteration 80: "Make Field Non Final" applied at class JavaDrawApp to LocalVariableDeclaration name
-Iteration 81: "Make Field Final" applied at class JavaDrawApp to LocalVariableDeclaration name
-Iteration 82: "Make Field Non Final" applied at class JavaDrawApp to LocalVariableDeclaration name
-Iteration 83: "Make Field Final" applied at class JavaDrawApp to LocalVariableDeclaration name
-Iteration 84: "Make Field Non Final" applied at class JavaDrawApp to LocalVariableDeclaration name
-Iteration 85: "Make Field Final" applied at class JavaDrawApp to LocalVariableDeclaration name
-Iteration 86: "Make Field Non Final" applied at class JavaDrawApp to LocalVariableDeclaration name
-Iteration 87: "Make Field Final" applied at class JavaDrawApp to LocalVariableDeclaration name
-Iteration 88: "Make Field Non Final" applied at class JavaDrawApp to LocalVariableDeclaration name
-Iteration 89: "Make Field Final" applied at class JavaDrawApp to LocalVariableDeclaration name
-Iteration 90: "Make Field Non Final" applied at class JavaDrawApp to LocalVariableDeclaration name
-Iteration 91: "Make Field Final" applied at class JavaDrawApp to LocalVariableDeclaration name
-Iteration 92: "Make Field Non Final" applied at class JavaDrawApp to LocalVariableDeclaration name
-Iteration 93: "Make Field Final" applied at class JavaDrawApp to LocalVariableDeclaration name
-Iteration 94: "Make Field Non Final" applied at class JavaDrawApp to LocalVariableDeclaration name
-Iteration 95: "Make Field Final" applied at class JavaDrawApp to LocalVariableDeclaration name
-Iteration 96: "Make Field Non Final" applied at class JavaDrawApp to LocalVariableDeclaration name
-Iteration 97: "Move Method Down" applied to method drawBackground from RectangleFigure to DiamondFigure
-Iteration 98: "Make Class Final" applied to class InsertImageCommand
-Iteration 99: "Decrease Method Security" applied at class ElbowConnection to method updatePoints from protected to public
-Iteration 100: "Move Method Up" applied to method insertFigures from FigureTransferCommand to AbstractCommand
-Iteration 101: "Move Method Up" applied to method chop from ChopBoxConnector to AbstractConnector
-Iteration 102: "Make Method Final" applied at class NullDrawingView to method insertFigures
-Iteration 103: "Make Method Static" applied at class PolygonTool to method mouseUp
-Iteration 104: "Make Field Final" applied at class JavaDrawApp to LocalVariableDeclaration name
-Iteration 105: "Make Field Non Final" applied at class JavaDrawApp to LocalVariableDeclaration name
-Iteration 106: "Make Field Final" applied at class JavaDrawApp to LocalVariableDeclaration name
-Iteration 107: "Make Field Non Final" applied at class JavaDrawApp to LocalVariableDeclaration name
-Iteration 108: "Make Field Final" applied at class JavaDrawApp to LocalVariableDeclaration name
-Iteration 109: "Make Field Non Final" applied at class JavaDrawApp to LocalVariableDeclaration name
-Iteration 110: "Make Field Final" applied at class JavaDrawApp to LocalVariableDeclaration name
-Iteration 111: "Make Field Non Final" applied at class JavaDrawApp to LocalVariableDeclaration name
-Iteration 112: "Make Field Final" applied at class JavaDrawApp to LocalVariableDeclaration name
-Iteration 113: "Make Field Non Final" applied at class JavaDrawApp to LocalVariableDeclaration name
-Iteration 114: "Make Field Final" applied at class JavaDrawApp to LocalVariableDeclaration name
-Iteration 115: "Make Field Non Final" applied at class JavaDrawApp to LocalVariableDeclaration name
-Iteration 116: "Make Field Final" applied at class JavaDrawApp to LocalVariableDeclaration name
-Iteration 117: "Make Field Non Final" applied at class JavaDrawApp to LocalVariableDeclaration name
-Iteration 118: "Make Field Final" applied at class JavaDrawApp to LocalVariableDeclaration name
-Iteration 119: "Make Field Non Final" applied at class JavaDrawApp to LocalVariableDeclaration name
-Iteration 120: "Make Field Final" applied at class JavaDrawApp to LocalVariableDeclaration name
-Iteration 121: "Make Field Non Final" applied at class JavaDrawApp to LocalVariableDeclaration name
-Iteration 122: "Make Field Final" applied at class JavaDrawApp to LocalVariableDeclaration name
-Iteration 123: "Make Field Non Final" applied at class JavaDrawApp to LocalVariableDeclaration name
-Iteration 124: "Make Field Final" applied at class JavaDrawApp to LocalVariableDeclaration name
-Iteration 125: "Make Field Non Final" applied at class JavaDrawApp to LocalVariableDeclaration name
-Iteration 126: "Make Field Final" applied at class JavaDrawApp to LocalVariableDeclaration name
-Iteration 127: "Make Field Non Final" applied at class JavaDrawApp to LocalVariableDeclaration name
-Iteration 128: "Make Field Final" applied at class JavaDrawApp to LocalVariableDeclaration name
-Iteration 129: "Make Field Non Final" applied at class JavaDrawApp to LocalVariableDeclaration name
-Iteration 130: "Make Field Final" applied at class JavaDrawApp to LocalVariableDeclaration name
-Iteration 131: "Make Field Non Final" applied at class JavaDrawApp to LocalVariableDeclaration name
-Iteration 132: "Make Field Final" applied at class JavaDrawApp to LocalVariableDeclaration name
-Iteration 133: "Make Field Non Final" applied at class JavaDrawApp to LocalVariableDeclaration name
-Iteration 134: "Make Field Final" applied at class JavaDrawApp to LocalVariableDeclaration name
-Iteration 135: "Make Field Non Final" applied at class JavaDrawApp to LocalVariableDeclaration name
-Iteration 136: "Decrease Method Security" applied at class AlignCommand to method setDescription from private to package
-Iteration 137: "Make Field Final" applied at class JavaDrawApp to LocalVariableDeclaration name
-Iteration 138: "Make Field Non Final" applied at class JavaDrawApp to LocalVariableDeclaration name
-Iteration 139: "Make Field Final" applied at class JavaDrawApp to LocalVariableDeclaration name
-Iteration 140: "Make Field Non Final" applied at class JavaDrawApp to LocalVariableDeclaration name
-Iteration 141: "Make Field Final" applied at class JavaDrawApp to LocalVariableDeclaration name
-Iteration 142: "Make Field Non Final" applied at class JavaDrawApp to LocalVariableDeclaration name
-Iteration 143: "Make Field Final" applied at class JavaDrawApp to LocalVariableDeclaration name
-Iteration 144: "Make Field Non Final" applied at class JavaDrawApp to LocalVariableDeclaration name
-Iteration 145: "Make Field Final" applied at class JavaDrawApp to LocalVariableDeclaration name
-Iteration 146: "Make Field Non Final" applied at class JavaDrawApp to LocalVariableDeclaration name
-Iteration 147: "Make Field Final" applied at class JavaDrawApp to LocalVariableDeclaration name
-Iteration 148: "Make Field Non Final" applied at class JavaDrawApp to LocalVariableDeclaration name
-Iteration 149: "Make Field Final" applied at class JavaDrawApp to LocalVariableDeclaration name
-Iteration 150: "Make Field Non Final" applied at class JavaDrawApp to LocalVariableDeclaration name
-Iteration 151: "Make Field Final" applied at class JavaDrawApp to LocalVariableDeclaration name
-Iteration 152: "Make Field Non Final" applied at class JavaDrawApp to LocalVariableDeclaration name
-Iteration 153: "Make Field Final" applied at class JavaDrawApp to LocalVariableDeclaration name
-Iteration 154: "Make Field Non Final" applied at class JavaDrawApp to LocalVariableDeclaration name
-Iteration 155: "Make Field Final" applied at class JavaDrawApp to LocalVariableDeclaration name
-Iteration 156: "Make Field Non Final" applied at class JavaDrawApp to LocalVariableDeclaration name
-Iteration 157: "Make Field Final" applied at class JavaDrawApp to LocalVariableDeclaration name
-Iteration 158: "Make Field Non Final" applied at class JavaDrawApp to LocalVariableDeclaration name
-Iteration 159: "Make Field Final" applied at class JavaDrawApp to LocalVariableDeclaration name
-Iteration 160: "Make Field Non Final" applied at class JavaDrawApp to LocalVariableDeclaration name
-Iteration 161: "Make Field Final" applied at class JavaDrawApp to LocalVariableDeclaration name
-Iteration 162: "Make Field Non Final" applied at class JavaDrawApp to LocalVariableDeclaration name
-Iteration 163: "Make Field Final" applied at class JavaDrawApp to LocalVariableDeclaration name
-Iteration 164: "Make Field Non Final" applied at class JavaDrawApp to LocalVariableDeclaration name
-Iteration 165: "Make Field Final" applied at class JavaDrawApp to LocalVariableDeclaration name
-Iteration 166: "Make Field Non Final" applied at class JavaDrawApp to LocalVariableDeclaration name
-Iteration 167: "Make Field Final" applied at class JavaDrawApp to LocalVariableDeclaration name
-Iteration 168: "Make Field Non Final" applied at class JavaDrawApp to LocalVariableDeclaration name
-Iteration 169: "Make Field Final" applied at class JavaDrawApp to LocalVariableDeclaration name
-Iteration 170: "Make Field Non Final" applied at class JavaDrawApp to LocalVariableDeclaration name
-Iteration 171: "Make Field Final" applied at class JavaDrawApp to LocalVariableDeclaration name
-Iteration 172: "Make Field Non Final" applied at class JavaDrawApp to LocalVariableDeclaration name
-Iteration 173: "Make Field Final" applied at class JavaDrawApp to LocalVariableDeclaration name
-Iteration 174: "Make Field Non Final" applied at class JavaDrawApp to LocalVariableDeclaration name
-Iteration 175: "Make Field Final" applied at class JavaDrawApp to LocalVariableDeclaration name
-Iteration 176: "Make Field Non Final" applied at class JavaDrawApp to LocalVariableDeclaration name
-Iteration 177: "Make Field Final" applied at class JavaDrawApp to LocalVariableDeclaration name
-Iteration 178: "Make Field Non Final" applied at class JavaDrawApp to LocalVariableDeclaration name
-Iteration 179: "Make Field Final" applied at class JavaDrawApp to LocalVariableDeclaration name
-Iteration 180: "Make Field Non Final" applied at class JavaDrawApp to LocalVariableDeclaration name
-Iteration 181: "Make Field Final" applied at class JavaDrawApp to LocalVariableDeclaration name
-Iteration 182: "Make Field Non Final" applied at class JavaDrawApp to LocalVariableDeclaration name
-Iteration 183: "Make Field Final" applied at class JavaDrawApp to LocalVariableDeclaration name
-Iteration 184: "Make Field Non Final" applied at class JavaDrawApp to LocalVariableDeclaration name
-Iteration 185: "Make Field Final" applied at class JavaDrawApp to LocalVariableDeclaration name
-Iteration 186: "Make Field Non Final" applied at class JavaDrawApp to LocalVariableDeclaration name
-Iteration 187: "Make Field Final" applied at class JavaDrawApp to LocalVariableDeclaration name
-Iteration 188: "Make Field Non Final" applied at class JavaDrawApp to LocalVariableDeclaration name
-Iteration 189: "Make Field Final" applied at class JavaDrawApp to LocalVariableDeclaration name
-Iteration 190: "Make Field Non Final" applied at class JavaDrawApp to LocalVariableDeclaration name
-Iteration 191: "Make Field Final" applied at class JavaDrawApp to LocalVariableDeclaration name
-Iteration 192: "Make Field Non Final" applied at class JavaDrawApp to LocalVariableDeclaration name
-Iteration 193: "Make Field Final" applied at class JavaDrawApp to LocalVariableDeclaration name
-Iteration 194: "Make Field Non Final" applied at class JavaDrawApp to LocalVariableDeclaration name
-Iteration 195: "Make Field Final" applied at class JavaDrawApp to LocalVariableDeclaration name
-Iteration 196: "Make Field Non Final" applied at class JavaDrawApp to LocalVariableDeclaration name
-Iteration 197: "Make Field Final" applied at class JavaDrawApp to LocalVariableDeclaration name
-Iteration 198: "Make Field Non Final" applied at class JavaDrawApp to LocalVariableDeclaration name
-Iteration 199: "Make Field Final" applied at class JavaDrawApp to LocalVariableDeclaration name
-Iteration 200: "Make Field Non Final" applied at class JavaDrawApp to LocalVariableDeclaration name
-Iteration 201: "Make Field Final" applied at class JavaDrawApp to LocalVariableDeclaration name
-Iteration 202: "Make Field Non Final" applied at class JavaDrawApp to LocalVariableDeclaration name
-Iteration 203: "Make Field Final" applied at class JavaDrawApp to LocalVariableDeclaration name
-Iteration 204: "Make Field Non Final" applied at class JavaDrawApp to LocalVariableDeclaration name
-Iteration 205: "Make Field Final" applied at class JavaDrawApp to LocalVariableDeclaration name
-Iteration 206: "Make Field Non Final" applied at class JavaDrawApp to LocalVariableDeclaration name
-Iteration 207: "Make Field Final" applied at class JavaDrawApp to LocalVariableDeclaration name
-Iteration 208: "Make Field Non Final" applied at class JavaDrawApp to LocalVariableDeclaration name
-Iteration 209: "Make Field Final" applied at class JavaDrawApp to LocalVariableDeclaration name
-Iteration 210: "Make Field Non Final" applied at class JavaDrawApp to LocalVariableDeclaration name
-Iteration 211: "Make Field Final" applied at class JavaDrawApp to LocalVariableDeclaration name
-Iteration 212: "Make Field Non Final" applied at class JavaDrawApp to LocalVariableDeclaration name
-Iteration 213: "Make Field Final" applied at class JavaDrawApp to LocalVariableDeclaration name
-Iteration 214: "Make Field Non Final" applied at class JavaDrawApp to LocalVariableDeclaration name
-Iteration 215: "Make Field Final" applied at class JavaDrawApp to LocalVariableDeclaration name
-Iteration 216: "Make Field Non Final" applied at class JavaDrawApp to LocalVariableDeclaration name
-Iteration 217: "Make Field Final" applied at class JavaDrawApp to LocalVariableDeclaration name
-Iteration 218: "Make Field Non Final" applied at class JavaDrawApp to LocalVariableDeclaration name
-Iteration 219: "Make Field Final" applied at class JavaDrawApp to LocalVariableDeclaration name
-Iteration 220: "Make Field Non Final" applied at class JavaDrawApp to LocalVariableDeclaration name
-Iteration 221: "Make Field Final" applied at class JavaDrawApp to LocalVariableDeclaration name
-Iteration 222: "Make Field Non Final" applied at class JavaDrawApp to LocalVariableDeclaration name
-Iteration 223: "Make Field Final" applied at class JavaDrawApp to LocalVariableDeclaration name
-Iteration 224: "Make Field Non Final" applied at class JavaDrawApp to LocalVariableDeclaration name
-Iteration 225: "Make Field Final" applied at class JavaDrawApp to LocalVariableDeclaration name
-Iteration 226: "Make Field Non Final" applied at class JavaDrawApp to LocalVariableDeclaration name
-Iteration 227: "Make Field Final" applied at class JavaDrawApp to LocalVariableDeclaration name
-Iteration 228: "Make Field Non Final" applied at class JavaDrawApp to LocalVariableDeclaration name
-Iteration 229: "Make Field Final" applied at class JavaDrawApp to LocalVariableDeclaration name
-Iteration 230: "Make Field Non Final" applied at class JavaDrawApp to LocalVariableDeclaration name
-Iteration 231: "Make Field Final" applied at class JavaDrawApp to LocalVariableDeclaration name
-Iteration 232: "Make Field Non Final" applied at class JavaDrawApp to LocalVariableDeclaration name
-Iteration 233: "Make Field Final" applied at class JavaDrawApp to LocalVariableDeclaration name
-Iteration 234: "Make Field Non Final" applied at class JavaDrawApp to LocalVariableDeclaration name
-Iteration 235: "Make Field Final" applied at class JavaDrawApp to LocalVariableDeclaration name
-Iteration 236: "Make Field Non Final" applied at class JavaDrawApp to LocalVariableDeclaration name
-Iteration 237: "Make Field Final" applied at class JavaDrawApp to LocalVariableDeclaration name
-Iteration 238: "Make Field Non Final" applied at class JavaDrawApp to LocalVariableDeclaration name
-Iteration 239: "Make Field Final" applied at class JavaDrawApp to LocalVariableDeclaration name
-Iteration 240: "Make Field Non Final" applied at class JavaDrawApp to LocalVariableDeclaration name
-Iteration 241: "Make Field Final" applied at class JavaDrawApp to LocalVariableDeclaration name
-Iteration 242: "Make Field Non Final" applied at class JavaDrawApp to LocalVariableDeclaration name
-Iteration 243: "Make Field Final" applied at class JavaDrawApp to LocalVariableDeclaration name
-Iteration 244: "Make Field Non Final" applied at class JavaDrawApp to LocalVariableDeclaration name
-Iteration 245: "Make Field Final" applied at class JavaDrawApp to LocalVariableDeclaration name
-Iteration 246: "Make Field Non Final" applied at class JavaDrawApp to LocalVariableDeclaration name
-Iteration 247: "Make Field Final" applied at class JavaDrawApp to LocalVariableDeclaration name
-Iteration 248: "Make Field Non Final" applied at class JavaDrawApp to LocalVariableDeclaration name
-Iteration 249: "Make Field Final" applied at class JavaDrawApp to LocalVariableDeclaration name
-Iteration 250: "Make Field Non Final" applied at class JavaDrawApp to LocalVariableDeclaration name
-Iteration 251: "Make Field Final" applied at class JavaDrawApp to LocalVariableDeclaration name
-Iteration 252: "Make Field Non Final" applied at class JavaDrawApp to LocalVariableDeclaration name
-Iteration 253: "Make Field Final" applied at class JavaDrawApp to LocalVariableDeclaration name
-Iteration 254: "Make Field Non Final" applied at class JavaDrawApp to LocalVariableDeclaration name
-Iteration 255: "Make Field Final" applied at class JavaDrawApp to LocalVariableDeclaration name
-Iteration 256: "Make Field Non Final" applied at class JavaDrawApp to LocalVariableDeclaration name
-Iteration 257: "Make Field Final" applied at class JavaDrawApp to LocalVariableDeclaration name
-Iteration 258: "Make Field Non Final" applied at class JavaDrawApp to LocalVariableDeclaration name
-Iteration 259: "Make Field Final" applied at class JavaDrawApp to LocalVariableDeclaration name
-Iteration 260: "Make Field Non Final" applied at class JavaDrawApp to LocalVariableDeclaration name
-Iteration 261: "Make Field Final" applied at class JavaDrawApp to LocalVariableDeclaration name
-Iteration 262: "Make Field Non Final" applied at class JavaDrawApp to LocalVariableDeclaration name
-Iteration 263: "Make Field Final" applied at class JavaDrawApp to LocalVariableDeclaration name
-Iteration 264: "Make Field Non Final" applied at class JavaDrawApp to LocalVariableDeclaration name
-Iteration 265: "Make Field Final" applied at class JavaDrawApp to LocalVariableDeclaration name
-Iteration 266: "Make Field Non Final" applied at class JavaDrawApp to LocalVariableDeclaration name
-Iteration 267: "Make Field Final" applied at class JavaDrawApp to LocalVariableDeclaration name
-Iteration 268: "Make Field Non Final" applied at class JavaDrawApp to LocalVariableDeclaration name
-Iteration 269: "Make Field Final" applied at class JavaDrawApp to LocalVariableDeclaration name
-Iteration 270: "Make Field Non Final" applied at class JavaDrawApp to LocalVariableDeclaration name
-Iteration 271: "Make Field Final" applied at class JavaDrawApp to LocalVariableDeclaration name
-Iteration 272: "Make Field Non Final" applied at class JavaDrawApp to LocalVariableDeclaration name
-Iteration 273: "Make Field Final" applied at class JavaDrawApp to LocalVariableDeclaration name
-Iteration 274: "Make Field Non Final" applied at class JavaDrawApp to LocalVariableDeclaration name
-Iteration 275: "Make Field Final" applied at class JavaDrawApp to LocalVariableDeclaration name
-Iteration 276: "Make Field Non Final" applied at class JavaDrawApp to LocalVariableDeclaration name
-Iteration 277: "Make Field Final" applied at class JavaDrawApp to LocalVariableDeclaration name
-Iteration 278: "Make Field Non Final" applied at class JavaDrawApp to LocalVariableDeclaration name
-Iteration 279: "Make Field Final" applied at class JavaDrawApp to LocalVariableDeclaration name
-Iteration 280: "Make Field Non Final" applied at class JavaDrawApp to LocalVariableDeclaration name
-Iteration 281: "Make Field Final" applied at class JavaDrawApp to LocalVariableDeclaration name
-Iteration 282: "Make Field Non Final" applied at class JavaDrawApp to LocalVariableDeclaration name
-Iteration 283: "Make Field Final" applied at class JavaDrawApp to LocalVariableDeclaration name
-Iteration 284: "Make Field Non Final" applied at class JavaDrawApp to LocalVariableDeclaration name
-Iteration 285: "Make Field Final" applied at class JavaDrawApp to LocalVariableDeclaration name
-Iteration 286: "Make Field Non Final" applied at class JavaDrawApp to LocalVariableDeclaration name
-Iteration 287: "Make Field Final" applied at class JavaDrawApp to LocalVariableDeclaration name
-Iteration 288: "Make Field Non Final" applied at class JavaDrawApp to LocalVariableDeclaration name
-Iteration 289: "Make Field Final" applied at class JavaDrawApp to LocalVariableDeclaration name
-Iteration 290: "Make Field Non Final" applied at class JavaDrawApp to LocalVariableDeclaration name
-Iteration 291: "Make Field Final" applied at class JavaDrawApp to LocalVariableDeclaration name
-Iteration 292: "Make Field Non Final" applied at class JavaDrawApp to LocalVariableDeclaration name
-Iteration 293: "Make Field Final" applied at class JavaDrawApp to LocalVariableDeclaration name
-Iteration 294: "Make Field Non Final" applied at class JavaDrawApp to LocalVariableDeclaration name
-Iteration 295: "Make Field Final" applied at class JavaDrawApp to LocalVariableDeclaration name
-Iteration 296: "Make Field Non Final" applied at class JavaDrawApp to LocalVariableDeclaration name
-Iteration 297: "Make Field Final" applied at class JavaDrawApp to LocalVariableDeclaration name
-Iteration 298: "Make Field Non Final" applied at class JavaDrawApp to LocalVariableDeclaration name
-Iteration 299: "Make Field Final" applied at class JavaDrawApp to LocalVariableDeclaration name
-Iteration 300: "Make Field Non Final" applied at class JavaDrawApp to LocalVariableDeclaration name
-Iteration 301: "Make Field Final" applied at class JavaDrawApp to LocalVariableDeclaration name
-Iteration 302: "Make Field Non Final" applied at class JavaDrawApp to LocalVariableDeclaration name
-Iteration 303: "Make Field Final" applied at class JavaDrawApp to LocalVariableDeclaration name
-Iteration 304: "Make Field Non Final" applied at class JavaDrawApp to LocalVariableDeclaration name
-Iteration 305: "Make Field Final" applied at class JavaDrawApp to LocalVariableDeclaration name
-Iteration 306: "Make Field Non Final" applied at class JavaDrawApp to LocalVariableDeclaration name
-Iteration 307: "Make Field Final" applied at class JavaDrawApp to LocalVariableDeclaration name
-Iteration 308: "Make Field Non Final" applied at class JavaDrawApp to LocalVariableDeclaration name
-Iteration 309: "Make Field Final" applied at class JavaDrawApp to LocalVariableDeclaration name
-Iteration 310: "Make Field Non Final" applied at class JavaDrawApp to LocalVariableDeclaration name
-Iteration 311: "Make Field Final" applied at class JavaDrawApp to LocalVariableDeclaration name
-Iteration 312: "Make Field Non Final" applied at class JavaDrawApp to LocalVariableDeclaration name
-Iteration 313: "Make Field Final" applied at class JavaDrawApp to LocalVariableDeclaration name
-Iteration 314: "Make Field Non Final" applied at class JavaDrawApp to LocalVariableDeclaration name
-Iteration 315: "Make Field Final" applied at class JavaDrawApp to LocalVariableDeclaration name
-Iteration 316: "Make Field Non Final" applied at class JavaDrawApp to LocalVariableDeclaration name
-Iteration 317: "Make Field Final" applied at class JavaDrawApp to LocalVariableDeclaration name
-Iteration 318: "Make Field Non Final" applied at class JavaDrawApp to LocalVariableDeclaration name
-Iteration 319: "Make Field Final" applied at class JavaDrawApp to LocalVariableDeclaration name
-Iteration 320: "Make Field Non Final" applied at class JavaDrawApp to LocalVariableDeclaration name
-Iteration 321: "Make Field Final" applied at class JavaDrawApp to LocalVariableDeclaration name
-Iteration 322: "Make Field Non Final" applied at class JavaDrawApp to LocalVariableDeclaration name
-Iteration 323: "Make Field Final" applied at class JavaDrawApp to LocalVariableDeclaration name
-Iteration 324: "Make Field Non Final" applied at class JavaDrawApp to LocalVariableDeclaration name
-Iteration 325: "Make Field Final" applied at class JavaDrawApp to LocalVariableDeclaration name
-Iteration 326: "Make Field Non Final" applied at class JavaDrawApp to LocalVariableDeclaration name
-Iteration 327: "Make Field Final" applied at class JavaDrawApp to LocalVariableDeclaration name
-Iteration 328: "Make Field Non Final" applied at class JavaDrawApp to LocalVariableDeclaration name
-Iteration 329: "Make Field Final" applied at class JavaDrawApp to LocalVariableDeclaration name
-Iteration 330: "Make Field Non Final" applied at class JavaDrawApp to LocalVariableDeclaration name
-Iteration 331: "Make Field Final" applied at class JavaDrawApp to LocalVariableDeclaration name
-Iteration 332: "Make Field Non Final" applied at class JavaDrawApp to LocalVariableDeclaration name
-Iteration 333: "Make Field Final" applied at class JavaDrawApp to LocalVariableDeclaration name
-Iteration 334: "Make Field Non Final" applied at class JavaDrawApp to LocalVariableDeclaration name
-Iteration 335: "Make Field Final" applied at class JavaDrawApp to LocalVariableDeclaration name
-Iteration 336: "Make Field Non Final" applied at class JavaDrawApp to LocalVariableDeclaration name
-Iteration 337: "Make Field Final" applied at class JavaDrawApp to LocalVariableDeclaration name
-Iteration 338: "Make Field Non Final" applied at class JavaDrawApp to LocalVariableDeclaration name
-Iteration 339: "Make Field Final" applied at class JavaDrawApp to LocalVariableDeclaration name
-Iteration 340: "Make Field Non Final" applied at class JavaDrawApp to LocalVariableDeclaration name
-Iteration 341: "Make Field Final" applied at class JavaDrawApp to LocalVariableDeclaration name
-Iteration 342: "Make Field Non Final" applied at class JavaDrawApp to LocalVariableDeclaration name
-Iteration 343: "Make Field Final" applied at class JavaDrawApp to LocalVariableDeclaration name
-Iteration 344: "Make Field Non Final" applied at class JavaDrawApp to LocalVariableDeclaration name
-Iteration 345: "Make Field Final" applied at class JavaDrawApp to LocalVariableDeclaration name
-Iteration 346: "Make Field Non Final" applied at class JavaDrawApp to LocalVariableDeclaration name
-Iteration 347: "Make Field Final" applied at class JavaDrawApp to LocalVariableDeclaration name
-Iteration 348: "Make Field Non Final" applied at class JavaDrawApp to LocalVariableDeclaration name
-Iteration 349: "Make Field Final" applied at class JavaDrawApp to LocalVariableDeclaration name
-Iteration 350: "Make Field Non Final" applied at class JavaDrawApp to LocalVariableDeclaration name
-Iteration 351: "Make Field Final" applied at class JavaDrawApp to LocalVariableDeclaration name
-Iteration 352: "Make Field Non Final" applied at class JavaDrawApp to LocalVariableDeclaration name
-Iteration 353: "Make Field Final" applied at class JavaDrawApp to LocalVariableDeclaration name
-Iteration 354: "Make Field Non Final" applied at class JavaDrawApp to LocalVariableDeclaration name
-Iteration 355: "Make Field Final" applied at class JavaDrawApp to LocalVariableDeclaration name
-Iteration 356: "Make Field Non Final" applied at class JavaDrawApp to LocalVariableDeclaration name
-Iteration 357: "Make Field Final" applied at class JavaDrawApp to LocalVariableDeclaration name
-Iteration 358: "Make Field Non Final" applied at class JavaDrawApp to LocalVariableDeclaration name
-Iteration 359: "Make Field Final" applied at class JavaDrawApp to LocalVariableDeclaration name
-Iteration 360: "Make Field Non Final" applied at class JavaDrawApp to LocalVariableDeclaration name
-Iteration 361: "Make Field Final" applied at class JavaDrawApp to LocalVariableDeclaration name
-Iteration 362: "Make Field Non Final" applied at class JavaDrawApp to LocalVariableDeclaration name
-Iteration 363: "Make Field Final" applied at class JavaDrawApp to LocalVariableDeclaration name
-Iteration 364: "Make Field Non Final" applied at class JavaDrawApp to LocalVariableDeclaration name
-Iteration 365: "Make Field Final" applied at class JavaDrawApp to LocalVariableDeclaration name
-Iteration 366: "Make Field Non Final" applied at class JavaDrawApp to LocalVariableDeclaration name
-Iteration 367: "Make Field Final" applied at class JavaDrawApp to LocalVariableDeclaration name
-Iteration 368: "Make Field Non Final" applied at class JavaDrawApp to LocalVariableDeclaration name
-Iteration 369: "Make Field Final" applied at class JavaDrawApp to LocalVariableDeclaration name
-Iteration 370: "Make Field Non Final" applied at class JavaDrawApp to LocalVariableDeclaration name
-Iteration 371: "Make Field Final" applied at class JavaDrawApp to LocalVariableDeclaration name
-Iteration 372: "Make Field Non Final" applied at class JavaDrawApp to LocalVariableDeclaration name
-Iteration 373: "Make Field Final" applied at class JavaDrawApp to LocalVariableDeclaration name
-Iteration 374: "Make Field Non Final" applied at class JavaDrawApp to LocalVariableDeclaration name
-Iteration 375: "Make Field Final" applied at class JavaDrawApp to LocalVariableDeclaration name
-Iteration 376: "Make Field Non Final" applied at class JavaDrawApp to LocalVariableDeclaration name
-Iteration 377: "Make Field Final" applied at class JavaDrawApp to LocalVariableDeclaration name
-Iteration 378: "Make Field Non Final" applied at class JavaDrawApp to LocalVariableDeclaration name
-Iteration 379: "Make Field Final" applied at class JavaDrawApp to LocalVariableDeclaration name
-Iteration 380: "Make Field Non Final" applied at class JavaDrawApp to LocalVariableDeclaration name
-Iteration 381: "Make Field Final" applied at class JavaDrawApp to LocalVariableDeclaration name
-Iteration 382: "Make Field Non Final" applied at class JavaDrawApp to LocalVariableDeclaration name
-Iteration 383: "Make Field Final" applied at class JavaDrawApp to LocalVariableDeclaration name
-Iteration 384: "Make Field Non Final" applied at class JavaDrawApp to LocalVariableDeclaration name
-Iteration 385: "Make Field Final" applied at class JavaDrawApp to LocalVariableDeclaration name
-Iteration 386: "Make Field Non Final" applied at class JavaDrawApp to LocalVariableDeclaration name
-Iteration 387: "Make Field Final" applied at class JavaDrawApp to LocalVariableDeclaration name
-Iteration 388: "Make Field Non Final" applied at class JavaDrawApp to LocalVariableDeclaration name
-Iteration 389: "Make Field Final" applied at class JavaDrawApp to LocalVariableDeclaration name
-Iteration 390: "Make Field Non Final" applied at class JavaDrawApp to LocalVariableDeclaration name
-Iteration 391: "Make Field Final" applied at class JavaDrawApp to LocalVariableDeclaration name
-Iteration 392: "Make Field Non Final" applied at class JavaDrawApp to LocalVariableDeclaration name
-Iteration 393: "Make Field Final" applied at class JavaDrawApp to LocalVariableDeclaration name
-Iteration 394: "Make Field Non Final" applied at class JavaDrawApp to LocalVariableDeclaration name
-Iteration 395: "Make Field Final" applied at class JavaDrawApp to LocalVariableDeclaration name
-Iteration 396: "Make Field Non Final" applied at class JavaDrawApp to LocalVariableDeclaration name
-Iteration 397: "Make Field Final" applied at class JavaDrawApp to LocalVariableDeclaration name
-Iteration 398: "Make Field Non Final" applied at class JavaDrawApp to LocalVariableDeclaration name
-Iteration 399: "Make Field Final" applied at class JavaDrawApp to LocalVariableDeclaration name
-Iteration 400: "Make Field Non Final" applied at class JavaDrawApp to LocalVariableDeclaration name
-Iteration 401: "Make Field Final" applied at class JavaDrawApp to LocalVariableDeclaration name
-Iteration 402: "Make Field Non Final" applied at class JavaDrawApp to LocalVariableDeclaration name
-Iteration 403: "Make Field Final" applied at class JavaDrawApp to LocalVariableDeclaration name
-Iteration 404: "Make Field Non Final" applied at class JavaDrawApp to LocalVariableDeclaration name
-Iteration 405: "Make Field Final" applied at class JavaDrawApp to LocalVariableDeclaration name
-Iteration 406: "Make Field Non Final" applied at class JavaDrawApp to LocalVariableDeclaration name
-Iteration 407: "Make Field Final" applied at class JavaDrawApp to LocalVariableDeclaration name
-Iteration 408: "Make Field Non Final" applied at class JavaDrawApp to LocalVariableDeclaration name
-Iteration 409: "Make Field Final" applied at class JavaDrawApp to LocalVariableDeclaration name
-Iteration 410: "Make Field Non Final" applied at class JavaDrawApp to LocalVariableDeclaration name
-Iteration 411: "Make Field Final" applied at class JavaDrawApp to LocalVariableDeclaration name
-Iteration 412: "Make Field Non Final" applied at class JavaDrawApp to LocalVariableDeclaration name
-Iteration 413: "Make Field Final" applied at class JavaDrawApp to LocalVariableDeclaration name
-Iteration 414: "Make Field Non Final" applied at class JavaDrawApp to LocalVariableDeclaration name
-Iteration 415: "Make Field Final" applied at class JavaDrawApp to LocalVariableDeclaration name
-Iteration 416: "Make Field Non Final" applied at class JavaDrawApp to LocalVariableDeclaration name
-Iteration 417: "Make Field Final" applied at class JavaDrawApp to LocalVariableDeclaration name
-Iteration 418: "Make Field Non Final" applied at class JavaDrawApp to LocalVariableDeclaration name
-Iteration 419: "Make Field Final" applied at class JavaDrawApp to LocalVariableDeclaration name
-Iteration 420: "Make Field Non Final" applied at class JavaDrawApp to LocalVariableDeclaration name
-Iteration 421: "Make Field Final" applied at class JavaDrawApp to LocalVariableDeclaration name
-Iteration 422: "Make Field Non Final" applied at class JavaDrawApp to LocalVariableDeclaration name
-Iteration 423: "Make Field Final" applied at class JavaDrawApp to LocalVariableDeclaration name
-Iteration 424: "Make Field Non Final" applied at class JavaDrawApp to LocalVariableDeclaration name
-Iteration 425: "Make Field Final" applied at class JavaDrawApp to LocalVariableDeclaration name
-Iteration 426: "Make Field Non Final" applied at class JavaDrawApp to LocalVariableDeclaration name
-Iteration 427: "Make Field Final" applied at class JavaDrawApp to LocalVariableDeclaration name
-Iteration 428: "Make Field Non Final" applied at class JavaDrawApp to LocalVariableDeclaration name
-Iteration 429: "Make Field Final" applied at class JavaDrawApp to LocalVariableDeclaration name
-Iteration 430: "Make Field Non Final" applied at class JavaDrawApp to LocalVariableDeclaration name
-Iteration 431: "Make Field Final" applied at class JavaDrawApp to LocalVariableDeclaration name
-Iteration 432: "Make Field Non Final" applied at class JavaDrawApp to LocalVariableDeclaration name
-Iteration 433: "Make Field Final" applied at class JavaDrawApp to LocalVariableDeclaration name
-Iteration 434: "Make Field Non Final" applied at class JavaDrawApp to LocalVariableDeclaration name
-Iteration 435: "Make Field Final" applied at class JavaDrawApp to LocalVariableDeclaration name
-Iteration 436: "Make Field Non Final" applied at class JavaDrawApp to LocalVariableDeclaration name
-Iteration 437: "Make Field Final" applied at class JavaDrawApp to LocalVariableDeclaration name
-Iteration 438: "Make Field Non Final" applied at class JavaDrawApp to LocalVariableDeclaration name
-Iteration 439: "Make Field Final" applied at class JavaDrawApp to LocalVariableDeclaration name
-Iteration 440: "Make Field Non Final" applied at class JavaDrawApp to LocalVariableDeclaration name
-Iteration 441: "Make Field Final" applied at class JavaDrawApp to LocalVariableDeclaration name
-Iteration 442: "Make Field Non Final" applied at class JavaDrawApp to LocalVariableDeclaration name
-Iteration 443: "Move Method Up" applied to method invokeEnd from PolyLineHandle to LocatorHandle
-Iteration 444: "Make Class Final" applied to class BouncingDrawing
-Iteration 445: "Make Method Final" applied at class NothingApp to method createTools
-Iteration 446: "Make Class Abstract" applied to class AbstractConnector
-Iteration 447: "Make Class Final" applied to class UndoRedoActivity
-Iteration 448: "Make Method Non Static" applied at class UndoRedoActivity to method createUndoRedoActivity
-Iteration 449: "Remove Method" applied at class DiamondFigure to method chop
-Iteration 450: "Move Method Down" applied to method mouseUp from ActionTool to BorderTool
-Iteration 451: "Make Method Static" applied at class ElbowConnection to method locate
-Iteration 452: "Make Field Final" applied at class PaletteButton to ParameterDeclaration e
-Iteration 453: "Make Class Concrete" applied to class AbstractTool
-Iteration 454: "Move Field Down" applied to field fLocator from NullHandle to GroupHandle
-Iteration 455: "Make Method Final" applied at class PolygonTool to method setAddedFigure
-Iteration 456: "Make Class Final" applied to class DuplicateCommand
-Iteration 457: "Make Method Final" applied at class RelativeLocator to method west
-Iteration 458: "Decrease Method Security" applied at class InsertImageCommand to method UndoActivity from package to protected
-Iteration 459: "Increase Field Security" applied at class SingleFigureEnumerator to field mySingleFigure from public to protected
-Iteration 460: "Increase Field Security" applied at class GraphLayout to field REPULSION_STRENGTH from public to protected
-Iteration 461: "Move Field Up" applied to field fLocator from GroupHandle to NullHandle
-Iteration 462: "Make Class Final" applied to class NumberTextFigure
-Iteration 463: "Decrease Method Security" applied at class RadiusHandle to method resetRadius from protected to public
-Iteration 464: "Make Field Final" applied at class AbstractLineDecoration to LocalVariableDeclaration p
-Iteration 465: "Make Field Final" applied at class Drawing to ParameterDeclaration r
+Iteration 1: "Move Field Down" applied to field fLocator from NullHandle to GroupHandle
+Iteration 2: "Move Field Up" applied to field fRelativeY from RelativeLocator to AbstractLocator
+Iteration 3: "Move Method Up" applied to method writeTasks from PertFigure to CompositeFigure
+Iteration 4: "Make Class Concrete" applied to class PaletteButton
+Iteration 5: "Make Field Static" applied at class OffsetLocator to field offsetLocatorSerializedDataVersion
+Iteration 6: "Make Field Static" applied at class PolyLineHandle to field myOldPoint
+Iteration 7: "Move Method Down" applied to method drawBackground from RectangleFigure to DiamondFigure
+Iteration 8: "Move Method Up" applied to method startPoint from LineFigure to PolyLineFigure
+Iteration 9: "Remove Method" applied at class CreationTool to method setCreatedFigure
+Iteration 10: "Make Class Concrete" applied to class AbstractTool
+Iteration 11: "Remove Class" applied to class JHotDrawException
+Iteration 12: "Make Field Final" applied at class Locator to ParameterDeclaration owner
+Iteration 13: "Move Method Down" applied to method findEnd from ChopBoxConnector to ChopDiamondConnector
+Iteration 14: "Move Method Up" applied to method startPoint from LineFigure to PolyLineFigure
+Iteration 15: "Decrease Method Security" applied at class GraphicalCompositeFigure to method basicMoveBy from protected to public
+Iteration 16: "Decrease Method Security" applied at class Iconkit to method basicGetImage from private to package
+Iteration 17: "Make Method Static" applied at class RadiusHandle to method createUndoActivity
+Iteration 18: "Decrease Method Security" applied at class AbstractLocator to method AbstractLocator from protected to public
+Iteration 19: "Make Method Final" applied at class BorderTool to method action
+Iteration 20: "Make Class Final" applied to class PaletteIcon
+Iteration 21: "Make Class Final" applied to class ChopPolygonConnector
+Iteration 22: "Decrease Method Security" applied at class ImageFigure to method readObject from private to package
+Iteration 23: "Decrease Method Security" applied at class Iconkit to method basicGetImage from package to protected
+Iteration 24: "Decrease Method Security" applied at class ImageFigure to method readObject from package to protected
+Iteration 25: "Decrease Method Security" applied at class SerializationStorageFormat to method createFileExtension from protected to public
+Iteration 26: "Make Method Non Final" applied at class CompositeFigure to method figures
+Iteration 27: "Decrease Method Security" applied at class UndoManager to method peekRedo from protected to public
+Iteration 28: "Decrease Method Security" applied at class ImageFigure to method readObject from protected to public
+Iteration 29: "Move Method Up" applied to method isExecutableWithView from CopyCommand to FigureTransferCommand
+Iteration 30: "Decrease Method Security" applied at class Iconkit to method basicGetImage from protected to public
+Iteration 31: "Make Class Abstract" applied to class PaletteButton
+Iteration 32: "Decrease Method Security" applied at class StorableOutput to method startNewLine from private to package
+Iteration 33: "Make Class Concrete" applied to class PaletteButton
+Iteration 34: "Make Class Abstract" applied to class PaletteButton
+Iteration 35: "Decrease Method Security" applied at class StorableOutput to method startNewLine from package to protected
+Iteration 36: "Decrease Method Security" applied at class ConnectionTool to method setTargetFigure from private to package
+Iteration 37: "Make Class Final" applied to class UndoableTool
+Iteration 38: "Decrease Method Security" applied at class ConnectionTool to method setTargetFigure from package to protected
+Iteration 39: "Decrease Method Security" applied at class StorableOutput to method startNewLine from protected to public
+Iteration 40: "Decrease Method Security" applied at class ConnectionTool to method setTargetFigure from protected to public
+Iteration 41: "Make Method Non Static" applied at class DragNDropTool to method ProcessReceivedData
+Iteration 42: "Make Class Final" applied to class PolygonHandle
+Iteration 43: "Make Method Final" applied at class FontSizeHandle to method invokeEnd
+Iteration 44: "Make Method Final" applied at class PertFigureCreationTool to method createFigure
+Iteration 45: "Decrease Method Security" applied at class RoundRectangleFigure to method basicMoveBy from protected to public
+Iteration 46: "Make Class Final" applied to class NumberTextFigure
+Iteration 47: "Move Method Down" applied to method findStart from ChopBoxConnector to ChopDiamondConnector
+Iteration 48: "Make Method Final" applied at class LocatorConnector to method locate
+Iteration 49: "Make Method Final" applied at class JavaDrawApplet to method destroy
+Iteration 50: "Move Method Up" applied to method invokeStep from NorthEastHandle to ResizeHandle
+Iteration 51: "Increase Method Security" applied at class PaletteIcon to method pressed from public to protected
+Iteration 52: "Make Method Final" applied at class BorderTool to method redo
+Iteration 53: "Make Field Static" applied at class StorableInput to field fTokenizer
+Iteration 54: "Decrease Field Security" applied at class StorableOutput to field fStream from private to package
+Iteration 55: "Make Field Non Static" applied at class BorderDecorator to field serialVersionUID
+Iteration 56: "Decrease Method Security" applied at class AbstractConnector to method findPoint from protected to public
+Iteration 57: "Make Field Final" applied at class StorableInput to FieldDeclaration fTokenizer
+Iteration 58: "Move Method Down" applied to method undo from UndoActivity to UndoActivity
+Iteration 59: "Make Field Static" applied at class ReverseFigureEnumerator to field fEnumeration
+Iteration 60: "Increase Method Security" applied at class OrderedFigureElement to method getFigure from public to protected
+Iteration 61: "Decrease Method Security" applied at class PertApplication to method PertApplication from package to protected
 
-Score has improved overall by 0.477488
-Time taken to refactor: 1840.23s
+Score has improved overall by 0.420964
+Time taken to refactor: 1510.80s
 
 ======== Final Metric Info ========
-Average ratio of private/package/protected attributes to overall attributes per class: 0.617152
-Average coupling per class: 1.737500
-Average cohesion among methods per class: 0.315147
+Average ratio of private/package/protected attributes to overall attributes per class: 0.616111
+Average coupling per class: 1.725000
+Average cohesion among methods per class: 0.318493
 Average amount of user defined attributes declared per class: 0.575000
-Average functional abstraction per class: 0.336176
-Average amount of polymorphic methods per class: 1.629167
-Average amount of public methods per class: 7.416667
-Average amount of methods per class: 9.316667
-Average amount of complexity of methods per class: 56.275002
+Average functional abstraction per class: 0.336582
+Average amount of polymorphic methods per class: 1.641667
+Average amount of public methods per class: 7.420833
+Average amount of methods per class: 9.325000
+Average amount of complexity of methods per class: 56.299999
 Ratio of interfaces to overall amount of classes: 0.137500
-Average ratio of abstract classes/methods per class: 0.150086
-Average ratio of static classes/methods/variables per class: 0.077471
-Average ratio of final classes/methods/variables per class: 0.023307
-Average ratio of constant classes/methods/variables per class: 0.026575
+Average ratio of abstract classes/methods per class: 0.149576
+Average ratio of static classes/methods/variables per class: 0.075931
+Average ratio of final classes/methods/variables per class: 0.022703
+Average ratio of constant classes/methods/variables per class: 0.026351
 Ratio of inner classes to overall amount of ordinary classes in project: 0.133333
-Average inherited referenced methods ratio per class: 0.279636
-Average visibility ratio per class: 0.698719
+Average inherited referenced methods ratio per class: 0.275461
+Average visibility ratio per class: 0.696668
 Amount of lines of code in project: 27794
-Overall fitness function score: 0.477488
+Overall fitness function score: 0.420964

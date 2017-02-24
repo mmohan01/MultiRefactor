@@ -27,61 +27,52 @@ Amount of lines of code in project: 6493
 Overall fitness function score: 0.000000
 
 ======== Applied Refactorings ========
-Iteration 1: "Make Field Final" applied at class NonTerminal to ParameterDeclaration name
-Iteration 2: "Make Method Non Static" applied at class ParserGenerator to method splitActions
-Iteration 3: "Make Method Non Final" applied at class GrammarScanner to method yylength
-Iteration 4: "Make Field Final" applied at class Production to LocalVariableDeclaration i
-Iteration 5: "Make Field Final" applied at class Production to LocalVariableDeclaration i
-Iteration 6: "Make Field Static" applied at class Options to field name_action_classes
-Iteration 7: "Decrease Field Security" applied at class Log to field size from private to package
-Iteration 8: "Remove Method" applied at class Node to method setLocation
-Iteration 9: "Make Class Final" applied to class NonTerminal
-Iteration 10: "Remove Method" applied at class IntArray to method compact
-Iteration 11: "Decrease Method Security" applied at class GrammarBuilder to method getCode from private to package
-Iteration 12: "Make Class Non Final" applied to class NonTerminal
-Iteration 13: "Make Class Abstract" applied to class Action
-Iteration 14: "Make Field Final" applied at class Log to ParameterDeclaration msg
-Iteration 15: "Make Class Abstract" applied to class Conflict
-Iteration 16: "Make Class Final" applied to class NonTerminal
-Iteration 17: "Decrease Method Security" applied at class GrammarBuilder to method getCode from package to protected
-Iteration 18: "Decrease Field Security" applied at class Configuration to field next from package to protected
-Iteration 19: "Decrease Method Security" applied at class Terminal to method Associativity from private to package
-Iteration 20: "Make Method Static" applied at class Declaration to method accept
-Iteration 21: "Make Field Non Static" applied at class Options to field name_action_classes
-Iteration 22: "Move Field Up" applied to field defs from Rule to Node
-Iteration 23: "Make Class Final" applied to class Definition
-Iteration 24: "Make Method Non Final" applied at class GrammarScanner to method yytext
-Iteration 25: "Make Method Final" applied at class Terminal to method toString
-Iteration 26: "Decrease Method Security" applied at class Terminal to method Terminal from package to protected
-Iteration 27: "Decrease Method Security" applied at class Terminal to method Associativity from package to protected
-Iteration 28: "Decrease Method Security" applied at class Action to method ShiftReduce from package to protected
-Iteration 29: "Increase Method Security" applied at class BitSet to method isSet from public to protected
-Iteration 30: "Move Field Up" applied to field name from NameContainer to Declaration
-Iteration 31: "Remove Method" applied at class GrammarScanner to method yyclose
-Iteration 32: "Make Method Final" applied at class Grammar to method markNullableProductions
-Iteration 33: "Make Class Final" applied to class Grammar
-Iteration 34: "Decrease Method Security" applied at class NonTerminal to method NonTerminal from package to protected
+Iteration 1: "Make Class Abstract" applied to class Conflict
+Iteration 2: "Make Method Non Final" applied at class GrammarScanner to method yylength
+Iteration 3: "Make Field Final" applied at class GrammarBuilder to ParameterDeclaration rhs
+Iteration 4: "Decrease Field Security" applied at class Log to field next from package to protected
+Iteration 5: "Make Class Final" applied to class State
+Iteration 6: "Decrease Method Security" applied at class BitSet to method ensureIndexWithinRange from private to package
+Iteration 7: "Make Class Abstract" applied to class Action
+Iteration 8: "Increase Method Security" applied at class ParsingTables to method countStates from package to private
+Iteration 9: "Move Field Up" applied to field prec_sym_name from Definition to Node
+Iteration 10: "Make Field Final" applied at class Declaration to ParameterDeclaration code
+Iteration 11: "Make Field Static" applied at class State to field next
+Iteration 12: "Move Field Up" applied to field found from null to RuleWalker
+Iteration 13: "Remove Method" applied at class Node to method setLocation
+Iteration 14: "Make Method Non Static" applied at class GrammarScanner to method zzUnpackAction
+Iteration 15: "Decrease Method Security" applied at class BitSet to method ensureIndexWithinRange from package to protected
+Iteration 16: "Make Method Final" applied at class GrammarTreeRoot to method accept
+Iteration 17: "Make Class Final" applied to class ListType
+Iteration 18: "Decrease Method Security" applied at class BitSet to method ensureIndexWithinRange from protected to public
+Iteration 19: "Move Method Down" applied to method toString from GrammarSymbol to NonTerminal
+Iteration 20: "Decrease Method Security" applied at class GrammarParser to method Events from package to protected
+Iteration 21: "Increase Field Security" applied at class Node to field prec_sym_name from public to protected
+Iteration 22: "Decrease Method Security" applied at class GrammarParser to method Events from protected to public
+Iteration 23: "Make Method Final" applied at class SrcReader to method reset
+Iteration 24: "Make Method Non Static" applied at class ParserGenerator to method indexOfLastReferencedSymbol
+Iteration 25: "Make Field Final" applied at class Production to FieldDeclaration start_pos,end_pos
 
-Score has improved overall by 0.455005
-Time taken to refactor: 151.09s
+Score has improved overall by 0.569142
+Time taken to refactor: 226.55s
 
 ======== Final Metric Info ========
-Average ratio of private/package/protected attributes to overall attributes per class: 0.406288
+Average ratio of private/package/protected attributes to overall attributes per class: 0.434860
 Average coupling per class: 1.728571
-Average cohesion among methods per class: 0.438311
+Average cohesion among methods per class: 0.439178
 Average amount of user defined attributes declared per class: 1.000000
 Average functional abstraction per class: 0.295238
 Average amount of polymorphic methods per class: 0.357143
-Average amount of public methods per class: 2.257143
-Average amount of methods per class: 4.414286
-Average amount of complexity of methods per class: 63.642857
+Average amount of public methods per class: 2.328571
+Average amount of methods per class: 4.442857
+Average amount of complexity of methods per class: 63.871429
 Ratio of interfaces to overall amount of classes: 0.000000
-Average ratio of abstract classes/methods per class: 0.070714
-Average ratio of static classes/methods/variables per class: 0.264542
-Average ratio of final classes/methods/variables per class: 0.102571
-Average ratio of constant classes/methods/variables per class: 0.056416
+Average ratio of abstract classes/methods per class: 0.071905
+Average ratio of static classes/methods/variables per class: 0.255546
+Average ratio of final classes/methods/variables per class: 0.100254
+Average ratio of constant classes/methods/variables per class: 0.059707
 Ratio of inner classes to overall amount of ordinary classes in project: 0.657143
 Average inherited referenced methods ratio per class: 0.022487
-Average visibility ratio per class: 0.600840
+Average visibility ratio per class: 0.599766
 Amount of lines of code in project: 6493
-Overall fitness function score: 0.455005
+Overall fitness function score: 0.569142

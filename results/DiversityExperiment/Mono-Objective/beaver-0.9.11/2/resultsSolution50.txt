@@ -27,112 +27,263 @@ Amount of lines of code in project: 6493
 Overall fitness function score: 0.000000
 
 ======== Applied Refactorings ========
-Iteration 1: "Decrease Field Security" applied at class Grammar to field serialVersionUID from private to package
-Iteration 2: "Make Field Final" applied at class Options to FieldDeclaration no_output
-Iteration 3: "Make Method Static" applied at class ParsingTables to method renumberSymbols
-Iteration 4: "Make Method Final" applied at class NonTerminal to method checkNullability
-Iteration 5: "Move Method Down" applied to method setLocation from Node to Declaration
-Iteration 6: "Decrease Method Security" applied at class NonTerminal to method NonTerminal from package to protected
-Iteration 7: "Increase Method Security" applied at class Log to method add from public to protected
-Iteration 8: "Decrease Method Security" applied at class State to method State from package to protected
-Iteration 9: "Decrease Method Security" applied at class Production to method Production from package to protected
-Iteration 10: "Make Class Final" applied to class Terminals
-Iteration 11: "Make Class Abstract" applied to class Conflict
-Iteration 12: "Decrease Field Security" applied at class GrammarScanner to field ZZ_BUFFERSIZE from private to package
-Iteration 13: "Decrease Method Security" applied at class Action to method reportConflicts from package to protected
-Iteration 14: "Make Field Static" applied at class ParserGenerator to field tables
-Iteration 15: "Move Field Up" applied to field ebnf_sym from Element to Node
-Iteration 16: "Make Field Static" applied at class GrammarBuilder to field found
-Iteration 17: "Decrease Method Security" applied at class NonTerminal to method NonTerminal from protected to public
-Iteration 18: "Increase Method Security" applied at class Log to method add from protected to package
-Iteration 19: "Decrease Method Security" applied at class ParserGenerator to method makeProductionDescriptors from private to package
-Iteration 20: "Make Class Final" applied to class List
-Iteration 21: "Decrease Method Security" applied at class GrammarBuilder to method writeListsCode from private to package
-Iteration 22: "Decrease Method Security" applied at class Grammar to method Grammar from package to protected
-Iteration 23: "Decrease Method Security" applied at class GrammarBuilder to method writeListsCode from package to protected
-Iteration 24: "Decrease Method Security" applied at class Grammar to method Grammar from protected to public
-Iteration 25: "Decrease Field Security" applied at class GrammarScanner to field ZZ_BUFFERSIZE from package to protected
-Iteration 26: "Decrease Method Security" applied at class ParserGenerator to method makeProductionDescriptors from package to protected
-Iteration 27: "Decrease Method Security" applied at class GrammarBuilder to method writeListsCode from protected to public
-Iteration 28: "Decrease Field Security" applied at class GrammarScanner to field ZZ_BUFFERSIZE from protected to public
-Iteration 29: "Decrease Method Security" applied at class Action to method reportConflicts from protected to public
-Iteration 30: "Make Method Final" applied at class Make to method parseOptions
-Iteration 31: "Decrease Method Security" applied at class Action to method resolveConflict from package to protected
-Iteration 32: "Make Method Non Static" applied at class ParsingTables to method renumberSymbols
-Iteration 33: "Move Method Down" applied to method toString from GrammarSymbol to NonTerminal
-Iteration 34: "Decrease Field Security" applied at class Log to field first,last from private to package
-Iteration 35: "Decrease Method Security" applied at class State to method State from protected to public
-Iteration 36: "Decrease Method Security" applied at class Action to method Conflict from package to protected
-Iteration 37: "Decrease Method Security" applied at class GrammarParser to method Events from package to protected
-Iteration 38: "Decrease Method Security" applied at class ParserGenerator to method makeProductionDescriptors from protected to public
-Iteration 39: "Decrease Method Security" applied at class Action to method resolveConflict from protected to public
-Iteration 40: "Decrease Field Security" applied at class Log to field first,last from package to protected
-Iteration 41: "Decrease Field Security" applied at class Log to field first,last from protected to public
-Iteration 42: "Decrease Method Security" applied at class Action to method Conflict from protected to public
-Iteration 43: "Decrease Method Security" applied at class GrammarParser to method Events from protected to public
-Iteration 44: "Decrease Method Security" applied at class GrammarScanner to method zzRefill from private to package
-Iteration 45: "Move Method Down" applied to method setLocation from Declaration to CodeContainer
-Iteration 46: "Move Method Down" applied to method setLocation from CodeContainer to ClassCode
-Iteration 47: "Move Field Up" applied to field code from CodeContainer to Declaration
-Iteration 48: "Increase Field Security" applied at class GrammarParser to field TEXT from public to protected
-Iteration 49: "Decrease Method Security" applied at class GrammarSymbol to method GrammarSymbol from package to protected
-Iteration 50: "Move Method Up" applied to method writeListsCode from GrammarBuilder to TreeWalker
-Iteration 51: "Decrease Method Security" applied at class GrammarScanner to method zzRefill from package to protected
-Iteration 52: "Move Field Up" applied to field code from Declaration to Node
-Iteration 53: "Increase Field Security" applied at class GrammarParser to field TEXT from protected to package
-Iteration 54: "Decrease Method Security" applied at class GrammarSymbol to method GrammarSymbol from protected to public
-Iteration 55: "Increase Field Security" applied at class Grammar to field serialVersionUID from package to private
-Iteration 56: "Decrease Method Security" applied at class Log to method add from package to protected
-Iteration 57: "Decrease Method Security" applied at class State to method Factory from package to protected
-Iteration 58: "Increase Field Security" applied at class Declaration to field type from public to protected
-Iteration 59: "Increase Field Security" applied at class Declaration to field type from protected to package
-Iteration 60: "Make Method Final" applied at class Terminal to method toString
-Iteration 61: "Increase Field Security" applied at class GrammarParser to field EOF from public to protected
-Iteration 62: "Move Field Up" applied to field is_nullable from NonTerminal to GrammarSymbol
-Iteration 63: "Make Method Final" applied at class Production to method end
-Iteration 64: "Decrease Method Security" applied at class Log to method add from protected to public
-Iteration 65: "Decrease Method Security" applied at class State to method Factory from protected to public
-Iteration 66: "Increase Field Security" applied at class Declaration to field type from package to private
-Iteration 67: "Increase Field Security" applied at class GrammarParser to field EOF from protected to package
-Iteration 68: "Decrease Method Security" applied at class Terminal to method Terminal from package to protected
-Iteration 69: "Make Class Abstract" applied to class Action
-Iteration 70: "Make Field Final" applied at class Declaration to ParameterDeclaration symbols
-Iteration 71: "Decrease Field Security" applied at class Terminal to field name from private to package
-Iteration 72: "Make Field Final" applied at class Log to ParameterDeclaration src_name
-Iteration 73: "Decrease Method Security" applied at class Production to method startFirstSet from package to protected
-Iteration 74: "Decrease Method Security" applied at class Configuration to method equals from private to package
-Iteration 75: "Make Field Final" applied at class Grammar to FieldDeclaration nonterminals
-Iteration 76: "Make Method Final" applied at class SrcReader to method reset
-Iteration 77: "Remove Method" applied at class IntArray to method compact
-Iteration 78: "Make Method Final" applied at class Make to method printUsage
-Iteration 79: "Increase Field Security" applied at class ParsingTables to field compressed from package to private
-Iteration 80: "Make Field Final" applied at class GrammarScanner to LocalVariableDeclaration j
-Iteration 81: "Make Method Non Static" applied at class ParserGenerator to method makeProductionDescriptors
-Iteration 82: "Increase Field Security" applied at class Log to field first,last from public to protected
-Iteration 83: "Decrease Method Security" applied at class Production to method startFirstSet from protected to public
-Iteration 84: "Make Method Static" applied at class Action to method compare
-Iteration 85: "Increase Field Security" applied at class Grammar to field EBNF_LIST_TYPE from public to protected
+Iteration 1: "Decrease Method Security" applied at class GrammarScanner to method zzUnpackCMap from private to package
+Iteration 2: "Make Method Final" applied at class Rule to method getAlias
+Iteration 3: "Increase Field Security" applied at class Terminal to field NONE from public to protected
+Iteration 4: "Make Class Final" applied to class Definition
+Iteration 5: "Decrease Method Security" applied at class GrammarScanner to method zzUnpackTrans from private to package
+Iteration 6: "Make Method Non Final" applied at class GrammarScanner to method yylength
+Iteration 7: "Remove Method" applied at class Node to method setLocation
+Iteration 8: "Remove Method" applied at class IntArray to method compact
+Iteration 9: "Decrease Field Security" applied at class ParsingTables to field n_term from package to protected
+Iteration 10: "Make Method Non Static" applied at class Action to method makeDescription
+Iteration 11: "Make Method Non Final" applied at class GrammarScanner to method yycharat
+Iteration 12: "Make Class Abstract" applied to class Conflict
+Iteration 13: "Decrease Method Security" applied at class Make to method printVersion from package to protected
+Iteration 14: "Make Method Non Final" applied at class GrammarScanner to method yytext
+Iteration 15: "Make Field Final" applied at class GrammarBuilder to ParameterDeclaration decl
+Iteration 16: "Decrease Method Security" applied at class GrammarBuilder to method writeListsCode from private to package
+Iteration 17: "Make Field Final" applied at class Node to ParameterDeclaration walker
+Iteration 18: "Decrease Method Security" applied at class Terminal to method Terminal from package to protected
+Iteration 19: "Make Class Final" applied to class PackageName
+Iteration 20: "Decrease Method Security" applied at class Production to method Production from package to protected
+Iteration 21: "Decrease Method Security" applied at class Terminal to method Associativity from private to package
+Iteration 22: "Increase Method Security" applied at class Make to method printVersion from protected to package
+Iteration 23: "Make Class Final" applied to class ShiftReduce
+Iteration 24: "Decrease Method Security" applied at class Make to method printVersion from package to protected
+Iteration 25: "Decrease Method Security" applied at class Terminal to method Terminal from protected to public
+Iteration 26: "Decrease Method Security" applied at class Production to method Production from protected to public
+Iteration 27: "Decrease Method Security" applied at class Terminal to method Associativity from package to protected
+Iteration 28: "Increase Method Security" applied at class Make to method printVersion from protected to package
+Iteration 29: "Make Method Non Final" applied at class GrammarScanner to method yybegin
+Iteration 30: "Decrease Method Security" applied at class GrammarScanner to method zzUnpackTrans from private to package
+Iteration 31: "Decrease Method Security" applied at class Terminal to method Associativity from protected to public
+Iteration 32: "Decrease Method Security" applied at class GrammarScanner to method zzUnpackTrans from package to protected
+Iteration 33: "Decrease Method Security" applied at class Make to method printVersion from package to protected
+Iteration 34: "Decrease Method Security" applied at class Make to method printVersion from protected to public
+Iteration 35: "Increase Method Security" applied at class Make to method printVersion from public to protected
+Iteration 36: "Decrease Method Security" applied at class Make to method printVersion from protected to public
+Iteration 37: "Decrease Method Security" applied at class GrammarBuilder to method writeListsCode from package to protected
+Iteration 38: "Increase Method Security" applied at class Make to method printVersion from public to protected
+Iteration 39: "Decrease Method Security" applied at class GrammarScanner to method zzUnpackTrans from protected to public
+Iteration 40: "Decrease Method Security" applied at class Make to method printVersion from protected to public
+Iteration 41: "Increase Method Security" applied at class Make to method printVersion from public to protected
+Iteration 42: "Decrease Method Security" applied at class Make to method printVersion from protected to public
+Iteration 43: "Increase Method Security" applied at class Make to method printVersion from public to protected
+Iteration 44: "Decrease Method Security" applied at class Grammar to method Grammar from package to protected
+Iteration 45: "Make Method Final" applied at class Make to method printVersion
+Iteration 46: "Decrease Method Security" applied at class Make to method printVersion from protected to public
+Iteration 47: "Increase Method Security" applied at class Make to method printVersion from public to protected
+Iteration 48: "Decrease Method Security" applied at class Make to method printVersion from protected to public
+Iteration 49: "Increase Method Security" applied at class Make to method printVersion from public to protected
+Iteration 50: "Decrease Method Security" applied at class Make to method printVersion from protected to public
+Iteration 51: "Increase Method Security" applied at class Make to method printVersion from public to protected
+Iteration 52: "Decrease Method Security" applied at class Grammar to method Grammar from protected to public
+Iteration 53: "Decrease Method Security" applied at class Configuration to method Factory from package to protected
+Iteration 54: "Make Method Static" applied at class GrammarBuilder to method propagateTypes
+Iteration 55: "Remove Method" applied at class BitSet to method isSet
+Iteration 56: "Decrease Method Security" applied at class Make to method printVersion from protected to public
+Iteration 57: "Make Class Abstract" applied to class Action
+Iteration 58: "Make Method Final" applied at class Configuration to method compareTo
+Iteration 59: "Make Method Non Final" applied at class Configuration to method compareTo
+Iteration 60: "Increase Field Security" applied at class ParserGenerator to field SOURCE_FILE_EXT from public to protected
+Iteration 61: "Make Method Final" applied at class ParserGenerator to method encodeParsingTables
+Iteration 62: "Increase Method Security" applied at class Make to method printVersion from public to protected
+Iteration 63: "Decrease Method Security" applied at class Make to method printVersion from protected to public
+Iteration 64: "Increase Method Security" applied at class Make to method printVersion from public to protected
+Iteration 65: "Decrease Method Security" applied at class Make to method printVersion from protected to public
+Iteration 66: "Increase Method Security" applied at class Make to method printVersion from public to protected
+Iteration 67: "Decrease Method Security" applied at class Make to method printVersion from protected to public
+Iteration 68: "Increase Method Security" applied at class Make to method printVersion from public to protected
+Iteration 69: "Decrease Method Security" applied at class Make to method printVersion from protected to public
+Iteration 70: "Increase Method Security" applied at class Make to method printVersion from public to protected
+Iteration 71: "Decrease Method Security" applied at class Make to method printVersion from protected to public
+Iteration 72: "Increase Method Security" applied at class Make to method printVersion from public to protected
+Iteration 73: "Decrease Method Security" applied at class Make to method printVersion from protected to public
+Iteration 74: "Increase Method Security" applied at class Make to method printVersion from public to protected
+Iteration 75: "Decrease Method Security" applied at class Configuration to method Factory from protected to public
+Iteration 76: "Decrease Method Security" applied at class Make to method printVersion from protected to public
+Iteration 77: "Make Method Final" applied at class Configuration to method compareTo
+Iteration 78: "Make Method Non Final" applied at class Configuration to method compareTo
+Iteration 79: "Increase Method Security" applied at class Make to method printVersion from public to protected
+Iteration 80: "Decrease Method Security" applied at class Make to method printVersion from protected to public
+Iteration 81: "Increase Method Security" applied at class Make to method printVersion from public to protected
+Iteration 82: "Decrease Method Security" applied at class Make to method printVersion from protected to public
+Iteration 83: "Increase Method Security" applied at class Make to method printVersion from public to protected
+Iteration 84: "Decrease Method Security" applied at class Make to method printVersion from protected to public
+Iteration 85: "Increase Method Security" applied at class Make to method printVersion from public to protected
+Iteration 86: "Decrease Method Security" applied at class Make to method printVersion from protected to public
+Iteration 87: "Increase Method Security" applied at class Make to method printVersion from public to protected
+Iteration 88: "Decrease Method Security" applied at class Make to method printVersion from protected to public
+Iteration 89: "Increase Method Security" applied at class Make to method printVersion from public to protected
+Iteration 90: "Decrease Method Security" applied at class Make to method printVersion from protected to public
+Iteration 91: "Increase Method Security" applied at class Make to method printVersion from public to protected
+Iteration 92: "Decrease Method Security" applied at class Make to method printVersion from protected to public
+Iteration 93: "Increase Method Security" applied at class Make to method printVersion from public to protected
+Iteration 94: "Decrease Method Security" applied at class Make to method printVersion from protected to public
+Iteration 95: "Increase Method Security" applied at class Make to method printVersion from public to protected
+Iteration 96: "Increase Method Security" applied at class Make to method printVersion from protected to package
+Iteration 97: "Decrease Method Security" applied at class Make to method printVersion from package to protected
+Iteration 98: "Increase Method Security" applied at class Make to method printVersion from protected to package
+Iteration 99: "Decrease Method Security" applied at class Make to method printVersion from package to protected
+Iteration 100: "Increase Method Security" applied at class Make to method printVersion from protected to package
+Iteration 101: "Decrease Method Security" applied at class Make to method printVersion from package to protected
+Iteration 102: "Increase Method Security" applied at class Make to method printVersion from protected to package
+Iteration 103: "Decrease Method Security" applied at class Make to method printVersion from package to protected
+Iteration 104: "Make Class Final" applied to class IntArray
+Iteration 105: "Move Method Down" applied to method toString from GrammarSymbol to NonTerminal
+Iteration 106: "Make Method Final" applied at class BitSet to method isEmpty
+Iteration 107: "Increase Method Security" applied at class Make to method printVersion from protected to package
+Iteration 108: "Decrease Method Security" applied at class Make to method printVersion from package to protected
+Iteration 109: "Increase Method Security" applied at class Make to method printVersion from protected to package
+Iteration 110: "Decrease Method Security" applied at class Make to method printVersion from package to protected
+Iteration 111: "Decrease Method Security" applied at class Make to method printVersion from protected to public
+Iteration 112: "Increase Method Security" applied at class Make to method printVersion from public to protected
+Iteration 113: "Decrease Method Security" applied at class Make to method printVersion from protected to public
+Iteration 114: "Increase Method Security" applied at class Make to method printVersion from public to protected
+Iteration 115: "Decrease Method Security" applied at class Make to method printVersion from protected to public
+Iteration 116: "Increase Method Security" applied at class Make to method printVersion from public to protected
+Iteration 117: "Decrease Method Security" applied at class Make to method printVersion from protected to public
+Iteration 118: "Increase Method Security" applied at class Make to method printVersion from public to protected
+Iteration 119: "Decrease Method Security" applied at class Make to method printVersion from protected to public
+Iteration 120: "Increase Method Security" applied at class Make to method printVersion from public to protected
+Iteration 121: "Decrease Method Security" applied at class Make to method printVersion from protected to public
+Iteration 122: "Increase Method Security" applied at class Make to method printVersion from public to protected
+Iteration 123: "Decrease Method Security" applied at class Make to method printVersion from protected to public
+Iteration 124: "Increase Method Security" applied at class Make to method printVersion from public to protected
+Iteration 125: "Decrease Method Security" applied at class Make to method printVersion from protected to public
+Iteration 126: "Make Method Final" applied at class Configuration to method compareTo
+Iteration 127: "Make Method Non Final" applied at class Configuration to method compareTo
+Iteration 128: "Increase Method Security" applied at class Make to method printVersion from public to protected
+Iteration 129: "Decrease Method Security" applied at class Make to method printVersion from protected to public
+Iteration 130: "Increase Method Security" applied at class Make to method printVersion from public to protected
+Iteration 131: "Decrease Method Security" applied at class Make to method printVersion from protected to public
+Iteration 132: "Decrease Method Security" applied at class GrammarBuilder to method writeListsCode from protected to public
+Iteration 133: "Increase Method Security" applied at class Make to method printVersion from public to protected
+Iteration 134: "Decrease Method Security" applied at class Make to method printVersion from protected to public
+Iteration 135: "Increase Method Security" applied at class Make to method printVersion from public to protected
+Iteration 136: "Increase Method Security" applied at class Make to method printVersion from protected to package
+Iteration 137: "Decrease Method Security" applied at class Make to method printVersion from package to protected
+Iteration 138: "Increase Method Security" applied at class Make to method printVersion from protected to package
+Iteration 139: "Decrease Method Security" applied at class Make to method printVersion from package to protected
+Iteration 140: "Increase Method Security" applied at class Make to method printVersion from protected to package
+Iteration 141: "Decrease Method Security" applied at class Make to method printVersion from package to protected
+Iteration 142: "Increase Method Security" applied at class Make to method printVersion from protected to package
+Iteration 143: "Decrease Method Security" applied at class Make to method printVersion from package to protected
+Iteration 144: "Increase Method Security" applied at class Make to method printVersion from protected to package
+Iteration 145: "Decrease Method Security" applied at class Make to method printVersion from package to protected
+Iteration 146: "Increase Method Security" applied at class Make to method printVersion from protected to package
+Iteration 147: "Decrease Method Security" applied at class Make to method printVersion from package to protected
+Iteration 148: "Increase Method Security" applied at class Make to method printVersion from protected to package
+Iteration 149: "Decrease Method Security" applied at class Make to method printVersion from package to protected
+Iteration 150: "Make Method Final" applied at class Configuration to method compareTo
+Iteration 151: "Make Method Non Final" applied at class Configuration to method compareTo
+Iteration 152: "Increase Method Security" applied at class Make to method printVersion from protected to package
+Iteration 153: "Decrease Method Security" applied at class Make to method printVersion from package to protected
+Iteration 154: "Increase Method Security" applied at class Make to method printVersion from protected to package
+Iteration 155: "Decrease Method Security" applied at class Make to method printVersion from package to protected
+Iteration 156: "Increase Method Security" applied at class Make to method printVersion from protected to package
+Iteration 157: "Decrease Method Security" applied at class Make to method printVersion from package to protected
+Iteration 158: "Increase Method Security" applied at class Make to method printVersion from protected to package
+Iteration 159: "Decrease Method Security" applied at class Make to method printVersion from package to protected
+Iteration 160: "Increase Method Security" applied at class Make to method printVersion from protected to package
+Iteration 161: "Decrease Method Security" applied at class Make to method printVersion from package to protected
+Iteration 162: "Increase Method Security" applied at class Make to method printVersion from protected to package
+Iteration 163: "Decrease Method Security" applied at class Make to method printVersion from package to protected
+Iteration 164: "Increase Method Security" applied at class Make to method printVersion from protected to package
+Iteration 165: "Decrease Method Security" applied at class Make to method printVersion from package to protected
+Iteration 166: "Increase Method Security" applied at class Make to method printVersion from protected to package
+Iteration 167: "Decrease Method Security" applied at class Make to method printVersion from package to protected
+Iteration 168: "Increase Method Security" applied at class Make to method printVersion from protected to package
+Iteration 169: "Increase Method Security" applied at class Make to method printVersion from package to private
+Iteration 170: "Decrease Method Security" applied at class Make to method printVersion from private to package
+Iteration 171: "Increase Method Security" applied at class Make to method printVersion from package to private
+Iteration 172: "Decrease Method Security" applied at class Make to method printVersion from private to package
+Iteration 173: "Increase Method Security" applied at class Make to method printVersion from package to private
+Iteration 174: "Decrease Method Security" applied at class Make to method printVersion from private to package
+Iteration 175: "Increase Method Security" applied at class Make to method printVersion from package to private
+Iteration 176: "Decrease Method Security" applied at class Make to method printVersion from private to package
+Iteration 177: "Increase Method Security" applied at class Make to method printVersion from package to private
+Iteration 178: "Decrease Method Security" applied at class Make to method printVersion from private to package
+Iteration 179: "Increase Method Security" applied at class Make to method printVersion from package to private
+Iteration 180: "Decrease Method Security" applied at class Make to method printVersion from private to package
+Iteration 181: "Decrease Method Security" applied at class Make to method printVersion from package to protected
+Iteration 182: "Increase Method Security" applied at class Make to method printVersion from protected to package
+Iteration 183: "Decrease Method Security" applied at class Make to method printVersion from package to protected
+Iteration 184: "Increase Method Security" applied at class Make to method printVersion from protected to package
+Iteration 185: "Decrease Method Security" applied at class Make to method printVersion from package to protected
+Iteration 186: "Increase Method Security" applied at class Make to method printVersion from protected to package
+Iteration 187: "Decrease Method Security" applied at class Make to method printVersion from package to protected
+Iteration 188: "Increase Method Security" applied at class Make to method printVersion from protected to package
+Iteration 189: "Decrease Method Security" applied at class Make to method printVersion from package to protected
+Iteration 190: "Increase Method Security" applied at class Make to method printVersion from protected to package
+Iteration 191: "Decrease Method Security" applied at class Make to method printVersion from package to protected
+Iteration 192: "Increase Method Security" applied at class Make to method printVersion from protected to package
+Iteration 193: "Decrease Method Security" applied at class Make to method printVersion from package to protected
+Iteration 194: "Increase Method Security" applied at class Make to method printVersion from protected to package
+Iteration 195: "Decrease Method Security" applied at class Make to method printVersion from package to protected
+Iteration 196: "Make Method Final" applied at class Configuration to method compareTo
+Iteration 197: "Make Method Non Final" applied at class Configuration to method compareTo
+Iteration 198: "Increase Method Security" applied at class Make to method printVersion from protected to package
+Iteration 199: "Decrease Method Security" applied at class Make to method printVersion from package to protected
+Iteration 200: "Increase Method Security" applied at class Make to method printVersion from protected to package
+Iteration 201: "Decrease Method Security" applied at class Make to method printVersion from package to protected
+Iteration 202: "Increase Method Security" applied at class Make to method printVersion from protected to package
+Iteration 203: "Decrease Method Security" applied at class Make to method printVersion from package to protected
+Iteration 204: "Increase Method Security" applied at class Make to method printVersion from protected to package
+Iteration 205: "Increase Method Security" applied at class Make to method printVersion from package to private
+Iteration 206: "Decrease Method Security" applied at class Make to method printVersion from private to package
+Iteration 207: "Increase Method Security" applied at class Make to method printVersion from package to private
+Iteration 208: "Decrease Method Security" applied at class Make to method printVersion from private to package
+Iteration 209: "Decrease Method Security" applied at class Make to method printVersion from package to protected
+Iteration 210: "Increase Method Security" applied at class Make to method printVersion from protected to package
+Iteration 211: "Decrease Method Security" applied at class Make to method printVersion from package to protected
+Iteration 212: "Increase Method Security" applied at class Make to method printVersion from protected to package
+Iteration 213: "Decrease Method Security" applied at class Make to method printVersion from package to protected
+Iteration 214: "Increase Method Security" applied at class Make to method printVersion from protected to package
+Iteration 215: "Decrease Method Security" applied at class Make to method printVersion from package to protected
+Iteration 216: "Increase Method Security" applied at class Make to method printVersion from protected to package
+Iteration 217: "Decrease Method Security" applied at class Make to method printVersion from package to protected
+Iteration 218: "Increase Method Security" applied at class Make to method printVersion from protected to package
+Iteration 219: "Decrease Method Security" applied at class Make to method printVersion from package to protected
+Iteration 220: "Increase Method Security" applied at class Make to method printVersion from protected to package
+Iteration 221: "Decrease Method Security" applied at class Make to method printVersion from package to protected
+Iteration 222: "Increase Method Security" applied at class Make to method printVersion from protected to package
+Iteration 223: "Decrease Method Security" applied at class Make to method printVersion from package to protected
+Iteration 224: "Make Method Final" applied at class Configuration to method compareTo
+Iteration 225: "Make Method Non Final" applied at class Configuration to method compareTo
+Iteration 226: "Increase Method Security" applied at class Make to method printVersion from protected to package
+Iteration 227: "Decrease Method Security" applied at class Make to method printVersion from package to protected
+Iteration 228: "Increase Method Security" applied at class Make to method printVersion from protected to package
+Iteration 229: "Decrease Method Security" applied at class Make to method printVersion from package to protected
+Iteration 230: "Increase Method Security" applied at class Make to method printVersion from protected to package
+Iteration 231: "Decrease Method Security" applied at class Make to method printVersion from package to protected
+Iteration 232: "Increase Method Security" applied at class Make to method printVersion from protected to package
+Iteration 233: "Decrease Method Security" applied at class Make to method printVersion from package to protected
+Iteration 234: "Make Class Final" applied to class Terminal
+Iteration 235: "Decrease Method Security" applied at class ParserGenerator to method indexOfLastReferencedSymbol from private to package
+Iteration 236: "Remove Method" applied at class BitSet to method isEmpty
 
-Score has improved overall by 0.676100
-Time taken to refactor: 214.14s
+Score has improved overall by 0.693724
+Time taken to refactor: 174.02s
 
 ======== Final Metric Info ========
-Average ratio of private/package/protected attributes to overall attributes per class: 0.422252
+Average ratio of private/package/protected attributes to overall attributes per class: 0.413431
 Average coupling per class: 1.728571
-Average cohesion among methods per class: 0.438039
+Average cohesion among methods per class: 0.440984
 Average amount of user defined attributes declared per class: 1.000000
-Average functional abstraction per class: 0.295563
+Average functional abstraction per class: 0.296062
 Average amount of polymorphic methods per class: 0.357143
-Average amount of public methods per class: 2.471429
-Average amount of methods per class: 4.442857
-Average amount of complexity of methods per class: 63.814285
+Average amount of public methods per class: 2.357143
+Average amount of methods per class: 4.400000
+Average amount of complexity of methods per class: 63.628571
 Ratio of interfaces to overall amount of classes: 0.000000
 Average ratio of abstract classes/methods per class: 0.071905
-Average ratio of static classes/methods/variables per class: 0.257309
-Average ratio of final classes/methods/variables per class: 0.103585
-Average ratio of constant classes/methods/variables per class: 0.061720
+Average ratio of static classes/methods/variables per class: 0.253321
+Average ratio of final classes/methods/variables per class: 0.101475
+Average ratio of constant classes/methods/variables per class: 0.068097
 Ratio of inner classes to overall amount of ordinary classes in project: 0.657143
-Average inherited referenced methods ratio per class: 0.022959
-Average visibility ratio per class: 0.615251
+Average inherited referenced methods ratio per class: 0.022487
+Average visibility ratio per class: 0.608175
 Amount of lines of code in project: 6493
-Overall fitness function score: 0.676100
+Overall fitness function score: 0.693724

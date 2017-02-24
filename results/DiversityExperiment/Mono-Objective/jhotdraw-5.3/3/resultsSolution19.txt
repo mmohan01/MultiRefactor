@@ -27,159 +27,201 @@ Amount of lines of code in project: 27824
 Overall fitness function score: 0.000000
 
 ======== Applied Refactorings ========
-Iteration 1: "Move Field Down" applied to field fLocator from NullHandle to GroupHandle
-Iteration 2: "Make Field Final" applied at class Painter to ParameterDeclaration g
-Iteration 3: "Make Method Final" applied at class LocatorConnector to method write
-Iteration 4: "Remove Method" applied at class AbstractCommand to method dispose
-Iteration 5: "Make Field Final" applied at class StandardVersionControlStrategy to LocalVariableDeclaration i
-Iteration 6: "Make Field Static" applied at class CreationTool to field fCreatedFigure
-Iteration 7: "Make Method Static" applied at class StandardDrawingView to method getDefaultDNDActions
-Iteration 8: "Make Class Concrete" applied to class AttributeFigure
-Iteration 9: "Make Field Final" applied at class NothingApplet to ParameterDeclaration palette
-Iteration 10: "Make Method Non Static" applied at class DragNDropTool to method ProcessReceivedData
+Iteration 1: "Move Method Down" applied to method setAffectedFigures from UndoActivity to UndoActivity
+Iteration 2: "Make Method Static" applied at class StandardStorageFormat to method accept
+Iteration 3: "Make Field Final" applied at class Drawing to ParameterDeclaration fe
+Iteration 4: "Move Method Down" applied to method drawFrame from RectangleFigure to DiamondFigure
+Iteration 5: "Make Class Abstract" applied to class FigureChangeAdapter
+Iteration 6: "Make Method Static" applied at class PolyLineHandle to method createUndoActivity
+Iteration 7: "Make Method Final" applied at class ElbowConnection to method layoutConnection
+Iteration 8: "Decrease Method Security" applied at class AbstractConnector to method findPoint from protected to public
+Iteration 9: "Decrease Method Security" applied at class StandardStorageFormat to method adjustFileName from protected to public
+Iteration 10: "Make Method Non Static" applied at class BoxHandleKit to method west
 Iteration 11: "Remove Class" applied to class JHotDrawException
-Iteration 12: "Decrease Method Security" applied at class UndoableTool to method setWrappedTool from protected to public
-Iteration 13: "Move Method Up" applied to method invokeStep from NorthEastHandle to ResizeHandle
-Iteration 14: "Move Method Up" applied to method isExecutableWithView from CutCommand to FigureTransferCommand
-Iteration 15: "Increase Method Security" applied at class CreationTool to method getAnchorPoint from protected to package
-Iteration 16: "Make Method Non Static" applied at class AttributeFigure to method initializeAttributes
-Iteration 17: "Increase Method Security" applied at class CreationTool to method getAnchorPoint from package to private
-Iteration 18: "Make Method Non Final" applied at class LocatorConnector to method write
-Iteration 19: "Decrease Method Security" applied at class CommandMenu to method addMenuItem from protected to public
-Iteration 20: "Make Method Final" applied at class LocatorConnector to method write
-Iteration 21: "Decrease Field Security" applied at class RectangleFigure to field fDisplayBox from private to package
-Iteration 22: "Make Method Non Final" applied at class LocatorConnector to method write
-Iteration 23: "Make Method Final" applied at class LocatorConnector to method write
-Iteration 24: "Move Method Up" applied to method invokeStep from ResizeHandle to LocatorHandle
-Iteration 25: "Make Method Non Final" applied at class LocatorConnector to method write
-Iteration 26: "Make Method Final" applied at class LocatorConnector to method write
-Iteration 27: "Decrease Method Security" applied at class ScribbleTool to method setAddedFigure from private to package
-Iteration 28: "Make Method Final" applied at class CutCommand to method execute
-Iteration 29: "Move Method Up" applied to method replaceAffectedFigures from UndoActivity to UndoableAdapter
-Iteration 30: "Move Method Down" applied to method mouseDrag from TextTool to ConnectedTextTool
-Iteration 31: "Make Class Abstract" applied to class DrawApplet
-Iteration 32: "Make Method Final" applied at class PertApplication to method createTools
-Iteration 33: "Remove Method" applied at class LineConnection to method readObject
-Iteration 34: "Decrease Method Security" applied at class ScribbleTool to method setAddedFigure from package to protected
-Iteration 35: "Make Class Final" applied to class PolygonTool
-Iteration 36: "Make Method Final" applied at class StandardDrawing to method drawingChangeListeners
-Iteration 37: "Make Method Final" applied at class UngroupCommand to method ungroupFigures
-Iteration 38: "Make Class Final" applied to class VersionManagement
-Iteration 39: "Decrease Method Security" applied at class ScribbleTool to method setAddedFigure from protected to public
-Iteration 40: "Make Method Final" applied at class PolyLineFigure to method getStartDecoration
-Iteration 41: "Decrease Method Security" applied at class FollowURLTool to method FollowURLTool from package to protected
-Iteration 42: "Remove Method" applied at class PopupMenuFigureSelection to method getSelectedFigure
-Iteration 43: "Increase Method Security" applied at class GroupCommand to method groupFigures from public to protected
-Iteration 44: "Move Method Up" applied to method invokeStep from EastHandle to ResizeHandle
-Iteration 45: "Decrease Method Security" applied at class PolyLineHandle to method myOwner from private to package
-Iteration 46: "Decrease Field Security" applied at class RectangleFigure to field fDisplayBox from package to protected
-Iteration 47: "Make Method Non Final" applied at class LocatorConnector to method write
-Iteration 48: "Make Method Final" applied at class LocatorConnector to method write
-Iteration 49: "Decrease Field Security" applied at class RectangleFigure to field fDisplayBox from protected to public
-Iteration 50: "Make Method Non Final" applied at class LocatorConnector to method write
-Iteration 51: "Make Method Final" applied at class LocatorConnector to method write
-Iteration 52: "Make Method Non Final" applied at class LocatorConnector to method write
-Iteration 53: "Make Method Final" applied at class LocatorConnector to method write
-Iteration 54: "Decrease Method Security" applied at class FollowURLTool to method FollowURLTool from protected to public
-Iteration 55: "Increase Method Security" applied at class GroupCommand to method groupFigures from protected to package
-Iteration 56: "Decrease Method Security" applied at class PolyLineHandle to method myOwner from package to protected
-Iteration 57: "Make Method Non Final" applied at class LocatorConnector to method write
-Iteration 58: "Make Method Final" applied at class LocatorConnector to method write
-Iteration 59: "Make Method Non Final" applied at class LocatorConnector to method write
-Iteration 60: "Make Method Final" applied at class LocatorConnector to method write
-Iteration 61: "Make Method Non Final" applied at class LocatorConnector to method write
-Iteration 62: "Make Method Final" applied at class LocatorConnector to method write
-Iteration 63: "Make Method Non Final" applied at class LocatorConnector to method write
-Iteration 64: "Make Method Final" applied at class LocatorConnector to method write
-Iteration 65: "Decrease Method Security" applied at class PolyLineHandle to method myOwner from protected to public
-Iteration 66: "Make Method Non Final" applied at class LocatorConnector to method write
-Iteration 67: "Make Method Final" applied at class LocatorConnector to method write
-Iteration 68: "Make Method Non Final" applied at class LocatorConnector to method write
-Iteration 69: "Make Method Final" applied at class LocatorConnector to method write
-Iteration 70: "Make Class Final" applied to class SleeperThread
-Iteration 71: "Decrease Method Security" applied at class FontSizeHandle to method createUndoActivity from protected to public
-Iteration 72: "Remove Method" applied at class VersionManagement to method readVersionFromFile
-Iteration 73: "Make Method Final" applied at class PolyLineLocator to method locate
-Iteration 74: "Move Method Down" applied to method mouseDown from ActionTool to BorderTool
-Iteration 75: "Make Method Non Static" applied at class DragNDropTool to method supportDropTargetDragEvent
-Iteration 76: "Make Field Final" applied at class CopyCommand to ParameterDeclaration newDrawingEditor
-Iteration 77: "Move Field Up" applied to field fRelativeX from RelativeLocator to AbstractLocator
-Iteration 78: "Make Method Static" applied at class AbstractTool to method keyDown
-Iteration 79: "Decrease Field Security" applied at class ShortestDistanceConnector to field serialVersionUID from private to package
-Iteration 80: "Make Method Static" applied at class ChangeConnectionStartHandle to method createUndoActivity
-Iteration 81: "Remove Method" applied at class DrawApplet to method stopSleeper
-Iteration 82: "Make Method Final" applied at class DrawingChangeEvent to method getDrawing
-Iteration 83: "Move Method Down" applied to method redo from UndoActivity to UndoActivity
-Iteration 84: "Make Method Non Final" applied at class LocatorConnector to method write
-Iteration 85: "Make Method Final" applied at class LocatorConnector to method write
-Iteration 86: "Make Method Non Final" applied at class LocatorConnector to method write
-Iteration 87: "Make Method Final" applied at class LocatorConnector to method write
-Iteration 88: "Make Method Non Final" applied at class LocatorConnector to method write
-Iteration 89: "Make Method Final" applied at class LocatorConnector to method write
-Iteration 90: "Make Method Non Final" applied at class LocatorConnector to method write
-Iteration 91: "Make Method Final" applied at class LocatorConnector to method write
-Iteration 92: "Make Method Non Final" applied at class LocatorConnector to method write
-Iteration 93: "Make Method Final" applied at class LocatorConnector to method write
-Iteration 94: "Make Method Non Final" applied at class LocatorConnector to method write
-Iteration 95: "Make Method Final" applied at class LocatorConnector to method write
-Iteration 96: "Make Method Non Final" applied at class LocatorConnector to method write
-Iteration 97: "Make Method Final" applied at class LocatorConnector to method write
-Iteration 98: "Make Method Non Final" applied at class LocatorConnector to method write
-Iteration 99: "Make Method Final" applied at class LocatorConnector to method write
-Iteration 100: "Make Method Non Final" applied at class LocatorConnector to method write
-Iteration 101: "Make Method Final" applied at class LocatorConnector to method write
-Iteration 102: "Make Method Non Final" applied at class LocatorConnector to method write
-Iteration 103: "Make Method Final" applied at class LocatorConnector to method write
-Iteration 104: "Make Method Non Final" applied at class LocatorConnector to method write
-Iteration 105: "Make Method Final" applied at class LocatorConnector to method write
-Iteration 106: "Make Method Non Final" applied at class LocatorConnector to method write
-Iteration 107: "Make Method Final" applied at class LocatorConnector to method write
-Iteration 108: "Make Method Non Final" applied at class LocatorConnector to method write
-Iteration 109: "Make Method Final" applied at class LocatorConnector to method write
-Iteration 110: "Make Method Non Final" applied at class LocatorConnector to method write
-Iteration 111: "Make Method Final" applied at class LocatorConnector to method write
-Iteration 112: "Make Method Non Final" applied at class LocatorConnector to method write
-Iteration 113: "Make Method Final" applied at class LocatorConnector to method write
-Iteration 114: "Make Method Non Final" applied at class LocatorConnector to method write
-Iteration 115: "Make Method Final" applied at class LocatorConnector to method write
-Iteration 116: "Make Method Non Final" applied at class LocatorConnector to method write
-Iteration 117: "Make Method Final" applied at class LocatorConnector to method write
-Iteration 118: "Make Method Non Final" applied at class LocatorConnector to method write
-Iteration 119: "Make Method Final" applied at class LocatorConnector to method write
-Iteration 120: "Decrease Field Security" applied at class ShortestDistanceConnector to field serialVersionUID from package to protected
-Iteration 121: "Decrease Method Security" applied at class CopyCommand to method isExecutableWithView from protected to public
-Iteration 122: "Move Method Down" applied to method undo from UndoActivity to UndoActivity
-Iteration 123: "Make Method Final" applied at class PolygonFigure to method findSegment
-Iteration 124: "Move Method Down" applied to method mouseUp from ActionTool to BorderTool
-Iteration 125: "Decrease Field Security" applied at class ShortestDistanceConnector to field serialVersionUID from protected to public
-Iteration 126: "Make Method Final" applied at class MySelectionTool to method mouseDown
-Iteration 127: "Decrease Field Security" applied at class SingleFigureEnumerator to field mySingleFigure from private to package
-Iteration 128: "Move Method Up" applied to method execute from CopyCommand to FigureTransferCommand
-Iteration 129: "Make Method Final" applied at class ToolButton to method toolUnusable
-Iteration 130: "Move Field Up" applied to field LENGTH_FACTOR from GraphLayout to FigureChangeAdapter
-Iteration 131: "Make Class Final" applied to class BorderDecorator
-Iteration 132: "Make Class Final" applied to class BufferedUpdateStrategy
+Iteration 12: "Make Class Final" applied to class CutCommand
+Iteration 13: "Decrease Method Security" applied at class WindowMenu to method buildChildMenus from private to package
+Iteration 14: "Make Class Final" applied to class ChopPolygonConnector
+Iteration 15: "Decrease Method Security" applied at class WindowMenu to method buildChildMenus from package to protected
+Iteration 16: "Decrease Method Security" applied at class WindowMenu to method buildChildMenus from protected to public
+Iteration 17: "Make Class Final" applied to class GroupCommand
+Iteration 18: "Decrease Method Security" applied at class DecoratorFigure to method initialize from protected to public
+Iteration 19: "Make Method Non Static" applied at class PolyLineHandle to method createUndoActivity
+Iteration 20: "Make Class Concrete" applied to class AbstractConnector
+Iteration 21: "Remove Method" applied at class AutoscrollHelper to method setAutoscrollMargin
+Iteration 22: "Make Method Non Final" applied at class ElbowConnection to method layoutConnection
+Iteration 23: "Make Class Final" applied to class UndoActivity
+Iteration 24: "Make Method Static" applied at class PolyLineHandle to method createUndoActivity
+Iteration 25: "Make Method Final" applied at class ElbowConnection to method layoutConnection
+Iteration 26: "Make Method Non Static" applied at class PolyLineHandle to method createUndoActivity
+Iteration 27: "Make Method Non Final" applied at class ElbowConnection to method layoutConnection
+Iteration 28: "Make Method Static" applied at class PolyLineHandle to method createUndoActivity
+Iteration 29: "Make Method Final" applied at class ElbowConnection to method layoutConnection
+Iteration 30: "Make Method Non Static" applied at class PolyLineHandle to method createUndoActivity
+Iteration 31: "Make Method Non Final" applied at class ElbowConnection to method layoutConnection
+Iteration 32: "Make Method Static" applied at class PolyLineHandle to method createUndoActivity
+Iteration 33: "Make Method Final" applied at class ElbowConnection to method layoutConnection
+Iteration 34: "Make Method Non Static" applied at class PolyLineHandle to method createUndoActivity
+Iteration 35: "Make Method Non Final" applied at class ElbowConnection to method layoutConnection
+Iteration 36: "Make Method Static" applied at class PolyLineHandle to method createUndoActivity
+Iteration 37: "Make Method Final" applied at class ElbowConnection to method layoutConnection
+Iteration 38: "Make Method Non Static" applied at class PolyLineHandle to method createUndoActivity
+Iteration 39: "Make Method Non Final" applied at class ElbowConnection to method layoutConnection
+Iteration 40: "Decrease Method Security" applied at class MDI_DrawApplication to method createApplication from protected to public
+Iteration 41: "Make Class Abstract" applied to class LocatorHandle
+Iteration 42: "Make Method Static" applied at class PolyLineHandle to method createUndoActivity
+Iteration 43: "Make Method Final" applied at class ElbowConnection to method layoutConnection
+Iteration 44: "Make Method Non Static" applied at class PolyLineHandle to method createUndoActivity
+Iteration 45: "Make Method Non Final" applied at class ElbowConnection to method layoutConnection
+Iteration 46: "Make Method Static" applied at class PolyLineHandle to method createUndoActivity
+Iteration 47: "Make Method Final" applied at class ElbowConnection to method layoutConnection
+Iteration 48: "Make Method Non Static" applied at class PolyLineHandle to method createUndoActivity
+Iteration 49: "Make Method Non Final" applied at class ElbowConnection to method layoutConnection
+Iteration 50: "Make Method Static" applied at class PolyLineHandle to method createUndoActivity
+Iteration 51: "Make Method Final" applied at class ElbowConnection to method layoutConnection
+Iteration 52: "Make Method Non Static" applied at class PolyLineHandle to method createUndoActivity
+Iteration 53: "Make Method Non Final" applied at class ElbowConnection to method layoutConnection
+Iteration 54: "Make Method Static" applied at class PolyLineHandle to method createUndoActivity
+Iteration 55: "Make Method Final" applied at class ElbowConnection to method layoutConnection
+Iteration 56: "Make Method Non Static" applied at class PolyLineHandle to method createUndoActivity
+Iteration 57: "Make Method Non Final" applied at class ElbowConnection to method layoutConnection
+Iteration 58: "Make Method Final" applied at class TriangleRotationHandle to method redo
+Iteration 59: "Decrease Method Security" applied at class ElbowConnection to method updatePoints from protected to public
+Iteration 60: "Make Method Static" applied at class PolyLineHandle to method createUndoActivity
+Iteration 61: "Make Method Final" applied at class ElbowConnection to method layoutConnection
+Iteration 62: "Make Method Non Static" applied at class PolyLineHandle to method createUndoActivity
+Iteration 63: "Make Method Non Final" applied at class ElbowConnection to method layoutConnection
+Iteration 64: "Make Method Static" applied at class PolyLineHandle to method createUndoActivity
+Iteration 65: "Make Method Final" applied at class ElbowConnection to method layoutConnection
+Iteration 66: "Make Method Non Static" applied at class PolyLineHandle to method createUndoActivity
+Iteration 67: "Make Method Non Final" applied at class ElbowConnection to method layoutConnection
+Iteration 68: "Make Method Static" applied at class PolyLineHandle to method createUndoActivity
+Iteration 69: "Make Method Final" applied at class ElbowConnection to method layoutConnection
+Iteration 70: "Make Method Non Static" applied at class PolyLineHandle to method createUndoActivity
+Iteration 71: "Make Method Non Final" applied at class ElbowConnection to method layoutConnection
+Iteration 72: "Make Method Static" applied at class PolyLineHandle to method createUndoActivity
+Iteration 73: "Make Method Final" applied at class ElbowConnection to method layoutConnection
+Iteration 74: "Make Method Non Static" applied at class PolyLineHandle to method createUndoActivity
+Iteration 75: "Make Method Non Final" applied at class ElbowConnection to method layoutConnection
+Iteration 76: "Make Method Static" applied at class PolyLineHandle to method createUndoActivity
+Iteration 77: "Make Method Final" applied at class ElbowConnection to method layoutConnection
+Iteration 78: "Make Method Non Static" applied at class PolyLineHandle to method createUndoActivity
+Iteration 79: "Make Method Non Final" applied at class ElbowConnection to method layoutConnection
+Iteration 80: "Make Method Static" applied at class PolyLineHandle to method createUndoActivity
+Iteration 81: "Make Method Final" applied at class ElbowConnection to method layoutConnection
+Iteration 82: "Make Method Non Static" applied at class PolyLineHandle to method createUndoActivity
+Iteration 83: "Make Method Non Final" applied at class ElbowConnection to method layoutConnection
+Iteration 84: "Make Method Static" applied at class PolyLineHandle to method createUndoActivity
+Iteration 85: "Make Method Final" applied at class ElbowConnection to method layoutConnection
+Iteration 86: "Make Method Non Static" applied at class PolyLineHandle to method createUndoActivity
+Iteration 87: "Make Method Non Final" applied at class ElbowConnection to method layoutConnection
+Iteration 88: "Make Method Static" applied at class PolyLineHandle to method createUndoActivity
+Iteration 89: "Make Method Final" applied at class ElbowConnection to method layoutConnection
+Iteration 90: "Make Method Non Static" applied at class PolyLineHandle to method createUndoActivity
+Iteration 91: "Make Method Non Final" applied at class ElbowConnection to method layoutConnection
+Iteration 92: "Make Method Static" applied at class PolyLineHandle to method createUndoActivity
+Iteration 93: "Make Method Final" applied at class ElbowConnection to method layoutConnection
+Iteration 94: "Make Method Non Static" applied at class PolyLineHandle to method createUndoActivity
+Iteration 95: "Make Method Non Final" applied at class ElbowConnection to method layoutConnection
+Iteration 96: "Make Method Static" applied at class PolyLineHandle to method createUndoActivity
+Iteration 97: "Make Method Final" applied at class ElbowConnection to method layoutConnection
+Iteration 98: "Make Method Non Static" applied at class PolyLineHandle to method createUndoActivity
+Iteration 99: "Make Method Non Final" applied at class ElbowConnection to method layoutConnection
+Iteration 100: "Make Method Static" applied at class PolyLineHandle to method createUndoActivity
+Iteration 101: "Make Method Final" applied at class ElbowConnection to method layoutConnection
+Iteration 102: "Make Method Non Static" applied at class PolyLineHandle to method createUndoActivity
+Iteration 103: "Make Method Non Final" applied at class ElbowConnection to method layoutConnection
+Iteration 104: "Make Class Concrete" applied to class DecoratorFigure
+Iteration 105: "Make Method Static" applied at class PolyLineHandle to method createUndoActivity
+Iteration 106: "Make Method Final" applied at class ElbowConnection to method layoutConnection
+Iteration 107: "Make Method Non Static" applied at class PolyLineHandle to method createUndoActivity
+Iteration 108: "Make Method Static" applied at class PolyLineHandle to method createUndoActivity
+Iteration 109: "Make Method Non Static" applied at class PolyLineHandle to method createUndoActivity
+Iteration 110: "Make Method Non Final" applied at class ElbowConnection to method layoutConnection
+Iteration 111: "Make Method Static" applied at class PolyLineHandle to method createUndoActivity
+Iteration 112: "Make Method Final" applied at class ElbowConnection to method layoutConnection
+Iteration 113: "Make Method Non Static" applied at class PolyLineHandle to method createUndoActivity
+Iteration 114: "Make Method Non Final" applied at class ElbowConnection to method layoutConnection
+Iteration 115: "Make Method Static" applied at class PolyLineHandle to method createUndoActivity
+Iteration 116: "Make Method Final" applied at class ElbowConnection to method layoutConnection
+Iteration 117: "Make Method Non Static" applied at class PolyLineHandle to method createUndoActivity
+Iteration 118: "Make Method Non Final" applied at class ElbowConnection to method layoutConnection
+Iteration 119: "Make Method Static" applied at class PolyLineHandle to method createUndoActivity
+Iteration 120: "Make Method Final" applied at class ElbowConnection to method layoutConnection
+Iteration 121: "Make Method Non Static" applied at class PolyLineHandle to method createUndoActivity
+Iteration 122: "Make Method Non Final" applied at class ElbowConnection to method layoutConnection
+Iteration 123: "Make Method Static" applied at class PolyLineHandle to method createUndoActivity
+Iteration 124: "Make Method Final" applied at class ElbowConnection to method layoutConnection
+Iteration 125: "Make Method Non Static" applied at class PolyLineHandle to method createUndoActivity
+Iteration 126: "Make Method Non Final" applied at class ElbowConnection to method layoutConnection
+Iteration 127: "Make Method Static" applied at class PolyLineHandle to method createUndoActivity
+Iteration 128: "Make Method Final" applied at class ElbowConnection to method layoutConnection
+Iteration 129: "Make Method Non Static" applied at class PolyLineHandle to method createUndoActivity
+Iteration 130: "Make Method Non Final" applied at class ElbowConnection to method layoutConnection
+Iteration 131: "Make Method Static" applied at class PolyLineHandle to method createUndoActivity
+Iteration 132: "Make Method Final" applied at class ElbowConnection to method layoutConnection
+Iteration 133: "Make Method Non Static" applied at class PolyLineHandle to method createUndoActivity
+Iteration 134: "Make Method Non Final" applied at class ElbowConnection to method layoutConnection
+Iteration 135: "Make Method Static" applied at class PolyLineHandle to method createUndoActivity
+Iteration 136: "Make Method Final" applied at class ElbowConnection to method layoutConnection
+Iteration 137: "Make Method Non Static" applied at class PolyLineHandle to method createUndoActivity
+Iteration 138: "Make Method Non Final" applied at class ElbowConnection to method layoutConnection
+Iteration 139: "Make Method Static" applied at class PolyLineHandle to method createUndoActivity
+Iteration 140: "Make Method Final" applied at class ElbowConnection to method layoutConnection
+Iteration 141: "Make Method Non Static" applied at class PolyLineHandle to method createUndoActivity
+Iteration 142: "Make Method Non Final" applied at class ElbowConnection to method layoutConnection
+Iteration 143: "Make Method Static" applied at class PolyLineHandle to method createUndoActivity
+Iteration 144: "Make Method Final" applied at class ElbowConnection to method layoutConnection
+Iteration 145: "Make Method Non Static" applied at class PolyLineHandle to method createUndoActivity
+Iteration 146: "Make Method Non Final" applied at class ElbowConnection to method layoutConnection
+Iteration 147: "Make Method Static" applied at class PolyLineHandle to method createUndoActivity
+Iteration 148: "Make Method Final" applied at class ElbowConnection to method layoutConnection
+Iteration 149: "Make Method Non Static" applied at class PolyLineHandle to method createUndoActivity
+Iteration 150: "Make Method Non Final" applied at class ElbowConnection to method layoutConnection
+Iteration 151: "Decrease Method Security" applied at class CutCommand to method createUndoActivity from protected to public
+Iteration 152: "Make Class Final" applied to class PertDependency
+Iteration 153: "Decrease Method Security" applied at class MDI_DrawApplication to method createContents from protected to public
+Iteration 154: "Decrease Method Security" applied at class Iconkit to method basicGetImage from private to package
+Iteration 155: "Move Method Down" applied to method mouseMove from SelectionTool to CustomSelectionTool
+Iteration 156: "Make Method Static" applied at class PaletteLayout to method addLayoutComponent
+Iteration 157: "Remove Method" applied at class CreationTool to method setCreatedFigure
+Iteration 158: "Decrease Method Security" applied at class BringToFrontCommand to method createUndoActivity from protected to public
+Iteration 159: "Make Method Final" applied at class AbstractConnector to method owner
+Iteration 160: "Move Method Up" applied to method startPoint from LineFigure to PolyLineFigure
+Iteration 161: "Decrease Method Security" applied at class Iconkit to method basicGetImage from package to protected
+Iteration 162: "Make Method Final" applied at class ElbowConnection to method layoutConnection
+Iteration 163: "Move Method Up" applied to method startPoint from LineFigure to PolyLineFigure
+Iteration 164: "Decrease Method Security" applied at class JavaDrawApp to method createDrawing from protected to public
+Iteration 165: "Make Class Final" applied to class CustomToolBar
+Iteration 166: "Decrease Method Security" applied at class PolygonFigure to method setInternalPolygon from protected to public
+Iteration 167: "Make Method Static" applied at class CustomSelectionTool to method handleMouseDown
+Iteration 168: "Decrease Method Security" applied at class ArrowTip to method getInnerRadius from protected to public
+Iteration 169: "Make Method Final" applied at class PertApplet to method createTools
+Iteration 170: "Make Method Final" applied at class FigureChangeEvent to method getFigure
+Iteration 171: "Decrease Method Security" applied at class MDIDesktopPane to method checkDesktopSize from private to package
+Iteration 172: "Make Class Final" applied to class EventDispatcher
+Iteration 173: "Decrease Method Security" applied at class SplitPaneDrawApplication to method createContents from protected to public
+Iteration 174: "Make Method Final" applied at class PaletteButton to method value
 
-Score has improved overall by 0.537760
-Time taken to refactor: 1393.29s
+Score has improved overall by 0.427542
+Time taken to refactor: 1115.69s
 
 ======== Final Metric Info ========
-Average ratio of private/package/protected attributes to overall attributes per class: 0.610704
-Average coupling per class: 1.725000
-Average cohesion among methods per class: 0.322893
+Average ratio of private/package/protected attributes to overall attributes per class: 0.616111
+Average coupling per class: 1.729167
+Average cohesion among methods per class: 0.315973
 Average amount of user defined attributes declared per class: 0.575000
-Average functional abstraction per class: 0.336302
-Average amount of polymorphic methods per class: 1.641667
-Average amount of public methods per class: 7.400000
-Average amount of methods per class: 9.308333
-Average amount of complexity of methods per class: 56.108334
+Average functional abstraction per class: 0.336738
+Average amount of polymorphic methods per class: 1.633333
+Average amount of public methods per class: 7.437500
+Average amount of methods per class: 9.320833
+Average amount of complexity of methods per class: 56.287498
 Ratio of interfaces to overall amount of classes: 0.137500
-Average ratio of abstract classes/methods per class: 0.150548
-Average ratio of static classes/methods/variables per class: 0.074491
-Average ratio of final classes/methods/variables per class: 0.025217
-Average ratio of constant classes/methods/variables per class: 0.026201
+Average ratio of abstract classes/methods per class: 0.151364
+Average ratio of static classes/methods/variables per class: 0.074422
+Average ratio of final classes/methods/variables per class: 0.022342
+Average ratio of constant classes/methods/variables per class: 0.027573
 Ratio of inner classes to overall amount of ordinary classes in project: 0.133333
-Average inherited referenced methods ratio per class: 0.270410
-Average visibility ratio per class: 0.697743
+Average inherited referenced methods ratio per class: 0.276910
+Average visibility ratio per class: 0.699096
 Amount of lines of code in project: 27794
-Overall fitness function score: 0.537760
+Overall fitness function score: 0.427542

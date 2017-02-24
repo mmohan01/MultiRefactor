@@ -27,83 +27,421 @@ Amount of lines of code in project: 11616
 Overall fitness function score: 0.000000
 
 ======== Applied Refactorings ========
-Iteration 1: "Decrease Method Security" applied at class WebServer to method getRunner from protected to public
-Iteration 2: "Increase Method Security" applied at class SecureXmlRpcClient to method setup from public to protected
-Iteration 3: "Decrease Method Security" applied at class MinML to method fatalError from private to package
-Iteration 4: "Decrease Method Security" applied at class MinML to method fatalError from package to protected
-Iteration 5: "Make Field Final" applied at class ContextXmlRpcHandler to ParameterDeclaration method
-Iteration 6: "Remove Method" applied at class DefaultXmlRpcTransportFactory to method setBasicAuthentication
-Iteration 7: "Decrease Method Security" applied at class LiteXmlRpcTransport to method closeConnection from protected to public
-Iteration 8: "Decrease Method Security" applied at class HttpUtil to method HttpUtil from private to package
-Iteration 9: "Make Class Final" applied to class XmlRpcClientException
-Iteration 10: "Make Class Final" applied to class XmlRpcResponseProcessor
-Iteration 11: "Remove Field" applied at class SecurityConstants to field DEFAULT_TRUST_STORE_TYPE
-Iteration 12: "Make Field Final" applied at class ContextXmlRpcHandler to ParameterDeclaration params
-Iteration 13: "Increase Method Security" applied at class MultiCall to method multicall from public to protected
-Iteration 14: "Increase Field Security" applied at class XmlRpcWorker to field responseProcessor from protected to package
-Iteration 15: "Decrease Method Security" applied at class WebServer to method writeUnauthorized from private to package
-Iteration 16: "Decrease Method Security" applied at class LiteXmlRpcTransport to method readLine from private to package
-Iteration 17: "Increase Method Security" applied at class MultiCall to method multicall from protected to package
-Iteration 18: "Increase Field Security" applied at class XmlRpcWorker to field responseProcessor from package to private
-Iteration 19: "Decrease Method Security" applied at class WebServer to method writeUnauthorized from package to protected
-Iteration 20: "Increase Method Security" applied at class MultiCall to method multicall from package to private
-Iteration 21: "Decrease Method Security" applied at class WebServer to method writeUnauthorized from protected to public
-Iteration 22: "Decrease Method Security" applied at class LiteXmlRpcTransport to method readLine from package to protected
-Iteration 23: "Make Field Static" applied at class DefaultXmlRpcTransportFactory to field url
-Iteration 24: "Make Class Final" applied to class XmlRpcWorker
-Iteration 25: "Decrease Method Security" applied at class XmlRpcResponseProcessor to method writeError from package to protected
-Iteration 26: "Decrease Method Security" applied at class HttpUtil to method HttpUtil from package to protected
-Iteration 27: "Decrease Method Security" applied at class LiteXmlRpcTransport to method readLine from protected to public
-Iteration 28: "Decrease Method Security" applied at class XmlRpcResponseProcessor to method writeError from protected to public
-Iteration 29: "Decrease Method Security" applied at class DocumentHandler to method startElement from package to protected
-Iteration 30: "Decrease Method Security" applied at class Parser to method setDocumentHandler from package to protected
-Iteration 31: "Decrease Method Security" applied at class HttpUtil to method HttpUtil from protected to public
-Iteration 32: "Increase Method Security" applied at class XmlRpc to method characterData from public to protected
-Iteration 33: "Make Method Static" applied at class XmlRpcClientRequestProcessor to method encodeRequest
-Iteration 34: "Increase Method Security" applied at class XmlRpc to method characterData from protected to package
-Iteration 35: "Remove Method" applied at class XmlWriter to method emptyElement
-Iteration 36: "Make Method Final" applied at class DefaultHandlerMapping to method getHandler
-Iteration 37: "Make Method Final" applied at class DateTool to method format
-Iteration 38: "Make Method Static" applied at class MinML to method getSystemId
-Iteration 39: "Decrease Method Security" applied at class XmlRpcServer to method createWorker from protected to public
-Iteration 40: "Make Class Final" applied to class ServerInputStream
-Iteration 41: "Remove Field" applied at class SimpleXmlRpcClient to field enc
-Iteration 42: "Make Field Static" applied at class XmlRpcRequestProcessor to field requestParams
-Iteration 43: "Make Method Static" applied at class Echo to method execute
-Iteration 44: "Move Field Up" applied to field result from XmlRpcClientResponseProcessor to XmlRpc
-Iteration 45: "Decrease Method Security" applied at class XmlRpcClientRequestProcessor to method canReUse from protected to public
-Iteration 46: "Move Method Down" applied to method setEncoding from XmlRpc to XmlRpcClientResponseProcessor
-Iteration 47: "Decrease Method Security" applied at class LiteXmlRpcTransport to method initConnection from protected to public
-Iteration 48: "Decrease Method Security" applied at class MultiCall to method multicall from private to package
-Iteration 49: "Decrease Method Security" applied at class MultiCall to method multicall from package to protected
-Iteration 50: "Decrease Method Security" applied at class LiteXmlRpcTransport to method finalize from protected to public
-Iteration 51: "Make Method Final" applied at class HttpUtil to method encodeBasicAuthentication
-Iteration 52: "Move Method Down" applied to method setDefaultInputEncoding from XmlRpc to XmlRpcClientResponseProcessor
-Iteration 53: "Remove Method" applied at class SAXParseException to method getLineNumber
-Iteration 54: "Decrease Method Security" applied at class XmlRpc to method characterData from package to protected
-Iteration 55: "Move Method Up" applied to method setup from SecureXmlRpcClient to XmlRpcClient
-Iteration 56: "Increase Method Security" applied at class XmlRpcClientResponseProcessor to method setDefaultInputEncoding from public to protected
+Iteration 1: "Make Class Abstract" applied to class XmlRpcApplet
+Iteration 2: "Make Method Final" applied at class SimpleXmlRpcClient to method objectParsed
+Iteration 3: "Decrease Method Security" applied at class XmlRpc to method objectParsed from protected to public
+Iteration 4: "Decrease Method Security" applied at class XmlRpcRequestProcessor to method objectParsed from protected to public
+Iteration 5: "Move Method Down" applied to method setEncoding from XmlRpc to XmlRpcClientResponseProcessor
+Iteration 6: "Decrease Method Security" applied at class XmlRpcClientLite to method createTransport from protected to public
+Iteration 7: "Make Field Static" applied at class XmlRpcApplet to field client
+Iteration 8: "Make Field Static" applied at class SunSSLTransportFactory to field auth
+Iteration 9: "Make Field Static" applied at class XmlRpcException to field code
+Iteration 10: "Make Class Concrete" applied to class XmlRpcApplet
+Iteration 11: "Decrease Field Security" applied at class XmlRpcClientWorker to field PROCESSING_ERROR_FLAG from private to package
+Iteration 12: "Make Method Non Static" applied at class XmlRpcClientResponseProcessor to method setEncoding
+Iteration 13: "Move Method Down" applied to method setDefaultInputEncoding from XmlRpc to XmlRpcClientResponseProcessor
+Iteration 14: "Move Method Down" applied to method getDefaultInputEncoding from XmlRpc to XmlRpcClientResponseProcessor
+Iteration 15: "Remove Method" applied at class DefaultXmlRpcTransportFactory to method setBasicAuthentication
+Iteration 16: "Increase Method Security" applied at class XmlRpcClientResponseProcessor to method getDefaultInputEncoding from public to protected
+Iteration 17: "Make Class Final" applied to class XmlRpcClientWorker
+Iteration 18: "Decrease Method Security" applied at class SecureWebServer to method createServerSocket from protected to public
+Iteration 19: "Increase Method Security" applied at class XmlRpcClientResponseProcessor to method getDefaultInputEncoding from protected to package
+Iteration 20: "Make Class Non Final" applied to class XmlRpcClientWorker
+Iteration 21: "Decrease Method Security" applied at class SimpleXmlRpcClient to method writeRequest from package to protected
+Iteration 22: "Move Method Up" applied to method addStructArgToArray from JSXmlRpcApplet to XmlRpcApplet
+Iteration 23: "Increase Method Security" applied at class XmlRpcClientResponseProcessor to method getDefaultInputEncoding from package to private
+Iteration 24: "Make Class Final" applied to class XmlRpcClientWorker
+Iteration 25: "Decrease Method Security" applied at class LiteXmlRpcTransport to method initConnection from protected to public
+Iteration 26: "Increase Method Security" applied at class SAXParseException to method getSystemId from public to protected
+Iteration 27: "Make Method Static" applied at class XmlRpcClientResponseProcessor to method setEncoding
+Iteration 28: "Remove Method" applied at class SAXException to method getException
+Iteration 29: "Make Method Non Final" applied at class WebServer to method toHTTPBytes
+Iteration 30: "Make Method Final" applied at class XmlRpcResponseProcessor to method writeResponse
+Iteration 31: "Make Class Non Final" applied to class XmlRpcClientWorker
+Iteration 32: "Decrease Method Security" applied at class SimpleXmlRpcClient to method writeRequest from protected to public
+Iteration 33: "Make Class Final" applied to class XmlRpcClientWorker
+Iteration 34: "Increase Method Security" applied at class SAXParseException to method getSystemId from protected to package
+Iteration 35: "Make Class Non Final" applied to class XmlRpcClientWorker
+Iteration 36: "Make Class Final" applied to class XmlRpcClientWorker
+Iteration 37: "Make Class Non Final" applied to class XmlRpcClientWorker
+Iteration 38: "Make Class Final" applied to class XmlRpcClientWorker
+Iteration 39: "Increase Method Security" applied at class SAXParseException to method getSystemId from package to private
+Iteration 40: "Make Class Non Final" applied to class XmlRpcClientWorker
+Iteration 41: "Make Class Final" applied to class XmlRpcClientWorker
+Iteration 42: "Decrease Method Security" applied at class XmlRpcServer to method getWorker from protected to public
+Iteration 43: "Decrease Method Security" applied at class XmlRpcClientWorker to method canReUse from protected to public
+Iteration 44: "Make Class Non Final" applied to class XmlRpcClientWorker
+Iteration 45: "Move Method Up" applied to method setup from SecureXmlRpcClient to XmlRpcClient
+Iteration 46: "Make Method Static" applied at class DefaultTypeFactory to method createInteger
+Iteration 47: "Make Method Non Static" applied at class WebServer to method determinePort
+Iteration 48: "Make Class Final" applied to class XmlRpcClientAsyncThread
+Iteration 49: "Decrease Method Security" applied at class XmlRpcResponseProcessor to method writeError from package to protected
+Iteration 50: "Decrease Method Security" applied at class XmlRpcWorker to method defaultContext from protected to public
+Iteration 51: "Make Class Final" applied to class XmlRpcClientWorker
+Iteration 52: "Make Class Non Final" applied to class XmlRpcClientWorker
+Iteration 53: "Make Class Final" applied to class XmlRpcClientWorker
+Iteration 54: "Remove Method" applied at class InputSource to method getEncoding
+Iteration 55: "Decrease Method Security" applied at class SimpleXmlRpcClient to method writeObject from package to protected
+Iteration 56: "Make Method Final" applied at class DefaultXmlRpcContext to method getHandlerMapping
+Iteration 57: "Remove Method" applied at class JSXmlRpcApplet to method execute
+Iteration 58: "Make Method Final" applied at class ParseFailed to method getCause
+Iteration 59: "Make Class Final" applied to class DefaultTypeFactory
+Iteration 60: "Make Field Static" applied at class SAXParseException to field publicId
+Iteration 61: "Make Class Abstract" applied to class HandlerBase
+Iteration 62: "Make Class Non Final" applied to class XmlRpcClientWorker
+Iteration 63: "Make Class Final" applied to class XmlRpcClientWorker
+Iteration 64: "Make Class Non Final" applied to class XmlRpcClientWorker
+Iteration 65: "Decrease Method Security" applied at class XmlRpcResponseProcessor to method writeError from protected to public
+Iteration 66: "Make Class Final" applied to class XmlRpcClientWorker
+Iteration 67: "Make Class Non Final" applied to class XmlRpcClientWorker
+Iteration 68: "Make Class Final" applied to class XmlRpcClientWorker
+Iteration 69: "Make Class Non Final" applied to class XmlRpcClientWorker
+Iteration 70: "Make Class Final" applied to class XmlRpcClientWorker
+Iteration 71: "Make Class Non Final" applied to class XmlRpcClientWorker
+Iteration 72: "Make Class Final" applied to class XmlRpcClientWorker
+Iteration 73: "Make Class Non Final" applied to class XmlRpcClientWorker
+Iteration 74: "Make Class Final" applied to class XmlRpcClientWorker
+Iteration 75: "Make Class Non Final" applied to class XmlRpcClientWorker
+Iteration 76: "Make Class Final" applied to class XmlRpcClientWorker
+Iteration 77: "Make Class Non Final" applied to class XmlRpcClientWorker
+Iteration 78: "Make Class Final" applied to class XmlRpcClientWorker
+Iteration 79: "Make Class Non Final" applied to class XmlRpcClientWorker
+Iteration 80: "Make Class Final" applied to class XmlRpcClientWorker
+Iteration 81: "Make Class Non Final" applied to class XmlRpcClientWorker
+Iteration 82: "Make Class Final" applied to class XmlRpcClientWorker
+Iteration 83: "Make Class Non Final" applied to class XmlRpcClientWorker
+Iteration 84: "Make Class Final" applied to class XmlRpcClientWorker
+Iteration 85: "Make Class Non Final" applied to class XmlRpcClientWorker
+Iteration 86: "Make Class Final" applied to class XmlRpcClientWorker
+Iteration 87: "Decrease Method Security" applied at class SimpleXmlRpcClient to method writeObject from protected to public
+Iteration 88: "Make Class Non Final" applied to class XmlRpcClientWorker
+Iteration 89: "Make Class Final" applied to class XmlRpcClientWorker
+Iteration 90: "Make Class Non Final" applied to class XmlRpcClientWorker
+Iteration 91: "Make Class Final" applied to class XmlRpcClientWorker
+Iteration 92: "Make Class Non Final" applied to class XmlRpcClientWorker
+Iteration 93: "Make Class Final" applied to class XmlRpcClientWorker
+Iteration 94: "Make Class Non Final" applied to class XmlRpcClientWorker
+Iteration 95: "Make Class Final" applied to class XmlRpcClientWorker
+Iteration 96: "Make Class Non Final" applied to class XmlRpcClientWorker
+Iteration 97: "Make Class Final" applied to class XmlRpcClientWorker
+Iteration 98: "Make Class Non Final" applied to class XmlRpcClientWorker
+Iteration 99: "Make Class Final" applied to class XmlRpcClientWorker
+Iteration 100: "Make Class Non Final" applied to class XmlRpcClientWorker
+Iteration 101: "Make Class Final" applied to class XmlRpcClientWorker
+Iteration 102: "Make Class Non Final" applied to class XmlRpcClientWorker
+Iteration 103: "Make Class Final" applied to class XmlRpcClientWorker
+Iteration 104: "Make Class Non Final" applied to class XmlRpcClientWorker
+Iteration 105: "Make Class Final" applied to class XmlRpcClientWorker
+Iteration 106: "Make Class Non Final" applied to class XmlRpcClientWorker
+Iteration 107: "Make Class Final" applied to class XmlRpcClientWorker
+Iteration 108: "Make Class Non Final" applied to class XmlRpcClientWorker
+Iteration 109: "Make Class Final" applied to class XmlRpcClientWorker
+Iteration 110: "Make Class Non Final" applied to class XmlRpcClientWorker
+Iteration 111: "Make Class Final" applied to class XmlRpcClientWorker
+Iteration 112: "Make Class Non Final" applied to class XmlRpcClientWorker
+Iteration 113: "Make Class Final" applied to class XmlRpcClientWorker
+Iteration 114: "Make Class Non Final" applied to class XmlRpcClientWorker
+Iteration 115: "Make Class Final" applied to class XmlRpcClientWorker
+Iteration 116: "Make Class Non Final" applied to class XmlRpcClientWorker
+Iteration 117: "Make Class Final" applied to class XmlRpcClientWorker
+Iteration 118: "Make Class Non Final" applied to class XmlRpcClientWorker
+Iteration 119: "Make Class Final" applied to class XmlRpcClientWorker
+Iteration 120: "Make Class Non Final" applied to class XmlRpcClientWorker
+Iteration 121: "Make Class Final" applied to class XmlRpcClientWorker
+Iteration 122: "Make Class Non Final" applied to class XmlRpcClientWorker
+Iteration 123: "Make Class Final" applied to class XmlRpcClientWorker
+Iteration 124: "Make Class Non Final" applied to class XmlRpcClientWorker
+Iteration 125: "Make Class Final" applied to class XmlRpcClientWorker
+Iteration 126: "Make Class Non Final" applied to class XmlRpcClientWorker
+Iteration 127: "Make Class Final" applied to class XmlRpcClientWorker
+Iteration 128: "Make Class Abstract" applied to class XmlRpcApplet
+Iteration 129: "Increase Method Security" applied at class JSXmlRpcApplet to method reset from public to protected
+Iteration 130: "Make Class Final" applied to class XmlRpcClientException
+Iteration 131: "Make Method Final" applied at class SystemHandler to method addDefaultSystemHandlers
+Iteration 132: "Make Class Final" applied to class ServerInputStream
+Iteration 133: "Decrease Method Security" applied at class XmlRpcClientResponseProcessor to method decodeException from protected to public
+Iteration 134: "Decrease Method Security" applied at class XmlRpcClientRequestProcessor to method canReUse from protected to public
+Iteration 135: "Make Method Static" applied at class XmlRpc to method getEncoding
+Iteration 136: "Decrease Method Security" applied at class LiteXmlRpcTransport to method closeConnection from protected to public
+Iteration 137: "Make Method Static" applied at class Echo to method execute
+Iteration 138: "Decrease Method Security" applied at class XmlRpcResponseProcessor to method writeResponse from package to protected
+Iteration 139: "Make Class Concrete" applied to class HandlerBase
+Iteration 140: "Make Class Non Final" applied to class XmlRpcClientWorker
+Iteration 141: "Make Class Final" applied to class XmlRpcClientWorker
+Iteration 142: "Make Class Non Final" applied to class XmlRpcClientWorker
+Iteration 143: "Make Class Final" applied to class XmlRpcClientWorker
+Iteration 144: "Make Class Non Final" applied to class XmlRpcClientWorker
+Iteration 145: "Make Class Final" applied to class XmlRpcClientWorker
+Iteration 146: "Make Class Non Final" applied to class XmlRpcClientWorker
+Iteration 147: "Make Class Final" applied to class XmlRpcClientWorker
+Iteration 148: "Make Class Non Final" applied to class XmlRpcClientWorker
+Iteration 149: "Make Class Final" applied to class XmlRpcClientWorker
+Iteration 150: "Make Class Non Final" applied to class XmlRpcClientWorker
+Iteration 151: "Make Class Final" applied to class XmlRpcClientWorker
+Iteration 152: "Make Class Non Final" applied to class XmlRpcClientWorker
+Iteration 153: "Make Class Final" applied to class XmlRpcClientWorker
+Iteration 154: "Make Class Non Final" applied to class XmlRpcClientWorker
+Iteration 155: "Make Class Final" applied to class XmlRpcClientWorker
+Iteration 156: "Make Class Non Final" applied to class XmlRpcClientWorker
+Iteration 157: "Make Class Final" applied to class XmlRpcClientWorker
+Iteration 158: "Make Class Non Final" applied to class XmlRpcClientWorker
+Iteration 159: "Make Class Final" applied to class XmlRpcClientWorker
+Iteration 160: "Make Class Non Final" applied to class XmlRpcClientWorker
+Iteration 161: "Make Class Final" applied to class XmlRpcClientWorker
+Iteration 162: "Make Class Non Final" applied to class XmlRpcClientWorker
+Iteration 163: "Make Class Final" applied to class XmlRpcClientWorker
+Iteration 164: "Make Class Non Final" applied to class XmlRpcClientWorker
+Iteration 165: "Make Class Final" applied to class XmlRpcClientWorker
+Iteration 166: "Make Class Non Final" applied to class XmlRpcClientWorker
+Iteration 167: "Make Class Final" applied to class XmlRpcClientWorker
+Iteration 168: "Make Class Non Final" applied to class XmlRpcClientWorker
+Iteration 169: "Make Class Final" applied to class XmlRpcClientWorker
+Iteration 170: "Make Class Non Final" applied to class XmlRpcClientWorker
+Iteration 171: "Make Class Final" applied to class XmlRpcClientWorker
+Iteration 172: "Make Class Non Final" applied to class XmlRpcClientWorker
+Iteration 173: "Make Class Final" applied to class XmlRpcClientWorker
+Iteration 174: "Make Class Non Final" applied to class XmlRpcClientWorker
+Iteration 175: "Make Class Final" applied to class XmlRpcClientWorker
+Iteration 176: "Make Class Non Final" applied to class XmlRpcClientWorker
+Iteration 177: "Make Class Final" applied to class XmlRpcClientWorker
+Iteration 178: "Make Class Non Final" applied to class XmlRpcClientWorker
+Iteration 179: "Make Class Final" applied to class XmlRpcClientWorker
+Iteration 180: "Make Class Non Final" applied to class XmlRpcClientWorker
+Iteration 181: "Make Class Final" applied to class XmlRpcClientWorker
+Iteration 182: "Make Class Non Final" applied to class XmlRpcClientWorker
+Iteration 183: "Make Class Final" applied to class XmlRpcClientWorker
+Iteration 184: "Make Class Non Final" applied to class XmlRpcClientWorker
+Iteration 185: "Make Class Final" applied to class XmlRpcClientWorker
+Iteration 186: "Make Class Non Final" applied to class XmlRpcClientWorker
+Iteration 187: "Make Class Final" applied to class XmlRpcClientWorker
+Iteration 188: "Make Class Non Final" applied to class XmlRpcClientWorker
+Iteration 189: "Make Class Final" applied to class XmlRpcClientWorker
+Iteration 190: "Make Class Non Final" applied to class XmlRpcClientWorker
+Iteration 191: "Make Class Final" applied to class XmlRpcClientWorker
+Iteration 192: "Make Class Non Final" applied to class XmlRpcClientWorker
+Iteration 193: "Make Class Final" applied to class XmlRpcClientWorker
+Iteration 194: "Make Class Non Final" applied to class XmlRpcClientWorker
+Iteration 195: "Make Class Final" applied to class XmlRpcClientWorker
+Iteration 196: "Make Class Non Final" applied to class XmlRpcClientWorker
+Iteration 197: "Make Class Final" applied to class XmlRpcClientWorker
+Iteration 198: "Make Class Non Final" applied to class XmlRpcClientWorker
+Iteration 199: "Make Class Final" applied to class XmlRpcClientWorker
+Iteration 200: "Increase Method Security" applied at class JSXmlRpcApplet to method reset from protected to package
+Iteration 201: "Decrease Method Security" applied at class XmlRpcResponseProcessor to method writeResponse from protected to public
+Iteration 202: "Make Class Non Final" applied to class XmlRpcClientWorker
+Iteration 203: "Make Class Final" applied to class XmlRpcClientWorker
+Iteration 204: "Make Class Non Final" applied to class XmlRpcClientWorker
+Iteration 205: "Make Class Final" applied to class XmlRpcClientWorker
+Iteration 206: "Make Class Non Final" applied to class XmlRpcClientWorker
+Iteration 207: "Make Class Final" applied to class XmlRpcClientWorker
+Iteration 208: "Make Class Non Final" applied to class XmlRpcClientWorker
+Iteration 209: "Make Class Final" applied to class XmlRpcClientWorker
+Iteration 210: "Make Class Non Final" applied to class XmlRpcClientWorker
+Iteration 211: "Make Class Final" applied to class XmlRpcClientWorker
+Iteration 212: "Make Class Non Final" applied to class XmlRpcClientWorker
+Iteration 213: "Make Class Final" applied to class XmlRpcClientWorker
+Iteration 214: "Make Class Non Final" applied to class XmlRpcClientWorker
+Iteration 215: "Make Class Final" applied to class XmlRpcClientWorker
+Iteration 216: "Make Class Non Final" applied to class XmlRpcClientWorker
+Iteration 217: "Make Class Final" applied to class XmlRpcClientWorker
+Iteration 218: "Make Class Non Final" applied to class XmlRpcClientWorker
+Iteration 219: "Make Class Final" applied to class XmlRpcClientWorker
+Iteration 220: "Make Class Non Final" applied to class XmlRpcClientWorker
+Iteration 221: "Make Class Final" applied to class XmlRpcClientWorker
+Iteration 222: "Make Class Non Final" applied to class XmlRpcClientWorker
+Iteration 223: "Make Class Final" applied to class XmlRpcClientWorker
+Iteration 224: "Make Class Non Final" applied to class XmlRpcClientWorker
+Iteration 225: "Make Class Final" applied to class XmlRpcClientWorker
+Iteration 226: "Make Class Non Final" applied to class XmlRpcClientWorker
+Iteration 227: "Make Class Final" applied to class XmlRpcClientWorker
+Iteration 228: "Make Class Non Final" applied to class XmlRpcClientWorker
+Iteration 229: "Make Class Final" applied to class XmlRpcClientWorker
+Iteration 230: "Make Class Non Final" applied to class XmlRpcClientWorker
+Iteration 231: "Make Class Final" applied to class XmlRpcClientWorker
+Iteration 232: "Make Class Non Final" applied to class XmlRpcClientWorker
+Iteration 233: "Make Class Final" applied to class XmlRpcClientWorker
+Iteration 234: "Make Class Non Final" applied to class XmlRpcClientWorker
+Iteration 235: "Make Class Final" applied to class XmlRpcClientWorker
+Iteration 236: "Make Class Non Final" applied to class XmlRpcClientWorker
+Iteration 237: "Make Class Final" applied to class XmlRpcClientWorker
+Iteration 238: "Make Class Non Final" applied to class XmlRpcClientWorker
+Iteration 239: "Make Class Final" applied to class XmlRpcClientWorker
+Iteration 240: "Decrease Method Security" applied at class XmlRpcWorker to method invokeHandler from protected to public
+Iteration 241: "Decrease Method Security" applied at class XmlRpcClient to method createDefaultTransport from private to package
+Iteration 242: "Remove Method" applied at class SAXParseException to method getPublicId
+Iteration 243: "Decrease Method Security" applied at class XmlRpcClient to method createDefaultTransport from package to protected
+Iteration 244: "Make Method Non Static" applied at class XmlRpcClientResponseProcessor to method setEncoding
+Iteration 245: "Move Method Down" applied to method characters from XmlRpc to XmlRpcClientResponseProcessor
+Iteration 246: "Decrease Method Security" applied at class SimpleXmlRpcClient to method parse from package to protected
+Iteration 247: "Make Class Non Final" applied to class XmlRpcClientWorker
+Iteration 248: "Make Class Final" applied to class XmlRpcClientWorker
+Iteration 249: "Make Class Non Final" applied to class XmlRpcClientWorker
+Iteration 250: "Make Class Final" applied to class XmlRpcClientWorker
+Iteration 251: "Make Class Non Final" applied to class XmlRpcClientWorker
+Iteration 252: "Make Class Final" applied to class XmlRpcClientWorker
+Iteration 253: "Make Class Non Final" applied to class XmlRpcClientWorker
+Iteration 254: "Make Class Final" applied to class XmlRpcClientWorker
+Iteration 255: "Make Class Non Final" applied to class XmlRpcClientWorker
+Iteration 256: "Make Class Final" applied to class XmlRpcClientWorker
+Iteration 257: "Make Class Non Final" applied to class XmlRpcClientWorker
+Iteration 258: "Make Class Final" applied to class XmlRpcClientWorker
+Iteration 259: "Make Class Non Final" applied to class XmlRpcClientWorker
+Iteration 260: "Make Class Final" applied to class XmlRpcClientWorker
+Iteration 261: "Make Class Non Final" applied to class XmlRpcClientWorker
+Iteration 262: "Make Class Final" applied to class XmlRpcClientWorker
+Iteration 263: "Make Class Non Final" applied to class XmlRpcClientWorker
+Iteration 264: "Make Class Final" applied to class XmlRpcClientWorker
+Iteration 265: "Make Class Non Final" applied to class XmlRpcClientWorker
+Iteration 266: "Make Class Final" applied to class XmlRpcClientWorker
+Iteration 267: "Make Class Non Final" applied to class XmlRpcClientWorker
+Iteration 268: "Make Class Final" applied to class XmlRpcClientWorker
+Iteration 269: "Make Class Non Final" applied to class XmlRpcClientWorker
+Iteration 270: "Make Class Final" applied to class XmlRpcClientWorker
+Iteration 271: "Make Class Non Final" applied to class XmlRpcClientWorker
+Iteration 272: "Make Class Final" applied to class XmlRpcClientWorker
+Iteration 273: "Make Class Non Final" applied to class XmlRpcClientWorker
+Iteration 274: "Make Class Final" applied to class XmlRpcClientWorker
+Iteration 275: "Make Class Non Final" applied to class XmlRpcClientWorker
+Iteration 276: "Make Class Final" applied to class XmlRpcClientWorker
+Iteration 277: "Make Class Non Final" applied to class XmlRpcClientWorker
+Iteration 278: "Make Class Final" applied to class XmlRpcClientWorker
+Iteration 279: "Make Class Non Final" applied to class XmlRpcClientWorker
+Iteration 280: "Make Class Final" applied to class XmlRpcClientWorker
+Iteration 281: "Make Class Non Final" applied to class XmlRpcClientWorker
+Iteration 282: "Make Class Final" applied to class XmlRpcClientWorker
+Iteration 283: "Make Class Non Final" applied to class XmlRpcClientWorker
+Iteration 284: "Make Class Final" applied to class XmlRpcClientWorker
+Iteration 285: "Make Class Non Final" applied to class XmlRpcClientWorker
+Iteration 286: "Make Class Final" applied to class XmlRpcClientWorker
+Iteration 287: "Make Class Non Final" applied to class XmlRpcClientWorker
+Iteration 288: "Make Class Final" applied to class XmlRpcClientWorker
+Iteration 289: "Make Class Non Final" applied to class XmlRpcClientWorker
+Iteration 290: "Make Class Final" applied to class XmlRpcClientWorker
+Iteration 291: "Make Class Non Final" applied to class XmlRpcClientWorker
+Iteration 292: "Make Class Final" applied to class XmlRpcClientWorker
+Iteration 293: "Make Class Non Final" applied to class XmlRpcClientWorker
+Iteration 294: "Make Class Final" applied to class XmlRpcClientWorker
+Iteration 295: "Make Class Non Final" applied to class XmlRpcClientWorker
+Iteration 296: "Make Class Final" applied to class XmlRpcClientWorker
+Iteration 297: "Make Class Non Final" applied to class XmlRpcClientWorker
+Iteration 298: "Make Class Final" applied to class XmlRpcClientWorker
+Iteration 299: "Make Class Non Final" applied to class XmlRpcClientWorker
+Iteration 300: "Make Class Final" applied to class XmlRpcClientWorker
+Iteration 301: "Make Class Non Final" applied to class XmlRpcClientWorker
+Iteration 302: "Make Class Final" applied to class XmlRpcClientWorker
+Iteration 303: "Increase Method Security" applied at class JSXmlRpcApplet to method reset from package to private
+Iteration 304: "Make Class Non Final" applied to class XmlRpcClientWorker
+Iteration 305: "Make Class Final" applied to class XmlRpcClientWorker
+Iteration 306: "Make Class Non Final" applied to class XmlRpcClientWorker
+Iteration 307: "Make Class Final" applied to class XmlRpcClientWorker
+Iteration 308: "Make Class Non Final" applied to class XmlRpcClientWorker
+Iteration 309: "Make Class Final" applied to class XmlRpcClientWorker
+Iteration 310: "Make Class Non Final" applied to class XmlRpcClientWorker
+Iteration 311: "Make Class Final" applied to class XmlRpcClientWorker
+Iteration 312: "Make Class Non Final" applied to class XmlRpcClientWorker
+Iteration 313: "Make Class Final" applied to class XmlRpcClientWorker
+Iteration 314: "Make Class Non Final" applied to class XmlRpcClientWorker
+Iteration 315: "Make Class Final" applied to class XmlRpcClientWorker
+Iteration 316: "Make Class Non Final" applied to class XmlRpcClientWorker
+Iteration 317: "Make Class Final" applied to class XmlRpcClientWorker
+Iteration 318: "Make Class Non Final" applied to class XmlRpcClientWorker
+Iteration 319: "Make Class Final" applied to class XmlRpcClientWorker
+Iteration 320: "Make Class Non Final" applied to class XmlRpcClientWorker
+Iteration 321: "Make Class Final" applied to class XmlRpcClientWorker
+Iteration 322: "Make Class Non Final" applied to class XmlRpcClientWorker
+Iteration 323: "Make Class Final" applied to class XmlRpcClientWorker
+Iteration 324: "Make Class Non Final" applied to class XmlRpcClientWorker
+Iteration 325: "Make Class Final" applied to class XmlRpcClientWorker
+Iteration 326: "Make Class Non Final" applied to class XmlRpcClientWorker
+Iteration 327: "Make Class Final" applied to class XmlRpcClientWorker
+Iteration 328: "Make Class Non Final" applied to class XmlRpcClientWorker
+Iteration 329: "Make Class Final" applied to class XmlRpcClientWorker
+Iteration 330: "Make Class Non Final" applied to class XmlRpcClientWorker
+Iteration 331: "Make Class Final" applied to class XmlRpcClientWorker
+Iteration 332: "Make Class Non Final" applied to class XmlRpcClientWorker
+Iteration 333: "Make Class Final" applied to class XmlRpcClientWorker
+Iteration 334: "Make Class Non Final" applied to class XmlRpcClientWorker
+Iteration 335: "Make Class Final" applied to class XmlRpcClientWorker
+Iteration 336: "Make Class Non Final" applied to class XmlRpcClientWorker
+Iteration 337: "Make Class Final" applied to class XmlRpcClientWorker
+Iteration 338: "Make Class Non Final" applied to class XmlRpcClientWorker
+Iteration 339: "Make Class Final" applied to class XmlRpcClientWorker
+Iteration 340: "Make Class Non Final" applied to class XmlRpcClientWorker
+Iteration 341: "Make Class Final" applied to class XmlRpcClientWorker
+Iteration 342: "Make Class Non Final" applied to class XmlRpcClientWorker
+Iteration 343: "Make Class Final" applied to class XmlRpcClientWorker
+Iteration 344: "Make Class Non Final" applied to class XmlRpcClientWorker
+Iteration 345: "Make Class Final" applied to class XmlRpcClientWorker
+Iteration 346: "Make Class Non Final" applied to class XmlRpcClientWorker
+Iteration 347: "Make Class Final" applied to class XmlRpcClientWorker
+Iteration 348: "Make Class Non Final" applied to class XmlRpcClientWorker
+Iteration 349: "Make Class Final" applied to class XmlRpcClientWorker
+Iteration 350: "Make Class Non Final" applied to class XmlRpcClientWorker
+Iteration 351: "Make Class Final" applied to class XmlRpcClientWorker
+Iteration 352: "Make Class Non Final" applied to class XmlRpcClientWorker
+Iteration 353: "Make Class Final" applied to class XmlRpcClientWorker
+Iteration 354: "Make Class Non Final" applied to class XmlRpcClientWorker
+Iteration 355: "Make Class Final" applied to class XmlRpcClientWorker
+Iteration 356: "Make Class Non Final" applied to class XmlRpcClientWorker
+Iteration 357: "Make Class Final" applied to class XmlRpcClientWorker
+Iteration 358: "Make Class Non Final" applied to class XmlRpcClientWorker
+Iteration 359: "Make Class Final" applied to class XmlRpcClientWorker
+Iteration 360: "Make Class Non Final" applied to class XmlRpcClientWorker
+Iteration 361: "Make Class Final" applied to class XmlRpcClientWorker
+Iteration 362: "Make Class Non Final" applied to class XmlRpcClientWorker
+Iteration 363: "Make Class Final" applied to class XmlRpcClientWorker
+Iteration 364: "Make Class Non Final" applied to class XmlRpcClientWorker
+Iteration 365: "Make Class Final" applied to class XmlRpcClientWorker
+Iteration 366: "Make Class Non Final" applied to class XmlRpcClientWorker
+Iteration 367: "Make Class Final" applied to class XmlRpcClientWorker
+Iteration 368: "Make Class Non Final" applied to class XmlRpcClientWorker
+Iteration 369: "Make Class Final" applied to class XmlRpcClientWorker
+Iteration 370: "Make Class Non Final" applied to class XmlRpcClientWorker
+Iteration 371: "Make Class Final" applied to class XmlRpcClientWorker
+Iteration 372: "Make Class Non Final" applied to class XmlRpcClientWorker
+Iteration 373: "Make Class Final" applied to class XmlRpcClientWorker
+Iteration 374: "Make Class Non Final" applied to class XmlRpcClientWorker
+Iteration 375: "Make Class Final" applied to class XmlRpcClientWorker
+Iteration 376: "Make Class Non Final" applied to class XmlRpcClientWorker
+Iteration 377: "Make Class Final" applied to class XmlRpcClientWorker
+Iteration 378: "Make Class Non Final" applied to class XmlRpcClientWorker
+Iteration 379: "Make Class Final" applied to class XmlRpcClientWorker
+Iteration 380: "Make Class Non Final" applied to class XmlRpcClientWorker
+Iteration 381: "Make Class Final" applied to class XmlRpcClientWorker
+Iteration 382: "Make Class Non Final" applied to class XmlRpcClientWorker
+Iteration 383: "Make Class Final" applied to class XmlRpcClientWorker
+Iteration 384: "Make Class Non Final" applied to class XmlRpcClientWorker
+Iteration 385: "Make Class Final" applied to class XmlRpcClientWorker
+Iteration 386: "Make Class Non Final" applied to class XmlRpcClientWorker
+Iteration 387: "Make Class Final" applied to class XmlRpcClientWorker
+Iteration 388: "Remove Method" applied at class SAXParseException to method getSystemId
+Iteration 389: "Make Class Final" applied to class XmlRpcClientLite
+Iteration 390: "Make Method Final" applied at class SimpleXmlRpcClient to method execute
+Iteration 391: "Decrease Method Security" applied at class XmlRpcServer to method createWorker from protected to public
+Iteration 392: "Decrease Method Security" applied at class Parser to method setDocumentHandler from package to protected
+Iteration 393: "Make Method Static" applied at class XmlRpcClientResponseProcessor to method setEncoding
+Iteration 394: "Make Method Static" applied at class MinML to method getLength
 
-Score has improved overall by 0.611657
-Time taken to refactor: 220.38s
+Score has improved overall by 0.657709
+Time taken to refactor: 322.93s
 
 ======== Final Metric Info ========
-Average ratio of private/package/protected attributes to overall attributes per class: 0.540557
+Average ratio of private/package/protected attributes to overall attributes per class: 0.540530
 Average coupling per class: 0.911392
-Average cohesion among methods per class: 0.450494
+Average cohesion among methods per class: 0.451344
 Average amount of user defined attributes declared per class: 0.392405
-Average functional abstraction per class: 0.078586
+Average functional abstraction per class: 0.079116
 Average amount of polymorphic methods per class: 0.886076
-Average amount of public methods per class: 5.291139
-Average amount of methods per class: 6.037975
-Average amount of complexity of methods per class: 65.556961
+Average amount of public methods per class: 5.354430
+Average amount of methods per class: 6.000000
+Average amount of complexity of methods per class: 65.177216
 Ratio of interfaces to overall amount of classes: 0.278481
-Average ratio of abstract classes/methods per class: 0.279632
-Average ratio of static classes/methods/variables per class: 0.110836
-Average ratio of final classes/methods/variables per class: 0.073188
-Average ratio of constant classes/methods/variables per class: 0.058551
+Average ratio of abstract classes/methods per class: 0.281857
+Average ratio of static classes/methods/variables per class: 0.114451
+Average ratio of final classes/methods/variables per class: 0.071477
+Average ratio of constant classes/methods/variables per class: 0.059366
 Ratio of inner classes to overall amount of ordinary classes in project: 0.113924
 Average inherited referenced methods ratio per class: 0.087342
-Average visibility ratio per class: 0.749991
+Average visibility ratio per class: 0.763842
 Amount of lines of code in project: 11616
-Overall fitness function score: 0.611657
+Overall fitness function score: 0.657709

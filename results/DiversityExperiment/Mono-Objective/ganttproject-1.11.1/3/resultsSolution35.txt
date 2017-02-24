@@ -27,170 +27,96 @@ Amount of lines of code in project: 39527
 Overall fitness function score: 0.000000
 
 ======== Applied Refactorings ========
-Iteration 1: "Decrease Field Security" applied at class GanttLookAndFeels to field infoByClass from protected to public
-Iteration 2: "Increase Field Security" applied at class GanttTXTOpen to field treePanel from package to private
-Iteration 3: "Move Field Up" applied to field date from GanttGraphicArea to ChartComponentBase
-Iteration 4: "Decrease Method Security" applied at class GanttGraphicArea to method finishInteraction from package to protected
-Iteration 5: "Make Field Final" applied at class GanttChartExportData to ParameterDeclaration myExportSettings
-Iteration 6: "Remove Field" applied at class GanttDialogDate to field jbPrevYear,jbNextYear
-Iteration 7: "Decrease Method Security" applied at class ProjectBoundsAlgorithm to method Result from private to package
-Iteration 8: "Decrease Field Security" applied at class GregorianTimeUnitStack to field HOUR_FRAMER from private to package
-Iteration 9: "Move Method Down" applied to method setName from ProjectResource to HumanResource
-Iteration 10: "Increase Field Security" applied at class FTPSettingsPanel to field labelURL,labelDirectory,labelUser,labelPwd from package to private
-Iteration 11: "Make Class Final" applied to class ScrollGanttChartLeftAction
-Iteration 12: "Increase Method Security" applied at class GanttImagePanel to method paintComponent from public to protected
-Iteration 13: "Make Method Final" applied at class SaverBase to method emptyComment
-Iteration 14: "Make Class Abstract" applied to class ConstraintImpl
-Iteration 15: "Make Field Static" applied at class FindPossibleDependeesAlgorithmImpl to field myContainmentFacade
-Iteration 16: "Make Field Non Final" applied at class TaskDependencyImpl to FieldDeclaration myDependant
-Iteration 17: "Increase Method Security" applied at class AboutJavaInfosPanel to method getValue from public to protected
-Iteration 18: "Make Method Non Final" applied at class SaverBase to method emptyComment
-Iteration 19: "Make Class Abstract" applied to class ChartRendererBase
-Iteration 20: "Make Field Static" applied at class UIConfiguration to field myMenuFont
-Iteration 21: "Make Class Concrete" applied to class CommonPanel
-Iteration 22: "Make Class Non Final" applied to class ScrollGanttChartLeftAction
-Iteration 23: "Decrease Method Security" applied at class GeneralDialog to method getProject from protected to public
-Iteration 24: "Make Field Static" applied at class TextLengthCalculatorImpl to field myState
-Iteration 25: "Make Field Final" applied at class HumanResourceManager to ParameterDeclaration resources
-Iteration 26: "Make Class Final" applied to class ScrollGanttChartLeftAction
-Iteration 27: "Make Method Final" applied at class SaverBase to method emptyComment
-Iteration 28: "Increase Method Security" applied at class AboutJavaInfosPanel to method getValue from protected to package
-Iteration 29: "Make Method Non Final" applied at class SaverBase to method emptyComment
-Iteration 30: "Make Class Non Final" applied to class ScrollGanttChartLeftAction
-Iteration 31: "Make Method Final" applied at class GanttPaintParam to method getTaskID
-Iteration 32: "Increase Method Security" applied at class GanttTXTFileFilter to method getExtension from public to protected
-Iteration 33: "Decrease Method Security" applied at class RolloverAction to method getIconOnMouseOver from package to protected
-Iteration 34: "Make Field Static" applied at class GanttXMLSaver to field myProject
-Iteration 35: "Decrease Method Security" applied at class ProjectResource to method ResourceAssignmentImpl from private to package
-Iteration 36: "Decrease Method Security" applied at class ChartComponentBase to method MouseInteractionBase from protected to public
-Iteration 37: "Make Class Final" applied to class OpenDocumentAction
-Iteration 38: "Remove Field" applied at class TimeFrameImpl to field myNextFrameStartDate
-Iteration 39: "Decrease Method Security" applied at class LnFSettingsPanel to method getShowStatusBar from package to protected
-Iteration 40: "Decrease Method Security" applied at class ProjectResource to method ResourceAssignmentImpl from package to protected
-Iteration 41: "Decrease Method Security" applied at class LnFSettingsPanel to method getShowStatusBar from protected to public
-Iteration 42: "Decrease Method Security" applied at class TaskManagerImpl to method TaskManagerImpl from package to protected
-Iteration 43: "Make Field Non Final" applied at class DependencyTableModel to FieldDeclaration myTask
-Iteration 44: "Make Method Final" applied at class CalendarActivityImpl to method isWorkingTime
-Iteration 45: "Make Field Static" applied at class WeekFramerImpl to field myDayFramer
-Iteration 46: "Decrease Method Security" applied at class WeekendConfigurationPage to method CheckBoxAction from package to protected
-Iteration 47: "Decrease Method Security" applied at class ProjectBoundsAlgorithm to method Result from package to protected
-Iteration 48: "Decrease Field Security" applied at class GregorianTimeUnitStack to field HOUR_FRAMER from package to protected
-Iteration 49: "Make Field Final" applied at class AlgorithmCollection to ParameterDeclaration completionPercentageAlgorithm
-Iteration 50: "Decrease Field Security" applied at class WeekTextFormatter to field myCalendar from private to package
-Iteration 51: "Make Class Final" applied to class JPaintList
-Iteration 52: "Move Method Up" applied to method getPreferredSize from ResourceLoadGraphicArea to ChartComponentBase
-Iteration 53: "Make Method Static" applied at class VisibleNodesFilter to method getVisibleNodes
-Iteration 54: "Make Field Static" applied at class GeneralDialog to field mainPanel2
-Iteration 55: "Decrease Method Security" applied at class DependencyActivityBindingImpl to method DependencyActivityBindingImpl from package to protected
-Iteration 56: "Make Class Final" applied to class ScrollGanttChartLeftAction
-Iteration 57: "Make Method Final" applied at class SaverBase to method emptyComment
-Iteration 58: "Make Method Non Final" applied at class SaverBase to method emptyComment
-Iteration 59: "Make Class Non Final" applied to class ScrollGanttChartLeftAction
-Iteration 60: "Increase Method Security" applied at class GanttTXTFileFilter to method getExtension from protected to package
-Iteration 61: "Make Method Final" applied at class SaverBase to method emptyComment
-Iteration 62: "Make Method Non Final" applied at class SaverBase to method emptyComment
-Iteration 63: "Make Class Final" applied to class ScrollGanttChartLeftAction
-Iteration 64: "Make Method Final" applied at class SaverBase to method emptyComment
-Iteration 65: "Make Method Non Final" applied at class SaverBase to method emptyComment
-Iteration 66: "Make Class Non Final" applied to class ScrollGanttChartLeftAction
-Iteration 67: "Remove Method" applied at class TaskHierarchyManagerImpl to method getRootItem
-Iteration 68: "Make Field Static" applied at class FileDocument to field file
-Iteration 69: "Increase Field Security" applied at class GanttCSVExport to field resources from package to private
-Iteration 70: "Make Field Non Final" applied at class RecalculateTaskScheduleAlgorithm to FieldDeclaration myAdjuster
-Iteration 71: "Make Method Final" applied at class HttpDocumentOutputStream to method close
-Iteration 72: "Make Field Final" applied at class ChartModelResource to ParameterDeclaration timeUnitStack
-Iteration 73: "Make Class Abstract" applied to class ProjectExportData
-Iteration 74: "Make Class Concrete" applied to class AbstractURLDocument
-Iteration 75: "Increase Method Security" applied at class GanttTXTFileFilter to method getExtension from package to private
-Iteration 76: "Make Method Final" applied at class SaverBase to method emptyComment
-Iteration 77: "Make Method Non Final" applied at class SaverBase to method emptyComment
-Iteration 78: "Make Class Final" applied to class ScrollGanttChartLeftAction
-Iteration 79: "Make Method Final" applied at class SaverBase to method emptyComment
-Iteration 80: "Decrease Method Security" applied at class DependencyActivityBindingImpl to method DependencyActivityBindingImpl from protected to public
-Iteration 81: "Make Method Non Final" applied at class SaverBase to method emptyComment
-Iteration 82: "Make Class Non Final" applied to class ScrollGanttChartLeftAction
-Iteration 83: "Make Method Final" applied at class SaverBase to method emptyComment
-Iteration 84: "Make Method Non Final" applied at class SaverBase to method emptyComment
-Iteration 85: "Make Class Final" applied to class ScrollGanttChartLeftAction
-Iteration 86: "Make Method Final" applied at class SaverBase to method emptyComment
-Iteration 87: "Make Method Non Final" applied at class SaverBase to method emptyComment
-Iteration 88: "Make Class Non Final" applied to class ScrollGanttChartLeftAction
-Iteration 89: "Make Field Static" applied at class ChartUIConfiguration to field myHorizontalGutterColor2
-Iteration 90: "Remove Method" applied at class ScrollingManagerImpl to method removeScrollingListener
-Iteration 91: "Make Field Final" applied at class ParsingContext to ParameterDeclaration id
-Iteration 92: "Make Method Final" applied at class SaverBase to method emptyComment
-Iteration 93: "Make Method Non Final" applied at class SaverBase to method emptyComment
-Iteration 94: "Make Class Final" applied to class ScrollGanttChartLeftAction
-Iteration 95: "Make Method Final" applied at class SaverBase to method emptyComment
-Iteration 96: "Make Method Non Final" applied at class SaverBase to method emptyComment
-Iteration 97: "Make Class Non Final" applied to class ScrollGanttChartLeftAction
-Iteration 98: "Decrease Method Security" applied at class ScrollGanttChartRightAction to method getIconFilePrefix from protected to public
-Iteration 99: "Make Field Non Static" applied at class GanttGraphicArea to field DEFAULT_CURSOR
-Iteration 100: "Make Field Final" applied at class TimeUnitText to ParameterDeclaration mediumText
-Iteration 101: "Make Method Final" applied at class SaverBase to method emptyComment
-Iteration 102: "Make Method Non Final" applied at class SaverBase to method emptyComment
-Iteration 103: "Make Method Final" applied at class SaverBase to method emptyComment
-Iteration 104: "Make Method Non Final" applied at class SaverBase to method emptyComment
-Iteration 105: "Make Class Final" applied to class ScrollGanttChartLeftAction
-Iteration 106: "Make Method Final" applied at class SaverBase to method emptyComment
-Iteration 107: "Decrease Method Security" applied at class ResourceAssignmentCollection to method clear from package to protected
-Iteration 108: "Make Field Final" applied at class DayTypeTagHandler to ParameterDeclaration namespaceURI
-Iteration 109: "Make Method Static" applied at class ResourceTagHandler to method parsingStarted
-Iteration 110: "Remove Method" applied at class TimeFrameImpl to method fullDump
-Iteration 111: "Make Method Non Static" applied at class GanttProject to method getExceptionReport
-Iteration 112: "Make Class Final" applied to class NextAction
-Iteration 113: "Make Method Static" applied at class ResourceTagHandler to method endElement
-Iteration 114: "Move Method Up" applied to method drawGPVersion from ResourceLoadGraphicArea to ChartComponentBase
-Iteration 115: "Decrease Method Security" applied at class GPAction to method getIconFileDirectory from protected to public
-Iteration 116: "Make Method Non Final" applied at class SaverBase to method emptyComment
-Iteration 117: "Make Method Final" applied at class SaverBase to method emptyComment
-Iteration 118: "Make Method Non Final" applied at class SaverBase to method emptyComment
-Iteration 119: "Make Class Non Final" applied to class ScrollGanttChartLeftAction
-Iteration 120: "Move Field Up" applied to field tree from GanttGraphicArea to ChartComponentBase
-Iteration 121: "Make Class Abstract" applied to class ChartImplementationBase
-Iteration 122: "Remove Method" applied at class Shape to method removeActionListener
-Iteration 123: "Remove Method" applied at class PDFExportProcessor to method run
-Iteration 124: "Make Field Final" applied at class FramerImpl to ParameterDeclaration baseDate
-Iteration 125: "Make Field Static" applied at class ScrollingManagerImpl to field myListeners
-Iteration 126: "Make Field Static" applied at class OpenFileDialog to field myStartDirectory
-Iteration 127: "Decrease Method Security" applied at class ResourceAssignmentMutator to method commit from package to protected
-Iteration 128: "Increase Field Security" applied at class GanttLookAndFeels to field infoByClass from public to protected
-Iteration 129: "Make Method Final" applied at class SaverBase to method emptyComment
-Iteration 130: "Make Method Non Final" applied at class SaverBase to method emptyComment
-Iteration 131: "Decrease Method Security" applied at class ResourceAssignmentMutator to method commit from protected to public
-Iteration 132: "Increase Field Security" applied at class GanttLookAndFeels to field infoByClass from protected to package
-Iteration 133: "Decrease Method Security" applied at class TimeUnitStack to method getTimeUnitPairs from package to protected
-Iteration 134: "Move Method Down" applied to method isInfoable from ProjectExportProcessor to PDFExportProcessor
-Iteration 135: "Increase Method Security" applied at class GetEnv to method GetEnv from public to protected
-Iteration 136: "Increase Method Security" applied at class GanttCSVExport to method beginToSave from public to protected
-Iteration 137: "Make Field Static" applied at class TaskDependencyCollectionImpl to field myEventDispatcher
-Iteration 138: "Increase Field Security" applied at class GanttStatusBar to field message1 from protected to package
-Iteration 139: "Make Field Static" applied at class TaskRendererImpl to field myCurrentlyProcessed
-Iteration 140: "Make Field Static" applied at class TaskTagHandler to field myContext
-Iteration 141: "Make Field Static" applied at class DependencyTableModel to field myTask
-Iteration 142: "Make Field Final" applied at class WizardImpl to LocalVariableDeclaration result
-Iteration 143: "Make Method Final" applied at class TaskDependencySliceAsDependee to method toArray
+Iteration 1: "Make Method Final" applied at class GanttXFIGFileFilter to method getDescription
+Iteration 2: "Decrease Field Security" applied at class SortTasksAlgorithm to field mySortByStartDateComparator from private to package
+Iteration 3: "Decrease Field Security" applied at class ChartUIConfiguration to field myProjectConfig from private to package
+Iteration 4: "Make Method Static" applied at class ResourceChartExportProcessor to method run
+Iteration 5: "Make Method Non Static" applied at class GanttCSVFilter to method getExtension
+Iteration 6: "Make Class Final" applied to class DayTypeAlternance
+Iteration 7: "Increase Field Security" applied at class AboutAuthorPanel to field columnNames from package to private
+Iteration 8: "Make Class Abstract" applied to class ProjectExportData
+Iteration 9: "Make Field Final" applied at class GanttTask to LocalVariableDeclaration i
+Iteration 10: "Remove Field" applied at class Shape to field COMBO
+Iteration 11: "Move Field Up" applied to field date from GanttGraphicArea to ChartComponentBase
+Iteration 12: "Decrease Method Security" applied at class TimeUnitImpl to method getTextFormatter from protected to public
+Iteration 13: "Move Field Up" applied to field myLeftX from Rectangle to GraphicPrimitive
+Iteration 14: "Decrease Method Security" applied at class GanttXMLSaver to method emptyElement from private to package
+Iteration 15: "Make Method Static" applied at class GanttResourcePanel to method isCellEditable
+Iteration 16: "Remove Field" applied at class GanttXFIGSaver to field code
+Iteration 17: "Make Field Static" applied at class ResourceChartExportData to field myOutputFile
+Iteration 18: "Make Field Final" applied at class WeekFramerImpl to LocalVariableDeclaration c
+Iteration 19: "Decrease Method Security" applied at class GanttTree to method initRootNode from private to package
+Iteration 20: "Make Method Final" applied at class DialogAligner to method center
+Iteration 21: "Make Method Final" applied at class WeekendCalendarImpl to method getActivities
+Iteration 22: "Make Method Final" applied at class DialogAligner to method center
+Iteration 23: "Decrease Method Security" applied at class GanttXMLSaver to method emptyElement from package to protected
+Iteration 24: "Decrease Method Security" applied at class GanttTree to method initRootNode from package to protected
+Iteration 25: "Decrease Method Security" applied at class GanttXMLSaver to method emptyElement from protected to public
+Iteration 26: "Decrease Method Security" applied at class GanttTree to method initRootNode from protected to public
+Iteration 27: "Make Method Static" applied at class GanttJPGFileFilter to method accept
+Iteration 28: "Make Method Final" applied at class GetEnv to method GetEnv
+Iteration 29: "Increase Method Security" applied at class GanttMPXSaver to method save from public to protected
+Iteration 30: "Make Class Concrete" applied to class MouseInteractionBase
+Iteration 31: "Decrease Method Security" applied at class ProjectResource to method ResourceAssignmentImpl from private to package
+Iteration 32: "Increase Method Security" applied at class GanttMPXSaver to method save from protected to package
+Iteration 33: "Decrease Method Security" applied at class TaskProgressRendererImpl to method TaskProgressRendererImpl from package to protected
+Iteration 34: "Decrease Method Security" applied at class TaskAllocationsPanel to method constructResourcesPanel from private to package
+Iteration 35: "Decrease Method Security" applied at class TaskProgressRendererImpl to method TaskProgressRendererImpl from protected to public
+Iteration 36: "Decrease Method Security" applied at class TaskAllocationsPanel to method constructResourcesPanel from package to protected
+Iteration 37: "Move Method Up" applied to method drawGPVersion from GanttGraphicArea to ChartComponentBase
+Iteration 38: "Decrease Method Security" applied at class EventDispatcher to method fireDependencyAdded from package to protected
+Iteration 39: "Make Class Abstract" applied to class ChartRendererBase
+Iteration 40: "Remove Method" applied at class DateParser to method getIsoDateNoMillis
+Iteration 41: "Decrease Method Security" applied at class Painter to method paint from package to protected
+Iteration 42: "Make Method Final" applied at class GanttCalendarDays to method remove
+Iteration 43: "Make Method Final" applied at class DocumentCreator to method createDocument
+Iteration 44: "Make Class Non Final" applied to class DayTypeAlternance
+Iteration 45: "Increase Method Security" applied at class GanttMPXSaver to method save from package to private
+Iteration 46: "Decrease Method Security" applied at class ProjectResource to method ResourceAssignmentImpl from package to protected
+Iteration 47: "Decrease Method Security" applied at class TaskAllocationsPanel to method constructResourcesPanel from protected to public
+Iteration 48: "Decrease Method Security" applied at class EventDispatcher to method fireDependencyAdded from protected to public
+Iteration 49: "Decrease Method Security" applied at class Painter to method paint from protected to public
+Iteration 50: "Make Method Non Final" applied at class GanttCalendarDays to method remove
+Iteration 51: "Remove Method" applied at class TaskScheduleEvent to method getOldStartDate
+Iteration 52: "Make Class Abstract" applied to class ChartModelBase
+Iteration 53: "Decrease Method Security" applied at class NewTaskAction to method setText from private to package
+Iteration 54: "Make Method Static" applied at class RolesTableModel to method isCellEditable
+Iteration 55: "Decrease Method Security" applied at class ZoomManager to method fireZoomingChanged from private to package
+Iteration 56: "Decrease Method Security" applied at class MutableTask to method setName from package to protected
+Iteration 57: "Decrease Method Security" applied at class HumanResourceManager to method fireResourcesRemoved from private to package
+Iteration 58: "Decrease Method Security" applied at class Task to method unpluggedClone from package to protected
+Iteration 59: "Make Class Final" applied to class GanttSplash
+Iteration 60: "Remove Field" applied at class StyledPainterImpl to field myGraphics2calculator
+Iteration 61: "Decrease Field Security" applied at class GanttStatusBar to field message2 from protected to public
+Iteration 62: "Make Method Non Static" applied at class GanttPDFExport to method getTransformerFactory
+Iteration 63: "Move Method Down" applied to method mouseExited from MouseListenerBase to OldChartMouseListenerImpl
+Iteration 64: "Make Field Non Static" applied at class GanttStatusBar to field MESSAGE_2
+Iteration 65: "Decrease Method Security" applied at class TaskActivity to method isLast from package to protected
+Iteration 66: "Remove Field" applied at class TimeUnitFunctionOfDateImpl to field myTextFormatter
+Iteration 67: "Make Class Concrete" applied to class WizardImpl
+Iteration 68: "Make Method Non Static" applied at class BrowserControl to method getPlatform
+Iteration 69: "Remove Field" applied at class TaskRendererImpl to field myRegularTaskContainer
 
-Score has improved overall by 0.203030
-Time taken to refactor: 3071.63s
+Score has improved overall by 0.242507
+Time taken to refactor: 1992.91s
 
 ======== Final Metric Info ========
-Average ratio of private/package/protected attributes to overall attributes per class: 0.594762
-Average coupling per class: 1.464531
-Average cohesion among methods per class: 0.387815
-Average amount of user defined attributes declared per class: 1.164760
-Average functional abstraction per class: 0.121796
+Average ratio of private/package/protected attributes to overall attributes per class: 0.594880
+Average coupling per class: 1.462243
+Average cohesion among methods per class: 0.387478
+Average amount of user defined attributes declared per class: 1.160183
+Average functional abstraction per class: 0.121570
 Average amount of polymorphic methods per class: 0.798627
-Average amount of public methods per class: 4.194508
-Average amount of methods per class: 5.945080
-Average amount of complexity of methods per class: 54.915333
+Average amount of public methods per class: 4.210526
+Average amount of methods per class: 5.954234
+Average amount of complexity of methods per class: 54.967964
 Ratio of interfaces to overall amount of classes: 0.144165
-Average ratio of abstract classes/methods per class: 0.161105
-Average ratio of static classes/methods/variables per class: 0.073638
-Average ratio of final classes/methods/variables per class: 0.059203
-Average ratio of constant classes/methods/variables per class: 0.020371
+Average ratio of abstract classes/methods per class: 0.161119
+Average ratio of static classes/methods/variables per class: 0.070597
+Average ratio of final classes/methods/variables per class: 0.057452
+Average ratio of constant classes/methods/variables per class: 0.022707
 Ratio of inner classes to overall amount of ordinary classes in project: 0.267735
-Average inherited referenced methods ratio per class: 0.061493
-Average visibility ratio per class: 0.568964
+Average inherited referenced methods ratio per class: 0.061507
+Average visibility ratio per class: 0.570378
 Amount of lines of code in project: 39527
-Overall fitness function score: 0.203030
+Overall fitness function score: 0.242507
