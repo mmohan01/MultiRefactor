@@ -3,6 +3,7 @@ package refactorings.type;
 import java.util.ArrayList;
 import java.util.Arrays;
 import java.util.Collections;
+import java.util.Comparator;
 import java.util.HashSet;
 import java.util.Map;
 import java.util.Set;
@@ -12,6 +13,7 @@ import recoder.CrossReferenceServiceConfiguration;
 import recoder.abstraction.ClassType;
 import recoder.abstraction.Constructor;
 import recoder.abstraction.Method;
+import recoder.abstraction.Package;
 import recoder.abstraction.Type;
 import recoder.convenience.ForestWalker;
 import recoder.convenience.TreeWalker;
@@ -57,7 +59,7 @@ public class ExtractSubclass extends TypeRefactoring
 	private HashSet<MethodDeclaration> methods;
 	private ArrayList<FieldDeclaration> fields;
 	private ASTList<MemberDeclaration> members;
-	private ArrayList<ClassDeclaration> subClasses;
+	private ArrayList<ClassDeclaration> subclasses;
 	private ArrayList<Integer> positions;
 	private int[] importSizes;
 	
@@ -82,12 +84,18 @@ public class ExtractSubclass extends TypeRefactoring
 		this.currentDeclaration = (TypeDeclaration) super.tw.getProgramElement();
 		mayRefactor(this.currentDeclaration);
 		CrossReferenceSourceInfo si = getCrossReferenceSourceInfo();
-		this.importSizes = new int[this.subClasses.size()];
+		this.importSizes = new int[this.subclasses.size()];
 		Set<Type> distinctTypes = new HashSet<Type>();
+		Package pack = this.currentDeclaration.getPackage();
 		
+		// Sort fields and methods before using them.
 		this.members = new ASTArrayList<MemberDeclaration>(this.fields.size() + this.methods.size());
+		Collections.sort(this.fields, new FieldComparator());
+		ArrayList<MethodDeclaration> methodDecs = new ArrayList<MethodDeclaration>(this.methods.size());
+		methodDecs.addAll(this.methods);
+		Collections.sort(methodDecs, new MethodComparator());
 		this.members.addAll(this.fields);
-		this.members.addAll(this.methods);
+		this.members.addAll(methodDecs);
 		
 		for (MemberDeclaration md : this.members)
 			distinctTypes.addAll(super.getTypes(md, si));
@@ -98,7 +106,8 @@ public class ExtractSubclass extends TypeRefactoring
 		// If class being extracted from is a nested class, need to contain an import to that class.
 		if (this.currentDeclaration.getContainingClassType() instanceof TypeDeclaration)
 		{
-			PackageReference proto = PackageKit.createPackageReference(getProgramFactory(), this.currentDeclaration.getPackage());
+			PackageReference proto = PackageKit.createPackageReference(getProgramFactory(), pack);
+			
 			ArrayList<Identifier> identifiers = new ArrayList<Identifier>();
 			TypeDeclaration nestedClass = this.currentDeclaration;
 
@@ -127,14 +136,14 @@ public class ExtractSubclass extends TypeRefactoring
 		for (MemberDeclaration md : this.members)
 			positions.add(super.getPosition(this.currentDeclaration, md));
 		
-		String name = this.currentDeclaration.getIdentifier().getText() + "_SubClass";
+		String name = this.currentDeclaration.getIdentifier().getText() + "_Subclass";
 		ArrayList<String> typeNames = getAllTypeNames();
-		int subClassNumber = 1;
+		int subclassNumber = 1;
 		
 		while (typeNames.contains(name))
 		{			
-			name = this.currentDeclaration.getIdentifier().getText() + "_SubClass_" + subClassNumber;
-			subClassNumber++;
+			name = this.currentDeclaration.getIdentifier().getText() + "_Subclass_" + subclassNumber;
+			subclassNumber++;
 		}
 			
 		// Create new class from current class.
@@ -171,10 +180,30 @@ public class ExtractSubclass extends TypeRefactoring
 		}
 		
 		// Update relevant sub classes to now extend from the new sub class.
-		for (ClassDeclaration cd : this.subClasses)
-		{			
-			Extends subClass = getProgramFactory().createExtends(getProgramFactory().createTypeReference(this.subDeclaration.getIdentifier()));
-			attach(subClass, cd);
+		for (int i = 0; i < this.subclasses.size(); i++)
+		{				
+			Extends subclass = getProgramFactory().createExtends(getProgramFactory().createTypeReference(this.subDeclaration.getIdentifier()));
+			attach(subclass, this.subclasses.get(i));
+			
+			// If necessary, add import to package of new subclass in order to recognize it in the class.
+			Import wholePackage = getProgramFactory().createImport(PackageKit.createPackageReference(getProgramFactory(), pack));
+			ASTList<Import> subclassImports = UnitKit.getCompilationUnit(this.subclasses.get(i)).getImports();
+			this.importSizes[i] = subclassImports.size();
+			boolean contains = false;
+
+			for (Import imp : subclassImports)
+			{
+				if ((imp.toString().equals(wholePackage.toString())))
+				{
+					contains = true;
+					break;
+				}
+			}
+
+			if (!contains)
+				subclassImports.add(wholePackage);
+			
+			UnitKit.getCompilationUnit(this.subclasses.get(i)).setImports(subclassImports);
 		}
 			
 		// Specify refactoring information for results information.
@@ -228,12 +257,12 @@ public class ExtractSubclass extends TypeRefactoring
 			attach(md, this.currentDeclaration, p);	
 		}
 		
-		for (ClassDeclaration cd : this.subClasses)
+		for (ClassDeclaration cd : this.subclasses)
 		{
 			Extends currentClass = getProgramFactory().createExtends(getProgramFactory().createTypeReference(this.currentDeclaration.getIdentifier()));
 			attach(currentClass, cd);
 			
-			if (UnitKit.getCompilationUnit(cd).getImports().size() != this.importSizes[this.subClasses.indexOf(cd)])
+			if (UnitKit.getCompilationUnit(cd).getImports().size() != this.importSizes[this.subclasses.indexOf(cd)])
 			{
 				ASTList<Import> imports = UnitKit.getCompilationUnit(cd).getImports();
 				imports.remove(imports.size() - 1);
@@ -258,7 +287,7 @@ public class ExtractSubclass extends TypeRefactoring
 		{						
 			// Prevents "Zero Service" outputs logged to the console.
 			if (td.getProgramModelInfo() == null)
-				td.getFactory().getServiceConfiguration().getChangeHistory().updateModel();
+				td.getFactory().getServiceConfiguration().getChangeHistory().updateModel();			
 			
 			boolean next;
 			boolean defaultConstructor = false;
@@ -376,7 +405,7 @@ public class ExtractSubclass extends TypeRefactoring
 				next = false;
 				methodList.clear();
 				methodList.add(md);
-				this.subClasses = new ArrayList<ClassDeclaration>(si.getSubtypes(td).size());
+				this.subclasses = new ArrayList<ClassDeclaration>(si.getSubtypes(td).size());
 				
 				// Finds the methods in the class that reference the 
 				// current method and if they can be moved add them to the list.
@@ -570,8 +599,8 @@ public class ExtractSubclass extends TypeRefactoring
 								while(referenceClass.getSupertypes().get(0) != td)
 									referenceClass = (TypeDeclaration) referenceClass.getSupertypes().get(0);
 
-								if (!(this.subClasses.contains((ClassDeclaration) referenceClass)))
-									this.subClasses.add((ClassDeclaration) referenceClass);
+								if (!(this.subclasses.contains((ClassDeclaration) referenceClass)))
+									this.subclasses.add((ClassDeclaration) referenceClass);
 							}
 						}
 					}
@@ -600,8 +629,8 @@ public class ExtractSubclass extends TypeRefactoring
 								while (referenceClass.getSupertypes().get(0) != td)
 									referenceClass = (TypeDeclaration) referenceClass.getSupertypes().get(0);
 
-								if (!(this.subClasses.contains((ClassDeclaration) referenceClass)))
-									this.subClasses.add((ClassDeclaration) referenceClass);
+								if (!(this.subclasses.contains((ClassDeclaration) referenceClass)))
+									this.subclasses.add((ClassDeclaration) referenceClass);
 							}
 						}
 					}
@@ -622,8 +651,8 @@ public class ExtractSubclass extends TypeRefactoring
 						{
 							if (MethodKit.getReferences(si, m, (TypeDeclaration) c, true).size() > 0)
 							{
-								if (!(this.subClasses.contains((ClassDeclaration) ct)))
-									this.subClasses.add((ClassDeclaration) ct);
+								if (!(this.subclasses.contains((ClassDeclaration) ct)))
+									this.subclasses.add((ClassDeclaration) ct);
 								
 								breakout = true;
 								break;
@@ -642,8 +671,8 @@ public class ExtractSubclass extends TypeRefactoring
 							{
 								if (VariableKit.getReferences(si, f.getFieldSpecifications().get(0), (TypeDeclaration) c, true).size() > 0)
 								{
-									if (!(this.subClasses.contains((ClassDeclaration) ct)))
-										this.subClasses.add((ClassDeclaration) ct);
+									if (!(this.subclasses.contains((ClassDeclaration) ct)))
+										this.subclasses.add((ClassDeclaration) ct);
 
 									breakout = true;
 									break;
@@ -658,7 +687,7 @@ public class ExtractSubclass extends TypeRefactoring
 				
 				// If any of these sub classes contain any super references to
 				// a constructor with parameters, the group will be discarded.
-				for (ClassDeclaration ct : this.subClasses)
+				for (ClassDeclaration ct : this.subclasses)
 				{
 					TreeWalker tw = new TreeWalker((TypeDeclaration) ct);
 					while (tw.next(SuperConstructorReference.class)) 
@@ -693,6 +722,7 @@ public class ExtractSubclass extends TypeRefactoring
 				// the methods and fields to be moved are saved and the method returns true.
 				if (!next)
 				{ 
+					
 					this.methods = methodList;
 					this.fields = fieldsToMove;
 					return true;
@@ -754,5 +784,31 @@ public class ExtractSubclass extends TypeRefactoring
 			names.add(((TypeDeclaration) tw.getProgramElement()).getName());
 
 		return names;
-	} 
+	}
+	
+	// This inner class allows sorting by name so that the list is sorted alphanumerically by the field names.
+	private class FieldComparator implements Comparator<FieldDeclaration> 
+	{
+		// Compares the two specified individuals using the fitness
+		// operator. Returns less than 1, 0 or more than 1 as the first
+		// argument is less than, equal to, or greater than the second.
+		public int compare(FieldDeclaration fd1, FieldDeclaration fd2) 
+		{   
+			int last1 = fd1.toString().lastIndexOf(">");
+			int last2 = fd2.toString().lastIndexOf(">");
+			return fd1.toString().substring(last1 + 2).compareTo(fd2.toString().substring(last2 + 2));
+		}
+	}
+	
+	// This inner class allows sorting by name so that the list is sorted alphanumerically by the method names.
+	private class MethodComparator implements Comparator<MethodDeclaration> 
+	{
+		// Compares the two specified individuals using the fitness
+		// operator. Returns less than 1, 0 or more than 1 as the first
+		// argument is less than, equal to, or greater than the second.
+		public int compare(MethodDeclaration md1, MethodDeclaration md2) 
+		{   
+			return md1.getName().compareTo(md2.getName());
+		}
+	}
 }
