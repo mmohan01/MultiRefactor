@@ -87,7 +87,7 @@ public class ExtractSubclass extends TypeRefactoring
 		this.importSizes = new int[this.subclasses.size()];
 		Set<Type> distinctTypes = new HashSet<Type>();
 		Package pack = this.currentDeclaration.getPackage();
-		
+
 		// Sort fields and methods before using them.
 		this.members = new ASTArrayList<MemberDeclaration>(this.fields.size() + this.methods.size());
 		Collections.sort(this.fields, new FieldComparator());
@@ -106,8 +106,7 @@ public class ExtractSubclass extends TypeRefactoring
 		// If class being extracted from is a nested class, need to contain an import to that class.
 		if (this.currentDeclaration.getContainingClassType() instanceof TypeDeclaration)
 		{
-			PackageReference proto = PackageKit.createPackageReference(getProgramFactory(), pack);
-			
+			PackageReference proto = PackageKit.createPackageReference(getProgramFactory(), this.currentDeclaration.getPackage());
 			ArrayList<Identifier> identifiers = new ArrayList<Identifier>();
 			TypeDeclaration nestedClass = this.currentDeclaration;
 
@@ -181,7 +180,7 @@ public class ExtractSubclass extends TypeRefactoring
 		
 		// Update relevant sub classes to now extend from the new sub class.
 		for (int i = 0; i < this.subclasses.size(); i++)
-		{				
+		{			
 			Extends subclass = getProgramFactory().createExtends(getProgramFactory().createTypeReference(this.subDeclaration.getIdentifier()));
 			attach(subclass, this.subclasses.get(i));
 			
@@ -202,7 +201,7 @@ public class ExtractSubclass extends TypeRefactoring
 
 			if (!contains)
 				subclassImports.add(wholePackage);
-			
+
 			UnitKit.getCompilationUnit(this.subclasses.get(i)).setImports(subclassImports);
 		}
 			
@@ -230,7 +229,7 @@ public class ExtractSubclass extends TypeRefactoring
 		super.affectedClasses.add(this.currentDeclaration.getName());
 		super.affectedClasses.add(this.subDeclaration.getName());
 		super.affectedElement = this.currentDeclaration.getName();
-		
+
 		return setProblemReport(EQUIVALENCE);
 	}
 	
@@ -287,8 +286,8 @@ public class ExtractSubclass extends TypeRefactoring
 		{						
 			// Prevents "Zero Service" outputs logged to the console.
 			if (td.getProgramModelInfo() == null)
-				td.getFactory().getServiceConfiguration().getChangeHistory().updateModel();			
-			
+				td.getFactory().getServiceConfiguration().getChangeHistory().updateModel();
+
 			boolean next;
 			boolean defaultConstructor = false;
 			CrossReferenceSourceInfo si = getCrossReferenceSourceInfo();
@@ -619,7 +618,7 @@ public class ExtractSubclass extends TypeRefactoring
 							 ((si.getType(fr.getReferencePrefix()) != null) && !(fr.getReferencePrefix() instanceof ThisReference) && 
 							  !(fr.getReferencePrefix() instanceof SuperReference))))
 						{
-							// What is the class instance that uses the method reference.
+							// What is the class instance that uses the field reference.
 							TypeDeclaration referenceClass =  (TypeDeclaration) si.getType(fr.getReferencePrefix());
 
 							// If the field reference refers explicitly to a sub class the sub class
@@ -722,7 +721,6 @@ public class ExtractSubclass extends TypeRefactoring
 				// the methods and fields to be moved are saved and the method returns true.
 				if (!next)
 				{ 
-					
 					this.methods = methodList;
 					this.fields = fieldsToMove;
 					return true;
@@ -784,8 +782,9 @@ public class ExtractSubclass extends TypeRefactoring
 			names.add(((TypeDeclaration) tw.getProgramElement()).getName());
 
 		return names;
-	}
+	} 
 	
+
 	// This inner class allows sorting by name so that the list is sorted alphanumerically by the field names.
 	private class FieldComparator implements Comparator<FieldDeclaration> 
 	{
