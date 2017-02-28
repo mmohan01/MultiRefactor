@@ -492,7 +492,7 @@ public class MoveMethodDown extends MethodRefactoring
 		TreeWalker tw = new TreeWalker(getSourceFileRepository().getKnownCompilationUnits().get(unit));
 		int element = 0;
 		int from  = refactoringInfo.indexOf(" to method ") + 11;
-		int to = (refactoringInfo.indexOf(' ', from) == -1) ? refactoringInfo.length() : refactoringInfo.indexOf(' ', from);
+		int to = refactoringInfo.indexOf(' ', from);
 		String name = refactoringInfo.substring(from,  to);
 		
 		from = refactoringInfo.lastIndexOf(" to ") + 4; 
