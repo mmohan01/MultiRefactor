@@ -739,7 +739,7 @@ public class ExtractSubclass extends TypeRefactoring
 		TreeWalker tw = new TreeWalker(getSourceFileRepository().getKnownCompilationUnits().get(unit));
 		int element = 0, last;
 		int from  = refactoringInfo.indexOf(" class ") + 7;
-		int to = (refactoringInfo.indexOf(' ', from) == -1) ? refactoringInfo.length() : refactoringInfo.indexOf(' ', from);
+		int to = refactoringInfo.indexOf(' ', from);
 		String name = refactoringInfo.substring(from,  to);
 		
 		from = refactoringInfo.indexOf(" element(s) ") + 13; 
@@ -754,7 +754,7 @@ public class ExtractSubclass extends TypeRefactoring
 			
 			if ((td.getName() != null) && (td.getName().equals(name)) && (mayRefactor(td)))
 			{
-				ArrayList<String> elements = new ArrayList<String>();				
+				ArrayList<String> elements = new ArrayList<String>();	
 
 				for (MethodDeclaration md : this.methods)
 					elements.add(md.getName());
