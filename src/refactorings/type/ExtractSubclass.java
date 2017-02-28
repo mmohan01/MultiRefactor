@@ -784,7 +784,6 @@ public class ExtractSubclass extends TypeRefactoring
 		return names;
 	} 
 	
-
 	// This inner class allows sorting by name so that the list is sorted alphanumerically by the field names.
 	private class FieldComparator implements Comparator<FieldDeclaration> 
 	{
