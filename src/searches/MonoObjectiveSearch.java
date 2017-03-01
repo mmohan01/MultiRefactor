@@ -142,27 +142,6 @@ public class MonoObjectiveSearch extends GeneticAlgorithmSearch
 				super.sc.getProjectSettings().setProperty(PropertyNames.OUTPUT_PATH, newOutputPath);
 				super.print(super.sc.getSourceFileRepository());	
 			}
-			
-			// Add diversity score for finished solution. Only used for objective 
-			// experiment to make it easier to compare against multi-objective approach
-			// and avoid the need to manually work out diversity score afterwards.
-			super.setConfiguration(new Configuration("./configurations/diversity.txt"));
-	
-			m = new Metrics(super.sc.getSourceFileRepository().getKnownCompilationUnits(), population.get(0).getElementDiversity());	
-			float diversity = m.diversity();
-			String runName = String.format("%sresultsSolution1.txt", super.resultsPath);
-
-			try 
-			{
-				BufferedWriter bw = new BufferedWriter(new FileWriter(runName, true));
-				bw.append(String.format("\r\n\r\n**Diversity objective score: %f**", diversity));
-				bw.close();
-			}
-			catch (IOException e) 
-			{
-				System.out.println("\r\nEXCEPTION: Cannot output diversity score to text file.");
-				System.exit(1);
-			}
 		}
 		else
 		{
