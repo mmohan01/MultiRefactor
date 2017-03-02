@@ -10,9 +10,9 @@ import refactorings.Refactoring;
 import refactorings.field.*;
 import refactorings.method.*;
 import refactorings.type.*;
+import searches.GeneticAlgorithmSearch;
 import searches.MonoObjectiveSearch;
 import searches.MultiObjectiveSearch;
-import searches.Search;
 
 public class PriorityTasks extends Tasks
 {
@@ -61,7 +61,7 @@ public class PriorityTasks extends Tasks
 		Configuration[] cMO6 = {new Configuration("./configurations/qualityfunction.txt"), new Configuration("./configurations/priorityxom.txt")};
 		
 		// Initialise search tasks.
-		ArrayList<Search> searches = new ArrayList<Search>();
+		ArrayList<GeneticAlgorithmSearch> searches = new ArrayList<GeneticAlgorithmSearch>();
 		MonoObjectiveSearch geneticAlgorithm1 = new MonoObjectiveSearch(sc, c, sourceFiles[0], true, 100, 50, 0.2f, 0.8f);
 		geneticAlgorithm1.setInitialRefactoringRange(50);
 		searches.add(geneticAlgorithm1);
