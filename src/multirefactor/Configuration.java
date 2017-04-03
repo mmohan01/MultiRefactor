@@ -410,13 +410,13 @@ public class Configuration
 		String line;
 		this.previousUnits = new ArrayList<List<CompilationUnit>>();
 		this.configuration.add(new MetricSpecification("elementRecentness", true, 1.0f));
-		System.out.printf("\n\nReading previous versions of project from the following pathways:");
+		System.out.printf("\r\n\r\nReading previous versions of project from the following pathways:");
 
 		try
 		{
 			while ((line = br.readLine()) != null)
 			{
-				System.out.printf("\n  %s", line);
+				System.out.printf("\r\n  %s", line);
 				CrossReferenceServiceConfiguration sc = new CrossReferenceServiceConfiguration();
 				sc.getSourceFileRepository().getCompilationUnitsFromFiles(Tasks.read(line));
 				sc.getProjectSettings().setProperty(PropertyNames.INPUT_PATH, line + Tasks.readLibs(line));
