@@ -48,11 +48,10 @@ public class SimulatedAnnealingSearch extends Search
 	
 	public void run()
 	{
-		Metrics m = new Metrics(super.sc.getSourceFileRepository().getKnownCompilationUnits());		
-		FitnessFunction ff = new FitnessFunction(m, super.c.getConfiguration());
+		super.m = new Metrics(super.sc.getSourceFileRepository().getKnownCompilationUnits());	
 		super.refactoringInfo = new ArrayList<String>();
-		ArrayList<Integer> refactorings = new ArrayList<Integer>(this.iterations);
-		ArrayList<int[]> positions = new ArrayList<int[]>(this.iterations);
+		FitnessFunction ff = new FitnessFunction(super.m, super.c.getConfiguration());
+		ArrayList<int[]> results = new ArrayList<int[]>(this.iterations);
 
 		float benchmark = 0;
 		float current = benchmark, best = benchmark;
@@ -66,7 +65,7 @@ public class SimulatedAnnealingSearch extends Search
 
 		String runInfo = String.format("Search: Simulated Annealing\r\nIterations: %d\r\nStarting Temperature: %f", this.iterations, this.temperature);
 		super.outputSearchInfo(super.resultsPath, runInfo);
-		super.outputMetrics(benchmark, m, true, true, super.resultsPath);
+		super.outputMetrics(benchmark, true, true, super.resultsPath);
 		System.out.printf("\r\n\r\nRefactoring...");
 		long timeTaken, startTime = System.currentTimeMillis();
 		double time;
@@ -88,16 +87,16 @@ public class SimulatedAnnealingSearch extends Search
 				position = super.randomRefactoring(super.c.getRefactorings());
 
 				// If a random element could be found.
-				if ((position[0] != -1) && (position[1] != -1))
+				if ((position[1] != -1) && (position[2] != -1))
 				{
-					super.c.getRefactorings().get(position[2]).transform(super.c.getRefactorings().get(position[2])
-							                                  .analyze(i, position[0], position[1]));
-					newScore = ff.calculateNormalisedScore(m);
+					super.c.getRefactorings().get(position[0]).transform(super.c.getRefactorings().get(position[0])
+							                                  .analyze(i, position[1], position[2]));
+					newScore = ff.calculateNormalisedScore(super.m);
 
 					if (newScore > current)
 					{
-						super.refactoringInfo.add(super.c.getRefactorings().get(position[2]).getRefactoringInfo());
-						System.out.printf("\r\n%s", super.c.getRefactorings().get(position[2]).getRefactoringInfo());
+						super.refactoringInfo.add(super.c.getRefactorings().get(position[0]).getRefactoringInfo());
+						System.out.printf("\r\n%s", super.c.getRefactorings().get(position[0]).getRefactoringInfo());
 						current = newScore;
 						findNeighbour = false;
 
@@ -108,10 +107,7 @@ public class SimulatedAnnealingSearch extends Search
 						}
 						
 						if (this.getBest)
-						{
-							refactorings.add(position[2]);
-							positions.add(position);
-						}
+							results.add(position);
 					}
 					else
 					{
@@ -130,20 +126,17 @@ public class SimulatedAnnealingSearch extends Search
 
 						if (probability > Math.random())
 						{
-							super.refactoringInfo.add(super.c.getRefactorings().get(position[2]).getRefactoringInfo());
-							System.out.printf("\r\n%s", super.c.getRefactorings().get(position[2]).getRefactoringInfo());
+							super.refactoringInfo.add(super.c.getRefactorings().get(position[0]).getRefactoringInfo());
+							System.out.printf("\r\n%s", super.c.getRefactorings().get(position[0]).getRefactoringInfo());
 							current = newScore;
 							findNeighbour = false;
 							
 							if (this.getBest)
-							{
-								refactorings.add(position[2]);
-								positions.add(position);
-							}
+								results.add(position);
 						}
 						else
 						{
-							super.c.getRefactorings().get(position[2]).transform(super.c.getRefactorings().get(position[2]).analyzeReverse());
+							super.c.getRefactorings().get(position[0]).transform(super.c.getRefactorings().get(position[0]).analyzeReverse());
 							
 							if (this.alwaysMove)
 							{
@@ -231,13 +224,12 @@ public class SimulatedAnnealingSearch extends Search
 			super.sc.getProjectSettings().setProperty(PropertyNames.OUTPUT_PATH, outputPath);
 			super.sc.getProjectSettings().ensureSystemClassesAreInPath();
 			
-			refactorings.trimToSize();
-			positions.trimToSize();
+			results.trimToSize();
 			
-			for (int i = 0; i < refactorings.size(); i++)
+			for (int i = 0; i < results.size(); i++)
 			{
-				super.c.getRefactorings().get(refactorings.get(i)).transform(super.c.getRefactorings().get(refactorings.get(i))
-					   .analyze(-1, positions.get(i)[0], positions.get(i)[1]));
+				super.c.getRefactorings().get(results.get(i)[0]).transform(super.c.getRefactorings().get(results.get(i)[0])
+					   .analyze(-1, results.get(i)[1], results.get(i)[2]));
 			}
 			
 			for (int i = super.refactoringInfo.size() - 1; i > 0; i--)
@@ -254,14 +246,14 @@ public class SimulatedAnnealingSearch extends Search
 			
 			// Output the final metric values to the results file.
 			super.outputRefactoringInfo(super.resultsPath, time, best - benchmark);
-			m = new Metrics(super.sc.getSourceFileRepository().getKnownCompilationUnits());	
-			super.outputMetrics(best, m, false, true, super.resultsPath);
+			super.m.setUnits(super.sc.getSourceFileRepository().getKnownCompilationUnits());
+			super.outputMetrics(best, false, true, super.resultsPath);
 			System.out.printf("\r\n");
 		}
 		else
 		{
 			super.outputRefactoringInfo(super.resultsPath, time, current - benchmark);
-			super.outputMetrics(current, m, false, true, super.resultsPath);
+			super.outputMetrics(current, false, true, super.resultsPath);
 			System.out.printf("\r\n\r\nScore has improved overall by %.2f", current - benchmark);
 		}
 		

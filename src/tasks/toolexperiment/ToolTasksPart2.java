@@ -16,7 +16,7 @@ import tasks.Tasks;
 
 public class ToolTasksPart2 extends Tasks
 {
-	String pathway = "./data/original/jhotdraw-5.3";
+	String pathway = "./data/original/jhotdraw/jhotdraw-5.3";
 	
 	// No attributes - empty constructor.
 	public ToolTasksPart2()
@@ -116,14 +116,14 @@ public class ToolTasksPart2 extends Tasks
 				// Initialise available refactorings. Needs to be done each 
 				// time as the service configuration won't be updated otherwise.
 				refactorings = new ArrayList<Refactoring>();
-				DecreaseMethodSecurity dms = new DecreaseMethodSecurity(sc);
-				refactorings.add(dms);
-				DecreaseFieldSecurity dfs = new DecreaseFieldSecurity(sc);
-				refactorings.add(dfs);
-				IncreaseMethodSecurity ims = new IncreaseMethodSecurity(sc);
-				refactorings.add(ims);
-				IncreaseFieldSecurity ifs = new IncreaseFieldSecurity(sc);
-				refactorings.add(ifs);
+				DecreaseMethodVisibility dmv = new DecreaseMethodVisibility(sc);
+				refactorings.add(dmv);
+				DecreaseFieldVisibility dfv = new DecreaseFieldVisibility(sc);
+				refactorings.add(dfv);
+				IncreaseMethodVisibility imv = new IncreaseMethodVisibility(sc);
+				refactorings.add(imv);
+				IncreaseFieldVisibility ifv = new IncreaseFieldVisibility(sc);
+				refactorings.add(ifv);
 				MakeClassAbstract mca = new MakeClassAbstract(sc);
 				refactorings.add(mca);
 				MakeClassConcrete mcc = new MakeClassConcrete(sc);

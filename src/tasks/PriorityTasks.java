@@ -31,22 +31,22 @@ public class PriorityTasks extends Tasks
 	{		
 		String[] input = new String[]{
 				"./data/original/mango",
-				"./data/original/beaver-0.9.11",
-				"./data/original/apachexmlrpc-2.0",
-				"./data/original/jhotdraw-5.3", 
-				"./data/original/ganttproject-1.11.1",
-				"./data/original/xom-1.2.1"};
+				"./data/original/beaver/beaver-0.9.11",
+				"./data/original/apachexmlrpc/apachexmlrpc-2.0",
+				"./data/original/jhotdraw/jhotdraw-5.3", 
+				"./data/original/ganttproject/ganttproject-1.11.1",
+				"./data/original/xom/xom-1.2.1"};
 		
 		// Create an initial service configuration to be overwritten.
 		// Reads the source code from the specified directory.
 		CrossReferenceServiceConfiguration sc = new CrossReferenceServiceConfiguration();
 		String[][] sourceFiles = new String[][]{
-			super.read("./data/original/mango"),
-			super.read("./data/original/beaver-0.9.11"),
-			super.read("./data/original/apachexmlrpc-2.0"),
-			super.read("./data/original/jhotdraw-5.3"), 
-			super.read("./data/original/ganttproject-1.11.1"),
-			super.read("./data/original/xom-1.2.1")};
+			super.read(input[0]),
+			super.read(input[1]),
+			super.read(input[2]),
+			super.read(input[3]), 
+			super.read(input[4]),
+			super.read(input[5])};
 		
 		// Create empty list of refactorings.
 		// Reads the metric configuration in from a specified text file.
@@ -54,11 +54,11 @@ public class PriorityTasks extends Tasks
 		Configuration c = new Configuration("./configurations/qualityfunction.txt", refactorings);
 		
 		Configuration[] cMO1 = {new Configuration("./configurations/qualityfunction.txt"), new Configuration("./configurations/prioritymango.txt")};
-		Configuration[] cMO2 = {new Configuration("./configurations/qualityfunction.txt"), new Configuration("./configurations/prioritybeaver.txt")};
-		Configuration[] cMO3 = {new Configuration("./configurations/qualityfunction.txt"), new Configuration("./configurations/priorityapachexmlrpc.txt")};
-		Configuration[] cMO4 = {new Configuration("./configurations/qualityfunction.txt"), new Configuration("./configurations/priorityjhotdraw.txt")};
-		Configuration[] cMO5 = {new Configuration("./configurations/qualityfunction.txt"), new Configuration("./configurations/priorityganttproject.txt")};
-		Configuration[] cMO6 = {new Configuration("./configurations/qualityfunction.txt"), new Configuration("./configurations/priorityxom.txt")};
+		Configuration[] cMO2 = {new Configuration("./configurations/qualityfunction.txt"), new Configuration("./configurations/prioritybeaver-0.9.11.txt")};
+		Configuration[] cMO3 = {new Configuration("./configurations/qualityfunction.txt"), new Configuration("./configurations/priorityapachexmlrpc-2.0.txt")};
+		Configuration[] cMO4 = {new Configuration("./configurations/qualityfunction.txt"), new Configuration("./configurations/priorityjhotdraw-5.3.txt")};
+		Configuration[] cMO5 = {new Configuration("./configurations/qualityfunction.txt"), new Configuration("./configurations/priorityganttproject-1.11.1.txt")};
+		Configuration[] cMO6 = {new Configuration("./configurations/qualityfunction.txt"), new Configuration("./configurations/priorityxom-1.2.1.txt")};
 		
 		// Initialise search tasks.
 		ArrayList<GeneticAlgorithmSearch> searches = new ArrayList<GeneticAlgorithmSearch>();
@@ -286,14 +286,14 @@ public class PriorityTasks extends Tasks
 			// Initialise available refactorings. Needs to be done each 
 			// time as the service configuration won't be updated otherwise.
 			refactorings = new ArrayList<Refactoring>();
-			DecreaseMethodSecurity dms = new DecreaseMethodSecurity(sc);
-			refactorings.add(dms);
-			DecreaseFieldSecurity dfs = new DecreaseFieldSecurity(sc);
-			refactorings.add(dfs);
-			IncreaseMethodSecurity ims = new IncreaseMethodSecurity(sc);
-			refactorings.add(ims);
-			IncreaseFieldSecurity ifs = new IncreaseFieldSecurity(sc);
-			refactorings.add(ifs);
+			DecreaseMethodVisibility dmv = new DecreaseMethodVisibility(sc);
+			refactorings.add(dmv);
+			DecreaseFieldVisibility dfv = new DecreaseFieldVisibility(sc);
+			refactorings.add(dfv);
+			IncreaseMethodVisibility imv = new IncreaseMethodVisibility(sc);
+			refactorings.add(imv);
+			IncreaseFieldVisibility ifv = new IncreaseFieldVisibility(sc);
+			refactorings.add(ifv);
 			MakeClassAbstract mca = new MakeClassAbstract(sc);
 			refactorings.add(mca);
 			MakeClassConcrete mcc = new MakeClassConcrete(sc);

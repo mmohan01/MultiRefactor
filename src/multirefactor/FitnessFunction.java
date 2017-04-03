@@ -2,22 +2,26 @@ package multirefactor;
 
 import java.util.ArrayList;
 import java.util.HashMap;
-import java.util.Map;
+import java.util.List;
+
+import recoder.java.CompilationUnit;
 
 public class FitnessFunction 
 {
-	private ArrayList<Triple<String, Boolean, Float>> configuration;
-	private Map<String, Float> initialMetrics;
+	private ArrayList<MetricSpecification> configuration;
+	private HashMap<String, Float> initialMetrics;
 	private ArrayList<String> priorityClasses;
 	private ArrayList<String> nonPriorityClasses;
+	private ArrayList<List<CompilationUnit>> previousUnits;
+	private HashMap<String, Integer> elementScores;
 
 	// Only use if normalisation functions (calculateBenchmark, calculateNormalisedScore) are not being used.
-	public FitnessFunction(ArrayList<Triple<String, Boolean, Float>> configuration)
+	public FitnessFunction(ArrayList<MetricSpecification> configuration)
 	{
 		this.configuration = configuration;
 	}
 	
-	public FitnessFunction(Metrics m, ArrayList<Triple<String, Boolean, Float>> configuration)
+	public FitnessFunction(Metrics m, ArrayList<MetricSpecification> configuration)
 	{
 		this.configuration = configuration;
 		float baseline = 0.01f;
@@ -48,15 +52,16 @@ public class FitnessFunction
 		initialMetrics.put("numberOfFiles", (float) m.numberOfFiles() == 0 ? baseline : (float) m.numberOfFiles());
 		initialMetrics.put("priority", baseline);
 		initialMetrics.put("diversity", baseline);
+		initialMetrics.put("elementRecentness", baseline);
 	}
 	
 	public float calculateBenchmark()
 	{
 		float amount = 0;
 
-		for (Triple<String, Boolean, Float> metric : this.configuration)
-			if (this.initialMetrics.get(metric.getFirst()) != 0)
-				amount += (metric.getSecond() == true) ? 1 : -1;
+		for (MetricSpecification metric : this.configuration)
+			if (this.initialMetrics.get(metric.getName()) != 0)
+				amount += (metric.getMaximise() == true) ? 1 : -1;
 		
 		return amount;
 	}
@@ -66,10 +71,10 @@ public class FitnessFunction
 		float amount = 0;
 		float value = 0;
 
-		for (Triple<String, Boolean, Float> metric : this.configuration)
+		for (MetricSpecification metric : this.configuration)
 		{
-			value = findMetricValue(m, metric.getFirst());			
-			amount += (metric.getSecond() == true) ? (metric.getThird() * value) : -(metric.getThird() * value);
+			value = findMetricValue(m, metric.getName());			
+			amount += (metric.getMaximise() == true) ? (metric.getWeight() * value) : -(metric.getWeight() * value);
 		}
 
 		return amount;
@@ -80,22 +85,23 @@ public class FitnessFunction
 		float amount = 0;
 		float value = 0;
 
-		for (Triple<String, Boolean, Float> metric : this.configuration)
+		for (MetricSpecification metric : this.configuration)
 		{
 			// Don't want to compare improvement as the metric starts at
 			// zero and the metric is being used alone in a separate 
 			// objective so it doesn't necessarily need to be normalised.
-			if ((metric.getFirst().equals("priority")) || (metric.getFirst().equals("diversity")))
+			if ((metric.getName().equals("priority")) || (metric.getName().equals("diversity")) || (metric.getName().equals("elementRecentness")))
 			{
-				amount += findMetricValue(m, metric.getFirst());
+				value = findMetricValue(m, metric.getName());
 			}
 			else
 			{
-				float metricValue = (findMetricValue(m, metric.getFirst()) == 0) ? 0.01f : findMetricValue(m, metric.getFirst());
-				value = metricValue / this.initialMetrics.get(metric.getFirst());
+				float metricValue = (findMetricValue(m, metric.getName()) == 0) ? 0.01f : findMetricValue(m, metric.getName());
+				value = metricValue / this.initialMetrics.get(metric.getName());
 				value--;
-				amount += (metric.getSecond() == true) ? (metric.getThird() * value) : -(metric.getThird() * value);
 			}
+			
+			amount += (metric.getMaximise() == true) ? (metric.getWeight() * value) : -(metric.getWeight() * value);
 		}
 
 		return amount;
@@ -107,12 +113,12 @@ public class FitnessFunction
 		float m1Value = 0;
 		float m2Value = 0;
 
-		for (Triple<String, Boolean, Float> metric : this.configuration)
+		for (MetricSpecification metric : this.configuration)
 		{
-			m1Value = findMetricValue(m1, metric.getFirst());
-			m2Value = findMetricValue(m2, metric.getFirst());
+			m1Value = findMetricValue(m1, metric.getName());
+			m2Value = findMetricValue(m2, metric.getName());
 
-			if (metric.getSecond() == true)
+			if (metric.getMaximise() == true)
 			{
 				if (m1Value > m2Value) 
 					better = true;
@@ -135,7 +141,7 @@ public class FitnessFunction
 	{
 		float value = 0;
 
-		switch (metric) 
+		switch (metric)
 		{
 		case "classDesignSize":
 			value = m.classDesignSize();
@@ -215,6 +221,9 @@ public class FitnessFunction
 		case "diversity":
 			value = m.diversity();
 			break;	
+		case "elementRecentness":
+			value = m.elementRecentness(this.previousUnits);
+			break;	
 		default:
 			value = 0;
 		}
@@ -228,7 +237,7 @@ public class FitnessFunction
 
 		for (int i = 0; i < this.configuration.size(); i++)
 		{
-			switch (this.configuration.get(i).getFirst()) 
+			switch (this.configuration.get(i).getName()) 
 			{
 			case "classDesignSize":
 				outputs[i] = String.format("Amount of classes in project: %d", m.classDesignSize());
@@ -237,7 +246,7 @@ public class FitnessFunction
 				outputs[i] = String.format("Amount of hierarchies in project: %d", m.numberOfHierarchies());
 				break;
 			case "averageNumberOfAncestors":
-				outputs[i] = String.format("Amount of ancestors per class: %f", m.averageNumberOfAncestors());
+				outputs[i] = String.format("Average amount of ancestors per class: %f", m.averageNumberOfAncestors());
 				break;
 			case "dataAccessMetric":
 				outputs[i] = String.format("Average ratio of private/package/protected attributes to overall attributes per class: %f", m.dataAccessMetric ());
@@ -308,6 +317,9 @@ public class FitnessFunction
 			case "diversity":
 				outputs[i] = String.format("Measure of refactoring diversity in refactoring solution: %d", m.diversity());
 				break;	
+			case "elementRecentness":
+				outputs[i] = String.format("Measure of element recentness in refactoring solution: %d", m.elementRecentness(this.previousUnits));
+				break;	
 			default:
 				outputs[i] = "STRING INPUT DOES NOT RELATE TO A METRIC";
 			}	
@@ -324,5 +336,20 @@ public class FitnessFunction
 	public void setNonPriorityClasses(ArrayList<String> nonPriorityClasses)
 	{
 		this.nonPriorityClasses = nonPriorityClasses;
+	}
+	
+	public void setPreviousUnits(ArrayList<List<CompilationUnit>> previousUnits)
+	{
+		this.previousUnits = previousUnits;
+	}
+	
+	public HashMap<String, Integer> getElementScores()
+	{
+		return this.elementScores;
+	}
+	
+	public void setElementScores(HashMap<String, Integer> elementScores)
+	{
+		this.elementScores = elementScores;
 	}
 }

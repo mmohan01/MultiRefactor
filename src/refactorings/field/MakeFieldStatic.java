@@ -6,6 +6,7 @@ import multirefactor.AccessFlags;
 import recoder.CrossReferenceServiceConfiguration;
 import recoder.convenience.TreeWalker;
 import recoder.java.declaration.FieldDeclaration;
+import recoder.kit.MiscKit;
 import recoder.kit.Problem;
 import recoder.kit.ProblemReport;
 import recoder.kit.transformation.Modify;
@@ -37,6 +38,10 @@ public class MakeFieldStatic extends FieldRefactoring
 		FieldDeclaration fd = (FieldDeclaration) super.tw.getProgramElement();
 		int last = fd.toString().lastIndexOf(">");
 		
+		// Prevents "Zero Service" outputs logged to the console.
+		if (fd.getMemberParent().getProgramModelInfo() == null)
+			fd.getFactory().getServiceConfiguration().getChangeHistory().updateModel();
+
 		// Construct refactoring transformation.
 		super.transformation = new Modify(config, true, fd, AccessFlags.STATIC);
 		report = super.transformation.analyze();
@@ -44,14 +49,15 @@ public class MakeFieldStatic extends FieldRefactoring
 			return setProblemReport(report);
 
 		// Specify refactoring information for results information.
+		String unitName = getSourceFileRepository().getKnownCompilationUnits().get(unit).getName();
+		String typeName = MiscKit.getParentTypeDeclaration(fd).getFullName();
 		super.refactoringInfo = "Iteration " + iteration + ": \"Make Field Static\" applied at class " 
-				+ super.getFileName(getSourceFileRepository().getKnownCompilationUnits().get(unit).getName())
-				+ " to field " + fd.toString().substring(last + 2);
+				+ super.getClassName(unitName, typeName) + " to field "	+ fd.toString().substring(last + 2);
 		
 		// Stores list of names of classes affected by refactoring.
 		super.affectedClasses = new ArrayList<String>(1);
-		super.affectedClasses.add(super.getFileName(getSourceFileRepository().getKnownCompilationUnits().get(unit).getName()));
-		super.affectedElement = fd.toString().substring(last + 2);
+		super.affectedClasses.add(super.getFileName(unitName, typeName));
+		super.affectedElement = "::" + fd.toString();
 		
 		return setProblemReport(EQUIVALENCE);
 	}

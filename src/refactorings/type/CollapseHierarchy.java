@@ -67,6 +67,11 @@ public class CollapseHierarchy extends TypeRefactoring
 			super.tw.next(TypeDeclaration.class);
 		
 		this.currentDeclaration = (TypeDeclaration) super.tw.getProgramElement();
+		
+		// Prevents "Zero Service" outputs logged to the console.
+		if (this.currentDeclaration.getProgramModelInfo() == null)
+			this.currentDeclaration.getFactory().getServiceConfiguration().getChangeHistory().updateModel();
+		
 		this.superDeclaration = (TypeDeclaration) this.currentDeclaration.getSupertypes().get(0);
 		this.unit = UnitKit.getCompilationUnit(this.currentDeclaration);
 		CrossReferenceSourceInfo si = getCrossReferenceSourceInfo();
@@ -210,11 +215,21 @@ public class CollapseHierarchy extends TypeRefactoring
 			
 			if (!(ct.getPackage().equals(this.superDeclaration.getPackage())))
 			{
-				Import imp = getProgramFactory().createImport(PackageKit.createPackageReference(getProgramFactory(), 
-						                                                                        this.superDeclaration.getPackage()));
-						                                 
-				if (!(UnitKit.getCompilationUnit(ct).getImports().contains(imp)))
-					attach(imp, UnitKit.getCompilationUnit(ct), UnitKit.getCompilationUnit(ct).getImports().size());
+				Import wholePackage = getProgramFactory().createImport(PackageKit.createPackageReference(getProgramFactory(), 
+						                                                                        this.superDeclaration.getPackage()));                     
+				boolean contains = false;
+				
+				for (Import imp : UnitKit.getCompilationUnit(ct).getImports())
+				{
+					if ((imp.toString().equals(wholePackage.toString())))
+					{
+						contains = true;
+						break;
+					}
+				}
+				
+				if (!contains)
+					attach(wholePackage, UnitKit.getCompilationUnit(ct), this.importSizes[i]);
 			}
 			
 			this.subClasses.add(ct);
@@ -245,15 +260,18 @@ public class CollapseHierarchy extends TypeRefactoring
 			detach(this.unit);
 		}
 
-		// Specify refactoring information for results information.		
+		// Specify refactoring information for results information.
+		String superUnitName = UnitKit.getCompilationUnit(this.superDeclaration).getName();
 		super.refactoringInfo = "Iteration " + iteration + ": \"Collapse Hierarchy\" applied from all elements in " 
-				+ this.currentDeclaration.getName() + " to " + this.superDeclaration.getName();
+				+ super.getClassName(this.unit.getName(), this.currentDeclaration.getFullName()) + " to " 
+				+ super.getFileName(superUnitName, this.superDeclaration.getFullName());
 		
 		// Stores list of names of classes affected by refactoring.
+		String currentFileName = super.getFileName(this.unit.getName(), this.currentDeclaration.getFullName());
 		super.affectedClasses = new ArrayList<String>(2);
-		super.affectedClasses.add(this.currentDeclaration.getName());
-		super.affectedClasses.add(this.superDeclaration.getName());
-		super.affectedElement = this.currentDeclaration.getName();
+		super.affectedClasses.add(currentFileName);
+		super.affectedClasses.add(super.getFileName(superUnitName, this.superDeclaration.getFullName()));
+		super.affectedElement = currentFileName;
 
 		getChangeHistory().updateModel();
 		return setProblemReport(EQUIVALENCE);
@@ -401,7 +419,7 @@ public class CollapseHierarchy extends TypeRefactoring
 					if (((t instanceof TypeDeclaration) || (t instanceof ClassFile)))
 					{
 						if (((ClassType) t).equals(td))
-							continue;
+							return false;
 						
 						if (((ClassType) t).isPrivate())
 						{

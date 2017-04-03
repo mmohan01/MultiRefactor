@@ -16,8 +16,8 @@ import recoder.kit.transformation.Modify;
 import refactorings.MethodRefactoring;
 
 public class MakeMethodStatic extends MethodRefactoring 
-{	
-	public MakeMethodStatic(CrossReferenceServiceConfiguration sc) 
+{		
+ 	public MakeMethodStatic(CrossReferenceServiceConfiguration sc) 
 	{
 		super(sc);
 	}
@@ -39,6 +39,10 @@ public class MakeMethodStatic extends MethodRefactoring
 	
 		MethodDeclaration md = (MethodDeclaration) super.tw.getProgramElement();
 		
+		// Prevents "Zero Service" outputs logged to the console.
+		if (md.getMemberParent().getProgramModelInfo() == null)
+			md.getFactory().getServiceConfiguration().getChangeHistory().updateModel();
+		
 		// Construct refactoring transformation.
 		super.transformation = new Modify(config, true, md, AccessFlags.STATIC);
 		report = super.transformation.analyze();
@@ -46,14 +50,15 @@ public class MakeMethodStatic extends MethodRefactoring
 			return setProblemReport(report);
 
 		// Specify refactoring information for results information.
+		String unitName = getSourceFileRepository().getKnownCompilationUnits().get(unit).getName();
+		String typeName = MiscKit.getParentTypeDeclaration(md).getFullName();
 		super.refactoringInfo = "Iteration " + iteration + ": \"Make Method Static\" applied at class " 
-				+ super.getFileName(getSourceFileRepository().getKnownCompilationUnits().get(unit).getName())
-				+ " to method " + md.getName();
+				+ super.getClassName(unitName, typeName) + " to method " + super.getMethodName(md);
 		
 		// Stores list of names of classes affected by refactoring.
 		super.affectedClasses = new ArrayList<String>(1);
-		super.affectedClasses.add(super.getFileName(getSourceFileRepository().getKnownCompilationUnits().get(unit).getName()));
-		super.affectedElement = md.getName();
+		super.affectedClasses.add(super.getFileName(unitName, typeName));
+		super.affectedElement = ":" + super.getMethodName(md) + ":";
 
 		return setProblemReport(EQUIVALENCE);
 	}
@@ -77,7 +82,7 @@ public class MakeMethodStatic extends MethodRefactoring
 
 	protected boolean mayRefactor(MethodDeclaration md)
 	{
-		if ((md.isStatic()) || (md.isAbstract()) || (md instanceof ConstructorDeclaration) || (MiscKit.getParentTypeDeclaration(md).isInterface()))
+		if ((md.isNative()) || (md.isStatic()) || (md.isAbstract()) || (md instanceof ConstructorDeclaration) || (MiscKit.getParentTypeDeclaration(md).isInterface()))
 			return false;
 		else
 		{
@@ -94,11 +99,16 @@ public class MakeMethodStatic extends MethodRefactoring
 				allMembers.addAll(MiscKit.getParentTypeDeclaration(md).getAllFields());
 
 				for (Member m : allMembers)
+				{
+					if ((m == null) || (m.equals(md)))
+							continue;
+
 					if (!(m.isStatic()) && (md.getBody().toSource().contains(m.getName())))
 						return false;
-
-				return true;	
+				}	
 			}
+			
+			return true;
 		}
 	}
 }

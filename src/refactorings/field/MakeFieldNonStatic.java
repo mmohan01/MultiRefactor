@@ -5,6 +5,7 @@ import java.util.ArrayList;
 import multirefactor.AccessFlags;
 import recoder.CrossReferenceServiceConfiguration;
 import recoder.convenience.TreeWalker;
+import recoder.java.Import;
 import recoder.java.declaration.EnumConstantDeclaration;
 import recoder.java.declaration.FieldDeclaration;
 import recoder.java.declaration.FieldSpecification;
@@ -14,6 +15,7 @@ import recoder.java.reference.TypeReference;
 import recoder.kit.MiscKit;
 import recoder.kit.Problem;
 import recoder.kit.ProblemReport;
+import recoder.kit.UnitKit;
 import recoder.kit.transformation.Modify;
 import refactorings.FieldRefactoring;
 
@@ -40,6 +42,10 @@ public class MakeFieldNonStatic extends FieldRefactoring
 		FieldDeclaration fd = (FieldDeclaration) super.tw.getProgramElement();
 		int last = fd.toString().lastIndexOf(">");
 		
+		// Prevents "Zero Service" outputs logged to the console.
+		if (fd.getMemberParent().getProgramModelInfo() == null)
+			fd.getFactory().getServiceConfiguration().getChangeHistory().updateModel();
+		
 		// Find iterator in declaration list.
 		int counter = -1;
 		for (int i = 0; i < fd.getDeclarationSpecifiers().size(); i++)
@@ -54,14 +60,15 @@ public class MakeFieldNonStatic extends FieldRefactoring
 		detach(fd.getDeclarationSpecifiers().get(counter));
 
 		// Specify refactoring information for results information.
+		String unitName = getSourceFileRepository().getKnownCompilationUnits().get(unit).getName();
+		String typeName = MiscKit.getParentTypeDeclaration(fd).getFullName();
 		super.refactoringInfo = "Iteration " + iteration + ": \"Make Field Non Static\" applied at class " 
-				+ super.getFileName(getSourceFileRepository().getKnownCompilationUnits().get(unit).getName())
-				+ " to field " + fd.toString().substring(last + 2);
+				+ super.getClassName(unitName, typeName) + " to field " + fd.toString().substring(last + 2);
 		
 		// Stores list of names of classes affected by refactoring.
 		super.affectedClasses = new ArrayList<String>(1);
-		super.affectedClasses.add(super.getFileName(getSourceFileRepository().getKnownCompilationUnits().get(unit).getName()));
-		super.affectedElement = fd.toString().substring(last + 2);
+		super.affectedClasses.add(super.getFileName(unitName, typeName));
+		super.affectedElement = "::" + fd.toString();
 		
 		return setProblemReport(EQUIVALENCE);
 	}
@@ -89,9 +96,17 @@ public class MakeFieldNonStatic extends FieldRefactoring
 		else
 		{
 			for (FieldSpecification fs : fd.getFieldSpecifications())
+			{
 				for (FieldReference fr : getCrossReferenceSourceInfo().getReferences(fs))
+				{
 					if (fr.getReferencePrefix() instanceof TypeReference)
 						return false;
+					
+					for (Import i : UnitKit.getCompilationUnit(fr).getImports())
+						if ((i.isStaticImport()) && (i.toString().contains(MiscKit.getParentTypeDeclaration(fd).getName())))
+							return false;
+				}
+			}
 			
 			return true;
 		}	

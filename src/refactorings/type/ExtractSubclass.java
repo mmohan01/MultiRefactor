@@ -12,6 +12,7 @@ import java.util.TreeMap;
 import recoder.CrossReferenceServiceConfiguration;
 import recoder.abstraction.ClassType;
 import recoder.abstraction.Constructor;
+import recoder.abstraction.Field;
 import recoder.abstraction.Method;
 import recoder.abstraction.Package;
 import recoder.abstraction.Type;
@@ -20,6 +21,7 @@ import recoder.convenience.TreeWalker;
 import recoder.java.CompilationUnit;
 import recoder.java.Identifier;
 import recoder.java.Import;
+import recoder.java.ProgramElement;
 import recoder.java.declaration.ClassDeclaration;
 import recoder.java.declaration.ConstructorDeclaration;
 import recoder.java.declaration.DeclarationSpecifier;
@@ -186,11 +188,10 @@ public class ExtractSubclass extends TypeRefactoring
 			
 			// If necessary, add import to package of new subclass in order to recognize it in the class.
 			Import wholePackage = getProgramFactory().createImport(PackageKit.createPackageReference(getProgramFactory(), pack));
-			ASTList<Import> subclassImports = UnitKit.getCompilationUnit(this.subclasses.get(i)).getImports();
-			this.importSizes[i] = subclassImports.size();
+			this.importSizes[i] = UnitKit.getCompilationUnit(this.subclasses.get(i)).getImports().size();
 			boolean contains = false;
-
-			for (Import imp : subclassImports)
+			
+			for (Import imp : UnitKit.getCompilationUnit(this.subclasses.get(i)).getImports())
 			{
 				if ((imp.toString().equals(wholePackage.toString())))
 				{
@@ -200,9 +201,7 @@ public class ExtractSubclass extends TypeRefactoring
 			}
 
 			if (!contains)
-				subclassImports.add(wholePackage);
-
-			UnitKit.getCompilationUnit(this.subclasses.get(i)).setImports(subclassImports);
+				attach(wholePackage, UnitKit.getCompilationUnit(this.subclasses.get(i)), this.importSizes[i]);
 		}
 			
 		// Specify refactoring information for results information.
@@ -211,7 +210,7 @@ public class ExtractSubclass extends TypeRefactoring
 		for (int i = 0; i < this.members.size(); i++)
 		{
 			if (this.members.get(i) instanceof MethodDeclaration)
-				super.refactoringInfo = super.refactoringInfo + ((MethodDeclaration) this.members.get(i)).getName();
+				super.refactoringInfo = super.refactoringInfo + super.getMethodName((MethodDeclaration) this.members.get(i));
 			else
 			{
 				int last = this.members.get(i).toString().lastIndexOf(">");
@@ -222,13 +221,16 @@ public class ExtractSubclass extends TypeRefactoring
 				super.refactoringInfo = super.refactoringInfo + ", ";
 		}
 		
-		super.refactoringInfo = super.refactoringInfo + "\" in class " + this.currentDeclaration.getName() + " to " + this.subDeclaration.getName();
+		String currentUnitName = UnitKit.getCompilationUnit(this.currentDeclaration).getName();
+		super.refactoringInfo = super.refactoringInfo + "\" in class " + super.getClassName(currentUnitName, this.currentDeclaration.getFullName()) 
+				+ " to " + super.getClassName(this.unit.getName(), this.subDeclaration.getFullName());
 		
 		// Stores list of names of classes affected by refactoring.
+		String currentFileName = super.getFileName(currentUnitName, this.currentDeclaration.getFullName());
 		super.affectedClasses = new ArrayList<String>(2);
-		super.affectedClasses.add(this.currentDeclaration.getName());
-		super.affectedClasses.add(this.subDeclaration.getName());
-		super.affectedElement = this.currentDeclaration.getName();
+		super.affectedClasses.add(currentFileName);
+		super.affectedClasses.add(super.getFileName(this.unit.getName(), this.subDeclaration.getFullName()));
+		super.affectedElement = currentFileName;
 
 		return setProblemReport(EQUIVALENCE);
 	}
@@ -287,6 +289,9 @@ public class ExtractSubclass extends TypeRefactoring
 			// Prevents "Zero Service" outputs logged to the console.
 			if (td.getProgramModelInfo() == null)
 				td.getFactory().getServiceConfiguration().getChangeHistory().updateModel();
+			
+			if (!(td.getContainingClassType() instanceof TypeDeclaration))
+				return false;
 
 			boolean next;
 			boolean defaultConstructor = false;
@@ -315,6 +320,69 @@ public class ExtractSubclass extends TypeRefactoring
 				if ((md instanceof MethodDeclaration) && !(md instanceof ConstructorDeclaration))
 				{					
 					if (MethodKit.getRedefiningMethods(si, (Method) md).size() > 0)
+						continue;
+					
+					// Checks if the class contains one or more generic parameter
+					// types and the method contains a reference to it/them.
+					if (td.getTypeParameters() != null)
+					{
+						for (TypeParameterDeclaration tpd : td.getTypeParameters())
+						{
+							if (md.toSource().contains(tpd.getName()))
+							{
+								next = true;
+								break;
+							}
+						}
+					}
+					
+					if (next)
+						continue;
+					
+					// If the method contains a nested initialisation of the class type.
+					if (md.toSource().contains("new " + td.getName()))
+					{
+						next = true;
+						break;
+					}
+					
+					if (next)
+						continue;
+					
+					// Get methods referenced in method.
+					ArrayList<MethodReference> methods = super.getMethods(md);
+					
+					// Check if methods are in an outer class being accessed from a nested class.
+					for (MethodReference mr : methods)
+					{
+						Method m = si.getMethod(mr);
+
+						if (!(m.getContainingClassType().equals(td)) && (m instanceof ProgramElement) &&
+							(UnitKit.getCompilationUnit(md).equals(UnitKit.getCompilationUnit((ProgramElement) m))))
+						{
+							next = true;
+							break;
+						}
+					}
+					
+					if (next)
+						continue;
+					
+					// Get fields accessed in method.
+					ArrayList<Field> fields = super.getFields(md, si);
+
+					// Check if fields are in an outer class being accessed from a nested class.
+					for (Field f : fields)
+					{
+						if (!(f.getContainingClassType().equals(td)) && (f instanceof ProgramElement) &&
+							(UnitKit.getCompilationUnit(md).equals(UnitKit.getCompilationUnit((ProgramElement) f))))
+						{
+							next = true;
+							break;
+						}
+					}
+					
+					if (next)
 						continue;
 					
 					// Checks any reference to the method in the program and if it
@@ -358,6 +426,69 @@ public class ExtractSubclass extends TypeRefactoring
 					if (((FieldDeclaration) md).getFieldSpecifications().size() > 1)
 						continue;
 				
+					// Checks if the class contains one or more generic parameter
+					// types and the field contains a reference to it/them.
+					if (td.getTypeParameters() != null)
+					{
+						for (TypeParameterDeclaration tpd : td.getTypeParameters())
+						{
+							if (md.toSource().contains(tpd.getName()))
+							{
+								next = true;
+								break;
+							}
+						}
+					}
+					
+					if (next)
+						continue;
+					
+					// If the field contains a nested initialisation of the class type.
+					if (md.toSource().contains("new " + td.getName()))
+					{
+						next = true;
+						break;
+					}
+					
+					if (next)
+						continue;
+					
+					// Get methods referenced in field.
+					ArrayList<MethodReference> methods = super.getMethods(md);
+					
+					// Check if methods are in an outer class being accessed from a nested class.
+					for (MethodReference mr : methods)
+					{
+						Method m = si.getMethod(mr);
+
+						if (!(m.getContainingClassType().equals(td)) && (m instanceof ProgramElement) &&
+							(UnitKit.getCompilationUnit(md).equals(UnitKit.getCompilationUnit((ProgramElement) m))))
+						{
+							next = true;
+							break;
+						}
+					}
+					
+					if (next)
+						continue;
+					
+					// Get fields accessed in field.
+					ArrayList<Field> fields = super.getFields(md, si);
+
+					// Check if fields are in an outer class being accessed from a nested class.
+					for (Field f : fields)
+					{
+						if (!(f.getContainingClassType().equals(td)) && (f instanceof ProgramElement) &&
+							(UnitKit.getCompilationUnit(md).equals(UnitKit.getCompilationUnit((ProgramElement) f))))
+						{
+							next = true;
+							break;
+						}
+					}
+					
+					if (next)
+						continue;
+					
 					// Checks any reference to the field in the program and if it
 					// refers explicitly to the current class it will not be applicable.
 					for (FieldReference fr : si.getReferences(((FieldDeclaration) md).getFieldSpecifications().get(0)))
@@ -456,10 +587,8 @@ public class ExtractSubclass extends TypeRefactoring
 				
 				// Covers the case that the return type includes a generic type as in this 
 				// case it doesn't seem to catch any references to the method in the class.
-				if ((MethodKit.getReferences(si, md, td, true).size() == 0) && (md.getReturnType() != null))
-					if (((md.getReturnType() instanceof ClassType) && (((ClassType) md.getReturnType()).getTypeParameters() == null)) || 
-						(md.getReturnType() instanceof TypeParameterDeclaration) || (md.getTypeParameters() != null))
-						next = true;
+				if ((MethodKit.getReferences(si, md, td, true).size() == 0) && (md.getTypeParameters() != null))
+					next = true;
 				
 				// If the group of methods makes up more than 50% of the methods in the class, discard it.
 				if ((methodList.size() * 2) > td.getMethods().size())
@@ -583,10 +712,10 @@ public class ExtractSubclass extends TypeRefactoring
 					{
 						// If the method reference is used by a class instance.
 						if ((si.getType(((MethodReference) mr).getReferencePrefix()) instanceof TypeDeclaration) &&
-								((((MethodReference) mr).getReferencePrefix() instanceof TypeReference) || 
-										((si.getType(((MethodReference) mr).getReferencePrefix()) != null) && 
-												!(((MethodReference) mr).getReferencePrefix() instanceof ThisReference) && 
-												!(((MethodReference) mr).getReferencePrefix() instanceof SuperReference))))
+							((((MethodReference) mr).getReferencePrefix() instanceof TypeReference) || 
+							 ((si.getType(((MethodReference) mr).getReferencePrefix()) != null) && 
+							 !(((MethodReference) mr).getReferencePrefix() instanceof ThisReference) && 
+							 !(((MethodReference) mr).getReferencePrefix() instanceof SuperReference))))
 						{
 							// What is the class instance that uses the method reference.
 							TypeDeclaration referenceClass = (TypeDeclaration) si.getType(((MethodReference) mr).getReferencePrefix());
@@ -757,7 +886,7 @@ public class ExtractSubclass extends TypeRefactoring
 				ArrayList<String> elements = new ArrayList<String>();	
 
 				for (MethodDeclaration md : this.methods)
-					elements.add(md.getName());
+					elements.add(super.getMethodName(md));
 
 				for (FieldDeclaration fd : this.fields)
 				{
@@ -782,7 +911,7 @@ public class ExtractSubclass extends TypeRefactoring
 			names.add(((TypeDeclaration) tw.getProgramElement()).getName());
 
 		return names;
-	} 
+	}
 	
 	// This inner class allows sorting by name so that the list is sorted alphanumerically by the field names.
 	private class FieldComparator implements Comparator<FieldDeclaration> 

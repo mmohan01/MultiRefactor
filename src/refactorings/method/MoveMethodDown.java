@@ -14,11 +14,13 @@ import recoder.abstraction.Type;
 import recoder.bytecode.ClassFile;
 import recoder.convenience.TreeWalker;
 import recoder.java.Import;
+import recoder.java.ProgramElement;
 import recoder.java.declaration.ClassDeclaration;
 import recoder.java.declaration.ConstructorDeclaration;
 import recoder.java.declaration.MemberDeclaration;
 import recoder.java.declaration.MethodDeclaration;
 import recoder.java.declaration.TypeDeclaration;
+import recoder.java.declaration.TypeParameterDeclaration;
 import recoder.java.reference.MemberReference;
 import recoder.java.reference.MethodReference;
 import recoder.java.reference.SuperReference;
@@ -64,6 +66,11 @@ public class MoveMethodDown extends MethodRefactoring
 		MethodDeclaration md = (MethodDeclaration) super.tw.getProgramElement();
 		mayRefactor(md);
 		this.currentDeclaration = md.getMemberParent();
+		
+		// Prevents "Zero Service" outputs logged to the console.
+		if (this.currentDeclaration.getProgramModelInfo() == null)
+			md.getFactory().getServiceConfiguration().getChangeHistory().updateModel();
+
 		ArrayList<Type> types = super.getTypes(md, si);
 		this.position = super.getPosition(this.currentDeclaration, md);
 		this.identical = false;
@@ -179,14 +186,17 @@ public class MoveMethodDown extends MethodRefactoring
 		UnitKit.getCompilationUnit(this.subDeclaration).setImports(imports);
 
 		// Specify refactoring information for results information.
+		String currentUnitName = UnitKit.getCompilationUnit(this.currentDeclaration).getName();
+		String subUnitName = UnitKit.getCompilationUnit(this.subDeclaration).getName();
 		super.refactoringInfo = "Iteration " + iteration + ": \"Move Method Down\" applied to method " 
-				+ md.getName() + " from " + this.currentDeclaration.getName() + " to " + this.subDeclaration.getName();
+				+ super.getMethodName(md) + " from " + super.getClassName(currentUnitName, this.currentDeclaration.getFullName()) 
+				+ " to " + super.getClassName(subUnitName, this.subDeclaration.getFullName());
 		
 		// Stores list of names of classes affected by refactoring.
 		super.affectedClasses = new ArrayList<String>(2);
-		super.affectedClasses.add(this.currentDeclaration.getName());
-		super.affectedClasses.add(this.subDeclaration.getName());
-		super.affectedElement = md.getName();
+		super.affectedClasses.add(super.getFileName(currentUnitName, this.currentDeclaration.getFullName()));
+		super.affectedClasses.add(super.getFileName(subUnitName, this.subDeclaration.getFullName()));
+		super.affectedElement = ":" + super.getMethodName(md) + ":";
 		
 		return setProblemReport(EQUIVALENCE);
 	}
@@ -239,7 +249,7 @@ public class MoveMethodDown extends MethodRefactoring
 			 (td == null) || (td.getName() == null))
 			return false;
 		else
-		{			
+		{								
 			// Prevents "Zero Service" outputs logged to the console.
 			if (md.getMemberParent().getProgramModelInfo() == null)
 				md.getFactory().getServiceConfiguration().getChangeHistory().updateModel();
@@ -248,6 +258,13 @@ public class MoveMethodDown extends MethodRefactoring
 			if (MethodKit.getRedefiningMethods(si, md).size() > 0)
 				return false;
 			
+			// Checks if the class contains one or more generic parameter
+			// types and the method contains a reference to it/them.
+			if (td.getTypeParameters() != null)
+				for (TypeParameterDeclaration tpd : td.getTypeParameters())
+					if (md.toSource().contains(tpd.getName()))
+						return false;
+
 			// Are there any references to the method in the class outside of the method itself.
 			for (MemberReference mr : MethodKit.getReferences(si, md, td, true))
 				if (!(mr.getASTParent().equals(md)))
@@ -304,6 +321,11 @@ public class MoveMethodDown extends MethodRefactoring
 
 					if (m.equals(si.getMethod(md)))
 						continue;
+					
+					// Check if method is in an outer class being accessed from a nested class.
+					if (!(m.getContainingClassType().equals(td)) && (m instanceof ProgramElement) &&
+						(UnitKit.getCompilationUnit(md).equals(UnitKit.getCompilationUnit((ProgramElement) m))))
+						return false;
 
 					if (m.isPrivate())
 					{
@@ -340,6 +362,11 @@ public class MoveMethodDown extends MethodRefactoring
 				// Check if fields can be accessed in super type.
 				for (Field f : fields)
 				{
+					// Check if field is in an outer class being accessed from a nested class.
+					if (!(f.getContainingClassType().equals(td)) && (f instanceof ProgramElement) &&
+						(UnitKit.getCompilationUnit(md).equals(UnitKit.getCompilationUnit((ProgramElement) f))))
+						return false;
+					
 					if (f.isPrivate())
 					{
 						if (!(f.getContainingClassType().equals(std)))
@@ -492,7 +519,7 @@ public class MoveMethodDown extends MethodRefactoring
 		TreeWalker tw = new TreeWalker(getSourceFileRepository().getKnownCompilationUnits().get(unit));
 		int element = 0;
 		int from  = refactoringInfo.indexOf(" to method ") + 11;
-		int to = refactoringInfo.indexOf(' ', from);
+		int to = refactoringInfo.indexOf(") ", from) + 1;
 		String name = refactoringInfo.substring(from,  to);
 		
 		from = refactoringInfo.lastIndexOf(" to ") + 4; 
@@ -503,7 +530,7 @@ public class MoveMethodDown extends MethodRefactoring
 			element++;
 			MethodDeclaration md = (MethodDeclaration) tw.getProgramElement();
 			
-			if ((md.getName() != null) && (md.getName().equals(name)))
+			if ((md.getName() != null) && (super.getMethodName(md).equals(name)))
 				return ((mayRefactor(md)) && (this.subDeclaration.getName().equals(subclassName))) ? element : -1;
 		}
 		

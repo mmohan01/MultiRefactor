@@ -7,18 +7,19 @@ import java.io.IOException;
 import java.util.ArrayList;
 import java.util.Comparator;
 import java.util.HashMap;
+import java.util.List;
 
 import multirefactor.Configuration;
 import multirefactor.FitnessFunction;
-import multirefactor.Metrics;
 import multirefactor.RefactoringSequence;
 import recoder.CrossReferenceServiceConfiguration;
 import recoder.ParserException;
 import recoder.io.PropertyNames;
+import recoder.java.CompilationUnit;
 import refactorings.Refactoring;
 
 public abstract class GeneticAlgorithmSearch extends Search
-{	
+{		
 	public GeneticAlgorithmSearch(CrossReferenceServiceConfiguration sc, Configuration c) 
 	{
 		super(sc, c);
@@ -29,9 +30,11 @@ public abstract class GeneticAlgorithmSearch extends Search
 		super(sc);
 	}
 
-	// Checks if the priority objective is being used in the search and if so, stores the
-	// priority classes and, if relevant, non priority classes in the fitness function object.
-	protected void setPriority(FitnessFunction ff, Configuration c)
+	// Checks if the priority objective is being used in the search and if so, 
+	// stores the priority classes and, if relevant, non priority classes in 
+	// the fitness function object. Also checks if the element recentness 
+	// objective is used and stores the previous versions of the code if so.
+	protected static void setAdditionalInfo(FitnessFunction ff, Configuration c)
 	{
 		// If priority objective is being used.
 		if (c.getPriorityClasses() != null)
@@ -40,6 +43,20 @@ public abstract class GeneticAlgorithmSearch extends Search
 		// If priority objective is being used and there are also non priority classes.
 		if (c.getNonPriorityClasses() != null)
 			ff.setNonPriorityClasses(c.getNonPriorityClasses());
+		
+		// If element recentness objective is being used.
+		if (c.getPreviousUnits() != null)
+			ff.setPreviousUnits(c.getPreviousUnits());
+	}
+	
+	// Avoids creating a new metric object by instead resetting its components with setter methods.
+	// This allows information to be stored in the metrics object for calculation of the element 
+	// recentness objective and updated as the search goes along, without losing the updated information.
+	protected void resetMetrics(List<CompilationUnit> units, ArrayList<String> affectedClasses, HashMap<String, Integer> elementDiversity)
+	{
+		super.m.setUnits(units);
+		super.m.setAffectedClasses(affectedClasses);
+		super.m.setElementDiversity(elementDiversity);
 	}
 	 	
 	// Output search information to results file.
@@ -88,7 +105,7 @@ public abstract class GeneticAlgorithmSearch extends Search
 				j = refactoringAmount;
 			}
 			else
-			{						
+			{
 				nameSequence.add(super.sc.getSourceFileRepository().getKnownCompilationUnits().get(result[1]).getName());
 				refactorings.get(result[0]).transform(refactorings.get(result[0]).analyze((j + 1), result[1], result[2]));
 				refactoringInfo.add(refactorings.get(result[0]).getRefactoringInfo());
@@ -116,7 +133,11 @@ public abstract class GeneticAlgorithmSearch extends Search
 
 		for (int i = 0; i < this.sc.getSourceFileRepository().getKnownCompilationUnits().size(); i++)
 		{
-			int index = this.sc.getSourceFileRepository().getKnownCompilationUnits().get(i).getName().indexOf("MultiRefactor\\") + 14;
+			int index = 5;
+			
+			if (this.sc.getSourceFileRepository().getKnownCompilationUnits().get(i).getName().indexOf("MultiRefactor\\") != 0)
+				index = this.sc.getSourceFileRepository().getKnownCompilationUnits().get(i).getName().indexOf("MultiRefactor\\") + 14;
+			
 			String unitName = this.sc.getSourceFileRepository().getKnownCompilationUnits().get(i).getName().substring(index);
 
 			if (name.endsWith(unitName))
@@ -270,12 +291,12 @@ public abstract class GeneticAlgorithmSearch extends Search
 			solution = applyRefactoring(p, result, refactorings);
 			
 			// Calculate fitness up front so current model isn't needed at a later point.
-			Metrics m = new Metrics(super.sc.getSourceFileRepository().getKnownCompilationUnits(), solution.getAffectedClasses(), 
-					                solution.getElementDiversity());	
+			resetMetrics(super.sc.getSourceFileRepository().getKnownCompilationUnits(), solution.getAffectedClasses(), 
+	                	 solution.getElementDiversity());
 			float finalScore[] = new float[ff.length];
 
 			for (int j = 0; j < ff.length; j++)
-				finalScore[j] = ff[j].calculateNormalisedScore(m);
+				finalScore[j] = ff[j].calculateNormalisedScore(super.m);
 			solution.setMOFitness(finalScore);
 		}
 		else

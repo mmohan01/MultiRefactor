@@ -188,14 +188,14 @@ public class ManyObjectiveSearch extends GeneticAlgorithmSearch
 	private ArrayList<RefactoringSequence> initialise()
 	{
 		ArrayList<RefactoringSequence> population = new ArrayList<RefactoringSequence>(this.populationSize);
-		Metrics m = new Metrics(super.sc.getSourceFileRepository().getKnownCompilationUnits());	
+		super.m = new Metrics(super.sc.getSourceFileRepository().getKnownCompilationUnits());	
 		float benchmark[] = new float[this.c.length];
 		float finalScore[] = new float[this.c.length];
 		
 		for (int i = 0; i < this.c.length; i++)
 		{
-			this.ff[i] = new FitnessFunction(m, this.c[i].getConfiguration());
-			super.setPriority(this.ff[i], this.c[i]);
+			this.ff[i] = new FitnessFunction(super.m, this.c[i].getConfiguration());
+			super.setAdditionalInfo(this.ff[i], this.c[i]);
 			benchmark[i] = 0.0f;
 		}
 		
@@ -212,10 +212,10 @@ public class ManyObjectiveSearch extends GeneticAlgorithmSearch
 			population.add(super.createInitialSolution(this.initialRefactoringRange, this.refactorings, i + 1));
 			
 			// Calculate fitness up front so current model isn't needed at a later point.
-			m = new Metrics(super.sc.getSourceFileRepository().getKnownCompilationUnits(), population.get(i).getAffectedClasses(), 
-							population.get(i).getElementDiversity());
+			super.resetMetrics(super.sc.getSourceFileRepository().getKnownCompilationUnits(), population.get(i).getAffectedClasses(), 
+							   population.get(i).getElementDiversity());
 			for (int j = 0; j < this.c.length; j++)
-				finalScore[j] = this.ff[j].calculateNormalisedScore(m);
+				finalScore[j] = this.ff[j].calculateNormalisedScore(super.m);
 			population.get(i).setMOFitness(finalScore.clone());
 		}
 		
@@ -228,7 +228,6 @@ public class ManyObjectiveSearch extends GeneticAlgorithmSearch
 	{						
 		ArrayList<RefactoringSequence> children = new ArrayList<RefactoringSequence>(2);
 		float finalScore[] = new float[this.c.length];
-		Metrics m;
 		
 		// For each refactoring sequence passed in, a cut point is randomly chosen.
 		int cutPoint1 = (Math.random() < 0.5) ? 1 : p1.getRefactorings().size() - 1;
@@ -239,9 +238,9 @@ public class ManyObjectiveSearch extends GeneticAlgorithmSearch
 		RefactoringSequence child1 = super.generateChild(p1, p2, cutPoint1, cutPoint2, 1, this.refactorings);
 		
 		// Calculate fitness up front so current model isn't needed at a later point.
-		m = new Metrics(super.sc.getSourceFileRepository().getKnownCompilationUnits(), child1.getAffectedClasses(), child1.getElementDiversity());		
+		super.resetMetrics(super.sc.getSourceFileRepository().getKnownCompilationUnits(), child1.getAffectedClasses(), child1.getElementDiversity());	
 		for (int j = 0; j < this.c.length; j++)
-			finalScore[j] = this.ff[j].calculateNormalisedScore(m);
+			finalScore[j] = this.ff[j].calculateNormalisedScore(super.m);
 		child1.setMOFitness(finalScore.clone());
 		children.add(child1);
 		
@@ -250,9 +249,9 @@ public class ManyObjectiveSearch extends GeneticAlgorithmSearch
 		RefactoringSequence child2 = super.generateChild(p2, p1, cutPoint2, cutPoint1, 2, this.refactorings);
 
 		// Calculate fitness up front so current model isn't needed at a later point.
-		m = new Metrics(super.sc.getSourceFileRepository().getKnownCompilationUnits(), child2.getAffectedClasses(), child2.getElementDiversity());		
+		super.resetMetrics(super.sc.getSourceFileRepository().getKnownCompilationUnits(), child2.getAffectedClasses(), child2.getElementDiversity());	
 		for (int j = 0; j < this.c.length; j++)
-			finalScore[j] = this.ff[j].calculateNormalisedScore(m);
+			finalScore[j] = this.ff[j].calculateNormalisedScore(super.m);
 		child2.setMOFitness(finalScore.clone());
 		children.add(child2);
 

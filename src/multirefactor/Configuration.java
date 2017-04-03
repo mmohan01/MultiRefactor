@@ -5,6 +5,7 @@ import java.io.File;
 import java.io.FileReader;
 import java.io.IOException;
 import java.util.ArrayList;
+import java.util.List;
 
 import javax.xml.parsers.DocumentBuilder;
 import javax.xml.parsers.DocumentBuilderFactory;
@@ -15,19 +16,24 @@ import org.w3c.dom.NodeList;
 import org.xml.sax.SAXException;
 
 import recoder.CrossReferenceServiceConfiguration;
+import recoder.ParserException;
+import recoder.io.PropertyNames;
+import recoder.java.CompilationUnit;
 import refactorings.Refactoring;
 import refactorings.field.*;
 import refactorings.method.*;
 import refactorings.type.*;
+import tasks.Tasks;
 
 public class Configuration 
 {
-	private ArrayList<Triple<String, Boolean, Float>> configuration;
+	private ArrayList<MetricSpecification> configuration;
 	private ArrayList<Refactoring> refactorings;
 	private ArrayList<String> priorityClasses;
 	private ArrayList<String> nonPriorityClasses;
+	private ArrayList<List<CompilationUnit>> previousUnits;
 	
-	public Configuration(ArrayList<Triple<String, Boolean, Float>> configuration, ArrayList<Refactoring> refactorings)
+	public Configuration(ArrayList<MetricSpecification> configuration, ArrayList<Refactoring> refactorings)
 	{
 		this.configuration = configuration;
 		this.refactorings = refactorings;
@@ -36,7 +42,7 @@ public class Configuration
 	public Configuration(ArrayList<String> name, ArrayList<Boolean> maximise, ArrayList<Float> weight, ArrayList<Refactoring> refactorings)
 	{
 		this.refactorings = refactorings;
-		this.configuration = new ArrayList<Triple<String, Boolean, Float>>();
+		this.configuration = new ArrayList<MetricSpecification>();
 		
 		for (int i = 0; i < name.size(); i++)
 		{
@@ -45,7 +51,7 @@ public class Configuration
 			if (i >= weight.size())
 				weight.add(i, 1.0f);
 			
-			Triple<String, Boolean, Float> element = new Triple<String, Boolean, Float>(name.get(i), maximise.get(i), weight.get(i));
+			MetricSpecification element = new MetricSpecification(name.get(i), maximise.get(i), weight.get(i));
 			this.configuration.add(element);
 		}
 	}
@@ -53,7 +59,7 @@ public class Configuration
 	public Configuration(String[] name, boolean[] maximise, float[] weight, ArrayList<Refactoring> refactorings)
 	{
 		this.refactorings = refactorings;
-		this.configuration = new ArrayList<Triple<String, Boolean, Float>>();
+		this.configuration = new ArrayList<MetricSpecification>();
 		
 		for (int i = 0; i < name.length; i++)
 		{
@@ -62,7 +68,7 @@ public class Configuration
 			if (i >= weight.length)
 				weight[i-1] = 1;
 			
-			Triple<String, Boolean, Float> element = new Triple<String, Boolean, Float>(name[i], maximise[i], weight[i]);
+			MetricSpecification element = new MetricSpecification(name[i], maximise[i], weight[i]);
 			this.configuration.add(element);
 		}
 	}
@@ -70,7 +76,7 @@ public class Configuration
 	public Configuration(String pathway, ArrayList<Refactoring> refactorings)
 	{
 		this.refactorings = refactorings;
-		this.configuration = new ArrayList<Triple<String, Boolean, Float>>();
+		this.configuration = new ArrayList<MetricSpecification>();
 		File file = new File(pathway);
 		
 		if (file.exists())
@@ -83,10 +89,16 @@ public class Configuration
 					String line;
 					boolean executeWhile = true;
 					
-					if (br.readLine().equals("PRIORITY"))
+					switch (br.readLine()) 
 					{
+					case "PRIORITY":
 						readPriority(br);
 						executeWhile = false;
+						break;
+					case "ELEMENT RECENTNESS":
+						readElementRecentness(br);
+						executeWhile = false;
+						break;
 					}
 					
 					br = new BufferedReader(new FileReader(file));
@@ -95,7 +107,7 @@ public class Configuration
 					{
 						// \\s+ means any number of white spaces between tokens
 						String [] tokens = line.split("\\s+");
-						Triple<String, Boolean, Float> element = new Triple<String, Boolean, Float>(tokens[0], tokens[1].equals("true"), Float.parseFloat(tokens[2]));
+						MetricSpecification element = new MetricSpecification(tokens[0], tokens[1].equals("true"), Float.parseFloat(tokens[2]));
 						this.configuration.add(element);
 					}
 
@@ -122,7 +134,7 @@ public class Configuration
 						String name = nodes.item(i).getAttributes().getNamedItem("name").getTextContent();
 						boolean maximise = nodes.item(i).getAttributes().getNamedItem("maximise").getTextContent().equals("true");
 						float weight = Float.parseFloat(nodes.item(i).getAttributes().getNamedItem("weight").getTextContent());
-						Triple<String, Boolean, Float> element = new Triple<String, Boolean, Float>(name, maximise, weight);
+						MetricSpecification element = new MetricSpecification(name, maximise, weight);
 						this.configuration.add(element);
 					}
 				} 
@@ -137,7 +149,7 @@ public class Configuration
 	
 	public Configuration(String pathway)
 	{
-		this.configuration = new ArrayList<Triple<String, Boolean, Float>>();
+		this.configuration = new ArrayList<MetricSpecification>();
 		File file = new File(pathway);
 		
 		if (file.exists())
@@ -150,10 +162,16 @@ public class Configuration
 					String line;
 					boolean executeWhile = true;
 
-					if (br.readLine().equals("PRIORITY"))
+					switch (br.readLine()) 
 					{
+					case "PRIORITY":
 						readPriority(br);
 						executeWhile = false;
+						break;
+					case "ELEMENT RECENTNESS":
+						readElementRecentness(br);
+						executeWhile = false;
+						break;
 					}
 					
 					br = new BufferedReader(new FileReader(file));
@@ -162,7 +180,7 @@ public class Configuration
 					{
 						// \\s+ means any number of white spaces between tokens
 						String [] tokens = line.split("\\s+");
-						Triple<String, Boolean, Float> element = new Triple<String, Boolean, Float>(tokens[0], tokens[1].equals("true"), Float.parseFloat(tokens[2]));
+						MetricSpecification element = new MetricSpecification(tokens[0], tokens[1].equals("true"), Float.parseFloat(tokens[2]));
 						this.configuration.add(element);
 					}
 
@@ -189,7 +207,7 @@ public class Configuration
 						String name = nodes.item(i).getAttributes().getNamedItem("name").getTextContent();
 						boolean maximise = nodes.item(i).getAttributes().getNamedItem("maximise").getTextContent().equals("true");
 						float weight = Float.parseFloat(nodes.item(i).getAttributes().getNamedItem("weight").getTextContent());
-						Triple<String, Boolean, Float> element = new Triple<String, Boolean, Float>(name, maximise, weight);
+						MetricSpecification element = new MetricSpecification(name, maximise, weight);
 						this.configuration.add(element);
 					}
 				} 
@@ -210,24 +228,24 @@ public class Configuration
 		
 		for (Refactoring r : refactorings)
 		{
-			if (r instanceof DecreaseMethodSecurity)
+			if (r instanceof DecreaseMethodVisibility)
 			{
-				DecreaseMethodSecurity dms = new DecreaseMethodSecurity(sc);
+				DecreaseMethodVisibility dms = new DecreaseMethodVisibility(sc);
 				newRefactorings.add(dms);
 			}
-			else if (r instanceof DecreaseFieldSecurity)
+			else if (r instanceof DecreaseFieldVisibility)
 			{
-				DecreaseFieldSecurity dfs = new DecreaseFieldSecurity(sc);
+				DecreaseFieldVisibility dfs = new DecreaseFieldVisibility(sc);
 				newRefactorings.add(dfs);
 			}
-			else if (r instanceof IncreaseMethodSecurity)
+			else if (r instanceof IncreaseMethodVisibility)
 			{
-				IncreaseMethodSecurity ims = new IncreaseMethodSecurity(sc);
+				IncreaseMethodVisibility ims = new IncreaseMethodVisibility(sc);
 				newRefactorings.add(ims);
 			}
-			else if (r instanceof IncreaseFieldSecurity)
+			else if (r instanceof IncreaseFieldVisibility)
 			{
-				IncreaseFieldSecurity ifs = new IncreaseFieldSecurity(sc);
+				IncreaseFieldVisibility ifs = new IncreaseFieldVisibility(sc);
 				newRefactorings.add(ifs);
 			}
 			else if (r instanceof MakeClassAbstract)
@@ -353,13 +371,13 @@ public class Configuration
 	}
 
 	// Reads in and stores classes from text input when the priority objective is being used.
-	// Also checks is non priority classes are included and stores them separately if so.
+	// Also checks if non priority classes are included and stores them separately if so.
 	private void readPriority(BufferedReader br)
 	{
 		String line;
 		boolean priority = true;
 		this.priorityClasses = new ArrayList<String>();
-		this.configuration.add(new Triple<String, Boolean, Float>("priority", true, 1.0f));
+		this.configuration.add(new MetricSpecification("priority", true, 1.0f));
 
 		try
 		{
@@ -384,9 +402,42 @@ public class Configuration
 			System.exit(1);
 		}
 	}
+	
+	// Reads in program pathways from text input when the element recentness objective is being used.
+	// These pathways are then used to read and store the set of strings representing the source code in each pathway.
+	private void readElementRecentness(BufferedReader br)
+	{
+		String line;
+		this.previousUnits = new ArrayList<List<CompilationUnit>>();
+		this.configuration.add(new MetricSpecification("elementRecentness", true, 1.0f));
+		System.out.printf("\n\nReading previous versions of project from the following pathways:");
+
+		try
+		{
+			while ((line = br.readLine()) != null)
+			{
+				System.out.printf("\n  %s", line);
+				CrossReferenceServiceConfiguration sc = new CrossReferenceServiceConfiguration();
+				sc.getSourceFileRepository().getCompilationUnitsFromFiles(Tasks.read(line));
+				sc.getProjectSettings().setProperty(PropertyNames.INPUT_PATH, line + Tasks.readLibs(line));
+				sc.getProjectSettings().ensureSystemClassesAreInPath();
+				sc.getChangeHistory().updateModel();
+				this.previousUnits.add(sc.getSourceFileRepository().getKnownCompilationUnits());				
+			}
+		} 
+		catch (IOException | ParserException e) 
+		{
+			if (e instanceof IOException)
+				System.out.println("\r\nEXCEPTION: Cannot read source code from previous version pathways in text file.");
+			else
+				System.out.println("\r\nEXCEPTION: Cannot extract compilation units from previous version pathways in text file.");
+			
+			System.exit(1);
+		}
+	}
 
 	
-	public ArrayList<Triple<String, Boolean, Float>> getConfiguration()
+	public ArrayList<MetricSpecification> getConfiguration()
 	{
 		return this.configuration;
 	}
@@ -395,18 +446,18 @@ public class Configuration
 	{
 		boolean present = false;
 		
-		for (Triple<String, Boolean, Float> element : this.configuration)
+		for (MetricSpecification element : this.configuration)
 		{
-			if (element.getFirst().equals(name))
+			if (element.getName().equals(name))
 			{
-				element.setSecond(maximise);
-				element.setThird(weight);
+				element.setMaximise(maximise);
+				element.setWeight(weight);
 				present = true;
 			}
 		}
 		
 		if (!present)
-			this.configuration.add(new Triple<String, Boolean, Float>(name, maximise, weight));
+			this.configuration.add(new MetricSpecification(name, maximise, weight));
 			
 		return !present;
 	}
@@ -440,5 +491,10 @@ public class Configuration
 	public ArrayList<String> getNonPriorityClasses()
 	{
 		return this.nonPriorityClasses;
+	}
+	
+	public ArrayList<List<CompilationUnit>> getPreviousUnits()
+	{
+		return this.previousUnits;
 	}
 }

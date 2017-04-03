@@ -8,6 +8,7 @@ import recoder.convenience.TreeWalker;
 import recoder.java.declaration.TypeDeclaration;
 import recoder.kit.Problem;
 import recoder.kit.ProblemReport;
+import recoder.kit.UnitKit;
 import recoder.kit.transformation.Modify;
 import refactorings.TypeRefactoring;
 
@@ -34,6 +35,10 @@ public class MakeClassNonFinal extends TypeRefactoring
 		TypeDeclaration td = (TypeDeclaration) super.tw.getProgramElement();
 		int counter = -1;
 		
+		// Prevents "Zero Service" outputs logged to the console.
+		if (td.getProgramModelInfo() == null)
+			td.getFactory().getServiceConfiguration().getChangeHistory().updateModel();
+
 		// Find iterator in declaration list.		
 		for (int i = 0; i < td.getDeclarationSpecifiers().size(); i++)
 			if (td.getDeclarationSpecifiers().get(i).toString().contains("Final"))
@@ -47,12 +52,14 @@ public class MakeClassNonFinal extends TypeRefactoring
 		detach(td.getDeclarationSpecifiers().get(counter));
 
 		// Specify refactoring information for results information.
-		super.refactoringInfo = "Iteration " + iteration + ": \"Make Class Non Final\" applied to class " + td.getName();
+		super.refactoringInfo = "Iteration " + iteration + ": \"Make Class Non Final\" applied to class " 
+		        + super.getClassName(UnitKit.getCompilationUnit(td).getName(), td.getFullName());
 		
 		// Stores list of names of classes affected by refactoring.
+		String fileName = super.getFileName(UnitKit.getCompilationUnit(td).getName(), td.getFullName());
 		super.affectedClasses = new ArrayList<String>(1);
-		super.affectedClasses.add(td.getName());
-		super.affectedElement = td.getName();
+		super.affectedClasses.add(fileName);
+		super.affectedElement = fileName;
 
 		return setProblemReport(EQUIVALENCE);
 	}

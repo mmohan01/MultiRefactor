@@ -37,6 +37,10 @@ public class MakeMethodFinal extends MethodRefactoring
 			super.tw.next(MethodDeclaration.class);
 		
 		MethodDeclaration md = (MethodDeclaration) super.tw.getProgramElement();
+		
+		// Prevents "Zero Service" outputs logged to the console.
+		if (md.getMemberParent().getProgramModelInfo() == null)
+			md.getFactory().getServiceConfiguration().getChangeHistory().updateModel();
 
 		// Construct refactoring transformation.
 		super.transformation = new Modify(config, true, md, AccessFlags.FINAL);
@@ -45,14 +49,15 @@ public class MakeMethodFinal extends MethodRefactoring
 			return setProblemReport(report);
 
 		// Specify refactoring information for results information.
+		String unitName = getSourceFileRepository().getKnownCompilationUnits().get(unit).getName();
+		String typeName = MiscKit.getParentTypeDeclaration(md).getFullName();
 		super.refactoringInfo = "Iteration " + iteration + ": \"Make Method Final\" applied at class " 
-				+ super.getFileName(getSourceFileRepository().getKnownCompilationUnits().get(unit).getName())
-				+ " to method " + md.getName();
+				+ super.getClassName(unitName, typeName) + " to method " + super.getMethodName(md);
 		
 		// Stores list of names of classes affected by refactoring.
 		super.affectedClasses = new ArrayList<String>(1);
-		super.affectedClasses.add(super.getFileName(getSourceFileRepository().getKnownCompilationUnits().get(unit).getName()));
-		super.affectedElement = md.getName();
+		super.affectedClasses.add(super.getFileName(unitName, typeName));
+		super.affectedElement = ":" + super.getMethodName(md) + ":";
 
 		return setProblemReport(EQUIVALENCE);
 	}

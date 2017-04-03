@@ -17,7 +17,7 @@ public abstract class FieldRefactoring extends Refactoring
 	}
 	
 	protected abstract boolean mayRefactor(FieldDeclaration fd);
-
+	
 	public int getAmount(int unit)
 	{
 		int counter = 0;
@@ -64,8 +64,9 @@ public abstract class FieldRefactoring extends Refactoring
 		{
 			element++;
 			FieldDeclaration fd = (FieldDeclaration) tw.getProgramElement();
+			int last = fd.toString().lastIndexOf(">");
 			
-			if ((fd.toString() != null) && (fd.toString().equals(name)))
+			if ((fd.toString() != null) && (fd.toString().substring(last + 2).equals(name)))
 				return (mayRefactor(fd)) ? element : -1;
 		}
 		

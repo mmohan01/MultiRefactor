@@ -40,6 +40,10 @@ public class RemoveField extends FieldRefactoring
 		this.type = MiscKit.getParentTypeDeclaration(this.field);
 		this.position = super.getPosition(this.type, this.field);
 		
+		// Prevents "Zero Service" outputs logged to the console.
+		if (this.type.getProgramModelInfo() == null)
+			this.field.getFactory().getServiceConfiguration().getChangeHistory().updateModel();
+		
 		// Construct refactoring transformation.
 		// The transformation is handled here manually and the transformation
 		// method will do nothing for this refactoring when it is called.
@@ -48,14 +52,14 @@ public class RemoveField extends FieldRefactoring
 		detach(this.field);
 
 		// Specify refactoring information for results information.
+		String unitName = getSourceFileRepository().getKnownCompilationUnits().get(unit).getName();
 		super.refactoringInfo = "Iteration " + iteration + ": \"Remove Field\" applied at class "
-				+ super.getFileName(getSourceFileRepository().getKnownCompilationUnits().get(unit).getName())
-				+ " to field " + this.field.toString().substring(last + 2);
+				+ super.getClassName(unitName, this.type.getFullName())	+ " to field " + this.field.toString().substring(last + 2);
 		
 		// Stores list of names of classes affected by refactoring.
 		super.affectedClasses = new ArrayList<String>(1);
-		super.affectedClasses.add(super.getFileName(getSourceFileRepository().getKnownCompilationUnits().get(unit).getName()));
-		super.affectedElement = this.field.toString().substring(last + 2);
+		super.affectedClasses.add(super.getFileName(unitName, this.type.getFullName()));
+		super.affectedElement = "::" + this.field.toString();
 		
 		return setProblemReport(EQUIVALENCE);
 	}

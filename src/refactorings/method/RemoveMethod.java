@@ -10,6 +10,7 @@ import recoder.java.declaration.ConstructorDeclaration;
 import recoder.java.declaration.MethodDeclaration;
 import recoder.java.declaration.TypeDeclaration;
 import recoder.kit.MethodKit;
+import recoder.kit.MiscKit;
 import recoder.kit.ProblemReport;
 import refactorings.MethodRefactoring;
 
@@ -44,6 +45,7 @@ public class RemoveMethod extends MethodRefactoring
 		if (this.type.getProgramModelInfo() == null)
 			this.method.getFactory().getServiceConfiguration().getChangeHistory().updateModel();
 		
+		String name = MiscKit.getParentTypeDeclaration(this.method).getFullName();
 		this.position = super.getPosition(this.type, this.method);
 		this.abstractMethodPosition = -1;
 		ArrayList<Type> types = (ArrayList<Type>) this.method.getSignature();
@@ -72,14 +74,14 @@ public class RemoveMethod extends MethodRefactoring
 		}
 
 		// Specify refactoring information for results information.
+		String unitName = getSourceFileRepository().getKnownCompilationUnits().get(unit).getName();
 		super.refactoringInfo = "Iteration " + iteration + ": \"Remove Method\" applied at class " 
-				+ super.getFileName(getSourceFileRepository().getKnownCompilationUnits().get(unit).getName())
-				+ " to method " + this.method.getName();
+				+ super.getClassName(unitName, name) + " to method " + super.getMethodName(this.method);
 		
 		// Stores list of names of classes affected by refactoring.
 		super.affectedClasses = new ArrayList<String>(1);
-		super.affectedClasses.add(super.getFileName(getSourceFileRepository().getKnownCompilationUnits().get(unit).getName()));
-		super.affectedElement = this.method.getName();
+		super.affectedClasses.add(super.getFileName(unitName, name));
+		super.affectedElement = ":" + super.getMethodName(this.method) + ":";
 	
 		return setProblemReport(EQUIVALENCE);
 	}

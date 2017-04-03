@@ -20,6 +20,7 @@ public abstract class Search
 {
 	protected CrossReferenceServiceConfiguration sc;
 	protected Configuration c;
+	protected Metrics m;
 	protected String resultsPath;
 	protected ArrayList<String> refactoringInfo;
 	
@@ -280,19 +281,11 @@ public abstract class Search
 	}
 	
 	// Outputs the metric values for the project.
-	protected void outputMetrics(float score, Metrics metric, boolean initial, boolean log, String pathName)
+	protected void outputMetrics(float score, boolean initial, boolean log, String pathName)
 	{
 		FitnessFunction ff = new FitnessFunction(this.c.getConfiguration());
-		
-		// If priority objective is being used.
-		if (this.c.getPriorityClasses() != null)
-			ff.setPriorityClasses(this.c.getPriorityClasses());
-		
-		// If priority objective is being used and there are also non priority classes.
-		if (this.c.getNonPriorityClasses() != null)
-			ff.setNonPriorityClasses(this.c.getNonPriorityClasses());
-		
-		String[] outputs = ff.createOutput(metric);
+		GeneticAlgorithmSearch.setAdditionalInfo(ff, this.c);		
+		String[] outputs = ff.createOutput(this.m);
 		
 		// Create a location for the results output.
 		String runName = String.format("%sresults.txt", pathName);

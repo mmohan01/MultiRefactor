@@ -31,14 +31,19 @@ public class RemoveClass extends TypeRefactoring
 	public ProblemReport analyze(int iteration, int unit, int element) 
 	{		
 		// Initialise and pick the element to visit.
-		super.tw = new TreeWalker(getSourceFileRepository().getKnownCompilationUnits().get(unit));
+		this.unit = getSourceFileRepository().getKnownCompilationUnits().get(unit);
+		super.tw = new TreeWalker(this.unit);
 		
 		for (int i = 0; i < element; i++)
 			super.tw.next(TypeDeclaration.class);
 		
 		this.type = (TypeDeclaration) super.tw.getProgramElement();
-		this.unit = getSourceFileRepository().getKnownCompilationUnits().get(unit);
+		String unitName = this.unit.getName();
 		this.unitPosition = unit;
+		
+		// Prevents "Zero Service" outputs logged to the console.
+		if (this.type.getProgramModelInfo() == null)
+			this.type.getFactory().getServiceConfiguration().getChangeHistory().updateModel();
 		
 		if (this.type.getContainingClassType() == null)
 		{
@@ -69,12 +74,14 @@ public class RemoveClass extends TypeRefactoring
 			detach(this.type);
 		
 		// Specify refactoring information for results information.
-		super.refactoringInfo = "Iteration " + iteration + ": \"Remove Class\" applied to class " + this.type.getName();
+		super.refactoringInfo = "Iteration " + iteration + ": \"Remove Class\" applied to class " 
+		        + super.getClassName(unitName, this.type.getFullName());
 		
 		// Stores list of names of classes affected by refactoring.
+		String fileName = super.getFileName(unitName, this.type.getFullName());
 		super.affectedClasses = new ArrayList<String>(1);
-		super.affectedClasses.add(this.type.getName());
-		super.affectedElement = this.type.getName();
+		super.affectedClasses.add(fileName);
+		super.affectedElement = fileName;
 				
 		getChangeHistory().updateModel();
 		return setProblemReport(EQUIVALENCE);

@@ -38,11 +38,10 @@ public class RandomSearch extends Search
 
 	public void run()
 	{
-		Metrics m = new Metrics(super.sc.getSourceFileRepository().getKnownCompilationUnits());				
-		FitnessFunction ff = new FitnessFunction(m, super.c.getConfiguration());
+		super.m = new Metrics(super.sc.getSourceFileRepository().getKnownCompilationUnits());				
 		super.refactoringInfo = new ArrayList<String>();
-		ArrayList<Integer> refactorings = new ArrayList<Integer>(this.iterations);
-		ArrayList<int[]> positions = new ArrayList<int[]>(this.iterations);
+		FitnessFunction ff = new FitnessFunction(super.m, super.c.getConfiguration());
+		ArrayList<int[]> results = new ArrayList<int[]>(this.iterations);
 
 		float benchmark = 0.0f;
 		float best = benchmark;
@@ -52,7 +51,7 @@ public class RandomSearch extends Search
 
 		String runInfo = String.format("Search: Random\r\nIterations: %d", this.iterations);
 		super.outputSearchInfo(super.resultsPath, runInfo);
-		super.outputMetrics(benchmark, m, true, true, super.resultsPath);
+		super.outputMetrics(benchmark, true, true, super.resultsPath);
 		System.out.printf("\r\n\r\nRefactoring...");
 		long timeTaken, startTime = System.currentTimeMillis();
 		double time;
@@ -66,7 +65,7 @@ public class RandomSearch extends Search
 			// Random element is then chosen from the available amount.
 			position = super.randomRefactoring(super.c.getRefactorings());
 				
-			if (position[2] == -1)
+			if (position[0] == -1)
 			{
 				System.out.printf("\r\nSearch terminated before specified number of iterations due to lack of available refactorings");
 				this.iterations = i - 1;
@@ -74,16 +73,13 @@ public class RandomSearch extends Search
 			}
 
 			// Refactoring is applied to that element.
-			super.c.getRefactorings().get(position[2]).transform(super.c.getRefactorings().get(position[2]).analyze(i, position[0], position[1]));
-			super.refactoringInfo.add(super.c.getRefactorings().get(position[2]).getRefactoringInfo());
-			System.out.printf("\r\n%s", super.c.getRefactorings().get(position[2]).getRefactoringInfo());
-			newValue = ff.calculateNormalisedScore(m);
+			super.c.getRefactorings().get(position[0]).transform(super.c.getRefactorings().get(position[0]).analyze(i, position[1], position[2]));
+			super.refactoringInfo.add(super.c.getRefactorings().get(position[0]).getRefactoringInfo());
+			System.out.printf("\r\n%s", super.c.getRefactorings().get(position[0]).getRefactoringInfo());
+			newValue = ff.calculateNormalisedScore(super.m);
 				
 			if (this.getBest)
-			{
-				refactorings.add(position[2]);
-				positions.add(position);
-			}
+				results.add(position);
 
 			if (newValue > best)
 			{
@@ -95,7 +91,7 @@ public class RandomSearch extends Search
 			{
 				timeTaken = System.currentTimeMillis() - startTime;
 				time = timeTaken / 1000.0;
-				int percent = (int) ((float) i / this.iterations*100);
+				int percent = (int) ((float) i / this.iterations * 100);
 				System.out.printf("\r\n  Search has taken %.2fs so far (%d%% complete)", time, percent);
 			}
 		}
@@ -107,7 +103,7 @@ public class RandomSearch extends Search
 		super.outputRefactoringInfo(super.resultsPath, time, best - benchmark);
 
 		// Output the final metric values to the results file.
-		super.outputMetrics(newValue, m, false, true, super.resultsPath);
+		super.outputMetrics(newValue, false, true, super.resultsPath);
 
 		// Output the best value measured during the search and at what iteration it was acquired.
 		System.out.printf("\r\n\r\nBest score acquired was %.2f at iteration %d", best, bestIteration);
@@ -142,8 +138,8 @@ public class RandomSearch extends Search
 			
 			for (int i = 0; i < bestIteration; i++)
 			{
-				super.c.getRefactorings().get(refactorings.get(i)).transform(super.c.getRefactorings().get(refactorings.get(i))
-					   .analyze(i + 1, positions.get(i)[0], positions.get(i)[1]));
+				super.c.getRefactorings().get(results.get(i)[0]).transform(super.c.getRefactorings().get(results.get(i)[0])
+					   .analyze(i + 1, results.get(i)[1], results.get(i)[2]));
 			}
 		}
 		

@@ -4,6 +4,7 @@ import java.util.ArrayList;
 import java.util.HashMap;
 import java.util.HashSet;
 import java.util.List;
+import java.util.Map.Entry;
 import java.util.Set;
 
 import recoder.abstraction.ClassType;
@@ -31,6 +32,7 @@ import recoder.java.reference.TypeReference;
 import recoder.kit.MethodKit;
 import recoder.service.CrossReferenceSourceInfo;
 import recoder.service.SourceInfo;
+import refactorings.Refactoring;
 
 // Calculates various software metrics from the source code input.
 // Contains implementations of the full QMOOD suite and 2 metrics from the CK suite.
@@ -39,43 +41,22 @@ public class Metrics
 	private List<CompilationUnit> units;
 	private ArrayList<String> affectedClasses;
 	private HashMap<String, Integer> elementDiversity;
-	private AbstractTreeWalker tw;
+	private HashMap<String, Integer> elementScores;
 	
 	public Metrics(List<CompilationUnit> units)
 	{
 		this.units = units;
+		this.elementScores = new HashMap<String, Integer>();
 	}
 	
-	// Constructor used to store information for priority objective.
-	public Metrics(List<CompilationUnit> units, ArrayList<String> affectedClasses)
-	{
-		this.units = units;
-		this.affectedClasses = affectedClasses;
-	}
-	
-	// Constructor used to store information for diversity objective.
-	public Metrics(List<CompilationUnit> units, HashMap<String, Integer> elementDiversity)
-	{
-		this.units = units;
-		this.elementDiversity = elementDiversity;
-	}
-	
-	// Constructor used to store information for both the priority and diversity objectives.
-	public Metrics(List<CompilationUnit> units, ArrayList<String> affectedClasses, HashMap<String, Integer> elementDiversity)
-	{
-		this.units = units;
-		this.affectedClasses = affectedClasses;
-		this.elementDiversity = elementDiversity;
-	}
-
 	// Amount of classes in the project.
 	// Includes both ordinary classes and interfaces.
 	public int classDesignSize()
 	{
 		int classCounter = 0;
-		this.tw = new ForestWalker(this.units);
+		ForestWalker tw = new ForestWalker(this.units);
 
-		while (this.tw.next(TypeDeclaration.class))
+		while (tw.next(TypeDeclaration.class))
 		{
 			TypeDeclaration td = (TypeDeclaration) tw.getProgramElement();
 			if ((td.getName() != null) && ((td instanceof ClassDeclaration) || (td instanceof InterfaceDeclaration)))
@@ -470,7 +451,7 @@ public class Metrics
 	// Average amount of direct child classes per class.
 	// Only includes ordinary classes within the project.
 	public float numberOfChildren()
-	{
+	{		
 		int childCounter = 0;
 		int classCounter = 0;
 		
@@ -500,9 +481,9 @@ public class Metrics
 	{
 		int classCounter = 0;
 		int interfaceCounter = 0;
-		this.tw = new ForestWalker(this.units);
+		ForestWalker tw = new ForestWalker(this.units);
 
-		while (this.tw.next(TypeDeclaration.class))
+		while (tw.next(TypeDeclaration.class))
 		{
 			TypeDeclaration td = (TypeDeclaration) tw.getProgramElement();
 			if ((td.getName() != null) && ((td instanceof ClassDeclaration) || (td instanceof InterfaceDeclaration)))
@@ -626,12 +607,12 @@ public class Metrics
 							if (((MethodDeclaration) md).isFinal())
 								finalCounter++;
 							
-							this.tw = new TreeWalker(md);
+							TreeWalker tw = new TreeWalker(md);
 							
-							while (this.tw.next(VariableDeclaration.class))
+							while (tw.next(VariableDeclaration.class))
 							{
 								counter++;
-								VariableDeclaration vd = (VariableDeclaration)(this.tw.getProgramElement());
+								VariableDeclaration vd = (VariableDeclaration)(tw.getProgramElement());
 								if (vd.isFinal())
 									finalCounter++;
 							}
@@ -845,10 +826,18 @@ public class Metrics
 	public int priority(ArrayList<String> priorityClasses)
 	{		
 		int priorityAmount = 0;
-		
-		for (String s : this.affectedClasses)
-			if (priorityClasses.contains(s))
-				priorityAmount++;
+
+		for (String s1 : this.affectedClasses)
+		{
+			for (String s2 : priorityClasses)
+			{
+				if (s1.endsWith(s2))
+				{
+					priorityAmount++;
+					break;
+				}
+			}
+		}
 		
 		return priorityAmount;
 	}
@@ -862,9 +851,17 @@ public class Metrics
 		int nonPriorityAmount = 0;
 		int priorityAmount = priority(priorityClasses);
 
-		for (String s : this.affectedClasses)
-			if (nonPriorityClasses.contains(s))
-				nonPriorityAmount++;
+		for (String s1 : this.affectedClasses)
+		{
+			for (String s2 : nonPriorityClasses)
+			{
+				if (s1.endsWith(s2))
+				{
+					nonPriorityAmount++;
+					break;
+				}
+			}
+		}
 		
 		return priorityAmount - nonPriorityAmount;
 	}
@@ -877,11 +874,128 @@ public class Metrics
 	// The metric is calculated by finding elements squared over refactoring count.
 	public float diversity()
 	{
-		int denominator = 0;
 		int numerator = this.elementDiversity.size() * this.elementDiversity.size();
+		int denominator = 0;
 		
 		for (Integer value : this.elementDiversity.values()) 
 			denominator += value;
+		
+		return (float) numerator / (float) denominator;
+	}
+	
+	// Average element recentness in refactoring solution. This is calculated by
+	// finding how far back the element appeared amongst the previous versions of the code, 
+	// denoted with an integer. The older the element is, the larger its corresponding value.
+	// This value is calculated or extracted for each relevant element in the refactoring 
+	// solution, and average is calculated across the values to give an average measure of recentness.
+	public float elementRecentness(ArrayList<List<CompilationUnit>> previousUnits)
+	{
+		int numerator = 0;
+		int denominator = 0;
+		
+		for (Entry<String, Integer> e : this.elementDiversity.entrySet())
+		{			
+			String key = e.getKey();
+			int value = e.getValue();
+			int amount = previousUnits.size();
+			
+			if (this.elementScores.containsKey(key))
+			{
+				amount = this.elementScores.get(key);			
+			}
+			else
+			{
+				String name;
+				int elementType;
+				
+				if (!(key.contains(":")))
+				{
+					elementType = 1;
+					name = key.substring(key.lastIndexOf('\\') + 1);
+				}
+				else if (key.charAt(1) == ':')
+				{
+					elementType = 3;
+					name = key.substring(2);
+				}
+				else if (key.endsWith(":"))
+				{
+					elementType = 2;
+					name = key.substring(1, key.length() - 1);
+				}
+				else
+				{
+					elementType = 4;
+					name = key.substring(key.lastIndexOf(':') + 1);
+				}
+				
+				for (int i = previousUnits.size() - 1; i >= 0; i--)
+				{
+					ForestWalker tw = new ForestWalker(previousUnits.get(i));
+					boolean breakout = true;
+					
+					if (elementType == 1)
+					{
+						while (tw.next(TypeDeclaration.class))
+						{
+							TypeDeclaration td = (TypeDeclaration) tw.getProgramElement();
+							if (((td instanceof ClassDeclaration) || (td instanceof InterfaceDeclaration)) && 
+								(td.getName() != null) && (td.getName() == name))
+							{
+								breakout = false;
+								break;
+							}
+						}
+					}
+					else if (elementType == 2)
+					{
+						while (tw.next(MethodDeclaration.class))
+						{
+							MethodDeclaration md = (MethodDeclaration) tw.getProgramElement();
+							if ((md.getName() != null) && (Refactoring.getMethodName(md) == name))
+							{
+								breakout = false;
+								break;
+							}
+						}
+					}
+					else if (elementType == 3)
+					{
+						while (tw.next(FieldDeclaration.class))
+						{
+							FieldDeclaration fd = (FieldDeclaration) tw.getProgramElement();
+							if ((fd.toString() != null) && (fd.toString() == name))
+							{
+								breakout = false;
+								break;
+							}
+						}
+					}	
+					else if (elementType == 4)
+					{
+						while (tw.next(VariableDeclaration.class))
+						{
+							VariableDeclaration vd = (VariableDeclaration) tw.getProgramElement();
+							if ((vd.toString() != null) && (vd.toString() == name))
+							{
+								breakout = false;
+								break;
+							}
+						}
+					}
+					
+					if (breakout)
+						break;
+					
+					amount--;
+				}	
+				
+				this.elementScores.put(key, amount);
+			}
+			
+			numerator += (amount * value);
+			denominator += value;	
+		}
 		
 		return (float) numerator / (float) denominator;
 	}
@@ -916,13 +1030,18 @@ public class Metrics
 		return types;
 	} 
 	
-	public List<CompilationUnit> getUnits()
-	{
-		return this.units;
-	}
-	
 	public void setUnits(List<CompilationUnit> units)
 	{
 		this.units = units;
+	}
+	
+	public void setAffectedClasses(ArrayList<String> affectedClasses)
+	{
+		this.affectedClasses = affectedClasses;
+	}
+	
+	public void setElementDiversity(HashMap<String, Integer> elementDiversity)
+	{
+		this.elementDiversity = elementDiversity;
 	}
 }

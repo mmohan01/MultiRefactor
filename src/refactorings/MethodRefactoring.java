@@ -17,7 +17,7 @@ public abstract class MethodRefactoring extends Refactoring
 	}
 	
 	protected abstract boolean mayRefactor(MethodDeclaration md);
-
+	
 	public int getAmount(int unit)
 	{
 		int counter = 0;
@@ -57,7 +57,7 @@ public abstract class MethodRefactoring extends Refactoring
 		TreeWalker tw = new TreeWalker(getSourceFileRepository().getKnownCompilationUnits().get(unit));
 		int element = 0;
 		int from  = refactoringInfo.indexOf(" to method ") + 11;
-		int to = (refactoringInfo.indexOf(' ', from) == -1) ? refactoringInfo.length() : refactoringInfo.indexOf(' ', from);
+		int to = (refactoringInfo.indexOf(") ", from) == -1) ? refactoringInfo.length() : refactoringInfo.indexOf(") ", from) + 1;
 		String name = refactoringInfo.substring(from,  to);
 
 		while (tw.next(MethodDeclaration.class))
@@ -65,7 +65,7 @@ public abstract class MethodRefactoring extends Refactoring
 			element++;
 			MethodDeclaration md = (MethodDeclaration) tw.getProgramElement();
 			
-			if ((md.getName() != null) && (md.getName().equals(name)))
+			if ((md.getName() != null) && (getMethodName(md).equals(name)))
 				return (mayRefactor(md)) ? element : -1;
 		}
 		

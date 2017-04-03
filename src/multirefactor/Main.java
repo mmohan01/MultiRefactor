@@ -46,7 +46,7 @@ public class Main
 		} 
 		else 
 		{		
-			DiversityTasks run = new DiversityTasks();
+			ElementRecentnessTasks run = new ElementRecentnessTasks();
 			run.run();
 		}
 		

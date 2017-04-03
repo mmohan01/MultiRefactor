@@ -15,9 +15,11 @@ import recoder.java.CompilationUnit;
 import recoder.java.Import;
 import recoder.java.NonTerminalProgramElement;
 import recoder.java.ProgramElement;
+import recoder.java.declaration.FieldDeclaration;
 import recoder.java.declaration.MemberDeclaration;
 import recoder.java.declaration.MethodDeclaration;
 import recoder.java.declaration.TypeDeclaration;
+import recoder.java.declaration.VariableDeclaration;
 import recoder.java.declaration.modifier.Private;
 import recoder.java.declaration.modifier.Protected;
 import recoder.java.declaration.modifier.Public;
@@ -27,6 +29,7 @@ import recoder.java.reference.MethodReference;
 import recoder.java.reference.SuperReference;
 import recoder.java.reference.ThisReference;
 import recoder.java.reference.TypeReference;
+import recoder.kit.MiscKit;
 import recoder.kit.Problem;
 import recoder.kit.ProblemReport;
 import recoder.kit.TwoPassTransformation;
@@ -76,7 +79,11 @@ public abstract class Refactoring extends TwoPassTransformation
 
 		for (int i = 0; i < getSourceFileRepository().getKnownCompilationUnits().size(); i++)
 		{
-			int index = getSourceFileRepository().getKnownCompilationUnits().get(i).getName().indexOf("MultiRefactor\\") + 14;
+			int index = 5;
+			
+			if (getSourceFileRepository().getKnownCompilationUnits().get(i).getName().indexOf("MultiRefactor\\") != 0)
+				index = getSourceFileRepository().getKnownCompilationUnits().get(i).getName().indexOf("MultiRefactor\\") + 14;
+			
 			String unitName = getSourceFileRepository().getKnownCompilationUnits().get(i).getName().substring(index);
 			
 			if (name.endsWith(unitName))
@@ -377,14 +384,107 @@ public abstract class Refactoring extends TwoPassTransformation
 		
 		return containingClasses;
 	}
-	
-	// Truncates a path name to just the element name.
-	protected String getFileName(String input)
+		
+	// Returns a string representing the field name 
+	// and, if it is a local field, the method it is in.
+	protected String getLocalFieldName(VariableDeclaration vd)
 	{
-		int lastDash = input.lastIndexOf("\\");
+		int last = vd.toString().lastIndexOf(">");
+		String variableName = vd.toString().substring(last + 2);
+		
+		if (!(vd instanceof FieldDeclaration))
+		{
+			MemberDeclaration md = MiscKit.getParentMemberDeclaration(vd);
+			
+			while ((md != null) && !(md instanceof MethodDeclaration))
+				md = MiscKit.getParentMemberDeclaration(md);
+			
+			if (md != null)
+				variableName += " [in method " + getMethodName((MethodDeclaration) md) + "]";
+		}
+
+		return variableName;
+	}
+	
+	// Returns a string representing the field name and, if it is a
+	// local field, the method it is in. Used to add as the affected
+	// element in the MakeFieldFinal and MakeFieldNonFinal refactorings.
+	protected String getAffectedFieldName(VariableDeclaration vd)
+	{
+		String variableName = ":";
+
+		if (!(vd instanceof FieldDeclaration))
+		{
+			MemberDeclaration md = MiscKit.getParentMemberDeclaration(vd);
+
+			while ((md != null) && !(md instanceof MethodDeclaration))
+				md = MiscKit.getParentMemberDeclaration(md);
+
+			if (md != null)
+				variableName += getMethodName((MethodDeclaration) md);
+		}
+
+		variableName += ":" + vd.toString();
+		return variableName;
+	}
+	
+	// Returns a string representing the name of a method 
+	// declaration as well as the parameter types used.
+	public static String getMethodName(MethodDeclaration md)
+	{
+		String methodName = md.getName() + "(";
+		
+		// Prevents "Zero Service" outputs logged to the console.
+		if (md.getMemberParent().getProgramModelInfo() == null)
+			md.getFactory().getServiceConfiguration().getChangeHistory().updateModel();
+		
+		for (int i = 0; i < md.getSignature().size(); i++)
+		{
+			if (i != 0)
+				methodName += ","; 
+			
+			methodName += md.getSignature().get(i).getFullName();
+		}
+		
+		methodName += ")";
+		return methodName;
+	}
+		
+	// Uses a path name and type name to get the full name of
+	// a class, truncated to the local package directory.
+	protected String getFileName(String unit, String type)
+	{		
+		int dash = (unit.indexOf("MultiRefactor\\") == -1) ? 5 : unit.indexOf("MultiRefactor\\") + 14;
+		String fileName = truncate(unit, dash);
+		String typeName = fileName.substring(fileName.lastIndexOf('\\') + 1);
+		int index = type.indexOf('.', type.lastIndexOf(typeName));
+		
+		if (index != -1)
+		{
+			type = type.substring(index).replace('.', '\\');
+			fileName = fileName + type;
+		}
+		
+		return fileName;
+	}
+	
+	// Returns the class name as well as any outer classes it 
+	// is nested within if it is a nested type, delimited by '\'.
+	protected String getClassName(String unit, String type)
+	{
+		int dash = unit.lastIndexOf('\\') + 1;
+		String typeName = truncate(unit, dash);
+		int index = type.lastIndexOf(typeName);
+		return type.substring(index).replace('.', '\\');
+		
+	}
+	
+	private String truncate(String input, int dash)
+	{		
 		int lastDot = input.lastIndexOf(".");
-		if ((lastDash >= 0) && (lastDot >= 0)) 
-			input = input.substring(lastDash + 1, lastDot);
+
+		if ((dash >= 0) && (lastDot >= dash))		
+			input = input.substring(dash, lastDot);
 
 		return input;
 	}

@@ -14,11 +14,13 @@ import recoder.abstraction.Type;
 import recoder.bytecode.ClassFile;
 import recoder.convenience.TreeWalker;
 import recoder.java.Import;
+import recoder.java.ProgramElement;
 import recoder.java.declaration.ClassDeclaration;
 import recoder.java.declaration.FieldDeclaration;
 import recoder.java.declaration.MemberDeclaration;
 import recoder.java.declaration.MethodDeclaration;
 import recoder.java.declaration.TypeDeclaration;
+import recoder.java.declaration.TypeParameterDeclaration;
 import recoder.java.reference.FieldReference;
 import recoder.java.reference.MethodReference;
 import recoder.java.reference.SuperReference;
@@ -41,7 +43,7 @@ public class MoveFieldDown extends FieldRefactoring
 	private ArrayList<SuperReference> thisReferences;
 	private ASTList<Import> subDeclarationImports;
 	private int position, newPosition, duplicatePosition;
-	
+
 	public MoveFieldDown(CrossReferenceServiceConfiguration sc) 
 	{
 		super(sc);
@@ -62,9 +64,14 @@ public class MoveFieldDown extends FieldRefactoring
 			super.tw.next(FieldDeclaration.class);
 		
 		FieldDeclaration fd = (FieldDeclaration) super.tw.getProgramElement();
+		this.currentDeclaration = MiscKit.getParentTypeDeclaration(fd);
+		
+		// Prevents "Zero Service" outputs logged to the console.
+		if (this.currentDeclaration.getProgramModelInfo() == null)
+			fd.getFactory().getServiceConfiguration().getChangeHistory().updateModel();
+
 		int last = fd.toString().lastIndexOf(">");
 		mayRefactor(fd);
-		this.currentDeclaration = MiscKit.getParentTypeDeclaration(fd);
 		this.position = super.getPosition(this.currentDeclaration, fd);
 		this.duplicatePosition = -1;
 		this.superReferences = new ArrayList<VariableReference>();
@@ -178,14 +185,17 @@ public class MoveFieldDown extends FieldRefactoring
 		UnitKit.getCompilationUnit(this.subDeclaration).setImports(imports);
 
 		// Specify refactoring information for results information.
+		String currentUnitName = UnitKit.getCompilationUnit(this.currentDeclaration).getName();
+		String subUnitName = UnitKit.getCompilationUnit(this.subDeclaration).getName();
 		super.refactoringInfo = "Iteration " + iteration + ": \"Move Field Down\" applied to field " 
-				+ fd.toString().substring(last + 2) + " from " + this.currentDeclaration.getName() + " to " + this.subDeclaration.getName();
+				+ fd.toString().substring(last + 2) + " from " + super.getClassName(currentUnitName, this.currentDeclaration.getFullName()) 
+				+ " to " + super.getClassName(subUnitName, this.subDeclaration.getFullName());
 		
 		// Stores list of names of classes affected by refactoring.
 		super.affectedClasses = new ArrayList<String>(2);
-		super.affectedClasses.add(this.currentDeclaration.getName());
-		super.affectedClasses.add(this.subDeclaration.getName());
-		super.affectedElement = fd.toString().substring(last + 2);
+		super.affectedClasses.add(super.getFileName(currentUnitName, this.currentDeclaration.getFullName()));
+		super.affectedClasses.add(super.getFileName(subUnitName, this.subDeclaration.getFullName()));
+		super.affectedElement = "::" + fd.toString();
 		
 		return setProblemReport(EQUIVALENCE);
 	}
@@ -238,7 +248,14 @@ public class MoveFieldDown extends FieldRefactoring
 			if (VariableKit.getReferences(si, fd.getFieldSpecifications().get(0), td, true).size() > 0)
 				return false;
 			
-			// Allows the program to go through the child classes at in order of class name
+			// Checks if the class contains one or more generic parameter
+			// types and the field contains a reference to it/them.
+			if (td.getTypeParameters() != null)
+				for (TypeParameterDeclaration tpd : td.getTypeParameters())
+					if (fd.toSource().contains(tpd.getName()))
+						return false;
+			
+			// Allows the program to go through the child classes in order of class name
 			// and pick the first one (if any) that is applicable for the refactoring.
 			List<ClassType> subtypes = si.getSubtypes(td);
 			List<ClassType> exclude = new ArrayList<ClassType>();
@@ -297,6 +314,11 @@ public class MoveFieldDown extends FieldRefactoring
 				for (MethodReference mr : methods)
 				{
 					Method m = si.getMethod(mr);
+					
+					// Check if method is in an outer class being accessed from a nested class.
+					if (!(m.getContainingClassType().equals(td)) && (m instanceof ProgramElement) &&
+						(UnitKit.getCompilationUnit(fd).equals(UnitKit.getCompilationUnit((ProgramElement) m))))
+						return false;
 
 					if (m.isPrivate())
 					{
@@ -335,6 +357,11 @@ public class MoveFieldDown extends FieldRefactoring
 				{
 					if (f.equals(fd.getFieldSpecifications().get(0)))
 						continue;
+					
+					// Check if field is in an outer class being accessed from a nested class.
+					if (!(f.getContainingClassType().equals(td)) && (f instanceof ProgramElement) &&
+						(UnitKit.getCompilationUnit(fd).equals(UnitKit.getCompilationUnit((ProgramElement) f))))
+						return false;
 					
 					if (f.isPrivate())
 					{
@@ -492,8 +519,9 @@ public class MoveFieldDown extends FieldRefactoring
 		{
 			element++;
 			FieldDeclaration fd = (FieldDeclaration) tw.getProgramElement();
+			int last = fd.toString().lastIndexOf(">");
 			
-			if ((fd.toString() != null) && (fd.toString().equals(name)))
+			if ((fd.toString() != null) && (fd.toString().substring(last + 2).equals(name)))
 			{
 				return ((mayRefactor(fd)) && (this.subDeclaration.getName().equals(subclassName))) ? element : -1;
 			}

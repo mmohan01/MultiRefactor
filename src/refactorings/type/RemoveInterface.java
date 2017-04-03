@@ -31,13 +31,18 @@ public class RemoveInterface extends Refactoring
 	public ProblemReport analyze(int iteration, int unit, int element) 
 	{
 		// Initialise and pick the element to visit.
-		super.tw = new TreeWalker(getSourceFileRepository().getKnownCompilationUnits().get(unit));
+		this.unit = getSourceFileRepository().getKnownCompilationUnits().get(unit);
+		super.tw = new TreeWalker(this.unit);
 		
 		for (int i = 0; i < element; i++)
 			super.tw.next(InterfaceDeclaration.class);
 		
 		this.type = (InterfaceDeclaration) super.tw.getProgramElement();
-		this.unit = getSourceFileRepository().getKnownCompilationUnits().get(unit);
+		String unitName = this.unit.getName();
+		
+		// Prevents "Zero Service" outputs logged to the console.
+		if (this.type.getProgramModelInfo() == null)
+			this.type.getFactory().getServiceConfiguration().getChangeHistory().updateModel();
 
 		if (this.type.getContainingClassType() == null)
 		{
@@ -71,12 +76,14 @@ public class RemoveInterface extends Refactoring
 			detach(this.type);
 		
 		// Specify refactoring information for results information.
-		super.refactoringInfo = "Iteration " + iteration + ": \"Remove Interface\" applied to interface " + this.type.getName();
+		super.refactoringInfo = "Iteration " + iteration + ": \"Remove Interface\" applied to interface " 
+		        + super.getClassName(unitName, this.type.getFullName());
 		
 		// Stores list of names of classes affected by refactoring.
+		String fileName = super.getFileName(unitName, this.type.getFullName());
 		super.affectedClasses = new ArrayList<String>(1);
-		super.affectedClasses.add(this.type.getName());
-		super.affectedElement = this.type.getName();
+		super.affectedClasses.add(fileName);
+		super.affectedElement = fileName;
 
 		getChangeHistory().updateModel();
 		return setProblemReport(EQUIVALENCE);

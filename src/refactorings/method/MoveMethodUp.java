@@ -12,6 +12,7 @@ import recoder.bytecode.ClassFile;
 import recoder.convenience.TreeWalker;
 import recoder.java.Identifier;
 import recoder.java.Import;
+import recoder.java.ProgramElement;
 import recoder.java.declaration.ClassDeclaration;
 import recoder.java.declaration.ConstructorDeclaration;
 import recoder.java.declaration.MemberDeclaration;
@@ -40,6 +41,7 @@ public class MoveMethodUp extends MethodRefactoring
 	private ArrayList<TypeDeclaration> sisterClasses;
 	private ArrayList<Integer> sisterPositions;
 	private ASTList<Import> superDeclarationImports;
+	
 	public MoveMethodUp(CrossReferenceServiceConfiguration sc) 
 	{
 		super(sc);
@@ -64,7 +66,7 @@ public class MoveMethodUp extends MethodRefactoring
 		
 		// Prevents "Zero Service" outputs logged to the console.
 		if (this.currentDeclaration.getProgramModelInfo() == null)
-			this.currentDeclaration.getFactory().getServiceConfiguration().getChangeHistory().updateModel();
+			md.getFactory().getServiceConfiguration().getChangeHistory().updateModel();
 		
 		this.superDeclaration = (TypeDeclaration) this.currentDeclaration.getSupertypes().get(0);
 		this.sisterClasses = new ArrayList<TypeDeclaration>(si.getSubtypes(this.superDeclaration).size());
@@ -158,7 +160,7 @@ public class MoveMethodUp extends MethodRefactoring
 		
 		// Add any applicable imports from the current class to the super class.
 		this.superDeclarationImports =  UnitKit.getCompilationUnit(this.superDeclaration).getImports();
-		ASTList<Import> imports =  this.superDeclarationImports;
+		ASTList<Import> imports =  this.superDeclarationImports;		
 
 		// If they aren't already present, add the method imports.
 		for (Import ci : methodImports)
@@ -171,7 +173,7 @@ public class MoveMethodUp extends MethodRefactoring
 				{
 					contains = true;
 					break;
-				}
+				}				
 			}
 
 			if (!contains)
@@ -195,7 +197,9 @@ public class MoveMethodUp extends MethodRefactoring
 			}
 
 			if (!contains)
+			{
 				imports.add(wholePackage);
+			}
 		}
 		
 		// If a field type from the method is defined as a class nested in the current class, need to contain an import to that class.
@@ -227,14 +231,17 @@ public class MoveMethodUp extends MethodRefactoring
 		UnitKit.getCompilationUnit(this.superDeclaration).setImports(imports);
 		
 		// Specify refactoring information for results information.
+		String currentUnitName = UnitKit.getCompilationUnit(this.currentDeclaration).getName();
+		String superUnitName = UnitKit.getCompilationUnit(this.superDeclaration).getName();
 		super.refactoringInfo = "Iteration " + iteration + ": \"Move Method Up\" applied to method " 
-				+ md.getName() + " from " + this.currentDeclaration.getName() + " to " + this.superDeclaration.getName();
+				+ super.getMethodName(md) + " from " + super.getClassName(currentUnitName, this.currentDeclaration.getFullName()) 
+				+ " to " + super.getClassName(superUnitName, this.superDeclaration.getFullName());
 		
 		// Stores list of names of classes affected by refactoring.
 		super.affectedClasses = new ArrayList<String>(2);
-		super.affectedClasses.add(this.currentDeclaration.getName());
-		super.affectedClasses.add(this.superDeclaration.getName());
-		super.affectedElement = md.getName();
+		super.affectedClasses.add(super.getFileName(currentUnitName, this.currentDeclaration.getFullName()));
+		super.affectedClasses.add(super.getFileName(superUnitName, this.superDeclaration.getFullName()));
+		super.affectedElement = ":" + super.getMethodName(md) + ":";
 
 		return setProblemReport(EQUIVALENCE);
 	}
@@ -337,6 +344,11 @@ public class MoveMethodUp extends MethodRefactoring
 				if ((m.getContainingClassType().equals(td)) && (mr.getReferencePrefix() == null))
 					return false;
 				
+				// Check if method is in an outer class being accessed from a nested class.
+				if (!(m.getContainingClassType().equals(td)) && (m instanceof ProgramElement) &&
+					(UnitKit.getCompilationUnit(md).equals(UnitKit.getCompilationUnit((ProgramElement) m))))
+					return false;
+				
 				if (m.isPrivate())
 				{
 					if (!(m.getContainingClassType().equals(std)))
@@ -361,6 +373,11 @@ public class MoveMethodUp extends MethodRefactoring
 			for (Field f : fields)
 			{				
 				if (td.getFieldsInScope().contains(f))
+					return false;
+				
+				// Check if field is in an outer class being accessed from a nested class.
+				if (!(f.getContainingClassType().equals(td)) && (f instanceof ProgramElement) &&
+					(UnitKit.getCompilationUnit(md).equals(UnitKit.getCompilationUnit((ProgramElement) f))))
 					return false;
 				
 				if (f.isPrivate())

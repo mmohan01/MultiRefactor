@@ -36,10 +36,10 @@ public class Tasks
 		// Create empty list of refactorings.
 		// Reads the metric configuration in from a specified text file.
 		ArrayList<Refactoring> refactorings = new ArrayList<Refactoring>();
-		Configuration c = new Configuration("./configurations/qualityfunction-objective1.txt", refactorings);
+		Configuration c = new Configuration("./configurations/qualityfunction.txt", refactorings);
 		Configuration[] cGA = {new Configuration("./configurations/qualityfunction-objective1.txt"), 
-							   new Configuration("./configurations/qualityfunction-objective2"),
-							   new Configuration("./configurations/qualityfunction-objective3")};
+							   new Configuration("./configurations/qualityfunction-objective2.txt"),
+							   new Configuration("./configurations/qualityfunction-objective3.txt")};
 		
 		// Initialise search tasks.
 		ArrayList<Search> searches = new ArrayList<Search>();
@@ -59,12 +59,12 @@ public class Tasks
 		// Create list of output directories for
 		// each refactored project to be written to.
 		String[] output = new String[]{
-		createOutputDirectory(this.pathway, "Random/"),
-		createOutputDirectory(this.pathway, "HillClimbing/"),
-		createOutputDirectory(this.pathway, "SimulatedAnnealing/"),
-		createOutputDirectory(this.pathway, "GeneticAlgorithm/"),
-		createOutputDirectory(this.pathway, "MultiObjectiveGeneticAlgorithm/"),
-		createOutputDirectory(this.pathway, "ManyObjectiveGeneticAlgorithm/")};
+		"./data/refactored/" + this.pathway.substring(this.pathway.lastIndexOf("/") + 1) + "/Random/",
+		"./data/refactored/" + this.pathway.substring(this.pathway.lastIndexOf("/") + 1) + "/HillClimbing/",
+		"./data/refactored/" + this.pathway.substring(this.pathway.lastIndexOf("/") + 1) + "/SimulatedAnnealing/",
+		"./data/refactored/" + this.pathway.substring(this.pathway.lastIndexOf("/") + 1) + "/GeneticAlgorithm/",
+		"./data/refactored/" + this.pathway.substring(this.pathway.lastIndexOf("/") + 1) + "/MultiObjectiveGeneticAlgorithm/",
+		"./data/refactored/" + this.pathway.substring(this.pathway.lastIndexOf("/") + 1) + "/ManyObjectiveGeneticAlgorithm/"};
 
 		// Create list of output directories for
 		// each result data output to be written to.
@@ -87,14 +87,14 @@ public class Tasks
 			// Initialise available refactorings. Needs to be done each 
 			// time as the service configuration won't be updated otherwise.
 			refactorings = new ArrayList<Refactoring>();
-			DecreaseMethodSecurity dms = new DecreaseMethodSecurity(sc);
-			refactorings.add(dms);
-			DecreaseFieldSecurity dfs = new DecreaseFieldSecurity(sc);
-			refactorings.add(dfs);
-			IncreaseMethodSecurity ims = new IncreaseMethodSecurity(sc);
-			refactorings.add(ims);
-			IncreaseFieldSecurity ifs = new IncreaseFieldSecurity(sc);
-			refactorings.add(ifs);
+			DecreaseMethodVisibility dmv = new DecreaseMethodVisibility(sc);
+			refactorings.add(dmv);
+			DecreaseFieldVisibility dfv = new DecreaseFieldVisibility(sc);
+			refactorings.add(dfv);
+			IncreaseMethodVisibility imv = new IncreaseMethodVisibility(sc);
+			refactorings.add(imv);
+			IncreaseFieldVisibility ifv = new IncreaseFieldVisibility(sc);
+			refactorings.add(ifv);
 			MakeClassAbstract mca = new MakeClassAbstract(sc);
 			refactorings.add(mca);
 			MakeClassConcrete mcc = new MakeClassConcrete(sc);
@@ -163,7 +163,7 @@ public class Tasks
 				((ManyObjectiveSearch) searches.get(i)).setRefactorings(refactorings);
 			else
 			{
-				c = new Configuration("./configurations/qualityfunction-objective1.txt", refactorings);
+				c = new Configuration("./configurations/qualityfunction.txt", refactorings);
 				searches.get(i).setConfiguration(c);
 			}
 			
@@ -180,7 +180,7 @@ public class Tasks
 	
 	// Returns an array of file paths representing the
 	// project, found using the file pathway input.
-	public String[] read(String pathName) 
+	public static String[] read(String pathName) 
 	{
 		File filePath = new File(pathName);
 		if (!filePath.exists() || !filePath.isDirectory())
@@ -216,7 +216,7 @@ public class Tasks
 	
 	// Returns the file paths that represent
 	// the libraries present in the project.
-	public String readLibs(String pathName) 
+	public static String readLibs(String pathName) 
 	{
 		File filePath = new File(pathName);
 		if (!filePath.exists() || !filePath.isDirectory())
@@ -248,12 +248,5 @@ public class Tasks
 			jars += File.pathSeparator + files.get(i).getAbsolutePath();
 
 		return jars;
-	}
-	
-	public String createOutputDirectory(String pathName, String name)
-	{
-		File filePath = new File(pathName);
-		String output = "./data/refactored/" + filePath.getName() + "/" + name;	
-		return output;
 	}
 }

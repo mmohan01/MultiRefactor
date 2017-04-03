@@ -10,6 +10,7 @@ import recoder.java.expression.operator.New;
 import recoder.java.reference.TypeReference;
 import recoder.kit.Problem;
 import recoder.kit.ProblemReport;
+import recoder.kit.UnitKit;
 import recoder.kit.transformation.Modify;
 import refactorings.TypeRefactoring;
 
@@ -37,6 +38,10 @@ public class MakeClassAbstract extends TypeRefactoring
 		
 		TypeDeclaration td = (TypeDeclaration) super.tw.getProgramElement();
 
+		// Prevents "Zero Service" outputs logged to the console.
+		if (td.getProgramModelInfo() == null)
+			td.getFactory().getServiceConfiguration().getChangeHistory().updateModel();
+
 		// Construct refactoring transformation.
 		super.transformation = new Modify(config, true, td, AccessFlags.ABSTRACT);
 		report = super.transformation.analyze();
@@ -44,12 +49,14 @@ public class MakeClassAbstract extends TypeRefactoring
 			return setProblemReport(report);
 		
 		// Specify refactoring information for results information.
-		super.refactoringInfo = "Iteration " + iteration + ": \"Make Class Abstract\" applied to class "  + td.getName();
+		super.refactoringInfo = "Iteration " + iteration + ": \"Make Class Abstract\" applied to class " 
+		        + super.getClassName(UnitKit.getCompilationUnit(td).getName(), td.getFullName());
 
 		// Stores list of names of classes affected by refactoring.
+		String fileName = super.getFileName(UnitKit.getCompilationUnit(td).getName(), td.getFullName());
 		super.affectedClasses = new ArrayList<String>(1);
-		super.affectedClasses.add(td.getName());
-		super.affectedElement = td.getName();
+		super.affectedClasses.add(fileName);
+		super.affectedElement = fileName;
 
 		return setProblemReport(EQUIVALENCE);
 	}

@@ -37,7 +37,10 @@ public class MakeFieldFinal extends Refactoring
 			super.tw.next(VariableDeclaration.class);
 		
 		VariableDeclaration vd = (VariableDeclaration) super.tw.getProgramElement();
-		int last = vd.toString().lastIndexOf(">");
+		
+		// Prevents "Zero Service" outputs logged to the console.
+		if (MiscKit.getParentTypeDeclaration(vd).getProgramModelInfo() == null)
+			vd.getFactory().getServiceConfiguration().getChangeHistory().updateModel();
 		
 		// Construct refactoring transformation.
 		super.transformation = new Modify(config, true, vd, AccessFlags.FINAL);
@@ -46,14 +49,15 @@ public class MakeFieldFinal extends Refactoring
 			return setProblemReport(report);
 
 		// Specify refactoring information for results information.
+		String unitName = getSourceFileRepository().getKnownCompilationUnits().get(unit).getName();
+		String typeName = MiscKit.getParentTypeDeclaration(vd).getFullName();
 		super.refactoringInfo = "Iteration " + iteration + ": \"Make Field Final\" applied at class " 
-				+ super.getFileName(getSourceFileRepository().getKnownCompilationUnits().get(unit).getName())
-				+ " to " + vd.getClass().getSimpleName() + " " + vd.toString().substring(last + 2);
+				+ super.getClassName(unitName, typeName) + " to " + vd.getClass().getSimpleName() + " " + super.getLocalFieldName(vd);
 		
 		// Stores list of names of classes affected by refactoring.
 		super.affectedClasses = new ArrayList<String>(1);
-		super.affectedClasses.add(super.getFileName(getSourceFileRepository().getKnownCompilationUnits().get(unit).getName()));
-		super.affectedElement = vd.toString().substring(last + 2);
+		super.affectedClasses.add(super.getFileName(unitName, typeName));
+		super.affectedElement = super.getAffectedFieldName(vd);
 
 		return setProblemReport(EQUIVALENCE);
 	}
@@ -145,7 +149,8 @@ public class MakeFieldFinal extends Refactoring
 	{		
 		TreeWalker tw = new TreeWalker(getSourceFileRepository().getKnownCompilationUnits().get(unit));
 		int element = 0;
-		int from  = refactoringInfo.lastIndexOf(' ') + 1;
+		int index = refactoringInfo.indexOf(" to ") + 4;
+		int from  = refactoringInfo.indexOf(' ', index) + 1;
 		String name = refactoringInfo.substring(from,  refactoringInfo.length());
 
 		while (tw.next(VariableDeclaration.class))
@@ -153,7 +158,7 @@ public class MakeFieldFinal extends Refactoring
 			element++;
 			VariableDeclaration vd = (VariableDeclaration) tw.getProgramElement();
 			
-			if ((vd.toString() != null) && (vd.toString().equals(name)))
+			if ((vd.toString() != null) && (super.getLocalFieldName(vd).equals(name)))
 				return (mayRefactor(vd)) ? element : -1;
 		}
 		

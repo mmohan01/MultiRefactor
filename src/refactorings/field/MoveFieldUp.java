@@ -12,6 +12,7 @@ import recoder.bytecode.ClassFile;
 import recoder.convenience.TreeWalker;
 import recoder.java.Identifier;
 import recoder.java.Import;
+import recoder.java.ProgramElement;
 import recoder.java.declaration.ClassDeclaration;
 import recoder.java.declaration.FieldDeclaration;
 import recoder.java.declaration.MemberDeclaration;
@@ -65,7 +66,7 @@ public class MoveFieldUp extends FieldRefactoring
 		
 		// Prevents "Zero Service" outputs logged to the console.
 		if (this.currentDeclaration.getProgramModelInfo() == null)
-			this.currentDeclaration.getFactory().getServiceConfiguration().getChangeHistory().updateModel();
+			fd.getFactory().getServiceConfiguration().getChangeHistory().updateModel();
 		
 		int last = fd.toString().lastIndexOf(">");
 		this.position = super.getPosition(this.currentDeclaration, fd);
@@ -140,12 +141,13 @@ public class MoveFieldUp extends FieldRefactoring
 		// Do any references to the field in the class use "this."
 		for (VariableReference mr : VariableKit.getReferences(si, fd.getFieldSpecifications().get(0), this.currentDeclaration, true))
 		{
-			if (mr.toSource().contains("this."))
+			if ((mr.toSource().contains("this.")))
 			{
 				SuperReference sr = new SuperReference();
 
 				for (int i = 0; i < mr.getChildCount(); i++)
-					if (mr.getChildAt(i) instanceof ThisReference)
+					if ((mr.getChildAt(i) instanceof ThisReference) && 
+						!(((ThisReference) mr.getChildAt(i)).getReferencePrefix() instanceof TypeReference))
 						mr.replaceChild(mr.getChildAt(i), sr);
 			}
 		}
@@ -229,14 +231,17 @@ public class MoveFieldUp extends FieldRefactoring
 		UnitKit.getCompilationUnit(this.superDeclaration).setImports(imports);
 		
 		// Specify refactoring information for results information.
+		String currentUnitName = UnitKit.getCompilationUnit(this.currentDeclaration).getName();
+		String superUnitName = UnitKit.getCompilationUnit(this.superDeclaration).getName();
 		super.refactoringInfo = "Iteration " + iteration + ": \"Move Field Up\" applied to field " 
-				+ fd.toString().substring(last + 2)	+ " from " + this.currentDeclaration.getName() + " to " + this.superDeclaration.getName();
+				+ fd.toString().substring(last + 2)	+ " from " + super.getClassName(currentUnitName, this.currentDeclaration.getFullName())
+				+ " to " + super.getClassName(superUnitName, this.superDeclaration.getFullName());
 		
 		// Stores list of names of classes affected by refactoring.
 		super.affectedClasses = new ArrayList<String>(2);
-		super.affectedClasses.add(this.currentDeclaration.getName());
-		super.affectedClasses.add(this.superDeclaration.getName());
-		super.affectedElement = fd.toString().substring(last + 2);
+		super.affectedClasses.add(super.getFileName(currentUnitName, this.currentDeclaration.getFullName()));
+		super.affectedClasses.add(super.getFileName(superUnitName, this.superDeclaration.getFullName()));
+		super.affectedElement = "::" + fd.toString();
 		
 		return setProblemReport(EQUIVALENCE);
 	}
@@ -326,6 +331,11 @@ public class MoveFieldUp extends FieldRefactoring
 
 				if ((m.getContainingClassType().equals(td)) && (mr.getReferencePrefix() == null))
 					return false;
+				
+				// Check if method is in an outer class being accessed from a nested class.
+				if (!(m.getContainingClassType().equals(td)) && (m instanceof ProgramElement) &&
+					(UnitKit.getCompilationUnit(fd).equals(UnitKit.getCompilationUnit((ProgramElement) m))))
+					return false;
 
 				if (m.isPrivate())
 				{
@@ -354,6 +364,11 @@ public class MoveFieldUp extends FieldRefactoring
 					continue;
 				
 				if (td.getFieldsInScope().contains(f))
+					return false;
+				
+				// Check if field is in an outer class being accessed from a nested class.
+				if (!(f.getContainingClassType().equals(td)) && (f instanceof ProgramElement) &&
+					(UnitKit.getCompilationUnit(fd).equals(UnitKit.getCompilationUnit((ProgramElement) f))))
 					return false;
 
 				if (f.isPrivate())

@@ -60,9 +60,9 @@ public class MonoObjectiveSearch extends GeneticAlgorithmSearch
 		String runInfo = String.format("Search: Genetic Algorithm\r\nGenerations: %d\r\nPopulation Size: %d"
 									   + "\r\nCrossover Probability: %f\r\nMutation Probability: %f",
 				                       this.generations, this.populationSize, this.crossoverProbability, this.mutationProbability);
-		Metrics m = new Metrics(super.sc.getSourceFileRepository().getKnownCompilationUnits());
-		this.ff = new FitnessFunction(m, super.c.getConfiguration());
-		super.setPriority(this.ff, super.c);
+		super.m = new Metrics(super.sc.getSourceFileRepository().getKnownCompilationUnits());
+		this.ff = new FitnessFunction(super.m, super.c.getConfiguration());
+		super.setAdditionalInfo(this.ff, super.c);
 		float benchmark = 0.0f;
 		
 		if (this.printAll)
@@ -70,13 +70,13 @@ public class MonoObjectiveSearch extends GeneticAlgorithmSearch
 			for (int i = 1; i <= populationSize; i++)
 			{
 				super.outputSearchInfo(super.resultsPath, i, runInfo);
-				outputMetrics(benchmark, m, true, false, i, super.resultsPath);
+				outputMetrics(benchmark, true, false, i, super.resultsPath);
 			}
 		}
 		else
 		{
 			super.outputSearchInfo(super.resultsPath, runInfo);
-			super.outputMetrics(benchmark, m, true, true, super.resultsPath);
+			super.outputMetrics(benchmark, true, true, super.resultsPath);
 		}
 		
 		long timeTaken, startTime = System.currentTimeMillis();
@@ -134,8 +134,8 @@ public class MonoObjectiveSearch extends GeneticAlgorithmSearch
 			for (int i = 0; i < population.size(); i++)
 			{
 				System.out.printf("\r\n  Solution %d", i + 1);
-				m = reconstructSolution(population.get(i), timeTaken / 1000.0, benchmark, i + 1);
-				outputMetrics(population.get(i).getFitness(), m, false, false, i + 1, super.resultsPath);
+			    reconstructSolution(population.get(i), timeTaken / 1000.0, benchmark, i + 1);
+				outputMetrics(population.get(i).getFitness(), false, false, i + 1, super.resultsPath);
 
 				// Output refactored solution.
 				String newOutputPath = this.outputPath + "Solution" + (i + 1) + "/";
@@ -147,9 +147,9 @@ public class MonoObjectiveSearch extends GeneticAlgorithmSearch
 			// experiment to make it easier to compare against multi-objective approach
 			// and avoid the need to manually work out diversity score afterwards.
 			super.setConfiguration(new Configuration("./configurations/diversity.txt"));
-	
-			m = new Metrics(super.sc.getSourceFileRepository().getKnownCompilationUnits(), population.get(0).getElementDiversity());	
-			float diversity = m.diversity();
+			super.m.setUnits(super.sc.getSourceFileRepository().getKnownCompilationUnits());
+			super.m.setElementDiversity(population.get(0).getElementDiversity());
+			float diversity = super.m.diversity();
 			String runName = String.format("%sresultsSolution1.txt", super.resultsPath);
 
 			try 
@@ -166,8 +166,8 @@ public class MonoObjectiveSearch extends GeneticAlgorithmSearch
 		}
 		else
 		{
-			m = reconstructSolution(population.get(0), timeTaken / 1000.0, benchmark, -1);	
-			super.outputMetrics(population.get(0).getFitness(), m, false, true, super.resultsPath);
+			reconstructSolution(population.get(0), timeTaken / 1000.0, benchmark, -1);	
+			super.outputMetrics(population.get(0).getFitness(), false, true, super.resultsPath);
 			System.out.printf("\r\n\r\nScore has improved overall by %f", population.get(0).getFitness() - benchmark);
 			System.out.printf("\r\nPrinting Top Solution");
 			super.sc.getProjectSettings().setProperty(PropertyNames.OUTPUT_PATH, this.outputPath);
@@ -200,9 +200,9 @@ public class MonoObjectiveSearch extends GeneticAlgorithmSearch
 			population.add(super.createInitialSolution(this.initialRefactoringRange, super.c.getRefactorings(), i + 1));
 			
 			// Calculate fitness up front so current model isn't needed at a later point.
-			Metrics m = new Metrics(super.sc.getSourceFileRepository().getKnownCompilationUnits(), population.get(i).getAffectedClasses(), 
-									population.get(i).getElementDiversity());		
-			population.get(i).setFitness(this.ff.calculateNormalisedScore(m));	
+			super.resetMetrics(super.sc.getSourceFileRepository().getKnownCompilationUnits(), population.get(i).getAffectedClasses(), 
+							   population.get(i).getElementDiversity());		
+			population.get(i).setFitness(this.ff.calculateNormalisedScore(super.m));	
 		}
 		
 		return population;
@@ -213,7 +213,6 @@ public class MonoObjectiveSearch extends GeneticAlgorithmSearch
 	private ArrayList<RefactoringSequence> crossover(RefactoringSequence p1, RefactoringSequence p2)
 	{		
 		ArrayList<RefactoringSequence> children = new ArrayList<RefactoringSequence>(2);
-		Metrics m;
 		
 		// For each refactoring sequence passed in, a cut point is randomly chosen.
 		int cutPoint1 = ((int)(Math.random() * (p1.getRefactorings().size() - 1))) + 1;
@@ -224,8 +223,8 @@ public class MonoObjectiveSearch extends GeneticAlgorithmSearch
 		RefactoringSequence child1 = super.generateChild(p1, p2, cutPoint1, cutPoint2, 1, super.c.getRefactorings());
 		
 		// Calculate fitness up front so current model isn't needed at a later point.
-		m = new Metrics(super.sc.getSourceFileRepository().getKnownCompilationUnits(), child1.getAffectedClasses(), child1.getElementDiversity());		
-		child1.setFitness(this.ff.calculateNormalisedScore(m));
+		super.resetMetrics(super.sc.getSourceFileRepository().getKnownCompilationUnits(), child1.getAffectedClasses(), child1.getElementDiversity());	
+		child1.setFitness(this.ff.calculateNormalisedScore(super.m));
 		children.add(child1);
 		
 		// Initialise the program model again and generate the second child solution.
@@ -233,8 +232,8 @@ public class MonoObjectiveSearch extends GeneticAlgorithmSearch
 		RefactoringSequence child2 = super.generateChild(p2, p1, cutPoint2, cutPoint1, 2, super.c.getRefactorings());
 		
 		// Calculate fitness up front so current model isn't needed at a later point.
-		m = new Metrics(super.sc.getSourceFileRepository().getKnownCompilationUnits(), child2.getAffectedClasses(), child2.getElementDiversity());		
-		child2.setFitness(this.ff.calculateNormalisedScore(m));
+		super.resetMetrics(super.sc.getSourceFileRepository().getKnownCompilationUnits(), child2.getAffectedClasses(), child2.getElementDiversity());
+		child2.setFitness(this.ff.calculateNormalisedScore(super.m));
 		children.add(child2);
 
 		return children;
@@ -251,7 +250,7 @@ public class MonoObjectiveSearch extends GeneticAlgorithmSearch
 		
 		for (int i = 0; i < p.getRefactorings().size(); i++)
 		{
-			int unitPosition = super.unitPosition(p.getNames().get(i)[0]);
+			int unitPosition = super.unitPosition(p.getNames().get(i));
 			super.c.getRefactorings().get(p.getRefactorings().get(i)).transform(super.c.getRefactorings().get(p.getRefactorings().get(i))
 				   .analyze((i + 1), unitPosition, p.getPositions().get(i)));
 		}
@@ -262,11 +261,10 @@ public class MonoObjectiveSearch extends GeneticAlgorithmSearch
 		if (result[0] != -1)
 		{			
 			solution = super.applyRefactoring(p, result, super.c.getRefactorings());
-			
 			// Calculate fitness up front so current model isn't needed at a later point.
-			Metrics m = new Metrics(super.sc.getSourceFileRepository().getKnownCompilationUnits(), solution.getAffectedClasses(),
-					                solution.getElementDiversity());		
-			solution.setFitness(this.ff.calculateNormalisedScore(m));	
+			super.resetMetrics(super.sc.getSourceFileRepository().getKnownCompilationUnits(), solution.getAffectedClasses(),
+					           solution.getElementDiversity());	
+			solution.setFitness(this.ff.calculateNormalisedScore(super.m));	
 		}
 		else
 		{
@@ -296,12 +294,11 @@ public class MonoObjectiveSearch extends GeneticAlgorithmSearch
 	
 	// Outputs the metric values for a solution.
 	// Can be used for when printing out the whole population.
-	private void outputMetrics(float score, Metrics metric, boolean initial, boolean log, int solution, String pathName)
+	private void outputMetrics(float score, boolean initial, boolean log, int solution, String pathName)
 	{
 		FitnessFunction ff = new FitnessFunction(super.c.getConfiguration());
-		super.setPriority(this.ff, super.c);
-		
-		String[] outputs = ff.createOutput(metric);
+		super.setAdditionalInfo(this.ff, super.c);
+		String[] outputs = ff.createOutput(super.m);
 		
 		// Create a location for the results output.
 		String runName = String.format("%sresultsSolution%d.txt", pathName, solution);
@@ -432,7 +429,7 @@ public class MonoObjectiveSearch extends GeneticAlgorithmSearch
 		
 	// Method reconstructs the model for printing by applying the refactorings in the refactoring solution.
 	// The refactoring details are then output and the metric object used to measure fitness for the solution is returned.
-	private Metrics reconstructSolution(RefactoringSequence solution, double time, float benchmark, int solutionRank)
+	private void reconstructSolution(RefactoringSequence solution, double time, float benchmark, int solutionRank)
 	{
 		// Initialise the program model to the original state.
 		resetModel();
@@ -441,14 +438,14 @@ public class MonoObjectiveSearch extends GeneticAlgorithmSearch
 		// Reconstruct model so it can be printed.
 		for (int i = 0; i < solution.getRefactorings().size(); i++)
 		{
-			unitPosition = super.unitPosition(solution.getNames().get(i)[0]);
+			unitPosition = super.unitPosition(solution.getNames().get(i));
 			super.c.getRefactorings().get(solution.getRefactorings().get(i)).transform(super.c.getRefactorings().get(solution.getRefactorings().get(i))
 				   .analyze((i + 1), unitPosition, solution.getPositions().get(i)));
 		}
 
-		//Output refactoring information and return metric object.
+		//Output refactoring information and reset metric object.
 		outputRefactoringInfo(super.resultsPath, time, solution.getFitness() - benchmark, solutionRank, solution.getRefactoringInfo());
-		return new Metrics(super.sc.getSourceFileRepository().getKnownCompilationUnits(), solution.getAffectedClasses(), solution.getElementDiversity());	
+		super.resetMetrics(super.sc.getSourceFileRepository().getKnownCompilationUnits(), solution.getAffectedClasses(), solution.getElementDiversity());	
 	}
 	
 	// Output refactoring information to results file for a solution.
