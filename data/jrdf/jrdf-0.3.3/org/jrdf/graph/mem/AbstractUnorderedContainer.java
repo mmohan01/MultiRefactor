@@ -1,0 +1,166 @@
+/*
+ * $Header: /cvsroot/jrdf/jrdf/src/org/jrdf/graph/mem/AbstractUnorderedContainer.java,v 1.1 2004/07/25 21:07:25 newmana Exp $
+ * $Revision: 1.1 $
+ * $Date: 2004/07/25 21:07:25 $
+ *
+ * ====================================================================
+ *
+ * The Apache Software License, Version 1.1
+ *
+ * Copyright (c) 2004 The JRDF Project.  All rights reserved.
+ *
+ * Redistribution and use in source and binary forms, with or without
+ * modification, are permitted provided that the following conditions
+ * are met:
+ *
+ * 1. Redistributions of source code must retain the above copyright
+ *    notice, this list of conditions and the following disclaimer.
+ *
+ * 2. Redistributions in binary form must reproduce the above copyright
+ *    notice, this list of conditions and the following disclaimer in
+ *    the documentation and/or other materials provided with the
+ *    distribution.
+ *
+ * 3. The end-user documentation included with the redistribution, if
+ *    any, must include the following acknowlegement:
+ *       "This product includes software developed by the
+ *        the JRDF Project (http://jrdf.sf.net/)."
+ *    Alternately, this acknowlegement may appear in the software itself,
+ *    if and wherever such third-party acknowlegements normally appear.
+ *
+ * 4. The names "The JRDF Project" and "JRDF" must not be used to endorse
+ *    or promote products derived from this software without prior written
+ *    permission. For written permission, please contact
+ *    newmana@users.sourceforge.net.
+ *
+ * 5. Products derived from this software may not be called "JRDF"
+ *    nor may "JRDF" appear in their names without prior written
+ *    permission of the JRDF Project.
+ *
+ * THIS SOFTWARE IS PROVIDED ``AS IS'' AND ANY EXPRESSED OR IMPLIED
+ * WARRANTIES, INCLUDING, BUT NOT LIMITED TO, THE IMPLIED WARRANTIES
+ * OF MERCHANTABILITY AND FITNESS FOR A PARTICULAR PURPOSE ARE
+ * DISCLAIMED.  IN NO EVENT SHALL THE APACHE SOFTWARE FOUNDATION OR
+ * ITS CONTRIBUTORS BE LIABLE FOR ANY DIRECT, INDIRECT, INCIDENTAL,
+ * SPECIAL, EXEMPLARY, OR CONSEQUENTIAL DAMAGES (INCLUDING, BUT NOT
+ * LIMITED TO, PROCUREMENT OF SUBSTITUTE GOODS OR SERVICES; LOSS OF
+ * USE, DATA, OR PROFITS; OR BUSINESS INTERRUPTION) HOWEVER CAUSED AND
+ * ON ANY THEORY OF LIABILITY, WHETHER IN CONTRACT, STRICT LIABILITY,
+ * OR TORT (INCLUDING NEGLIGENCE OR OTHERWISE) ARISING IN ANY WAY OUT
+ * OF THE USE OF THIS SOFTWARE, EVEN IF ADVISED OF THE POSSIBILITY OF
+ * SUCH DAMAGE.
+ * ====================================================================
+ *
+ * This software consists of voluntary contributions made by many
+ * individuals on behalf of the JRDF Project.  For more
+ * information on JRDF, please see <http://jrdf.sourceforge.net/>.
+ */
+
+package org.jrdf.graph.mem;
+
+// Java 2 standard packages
+import java.util.*;
+
+// JRDF
+import org.jrdf.graph.*;
+
+/**
+ * The base class for the implementation of Bag and Alternative.
+ *
+ * @author Andrew Newman
+ *
+ * @version $Revision: 1.1 $
+ */
+public abstract class AbstractUnorderedContainer implements Container {
+
+  /**
+   * The hashmap containing the elements.
+   */
+  protected HashMap elements = new HashMap();
+
+  /**
+   * Counter used to generate keys to add to the hashmap.
+   */
+  protected long key = 0;
+
+  public int size() {
+    return elements.values().size();
+  }
+
+  public boolean isEmpty() {
+    return elements.values().isEmpty();
+  }
+
+  public boolean contains(Object o) {
+    return elements.values().contains(o);
+  }
+
+  public Iterator iterator() {
+    return elements.values().iterator();
+  }
+
+  public Object[] toArray() {
+    return elements.values().toArray();
+  }
+
+  public Object[] toArray(Object[] a) {
+    return elements.values().toArray(a);
+  }
+
+  /**
+   * Always return true.
+   *
+   * @throws IllegalArgumentException if the given object is not the correct
+   *   type, ObjectNode.
+   */
+  public boolean add(Object o) throws IllegalArgumentException {
+    if (!(o instanceof ObjectNode)) {
+      throw new IllegalArgumentException("Can only add Object nodes");
+    }
+
+    elements.put(new Long(key++), o);
+    return true;
+  }
+
+  /**
+   * Always returns true.  It will only remove one element if there is more
+   * than one is the container.  This can get quite costly as it must iterate
+   * through the values from the start to end looking for the object.
+   *
+   * @throws IllegalArgumentException if the given object is not the correct
+   *   type, ObjectNode.
+   */
+  public boolean remove(Object o) throws IllegalArgumentException {
+    if (!(o instanceof ObjectNode)) {
+      throw new IllegalArgumentException("Can only add Object nodes");
+    }
+
+    Iterator iter = elements.entrySet().iterator();
+    boolean found = false;
+
+    // Removes the first entry in the map that matches the given object.
+    while (!found && iter.hasNext()) {
+      Map.Entry entry = (Map.Entry) iter.next();
+      if (o.equals(entry.getValue())) {
+        elements.remove(o);
+        found = true;
+      }
+    }
+
+    return found;
+  }
+
+  public void clear() {
+    key = 0;
+    elements.clear();
+  }
+
+  /**
+   * Returns the hashCode of the internal hashMap.
+   *
+   * @return the hashCode of the internal hashMap.
+   */
+  public int hashCode() {
+    return elements.hashCode();
+  }
+}
