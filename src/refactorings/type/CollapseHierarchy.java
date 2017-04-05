@@ -261,16 +261,18 @@ public class CollapseHierarchy extends TypeRefactoring
 		}
 
 		// Specify refactoring information for results information.
-		String superUnitName = UnitKit.getCompilationUnit(this.superDeclaration).getName();
+		String superUnitName = UnitKit.getCompilationUnit(this.superDeclaration).getName();	
+		String superPackageName = this.superDeclaration.getPackage().getFullName();
+		String currentClassName = this.currentDeclaration.getFullName().substring(pack.getFullName().length() + 1).replace('.', '\\');
+		String superClassName = this.superDeclaration.getFullName().substring(superPackageName.length() + 1).replace('.', '\\');
 		super.refactoringInfo = "Iteration " + iteration + ": \"Collapse Hierarchy\" applied from all elements in " 
-				+ super.getClassName(this.unit.getName(), this.currentDeclaration.getFullName()) + " to " 
-				+ super.getFileName(superUnitName, this.superDeclaration.getFullName());
+				+ currentClassName + " to " + superClassName;
 		
 		// Stores list of names of classes affected by refactoring.
-		String currentFileName = super.getFileName(this.unit.getName(), this.currentDeclaration.getFullName());
+		String currentFileName = super.getFileName(this.unit.getName(), currentClassName);
 		super.affectedClasses = new ArrayList<String>(2);
 		super.affectedClasses.add(currentFileName);
-		super.affectedClasses.add(super.getFileName(superUnitName, this.superDeclaration.getFullName()));
+		super.affectedClasses.add(super.getFileName(superUnitName, superClassName));
 		super.affectedElement = currentFileName;
 
 		getChangeHistory().updateModel();

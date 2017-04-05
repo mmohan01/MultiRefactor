@@ -147,7 +147,8 @@ public class MonoObjectiveSearch extends GeneticAlgorithmSearch
 			// experiment to make it easier to compare against multi-objective approach
 			// and avoid the need to manually work out element recentness score afterwards.
 			String input = super.resultsPath.substring(0, super.resultsPath.length() - 3);
-			input = input.substring(input.lastIndexOf("/") + 1);			
+			input = input.substring(input.lastIndexOf('/') + 1);
+			input = input.substring(0, input.lastIndexOf('-'));
 			super.setConfiguration(new Configuration(String.format("./configurations/elementrecentness%s.txt", input)));
 			super.m.setUnits(super.sc.getSourceFileRepository().getKnownCompilationUnits());
 			super.m.setElementDiversity(population.get(0).getElementDiversity());

@@ -222,14 +222,15 @@ public class ExtractSubclass extends TypeRefactoring
 		}
 		
 		String currentUnitName = UnitKit.getCompilationUnit(this.currentDeclaration).getName();
-		super.refactoringInfo = super.refactoringInfo + "\" in class " + super.getClassName(currentUnitName, this.currentDeclaration.getFullName()) 
-				+ " to " + super.getClassName(this.unit.getName(), this.subDeclaration.getFullName());
+		String currentClassName = this.currentDeclaration.getFullName().substring(pack.getFullName().length() + 1).replace('.', '\\');
+		String subClassName = this.subDeclaration.getFullName().substring(pack.getFullName().length() + 1).replace('.', '\\');
+		super.refactoringInfo = super.refactoringInfo + "\" in class " + currentClassName + " to " + subClassName;
 		
 		// Stores list of names of classes affected by refactoring.
-		String currentFileName = super.getFileName(currentUnitName, this.currentDeclaration.getFullName());
+		String currentFileName = super.getFileName(currentUnitName, currentClassName);
 		super.affectedClasses = new ArrayList<String>(2);
 		super.affectedClasses.add(currentFileName);
-		super.affectedClasses.add(super.getFileName(this.unit.getName(), this.subDeclaration.getFullName()));
+		super.affectedClasses.add(super.getFileName(this.unit.getName(), subClassName));
 		super.affectedElement = currentFileName;
 
 		return setProblemReport(EQUIVALENCE);

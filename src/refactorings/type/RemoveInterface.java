@@ -39,6 +39,7 @@ public class RemoveInterface extends Refactoring
 		
 		this.type = (InterfaceDeclaration) super.tw.getProgramElement();
 		String unitName = this.unit.getName();
+		String packageName = this.type.getPackage().getFullName();
 		
 		// Prevents "Zero Service" outputs logged to the console.
 		if (this.type.getProgramModelInfo() == null)
@@ -76,11 +77,11 @@ public class RemoveInterface extends Refactoring
 			detach(this.type);
 		
 		// Specify refactoring information for results information.
-		super.refactoringInfo = "Iteration " + iteration + ": \"Remove Interface\" applied to interface " 
-		        + super.getClassName(unitName, this.type.getFullName());
+		String className = this.type.getFullName().substring(packageName.length() + 1).replace('.', '\\');
+		super.refactoringInfo = "Iteration " + iteration + ": \"Remove Interface\" applied to interface " + className;
 		
 		// Stores list of names of classes affected by refactoring.
-		String fileName = super.getFileName(unitName, this.type.getFullName());
+		String fileName = super.getFileName(unitName, className);
 		super.affectedClasses = new ArrayList<String>(1);
 		super.affectedClasses.add(fileName);
 		super.affectedElement = fileName;

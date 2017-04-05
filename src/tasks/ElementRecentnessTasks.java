@@ -257,7 +257,7 @@ public class ElementRecentnessTasks extends Tasks
 		// each refactored project to be written to.
 		String[] output = new String[]{
 				"./data/refactored/ElementRecentnessExperiment/Mono-Objective/",
-				"./data/refactored/ElementRecentnesstExperiment/Multi-Objective/"};
+				"./data/refactored/ElementRecentnessExperiment/Multi-Objective/"};
 
 		// Create list of output directories for
 		// each result data output to be written to.
@@ -365,6 +365,7 @@ public class ElementRecentnessTasks extends Tasks
 			
 			searches.get(i).setServiceConfiguration(sc);
 			searches.get(i).setResultsPath(resultsPath);
+			if (i >= 20)
 			searches.get(i).run();
 		}	
 

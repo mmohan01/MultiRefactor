@@ -940,7 +940,7 @@ public class Metrics
 						{
 							TypeDeclaration td = (TypeDeclaration) tw.getProgramElement();
 							if (((td instanceof ClassDeclaration) || (td instanceof InterfaceDeclaration)) && 
-								(td.getName() != null) && (td.getName() == name))
+								(td.getName() != null) && (td.getName().equals(name)))
 							{
 								breakout = false;
 								break;
@@ -952,7 +952,7 @@ public class Metrics
 						while (tw.next(MethodDeclaration.class))
 						{
 							MethodDeclaration md = (MethodDeclaration) tw.getProgramElement();
-							if ((md.getName() != null) && (Refactoring.getMethodName(md) == name))
+							if ((md.getName() != null) && (Refactoring.getMethodName(md).equals(name)))
 							{
 								breakout = false;
 								break;
@@ -964,7 +964,7 @@ public class Metrics
 						while (tw.next(FieldDeclaration.class))
 						{
 							FieldDeclaration fd = (FieldDeclaration) tw.getProgramElement();
-							if ((fd.toString() != null) && (fd.toString() == name))
+							if ((fd.toString() != null) && (fd.toString().equals(name)))
 							{
 								breakout = false;
 								break;
@@ -976,7 +976,7 @@ public class Metrics
 						while (tw.next(VariableDeclaration.class))
 						{
 							VariableDeclaration vd = (VariableDeclaration) tw.getProgramElement();
-							if ((vd.toString() != null) && (vd.toString() == name))
+							if ((vd.toString() != null) && (vd.toString().equals(name)))
 							{
 								breakout = false;
 								break;

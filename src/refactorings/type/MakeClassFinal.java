@@ -47,12 +47,13 @@ public class MakeClassFinal extends TypeRefactoring
 			return setProblemReport(report);
 
 		// Specify refactoring information for results information.
-		super.refactoringInfo = "Iteration " + iteration + ": \"Make Class Final\" applied to class " 
-		        + super.getClassName(UnitKit.getCompilationUnit(td).getName(), td.getFullName());
+		String packageName = td.getPackage().getFullName();
+		String className = td.getFullName().substring(packageName.length() + 1).replace('.', '\\');
+		super.refactoringInfo = "Iteration " + iteration + ": \"Make Class Final\" applied to class " + className;
 		
 		// Stores list of names of classes affected by refactoring.
 		super.affectedClasses = new ArrayList<String>(1);
-		String fileName = super.getFileName(UnitKit.getCompilationUnit(td).getName(), td.getFullName());
+		String fileName = super.getFileName(UnitKit.getCompilationUnit(td).getName(), className);
 		super.affectedClasses.add(fileName);
 		super.affectedElement = fileName;
 		

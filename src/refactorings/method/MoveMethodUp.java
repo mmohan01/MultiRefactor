@@ -233,14 +233,17 @@ public class MoveMethodUp extends MethodRefactoring
 		// Specify refactoring information for results information.
 		String currentUnitName = UnitKit.getCompilationUnit(this.currentDeclaration).getName();
 		String superUnitName = UnitKit.getCompilationUnit(this.superDeclaration).getName();
+		String currentPackageName = this.currentDeclaration.getPackage().getFullName();
+		String superPackageName = this.superDeclaration.getPackage().getFullName();		
+		String currentClassName = this.currentDeclaration.getFullName().substring(currentPackageName.length() + 1).replace('.', '\\');
+		String superClassName = this.superDeclaration.getFullName().substring(superPackageName.length() + 1).replace('.', '\\');
 		super.refactoringInfo = "Iteration " + iteration + ": \"Move Method Up\" applied to method " 
-				+ super.getMethodName(md) + " from " + super.getClassName(currentUnitName, this.currentDeclaration.getFullName()) 
-				+ " to " + super.getClassName(superUnitName, this.superDeclaration.getFullName());
+				+ super.getMethodName(md) + " from " + currentClassName + " to " + superClassName;
 		
 		// Stores list of names of classes affected by refactoring.
 		super.affectedClasses = new ArrayList<String>(2);
-		super.affectedClasses.add(super.getFileName(currentUnitName, this.currentDeclaration.getFullName()));
-		super.affectedClasses.add(super.getFileName(superUnitName, this.superDeclaration.getFullName()));
+		super.affectedClasses.add(super.getFileName(currentUnitName, currentClassName));
+		super.affectedClasses.add(super.getFileName(superUnitName, superClassName));
 		super.affectedElement = ":" + super.getMethodName(md) + ":";
 
 		return setProblemReport(EQUIVALENCE);

@@ -57,13 +57,14 @@ public class MakeFieldNonFinal extends Refactoring
 
 		// Specify refactoring information for results information.
 		String unitName = getSourceFileRepository().getKnownCompilationUnits().get(unit).getName();
-		String typeName = MiscKit.getParentTypeDeclaration(vd).getFullName();
+		String packageName = MiscKit.getParentTypeDeclaration(vd).getPackage().getFullName();
+		String className = MiscKit.getParentTypeDeclaration(vd).getFullName().substring(packageName.length() + 1).replace('.', '\\');
 		super.refactoringInfo = "Iteration " + iteration + ": \"Make Field Non Final\" applied at class " 
-				+ super.getClassName(unitName, typeName) + " to " + vd.getClass().getSimpleName() + " " + super.getLocalFieldName(vd);
+				+ className + " to " + vd.getClass().getSimpleName() + " " + super.getLocalFieldName(vd);
 		
 		// Stores list of names of classes affected by refactoring.
 		super.affectedClasses = new ArrayList<String>(1);
-		super.affectedClasses.add(super.getFileName(unitName, typeName));
+		super.affectedClasses.add(super.getFileName(unitName, className));
 		super.affectedElement = super.getAffectedFieldName(vd);
 
 		return setProblemReport(EQUIVALENCE);

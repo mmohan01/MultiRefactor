@@ -187,14 +187,17 @@ public class MoveFieldDown extends FieldRefactoring
 		// Specify refactoring information for results information.
 		String currentUnitName = UnitKit.getCompilationUnit(this.currentDeclaration).getName();
 		String subUnitName = UnitKit.getCompilationUnit(this.subDeclaration).getName();
+		String currentPackageName = this.currentDeclaration.getPackage().getFullName();
+		String subPackageName = this.subDeclaration.getPackage().getFullName();
+		String currentClassName = this.currentDeclaration.getFullName().substring(currentPackageName.length() + 1).replace('.', '\\');
+		String subClassName = this.subDeclaration.getFullName().substring(subPackageName.length() + 1).replace('.', '\\');
 		super.refactoringInfo = "Iteration " + iteration + ": \"Move Field Down\" applied to field " 
-				+ fd.toString().substring(last + 2) + " from " + super.getClassName(currentUnitName, this.currentDeclaration.getFullName()) 
-				+ " to " + super.getClassName(subUnitName, this.subDeclaration.getFullName());
+				+ fd.toString().substring(last + 2) + " from " + currentClassName + " to " + subClassName;
 		
 		// Stores list of names of classes affected by refactoring.
 		super.affectedClasses = new ArrayList<String>(2);
-		super.affectedClasses.add(super.getFileName(currentUnitName, this.currentDeclaration.getFullName()));
-		super.affectedClasses.add(super.getFileName(subUnitName, this.subDeclaration.getFullName()));
+		super.affectedClasses.add(super.getFileName(currentUnitName, currentClassName));
+		super.affectedClasses.add(super.getFileName(subUnitName, subClassName));
 		super.affectedElement = "::" + fd.toString();
 		
 		return setProblemReport(EQUIVALENCE);

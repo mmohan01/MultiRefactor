@@ -39,6 +39,7 @@ public class RemoveClass extends TypeRefactoring
 		
 		this.type = (TypeDeclaration) super.tw.getProgramElement();
 		String unitName = this.unit.getName();
+		String packageName = this.type.getPackage().getFullName();
 		this.unitPosition = unit;
 		
 		// Prevents "Zero Service" outputs logged to the console.
@@ -74,11 +75,11 @@ public class RemoveClass extends TypeRefactoring
 			detach(this.type);
 		
 		// Specify refactoring information for results information.
-		super.refactoringInfo = "Iteration " + iteration + ": \"Remove Class\" applied to class " 
-		        + super.getClassName(unitName, this.type.getFullName());
+		String className = this.type.getFullName().substring(packageName.length() + 1).replace('.', '\\');
+		super.refactoringInfo = "Iteration " + iteration + ": \"Remove Class\" applied to class " + className;
 		
 		// Stores list of names of classes affected by refactoring.
-		String fileName = super.getFileName(unitName, this.type.getFullName());
+		String fileName = super.getFileName(unitName, className);
 		super.affectedClasses = new ArrayList<String>(1);
 		super.affectedClasses.add(fileName);
 		super.affectedElement = fileName;

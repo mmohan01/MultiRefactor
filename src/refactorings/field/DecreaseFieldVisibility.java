@@ -49,15 +49,16 @@ public class DecreaseFieldVisibility extends FieldRefactoring
 		
 		// Specify refactoring information for results information.
 		String unitName = getSourceFileRepository().getKnownCompilationUnits().get(unit).getName();
-		String typeName = MiscKit.getParentTypeDeclaration(fd).getFullName();
+		String packageName = MiscKit.getParentTypeDeclaration(fd).getPackage().getFullName();
+		String className = MiscKit.getParentTypeDeclaration(fd).getFullName().substring(packageName.length() + 1).replace('.', '\\');
 		super.refactoringInfo = "Iteration " + iteration + ": \"Decrease Field Visibility\" applied at class " 
-				+ super.getClassName(unitName, typeName) + " to field " + fd.toString().substring(last + 2) 
+				+ className + " to field " + fd.toString().substring(last + 2) 
 				+ " from " + super.currentModifier(fd.getVisibilityModifier()) 
 				+ " to " + super.refactoredUpModifier(fd.getVisibilityModifier());
 		
 		// Stores list of names of classes affected by refactoring.
 		super.affectedClasses = new ArrayList<String>(1);
-		super.affectedClasses.add(super.getFileName(unitName, typeName));
+		super.affectedClasses.add(super.getFileName(unitName, className));
 		super.affectedElement = "::" + fd.toString();
 
 		return setProblemReport(EQUIVALENCE);

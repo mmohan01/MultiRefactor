@@ -46,6 +46,7 @@ public class RemoveMethod extends MethodRefactoring
 			this.method.getFactory().getServiceConfiguration().getChangeHistory().updateModel();
 		
 		String name = MiscKit.getParentTypeDeclaration(this.method).getFullName();
+		String packageName = MiscKit.getParentTypeDeclaration(this.method).getPackage().getFullName();	
 		this.position = super.getPosition(this.type, this.method);
 		this.abstractMethodPosition = -1;
 		ArrayList<Type> types = (ArrayList<Type>) this.method.getSignature();
@@ -75,12 +76,12 @@ public class RemoveMethod extends MethodRefactoring
 
 		// Specify refactoring information for results information.
 		String unitName = getSourceFileRepository().getKnownCompilationUnits().get(unit).getName();
-		super.refactoringInfo = "Iteration " + iteration + ": \"Remove Method\" applied at class " 
-				+ super.getClassName(unitName, name) + " to method " + super.getMethodName(this.method);
+		String className = name.substring(packageName.length() + 1).replace('.', '\\');
+		super.refactoringInfo = "Iteration " + iteration + ": \"Remove Method\" applied at class " + className + " to method " + super.getMethodName(this.method);
 		
 		// Stores list of names of classes affected by refactoring.
 		super.affectedClasses = new ArrayList<String>(1);
-		super.affectedClasses.add(super.getFileName(unitName, name));
+		super.affectedClasses.add(super.getFileName(unitName, className));
 		super.affectedElement = ":" + super.getMethodName(this.method) + ":";
 	
 		return setProblemReport(EQUIVALENCE);

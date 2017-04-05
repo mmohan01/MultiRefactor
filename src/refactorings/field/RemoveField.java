@@ -53,12 +53,13 @@ public class RemoveField extends FieldRefactoring
 
 		// Specify refactoring information for results information.
 		String unitName = getSourceFileRepository().getKnownCompilationUnits().get(unit).getName();
-		super.refactoringInfo = "Iteration " + iteration + ": \"Remove Field\" applied at class "
-				+ super.getClassName(unitName, this.type.getFullName())	+ " to field " + this.field.toString().substring(last + 2);
+		String packageName = this.type.getPackage().getFullName();
+		String className = this.type.getFullName().substring(packageName.length() + 1).replace('.', '\\');
+		super.refactoringInfo = "Iteration " + iteration + ": \"Remove Field\" applied at class " + className + " to field " + this.field.toString().substring(last + 2);
 		
 		// Stores list of names of classes affected by refactoring.
 		super.affectedClasses = new ArrayList<String>(1);
-		super.affectedClasses.add(super.getFileName(unitName, this.type.getFullName()));
+		super.affectedClasses.add(super.getFileName(unitName, className));
 		super.affectedElement = "::" + this.field.toString();
 		
 		return setProblemReport(EQUIVALENCE);

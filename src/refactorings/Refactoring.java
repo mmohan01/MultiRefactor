@@ -450,43 +450,14 @@ public abstract class Refactoring extends TwoPassTransformation
 		return methodName;
 	}
 		
-	// Uses a path name and type name to get the full name of
+	// Uses a path name and class name to get the full name of
 	// a class, truncated to the local package directory.
 	protected String getFileName(String unit, String type)
 	{		
-		int dash = (unit.indexOf("MultiRefactor\\") == -1) ? 5 : unit.indexOf("MultiRefactor\\") + 14;
-		String fileName = truncate(unit, dash);
-		String typeName = fileName.substring(fileName.lastIndexOf('\\') + 1);
-		int index = type.indexOf('.', type.lastIndexOf(typeName));
-		
-		if (index != -1)
-		{
-			type = type.substring(index).replace('.', '\\');
-			fileName = fileName + type;
-		}
-		
-		return fileName;
-	}
-	
-	// Returns the class name as well as any outer classes it 
-	// is nested within if it is a nested type, delimited by '\'.
-	protected String getClassName(String unit, String type)
-	{
-		int dash = unit.lastIndexOf('\\') + 1;
-		String typeName = truncate(unit, dash);
-		int index = type.lastIndexOf(typeName);
-		return type.substring(index).replace('.', '\\');
-		
-	}
-	
-	private String truncate(String input, int dash)
-	{		
-		int lastDot = input.lastIndexOf(".");
-
-		if ((dash >= 0) && (lastDot >= dash))		
-			input = input.substring(dash, lastDot);
-
-		return input;
+		int firstDash = (unit.indexOf("MultiRefactor\\") == -1) ? 5 : unit.indexOf("MultiRefactor\\") + 14;
+		int lastDash = unit.lastIndexOf("\\");
+		String fileName = unit.substring(firstDash, lastDash);
+		return fileName + type;
 	}
 
 	public String getRefactoringInfo()

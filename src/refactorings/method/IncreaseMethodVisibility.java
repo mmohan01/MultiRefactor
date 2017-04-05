@@ -61,15 +61,16 @@ public class IncreaseMethodVisibility extends MethodRefactoring
 
 		// Specify refactoring information for results information.
 		String unitName = getSourceFileRepository().getKnownCompilationUnits().get(unit).getName();
-		String typeName = MiscKit.getParentTypeDeclaration(md).getFullName();
+		String packageName = MiscKit.getParentTypeDeclaration(md).getPackage().getFullName();
+		String className = MiscKit.getParentTypeDeclaration(md).getFullName().substring(packageName.length() + 1).replace('.', '\\');
 		super.refactoringInfo = "Iteration " + iteration + ": \"Increase Method Visibility\" applied at class " 
-				+ super.getClassName(unitName, typeName) + " to method " + super.getMethodName(md) 
+				+ className + " to method " + super.getMethodName(md) 
 				+ " from " + super.currentModifier(md.getVisibilityModifier()) 
 				+ " to " + super.refactoredDownModifier(md.getVisibilityModifier());
 		
 		// Stores list of names of classes affected by refactoring.
 		super.affectedClasses = new ArrayList<String>(1);
-		super.affectedClasses.add(super.getFileName(unitName, typeName));
+		super.affectedClasses.add(super.getFileName(unitName, className));
 		super.affectedElement = ":" + super.getMethodName(md) + ":";
 		
 		return setProblemReport(EQUIVALENCE);
