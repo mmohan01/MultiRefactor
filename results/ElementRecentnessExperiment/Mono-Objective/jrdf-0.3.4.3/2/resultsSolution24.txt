@@ -1,0 +1,154 @@
+======== Search Information ========
+Search: Genetic Algorithm
+Generations: 100
+Population Size: 50
+Crossover Probability: 0.200000
+Mutation Probability: 0.800000
+
+======== Initial Metric Info ========
+Average ratio of private/package/protected attributes to overall attributes per class: 0.489492
+Average coupling per class: 1.094828
+Average cohesion among methods per class: 0.349955
+Average amount of user defined attributes declared per class: 0.784483
+Average functional abstraction per class: 0.063612
+Average amount of polymorphic methods per class: 1.094828
+Average amount of public methods per class: 4.129310
+Average amount of methods per class: 6.500000
+Average amount of complexity of methods per class: 66.758621
+Ratio of interfaces to overall amount of classes: 0.293103
+Average ratio of abstract classes/methods per class: 0.331715
+Average ratio of static classes/methods/variables per class: 0.138329
+Average ratio of final classes/methods/variables per class: 0.097604
+Average ratio of constant classes/methods/variables per class: 0.094883
+Ratio of inner classes to overall amount of ordinary classes in project: 0.025862
+Average inherited referenced methods ratio per class: 0.043966
+Average visibility ratio per class: 0.570334
+Amount of lines of code in project: 18786
+Overall fitness function score: 0.000000
+
+======== Applied Refactorings ========
+Iteration 1: "Move Method Down" applied to method testEmpty() from AbstractGraphUnitTest to GraphImplUnitTest
+Iteration 2: "Decrease Method Visibility" applied at class TripleFactoryImpl to method TripleFactoryImpl(org.jrdf.graph.Graph,org.jrdf.graph.GraphElementFactory) from package to protected
+Iteration 3: "Decrease Method Visibility" applied at class LiteralImpl to method LiteralImpl(java.lang.String,java.lang.String) from package to protected
+Iteration 4: "Decrease Method Visibility" applied at class EscapeUtilUnitTest to method testEscapedValue(java.lang.String,java.lang.String) from private to package
+Iteration 5: "Decrease Method Visibility" applied at class GraphIterator to method GraphIterator(java.util.Iterator,org.jrdf.graph.GraphElementFactory,org.jrdf.graph.mem.GraphHandler) from package to protected
+Iteration 6: "Decrease Field Visibility" applied at class GraphElementFactoryException to field serialVersionUID from private to package
+Iteration 7: "Decrease Method Visibility" applied at class URIReferenceImpl to method URIReferenceImpl(java.net.URI,java.lang.Long) from package to protected
+Iteration 8: "Make Field Final" applied at class EmtpyStringCheckerUnitTest to ParameterDeclaration param [in method checkParam(java.lang.String)]
+Iteration 9: "Decrease Method Visibility" applied at class EscapeUtilUnitTest to method testEscapedValue(java.lang.String,java.lang.String) from package to protected
+Iteration 10: "Decrease Field Visibility" applied at class GraphElementFactoryException to field serialVersionUID from package to protected
+Iteration 11: "Decrease Method Visibility" applied at class URIReferenceImpl to method URIReferenceImpl(java.net.URI,java.lang.Long) from protected to public
+Iteration 12: "Increase Method Visibility" applied at class XmlUtil to method isExtender(char) from public to protected
+Iteration 13: "Decrease Method Visibility" applied at class TripleFactoryImpl to method TripleFactoryImpl(org.jrdf.graph.Graph,org.jrdf.graph.GraphElementFactory) from protected to public
+Iteration 14: "Decrease Method Visibility" applied at class LiteralImpl to method LiteralImpl(java.lang.String,java.lang.String) from protected to public
+Iteration 15: "Decrease Method Visibility" applied at class EscapeUtilUnitTest to method testEscapedValue(java.lang.String,java.lang.String) from protected to public
+Iteration 16: "Decrease Method Visibility" applied at class GraphIterator to method GraphIterator(java.util.Iterator,org.jrdf.graph.GraphElementFactory,org.jrdf.graph.mem.GraphHandler) from protected to public
+Iteration 17: "Decrease Field Visibility" applied at class GraphElementFactoryException to field serialVersionUID from protected to public
+Iteration 18: "Increase Method Visibility" applied at class XmlUtil to method isExtender(char) from protected to package
+Iteration 19: "Increase Field Visibility" applied at class ParameterTestUtil to field NON_NULL_OBJECT from public to protected
+Iteration 20: "Move Field Up" applied to field PROPERTY from RDF to Vocabulary
+Iteration 21: "Decrease Method Visibility" applied at class EmtpyStringChecker to method paramAllowed(java.lang.String) from private to package
+Iteration 22: "Increase Method Visibility" applied at class XmlUtil to method isExtender(char) from package to private
+Iteration 23: "Increase Field Visibility" applied at class ParameterTestUtil to field NON_NULL_OBJECT from protected to package
+Iteration 24: "Decrease Method Visibility" applied at class EmtpyStringChecker to method paramAllowed(java.lang.String) from package to protected
+Iteration 25: "Increase Method Visibility" applied at class NullCheckerUnitTest to method testParamAllowed() from public to protected
+Iteration 26: "Make Field Non Final" applied at class LiteralImpl to FieldDeclaration serialVersionUID
+Iteration 27: "Move Method Down" applied to method testTwoGraphs() from AbstractGraphElementFactoryUnitTest to GraphElementFactoryImplUnitTest
+Iteration 28: "Make Method Static" applied at class JrdfConnectionFactory to method getSparqlConnection(org.jrdf.graph.Graph,java.net.URI)
+Iteration 29: "Make Method Final" applied at class DefaultAnswerUnitTest to method testGetAnswer()
+Iteration 30: "Move Field Up" applied to field VALUE from RDF to Vocabulary
+Iteration 31: "Remove Method" applied at class SparqlQueryBuilderUnitTest to method testBadParams()
+Iteration 32: "Decrease Method Visibility" applied at class URIReference to method equals(java.lang.Object) from package to protected
+Iteration 33: "Decrease Method Visibility" applied at class URIReference to method equals(java.lang.Object) from protected to public
+Iteration 34: "Make Method Static" applied at class TripleFactoryUnitTest to method newGraph()
+Iteration 35: "Move Field Up" applied to field IS_DEFINED_BY from RDFS to Vocabulary
+Iteration 36: "Make Method Static" applied at class SparqlQueryBuilder to method buildQuery(java.lang.String)
+Iteration 37: "Move Field Up" applied to field LIST from RDF to Vocabulary
+Iteration 38: "Increase Method Visibility" applied at class SAXFilter\ElementInfo to method setBaseURI(java.lang.String) from public to protected
+Iteration 39: "Increase Field Visibility" applied at class GraphElementFactoryException to field serialVersionUID from public to protected
+Iteration 40: "Remove Method" applied at class DefaultAnswerUnitTest to method testGetAnswer()
+Iteration 41: "Make Field Static" applied at class AbstractLiteral to field lexicalForm
+Iteration 42: "Decrease Method Visibility" applied at class JrdfConnection to method close() from package to protected
+Iteration 43: "Decrease Method Visibility" applied at class JrdfExample to method runExample() from private to package
+Iteration 44: "Move Field Up" applied to field MEMBER from RDFS to Vocabulary
+Iteration 45: "Move Field Up" applied to field COMMENT from RDFS to Vocabulary
+Iteration 46: "Increase Field Visibility" applied at class GraphElementFactoryException to field serialVersionUID from protected to package
+Iteration 47: "Decrease Field Visibility" applied at class GraphElementFactoryException to field serialVersionUID from package to protected
+Iteration 48: "Increase Field Visibility" applied at class GraphElementFactoryException to field serialVersionUID from protected to package
+Iteration 49: "Decrease Field Visibility" applied at class GraphElementFactoryException to field serialVersionUID from package to protected
+Iteration 50: "Increase Field Visibility" applied at class GraphElementFactoryException to field serialVersionUID from protected to package
+Iteration 51: "Decrease Field Visibility" applied at class GraphElementFactoryException to field serialVersionUID from package to protected
+Iteration 52: "Increase Field Visibility" applied at class GraphElementFactoryException to field serialVersionUID from protected to package
+Iteration 53: "Decrease Field Visibility" applied at class GraphElementFactoryException to field serialVersionUID from package to protected
+Iteration 54: "Decrease Method Visibility" applied at class EmtpyStringChecker to method paramAllowed(java.lang.String) from protected to public
+Iteration 55: "Increase Method Visibility" applied at class NullCheckerUnitTest to method testParamAllowed() from protected to package
+Iteration 56: "Decrease Field Visibility" applied at class GraphElementFactoryException to field serialVersionUID from protected to public
+Iteration 57: "Increase Method Visibility" applied at class SAXFilter\ElementInfo to method setBaseURI(java.lang.String) from protected to package
+Iteration 58: "Increase Field Visibility" applied at class GraphElementFactoryException to field serialVersionUID from public to protected
+Iteration 59: "Decrease Method Visibility" applied at class JrdfConnection to method close() from protected to public
+Iteration 60: "Decrease Method Visibility" applied at class JrdfExample to method runExample() from package to protected
+Iteration 61: "Decrease Field Visibility" applied at class GraphElementFactoryException to field serialVersionUID from protected to public
+Iteration 62: "Increase Field Visibility" applied at class GraphElementFactoryException to field serialVersionUID from public to protected
+Iteration 63: "Decrease Field Visibility" applied at class GraphElementFactoryException to field serialVersionUID from protected to public
+Iteration 64: "Increase Field Visibility" applied at class GraphElementFactoryException to field serialVersionUID from public to protected
+Iteration 65: "Move Method Up" applied to method createAlternative(org.jrdf.graph.ObjectNode[]) from TripleFactoryUnitTest to AbstractTripleFactoryUnitTest
+Iteration 66: "Remove Class" applied to class DefaultAnswerUnitTest
+Iteration 67: "Make Field Static" applied at class RdfXmlParser\NodeElement to field _liCounter
+Iteration 68: "Make Field Final" applied at class ParameterUtil to ParameterDeclaration name [in method checkNotNull(java.lang.String,java.lang.Object)]
+Iteration 69: "Make Field Final" applied at class Collection to ParameterDeclaration c [in method retainAll(java.util.Collection)]
+Iteration 70: "Make Field Final" applied at class Graph to ParameterDeclaration subject [in method add(org.jrdf.graph.SubjectNode,org.jrdf.graph.PredicateNode,org.jrdf.graph.ObjectNode)]
+Iteration 71: "Make Field Static" applied at class ParseException to field _lineNo
+Iteration 72: "Increase Method Visibility" applied at class XmlDatatypeUtil to method isPrimitiveDatatype(java.lang.String) from public to protected
+Iteration 73: "Move Method Down" applied to method testFactory() from AbstractGraphUnitTest to GraphImplUnitTest
+Iteration 74: "Increase Method Visibility" applied at class DefaultQueryUnitTest to method testCreate() from public to protected
+Iteration 75: "Decrease Method Visibility" applied at class URIReferenceImpl to method URIReferenceImpl(java.net.URI,boolean,java.lang.Long) from package to protected
+Iteration 76: "Make Method Non Final" applied at class XmlDatatypeUtil to method _isDigit(char)
+Iteration 77: "Make Field Static" applied at class BlankNodeImpl to field uid
+Iteration 78: "Remove Method" applied at class NullCheckerUnitTest to method testParamAllowed()
+Iteration 79: "Decrease Method Visibility" applied at class GraphElementFactory to method createLiteral(java.lang.String,java.lang.String) from package to protected
+Iteration 80: "Make Method Final" applied at class AbstractTripleFactoryUnitTest to method testSequence()
+Iteration 81: "Remove Class" applied to class NullCheckerUnitTest
+Iteration 82: "Decrease Field Visibility" applied at class StatementHandlerException to field source from private to package
+Iteration 83: "Decrease Method Visibility" applied at class GraphElementFactory to method createLiteral(java.lang.String,java.lang.String) from protected to public
+Iteration 84: "Decrease Field Visibility" applied at class StatementHandlerException to field source from package to protected
+Iteration 85: "Increase Field Visibility" applied at class GraphHandler012 to field graph from protected to package
+Iteration 86: "Make Class Final" applied to class TripleFactoryImpl
+Iteration 87: "Move Field Up" applied to field SEE_ALSO from RDFS to Vocabulary
+Iteration 88: "Make Class Concrete" applied to class Vocabulary
+Iteration 89: "Increase Field Visibility" applied at class GraphElementFactoryException to field serialVersionUID from protected to package
+Iteration 90: "Decrease Field Visibility" applied at class GraphElementFactoryException to field serialVersionUID from package to protected
+Iteration 91: "Increase Field Visibility" applied at class GraphElementFactoryException to field serialVersionUID from protected to package
+Iteration 92: "Decrease Field Visibility" applied at class GraphElementFactoryException to field serialVersionUID from package to protected
+Iteration 93: "Increase Field Visibility" applied at class GraphElementFactoryException to field serialVersionUID from protected to package
+Iteration 94: "Increase Method Visibility" applied at class XmlDatatypeUtil to method isPrimitiveDatatype(java.lang.String) from protected to package
+Iteration 95: "Increase Method Visibility" applied at class DefaultQueryUnitTest to method testCreate() from protected to package
+Iteration 96: "Decrease Field Visibility" applied at class StatementHandlerException to field source from protected to public
+Iteration 97: "Remove Method" applied at class DefaultQueryUnitTest to method testCreate()
+Iteration 98: "Decrease Method Visibility" applied at class AbstractGraphUnitTest to method AbstractGraphUnitTest(java.lang.String) from protected to public
+Iteration 99: "Make Field Non Final" applied at class XmlSchema to FieldDeclaration UNSIGNED_BYTE
+Iteration 100: "Decrease Method Visibility" applied at class GraphElementFactory to method createResource() from package to protected
+Iteration 101: "Decrease Method Visibility" applied at class Collection to method set(int,java.lang.Object) from package to protected
+
+Score has improved overall by 0.456791
+Time taken to refactor: 502.56s
+
+======== Final Metric Info ========
+Average ratio of private/package/protected attributes to overall attributes per class: 0.484495
+Average coupling per class: 1.114035
+Average cohesion among methods per class: 0.355953
+Average amount of user defined attributes declared per class: 0.798246
+Average functional abstraction per class: 0.072088
+Average amount of polymorphic methods per class: 1.105263
+Average amount of public methods per class: 4.228070
+Average amount of methods per class: 6.570176
+Average amount of complexity of methods per class: 67.754387
+Ratio of interfaces to overall amount of classes: 0.298246
+Average ratio of abstract classes/methods per class: 0.334782
+Average ratio of static classes/methods/variables per class: 0.151768
+Average ratio of final classes/methods/variables per class: 0.109030
+Average ratio of constant classes/methods/variables per class: 0.099661
+Ratio of inner classes to overall amount of ordinary classes in project: 0.026316
+Average inherited referenced methods ratio per class: 0.044737
+Average visibility ratio per class: 0.581530
+Amount of lines of code in project: 18747
+Overall fitness function score: 0.456791

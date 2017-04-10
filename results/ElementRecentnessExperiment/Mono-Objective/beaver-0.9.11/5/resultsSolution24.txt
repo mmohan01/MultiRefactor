@@ -1,0 +1,118 @@
+======== Search Information ========
+Search: Genetic Algorithm
+Generations: 100
+Population Size: 50
+Crossover Probability: 0.200000
+Mutation Probability: 0.800000
+
+======== Initial Metric Info ========
+Average ratio of private/package/protected attributes to overall attributes per class: 0.406288
+Average coupling per class: 1.728571
+Average cohesion among methods per class: 0.429654
+Average amount of user defined attributes declared per class: 1.000000
+Average functional abstraction per class: 0.295238
+Average amount of polymorphic methods per class: 0.357143
+Average amount of public methods per class: 2.314286
+Average amount of methods per class: 4.457143
+Average amount of complexity of methods per class: 63.942856
+Ratio of interfaces to overall amount of classes: 0.000000
+Average ratio of abstract classes/methods per class: 0.058333
+Average ratio of static classes/methods/variables per class: 0.256991
+Average ratio of final classes/methods/variables per class: 0.087795
+Average ratio of constant classes/methods/variables per class: 0.054747
+Ratio of inner classes to overall amount of ordinary classes in project: 0.657143
+Average inherited referenced methods ratio per class: 0.022487
+Average visibility ratio per class: 0.603762
+Amount of lines of code in project: 6493
+Overall fitness function score: 0.000000
+
+======== Applied Refactorings ========
+Iteration 1: "Decrease Method Visibility" applied at class Production to method Production(int,beaver.spec.NonTerminal,beaver.spec.Production.RHS) from package to protected
+Iteration 2: "Make Method Non Final" applied at class GrammarScanner to method yyclose()
+Iteration 3: "Decrease Method Visibility" applied at class GrammarParser\Events to method Events(beaver.comp.util.Log) from package to protected
+Iteration 4: "Move Method Down" applied to method toString() from GrammarSymbol to NonTerminal
+Iteration 5: "Decrease Method Visibility" applied at class GrammarBuilder to method getNonTerminals() from private to package
+Iteration 6: "Increase Field Visibility" applied at class Production\RHS to field NONE from public to protected
+Iteration 7: "Make Field Non Final" applied at class Action to FieldDeclaration LOOKAHEAD_ID_COMPARATOR
+Iteration 8: "Decrease Method Visibility" applied at class GrammarParser\Events to method Events(beaver.comp.util.Log) from protected to public
+Iteration 9: "Make Field Non Final" applied at class GrammarParser\Terminals to FieldDeclaration CODE
+Iteration 10: "Move Method Up" applied to method toString() from NonTerminal to GrammarSymbol
+Iteration 11: "Decrease Field Visibility" applied at class GrammarParser\Events to field log from private to package
+Iteration 12: "Make Class Abstract" applied to class Action\Type\Conflict
+Iteration 13: "Decrease Method Visibility" applied at class GrammarSymbol to method GrammarSymbol(java.lang.String) from package to protected
+Iteration 14: "Move Field Up" applied to field name from Declaration\NameContainer to Declaration
+Iteration 15: "Make Method Final" applied at class Make to method parseOptions(java.lang.String[])
+Iteration 16: "Increase Method Visibility" applied at class GrammarScanner to method yyclose() from public to protected
+Iteration 17: "Decrease Method Visibility" applied at class Action\Type to method isRemovable() from package to protected
+Iteration 18: "Decrease Method Visibility" applied at class Log\Record to method Record(int,int,java.lang.String) from package to protected
+Iteration 19: "Make Field Final" applied at class ParsingTables to LocalVariableDeclaration action_lists [in method ParsingTables(beaver.spec.Grammar,beaver.comp.State)]
+Iteration 20: "Remove Method" applied at class IntArray to method compact()
+Iteration 21: "Make Method Static" applied at class ParserGenerator\CompiledParser\1393346346 to method compare(java.lang.Object,java.lang.Object)
+Iteration 22: "Increase Field Visibility" applied at class Rule\Definition to field prec_sym_name from public to protected
+Iteration 23: "Make Field Static" applied at class ParsingTables to field n_term
+Iteration 24: "Decrease Field Visibility" applied at class GrammarParser\Events to field log from package to protected
+Iteration 25: "Decrease Method Visibility" applied at class GrammarSymbol to method GrammarSymbol(java.lang.String) from protected to public
+Iteration 26: "Move Field Up" applied to field name from Declaration to Node
+Iteration 27: "Make Field Final" applied at class NonTerminal to FieldDeclaration definitions
+Iteration 28: "Increase Field Visibility" applied at class Terminal\Associativity to field NONE from public to protected
+Iteration 29: "Make Class Abstract" applied to class Action
+Iteration 30: "Make Method Non Static" applied at class ParsingTables to method expand(short[])
+Iteration 31: "Make Class Final" applied to class Terminal
+Iteration 32: "Decrease Method Visibility" applied at class NonTerminal to method NonTerminal(java.lang.String,java.lang.String) from package to protected
+Iteration 33: "Make Class Final" applied to class GrammarTreeRoot
+Iteration 34: "Make Class Final" applied to class Declaration\Implements
+Iteration 35: "Decrease Method Visibility" applied at class GrammarScanner to method zzScanError(int) from private to package
+Iteration 36: "Increase Field Visibility" applied at class Terminal\Associativity to field NONE from protected to package
+Iteration 37: "Decrease Method Visibility" applied at class NonTerminal to method NonTerminal(java.lang.String,java.lang.String) from protected to public
+Iteration 38: "Decrease Field Visibility" applied at class GrammarParser\Events to field log from protected to public
+Iteration 39: "Decrease Method Visibility" applied at class GrammarScanner to method zzScanError(int) from package to protected
+Iteration 40: "Decrease Method Visibility" applied at class GrammarBuilder to method propagateTypes(beaver.spec.NonTerminal[]) from private to package
+Iteration 41: "Decrease Method Visibility" applied at class Log\Record to method Record(int,int,java.lang.String) from protected to public
+Iteration 42: "Increase Field Visibility" applied at class Rule\Definition to field prec_sym_name from protected to package
+Iteration 43: "Increase Method Visibility" applied at class GrammarScanner to method yyclose() from protected to package
+Iteration 44: "Decrease Method Visibility" applied at class Action\Type to method isRemovable() from protected to public
+Iteration 45: "Increase Field Visibility" applied at class Rule\Definition to field prec_sym_name from package to private
+Iteration 46: "Decrease Method Visibility" applied at class GrammarScanner to method zzScanError(int) from protected to public
+Iteration 47: "Decrease Method Visibility" applied at class GrammarBuilder to method propagateTypes(beaver.spec.NonTerminal[]) from package to protected
+Iteration 48: "Increase Method Visibility" applied at class GrammarScanner to method yyclose() from package to private
+Iteration 49: "Decrease Method Visibility" applied at class GrammarBuilder to method propagateTypes(beaver.spec.NonTerminal[]) from protected to public
+Iteration 50: "Decrease Method Visibility" applied at class Terminal\Associativity to method Associativity(java.lang.String) from private to package
+Iteration 51: "Remove Method" applied at class Node to method setLocation(int,int)
+Iteration 52: "Decrease Method Visibility" applied at class ParsingTables to method removeLookaheads(beaver.comp.Action.List,int) from private to package
+Iteration 53: "Make Field Non Static" applied at class GrammarScanner to field ZZ_ATTRIBUTE_PACKED_0
+Iteration 54: "Move Method Down" applied to method toString() from GrammarSymbol to NonTerminal
+Iteration 55: "Make Field Static" applied at class GrammarSymbol to field id
+Iteration 56: "Remove Method" applied at class BitSet to method isSet(int)
+Iteration 57: "Increase Field Visibility" applied at class ParserGenerator to field SOURCE_FILE_EXT from public to protected
+Iteration 58: "Decrease Method Visibility" applied at class Terminal\Associativity to method Associativity(java.lang.String) from package to protected
+Iteration 59: "Make Class Non Final" applied to class Declaration\Implements
+Iteration 60: "Make Method Static" applied at class Declaration\LeftAssoc to method accept(beaver.spec.ast.TreeWalker)
+Iteration 61: "Make Method Static" applied at class TreeWalker to method visit(beaver.spec.ast.Declaration.Error)
+Iteration 62: "Move Field Down" applied to field name from Node to Declaration
+Iteration 63: "Decrease Method Visibility" applied at class BitSet\Processor to method process(int) from protected to public
+Iteration 64: "Move Field Up" applied to field is_nullable from NonTerminal to GrammarSymbol
+Iteration 65: "Make Method Non Final" applied at class Make to method parseOptions(java.lang.String[])
+
+Score has improved overall by 0.365569
+Time taken to refactor: 209.36s
+
+======== Final Metric Info ========
+Average ratio of private/package/protected attributes to overall attributes per class: 0.407479
+Average coupling per class: 1.728571
+Average cohesion among methods per class: 0.440474
+Average amount of user defined attributes declared per class: 1.000000
+Average functional abstraction per class: 0.296062
+Average amount of polymorphic methods per class: 0.357143
+Average amount of public methods per class: 2.371428
+Average amount of methods per class: 4.414286
+Average amount of complexity of methods per class: 63.685715
+Ratio of interfaces to overall amount of classes: 0.000000
+Average ratio of abstract classes/methods per class: 0.071905
+Average ratio of static classes/methods/variables per class: 0.265035
+Average ratio of final classes/methods/variables per class: 0.094901
+Average ratio of constant classes/methods/variables per class: 0.053035
+Ratio of inner classes to overall amount of ordinary classes in project: 0.657143
+Average inherited referenced methods ratio per class: 0.022487
+Average visibility ratio per class: 0.614192
+Amount of lines of code in project: 6493
+Overall fitness function score: 0.365569
