@@ -365,7 +365,6 @@ public class ElementRecentnessTasks extends Tasks
 			
 			searches.get(i).setServiceConfiguration(sc);
 			searches.get(i).setResultsPath(resultsPath);
-			if (i >= 20)
 			searches.get(i).run();
 		}	
 

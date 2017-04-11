@@ -883,15 +883,14 @@ public class Metrics
 		return (float) numerator / (float) denominator;
 	}
 	
-	// Average element recentness in refactoring solution. This is calculated by
+	// Element recentness in refactoring solution. This is calculated by
 	// finding how far back the element appeared amongst the previous versions of the code, 
 	// denoted with an integer. The older the element is, the larger its corresponding value.
 	// This value is calculated or extracted for each relevant element in the refactoring 
-	// solution, and average is calculated across the values to give an average measure of recentness.
-	public float elementRecentness(ArrayList<List<CompilationUnit>> previousUnits)
+	// solution, and an accumulative value is calculated to give an overall measure of recentness.
+	public int elementRecentness(ArrayList<List<CompilationUnit>> previousUnits)
 	{
 		int numerator = 0;
-		int denominator = 0;
 		
 		for (Entry<String, Integer> e : this.elementDiversity.entrySet())
 		{			
@@ -994,10 +993,9 @@ public class Metrics
 			}
 			
 			numerator += (amount * value);
-			denominator += value;	
 		}
 		
-		return (float) numerator / (float) denominator;
+		return numerator;
 	}
 	
 	// Returns a value to represent the visibility of a modifier.

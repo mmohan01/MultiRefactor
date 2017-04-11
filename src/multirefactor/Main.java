@@ -46,7 +46,7 @@ public class Main
 		} 
 		else 
 		{		
-			ElementRecentnessTasks run = new ElementRecentnessTasks();
+			AllObjectivesTasks run = new AllObjectivesTasks();
 			run.run();
 		}
 		

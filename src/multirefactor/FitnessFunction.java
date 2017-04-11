@@ -315,7 +315,7 @@ public class FitnessFunction
 					outputs[i] = String.format("Measure of priority class and non priority class instances in refactoring solution: %d", m.priority(this.priorityClasses, this.nonPriorityClasses));
 				break;	
 			case "diversity":
-				outputs[i] = String.format("Measure of refactoring diversity in refactoring solution: %d", m.diversity());
+				outputs[i] = String.format("Measure of refactoring diversity in refactoring solution: %f", m.diversity());
 				break;	
 			case "elementRecentness":
 				outputs[i] = String.format("Measure of element recentness in refactoring solution: %d", m.elementRecentness(this.previousUnits));
