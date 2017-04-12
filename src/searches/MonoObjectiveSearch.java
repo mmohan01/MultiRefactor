@@ -143,30 +143,33 @@ public class MonoObjectiveSearch extends GeneticAlgorithmSearch
 				super.print(super.sc.getSourceFileRepository());	
 			}
 			
-			// Add element recentness score for finished solution. Only used for objective 
-			// experiment to make it easier to compare against multi-objective approach
-			// and avoid the need to manually work out element recentness score afterwards.
+			// Add priority score for finished solution using class lists from priority configuration
+			// file. Only used for objective experiment to make it easier to compare against multi-
+			// objective approach and avoid the need to manually work out priority score afterwards.
 			String input = super.resultsPath.substring(0, super.resultsPath.length() - 3);
-			input = input.substring(input.lastIndexOf('/') + 1);
-			input = input.substring(0, input.lastIndexOf('-'));
-			super.setConfiguration(new Configuration(String.format("./configurations/elementrecentness%s.txt", input)));
+			input = input.substring(input.lastIndexOf('/') + 1);			
+			super.setConfiguration(new Configuration(String.format("./configurations/priority%s.txt", input)));
 			super.m.setUnits(super.sc.getSourceFileRepository().getKnownCompilationUnits());
-			super.m.setElementDiversity(population.get(0).getElementDiversity());
-			float elementRecentness = super.m.elementRecentness(super.c.getPreviousUnits());
+			super.m.setAffectedClasses(population.get(0).getAffectedClasses());
 			String runName = String.format("%sresultsSolution1.txt", super.resultsPath);
+			int priority = 0;
+
+			if (super.c.getNonPriorityClasses() == null)
+				priority = super.m.priority(super.c.getPriorityClasses());
+			else
+				priority = super.m.priority(super.c.getPriorityClasses(), super.c.getNonPriorityClasses());
 
 			try 
 			{
 				BufferedWriter bw = new BufferedWriter(new FileWriter(runName, true));
-				bw.append(String.format("\r\n\r\n**Element recentness objective score: %f**", elementRecentness));
+				bw.append(String.format("\r\n\r\n**Priority objective score: %d**", priority));
 				bw.close();
 			}
 			catch (IOException e) 
 			{
-				System.out.println("\r\nEXCEPTION: Cannot output diversity score to text file.");
+				System.out.println("\r\nEXCEPTION: Cannot output priority score to text file.");
 				System.exit(1);
-			}
-			
+			}			
 		}
 		else
 		{
