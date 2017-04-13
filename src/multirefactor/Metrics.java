@@ -823,7 +823,7 @@ public class Metrics
 	
 	// Instances of priority classes (most important classes determined 
 	// by the user) affected by the refactorings of a solution.
-	public int priority(ArrayList<String> priorityClasses)
+	public int priorityNotNormalised(ArrayList<String> priorityClasses)
 	{		
 		int priorityAmount = 0;
 
@@ -846,10 +846,10 @@ public class Metrics
 	// override also incorporates a list of non priority classes (classes where
 	// modifications are undesirable). The instances of non priority classes are also 
 	// calculated and then taken away from the priority classes amount to give an overall value.
-	public int priority(ArrayList<String> priorityClasses, ArrayList<String> nonPriorityClasses)
+	public int priorityNotNormalised(ArrayList<String> priorityClasses, ArrayList<String> nonPriorityClasses)
 	{				
 		int nonPriorityAmount = 0;
-		int priorityAmount = priority(priorityClasses);
+		int priorityAmount = priorityNotNormalised(priorityClasses);
 
 		for (String s1 : this.affectedClasses)
 		{
@@ -866,13 +866,58 @@ public class Metrics
 		return priorityAmount - nonPriorityAmount;
 	}
 	
+	// Priority objective updated to be normalised as a ratio between 0 and 1. The original
+	// score is divided by the highest value it could be i.e. the overall amount of affected classes.
+	public float priority(ArrayList<String> priorityClasses)
+	{		
+		int priorityAmount = 0;
+
+		for (String s1 : this.affectedClasses)
+		{
+			for (String s2 : priorityClasses)
+			{
+				if (s1.endsWith(s2))
+				{
+					priorityAmount++;
+					break;
+				}
+			}
+		}
+		
+		return (float) priorityAmount / (float) this.affectedClasses.size();
+	}
+	
+	// Objective updated to be normalised as a ratio between -1 and 1. 
+	// The non priority score is normalised the same way as the priority
+	// score. Then the non priority score is taken away from the priority score.
+	public float priority(ArrayList<String> priorityClasses, ArrayList<String> nonPriorityClasses)
+	{				
+		float nonPriorityAmount = 0.0f;
+		float priorityAmount = priority(priorityClasses);
+
+		for (String s1 : this.affectedClasses)
+		{
+			for (String s2 : nonPriorityClasses)
+			{
+				if (s1.endsWith(s2))
+				{
+					nonPriorityAmount++;
+					break;
+				}
+			}
+		}
+		
+		nonPriorityAmount /= this.affectedClasses.size();
+		return priorityAmount - nonPriorityAmount;
+	}
+	
 	// Diversity of refactorings in refactoring solution. This is calculated by
 	// finding the average amount of refactorings per refactored element, and then
-	// dividing the amount of distinct refactored element by this average. In the method
-	// this calculation is a little more streamlined average = refactoring count / elements.
+	// dividing the amount of distinct refactored elements by this average. In the method
+	// this calculation is a little more streamlined. Average = refactoring count / elements.
 	// Therefore elements / average = elements * (elements / refactoring count).
 	// The metric is calculated by finding elements squared over refactoring count.
-	public float diversity()
+	public float diversityNotNormalised()
 	{
 		int numerator = this.elementDiversity.size() * this.elementDiversity.size();
 		int denominator = 0;
@@ -883,12 +928,27 @@ public class Metrics
 		return (float) numerator / (float) denominator;
 	}
 	
+	// Diversity objective updated to be normalised as a ratio between 0 and 1.
+	// The original score is divided by the highest value it could be i.e. the 
+	// amount of distinct elements divided by 1. Again, this calculation is 
+	// rearranged to improve efficiency. (elements / average) / elements = 
+	// 1 / average => (1 / (refactoring count / elements)) => elements / refactoring count.
+	public float diversity()
+	{
+		int numerator = 0;
+		
+		for (Integer value : this.elementDiversity.values()) 
+			numerator += value;
+		
+		return (float) this.elementDiversity.size() / (float) numerator;
+	}
+	
 	// Element recentness in refactoring solution. This is calculated by
 	// finding how far back the element appeared amongst the previous versions of the code, 
 	// denoted with an integer. The older the element is, the larger its corresponding value.
 	// This value is calculated or extracted for each relevant element in the refactoring 
 	// solution, and an accumulative value is calculated to give an overall measure of recentness.
-	public int elementRecentness(ArrayList<List<CompilationUnit>> previousUnits)
+	public int elementRecentnessNotNormalised(ArrayList<List<CompilationUnit>> previousUnits)
 	{
 		int numerator = 0;
 		
@@ -996,6 +1056,121 @@ public class Metrics
 		}
 		
 		return numerator;
+	}
+	
+	// Element recentness objective updated to be normalised as a ratio between 0 and 1.
+	// The original score is divided by the highest value it could be i.e. the accumulative
+	// value that represents if every element were only found in the current version of the project
+	public float elementRecentness(ArrayList<List<CompilationUnit>> previousUnits)
+	{
+		int numerator = 0;
+		int denominator = 0;
+		
+		for (Entry<String, Integer> e : this.elementDiversity.entrySet())
+		{			
+			String key = e.getKey();
+			int value = e.getValue();
+			int amount = previousUnits.size();
+			
+			if (this.elementScores.containsKey(key))
+			{
+				amount = this.elementScores.get(key);			
+			}
+			else
+			{
+				String name;
+				int elementType;
+				
+				if (!(key.contains(":")))
+				{
+					elementType = 1;
+					name = key.substring(key.lastIndexOf('\\') + 1);
+				}
+				else if (key.charAt(1) == ':')
+				{
+					elementType = 3;
+					name = key.substring(2);
+				}
+				else if (key.endsWith(":"))
+				{
+					elementType = 2;
+					name = key.substring(1, key.length() - 1);
+				}
+				else
+				{
+					elementType = 4;
+					name = key.substring(key.lastIndexOf(':') + 1);
+				}
+				
+				for (int i = previousUnits.size() - 1; i >= 0; i--)
+				{
+					ForestWalker tw = new ForestWalker(previousUnits.get(i));
+					boolean breakout = true;
+					
+					if (elementType == 1)
+					{
+						while (tw.next(TypeDeclaration.class))
+						{
+							TypeDeclaration td = (TypeDeclaration) tw.getProgramElement();
+							if (((td instanceof ClassDeclaration) || (td instanceof InterfaceDeclaration)) && 
+								(td.getName() != null) && (td.getName().equals(name)))
+							{
+								breakout = false;
+								break;
+							}
+						}
+					}
+					else if (elementType == 2)
+					{
+						while (tw.next(MethodDeclaration.class))
+						{
+							MethodDeclaration md = (MethodDeclaration) tw.getProgramElement();
+							if ((md.getName() != null) && (Refactoring.getMethodName(md).equals(name)))
+							{
+								breakout = false;
+								break;
+							}
+						}
+					}
+					else if (elementType == 3)
+					{
+						while (tw.next(FieldDeclaration.class))
+						{
+							FieldDeclaration fd = (FieldDeclaration) tw.getProgramElement();
+							if ((fd.toString() != null) && (fd.toString().equals(name)))
+							{
+								breakout = false;
+								break;
+							}
+						}
+					}	
+					else if (elementType == 4)
+					{
+						while (tw.next(VariableDeclaration.class))
+						{
+							VariableDeclaration vd = (VariableDeclaration) tw.getProgramElement();
+							if ((vd.toString() != null) && (vd.toString().equals(name)))
+							{
+								breakout = false;
+								break;
+							}
+						}
+					}
+					
+					if (breakout)
+						break;
+					
+					amount--;
+				}	
+				
+				this.elementScores.put(key, amount);
+			}
+			
+			numerator += (amount * value);
+			denominator += (previousUnits.size() * value);
+		}
+		
+		return (float) numerator / (float) denominator;
 	}
 	
 	// Returns a value to represent the visibility of a modifier.

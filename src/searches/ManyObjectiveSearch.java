@@ -26,6 +26,7 @@ public class ManyObjectiveSearch extends GeneticAlgorithmSearch
 	private float crossoverProbability;
 	private float mutationProbability;
 	private int initialRefactoringRange = 50;
+	private boolean topSolutionFlag = true;
 
 	public ManyObjectiveSearch(CrossReferenceServiceConfiguration sc, Configuration[] c, ArrayList <Refactoring> refactorings, String[] sourceFiles) 
 	{
@@ -143,7 +144,7 @@ public class ManyObjectiveSearch extends GeneticAlgorithmSearch
 				topRank.add(population.get(i));
 		
 		// Find the ideal solution from the top rank in the population.
-		int topSolution = super.findTopSolution(topRank, this.c.length);
+		int topSolution = (topSolutionFlag) ? super.findTopSolution(topRank, this.c.length) : super.findTopSolution(topRank);
 
 		for (int i = 0; i < population.size(); i++)
 		{
@@ -698,5 +699,10 @@ public class ManyObjectiveSearch extends GeneticAlgorithmSearch
 	public void setInitialRefactoringRange(int refactoringRange)
 	{
 		this.initialRefactoringRange = refactoringRange;
+	}
+	
+	public void setTopSolutionFlag(boolean topSolutionFlag)
+	{
+		this.topSolutionFlag = topSolutionFlag;
 	}
 }

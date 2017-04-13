@@ -456,6 +456,23 @@ public abstract class GeneticAlgorithmSearch extends Search
 			
 		return topSolution;
 	}
+	
+	protected int findTopSolution(ArrayList<RefactoringSequence> topRank)
+	{
+		float bestQualityValue = 0.0f;
+		int topSolution = 0;
+
+		for (int i = 0; i < topRank.size(); i++) 
+		{			
+			if (topRank.get(i).getMOFitness()[0] > bestQualityValue)
+			{
+				bestQualityValue = topRank.get(i).getMOFitness()[0];
+				topSolution = i;
+			}
+		}
+		
+		return topSolution;
+	}
 
 	// Output refactoring information to results file for a multi-objective solution.
 	protected void outputRefactoringInfo(String pathName, double time, int solution, ArrayList<String> refactoringInfo)

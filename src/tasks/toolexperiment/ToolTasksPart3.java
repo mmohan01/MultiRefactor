@@ -54,83 +54,58 @@ public class ToolTasksPart3 extends Tasks
 		// Initialise search tasks.
 		ArrayList<Search> searches = new ArrayList<Search>();
 		MonoObjectiveSearch geneticAlgorithm1 = new MonoObjectiveSearch(sc, c, sourceFiles[0], true, 100, 50, 0.2f, 0.8f);
-		geneticAlgorithm1.setInitialRefactoringRange(50);
 		searches.add(geneticAlgorithm1);
 		MonoObjectiveSearch geneticAlgorithm2 = new MonoObjectiveSearch(sc, c, sourceFiles[0], true, 100, 50, 0.2f, 0.8f);
-		geneticAlgorithm2.setInitialRefactoringRange(50);
 		searches.add(geneticAlgorithm2);
 		MonoObjectiveSearch geneticAlgorithm3 = new MonoObjectiveSearch(sc, c, sourceFiles[0], true, 100, 50, 0.2f, 0.8f);
-		geneticAlgorithm3.setInitialRefactoringRange(50);
 		searches.add(geneticAlgorithm3);
 		MonoObjectiveSearch geneticAlgorithm4 = new MonoObjectiveSearch(sc, c, sourceFiles[0], true, 100, 50, 0.2f, 0.8f);
-		geneticAlgorithm4.setInitialRefactoringRange(50);
 		searches.add(geneticAlgorithm4);
 		MonoObjectiveSearch geneticAlgorithm5 = new MonoObjectiveSearch(sc, c, sourceFiles[0], true, 100, 50, 0.2f, 0.8f);
-		geneticAlgorithm5.setInitialRefactoringRange(50);
 		searches.add(geneticAlgorithm5);
 		
 		MonoObjectiveSearch geneticAlgorithm6 = new MonoObjectiveSearch(sc, c, sourceFiles[1], true, 100, 50, 0.2f, 0.8f);
-		geneticAlgorithm6.setInitialRefactoringRange(50);
 		searches.add(geneticAlgorithm6);
 		MonoObjectiveSearch geneticAlgorithm7 = new MonoObjectiveSearch(sc, c, sourceFiles[1], true, 100, 50, 0.2f, 0.8f);
-		geneticAlgorithm7.setInitialRefactoringRange(50);
 		searches.add(geneticAlgorithm7);
 		MonoObjectiveSearch geneticAlgorithm8 = new MonoObjectiveSearch(sc, c, sourceFiles[1], true, 100, 50, 0.2f, 0.8f);
-		geneticAlgorithm8.setInitialRefactoringRange(50);
 		searches.add(geneticAlgorithm8);
 		MonoObjectiveSearch geneticAlgorithm9 = new MonoObjectiveSearch(sc, c, sourceFiles[1], true, 100, 50, 0.2f, 0.8f);
-		geneticAlgorithm9.setInitialRefactoringRange(50);
 		searches.add(geneticAlgorithm9);
 		MonoObjectiveSearch geneticAlgorithm10 = new MonoObjectiveSearch(sc, c, sourceFiles[1], true, 100, 50, 0.2f, 0.8f);
-		geneticAlgorithm10.setInitialRefactoringRange(50);
 		searches.add(geneticAlgorithm10);
 		
 		MonoObjectiveSearch geneticAlgorithm11 = new MonoObjectiveSearch(sc, c, sourceFiles[2], true, 100, 50, 0.2f, 0.8f);
-		geneticAlgorithm11.setInitialRefactoringRange(50);
 		searches.add(geneticAlgorithm11);
 		MonoObjectiveSearch geneticAlgorithm12 = new MonoObjectiveSearch(sc, c, sourceFiles[2], true, 100, 50, 0.2f, 0.8f);
-		geneticAlgorithm12.setInitialRefactoringRange(50);
 		searches.add(geneticAlgorithm12);
 		MonoObjectiveSearch geneticAlgorithm13 = new MonoObjectiveSearch(sc, c, sourceFiles[2], true, 100, 50, 0.2f, 0.8f);
-		geneticAlgorithm13.setInitialRefactoringRange(50);
 		searches.add(geneticAlgorithm13);
 		MonoObjectiveSearch geneticAlgorithm14 = new MonoObjectiveSearch(sc, c, sourceFiles[2], true, 100, 50, 0.2f, 0.8f);
-		geneticAlgorithm14.setInitialRefactoringRange(50);
 		searches.add(geneticAlgorithm14);
 		MonoObjectiveSearch geneticAlgorithm15 = new MonoObjectiveSearch(sc, c, sourceFiles[2], true, 100, 50, 0.2f, 0.8f);
-		geneticAlgorithm15.setInitialRefactoringRange(50);
 		searches.add(geneticAlgorithm15);
 		
 		MonoObjectiveSearch geneticAlgorithm16 = new MonoObjectiveSearch(sc, c, sourceFiles[3], true, 100, 50, 0.2f, 0.8f);
-		geneticAlgorithm16.setInitialRefactoringRange(50);
 		searches.add(geneticAlgorithm16);
 		MonoObjectiveSearch geneticAlgorithm17 = new MonoObjectiveSearch(sc, c, sourceFiles[3], true, 100, 50, 0.2f, 0.8f);
-		geneticAlgorithm17.setInitialRefactoringRange(50);
 		searches.add(geneticAlgorithm17);
 		MonoObjectiveSearch geneticAlgorithm18 = new MonoObjectiveSearch(sc, c, sourceFiles[3], true, 100, 50, 0.2f, 0.8f);
-		geneticAlgorithm18.setInitialRefactoringRange(50);
 		searches.add(geneticAlgorithm18);
 		MonoObjectiveSearch geneticAlgorithm19 = new MonoObjectiveSearch(sc, c, sourceFiles[3], true, 100, 50, 0.2f, 0.8f);
-		geneticAlgorithm19.setInitialRefactoringRange(50);
 		searches.add(geneticAlgorithm19);
 		MonoObjectiveSearch geneticAlgorithm20 = new MonoObjectiveSearch(sc, c, sourceFiles[3], true, 100, 50, 0.2f, 0.8f);
-		geneticAlgorithm20.setInitialRefactoringRange(50);
 		searches.add(geneticAlgorithm20);
 		
 		MonoObjectiveSearch geneticAlgorithm21 = new MonoObjectiveSearch(sc, c, sourceFiles[4], true, 100, 50, 0.2f, 0.8f);
-		geneticAlgorithm21.setInitialRefactoringRange(50);
 		searches.add(geneticAlgorithm21);
 		MonoObjectiveSearch geneticAlgorithm22 = new MonoObjectiveSearch(sc, c, sourceFiles[4], true, 100, 50, 0.2f, 0.8f);
-		geneticAlgorithm22.setInitialRefactoringRange(50);
 		searches.add(geneticAlgorithm22);
 		MonoObjectiveSearch geneticAlgorithm23 = new MonoObjectiveSearch(sc, c, sourceFiles[4], true, 100, 50, 0.2f, 0.8f);
-		geneticAlgorithm23.setInitialRefactoringRange(50);
 		searches.add(geneticAlgorithm23);
 		MonoObjectiveSearch geneticAlgorithm24 = new MonoObjectiveSearch(sc, c, sourceFiles[4], true, 100, 50, 0.2f, 0.8f);
-		geneticAlgorithm24.setInitialRefactoringRange(50);
 		searches.add(geneticAlgorithm24);
 		MonoObjectiveSearch geneticAlgorithm25 = new MonoObjectiveSearch(sc, c, sourceFiles[4], true, 100, 50, 0.2f, 0.8f);
-		geneticAlgorithm25.setInitialRefactoringRange(50);
 		searches.add(geneticAlgorithm25);
 		
 		String[] metricConfiguration = new String[]{
@@ -160,7 +135,7 @@ public class ToolTasksPart3 extends Tasks
 		
 		// Create list of output directories for
 		// each refactored project to be written to.
-		String[] output = new String[metricConfiguration.length];
+		String[] outputDir = new String[metricConfiguration.length];
 		
 		// Create list of output directories for
 		// each result data output to be written to.
@@ -171,7 +146,7 @@ public class ToolTasksPart3 extends Tasks
 				
 		for (int i = 0; i < metricConfiguration.length; i++)
 		{
-			output[i] = "./data/refactored/ToolExperiment/Part3/" + 
+			outputDir[i] = "./data/refactored/ToolExperiment/Part3/" + 
 			            metricConfiguration[i].substring((metricConfiguration[i].lastIndexOf("/") + 1), metricConfiguration[i].lastIndexOf(".")) + "/";
 
 			resultsDir[i] = "./results/ToolExperiment/Part3/" + 
@@ -183,7 +158,7 @@ public class ToolTasksPart3 extends Tasks
 				sc = new CrossReferenceServiceConfiguration();
 				int path = (int) Math.floor(j/5);
 				
-				String outputPath = output[i] + input[path].substring(input[path].lastIndexOf("/") + 1) + "/" + ((j % 5) + 1) + "/";
+				String outputPath = outputDir[i] + input[path].substring(input[path].lastIndexOf("/") + 1) + "/" + ((j % 5) + 1) + "/";
 				String resultsPath = resultsDir[i] + input[path].substring(input[path].lastIndexOf("/") + 1) + "/" + ((j % 5) + 1) + "/";
 
 				// Initialise available refactorings. Needs to be done each 

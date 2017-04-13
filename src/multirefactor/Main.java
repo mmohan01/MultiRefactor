@@ -5,6 +5,7 @@ import java.io.FileReader;
 import java.io.IOException;
 
 import tasks.*;
+import tasks.objectivesexperiment.*;
 
 // Writes to console when program begins and ends.
 // Starts a new instance of Tasks (this is where the 
@@ -46,7 +47,7 @@ public class Main
 		} 
 		else 
 		{		
-			AllObjectivesTasks run = new AllObjectivesTasks();
+			ObjectivesTasksPart1 run = new ObjectivesTasksPart1();
 			run.run();
 		}
 		

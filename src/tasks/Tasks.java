@@ -51,14 +51,14 @@ public class Tasks
 		searches.add(simulatedAnnealing);
 		GeneticAlgorithmSearch geneticAlgorithm = new MonoObjectiveSearch(sc, c, sourceFiles);
 		searches.add(geneticAlgorithm);
-		MultiObjectiveSearch MultiObjectiveGeneticAlgorithm = new MultiObjectiveSearch(sc, cGA, refactorings, sourceFiles);
-		searches.add(MultiObjectiveGeneticAlgorithm);
-		ManyObjectiveSearch ManyObjectiveGeneticAlgorithm = new ManyObjectiveSearch(sc, cGA, refactorings, sourceFiles, 5, 50, 0.2f, 0.8f);
-		searches.add(ManyObjectiveGeneticAlgorithm);
+		MultiObjectiveSearch multiObjectiveGeneticAlgorithm = new MultiObjectiveSearch(sc, cGA, refactorings, sourceFiles);
+		searches.add(multiObjectiveGeneticAlgorithm);
+		ManyObjectiveSearch manyObjectiveGeneticAlgorithm = new ManyObjectiveSearch(sc, cGA, refactorings, sourceFiles, 5, 50, 0.2f, 0.8f);
+		searches.add(manyObjectiveGeneticAlgorithm);
 				
 		// Create list of output directories for
 		// each refactored project to be written to.
-		String[] output = new String[]{
+		String[] outputDir = new String[]{
 		"./data/refactored/" + this.pathway.substring(this.pathway.lastIndexOf("/") + 1) + "/Random/",
 		"./data/refactored/" + this.pathway.substring(this.pathway.lastIndexOf("/") + 1) + "/HillClimbing/",
 		"./data/refactored/" + this.pathway.substring(this.pathway.lastIndexOf("/") + 1) + "/SimulatedAnnealing/",
@@ -153,7 +153,7 @@ public class Tasks
 			
 			// Set up initial properties of service configuration.
 			sc.getProjectSettings().setProperty(PropertyNames.INPUT_PATH, this.pathway + readLibs(this.pathway));
-			sc.getProjectSettings().setProperty(PropertyNames.OUTPUT_PATH, output[i]);
+			sc.getProjectSettings().setProperty(PropertyNames.OUTPUT_PATH, outputDir[i]);
 			sc.getProjectSettings().ensureSystemClassesAreInPath();
 
 			// initialise search task.			

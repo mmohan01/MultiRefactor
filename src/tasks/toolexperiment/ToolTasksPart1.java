@@ -78,7 +78,7 @@ public class ToolTasksPart1 extends Tasks
 		{
 			// Create list of output directories for
 			// each refactored project to be written to.
-			String[] output = new String[]{
+			String[] outputDir = new String[]{
 					"./data/refactored/ToolExperiment/Part1/CP0.2-MP0.2/" + ij + "/",
 					"./data/refactored/ToolExperiment/Part1/CP0.2-MP0.5/" + ij + "/",
 					"./data/refactored/ToolExperiment/Part1/CP0.2-MP0.8/" + ij + "/",
@@ -174,7 +174,7 @@ public class ToolTasksPart1 extends Tasks
 
 				// Set up initial properties of service configuration.
 				sc.getProjectSettings().setProperty(PropertyNames.INPUT_PATH, this.pathway + super.readLibs(this.pathway));
-				sc.getProjectSettings().setProperty(PropertyNames.OUTPUT_PATH, output[i]);
+				sc.getProjectSettings().setProperty(PropertyNames.OUTPUT_PATH, outputDir[i]);
 				sc.getProjectSettings().ensureSystemClassesAreInPath();
 
 				// initialise search task.			

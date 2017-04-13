@@ -310,15 +310,15 @@ public class FitnessFunction
 				break;	
 			case "priority":
 				if (this.nonPriorityClasses == null)
-					outputs[i] = String.format("Measure of priority class instances in refactoring solution: %d", m.priority(this.priorityClasses));
+					outputs[i] = String.format("Measure of priority class instances in refactoring solution: %f", m.priority(this.priorityClasses));
 				else
-					outputs[i] = String.format("Measure of priority class and non priority class instances in refactoring solution: %d", m.priority(this.priorityClasses, this.nonPriorityClasses));
+					outputs[i] = String.format("Measure of priority class and non priority class instances in refactoring solution: %f", m.priority(this.priorityClasses, this.nonPriorityClasses));
 				break;	
 			case "diversity":
 				outputs[i] = String.format("Measure of refactoring diversity in refactoring solution: %f", m.diversity());
 				break;	
 			case "elementRecentness":
-				outputs[i] = String.format("Measure of element recentness in refactoring solution: %d", m.elementRecentness(this.previousUnits));
+				outputs[i] = String.format("Measure of element recentness in refactoring solution: %f", m.elementRecentness(this.previousUnits));
 				break;	
 			default:
 				outputs[i] = "STRING INPUT DOES NOT RELATE TO A METRIC";
