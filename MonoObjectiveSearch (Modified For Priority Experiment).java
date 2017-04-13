@@ -147,12 +147,12 @@ public class MonoObjectiveSearch extends GeneticAlgorithmSearch
 			// file. Only used for objective experiment to make it easier to compare against multi-
 			// objective approach and avoid the need to manually work out priority score afterwards.
 			String input = super.resultsPath.substring(0, super.resultsPath.length() - 3);
-			input = input.substring(input.lastIndexOf("/") + 1);			
+			input = input.substring(input.lastIndexOf('/') + 1);			
 			super.setConfiguration(new Configuration(String.format("./configurations/priority%s.txt", input)));
 			super.m.setUnits(super.sc.getSourceFileRepository().getKnownCompilationUnits());
 			super.m.setAffectedClasses(population.get(0).getAffectedClasses());
 			String runName = String.format("%sresultsSolution1.txt", super.resultsPath);
-			int priority = 0;
+			float priority = 0;
 
 			if (super.c.getNonPriorityClasses() == null)
 				priority = super.m.priority(super.c.getPriorityClasses());
@@ -162,7 +162,7 @@ public class MonoObjectiveSearch extends GeneticAlgorithmSearch
 			try 
 			{
 				BufferedWriter bw = new BufferedWriter(new FileWriter(runName, true));
-				bw.append(String.format("\r\n\r\n**Priority objective score: %d**", priority));
+				bw.append(String.format("\r\n\r\n**Priority objective score: %f**", priority));
 				bw.close();
 			}
 			catch (IOException e) 
