@@ -141,47 +141,7 @@ public class MonoObjectiveSearch extends GeneticAlgorithmSearch
 				String newOutputPath = this.outputPath + "Solution" + (i + 1) + "/";
 				super.sc.getProjectSettings().setProperty(PropertyNames.OUTPUT_PATH, newOutputPath);
 				super.print(super.sc.getSourceFileRepository());	
-			}
-			
-			// Add values for the priority, diversity and element recentness objectives in the finished
-			// solution. Only used for final objective experiments to make it easier to compare against 
-			// many/multi-objective approach and avoid the need to manually work out the scores afterwards.
-			String input = super.resultsPath.substring(0, super.resultsPath.length() - 3);
-			input = input.substring(input.lastIndexOf('/') + 1);
-			super.setConfiguration(new Configuration(String.format("./configurations/priority%s.txt", input)));
-			super.m.setUnits(super.sc.getSourceFileRepository().getKnownCompilationUnits());
-			super.m.setAffectedClasses(population.get(0).getAffectedClasses());
-			String runName = String.format("%sresultsSolution1.txt", super.resultsPath);
-			float priority = 0.0f;
-
-			if (super.c.getNonPriorityClasses() == null)
-				priority = super.m.priority(super.c.getPriorityClasses());
-			else
-				priority = super.m.priority(super.c.getPriorityClasses(), super.c.getNonPriorityClasses());
-
-			super.setConfiguration(new Configuration("./configurations/diversity.txt"));
-			super.m.setUnits(super.sc.getSourceFileRepository().getKnownCompilationUnits());
-			super.m.setElementDiversity(population.get(0).getElementDiversity());
-			float diversity = super.m.diversity();
-						
-			input = input.substring(0, input.lastIndexOf('-'));
-			super.setConfiguration(new Configuration(String.format("./configurations/elementrecentness%s.txt", input)));
-			super.m.setUnits(super.sc.getSourceFileRepository().getKnownCompilationUnits());
-			float elementRecentness = super.m.elementRecentness(super.c.getPreviousUnits());
-			
-			try 
-			{
-				BufferedWriter bw = new BufferedWriter(new FileWriter(runName, true));
-				bw.append(String.format("\r\n\r\n**Priority objective score: %f**", priority));
-				bw.append(String.format("\r\n**Diversity objective score: %f**", diversity));
-				bw.append(String.format("\r\n**Element recentness objective score: %f**", elementRecentness));
-				bw.close();
-			}
-			catch (IOException e) 
-			{
-				System.out.println("\r\nEXCEPTION: Cannot output other objective scores to text file.");
-				System.exit(1);
-			}			
+			}	
 		}
 		else
 		{
