@@ -146,8 +146,9 @@ public class MonoObjectiveSearch extends GeneticAlgorithmSearch
 			// Add priority score for finished solution using class lists from priority configuration
 			// file. Only used for objective experiment to make it easier to compare against multi-
 			// objective approach and avoid the need to manually work out priority score afterwards.
-			String input = super.resultsPath.substring(0, super.resultsPath.length() - 3);
-			input = input.substring(input.lastIndexOf('/') + 1);			
+			String input = super.resultsPath.substring(0, super.resultsPath.length() - 1);
+			input = input.substring(0, input.lastIndexOf('/'));
+			input = input.substring(input.lastIndexOf('/') + 1);		
 			super.setConfiguration(new Configuration(String.format("./configurations/priority%s.txt", input)));
 			super.m.setUnits(super.sc.getSourceFileRepository().getKnownCompilationUnits());
 			super.m.setAffectedClasses(population.get(0).getAffectedClasses());

@@ -146,7 +146,8 @@ public class MonoObjectiveSearch extends GeneticAlgorithmSearch
 			// Add values for the priority, diversity and element recentness objectives in the finished
 			// solution. Only used for final objective experiments to make it easier to compare against 
 			// many/multi-objective approach and avoid the need to manually work out the scores afterwards.
-			String input = super.resultsPath.substring(0, super.resultsPath.length() - 3);
+			String input = super.resultsPath.substring(0, super.resultsPath.length() - 1);
+			input = input.substring(0, input.lastIndexOf('/'));
 			input = input.substring(input.lastIndexOf('/') + 1);
 			super.setConfiguration(new Configuration(String.format("./configurations/priority%s.txt", input)));
 			super.m.setUnits(super.sc.getSourceFileRepository().getKnownCompilationUnits());
