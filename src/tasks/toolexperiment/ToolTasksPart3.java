@@ -156,7 +156,7 @@ public class ToolTasksPart3 extends Tasks
 			{
 				// Creates new service configuration to start from scratch.
 				sc = new CrossReferenceServiceConfiguration();
-				int path = (int) Math.floor(j/5);
+				int path = (int) Math.floor(j / 5);
 				
 				String outputPath = outputDir[i] + input[path].substring(input[path].lastIndexOf("/") + 1) + "/" + ((j % 5) + 1) + "/";
 				String resultsPath = resultsDir[i] + input[path].substring(input[path].lastIndexOf("/") + 1) + "/" + ((j % 5) + 1) + "/";

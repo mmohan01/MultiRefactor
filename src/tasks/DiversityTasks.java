@@ -208,7 +208,7 @@ public class DiversityTasks extends Tasks
 			// Creates new service configuration to start from scratch.
 			sc = new CrossReferenceServiceConfiguration();
 			int search = (i < 30) ? 0 : 1;
-			int path = (int) Math.floor(i/5);
+			int path = (int) Math.floor(i / 5);
 			int run = (i % 5) + 1;
 
 			if (path > 5)

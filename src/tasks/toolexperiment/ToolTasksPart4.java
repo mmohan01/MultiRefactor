@@ -53,10 +53,8 @@ public class ToolTasksPart4 extends Tasks
 		Configuration c1 = new Configuration("./configurations/qualityfunction-objective1.txt", refactorings);
 		Configuration c2 = new Configuration("./configurations/qualityfunction-objective2.txt", refactorings);
 		Configuration c3 = new Configuration("./configurations/qualityfunction-objective3.txt", refactorings);
-		Configuration[] cMO = new Configuration[]{
-				new Configuration("./configurations/qualityfunction-objective1.txt"), 
-				new Configuration("./configurations/qualityfunction-objective2.txt"),
-				new Configuration("./configurations/qualityfunction-objective3.txt")};
+		Configuration[] cMO = {new Configuration("./configurations/qualityfunction-objective1.txt"), new Configuration("./configurations/qualityfunction-objective2.txt"), 
+				               new Configuration("./configurations/qualityfunction-objective3.txt")};
 
 		// Initialise search tasks.
 		ArrayList<Search> searches = new ArrayList<Search>();
@@ -134,7 +132,7 @@ public class ToolTasksPart4 extends Tasks
 			// Creates new service configuration to start from scratch.
 			sc = new CrossReferenceServiceConfiguration();
 			int path = i % 5;
-			int search = (int) Math.floor(i/5);
+			int search = (int) Math.floor(i / 5);
 			
 			String outputPath = outputDir[search] + input[path].substring(input[path].lastIndexOf("/") + 1) + "/";
 			String resultsPath = resultsDir[search] + input[path].substring(input[path].lastIndexOf("/") + 1) + "/";

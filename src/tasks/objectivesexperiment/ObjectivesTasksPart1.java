@@ -400,7 +400,7 @@ public class ObjectivesTasksPart1 extends Tasks
 			// Creates new service configuration to start from scratch.
 			sc = new CrossReferenceServiceConfiguration();
 			int search = (i < 60) ? 0 : 1;
-			int path = (int) Math.floor(i/10);
+			int path = (int) Math.floor(i / 10);
 			int run = (i % 10) + 1;
 
 			while (path > 5)
