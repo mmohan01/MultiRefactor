@@ -17,6 +17,7 @@ import java.awt.Point;
 import java.awt.Rectangle;
 
 import org.jhotdraw.framework.*;
+import org.jhotdraw.framework.Cursor;
 import org.jhotdraw.util.Undoable;
 
 /**
