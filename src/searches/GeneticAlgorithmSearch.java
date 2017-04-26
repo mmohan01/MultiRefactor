@@ -248,7 +248,7 @@ public abstract class GeneticAlgorithmSearch extends Search
 				bw.append(String.format("\r\nFitness function %d score: %f", (i + 1), scores[i]));
 			
 			if (!(initial) && (toprank))
-				bw.append(String.format("\r\n\r\nThis solution has the closest maximum distance from the ideal point in the top rank of solutions"));
+				bw.append(String.format("\r\n\r\nThis is the ideal solution in the top rank of solutions"));
 
 			bw.close();
 		}
