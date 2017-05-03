@@ -10,6 +10,7 @@ import refactorings.field.*;
 import refactorings.method.*;
 import refactorings.type.*;
 import multirefactor.Configuration;
+import searches.GeneticAlgorithmSearch;
 import searches.MonoObjectiveSearch;
 import searches.Search;
 import tasks.Tasks;
@@ -43,33 +44,15 @@ public class ToolTasksPart1 extends Tasks
 
 		// Initialise search tasks.
 		ArrayList<Search> searches = new ArrayList<Search>();
-		MonoObjectiveSearch geneticAlgorithm1 = new MonoObjectiveSearch(sc, c, sourceFiles, true, 50, 10, 0.2f, 0.2f);
-		geneticAlgorithm1.setInitialRefactoringRange(50);
-		searches.add(geneticAlgorithm1);
-		MonoObjectiveSearch geneticAlgorithm2 = new MonoObjectiveSearch(sc, c, sourceFiles, true, 50, 10, 0.2f, 0.5f);
-		geneticAlgorithm2.setInitialRefactoringRange(50);
-		searches.add(geneticAlgorithm2);
-		MonoObjectiveSearch geneticAlgorithm3 = new MonoObjectiveSearch(sc, c, sourceFiles, true, 50, 10, 0.2f, 0.8f);
-		geneticAlgorithm3.setInitialRefactoringRange(50);
-		searches.add(geneticAlgorithm3);
-		MonoObjectiveSearch geneticAlgorithm4 = new MonoObjectiveSearch(sc, c, sourceFiles, true, 50, 10, 0.5f, 0.2f);
-		geneticAlgorithm4.setInitialRefactoringRange(50);
-		searches.add(geneticAlgorithm4);
-		MonoObjectiveSearch geneticAlgorithm5 = new MonoObjectiveSearch(sc, c, sourceFiles, true, 50, 10, 0.5f, 0.5f);
-		geneticAlgorithm5.setInitialRefactoringRange(50);
-		searches.add(geneticAlgorithm5);
-		MonoObjectiveSearch geneticAlgorithm6 = new MonoObjectiveSearch(sc, c, sourceFiles, true, 50, 10, 0.5f, 0.8f);
-		geneticAlgorithm6.setInitialRefactoringRange(50);
-		searches.add(geneticAlgorithm6);
-		MonoObjectiveSearch geneticAlgorithm7 = new MonoObjectiveSearch(sc, c, sourceFiles, true, 50, 10, 0.8f, 0.2f);
-		geneticAlgorithm7.setInitialRefactoringRange(50);
-		searches.add(geneticAlgorithm7);
-		MonoObjectiveSearch geneticAlgorithm8 = new MonoObjectiveSearch(sc, c, sourceFiles, true, 50, 10, 0.8f, 0.5f);
-		geneticAlgorithm8.setInitialRefactoringRange(50);
-		searches.add(geneticAlgorithm8);
-		MonoObjectiveSearch geneticAlgorithm9 = new MonoObjectiveSearch(sc, c, sourceFiles, true, 50, 10, 0.8f, 0.2f);
-		geneticAlgorithm9.setInitialRefactoringRange(50);
-		searches.add(geneticAlgorithm9);
+		searches.add(new MonoObjectiveSearch(sc, c, sourceFiles, true, 50, 10, 0.2f, 0.2f));
+		searches.add(new MonoObjectiveSearch(sc, c, sourceFiles, true, 50, 10, 0.2f, 0.5f));
+		searches.add(new MonoObjectiveSearch(sc, c, sourceFiles, true, 50, 10, 0.2f, 0.8f));
+		searches.add(new MonoObjectiveSearch(sc, c, sourceFiles, true, 50, 10, 0.5f, 0.2f));
+		searches.add(new MonoObjectiveSearch(sc, c, sourceFiles, true, 50, 10, 0.5f, 0.5f));
+		searches.add(new MonoObjectiveSearch(sc, c, sourceFiles, true, 50, 10, 0.5f, 0.8f));
+		searches.add(new MonoObjectiveSearch(sc, c, sourceFiles, true, 50, 10, 0.8f, 0.2f));
+		searches.add(new MonoObjectiveSearch(sc, c, sourceFiles, true, 50, 10, 0.8f, 0.5f));
+		searches.add(new MonoObjectiveSearch(sc, c, sourceFiles, true, 50, 10, 0.8f, 0.8f));
 
 		long timeTaken, startTime = System.currentTimeMillis();
 		double time;
@@ -182,7 +165,9 @@ public class ToolTasksPart1 extends Tasks
 				searches.get(i).setConfiguration(c);
 				searches.get(i).setServiceConfiguration(sc);
 				searches.get(i).setResultsPath(resultsDir[i]);
+				((GeneticAlgorithmSearch) searches.get(i)).setInitialRefactoringRange(50);
 				searches.get(i).run();
+				searches.set(i, null);
 
 				// Output overall time taken to console.
 				timeTaken = System.currentTimeMillis() - startTime;

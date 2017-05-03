@@ -141,7 +141,7 @@ public class MonoObjectiveSearch extends GeneticAlgorithmSearch
 				String newOutputPath = this.outputPath + "Solution" + (i + 1) + "/";
 				super.sc.getProjectSettings().setProperty(PropertyNames.OUTPUT_PATH, newOutputPath);
 				super.print(super.sc.getSourceFileRepository());	
-			}	
+			}		
 		}
 		else
 		{

@@ -1172,7 +1172,7 @@ public class Metrics
 		
 		return (float) numerator / (float) denominator;
 	}
-	
+		
 	// Returns a value to represent the visibility of a modifier.
 	private float identifier(VisibilityModifier vm)
 	{

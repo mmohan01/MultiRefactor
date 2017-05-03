@@ -19,7 +19,7 @@ import recoder.java.CompilationUnit;
 import refactorings.Refactoring;
 
 public abstract class GeneticAlgorithmSearch extends Search
-{		
+{			
 	public GeneticAlgorithmSearch(CrossReferenceServiceConfiguration sc, Configuration c) 
 	{
 		super(sc, c);
@@ -30,6 +30,8 @@ public abstract class GeneticAlgorithmSearch extends Search
 		super(sc);
 	}
 
+	public abstract void setInitialRefactoringRange(int refactoringRange);
+	
 	// Checks if the priority objective is being used in the search and if so, 
 	// stores the priority classes and, if relevant, non priority classes in 
 	// the fitness function object. Also checks if the element recentness 
@@ -93,7 +95,6 @@ public abstract class GeneticAlgorithmSearch extends Search
 		ArrayList<String> refactoringInfo = new ArrayList<String>(refactoringAmount);
 		ArrayList<String> affectedClasses = new ArrayList<String>(refactoringAmount);
 		HashMap<String, Integer> elementDiversity = new HashMap<String, Integer>();
-		System.out.printf("\r\n  Solution %d", solution);
 
 		for (int j = 0; j < refactoringAmount; j++)
 		{				
@@ -180,7 +181,7 @@ public abstract class GeneticAlgorithmSearch extends Search
 				elementDiversity = addElement(elementDiversity, refactoringList.get(p1.getRefactorings().get(i)).getAffectedElement());
 				refactorings.add(p1.getRefactorings().get(i));
 				positions.add(p1.getPositions().get(i));	
-				names.add(p1.getNames().get(i));				
+				names.add(p1.getNames().get(i));	
 			}
 			// For the second sequence, a check will have 
 			// to be made for each contiguous refactoring.

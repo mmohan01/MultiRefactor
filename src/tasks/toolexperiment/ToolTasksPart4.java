@@ -44,8 +44,8 @@ public class ToolTasksPart4 extends Tasks
 			super.read(input[0]),
 			super.read(input[1]),
 			super.read(input[2]),
-			super.read(input[4]),
-			super.read(input[5])};
+			super.read(input[3]),
+			super.read(input[4])};
 		
 		// Create empty list of refactorings.
 		// Reads the metric configuration in from a specified text file.
@@ -58,49 +58,148 @@ public class ToolTasksPart4 extends Tasks
 
 		// Initialise search tasks.
 		ArrayList<Search> searches = new ArrayList<Search>();
-		MultiObjectiveSearch multiObjectiveGeneticAlgorithm1 = new MultiObjectiveSearch(sc, cMO, refactorings, sourceFiles[0], 100, 50, 0.2f, 0.8f);
-		searches.add(multiObjectiveGeneticAlgorithm1);
-		MultiObjectiveSearch multiObjectiveGeneticAlgorithm2 = new MultiObjectiveSearch(sc, cMO, refactorings, sourceFiles[1], 100, 50, 0.2f, 0.8f);
-		searches.add(multiObjectiveGeneticAlgorithm2);
-		MultiObjectiveSearch multiObjectiveGeneticAlgorithm3 = new MultiObjectiveSearch(sc, cMO, refactorings, sourceFiles[2], 100, 50, 0.2f, 0.8f);
-		searches.add(multiObjectiveGeneticAlgorithm3);
-		MultiObjectiveSearch multiObjectiveGeneticAlgorithm4 = new MultiObjectiveSearch(sc, cMO, refactorings, sourceFiles[3], 100, 50, 0.2f, 0.8f);
-		searches.add(multiObjectiveGeneticAlgorithm4);
-		MultiObjectiveSearch multiObjectiveGeneticAlgorithm5 = new MultiObjectiveSearch(sc, cMO, refactorings, sourceFiles[4], 100, 50, 0.2f, 0.8f);
-		searches.add(multiObjectiveGeneticAlgorithm5);
+		searches.add(new MultiObjectiveSearch(sc, cMO, refactorings, sourceFiles[0], 100, 50, 0.2f, 0.8f));
+		searches.add(new MultiObjectiveSearch(sc, cMO, refactorings, sourceFiles[0], 100, 50, 0.2f, 0.8f));
+		searches.add(new MultiObjectiveSearch(sc, cMO, refactorings, sourceFiles[0], 100, 50, 0.2f, 0.8f));
+		searches.add(new MultiObjectiveSearch(sc, cMO, refactorings, sourceFiles[0], 100, 50, 0.2f, 0.8f));
+		searches.add(new MultiObjectiveSearch(sc, cMO, refactorings, sourceFiles[0], 100, 50, 0.2f, 0.8f));
+		searches.add(new MultiObjectiveSearch(sc, cMO, refactorings, sourceFiles[0], 100, 50, 0.2f, 0.8f));
 		
-		MonoObjectiveSearch geneticAlgorithm1 = new MonoObjectiveSearch(sc, c1, sourceFiles[0], true, 100, 50, 0.2f, 0.8f);
-		searches.add(geneticAlgorithm1);
-		MonoObjectiveSearch geneticAlgorithm2 = new MonoObjectiveSearch(sc, c1, sourceFiles[1], true, 100, 50, 0.2f, 0.8f);
-		searches.add(geneticAlgorithm2);
-		MonoObjectiveSearch geneticAlgorithm3 = new MonoObjectiveSearch(sc, c1, sourceFiles[2], true, 100, 50, 0.2f, 0.8f);
-		searches.add(geneticAlgorithm3);
-		MonoObjectiveSearch geneticAlgorithm4 = new MonoObjectiveSearch(sc, c1, sourceFiles[3], true, 100, 50, 0.2f, 0.8f);
-		searches.add(geneticAlgorithm4);
-		MonoObjectiveSearch geneticAlgorithm5 = new MonoObjectiveSearch(sc, c1, sourceFiles[4], true, 100, 50, 0.2f, 0.8f);
-		searches.add(geneticAlgorithm5);
+		searches.add(new MultiObjectiveSearch(sc, cMO, refactorings, sourceFiles[1], 100, 50, 0.2f, 0.8f));		
+		searches.add(new MultiObjectiveSearch(sc, cMO, refactorings, sourceFiles[1], 100, 50, 0.2f, 0.8f));		
+		searches.add(new MultiObjectiveSearch(sc, cMO, refactorings, sourceFiles[1], 100, 50, 0.2f, 0.8f));		
+		searches.add(new MultiObjectiveSearch(sc, cMO, refactorings, sourceFiles[1], 100, 50, 0.2f, 0.8f));		
+		searches.add(new MultiObjectiveSearch(sc, cMO, refactorings, sourceFiles[1], 100, 50, 0.2f, 0.8f));		
+		searches.add(new MultiObjectiveSearch(sc, cMO, refactorings, sourceFiles[1], 100, 50, 0.2f, 0.8f));
 		
-		MonoObjectiveSearch geneticAlgorithm6 = new MonoObjectiveSearch(sc, c2, sourceFiles[0], true, 100, 50, 0.2f, 0.8f);
-		searches.add(geneticAlgorithm6);
-		MonoObjectiveSearch geneticAlgorithm7 = new MonoObjectiveSearch(sc, c2, sourceFiles[1], true, 100, 50, 0.2f, 0.8f);
-		searches.add(geneticAlgorithm7);
-		MonoObjectiveSearch geneticAlgorithm8 = new MonoObjectiveSearch(sc, c2, sourceFiles[2], true, 100, 50, 0.2f, 0.8f);
-		searches.add(geneticAlgorithm8);
-		MonoObjectiveSearch geneticAlgorithm9 = new MonoObjectiveSearch(sc, c2, sourceFiles[3], true, 100, 50, 0.2f, 0.8f);
-		searches.add(geneticAlgorithm9);
-		MonoObjectiveSearch geneticAlgorithm10 = new MonoObjectiveSearch(sc, c2, sourceFiles[4], true, 100, 50, 0.2f, 0.8f);
-		searches.add(geneticAlgorithm10);
+		searches.add(new MultiObjectiveSearch(sc, cMO, refactorings, sourceFiles[2], 100, 50, 0.2f, 0.8f));		
+		searches.add(new MultiObjectiveSearch(sc, cMO, refactorings, sourceFiles[2], 100, 50, 0.2f, 0.8f));		
+		searches.add(new MultiObjectiveSearch(sc, cMO, refactorings, sourceFiles[2], 100, 50, 0.2f, 0.8f));		
+		searches.add(new MultiObjectiveSearch(sc, cMO, refactorings, sourceFiles[2], 100, 50, 0.2f, 0.8f));		
+		searches.add(new MultiObjectiveSearch(sc, cMO, refactorings, sourceFiles[2], 100, 50, 0.2f, 0.8f));		
+		searches.add(new MultiObjectiveSearch(sc, cMO, refactorings, sourceFiles[2], 100, 50, 0.2f, 0.8f));		
 		
-		MonoObjectiveSearch geneticAlgorithm11 = new MonoObjectiveSearch(sc, c3, sourceFiles[0], true, 100, 50, 0.2f, 0.8f);
-		searches.add(geneticAlgorithm11);
-		MonoObjectiveSearch geneticAlgorithm12 = new MonoObjectiveSearch(sc, c3, sourceFiles[1], true, 100, 50, 0.2f, 0.8f);
-		searches.add(geneticAlgorithm12);
-		MonoObjectiveSearch geneticAlgorithm13 = new MonoObjectiveSearch(sc, c3, sourceFiles[2], true, 100, 50, 0.2f, 0.8f);
-		searches.add(geneticAlgorithm13);
-		MonoObjectiveSearch geneticAlgorithm14 = new MonoObjectiveSearch(sc, c3, sourceFiles[3], true, 100, 50, 0.2f, 0.8f);
-		searches.add(geneticAlgorithm14);
-		MonoObjectiveSearch geneticAlgorithm15 = new MonoObjectiveSearch(sc, c3, sourceFiles[4], true, 100, 50, 0.2f, 0.8f);
-		searches.add(geneticAlgorithm15);
+		searches.add(new MultiObjectiveSearch(sc, cMO, refactorings, sourceFiles[3], 100, 50, 0.2f, 0.8f));		
+		searches.add(new MultiObjectiveSearch(sc, cMO, refactorings, sourceFiles[3], 100, 50, 0.2f, 0.8f));		
+		searches.add(new MultiObjectiveSearch(sc, cMO, refactorings, sourceFiles[3], 100, 50, 0.2f, 0.8f));		
+		searches.add(new MultiObjectiveSearch(sc, cMO, refactorings, sourceFiles[3], 100, 50, 0.2f, 0.8f));		
+		searches.add(new MultiObjectiveSearch(sc, cMO, refactorings, sourceFiles[3], 100, 50, 0.2f, 0.8f));		
+		searches.add(new MultiObjectiveSearch(sc, cMO, refactorings, sourceFiles[3], 100, 50, 0.2f, 0.8f));	
+		
+		searches.add(new MultiObjectiveSearch(sc, cMO, refactorings, sourceFiles[4], 100, 50, 0.2f, 0.8f));		
+		searches.add(new MultiObjectiveSearch(sc, cMO, refactorings, sourceFiles[4], 100, 50, 0.2f, 0.8f));		
+		searches.add(new MultiObjectiveSearch(sc, cMO, refactorings, sourceFiles[4], 100, 50, 0.2f, 0.8f));		
+		searches.add(new MultiObjectiveSearch(sc, cMO, refactorings, sourceFiles[4], 100, 50, 0.2f, 0.8f));		
+		searches.add(new MultiObjectiveSearch(sc, cMO, refactorings, sourceFiles[4], 100, 50, 0.2f, 0.8f));		
+		searches.add(new MultiObjectiveSearch(sc, cMO, refactorings, sourceFiles[4], 100, 50, 0.2f, 0.8f));	
+		
+		
+		searches.add(new MonoObjectiveSearch(sc, c1, sourceFiles[0], true, 100, 50, 0.2f, 0.8f));
+		searches.add(new MonoObjectiveSearch(sc, c1, sourceFiles[0], true, 100, 50, 0.2f, 0.8f));
+		searches.add(new MonoObjectiveSearch(sc, c1, sourceFiles[0], true, 100, 50, 0.2f, 0.8f));
+		searches.add(new MonoObjectiveSearch(sc, c1, sourceFiles[0], true, 100, 50, 0.2f, 0.8f));
+		searches.add(new MonoObjectiveSearch(sc, c1, sourceFiles[0], true, 100, 50, 0.2f, 0.8f));
+		searches.add(new MonoObjectiveSearch(sc, c1, sourceFiles[0], true, 100, 50, 0.2f, 0.8f));
+		
+		searches.add(new MonoObjectiveSearch(sc, c1, sourceFiles[1], true, 100, 50, 0.2f, 0.8f));
+		searches.add(new MonoObjectiveSearch(sc, c1, sourceFiles[1], true, 100, 50, 0.2f, 0.8f));
+		searches.add(new MonoObjectiveSearch(sc, c1, sourceFiles[1], true, 100, 50, 0.2f, 0.8f));
+		searches.add(new MonoObjectiveSearch(sc, c1, sourceFiles[1], true, 100, 50, 0.2f, 0.8f));
+		searches.add(new MonoObjectiveSearch(sc, c1, sourceFiles[1], true, 100, 50, 0.2f, 0.8f));
+		searches.add(new MonoObjectiveSearch(sc, c1, sourceFiles[1], true, 100, 50, 0.2f, 0.8f));
+		
+		searches.add(new MonoObjectiveSearch(sc, c1, sourceFiles[2], true, 100, 50, 0.2f, 0.8f));
+		searches.add(new MonoObjectiveSearch(sc, c1, sourceFiles[2], true, 100, 50, 0.2f, 0.8f));
+		searches.add(new MonoObjectiveSearch(sc, c1, sourceFiles[2], true, 100, 50, 0.2f, 0.8f));
+		searches.add(new MonoObjectiveSearch(sc, c1, sourceFiles[2], true, 100, 50, 0.2f, 0.8f));
+		searches.add(new MonoObjectiveSearch(sc, c1, sourceFiles[2], true, 100, 50, 0.2f, 0.8f));
+		searches.add(new MonoObjectiveSearch(sc, c1, sourceFiles[2], true, 100, 50, 0.2f, 0.8f));
+		
+		searches.add(new MonoObjectiveSearch(sc, c1, sourceFiles[3], true, 100, 50, 0.2f, 0.8f));
+		searches.add(new MonoObjectiveSearch(sc, c1, sourceFiles[3], true, 100, 50, 0.2f, 0.8f));
+		searches.add(new MonoObjectiveSearch(sc, c1, sourceFiles[3], true, 100, 50, 0.2f, 0.8f));
+		searches.add(new MonoObjectiveSearch(sc, c1, sourceFiles[3], true, 100, 50, 0.2f, 0.8f));
+		searches.add(new MonoObjectiveSearch(sc, c1, sourceFiles[3], true, 100, 50, 0.2f, 0.8f));
+		searches.add(new MonoObjectiveSearch(sc, c1, sourceFiles[3], true, 100, 50, 0.2f, 0.8f));
+		
+		searches.add(new MonoObjectiveSearch(sc, c1, sourceFiles[4], true, 100, 50, 0.2f, 0.8f));
+		searches.add(new MonoObjectiveSearch(sc, c1, sourceFiles[4], true, 100, 50, 0.2f, 0.8f));
+		searches.add(new MonoObjectiveSearch(sc, c1, sourceFiles[4], true, 100, 50, 0.2f, 0.8f));
+		searches.add(new MonoObjectiveSearch(sc, c1, sourceFiles[4], true, 100, 50, 0.2f, 0.8f));
+		searches.add(new MonoObjectiveSearch(sc, c1, sourceFiles[4], true, 100, 50, 0.2f, 0.8f));
+		searches.add(new MonoObjectiveSearch(sc, c1, sourceFiles[4], true, 100, 50, 0.2f, 0.8f));
+		
+		
+		searches.add(new MonoObjectiveSearch(sc, c2, sourceFiles[0], true, 100, 50, 0.2f, 0.8f));
+		searches.add(new MonoObjectiveSearch(sc, c2, sourceFiles[0], true, 100, 50, 0.2f, 0.8f));
+		searches.add(new MonoObjectiveSearch(sc, c2, sourceFiles[0], true, 100, 50, 0.2f, 0.8f));
+		searches.add(new MonoObjectiveSearch(sc, c2, sourceFiles[0], true, 100, 50, 0.2f, 0.8f));
+		searches.add(new MonoObjectiveSearch(sc, c2, sourceFiles[0], true, 100, 50, 0.2f, 0.8f));
+		searches.add(new MonoObjectiveSearch(sc, c2, sourceFiles[0], true, 100, 50, 0.2f, 0.8f));
+		
+		searches.add(new MonoObjectiveSearch(sc, c2, sourceFiles[1], true, 100, 50, 0.2f, 0.8f));
+		searches.add(new MonoObjectiveSearch(sc, c2, sourceFiles[1], true, 100, 50, 0.2f, 0.8f));
+		searches.add(new MonoObjectiveSearch(sc, c2, sourceFiles[1], true, 100, 50, 0.2f, 0.8f));
+		searches.add(new MonoObjectiveSearch(sc, c2, sourceFiles[1], true, 100, 50, 0.2f, 0.8f));
+		searches.add(new MonoObjectiveSearch(sc, c2, sourceFiles[1], true, 100, 50, 0.2f, 0.8f));
+		searches.add(new MonoObjectiveSearch(sc, c2, sourceFiles[1], true, 100, 50, 0.2f, 0.8f));
+		
+		searches.add(new MonoObjectiveSearch(sc, c2, sourceFiles[2], true, 100, 50, 0.2f, 0.8f));
+		searches.add(new MonoObjectiveSearch(sc, c2, sourceFiles[2], true, 100, 50, 0.2f, 0.8f));
+		searches.add(new MonoObjectiveSearch(sc, c2, sourceFiles[2], true, 100, 50, 0.2f, 0.8f));
+		searches.add(new MonoObjectiveSearch(sc, c2, sourceFiles[2], true, 100, 50, 0.2f, 0.8f));
+		searches.add(new MonoObjectiveSearch(sc, c2, sourceFiles[2], true, 100, 50, 0.2f, 0.8f));
+		searches.add(new MonoObjectiveSearch(sc, c2, sourceFiles[2], true, 100, 50, 0.2f, 0.8f));
+		
+		searches.add(new MonoObjectiveSearch(sc, c2, sourceFiles[3], true, 100, 50, 0.2f, 0.8f));
+		searches.add(new MonoObjectiveSearch(sc, c2, sourceFiles[3], true, 100, 50, 0.2f, 0.8f));
+		searches.add(new MonoObjectiveSearch(sc, c2, sourceFiles[3], true, 100, 50, 0.2f, 0.8f));
+		searches.add(new MonoObjectiveSearch(sc, c2, sourceFiles[3], true, 100, 50, 0.2f, 0.8f));
+		searches.add(new MonoObjectiveSearch(sc, c2, sourceFiles[3], true, 100, 50, 0.2f, 0.8f));
+		searches.add(new MonoObjectiveSearch(sc, c2, sourceFiles[3], true, 100, 50, 0.2f, 0.8f));
+		
+		searches.add(new MonoObjectiveSearch(sc, c2, sourceFiles[4], true, 100, 50, 0.2f, 0.8f));
+		searches.add(new MonoObjectiveSearch(sc, c2, sourceFiles[4], true, 100, 50, 0.2f, 0.8f));
+		searches.add(new MonoObjectiveSearch(sc, c2, sourceFiles[4], true, 100, 50, 0.2f, 0.8f));
+		searches.add(new MonoObjectiveSearch(sc, c2, sourceFiles[4], true, 100, 50, 0.2f, 0.8f));
+		searches.add(new MonoObjectiveSearch(sc, c2, sourceFiles[4], true, 100, 50, 0.2f, 0.8f));
+		searches.add(new MonoObjectiveSearch(sc, c2, sourceFiles[4], true, 100, 50, 0.2f, 0.8f));
+		
+		
+		searches.add(new MonoObjectiveSearch(sc, c3, sourceFiles[0], true, 100, 50, 0.2f, 0.8f));
+		searches.add(new MonoObjectiveSearch(sc, c3, sourceFiles[0], true, 100, 50, 0.2f, 0.8f));
+		searches.add(new MonoObjectiveSearch(sc, c3, sourceFiles[0], true, 100, 50, 0.2f, 0.8f));
+		searches.add(new MonoObjectiveSearch(sc, c3, sourceFiles[0], true, 100, 50, 0.2f, 0.8f));
+		searches.add(new MonoObjectiveSearch(sc, c3, sourceFiles[0], true, 100, 50, 0.2f, 0.8f));
+		searches.add(new MonoObjectiveSearch(sc, c3, sourceFiles[0], true, 100, 50, 0.2f, 0.8f));
+		
+		searches.add(new MonoObjectiveSearch(sc, c3, sourceFiles[1], true, 100, 50, 0.2f, 0.8f));
+		searches.add(new MonoObjectiveSearch(sc, c3, sourceFiles[1], true, 100, 50, 0.2f, 0.8f));
+		searches.add(new MonoObjectiveSearch(sc, c3, sourceFiles[1], true, 100, 50, 0.2f, 0.8f));
+		searches.add(new MonoObjectiveSearch(sc, c3, sourceFiles[1], true, 100, 50, 0.2f, 0.8f));
+		searches.add(new MonoObjectiveSearch(sc, c3, sourceFiles[1], true, 100, 50, 0.2f, 0.8f));
+		searches.add(new MonoObjectiveSearch(sc, c3, sourceFiles[1], true, 100, 50, 0.2f, 0.8f));
+		
+		searches.add(new MonoObjectiveSearch(sc, c3, sourceFiles[2], true, 100, 50, 0.2f, 0.8f));
+		searches.add(new MonoObjectiveSearch(sc, c3, sourceFiles[2], true, 100, 50, 0.2f, 0.8f));
+		searches.add(new MonoObjectiveSearch(sc, c3, sourceFiles[2], true, 100, 50, 0.2f, 0.8f));
+		searches.add(new MonoObjectiveSearch(sc, c3, sourceFiles[2], true, 100, 50, 0.2f, 0.8f));
+		searches.add(new MonoObjectiveSearch(sc, c3, sourceFiles[2], true, 100, 50, 0.2f, 0.8f));
+		searches.add(new MonoObjectiveSearch(sc, c3, sourceFiles[2], true, 100, 50, 0.2f, 0.8f));
+		
+		searches.add(new MonoObjectiveSearch(sc, c3, sourceFiles[3], true, 100, 50, 0.2f, 0.8f));
+		searches.add(new MonoObjectiveSearch(sc, c3, sourceFiles[3], true, 100, 50, 0.2f, 0.8f));
+		searches.add(new MonoObjectiveSearch(sc, c3, sourceFiles[3], true, 100, 50, 0.2f, 0.8f));
+		searches.add(new MonoObjectiveSearch(sc, c3, sourceFiles[3], true, 100, 50, 0.2f, 0.8f));
+		searches.add(new MonoObjectiveSearch(sc, c3, sourceFiles[3], true, 100, 50, 0.2f, 0.8f));
+		searches.add(new MonoObjectiveSearch(sc, c3, sourceFiles[3], true, 100, 50, 0.2f, 0.8f));
+
+		searches.add(new MonoObjectiveSearch(sc, c3, sourceFiles[4], true, 100, 50, 0.2f, 0.8f));
+		searches.add(new MonoObjectiveSearch(sc, c3, sourceFiles[4], true, 100, 50, 0.2f, 0.8f));
+		searches.add(new MonoObjectiveSearch(sc, c3, sourceFiles[4], true, 100, 50, 0.2f, 0.8f));
+		searches.add(new MonoObjectiveSearch(sc, c3, sourceFiles[4], true, 100, 50, 0.2f, 0.8f));
+		searches.add(new MonoObjectiveSearch(sc, c3, sourceFiles[4], true, 100, 50, 0.2f, 0.8f));
+		searches.add(new MonoObjectiveSearch(sc, c3, sourceFiles[4], true, 100, 50, 0.2f, 0.8f));
 		
 		// Create list of output directories for
 		// each refactored project to be written to.
@@ -131,11 +230,15 @@ public class ToolTasksPart4 extends Tasks
 		{
 			// Creates new service configuration to start from scratch.
 			sc = new CrossReferenceServiceConfiguration();
-			int path = i % 5;
-			int search = (int) Math.floor(i / 5);
+			int search = (int) Math.floor(i / 30);
+			int path = (int) Math.floor(i / 6);
+			int run = (i % 6) + 1;
 			
-			String outputPath = outputDir[search] + input[path].substring(input[path].lastIndexOf("/") + 1) + "/";
-			String resultsPath = resultsDir[search] + input[path].substring(input[path].lastIndexOf("/") + 1) + "/";
+			while (path > 4)
+				path -= 5;
+			
+			String outputPath = outputDir[search] + input[path].substring(input[path].lastIndexOf("/") + 1) + "/" + run + "/";
+			String resultsPath = resultsDir[search] + input[path].substring(input[path].lastIndexOf("/") + 1) + "/" + run + "/";
 
 			// Initialise available refactorings. Needs to be done each 
 			// time as the service configuration won't be updated otherwise.
@@ -211,11 +314,12 @@ public class ToolTasksPart4 extends Tasks
 			if (searches.get(i).getClass().getName().contains("MultiObjectiveSearch"))
 				((MultiObjectiveSearch) searches.get(i)).setRefactorings(refactorings);
 			else
-				searches.get(i).setConfiguration(new Configuration(configurations[(int) Math.floor((i - 5)/5)], refactorings));
+				searches.get(i).setConfiguration(new Configuration(configurations[(int) Math.floor((i - 30)/30)], refactorings));
 
 			searches.get(i).setServiceConfiguration(sc);
 			searches.get(i).setResultsPath(resultsPath);
 			searches.get(i).run();
+			searches.set(i, null);
 
 			// Output overall time taken to console.
 			timeTaken = System.currentTimeMillis() - startTime;

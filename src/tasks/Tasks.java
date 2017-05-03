@@ -43,18 +43,12 @@ public class Tasks
 		
 		// Initialise search tasks.
 		ArrayList<Search> searches = new ArrayList<Search>();
-		RandomSearch random = new RandomSearch(sc, c);
-		searches.add(random);
-		HillClimbingSearch hillClimbing = new HillClimbingSearch(sc, c, 5, 10, true, 100);
-		searches.add(hillClimbing);
-		SimulatedAnnealingSearch simulatedAnnealing = new SimulatedAnnealingSearch(sc, c, 100, 4.0f, false); 
-		searches.add(simulatedAnnealing);
-		GeneticAlgorithmSearch geneticAlgorithm = new MonoObjectiveSearch(sc, c, sourceFiles);
-		searches.add(geneticAlgorithm);
-		MultiObjectiveSearch multiObjectiveGeneticAlgorithm = new MultiObjectiveSearch(sc, cGA, refactorings, sourceFiles);
-		searches.add(multiObjectiveGeneticAlgorithm);
-		ManyObjectiveSearch manyObjectiveGeneticAlgorithm = new ManyObjectiveSearch(sc, cGA, refactorings, sourceFiles, 5, 50, 0.2f, 0.8f);
-		searches.add(manyObjectiveGeneticAlgorithm);
+		searches.add(new RandomSearch(sc, c));
+		searches.add(new HillClimbingSearch(sc, c, 5, 10, true, 100));
+		searches.add(new SimulatedAnnealingSearch(sc, c, 100, 4.0f, false));
+		searches.add(new MonoObjectiveSearch(sc, c, sourceFiles));
+		searches.add(new MultiObjectiveSearch(sc, cGA, refactorings, sourceFiles));
+		searches.add(new ManyObjectiveSearch(sc, cGA, refactorings, sourceFiles, 5, 50, 0.2f, 0.8f));
 				
 		// Create list of output directories for
 		// each refactored project to be written to.
@@ -170,6 +164,7 @@ public class Tasks
 			searches.get(i).setServiceConfiguration(sc);
 			searches.get(i).setResultsPath(resultsDir[i]);
 			searches.get(i).run();
+			searches.set(i, null);
 		}	
 
 		// Output overall time taken to console.
