@@ -1059,12 +1059,13 @@ public class Metrics
 	}
 	
 	// Element recentness objective updated to be normalised as a ratio between 0 and 1.
-	// The original score is divided by the highest value it could be i.e. the accumulative
-	// value that represents if every element were only found in the current version of the project
+	// The original score is divided by the amount of elements to get an average value per element. 
+	// This is then divided by the highest value it could be i.e. the accumulative value that represents if
+	// every element were only found in the current version of the project, in order to get a normalised ratio.
 	public float elementRecentness(ArrayList<List<CompilationUnit>> previousUnits)
 	{
 		int numerator = 0;
-		int denominator = 0;
+		int elements = 0;
 		
 		for (Entry<String, Integer> e : this.elementDiversity.entrySet())
 		{			
@@ -1167,12 +1168,13 @@ public class Metrics
 			}
 			
 			numerator += (amount * value);
-			denominator += (previousUnits.size() * value);
+			elements += value;
 		}
 		
-		return (float) numerator / (float) denominator;
+		float answer = (float) numerator / (float) elements;
+		return answer / previousUnits.size();
 	}
-		
+	
 	// Returns a value to represent the visibility of a modifier.
 	private float identifier(VisibilityModifier vm)
 	{

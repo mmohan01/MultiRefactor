@@ -95,7 +95,8 @@ public abstract class GeneticAlgorithmSearch extends Search
 		ArrayList<String> refactoringInfo = new ArrayList<String>(refactoringAmount);
 		ArrayList<String> affectedClasses = new ArrayList<String>(refactoringAmount);
 		HashMap<String, Integer> elementDiversity = new HashMap<String, Integer>();
-
+		System.out.printf("\r\n Solution %d", solution);
+		
 		for (int j = 0; j < refactoringAmount; j++)
 		{				
 			int[] result = super.randomRefactoring(refactorings);

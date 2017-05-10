@@ -107,7 +107,7 @@ public class ManyObjectiveSearch extends GeneticAlgorithmSearch
 					randomS2 = (int)(Math.random() * population.size());
 				while (randomS2 == randomS1);
 
-				parents[0] = population.get(randomS1);		
+				parents[0] = population.get(randomS1);
 				parents[1] = population.get(randomS2);
 				newGeneration.addAll(crossover(parents[0], parents[1]));
 			}
@@ -231,8 +231,21 @@ public class ManyObjectiveSearch extends GeneticAlgorithmSearch
 		float finalScore[] = new float[this.c.length];
 		
 		// For each refactoring sequence passed in, a cut point is randomly chosen.
-		int cutPoint1 = (Math.random() < 0.5) ? 1 : p1.getRefactorings().size() - 1;
-		int cutPoint2 = (cutPoint1 == 1) ? 1 : p2.getRefactorings().size() - 1;
+		int cutPoint1, cutPoint2;
+		
+		// If the first parent solution has only 1 refactoring, the cut point will be at the end to
+		// avoid the possibility of producing an offspring with no refactorings
+		if (p1.getRefactorings().size() == 1)
+			cutPoint1 = 1;
+		else 
+			cutPoint1 = (Math.random() < 0.5) ? 1 : p1.getRefactorings().size() - 1;
+
+		// If the first parent solution has 2 refactorings, the cut point of the second solution will be
+		// chosen at random between the 2 possibilities. Otherwise, it will be the same as cut point 1.
+		if (p1.getRefactorings().size() == 2)
+			cutPoint2 = (Math.random() < 0.5) ? 1 : p1.getRefactorings().size() - 1;
+		else 
+			cutPoint2 = (cutPoint1 == 1) ? 1 : p2.getRefactorings().size() - 1;
 		
 		// Initialise the program model to the original state and generate the first child solution.
 		this.refactorings = super.resetModel(this.refactorings, this.c[0], this.sourceFiles);
