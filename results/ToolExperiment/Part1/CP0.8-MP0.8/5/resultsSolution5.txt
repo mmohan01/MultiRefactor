@@ -3,23 +3,33 @@ Search: Genetic Algorithm
 Generations: 50
 Population Size: 10
 Crossover Probability: 0.800000
-Mutation Probability: 0.200000
+Mutation Probability: 0.800000
 
 ======== Initial Metric Info ========
-Average visibility ratio per class: 0.695859
+Average visibility ratio per class: 0.695858
 Overall fitness function score: 0.000000
 
 ======== Applied Refactorings ========
-Iteration 1: "Make Method Final" applied at class BringToFrontCommand to method execute
-Iteration 2: "Make Field Non Static" applied at class TriangleFigure to field rotations
-Iteration 3: "Make Field Static" applied at class DragNDropTool to field fDragGestureRecognizers
-Iteration 4: "Remove Class" applied to class JHotDrawException
-Iteration 5: "Decrease Method Security" applied at class AbstractConnector to method findPoint from protected to public
-Iteration 6: "Decrease Method Security" applied at class DrawApplet to method createAttributesPanel from protected to public
+Iteration 1: "Make Field Non Final" applied at class ChopDiamondConnector to FieldDeclaration serialVersionUID
+Iteration 2: "Make Field Non Static" applied at class GraphicalCompositeFigure to field serialVersionUID
+Iteration 3: "Remove Class" applied to class JHotDrawException
+Iteration 4: "Make Method Non Static" applied at class AttributeFigure to method initializeAttributes
+Iteration 5: "Make Method Static" applied at class UndoableHandle to method setUndoActivity
+Iteration 6: "Make Method Non Static" applied at class TextFigure to method createCurrentFont
+Iteration 7: "Move Method Up" applied to method isExecutableWithView from CutCommand to FigureTransferCommand
+Iteration 8: "Increase Field Security" applied at class ColorMap to field fName from public to protected
+Iteration 9: "Make Field Static" applied at class GroupFigure to field groupFigureSerializedDataVersion
+Iteration 10: "Move Field Down" applied to field fLocator from NullHandle to GroupHandle
+Iteration 11: "Increase Field Security" applied at class StandardFigureSelection to field TYPE from public to protected
+Iteration 16: "Decrease Field Security" applied at class ChopEllipseConnector to field serialVersionUID from private to package
+Iteration 17: "Make Class Non Final" applied to class FigureEnumerator
+Iteration 18: "Make Class Final" applied to class JHotDrawRuntimeException
+Iteration 19: "Decrease Method Security" applied at class NothingApp to method NothingApp from package to protected
+Iteration 20: "Make Class Non Final" applied to class SingleFigureEnumerator
 
-Score has improved overall by 0.001324
-Time taken to refactor: 516.49s
+Score has improved overall by 0.003176
+Time taken to refactor: 540.22s
 
 ======== Final Metric Info ========
-Average visibility ratio per class: 0.694937
-Overall fitness function score: 0.001324
+Average visibility ratio per class: 0.693649
+Overall fitness function score: 0.003176

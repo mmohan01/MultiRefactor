@@ -3,24 +3,40 @@ Search: Genetic Algorithm
 Generations: 50
 Population Size: 10
 Crossover Probability: 0.800000
-Mutation Probability: 0.200000
+Mutation Probability: 0.800000
 
 ======== Initial Metric Info ========
-Average visibility ratio per class: 0.695859
+Average visibility ratio per class: 0.695858
 Overall fitness function score: 0.000000
 
 ======== Applied Refactorings ========
-Iteration 1: "Make Method Final" applied at class BringToFrontCommand to method execute
-Iteration 2: "Make Field Non Static" applied at class DrawApplication to field FILE_MENU
-Iteration 3: "Make Field Non Static" applied at class TriangleFigure to field rotations
-Iteration 4: "Make Field Static" applied at class DragNDropTool to field fDragGestureRecognizers
-Iteration 5: "Remove Class" applied to class JHotDrawException
-Iteration 6: "Decrease Method Security" applied at class AbstractConnector to method findPoint from protected to public
-Iteration 7: "Decrease Method Security" applied at class DrawApplet to method createAttributesPanel from protected to public
+Iteration 1: "Decrease Method Security" applied at class DragNDropTool to method createAreaTracker from protected to public
+Iteration 2: "Increase Field Security" applied at class ColorMap to field fName from public to protected
+Iteration 3: "Make Field Static" applied at class GroupFigure to field groupFigureSerializedDataVersion
+Iteration 4: "Move Field Down" applied to field fLocator from NullHandle to GroupHandle
+Iteration 5: "Increase Field Security" applied at class StandardFigureSelection to field TYPE from public to protected
+Iteration 6: "Make Field Non Final" applied at class ChopDiamondConnector to FieldDeclaration serialVersionUID
+Iteration 7: "Decrease Method Security" applied at class SerializationStorageFormat to method createFileExtension from protected to public
+Iteration 8: "Move Field Up" applied to field fRelativeY from RelativeLocator to AbstractLocator
+Iteration 9: "Make Class Abstract" applied to class LocatorHandle
+Iteration 10: "Make Field Static" applied at class PolygonHandle to field fLocator
+Iteration 11: "Decrease Method Security" applied at class ChopEllipseConnector to method chop from protected to public
+Iteration 12: "Make Class Abstract" applied to class ResizeHandle
+Iteration 13: "Make Class Concrete" applied to class LocatorHandle
+Iteration 14: "Make Method Non Static" applied at class AttributeFigure to method initializeAttributes
+Iteration 15: "Remove Field" applied at class DrawApplication to field FILE_MENU
+Iteration 16: "Make Class Non Final" applied to class SingleFigureEnumerator
+Iteration 17: "Decrease Method Security" applied at class PolygonFigure to method setInternalPolygon from protected to public
+Iteration 18: "Make Field Static" applied at class LocatorHandle to field fLocator
+Iteration 19: "Remove Field" applied at class LineFigure to field serialVersionUID
+Iteration 20: "Remove Class" applied to class JHotDrawException
+Iteration 21: "Remove Method" applied at class DrawingChangeEvent to method getDrawing
+Iteration 22: "Remove Field" applied at class FigureAttributes to field serialVersionUID
+Iteration 23: "Remove Method" applied at class VersionManagement to method readVersionFromFile
 
-Score has improved overall by 0.001324
-Time taken to refactor: 516.49s
+Score has improved overall by 0.003034
+Time taken to refactor: 540.22s
 
 ======== Final Metric Info ========
-Average visibility ratio per class: 0.694937
-Overall fitness function score: 0.001324
+Average visibility ratio per class: 0.695190
+Overall fitness function score: 0.003034
