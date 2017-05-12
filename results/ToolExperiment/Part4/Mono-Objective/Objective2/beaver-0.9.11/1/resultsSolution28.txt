@@ -1,0 +1,79 @@
+======== Search Information ========
+Search: Genetic Algorithm
+Generations: 100
+Population Size: 50
+Crossover Probability: 0.200000
+Mutation Probability: 0.800000
+
+======== Initial Metric Info ========
+Average ratio of private/package/protected attributes to overall attributes per class: 0.406288
+Average coupling per class: 1.728571
+Average cohesion among methods per class: 0.429654
+Average amount of methods per class: 4.457143
+Average amount of complexity of methods per class: 63.942856
+Average ratio of abstract classes/methods per class: 0.058333
+Average inherited referenced methods ratio per class: 0.022487
+Average visibility ratio per class: 0.603762
+Overall fitness function score: 0.000000
+
+======== Applied Refactorings ========
+Iteration 1: "Make Method Non Final" applied at class GrammarScanner to method yyclose
+Iteration 2: "Remove Method" applied at class GrammarScanner to method yyclose
+Iteration 3: "Make Class Abstract" applied to class Conflict
+Iteration 4: "Decrease Field Security" applied at class IntArray to field data from private to package
+Iteration 5: "Increase Method Security" applied at class Node to method setLocation from public to protected
+Iteration 6: "Make Method Final" applied at class GrammarBuilder to method writeListsCode
+Iteration 7: "Make Class Abstract" applied to class Action
+Iteration 8: "Make Class Concrete" applied to class GrammarSymbol
+Iteration 9: "Increase Method Security" applied at class ParsingTables to method expand from package to private
+Iteration 10: "Decrease Method Security" applied at class Configuration to method reset from package to protected
+Iteration 11: "Decrease Method Security" applied at class Configuration to method reset from protected to public
+Iteration 12: "Decrease Method Security" applied at class Action to method makeDescription from private to package
+Iteration 13: "Decrease Field Security" applied at class IntArray to field data from package to protected
+Iteration 14: "Decrease Method Security" applied at class State to method Factory from package to protected
+Iteration 15: "Decrease Method Security" applied at class NonTerminal to method NonTerminal from package to protected
+Iteration 16: "Decrease Method Security" applied at class Log to method Record from package to protected
+Iteration 17: "Decrease Method Security" applied at class ParserGenerator to method writeParserActionsArray from private to package
+Iteration 18: "Decrease Method Security" applied at class Action to method makeDescription from package to protected
+Iteration 19: "Move Method Up" applied to method makeDescription from ShiftReduce to Conflict
+Iteration 20: "Make Class Final" applied to class GrammarTreeRoot
+Iteration 21: "Make Method Non Static" applied at class Make to method parseOptions
+Iteration 22: "Increase Field Security" applied at class Rule to field alias from public to protected
+Iteration 23: "Decrease Method Security" applied at class GrammarBuilder to method writeListsCode from private to package
+Iteration 24: "Decrease Method Security" applied at class Terminal to method Associativity from private to package
+Iteration 25: "Decrease Method Security" applied at class Make to method parseOptions from package to protected
+Iteration 26: "Move Method Up" applied to method makeDescription from Conflict to Type
+Iteration 27: "Make Field Static" applied at class State to field num_states
+Iteration 28: "Increase Field Security" applied at class Rule to field alias from protected to package
+Iteration 29: "Decrease Method Security" applied at class Terminal to method Associativity from package to protected
+Iteration 30: "Make Field Final" applied at class ParserGenerator to ParameterDeclaration grammar
+Iteration 31: "Increase Method Security" applied at class IntArray to method compact from public to protected
+Iteration 32: "Decrease Method Security" applied at class Action to method makeDescription from private to package
+Iteration 33: "Move Method Up" applied to method makeDescription from ReduceReduce to Conflict
+Iteration 34: "Move Method Down" applied to method toString from GrammarSymbol to NonTerminal
+Iteration 35: "Increase Field Security" applied at class Rule to field prec_sym_name from public to protected
+Iteration 36: "Move Method Down" applied to method setLocation from Node to Declaration
+Iteration 37: "Decrease Method Security" applied at class ParserGenerator to method checkAndResolveConflicts from private to package
+Iteration 38: "Make Field Non Static" applied at class Production to field NONE
+Iteration 39: "Decrease Method Security" applied at class Production to method RHS from package to protected
+Iteration 40: "Move Field Up" applied to field is_nullable from NonTerminal to GrammarSymbol
+Iteration 41: "Move Field Up" applied to field found from null to RuleWalker
+Iteration 42: "Remove Method" applied at class IntArray to method compact
+Iteration 43: "Remove Method" applied at class GrammarScanner to method yyreset
+Iteration 44: "Decrease Method Security" applied at class ParsingTables to method insertLookaheads from private to package
+Iteration 45: "Make Field Static" applied at class GrammarSymbol to field type
+Iteration 46: "Decrease Method Security" applied at class Action to method add from package to protected
+
+Score has improved overall by 1.150468
+Time taken to refactor: 197.63s
+
+======== Final Metric Info ========
+Average ratio of private/package/protected attributes to overall attributes per class: 0.430098
+Average coupling per class: 1.800000
+Average cohesion among methods per class: 0.439279
+Average amount of methods per class: 4.414286
+Average amount of complexity of methods per class: 63.571430
+Average ratio of abstract classes/methods per class: 0.065952
+Average inherited referenced methods ratio per class: 0.043915
+Average visibility ratio per class: 0.596400
+Overall fitness function score: 1.150468

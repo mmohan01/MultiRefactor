@@ -1,0 +1,73 @@
+======== Search Information ========
+Search: Genetic Algorithm
+Generations: 100
+Population Size: 50
+Crossover Probability: 0.200000
+Mutation Probability: 0.800000
+
+======== Initial Metric Info ========
+Average ratio of private/package/protected attributes to overall attributes per class: 0.400918
+Average coupling per class: 0.333333
+Average cohesion among methods per class: 0.290476
+Average amount of methods per class: 8.583333
+Average amount of complexity of methods per class: 107.083336
+Average ratio of abstract classes/methods per class: 0.333333
+Average inherited referenced methods ratio per class: 0.000000
+Average visibility ratio per class: 0.634193
+Overall fitness function score: 0.000000
+
+======== Applied Refactorings ========
+Iteration 1: "Decrease Method Security" applied at class JSONStreamAware to method writeJSONString from package to protected
+Iteration 2: "Decrease Method Security" applied at class JSONParser to method createObjectContainer from private to package
+Iteration 3: "Decrease Field Security" applied at class JSONArray to field serialVersionUID from private to package
+Iteration 4: "Increase Field Security" applied at class JSONArray to field serialVersionUID from package to private
+Iteration 5: "Remove Method" applied at class Yylex to method yypushback
+Iteration 6: "Make Field Non Static" applied at class Yylex to field ZZ_ATTRIBUTE_PACKED_0
+Iteration 7: "Increase Field Security" applied at class Yytoken to field TYPE_RIGHT_BRACE from public to protected
+Iteration 8: "Remove Method" applied at class JSONParser to method parse
+Iteration 9: "Make Field Non Static" applied at class Yylex to field ZZ_ATTRIBUTE
+Iteration 10: "Make Field Static" applied at class ParseException to field errorType
+Iteration 11: "Decrease Method Security" applied at class ContentHandler to method endObjectEntry from package to protected
+Iteration 12: "Decrease Method Security" applied at class ContainerFactory to method createObjectContainer from package to protected
+Iteration 13: "Decrease Method Security" applied at class ContentHandler to method primitive from package to protected
+Iteration 14: "Increase Field Security" applied at class JSONParser to field S_INIT from public to protected
+Iteration 15: "Increase Method Security" applied at class JSONObject to method escape from public to protected
+Iteration 16: "Increase Field Security" applied at class ParseException to field ERROR_UNEXPECTED_EXCEPTION from public to protected
+Iteration 17: "Decrease Method Security" applied at class JSONValue to method escape from package to protected
+Iteration 18: "Decrease Method Security" applied at class JSONParser to method createObjectContainer from package to protected
+Iteration 19: "Increase Method Security" applied at class JSONParser to method parse from public to protected
+Iteration 20: "Decrease Method Security" applied at class JSONObject to method toJSONString from private to package
+Iteration 21: "Make Field Non Final" applied at class JSONArray to FieldDeclaration serialVersionUID
+Iteration 22: "Remove Method" applied at class ItemList to method reset
+Iteration 23: "Make Field Non Static" applied at class Yylex to field YYEOF
+Iteration 24: "Increase Method Security" applied at class ParseException to method getErrorType from public to protected
+Iteration 25: "Increase Method Security" applied at class ParseException to method getErrorType from protected to package
+Iteration 26: "Decrease Method Security" applied at class ParseException to method getErrorType from package to protected
+Iteration 27: "Increase Method Security" applied at class Yylex to method yylex from public to protected
+Iteration 28: "Make Field Non Static" applied at class ParseException to field serialVersionUID
+Iteration 29: "Make Method Non Final" applied at class Yylex to method yyreset
+Iteration 30: "Make Method Non Static" applied at class JSONObject to method toJSONString
+Iteration 31: "Increase Method Security" applied at class ParseException to method getErrorType from protected to package
+Iteration 32: "Increase Method Security" applied at class ParseException to method getErrorType from package to private
+Iteration 33: "Decrease Method Security" applied at class ParseException to method getErrorType from private to package
+Iteration 34: "Increase Method Security" applied at class Yylex to method yylex from protected to package
+Iteration 35: "Make Class Final" applied to class Yylex
+Iteration 36: "Decrease Field Security" applied at class ParseException to field serialVersionUID from private to package
+Iteration 37: "Decrease Method Security" applied at class JSONAware to method toJSONString from package to protected
+Iteration 39: "Decrease Method Security" applied at class ParseException to method getErrorType from package to protected
+Iteration 40: "Make Field Non Static" applied at class ParseException to field errorType
+Iteration 41: "Decrease Method Security" applied at class ContentHandler to method startJSON from package to protected
+
+Score has improved overall by 0.160808
+Time taken to refactor: 45.66s
+
+======== Final Metric Info ========
+Average ratio of private/package/protected attributes to overall attributes per class: 0.428100
+Average coupling per class: 0.333333
+Average cohesion among methods per class: 0.290450
+Average amount of methods per class: 8.333333
+Average amount of complexity of methods per class: 106.000000
+Average ratio of abstract classes/methods per class: 0.333333
+Average inherited referenced methods ratio per class: 0.000000
+Average visibility ratio per class: 0.600038
+Overall fitness function score: 0.160808

@@ -1,0 +1,83 @@
+======== Search Information ========
+Search: Genetic Algorithm
+Generations: 100
+Population Size: 50
+Crossover Probability: 0.200000
+Mutation Probability: 0.800000
+
+======== Initial Metric Info ========
+Average ratio of private/package/protected attributes to overall attributes per class: 0.406288
+Average coupling per class: 1.728571
+Average cohesion among methods per class: 0.429654
+Average amount of methods per class: 4.457143
+Average amount of complexity of methods per class: 63.942856
+Average ratio of abstract classes/methods per class: 0.058333
+Average inherited referenced methods ratio per class: 0.022487
+Average visibility ratio per class: 0.603762
+Overall fitness function score: 0.000000
+
+======== Applied Refactorings ========
+Iteration 1: "Decrease Method Security" applied at class GrammarScanner to method zzScanError from private to package
+Iteration 2: "Move Field Up" applied to field is_nullable from NonTerminal to GrammarSymbol
+Iteration 3: "Make Field Non Final" applied at class Log to FieldDeclaration end_pos
+Iteration 4: "Increase Field Security" applied at class SrcReader to field txt from protected to package
+Iteration 5: "Make Method Non Static" applied at class ParsingTables to method expand
+Iteration 6: "Make Class Final" applied to class ParsingTables
+Iteration 7: "Decrease Method Security" applied at class ParserGenerator to method splitActions from private to package
+Iteration 8: "Increase Method Security" applied at class Make to method getSrcFile from package to private
+Iteration 9: "Make Class Abstract" applied to class Action
+Iteration 10: "Remove Method" applied at class BitSet to method isEmpty
+Iteration 11: "Remove Method" applied at class IntArray to method compact
+Iteration 12: "Remove Method" applied at class GrammarScanner to method yyclose
+Iteration 13: "Make Method Non Static" applied at class ParserGenerator to method writeReduceActionClasses
+Iteration 14: "Move Field Down" applied to field is_nullable from GrammarSymbol to NonTerminal
+Iteration 15: "Move Method Down" applied to method toString from GrammarSymbol to Terminal
+Iteration 16: "Make Class Abstract" applied to class Conflict
+Iteration 17: "Make Class Final" applied to class List
+Iteration 18: "Make Field Final" applied at class Action to LocalVariableDeclaration num_conflicts
+Iteration 19: "Decrease Method Security" applied at class GrammarParser to method Events from package to protected
+Iteration 20: "Decrease Method Security" applied at class Terminal to method Terminal from package to protected
+Iteration 21: "Make Class Final" applied to class CompiledParser
+Iteration 22: "Make Method Final" applied at class ParserGenerator to method parseGrammar
+Iteration 23: "Decrease Method Security" applied at class Log to method Record from package to protected
+Iteration 24: "Increase Field Security" applied at class Declaration to field type from public to protected
+Iteration 25: "Decrease Method Security" applied at class NonTerminal to method NonTerminal from package to protected
+Iteration 26: "Decrease Method Security" applied at class NonTerminal to method NonTerminal from protected to public
+Iteration 27: "Make Method Static" applied at class GrammarScanner to method zzScanError
+Iteration 28: "Remove Method" applied at class BitSet to method isSet
+Iteration 29: "Decrease Method Security" applied at class Configuration to method findLookaheads from package to protected
+Iteration 30: "Make Method Static" applied at class Action to method compare
+Iteration 32: "Move Field Up" applied to field declarations from GrammarTreeRoot to Node
+Iteration 33: "Move Field Up" applied to field found from null to RuleWalker
+Iteration 34: "Make Field Static" applied at class BitSet to field bit_bags
+Iteration 35: "Make Method Non Static" applied at class GrammarBuilder to method checkBraces
+Iteration 36: "Remove Method" applied at class GrammarScanner to method yyreset
+Iteration 37: "Make Field Final" applied at class GrammarParser to LocalVariableDeclaration lst
+Iteration 38: "Decrease Method Security" applied at class BitSet to method ensureIndexWithinRange from private to package
+Iteration 39: "Make Field Non Final" applied at class Rule to FieldDeclaration code
+Iteration 40: "Make Method Static" applied at class GrammarBuilder to method checkBraces
+Iteration 41: "Decrease Field Security" applied at class Terminal to field name from private to package
+Iteration 41: "Decrease Method Security" applied at class Production to method RHS from package to protected
+Iteration 42: "Make Method Non Final" applied at class ParserGenerator to method parseGrammar
+Iteration 43: "Make Method Non Final" applied at class GrammarScanner to method yycharat
+Iteration 44: "Make Field Final" applied at class GrammarParser to LocalVariableDeclaration lst
+Iteration 45: "Move Method Down" applied to method setLocation from Node to Declaration
+Iteration 46: "Make Method Non Static" applied at class ParserGenerator to method splitActions
+Iteration 47: "Decrease Method Security" applied at class ParsingTables to method removeLookaheads from private to package
+Iteration 48: "Decrease Method Security" applied at class Terminal to method Associativity from private to package
+Iteration 49: "Make Method Non Final" applied at class GrammarScanner to method yybegin
+Iteration 50: "Decrease Method Security" applied at class Make to method getSrcFile from private to package
+
+Score has improved overall by 0.355453
+Time taken to refactor: 260.23s
+
+======== Final Metric Info ========
+Average ratio of private/package/protected attributes to overall attributes per class: 0.434860
+Average coupling per class: 1.728571
+Average cohesion among methods per class: 0.438689
+Average amount of methods per class: 4.385714
+Average amount of complexity of methods per class: 63.457142
+Average ratio of abstract classes/methods per class: 0.071905
+Average inherited referenced methods ratio per class: 0.022487
+Average visibility ratio per class: 0.599036
+Overall fitness function score: 0.355453

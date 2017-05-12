@@ -1,0 +1,69 @@
+======== Search Information ========
+Search: Genetic Algorithm
+Generations: 100
+Population Size: 50
+Crossover Probability: 0.200000
+Mutation Probability: 0.800000
+
+======== Initial Metric Info ========
+Average ratio of private/package/protected attributes to overall attributes per class: 0.540530
+Average coupling per class: 0.911392
+Average cohesion among methods per class: 0.448840
+Average amount of methods per class: 6.075949
+Average amount of complexity of methods per class: 65.734177
+Average ratio of abstract classes/methods per class: 0.279536
+Average inherited referenced methods ratio per class: 0.076793
+Average visibility ratio per class: 0.743118
+Overall fitness function score: 0.000000
+
+======== Applied Refactorings ========
+Iteration 1: "Make Method Non Static" applied at class SimpleXmlRpcClient to method setDebug
+Iteration 2: "Move Method Up" applied to method setup from SecureXmlRpcClient to XmlRpcClient
+Iteration 3: "Make Field Final" applied at class XmlRpcHandlerMapping to ParameterDeclaration handlerName
+Iteration 4: "Make Field Final" applied at class XmlRpcClient to LocalVariableDeclaration url
+Iteration 5: "Make Class Final" applied to class SecureWebServer
+Iteration 6: "Make Method Static" applied at class Echo to method execute
+Iteration 7: "Make Field Static" applied at class XmlRpcApplet to field client
+Iteration 8: "Move Method Up" applied to method addStructArgToArray from JSXmlRpcApplet to XmlRpcApplet
+Iteration 9: "Increase Method Security" applied at class SimpleXmlRpcClient to method getBytes from public to protected
+Iteration 10: "Decrease Method Security" applied at class SimpleXmlRpcClient to method writeObject from package to protected
+Iteration 11: "Move Method Up" applied to method decodeException from XmlRpcClientResponseProcessor to XmlRpc
+Iteration 12: "Decrease Method Security" applied at class SystemHandler to method SystemHandler from protected to public
+Iteration 13: "Make Class Abstract" applied to class HandlerBase
+Iteration 14: "Make Method Static" applied at class XmlRpcClientRequestProcessor to method encodeRequest
+Iteration 15: "Increase Method Security" applied at class DefaultXmlRpcTransport to method setBasicAuthentication from public to protected
+Iteration 16: "Decrease Method Security" applied at class XmlWriter to method emptyElement from protected to public
+Iteration 17: "Make Method Static" applied at class XmlRpcClientRequestProcessor to method canReUse
+Iteration 18: "Decrease Field Security" applied at class DefaultHandlerMapping to field handlers from private to package
+Iteration 20: "Decrease Method Security" applied at class DocumentHandler to method startElement from package to protected
+Iteration 21: "Make Field Static" applied at class MinML to field nextIn,lastIn
+Iteration 22: "Make Method Static" applied at class AuthDemo to method execute
+Iteration 23: "Decrease Method Security" applied at class XmlWriter to method setTypeDecoder from protected to public
+Iteration 24: "Make Field Non Static" applied at class DefaultTypeFactory to field dateTool
+Iteration 26: "Move Field Up" applied to field result from XmlRpcClientResponseProcessor to XmlRpc
+Iteration 27: "Decrease Method Security" applied at class Parser to method setDocumentHandler from package to protected
+Iteration 29: "Make Field Non Final" applied at class XmlWriter to FieldDeclaration PROLOG_START
+Iteration 30: "Make Class Concrete" applied to class HandlerBase
+Iteration 31: "Remove Method" applied at class WebServer to method acceptClient
+Iteration 32: "Move Method Down" applied to method decodeException from XmlRpc to XmlRpcClientResponseProcessor
+Iteration 33: "Decrease Method Security" applied at class XmlRpcRequestProcessor to method objectParsed from protected to public
+Iteration 34: "Decrease Method Security" applied at class DocumentHandler to method startDocument from package to protected
+Iteration 35: "Make Method Non Static" applied at class WebServer to method determinePort
+Iteration 36: "Increase Field Security" applied at class DateTool to field FORMAT from protected to package
+Iteration 37: "Decrease Method Security" applied at class XmlRpcResponseProcessor to method writeResponse from package to protected
+Iteration 35: "Make Field Non Static" applied at class DefaultTypeFactory to field base64Codec
+Iteration 36: "Make Class Abstract" applied to class XmlRpcApplet
+
+Score has improved overall by 0.089686
+Time taken to refactor: 265.68s
+
+======== Final Metric Info ========
+Average ratio of private/package/protected attributes to overall attributes per class: 0.540557
+Average coupling per class: 0.911392
+Average cohesion among methods per class: 0.449393
+Average amount of methods per class: 6.063291
+Average amount of complexity of methods per class: 65.569618
+Average ratio of abstract classes/methods per class: 0.281646
+Average inherited referenced methods ratio per class: 0.083122
+Average visibility ratio per class: 0.747687
+Overall fitness function score: 0.089686

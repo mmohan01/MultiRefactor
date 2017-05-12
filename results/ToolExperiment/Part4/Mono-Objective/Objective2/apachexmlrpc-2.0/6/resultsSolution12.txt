@@ -1,0 +1,53 @@
+======== Search Information ========
+Search: Genetic Algorithm
+Generations: 100
+Population Size: 50
+Crossover Probability: 0.200000
+Mutation Probability: 0.800000
+
+======== Initial Metric Info ========
+Average ratio of private/package/protected attributes to overall attributes per class: 0.540530
+Average coupling per class: 0.911392
+Average cohesion among methods per class: 0.448840
+Average amount of methods per class: 6.075949
+Average amount of complexity of methods per class: 65.734177
+Average ratio of abstract classes/methods per class: 0.279536
+Average inherited referenced methods ratio per class: 0.076793
+Average visibility ratio per class: 0.743118
+Overall fitness function score: 0.000000
+
+======== Applied Refactorings ========
+Iteration 1: "Increase Field Security" applied at class XmlRpcClientResponseProcessor to field result from protected to package
+Iteration 2: "Move Method Up" applied to method setup from SecureXmlRpcClient to XmlRpcClient
+Iteration 3: "Remove Field" applied at class MinML to field inSTag
+Iteration 4: "Make Field Non Final" applied at class CommonsXmlRpcTransport to FieldDeclaration userAgentHeader
+Iteration 5: "Increase Field Security" applied at class XmlRpcApplet to field client from package to private
+Iteration 6: "Make Class Abstract" applied to class XmlRpcApplet
+Iteration 7: "Decrease Method Security" applied at class XmlRpcWorker to method invokeHandler from protected to public
+Iteration 8: "Move Method Up" applied to method decodeException from XmlRpcClientResponseProcessor to XmlRpc
+Iteration 9: "Make Field Static" applied at class XmlRpcRequestProcessor to field requestParams
+Iteration 10: "Make Method Final" applied at class SunSSLTransportFactory to method createTransport
+Iteration 11: "Increase Method Security" applied at class MinML to method parse from public to protected
+Iteration 12: "Remove Method" applied at class XmlRpcClientWorker to method canReUse
+Iteration 13: "Decrease Method Security" applied at class XmlRpcRequestProcessor to method objectParsed from protected to public
+Iteration 14: "Decrease Method Security" applied at class WebServer to method determinePort from protected to public
+Iteration 15: "Remove Field" applied at class SimpleXmlRpcClient to field enc
+Iteration 16: "Decrease Field Security" applied at class DateTool to field FORMAT from protected to public
+Iteration 17: "Make Field Final" applied at class XmlRpcServerRequest to ParameterDeclaration index
+Iteration 18: "Decrease Method Security" applied at class XmlRpc to method XmlRpc from protected to public
+Iteration 19: "Move Method Down" applied to method setEncoding from XmlRpc to XmlRpcClientResponseProcessor
+Iteration 20: "Make Method Non Static" applied at class SimpleXmlRpcClient to method setDebug
+
+Score has improved overall by 0.106834
+Time taken to refactor: 205.29s
+
+======== Final Metric Info ========
+Average ratio of private/package/protected attributes to overall attributes per class: 0.534245
+Average coupling per class: 0.911392
+Average cohesion among methods per class: 0.450626
+Average amount of methods per class: 6.063291
+Average amount of complexity of methods per class: 65.683548
+Average ratio of abstract classes/methods per class: 0.282068
+Average inherited referenced methods ratio per class: 0.083122
+Average visibility ratio per class: 0.752608
+Overall fitness function score: 0.106834

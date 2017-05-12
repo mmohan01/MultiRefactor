@@ -1,0 +1,43 @@
+======== Search Information ========
+Search: Genetic Algorithm
+Generations: 100
+Population Size: 50
+Crossover Probability: 0.200000
+Mutation Probability: 0.800000
+
+======== Initial Metric Info ========
+Average ratio of private/package/protected attributes to overall attributes per class: 0.540530
+Average coupling per class: 0.911392
+Average cohesion among methods per class: 0.448840
+Average amount of methods per class: 6.075949
+Average amount of complexity of methods per class: 65.734177
+Average ratio of abstract classes/methods per class: 0.279536
+Average inherited referenced methods ratio per class: 0.076793
+Average visibility ratio per class: 0.743118
+Overall fitness function score: 0.000000
+
+======== Applied Refactorings ========
+Iteration 1: "Remove Method" applied at class SecureXmlRpcClient to method setup
+Iteration 2: "Decrease Method Security" applied at class Parser to method setDocumentHandler from package to protected
+Iteration 3: "Decrease Method Security" applied at class XmlRpcServer to method getWorker from protected to public
+Iteration 4: "Make Field Non Final" applied at class DefaultXmlRpcTransportFactory to FieldDeclaration DEFAULT_HTTPS_PROVIDER
+Iteration 5: "Make Field Static" applied at class SAXParseException to field publicId
+Iteration 6: "Make Field Non Static" applied at class SimpleXmlRpcClient to field STRUCT
+Iteration 7: "Make Method Final" applied at class SimpleXmlRpcClient to method getBytes
+Iteration 8: "Make Method Final" applied at class SecureWebServer to method createServerSocket
+Iteration 9: "Decrease Method Security" applied at class HttpUtil to method HttpUtil from private to package
+Iteration 10: "Decrease Field Security" applied at class XmlWriter to field typeDecoder from protected to public
+
+Score has improved overall by 0.116897
+Time taken to refactor: 205.29s
+
+======== Final Metric Info ========
+Average ratio of private/package/protected attributes to overall attributes per class: 0.539739
+Average coupling per class: 0.911392
+Average cohesion among methods per class: 0.449631
+Average amount of methods per class: 6.063291
+Average amount of complexity of methods per class: 65.683548
+Average ratio of abstract classes/methods per class: 0.279536
+Average inherited referenced methods ratio per class: 0.083122
+Average visibility ratio per class: 0.744305
+Overall fitness function score: 0.116897

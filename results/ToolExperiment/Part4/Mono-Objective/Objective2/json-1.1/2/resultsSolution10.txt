@@ -1,0 +1,80 @@
+======== Search Information ========
+Search: Genetic Algorithm
+Generations: 100
+Population Size: 50
+Crossover Probability: 0.200000
+Mutation Probability: 0.800000
+
+======== Initial Metric Info ========
+Average ratio of private/package/protected attributes to overall attributes per class: 0.400918
+Average coupling per class: 0.333333
+Average cohesion among methods per class: 0.290476
+Average amount of methods per class: 8.583333
+Average amount of complexity of methods per class: 107.083336
+Average ratio of abstract classes/methods per class: 0.333333
+Average inherited referenced methods ratio per class: 0.000000
+Average visibility ratio per class: 0.634193
+Overall fitness function score: 0.000000
+
+======== Applied Refactorings ========
+Iteration 1: "Decrease Method Security" applied at class JSONStreamAware to method writeJSONString from package to protected
+Iteration 2: "Decrease Method Security" applied at class JSONParser to method createObjectContainer from private to package
+Iteration 3: "Decrease Field Security" applied at class JSONArray to field serialVersionUID from private to package
+Iteration 4: "Increase Field Security" applied at class JSONArray to field serialVersionUID from package to private
+Iteration 5: "Remove Method" applied at class Yylex to method yypushback
+Iteration 6: "Make Field Non Static" applied at class Yylex to field ZZ_ATTRIBUTE_PACKED_0
+Iteration 7: "Increase Field Security" applied at class Yytoken to field TYPE_RIGHT_BRACE from public to protected
+Iteration 8: "Remove Method" applied at class JSONParser to method parse
+Iteration 9: "Make Field Non Static" applied at class Yylex to field ZZ_ATTRIBUTE
+Iteration 10: "Make Field Static" applied at class ParseException to field errorType
+Iteration 11: "Make Class Final" applied to class JSONObject
+Iteration 12: "Make Field Non Static" applied at class JSONArray to field serialVersionUID
+Iteration 13: "Increase Field Security" applied at class Yytoken to field TYPE_RIGHT_BRACE from protected to package
+Iteration 14: "Remove Method" applied at class JSONParser to method parse
+Iteration 15: "Decrease Method Security" applied at class ContentHandler to method endObjectEntry from package to protected
+Iteration 16: "Make Method Static" applied at class Yylex to method zzScanError
+Iteration 17: "Decrease Method Security" applied at class ContainerFactory to method createObjectContainer from package to protected
+Iteration 18: "Make Method Non Static" applied at class Yylex to method zzUnpackCMap
+Iteration 19: "Decrease Method Security" applied at class ContentHandler to method primitive from package to protected
+Iteration 20: "Increase Field Security" applied at class JSONParser to field S_INIT from public to protected
+Iteration 21: "Make Field Static" applied at class JSONParser to field handlerStatusStack
+Iteration 22: "Make Method Final" applied at class ItemList to method get
+Iteration 23: "Remove Method" applied at class JSONParser to method parse
+Iteration 24: "Remove Method" applied at class JSONParser to method parse
+Iteration 29: "Decrease Method Security" applied at class ContentHandler to method endObjectEntry from protected to public
+Iteration 31: "Decrease Method Security" applied at class ContainerFactory to method createObjectContainer from protected to public
+Iteration 33: "Decrease Method Security" applied at class ContentHandler to method primitive from protected to public
+Iteration 34: "Increase Field Security" applied at class JSONParser to field S_INIT from protected to package
+Iteration 42: "Increase Field Security" applied at class JSONParser to field S_INIT from package to private
+Iteration 43: "Increase Method Security" applied at class JSONObject to method escape from public to protected
+Iteration 44: "Increase Field Security" applied at class ParseException to field ERROR_UNEXPECTED_EXCEPTION from public to protected
+Iteration 45: "Decrease Method Security" applied at class JSONValue to method escape from package to protected
+Iteration 46: "Decrease Method Security" applied at class JSONParser to method createObjectContainer from package to protected
+Iteration 47: "Increase Method Security" applied at class JSONParser to method parse from public to protected
+Iteration 48: "Decrease Method Security" applied at class JSONObject to method toJSONString from private to package
+Iteration 49: "Make Field Non Final" applied at class JSONArray to FieldDeclaration serialVersionUID
+Iteration 50: "Remove Method" applied at class ItemList to method reset
+Iteration 51: "Make Field Non Static" applied at class Yylex to field YYEOF
+Iteration 52: "Increase Method Security" applied at class ParseException to method getErrorType from public to protected
+Iteration 53: "Increase Method Security" applied at class ParseException to method getErrorType from protected to package
+Iteration 54: "Decrease Method Security" applied at class ParseException to method getErrorType from package to protected
+Iteration 55: "Increase Method Security" applied at class Yylex to method yylex from public to protected
+Iteration 56: "Make Field Non Static" applied at class ParseException to field serialVersionUID
+Iteration 57: "Make Method Non Final" applied at class Yylex to method yyreset
+Iteration 58: "Make Method Non Static" applied at class JSONObject to method toJSONString
+Iteration 59: "Make Class Final" applied to class Yylex
+Iteration 60: "Decrease Field Security" applied at class ParseException to field serialVersionUID from private to package
+
+Score has improved overall by 0.550091
+Time taken to refactor: 45.66s
+
+======== Final Metric Info ========
+Average ratio of private/package/protected attributes to overall attributes per class: 0.428100
+Average coupling per class: 0.250000
+Average cohesion among methods per class: 0.291532
+Average amount of methods per class: 8.083333
+Average amount of complexity of methods per class: 87.750000
+Average ratio of abstract classes/methods per class: 0.333333
+Average inherited referenced methods ratio per class: 0.000000
+Average visibility ratio per class: 0.640625
+Overall fitness function score: 0.550091

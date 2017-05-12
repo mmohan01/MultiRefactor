@@ -1,0 +1,81 @@
+======== Search Information ========
+Search: Genetic Algorithm
+Generations: 100
+Population Size: 50
+Crossover Probability: 0.200000
+Mutation Probability: 0.800000
+
+======== Initial Metric Info ========
+Average ratio of private/package/protected attributes to overall attributes per class: 0.540530
+Average coupling per class: 0.911392
+Average cohesion among methods per class: 0.448840
+Average amount of methods per class: 6.075949
+Average amount of complexity of methods per class: 65.734177
+Average ratio of abstract classes/methods per class: 0.279536
+Average inherited referenced methods ratio per class: 0.076793
+Average visibility ratio per class: 0.743118
+Overall fitness function score: 0.000000
+
+======== Applied Refactorings ========
+Iteration 1: "Decrease Method Security" applied at class XmlRpcClientLite to method createTransport from protected to public
+Iteration 2: "Decrease Method Security" applied at class LiteXmlRpcTransport to method finalize from protected to public
+Iteration 3: "Make Field Non Static" applied at class SimpleXmlRpcClient to field format
+Iteration 4: "Make Method Final" applied at class WebServer to method determinePort
+Iteration 5: "Make Method Non Static" applied at class XmlWriter to method setTypeDecoder
+Iteration 6: "Make Method Final" applied at class LiteXmlRpcTransport to method closeConnection
+Iteration 7: "Move Field Up" applied to field fault from XmlRpcClientResponseProcessor to XmlRpc
+Iteration 8: "Decrease Method Security" applied at class XmlRpcRequestProcessor to method objectParsed from protected to public
+Iteration 9: "Decrease Method Security" applied at class WebServer to method addDefaultHandlers from protected to public
+Iteration 10: "Make Field Non Static" applied at class XmlRpcResponseProcessor to field EMPTY_BYTE_ARRAY
+Iteration 11: "Decrease Method Security" applied at class XmlWriter to method setTypeDecoder from protected to public
+Iteration 12: "Make Field Non Static" applied at class XmlWriter to field PROLOG_START
+Iteration 13: "Make Field Static" applied at class XmlRpcClientResponseProcessor to field result
+Iteration 14: "Make Field Static" applied at class SimpleXmlRpcClient to field value
+Iteration 15: "Make Field Final" applied at class XmlRpcClientLite to LocalVariableDeclaration url
+Iteration 16: "Decrease Method Security" applied at class XmlRpcClientRequestProcessor to method canReUse from protected to public
+Iteration 17: "Make Method Final" applied at class LiteXmlRpcTransport to method sendXmlRpc
+Iteration 18: "Decrease Method Security" applied at class XmlRpcClientResponseProcessor to method decodeException from protected to public
+Iteration 19: "Move Method Down" applied to method setEncoding from XmlRpc to XmlRpcClientResponseProcessor
+Iteration 20: "Decrease Method Security" applied at class XmlRpcResponseProcessor to method writeResponse from package to protected
+Iteration 21: "Make Field Static" applied at class SAXParseException to field publicId
+Iteration 22: "Make Field Non Static" applied at class XmlRpc to field defaultInputEncoding
+Iteration 23: "Make Method Non Static" applied at class XmlRpc to method setMaxThreads
+Iteration 24: "Make Field Non Final" applied at class XmlRpcClientWorker to FieldDeclaration PROCESSING_ERROR_FLAG
+Iteration 25: "Make Field Static" applied at class XmlRpcException to field code
+Iteration 26: "Increase Field Security" applied at class XmlRpcClientWorker to field responseProcessor from protected to package
+Iteration 27: "Make Field Final" applied at class ServerInputStream to LocalVariableDeclaration read
+Iteration 28: "Move Method Up" applied to method addIntArgToStruct from JSXmlRpcApplet to XmlRpcApplet
+Iteration 29: "Decrease Field Security" applied at class DefaultXmlRpcTransport to field auth from protected to public
+Iteration 30: "Make Method Final" applied at class XmlRpcClientLite to method createTransport
+Iteration 31: "Make Method Final" applied at class ParseFailed to method getCause
+Iteration 32: "Increase Method Security" applied at class WebServer to method main from public to protected
+Iteration 33: "Increase Method Security" applied at class InputSource to method setPublicId from public to protected
+Iteration 34: "Increase Field Security" applied at class DateTool to field FORMAT from protected to package
+Iteration 35: "Decrease Method Security" applied at class HttpUtil to method HttpUtil from private to package
+Iteration 36: "Make Field Static" applied at class SAXParseException to field systemId
+Iteration 37: "Decrease Method Security" applied at class InputSource to method setPublicId from protected to public
+Iteration 38: "Move Method Up" applied to method setup from SecureXmlRpcClient to XmlRpcClient
+Iteration 39: "Make Method Static" applied at class DefaultTypeDecoder to method isXmlRpcI4
+Iteration 40: "Decrease Method Security" applied at class WebServer to method main from protected to public
+Iteration 41: "Make Field Final" applied at class XmlRpcHandlerMapping to ParameterDeclaration handlerName
+Iteration 42: "Remove Field" applied at class MinML to field inDTD
+Iteration 43: "Decrease Field Security" applied at class XmlRpcException to field cause from private to package
+Iteration 44: "Increase Method Security" applied at class SAXParseException to method getPublicId from public to protected
+Iteration 45: "Make Method Non Final" applied at class WebServer to method determinePort
+Iteration 46: "Remove Field" applied at class SimpleXmlRpcClient to field enc
+Iteration 47: "Decrease Method Security" applied at class Parser to method setDocumentHandler from package to protected
+Iteration 48: "Decrease Method Security" applied at class XmlRpcClientResponseProcessor to method canReUse from protected to public
+
+Score has improved overall by 0.089858
+Time taken to refactor: 265.68s
+
+======== Final Metric Info ========
+Average ratio of private/package/protected attributes to overall attributes per class: 0.536382
+Average coupling per class: 0.911392
+Average cohesion among methods per class: 0.449337
+Average amount of methods per class: 6.075949
+Average amount of complexity of methods per class: 65.734177
+Average ratio of abstract classes/methods per class: 0.279582
+Average inherited referenced methods ratio per class: 0.083122
+Average visibility ratio per class: 0.757298
+Overall fitness function score: 0.089858

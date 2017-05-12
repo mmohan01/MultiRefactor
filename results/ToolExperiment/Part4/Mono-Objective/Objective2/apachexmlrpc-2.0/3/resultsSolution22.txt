@@ -1,0 +1,61 @@
+======== Search Information ========
+Search: Genetic Algorithm
+Generations: 100
+Population Size: 50
+Crossover Probability: 0.200000
+Mutation Probability: 0.800000
+
+======== Initial Metric Info ========
+Average ratio of private/package/protected attributes to overall attributes per class: 0.540530
+Average coupling per class: 0.911392
+Average cohesion among methods per class: 0.448840
+Average amount of methods per class: 6.075949
+Average amount of complexity of methods per class: 65.734177
+Average ratio of abstract classes/methods per class: 0.279536
+Average inherited referenced methods ratio per class: 0.076793
+Average visibility ratio per class: 0.743118
+Overall fitness function score: 0.000000
+
+======== Applied Refactorings ========
+Iteration 1: "Move Method Down" applied to method setEncoding from XmlRpc to XmlRpcClientResponseProcessor
+Iteration 2: "Make Class Abstract" applied to class XmlRpcApplet
+Iteration 3: "Make Method Final" applied at class DefaultXmlRpcContext to method getHandlerMapping
+Iteration 4: "Decrease Field Security" applied at class CommonsXmlRpcTransport to field http11 from private to package
+Iteration 5: "Decrease Method Security" applied at class XmlRpcResponseProcessor to method writeResponse from package to protected
+Iteration 6: "Decrease Method Security" applied at class XmlRpcRequestProcessor to method objectParsed from protected to public
+Iteration 7: "Make Method Non Final" applied at class XmlWriter to method isValidXMLChar
+Iteration 8: "Remove Method" applied at class DefaultXmlRpcTransportFactory to method setBasicAuthentication
+Iteration 9: "Make Field Final" applied at class TypeDecoder to ParameterDeclaration o
+Iteration 10: "Make Method Final" applied at class DefaultXmlRpcTransportFactory to method createTransportFactory
+Iteration 11: "Make Class Concrete" applied to class XmlRpcApplet
+Iteration 12: "Move Method Up" applied to method setup from SecureXmlRpcClient to XmlRpcClient
+Iteration 13: "Make Field Final" applied at class ErrorHandler to ParameterDeclaration exception
+Iteration 14: "Decrease Method Security" applied at class DocumentHandler to method startDocument from package to protected
+Iteration 15: "Make Field Non Static" applied at class WebServer to field ctype
+Iteration 16: "Move Field Up" applied to field debug from XmlRpcSupport to HandlerBase
+Iteration 17: "Decrease Method Security" applied at class SimpleXmlRpcClient to method parse from package to protected
+Iteration 18: "Decrease Method Security" applied at class XmlRpcClientRequestProcessor to method canReUse from protected to public
+Iteration 19: "Make Method Non Final" applied at class DefaultXmlRpcContext to method getHandlerMapping
+Iteration 20: "Decrease Field Security" applied at class WebServer to field STAR from private to package
+Iteration 21: "Make Class Abstract" applied to class XmlRpcApplet
+Iteration 22: "Increase Method Security" applied at class WebServer to method main from public to protected
+Iteration 23: "Decrease Method Security" applied at class WebServer to method determinePort from protected to public
+Iteration 24: "Remove Method" applied at class SAXParseException to method getPublicId
+Iteration 25: "Increase Field Security" applied at class XmlRpcException to field code from public to protected
+Iteration 26: "Decrease Field Security" applied at class DefaultXmlRpcContext to field handlerMapping from protected to public
+Iteration 27: "Decrease Method Security" applied at class XmlRpcClientWorker to method canReUse from protected to public
+Iteration 28: "Make Method Final" applied at class XmlRpc to method characterData
+
+Score has improved overall by 0.148713
+Time taken to refactor: 224.95s
+
+======== Final Metric Info ========
+Average ratio of private/package/protected attributes to overall attributes per class: 0.541163
+Average coupling per class: 0.911392
+Average cohesion among methods per class: 0.449297
+Average amount of methods per class: 6.050633
+Average amount of complexity of methods per class: 65.632912
+Average ratio of abstract classes/methods per class: 0.282113
+Average inherited referenced methods ratio per class: 0.087342
+Average visibility ratio per class: 0.748993
+Overall fitness function score: 0.148713
