@@ -1,0 +1,894 @@
+======== Search Information ========
+Search: Genetic Algorithm
+Generations: 100
+Population Size: 50
+Crossover Probability: 0.200000
+Mutation Probability: 0.800000
+
+======== Initial Metric Info ========
+Average amount of public methods per class: 5.240506
+Average ratio of static classes/methods/variables per class: 0.095017
+Average ratio of final classes/methods/variables per class: 0.059396
+Average ratio of constant classes/methods/variables per class: 0.055104
+Overall fitness function score: 0.000000
+
+======== Applied Refactorings ========
+Iteration 1: "Make Method Static" applied at class XmlRpcClientRequestProcessor to method encodeRequest
+Iteration 2: "Decrease Method Security" applied at class HttpUtil to method HttpUtil from private to package
+Iteration 3: "Decrease Method Security" applied at class XmlRpcClientWorker to method canReUse from protected to public
+Iteration 4: "Remove Method" applied at class XmlRpcClientWorker to method canReUse
+Iteration 5: "Make Method Final" applied at class MinML to method parse
+Iteration 6: "Decrease Method Security" applied at class XmlRpcRequestProcessor to method objectParsed from protected to public
+Iteration 7: "Decrease Field Security" applied at class XmlRpcClient to field maxThreads from private to package
+Iteration 8: "Move Field Up" applied to field debug from XmlRpcSupport to HandlerBase
+Iteration 9: "Make Field Static" applied at class MinML to field in
+Iteration 10: "Increase Field Security" applied at class DefaultXmlRpcTransportFactory to field DEFAULT_HTTPS_PROVIDER from public to protected
+Iteration 11: "Make Method Final" applied at class DefaultXmlRpcTransportFactory to method createTransport
+Iteration 12: "Make Class Final" applied to class DefaultXmlRpcTransport
+Iteration 13: "Decrease Field Security" applied at class SimpleXmlRpcClient to field url from package to protected
+Iteration 14: "Decrease Method Security" applied at class XmlRpcClientRequestProcessor to method canReUse from protected to public
+Iteration 15: "Make Method Final" applied at class XmlRpcRequest to method getParameter
+Iteration 16: "Make Class Final" applied to class DefaultTypeFactory
+Iteration 17: "Decrease Method Security" applied at class XmlRpcClientResponseProcessor to method decodeException from protected to public
+Iteration 18: "Make Class Non Final" applied to class DefaultXmlRpcTransport
+Iteration 19: "Decrease Field Security" applied at class SecurityTool to field trustStore from private to package
+Iteration 20: "Move Method Down" applied to method execute from XmlRpcApplet to JSXmlRpcApplet
+Iteration 21: "Remove Method" applied at class HandlerBase to method resolveEntity
+Iteration 22: "Decrease Method Security" applied at class XmlRpc to method objectParsed from protected to public
+Iteration 23: "Decrease Field Security" applied at class XmlWriter to field PROLOG_START from protected to public
+Iteration 24: "Collapse Hierarchy" applied from all elements in JSXmlRpcApplet to XmlRpcApplet
+Iteration 25: "Move Method Up" applied to method decodeException from XmlRpcClientResponseProcessor to XmlRpc
+Iteration 26: "Make Method Static" applied at class AuthDemo to method execute
+Iteration 27: "Decrease Method Security" applied at class SystemHandler to method SystemHandler from protected to public
+Iteration 28: "Increase Method Security" applied at class XmlRpcApplet to method addIntArgToArray from public to protected
+Iteration 29: "Remove Method" applied at class SimpleXmlRpcClient to method chardata
+Iteration 30: "Decrease Method Security" applied at class SecureWebServer to method createServerSocket from protected to public
+Iteration 31: "Make Method Static" applied at class DefaultTypeFactory to method createBase64
+Iteration 32: "Make Method Final" applied at class SAXException to method toString
+Iteration 33: "Make Field Static" applied at class XmlRpcClientResponseProcessor to field result
+Iteration 34: "Make Method Non Static" applied at class XmlRpc to method setEncoding
+Iteration 35: "Make Field Static" applied at class SimpleXmlRpcClient to field enc
+Iteration 36: "Make Method Final" applied at class XmlRpcClientRequestProcessor to method encodeRequest
+Iteration 37: "Make Field Non Static" applied at class WebServer to field ctype
+Iteration 38: "Decrease Method Security" applied at class XmlWriter to method forceUnicode from private to package
+Iteration 39: "Make Class Final" applied to class XmlRpcRequestProcessor
+Iteration 40: "Decrease Method Security" applied at class XmlRpcClientResponseProcessor to method canReUse from protected to public
+Iteration 41: "Decrease Method Security" applied at class XmlRpcClientResponseProcessor to method objectParsed from protected to public
+Iteration 42: "Decrease Method Security" applied at class HttpUtil to method HttpUtil from package to protected
+Iteration 43: "Make Method Final" applied at class MinML to method parse
+Iteration 44: "Decrease Field Security" applied at class XmlRpcClient to field maxThreads from package to protected
+Iteration 45: "Increase Field Security" applied at class DefaultXmlRpcTransportFactory to field DEFAULT_HTTPS_PROVIDER from protected to package
+Iteration 46: "Make Class Final" applied to class DefaultXmlRpcTransport
+Iteration 47: "Decrease Field Security" applied at class SimpleXmlRpcClient to field url from protected to public
+Iteration 48: "Make Class Non Final" applied to class DefaultXmlRpcTransport
+Iteration 49: "Make Method Final" applied at class MinML to method parse
+Iteration 50: "Decrease Field Security" applied at class XmlRpcClient to field maxThreads from protected to public
+Iteration 51: "Increase Field Security" applied at class DefaultXmlRpcTransportFactory to field DEFAULT_HTTPS_PROVIDER from package to private
+Iteration 52: "Make Class Final" applied to class DefaultXmlRpcTransport
+Iteration 53: "Decrease Field Security" applied at class SimpleXmlRpcClient to field url from package to protected
+Iteration 54: "Make Class Non Final" applied to class DefaultXmlRpcTransport
+Iteration 55: "Decrease Field Security" applied at class SecurityTool to field trustStore from package to protected
+Iteration 56: "Increase Method Security" applied at class XmlRpcApplet to method addIntArgToArray from protected to package
+Iteration 57: "Decrease Method Security" applied at class XmlWriter to method forceUnicode from package to protected
+Iteration 58: "Make Class Final" applied to class MultiCall
+Iteration 59: "Make Method Static" applied at class SunSSLTransportFactory to method isServerTrusted
+Iteration 60: "Make Method Static" applied at class XmlRpcResponseProcessor to method writeResponse
+Iteration 61: "Remove Field" applied at class MinML to field inDTD
+Iteration 62: "Decrease Method Security" applied at class XmlWriter to method forceUnicode from protected to public
+Iteration 63: "Decrease Method Security" applied at class XmlRpcWorker to method defaultContext from protected to public
+Iteration 64: "Decrease Method Security" applied at class HttpUtil to method HttpUtil from protected to public
+Iteration 65: "Make Class Final" applied to class DefaultXmlRpcTransport
+Iteration 66: "Decrease Field Security" applied at class SimpleXmlRpcClient to field url from protected to public
+Iteration 67: "Make Class Non Final" applied to class DefaultXmlRpcTransport
+Iteration 68: "Decrease Field Security" applied at class SecurityTool to field trustStore from protected to public
+Iteration 69: "Increase Method Security" applied at class XmlRpcApplet to method addIntArgToArray from package to private
+Iteration 70: "Make Class Final" applied to class DefaultXmlRpcTransport
+Iteration 71: "Make Class Non Final" applied to class DefaultXmlRpcTransport
+Iteration 72: "Increase Method Security" applied at class XmlRpcApplet to method execute from public to protected
+Iteration 73: "Make Class Final" applied to class DefaultXmlRpcTransport
+Iteration 74: "Make Class Non Final" applied to class DefaultXmlRpcTransport
+Iteration 75: "Increase Method Security" applied at class XmlRpcApplet to method execute from protected to package
+Iteration 76: "Remove Method" applied at class MinML to method setDocumentHandler
+Iteration 77: "Make Field Final" applied at class SystemHandler to LocalVariableDeclaration dot
+Iteration 78: "Make Field Non Final" applied at class MinML to FieldDeclaration endStartName
+Iteration 79: "Move Method Up" applied to method setDebug from XmlRpcSupport to HandlerBase
+Iteration 80: "Decrease Method Security" applied at class XmlRpcWorker to method invokeHandler from protected to public
+Iteration 81: "Make Field Final" applied at class XmlRpcHandlerMapping to ParameterDeclaration handlerName
+Iteration 82: "Decrease Method Security" applied at class XmlRpcServer to method createWorker from protected to public
+Iteration 83: "Make Method Final" applied at class XmlRpcClientRequestProcessor to method encodeRequestBytes
+Iteration 84: "Remove Method" applied at class InputSource to method setPublicId
+Iteration 85: "Increase Field Security" applied at class WebServer to field xmlrpc from protected to package
+Iteration 86: "Make Class Final" applied to class DefaultXmlRpcTransport
+Iteration 87: "Increase Method Security" applied at class XmlRpcApplet to method execute from package to private
+Iteration 88: "Make Class Non Final" applied to class DefaultXmlRpcTransport
+Iteration 89: "Make Class Final" applied to class DefaultXmlRpcTransport
+Iteration 90: "Make Class Non Final" applied to class DefaultXmlRpcTransport
+Iteration 91: "Make Class Final" applied to class DefaultXmlRpcTransport
+Iteration 92: "Make Class Non Final" applied to class DefaultXmlRpcTransport
+Iteration 93: "Decrease Field Security" applied at class XmlRpcClientResponseProcessor to field result from protected to public
+Iteration 94: "Make Class Final" applied to class LiteXmlRpcTransport
+Iteration 95: "Make Method Static" applied at class XmlRpcResponseProcessor to method encodeResponse
+Iteration 96: "Make Class Final" applied to class DefaultXmlRpcTransport
+Iteration 97: "Make Class Non Final" applied to class DefaultXmlRpcTransport
+Iteration 98: "Make Class Final" applied to class DefaultXmlRpcTransport
+Iteration 99: "Make Class Non Final" applied to class DefaultXmlRpcTransport
+Iteration 100: "Make Class Final" applied to class DefaultXmlRpcTransport
+Iteration 101: "Make Class Non Final" applied to class DefaultXmlRpcTransport
+Iteration 102: "Make Class Final" applied to class DefaultXmlRpcTransport
+Iteration 103: "Make Class Non Final" applied to class DefaultXmlRpcTransport
+Iteration 104: "Make Class Final" applied to class DefaultXmlRpcTransport
+Iteration 105: "Make Class Non Final" applied to class DefaultXmlRpcTransport
+Iteration 106: "Make Class Final" applied to class DefaultXmlRpcTransport
+Iteration 107: "Make Class Non Final" applied to class DefaultXmlRpcTransport
+Iteration 108: "Make Class Final" applied to class DefaultXmlRpcTransport
+Iteration 109: "Make Class Non Final" applied to class DefaultXmlRpcTransport
+Iteration 110: "Make Field Final" applied at class MultiCall to LocalVariableDeclaration h
+Iteration 111: "Decrease Method Security" applied at class XmlRpcApplet to method addIntArgToArray from private to package
+Iteration 112: "Decrease Method Security" applied at class DocumentHandler to method startElement from package to protected
+Iteration 113: "Make Field Final" applied at class AuthenticatedXmlRpcHandler to ParameterDeclaration params
+Iteration 114: "Increase Field Security" applied at class CommonsXmlRpcTransport to field method from protected to package
+Iteration 115: "Decrease Method Security" applied at class DocumentHandler to method startDocument from package to protected
+Iteration 116: "Decrease Method Security" applied at class XmlWriter to method isValidXMLChar from private to package
+Iteration 117: "Decrease Method Security" applied at class XmlRpcServer to method getWorker from protected to public
+Iteration 118: "Increase Method Security" applied at class XmlRpcApplet to method addDateArgToStruct from public to protected
+Iteration 119: "Make Class Final" applied to class DefaultXmlRpcTransport
+Iteration 120: "Make Class Non Final" applied to class DefaultXmlRpcTransport
+Iteration 121: "Make Class Final" applied to class DefaultXmlRpcTransport
+Iteration 122: "Make Class Non Final" applied to class DefaultXmlRpcTransport
+Iteration 123: "Increase Method Security" applied at class XmlRpcApplet to method addDateArgToStruct from protected to package
+Iteration 124: "Make Class Final" applied to class DefaultXmlRpcTransport
+Iteration 125: "Make Class Non Final" applied to class DefaultXmlRpcTransport
+Iteration 126: "Increase Method Security" applied at class XmlRpcApplet to method addStringArgToStruct from public to protected
+Iteration 127: "Make Class Final" applied to class DefaultXmlRpcTransport
+Iteration 128: "Make Class Non Final" applied to class DefaultXmlRpcTransport
+Iteration 129: "Make Class Final" applied to class DefaultXmlRpcTransport
+Iteration 130: "Make Class Non Final" applied to class DefaultXmlRpcTransport
+Iteration 131: "Make Class Final" applied to class DefaultXmlRpcTransport
+Iteration 132: "Make Class Non Final" applied to class DefaultXmlRpcTransport
+Iteration 133: "Make Class Final" applied to class DefaultXmlRpcTransport
+Iteration 134: "Make Class Non Final" applied to class DefaultXmlRpcTransport
+Iteration 135: "Make Class Final" applied to class DefaultXmlRpcTransport
+Iteration 136: "Make Class Non Final" applied to class DefaultXmlRpcTransport
+Iteration 137: "Make Class Final" applied to class DefaultXmlRpcTransport
+Iteration 138: "Make Class Non Final" applied to class DefaultXmlRpcTransport
+Iteration 139: "Make Class Final" applied to class DefaultXmlRpcTransport
+Iteration 140: "Make Class Non Final" applied to class DefaultXmlRpcTransport
+Iteration 141: "Make Class Final" applied to class DefaultXmlRpcTransport
+Iteration 142: "Make Class Non Final" applied to class DefaultXmlRpcTransport
+Iteration 143: "Make Class Final" applied to class DefaultXmlRpcTransport
+Iteration 144: "Make Class Non Final" applied to class DefaultXmlRpcTransport
+Iteration 145: "Make Class Final" applied to class DefaultXmlRpcTransport
+Iteration 146: "Make Class Non Final" applied to class DefaultXmlRpcTransport
+Iteration 147: "Make Class Final" applied to class DefaultXmlRpcTransport
+Iteration 148: "Make Class Non Final" applied to class DefaultXmlRpcTransport
+Iteration 149: "Make Class Final" applied to class DefaultXmlRpcTransport
+Iteration 150: "Make Class Non Final" applied to class DefaultXmlRpcTransport
+Iteration 151: "Decrease Method Security" applied at class XmlRpcApplet to method addStringArgToStruct from protected to public
+Iteration 152: "Decrease Method Security" applied at class DocumentHandler to method startElement from protected to public
+Iteration 153: "Increase Field Security" applied at class CommonsXmlRpcTransport to field method from package to private
+Iteration 154: "Decrease Method Security" applied at class DocumentHandler to method startDocument from protected to public
+Iteration 155: "Decrease Method Security" applied at class XmlWriter to method isValidXMLChar from package to protected
+Iteration 156: "Decrease Method Security" applied at class WebServer to method determinePort from protected to public
+Iteration 157: "Decrease Method Security" applied at class SimpleXmlRpcClient to method writeRequest from package to protected
+Iteration 158: "Make Class Final" applied to class DefaultTypeDecoder
+Iteration 159: "Make Class Final" applied to class DefaultXmlRpcTransport
+Iteration 160: "Make Class Non Final" applied to class DefaultXmlRpcTransport
+Iteration 161: "Decrease Method Security" applied at class XmlWriter to method isValidXMLChar from protected to public
+Iteration 162: "Increase Method Security" applied at class XmlRpcApplet to method addDoubleArgToStruct from public to protected
+Iteration 163: "Make Class Final" applied to class DefaultXmlRpcTransport
+Iteration 164: "Make Class Non Final" applied to class DefaultXmlRpcTransport
+Iteration 165: "Make Class Final" applied to class DefaultXmlRpcTransport
+Iteration 166: "Make Class Non Final" applied to class DefaultXmlRpcTransport
+Iteration 167: "Increase Method Security" applied at class XmlRpcApplet to method addDoubleArgToStruct from protected to package
+Iteration 168: "Make Class Final" applied to class DefaultXmlRpcTransport
+Iteration 169: "Make Class Non Final" applied to class DefaultXmlRpcTransport
+Iteration 170: "Increase Method Security" applied at class XmlRpcApplet to method addDoubleArgToStruct from package to private
+Iteration 171: "Make Class Final" applied to class DefaultXmlRpcTransport
+Iteration 172: "Make Class Non Final" applied to class DefaultXmlRpcTransport
+Iteration 173: "Make Class Final" applied to class DefaultXmlRpcTransport
+Iteration 174: "Make Class Non Final" applied to class DefaultXmlRpcTransport
+Iteration 175: "Make Class Final" applied to class DefaultXmlRpcTransport
+Iteration 176: "Make Class Non Final" applied to class DefaultXmlRpcTransport
+Iteration 177: "Make Class Final" applied to class DefaultXmlRpcTransport
+Iteration 178: "Make Class Non Final" applied to class DefaultXmlRpcTransport
+Iteration 179: "Make Class Final" applied to class DefaultXmlRpcTransport
+Iteration 180: "Make Class Non Final" applied to class DefaultXmlRpcTransport
+Iteration 181: "Make Class Final" applied to class DefaultXmlRpcTransport
+Iteration 182: "Make Class Non Final" applied to class DefaultXmlRpcTransport
+Iteration 183: "Make Class Final" applied to class DefaultXmlRpcTransport
+Iteration 184: "Make Class Non Final" applied to class DefaultXmlRpcTransport
+Iteration 185: "Make Class Final" applied to class DefaultXmlRpcTransport
+Iteration 186: "Make Class Non Final" applied to class DefaultXmlRpcTransport
+Iteration 187: "Make Class Final" applied to class DefaultXmlRpcTransport
+Iteration 188: "Make Class Non Final" applied to class DefaultXmlRpcTransport
+Iteration 189: "Make Class Final" applied to class DefaultXmlRpcTransport
+Iteration 190: "Make Class Non Final" applied to class DefaultXmlRpcTransport
+Iteration 191: "Make Class Final" applied to class DefaultXmlRpcTransport
+Iteration 192: "Make Class Non Final" applied to class DefaultXmlRpcTransport
+Iteration 193: "Make Class Final" applied to class DefaultXmlRpcTransport
+Iteration 194: "Make Class Non Final" applied to class DefaultXmlRpcTransport
+Iteration 195: "Decrease Method Security" applied at class XmlRpcApplet to method addDoubleArgToStruct from private to package
+Iteration 196: "Decrease Method Security" applied at class SimpleXmlRpcClient to method writeRequest from protected to public
+Iteration 197: "Make Class Final" applied to class DefaultXmlRpcTransport
+Iteration 198: "Make Class Non Final" applied to class DefaultXmlRpcTransport
+Iteration 199: "Make Class Final" applied to class DefaultXmlRpcTransport
+Iteration 200: "Make Class Non Final" applied to class DefaultXmlRpcTransport
+Iteration 201: "Increase Method Security" applied at class XmlRpcApplet to method addDoubleArgToStruct from package to private
+Iteration 202: "Make Class Final" applied to class DefaultXmlRpcTransport
+Iteration 203: "Make Class Non Final" applied to class DefaultXmlRpcTransport
+Iteration 204: "Make Class Final" applied to class DefaultXmlRpcTransport
+Iteration 205: "Make Class Non Final" applied to class DefaultXmlRpcTransport
+Iteration 206: "Make Class Final" applied to class DefaultXmlRpcTransport
+Iteration 207: "Make Class Non Final" applied to class DefaultXmlRpcTransport
+Iteration 208: "Make Class Final" applied to class DefaultXmlRpcTransport
+Iteration 209: "Make Class Non Final" applied to class DefaultXmlRpcTransport
+Iteration 210: "Make Class Final" applied to class DefaultXmlRpcTransport
+Iteration 211: "Make Class Non Final" applied to class DefaultXmlRpcTransport
+Iteration 212: "Make Class Final" applied to class DefaultXmlRpcTransport
+Iteration 213: "Make Class Non Final" applied to class DefaultXmlRpcTransport
+Iteration 214: "Make Class Final" applied to class DefaultXmlRpcTransport
+Iteration 215: "Make Class Non Final" applied to class DefaultXmlRpcTransport
+Iteration 216: "Make Class Final" applied to class DefaultXmlRpcTransport
+Iteration 217: "Make Class Non Final" applied to class DefaultXmlRpcTransport
+Iteration 218: "Make Class Final" applied to class DefaultXmlRpcTransport
+Iteration 219: "Make Class Non Final" applied to class DefaultXmlRpcTransport
+Iteration 220: "Make Class Final" applied to class DefaultXmlRpcTransport
+Iteration 221: "Make Class Non Final" applied to class DefaultXmlRpcTransport
+Iteration 222: "Make Class Final" applied to class DefaultXmlRpcTransport
+Iteration 223: "Make Class Non Final" applied to class DefaultXmlRpcTransport
+Iteration 224: "Make Class Final" applied to class DefaultXmlRpcTransport
+Iteration 225: "Make Class Non Final" applied to class DefaultXmlRpcTransport
+Iteration 226: "Make Class Final" applied to class DefaultXmlRpcTransport
+Iteration 227: "Make Class Non Final" applied to class DefaultXmlRpcTransport
+Iteration 228: "Decrease Method Security" applied at class XmlRpcApplet to method addDoubleArgToStruct from private to package
+Iteration 229: "Increase Method Security" applied at class XmlRpcApplet to method addDoubleArgToStruct from package to private
+Iteration 230: "Make Class Final" applied to class DefaultXmlRpcTransport
+Iteration 231: "Make Class Non Final" applied to class DefaultXmlRpcTransport
+Iteration 232: "Make Class Final" applied to class DefaultXmlRpcTransport
+Iteration 233: "Make Class Non Final" applied to class DefaultXmlRpcTransport
+Iteration 234: "Make Class Final" applied to class DefaultXmlRpcTransport
+Iteration 235: "Make Class Non Final" applied to class DefaultXmlRpcTransport
+Iteration 236: "Make Class Final" applied to class DefaultXmlRpcTransport
+Iteration 237: "Make Class Non Final" applied to class DefaultXmlRpcTransport
+Iteration 238: "Make Class Final" applied to class DefaultXmlRpcTransport
+Iteration 239: "Make Class Non Final" applied to class DefaultXmlRpcTransport
+Iteration 240: "Make Class Final" applied to class DefaultXmlRpcTransport
+Iteration 241: "Make Class Non Final" applied to class DefaultXmlRpcTransport
+Iteration 242: "Make Class Final" applied to class DefaultXmlRpcTransport
+Iteration 243: "Make Class Non Final" applied to class DefaultXmlRpcTransport
+Iteration 244: "Make Class Final" applied to class DefaultXmlRpcTransport
+Iteration 245: "Make Class Non Final" applied to class DefaultXmlRpcTransport
+Iteration 246: "Make Class Final" applied to class DefaultXmlRpcTransport
+Iteration 247: "Make Class Non Final" applied to class DefaultXmlRpcTransport
+Iteration 248: "Make Class Final" applied to class DefaultXmlRpcTransport
+Iteration 249: "Make Class Non Final" applied to class DefaultXmlRpcTransport
+Iteration 250: "Make Class Final" applied to class DefaultXmlRpcTransport
+Iteration 251: "Make Class Non Final" applied to class DefaultXmlRpcTransport
+Iteration 252: "Make Class Final" applied to class DefaultXmlRpcTransport
+Iteration 253: "Make Class Non Final" applied to class DefaultXmlRpcTransport
+Iteration 254: "Make Class Final" applied to class DefaultXmlRpcTransport
+Iteration 255: "Make Class Non Final" applied to class DefaultXmlRpcTransport
+Iteration 256: "Make Class Final" applied to class DefaultXmlRpcTransport
+Iteration 257: "Make Class Non Final" applied to class DefaultXmlRpcTransport
+Iteration 258: "Make Class Final" applied to class DefaultXmlRpcTransport
+Iteration 259: "Make Class Non Final" applied to class DefaultXmlRpcTransport
+Iteration 260: "Decrease Method Security" applied at class XmlRpcApplet to method addDoubleArgToStruct from private to package
+Iteration 261: "Make Class Final" applied to class DefaultXmlRpcTransport
+Iteration 262: "Make Class Non Final" applied to class DefaultXmlRpcTransport
+Iteration 263: "Make Class Final" applied to class DefaultXmlRpcTransport
+Iteration 264: "Make Class Non Final" applied to class DefaultXmlRpcTransport
+Iteration 265: "Increase Method Security" applied at class XmlRpcApplet to method addDoubleArgToStruct from package to private
+Iteration 266: "Make Class Final" applied to class DefaultXmlRpcTransport
+Iteration 267: "Make Class Non Final" applied to class DefaultXmlRpcTransport
+Iteration 268: "Make Class Final" applied to class DefaultXmlRpcTransport
+Iteration 269: "Make Class Non Final" applied to class DefaultXmlRpcTransport
+Iteration 270: "Make Class Final" applied to class DefaultXmlRpcTransport
+Iteration 271: "Make Class Non Final" applied to class DefaultXmlRpcTransport
+Iteration 272: "Make Class Final" applied to class DefaultXmlRpcTransport
+Iteration 273: "Make Class Non Final" applied to class DefaultXmlRpcTransport
+Iteration 274: "Make Class Final" applied to class DefaultXmlRpcTransport
+Iteration 275: "Make Class Non Final" applied to class DefaultXmlRpcTransport
+Iteration 276: "Decrease Method Security" applied at class XmlRpcApplet to method addDoubleArgToStruct from private to package
+Iteration 277: "Make Method Final" applied at class SAXException to method getMessage
+Iteration 278: "Decrease Field Security" applied at class ParseFailed to field cause from protected to public
+Iteration 279: "Decrease Method Security" applied at class WebServer to method toHTTPBytes from protected to public
+Iteration 280: "Make Class Final" applied to class DefaultXmlRpcTransport
+Iteration 281: "Make Class Non Final" applied to class DefaultXmlRpcTransport
+Iteration 282: "Decrease Method Security" applied at class XmlRpcApplet to method addDoubleArgToStruct from package to protected
+Iteration 283: "Decrease Method Security" applied at class WebServer to method createServerSocket from protected to public
+Iteration 284: "Make Class Final" applied to class DefaultXmlRpcTransport
+Iteration 285: "Make Class Non Final" applied to class DefaultXmlRpcTransport
+Iteration 286: "Make Class Final" applied to class DefaultXmlRpcTransport
+Iteration 287: "Make Class Non Final" applied to class DefaultXmlRpcTransport
+Iteration 288: "Make Class Final" applied to class DefaultXmlRpcTransport
+Iteration 289: "Make Class Non Final" applied to class DefaultXmlRpcTransport
+Iteration 290: "Make Class Final" applied to class DefaultXmlRpcTransport
+Iteration 291: "Make Class Non Final" applied to class DefaultXmlRpcTransport
+Iteration 292: "Make Class Final" applied to class DefaultXmlRpcTransport
+Iteration 293: "Make Class Non Final" applied to class DefaultXmlRpcTransport
+Iteration 294: "Make Class Final" applied to class DefaultXmlRpcTransport
+Iteration 295: "Make Class Non Final" applied to class DefaultXmlRpcTransport
+Iteration 296: "Make Class Final" applied to class DefaultXmlRpcTransport
+Iteration 297: "Make Class Non Final" applied to class DefaultXmlRpcTransport
+Iteration 298: "Decrease Method Security" applied at class XmlRpcApplet to method addDoubleArgToStruct from protected to public
+Iteration 299: "Make Class Final" applied to class DefaultXmlRpcTransport
+Iteration 300: "Make Class Non Final" applied to class DefaultXmlRpcTransport
+Iteration 301: "Make Class Final" applied to class DefaultXmlRpcTransport
+Iteration 302: "Make Class Non Final" applied to class DefaultXmlRpcTransport
+Iteration 303: "Increase Method Security" applied at class XmlRpcApplet to method addDoubleArgToStruct from public to protected
+Iteration 304: "Make Class Final" applied to class DefaultXmlRpcTransport
+Iteration 305: "Make Class Non Final" applied to class DefaultXmlRpcTransport
+Iteration 306: "Make Class Final" applied to class DefaultXmlRpcTransport
+Iteration 307: "Make Class Non Final" applied to class DefaultXmlRpcTransport
+Iteration 308: "Make Class Final" applied to class DefaultXmlRpcTransport
+Iteration 309: "Make Class Non Final" applied to class DefaultXmlRpcTransport
+Iteration 310: "Make Class Final" applied to class DefaultXmlRpcTransport
+Iteration 311: "Make Class Non Final" applied to class DefaultXmlRpcTransport
+Iteration 312: "Make Class Final" applied to class DefaultXmlRpcTransport
+Iteration 313: "Make Class Non Final" applied to class DefaultXmlRpcTransport
+Iteration 314: "Make Class Final" applied to class DefaultXmlRpcTransport
+Iteration 315: "Make Class Non Final" applied to class DefaultXmlRpcTransport
+Iteration 316: "Make Class Final" applied to class DefaultXmlRpcTransport
+Iteration 317: "Make Class Non Final" applied to class DefaultXmlRpcTransport
+Iteration 318: "Make Class Final" applied to class DefaultXmlRpcTransport
+Iteration 319: "Make Class Non Final" applied to class DefaultXmlRpcTransport
+Iteration 320: "Make Class Final" applied to class DefaultXmlRpcTransport
+Iteration 321: "Make Class Non Final" applied to class DefaultXmlRpcTransport
+Iteration 322: "Make Class Final" applied to class DefaultXmlRpcTransport
+Iteration 323: "Make Class Non Final" applied to class DefaultXmlRpcTransport
+Iteration 324: "Make Class Final" applied to class DefaultXmlRpcTransport
+Iteration 325: "Make Class Non Final" applied to class DefaultXmlRpcTransport
+Iteration 326: "Make Class Final" applied to class DefaultXmlRpcTransport
+Iteration 327: "Make Class Non Final" applied to class DefaultXmlRpcTransport
+Iteration 328: "Make Class Final" applied to class DefaultXmlRpcTransport
+Iteration 329: "Make Class Non Final" applied to class DefaultXmlRpcTransport
+Iteration 330: "Decrease Method Security" applied at class XmlRpcApplet to method addDoubleArgToStruct from protected to public
+Iteration 331: "Increase Method Security" applied at class XmlRpcApplet to method addDoubleArgToStruct from public to protected
+Iteration 332: "Make Class Final" applied to class DefaultXmlRpcTransport
+Iteration 333: "Make Class Non Final" applied to class DefaultXmlRpcTransport
+Iteration 334: "Make Class Final" applied to class DefaultXmlRpcTransport
+Iteration 335: "Make Class Non Final" applied to class DefaultXmlRpcTransport
+Iteration 336: "Make Class Final" applied to class DefaultXmlRpcTransport
+Iteration 337: "Make Class Non Final" applied to class DefaultXmlRpcTransport
+Iteration 338: "Make Class Final" applied to class DefaultXmlRpcTransport
+Iteration 339: "Make Class Non Final" applied to class DefaultXmlRpcTransport
+Iteration 340: "Make Class Final" applied to class DefaultXmlRpcTransport
+Iteration 341: "Make Class Non Final" applied to class DefaultXmlRpcTransport
+Iteration 342: "Make Class Final" applied to class DefaultXmlRpcTransport
+Iteration 343: "Make Class Non Final" applied to class DefaultXmlRpcTransport
+Iteration 344: "Make Class Final" applied to class DefaultXmlRpcTransport
+Iteration 345: "Make Class Non Final" applied to class DefaultXmlRpcTransport
+Iteration 346: "Make Class Final" applied to class DefaultXmlRpcTransport
+Iteration 347: "Make Class Non Final" applied to class DefaultXmlRpcTransport
+Iteration 348: "Make Class Final" applied to class DefaultXmlRpcTransport
+Iteration 349: "Make Class Non Final" applied to class DefaultXmlRpcTransport
+Iteration 350: "Make Class Final" applied to class DefaultXmlRpcTransport
+Iteration 351: "Make Class Non Final" applied to class DefaultXmlRpcTransport
+Iteration 352: "Make Class Final" applied to class DefaultXmlRpcTransport
+Iteration 353: "Make Class Non Final" applied to class DefaultXmlRpcTransport
+Iteration 354: "Make Class Final" applied to class DefaultXmlRpcTransport
+Iteration 355: "Make Class Non Final" applied to class DefaultXmlRpcTransport
+Iteration 356: "Make Class Final" applied to class DefaultXmlRpcTransport
+Iteration 357: "Make Class Non Final" applied to class DefaultXmlRpcTransport
+Iteration 358: "Make Class Final" applied to class DefaultXmlRpcTransport
+Iteration 359: "Make Class Non Final" applied to class DefaultXmlRpcTransport
+Iteration 360: "Make Class Final" applied to class DefaultXmlRpcTransport
+Iteration 361: "Make Class Non Final" applied to class DefaultXmlRpcTransport
+Iteration 362: "Decrease Method Security" applied at class XmlRpcApplet to method addDoubleArgToStruct from protected to public
+Iteration 363: "Make Class Final" applied to class DefaultXmlRpcTransport
+Iteration 364: "Make Class Non Final" applied to class DefaultXmlRpcTransport
+Iteration 365: "Make Class Final" applied to class DefaultXmlRpcTransport
+Iteration 366: "Make Class Non Final" applied to class DefaultXmlRpcTransport
+Iteration 367: "Increase Method Security" applied at class XmlRpcApplet to method addDoubleArgToStruct from public to protected
+Iteration 368: "Make Class Final" applied to class DefaultXmlRpcTransport
+Iteration 369: "Make Class Non Final" applied to class DefaultXmlRpcTransport
+Iteration 370: "Make Class Final" applied to class DefaultXmlRpcTransport
+Iteration 371: "Make Class Non Final" applied to class DefaultXmlRpcTransport
+Iteration 372: "Make Class Final" applied to class DefaultXmlRpcTransport
+Iteration 373: "Make Class Non Final" applied to class DefaultXmlRpcTransport
+Iteration 374: "Make Class Final" applied to class DefaultXmlRpcTransport
+Iteration 375: "Make Class Non Final" applied to class DefaultXmlRpcTransport
+Iteration 376: "Make Class Final" applied to class DefaultXmlRpcTransport
+Iteration 377: "Make Class Non Final" applied to class DefaultXmlRpcTransport
+Iteration 378: "Decrease Method Security" applied at class XmlRpcApplet to method addDoubleArgToStruct from protected to public
+Iteration 379: "Make Class Final" applied to class DefaultXmlRpcTransport
+Iteration 380: "Make Class Non Final" applied to class DefaultXmlRpcTransport
+Iteration 381: "Decrease Method Security" applied at class XmlRpcApplet to method execute from private to package
+Iteration 382: "Remove Field" applied at class SimpleXmlRpcClient to field enc
+Iteration 383: "Increase Method Security" applied at class SystemHandler to method addSystemHandler from public to protected
+Iteration 384: "Decrease Field Security" applied at class SystemHandler to field systemMapping from private to package
+Iteration 385: "Make Field Static" applied at class DateTool to field df
+Iteration 386: "Make Method Static" applied at class HandlerBase to method warning
+Iteration 387: "Make Method Non Static" applied at class DefaultTypeFactory to method createBase64
+Iteration 388: "Move Method Down" applied to method setDefaultInputEncoding from XmlRpc to XmlRpcRequestProcessor
+Iteration 389: "Make Method Final" applied at class XmlRpcClientRequestProcessor to method canReUse
+Iteration 390: "Increase Field Security" applied at class HandlerBase to field debug from public to protected
+Iteration 391: "Make Field Non Static" applied at class SecurityTool to field protocolHandlerPackages
+Iteration 392: "Make Field Final" applied at class SecureWebServer to LocalVariableDeclaration keyStore
+Iteration 393: "Decrease Method Security" applied at class XmlRpcResponseProcessor to method writeResponse from package to protected
+Iteration 394: "Make Field Final" applied at class ContextXmlRpcHandler to ParameterDeclaration method
+Iteration 395: "Make Method Static" applied at class XmlRpcClientRequestProcessor to method encodeRequestBytes
+Iteration 396: "Decrease Method Security" applied at class MinML to method _flush from private to package
+Iteration 397: "Remove Method" applied at class WebServer to method acceptClient
+Iteration 398: "Make Class Final" applied to class DefaultXmlRpcTransport
+Iteration 399: "Make Class Non Final" applied to class DefaultXmlRpcTransport
+Iteration 400: "Make Class Final" applied to class DefaultXmlRpcTransport
+Iteration 401: "Make Class Non Final" applied to class DefaultXmlRpcTransport
+Iteration 402: "Make Class Final" applied to class DefaultXmlRpcTransport
+Iteration 403: "Make Class Non Final" applied to class DefaultXmlRpcTransport
+Iteration 404: "Make Class Final" applied to class DefaultXmlRpcTransport
+Iteration 405: "Make Class Non Final" applied to class DefaultXmlRpcTransport
+Iteration 406: "Decrease Method Security" applied at class XmlRpcApplet to method execute from package to protected
+Iteration 407: "Make Class Final" applied to class DefaultXmlRpcTransport
+Iteration 408: "Make Class Non Final" applied to class DefaultXmlRpcTransport
+Iteration 409: "Make Class Final" applied to class DefaultXmlRpcTransport
+Iteration 410: "Make Class Non Final" applied to class DefaultXmlRpcTransport
+Iteration 411: "Increase Method Security" applied at class XmlRpcApplet to method addDoubleArgToStruct from public to protected
+Iteration 412: "Make Class Final" applied to class DefaultXmlRpcTransport
+Iteration 413: "Make Class Non Final" applied to class DefaultXmlRpcTransport
+Iteration 414: "Increase Method Security" applied at class XmlRpcApplet to method addDoubleArgToStruct from protected to package
+Iteration 415: "Make Class Final" applied to class DefaultXmlRpcTransport
+Iteration 416: "Make Class Non Final" applied to class DefaultXmlRpcTransport
+Iteration 417: "Make Class Final" applied to class DefaultXmlRpcTransport
+Iteration 418: "Make Class Non Final" applied to class DefaultXmlRpcTransport
+Iteration 419: "Make Class Final" applied to class DefaultXmlRpcTransport
+Iteration 420: "Make Class Non Final" applied to class DefaultXmlRpcTransport
+Iteration 421: "Make Class Final" applied to class DefaultXmlRpcTransport
+Iteration 422: "Make Class Non Final" applied to class DefaultXmlRpcTransport
+Iteration 423: "Make Class Final" applied to class DefaultXmlRpcTransport
+Iteration 424: "Make Class Non Final" applied to class DefaultXmlRpcTransport
+Iteration 425: "Make Class Final" applied to class DefaultXmlRpcTransport
+Iteration 426: "Make Class Non Final" applied to class DefaultXmlRpcTransport
+Iteration 427: "Make Class Final" applied to class DefaultXmlRpcTransport
+Iteration 428: "Make Class Non Final" applied to class DefaultXmlRpcTransport
+Iteration 429: "Make Class Final" applied to class DefaultXmlRpcTransport
+Iteration 430: "Make Class Non Final" applied to class DefaultXmlRpcTransport
+Iteration 431: "Make Class Final" applied to class DefaultXmlRpcTransport
+Iteration 432: "Make Class Non Final" applied to class DefaultXmlRpcTransport
+Iteration 433: "Make Class Final" applied to class DefaultXmlRpcTransport
+Iteration 434: "Make Class Non Final" applied to class DefaultXmlRpcTransport
+Iteration 435: "Make Class Final" applied to class DefaultXmlRpcTransport
+Iteration 436: "Make Class Non Final" applied to class DefaultXmlRpcTransport
+Iteration 437: "Make Class Final" applied to class DefaultXmlRpcTransport
+Iteration 438: "Make Class Non Final" applied to class DefaultXmlRpcTransport
+Iteration 439: "Make Class Final" applied to class DefaultXmlRpcTransport
+Iteration 440: "Increase Method Security" applied at class XmlRpcApplet to method addDoubleArgToStruct from package to private
+Iteration 441: "Make Class Non Final" applied to class DefaultXmlRpcTransport
+Iteration 442: "Increase Method Security" applied at class XmlRpcApplet to method execute from protected to package
+Iteration 443: "Make Class Final" applied to class DefaultXmlRpcTransport
+Iteration 444: "Make Class Non Final" applied to class DefaultXmlRpcTransport
+Iteration 445: "Increase Method Security" applied at class XmlRpcApplet to method execute from package to private
+Iteration 446: "Make Class Final" applied to class DefaultXmlRpcTransport
+Iteration 447: "Make Class Non Final" applied to class DefaultXmlRpcTransport
+Iteration 448: "Make Class Final" applied to class DefaultXmlRpcTransport
+Iteration 449: "Make Class Non Final" applied to class DefaultXmlRpcTransport
+Iteration 450: "Make Class Final" applied to class DefaultXmlRpcTransport
+Iteration 451: "Make Class Non Final" applied to class DefaultXmlRpcTransport
+Iteration 452: "Make Class Final" applied to class DefaultXmlRpcTransport
+Iteration 453: "Make Class Non Final" applied to class DefaultXmlRpcTransport
+Iteration 454: "Make Class Final" applied to class DefaultXmlRpcTransport
+Iteration 455: "Make Class Non Final" applied to class DefaultXmlRpcTransport
+Iteration 456: "Make Class Final" applied to class DefaultXmlRpcTransport
+Iteration 457: "Make Class Non Final" applied to class DefaultXmlRpcTransport
+Iteration 458: "Make Class Final" applied to class DefaultXmlRpcTransport
+Iteration 459: "Make Class Non Final" applied to class DefaultXmlRpcTransport
+Iteration 460: "Make Class Final" applied to class DefaultXmlRpcTransport
+Iteration 461: "Make Class Non Final" applied to class DefaultXmlRpcTransport
+Iteration 462: "Make Class Final" applied to class DefaultXmlRpcTransport
+Iteration 463: "Make Class Non Final" applied to class DefaultXmlRpcTransport
+Iteration 464: "Make Class Final" applied to class DefaultXmlRpcTransport
+Iteration 465: "Make Class Non Final" applied to class DefaultXmlRpcTransport
+Iteration 466: "Make Class Final" applied to class DefaultXmlRpcTransport
+Iteration 467: "Make Class Non Final" applied to class DefaultXmlRpcTransport
+Iteration 468: "Decrease Method Security" applied at class XmlRpcApplet to method addDoubleArgToStruct from private to package
+Iteration 469: "Increase Method Security" applied at class XmlRpcApplet to method addDoubleArgToStruct from package to private
+Iteration 470: "Make Class Final" applied to class DefaultXmlRpcTransport
+Iteration 471: "Make Class Non Final" applied to class DefaultXmlRpcTransport
+Iteration 472: "Make Class Final" applied to class DefaultXmlRpcTransport
+Iteration 473: "Make Class Non Final" applied to class DefaultXmlRpcTransport
+Iteration 474: "Make Class Final" applied to class DefaultXmlRpcTransport
+Iteration 475: "Make Class Non Final" applied to class DefaultXmlRpcTransport
+Iteration 476: "Make Class Final" applied to class DefaultXmlRpcTransport
+Iteration 477: "Make Class Non Final" applied to class DefaultXmlRpcTransport
+Iteration 478: "Make Class Final" applied to class DefaultXmlRpcTransport
+Iteration 479: "Make Class Non Final" applied to class DefaultXmlRpcTransport
+Iteration 480: "Make Class Final" applied to class DefaultXmlRpcTransport
+Iteration 481: "Make Class Non Final" applied to class DefaultXmlRpcTransport
+Iteration 482: "Make Class Final" applied to class DefaultXmlRpcTransport
+Iteration 483: "Make Class Non Final" applied to class DefaultXmlRpcTransport
+Iteration 484: "Make Class Final" applied to class DefaultXmlRpcTransport
+Iteration 485: "Make Class Non Final" applied to class DefaultXmlRpcTransport
+Iteration 486: "Make Class Final" applied to class DefaultXmlRpcTransport
+Iteration 487: "Make Class Non Final" applied to class DefaultXmlRpcTransport
+Iteration 488: "Make Class Final" applied to class DefaultXmlRpcTransport
+Iteration 489: "Make Class Non Final" applied to class DefaultXmlRpcTransport
+Iteration 490: "Make Class Final" applied to class DefaultXmlRpcTransport
+Iteration 491: "Make Class Non Final" applied to class DefaultXmlRpcTransport
+Iteration 492: "Make Class Final" applied to class DefaultXmlRpcTransport
+Iteration 493: "Make Class Non Final" applied to class DefaultXmlRpcTransport
+Iteration 494: "Make Class Final" applied to class DefaultXmlRpcTransport
+Iteration 495: "Make Class Non Final" applied to class DefaultXmlRpcTransport
+Iteration 496: "Make Class Final" applied to class DefaultXmlRpcTransport
+Iteration 497: "Make Class Non Final" applied to class DefaultXmlRpcTransport
+Iteration 498: "Make Class Final" applied to class DefaultXmlRpcTransport
+Iteration 499: "Make Class Non Final" applied to class DefaultXmlRpcTransport
+Iteration 500: "Decrease Method Security" applied at class XmlRpcApplet to method addDoubleArgToStruct from private to package
+Iteration 501: "Make Class Final" applied to class DefaultXmlRpcTransport
+Iteration 502: "Make Class Non Final" applied to class DefaultXmlRpcTransport
+Iteration 503: "Make Class Final" applied to class DefaultXmlRpcTransport
+Iteration 504: "Make Class Non Final" applied to class DefaultXmlRpcTransport
+Iteration 505: "Increase Method Security" applied at class XmlRpcApplet to method addDoubleArgToStruct from package to private
+Iteration 506: "Make Class Final" applied to class DefaultXmlRpcTransport
+Iteration 507: "Make Class Non Final" applied to class DefaultXmlRpcTransport
+Iteration 508: "Make Class Final" applied to class DefaultXmlRpcTransport
+Iteration 509: "Make Class Non Final" applied to class DefaultXmlRpcTransport
+Iteration 510: "Make Class Final" applied to class DefaultXmlRpcTransport
+Iteration 511: "Make Class Non Final" applied to class DefaultXmlRpcTransport
+Iteration 512: "Make Class Final" applied to class DefaultXmlRpcTransport
+Iteration 513: "Make Class Non Final" applied to class DefaultXmlRpcTransport
+Iteration 514: "Make Class Final" applied to class DefaultXmlRpcTransport
+Iteration 515: "Make Class Non Final" applied to class DefaultXmlRpcTransport
+Iteration 516: "Decrease Method Security" applied at class XmlRpcApplet to method addDoubleArgToStruct from private to package
+Iteration 517: "Make Class Final" applied to class DefaultXmlRpcTransport
+Iteration 518: "Make Class Non Final" applied to class DefaultXmlRpcTransport
+Iteration 519: "Decrease Method Security" applied at class XmlRpcApplet to method addDoubleArgToStruct from package to protected
+Iteration 520: "Make Class Final" applied to class DefaultXmlRpcTransport
+Iteration 521: "Make Class Non Final" applied to class DefaultXmlRpcTransport
+Iteration 522: "Make Class Final" applied to class DefaultXmlRpcTransport
+Iteration 523: "Make Class Non Final" applied to class DefaultXmlRpcTransport
+Iteration 524: "Make Class Final" applied to class DefaultXmlRpcTransport
+Iteration 525: "Make Class Non Final" applied to class DefaultXmlRpcTransport
+Iteration 526: "Make Class Final" applied to class DefaultXmlRpcTransport
+Iteration 527: "Make Class Non Final" applied to class DefaultXmlRpcTransport
+Iteration 528: "Make Class Final" applied to class DefaultXmlRpcTransport
+Iteration 529: "Make Class Non Final" applied to class DefaultXmlRpcTransport
+Iteration 530: "Make Class Final" applied to class DefaultXmlRpcTransport
+Iteration 531: "Make Class Non Final" applied to class DefaultXmlRpcTransport
+Iteration 532: "Make Class Final" applied to class DefaultXmlRpcTransport
+Iteration 533: "Make Class Non Final" applied to class DefaultXmlRpcTransport
+Iteration 534: "Decrease Method Security" applied at class XmlRpcApplet to method addDoubleArgToStruct from protected to public
+Iteration 535: "Make Class Final" applied to class DefaultXmlRpcTransport
+Iteration 536: "Make Class Non Final" applied to class DefaultXmlRpcTransport
+Iteration 537: "Make Class Final" applied to class DefaultXmlRpcTransport
+Iteration 538: "Make Class Non Final" applied to class DefaultXmlRpcTransport
+Iteration 539: "Make Class Final" applied to class DefaultXmlRpcTransport
+Iteration 540: "Make Class Non Final" applied to class DefaultXmlRpcTransport
+Iteration 541: "Make Class Final" applied to class DefaultXmlRpcTransport
+Iteration 542: "Make Class Non Final" applied to class DefaultXmlRpcTransport
+Iteration 543: "Make Class Final" applied to class DefaultXmlRpcTransport
+Iteration 544: "Make Class Non Final" applied to class DefaultXmlRpcTransport
+Iteration 545: "Make Class Final" applied to class DefaultXmlRpcTransport
+Iteration 546: "Make Class Non Final" applied to class DefaultXmlRpcTransport
+Iteration 547: "Make Class Final" applied to class DefaultXmlRpcTransport
+Iteration 548: "Make Class Non Final" applied to class DefaultXmlRpcTransport
+Iteration 549: "Make Class Final" applied to class DefaultXmlRpcTransport
+Iteration 550: "Make Class Non Final" applied to class DefaultXmlRpcTransport
+Iteration 551: "Make Class Final" applied to class DefaultXmlRpcTransport
+Iteration 552: "Make Class Non Final" applied to class DefaultXmlRpcTransport
+Iteration 553: "Make Class Final" applied to class DefaultXmlRpcTransport
+Iteration 554: "Make Class Non Final" applied to class DefaultXmlRpcTransport
+Iteration 555: "Make Class Final" applied to class DefaultXmlRpcTransport
+Iteration 556: "Make Class Non Final" applied to class DefaultXmlRpcTransport
+Iteration 557: "Decrease Method Security" applied at class XmlRpcApplet to method execute from private to package
+Iteration 558: "Increase Method Security" applied at class XmlRpcApplet to method addDateArg from public to protected
+Iteration 559: "Make Class Final" applied to class DefaultXmlRpcTransport
+Iteration 560: "Make Class Non Final" applied to class DefaultXmlRpcTransport
+Iteration 561: "Make Class Final" applied to class DefaultXmlRpcTransport
+Iteration 562: "Make Class Non Final" applied to class DefaultXmlRpcTransport
+Iteration 563: "Make Class Final" applied to class DefaultXmlRpcTransport
+Iteration 564: "Make Class Non Final" applied to class DefaultXmlRpcTransport
+Iteration 565: "Make Class Final" applied to class DefaultXmlRpcTransport
+Iteration 566: "Make Class Non Final" applied to class DefaultXmlRpcTransport
+Iteration 567: "Make Class Final" applied to class DefaultXmlRpcTransport
+Iteration 568: "Make Class Non Final" applied to class DefaultXmlRpcTransport
+Iteration 569: "Make Class Final" applied to class DefaultXmlRpcTransport
+Iteration 570: "Make Class Non Final" applied to class DefaultXmlRpcTransport
+Iteration 571: "Make Class Final" applied to class DefaultXmlRpcTransport
+Iteration 572: "Make Class Non Final" applied to class DefaultXmlRpcTransport
+Iteration 573: "Make Class Final" applied to class DefaultXmlRpcTransport
+Iteration 574: "Make Class Non Final" applied to class DefaultXmlRpcTransport
+Iteration 575: "Make Class Final" applied to class DefaultXmlRpcTransport
+Iteration 576: "Make Class Non Final" applied to class DefaultXmlRpcTransport
+Iteration 577: "Make Class Final" applied to class DefaultXmlRpcTransport
+Iteration 578: "Make Class Non Final" applied to class DefaultXmlRpcTransport
+Iteration 579: "Make Class Final" applied to class DefaultXmlRpcTransport
+Iteration 580: "Make Class Non Final" applied to class DefaultXmlRpcTransport
+Iteration 581: "Make Class Final" applied to class DefaultXmlRpcTransport
+Iteration 582: "Make Class Non Final" applied to class DefaultXmlRpcTransport
+Iteration 583: "Make Class Final" applied to class DefaultXmlRpcTransport
+Iteration 584: "Make Class Non Final" applied to class DefaultXmlRpcTransport
+Iteration 585: "Make Class Final" applied to class DefaultXmlRpcTransport
+Iteration 586: "Make Class Non Final" applied to class DefaultXmlRpcTransport
+Iteration 587: "Make Class Final" applied to class DefaultXmlRpcTransport
+Iteration 588: "Make Class Non Final" applied to class DefaultXmlRpcTransport
+Iteration 589: "Decrease Method Security" applied at class XmlRpcApplet to method execute from package to protected
+Iteration 590: "Make Class Final" applied to class DefaultXmlRpcTransport
+Iteration 591: "Make Class Non Final" applied to class DefaultXmlRpcTransport
+Iteration 592: "Make Class Final" applied to class DefaultXmlRpcTransport
+Iteration 593: "Make Class Non Final" applied to class DefaultXmlRpcTransport
+Iteration 594: "Increase Method Security" applied at class XmlRpcApplet to method execute from public to protected
+Iteration 595: "Make Class Final" applied to class DefaultXmlRpcTransport
+Iteration 596: "Make Class Non Final" applied to class DefaultXmlRpcTransport
+Iteration 597: "Make Class Final" applied to class DefaultXmlRpcTransport
+Iteration 598: "Make Class Non Final" applied to class DefaultXmlRpcTransport
+Iteration 599: "Make Class Final" applied to class DefaultXmlRpcTransport
+Iteration 600: "Make Class Non Final" applied to class DefaultXmlRpcTransport
+Iteration 601: "Make Class Final" applied to class DefaultXmlRpcTransport
+Iteration 602: "Make Class Non Final" applied to class DefaultXmlRpcTransport
+Iteration 603: "Make Class Final" applied to class DefaultXmlRpcTransport
+Iteration 604: "Make Class Non Final" applied to class DefaultXmlRpcTransport
+Iteration 605: "Decrease Method Security" applied at class XmlRpcApplet to method execute from protected to public
+Iteration 606: "Make Class Final" applied to class DefaultXmlRpcTransport
+Iteration 607: "Make Class Non Final" applied to class DefaultXmlRpcTransport
+Iteration 608: "Make Class Final" applied to class DefaultXmlRpcTransport
+Iteration 609: "Make Class Non Final" applied to class DefaultXmlRpcTransport
+Iteration 610: "Make Class Final" applied to class DefaultXmlRpcTransport
+Iteration 611: "Make Class Non Final" applied to class DefaultXmlRpcTransport
+Iteration 612: "Increase Method Security" applied at class XmlRpcApplet to method execute from public to protected
+Iteration 613: "Make Class Final" applied to class DefaultXmlRpcTransport
+Iteration 614: "Make Class Non Final" applied to class DefaultXmlRpcTransport
+Iteration 615: "Make Class Final" applied to class DefaultXmlRpcTransport
+Iteration 616: "Make Class Non Final" applied to class DefaultXmlRpcTransport
+Iteration 617: "Make Class Final" applied to class DefaultXmlRpcTransport
+Iteration 618: "Make Class Non Final" applied to class DefaultXmlRpcTransport
+Iteration 619: "Make Class Final" applied to class DefaultXmlRpcTransport
+Iteration 620: "Make Class Non Final" applied to class DefaultXmlRpcTransport
+Iteration 621: "Make Class Final" applied to class DefaultXmlRpcTransport
+Iteration 622: "Make Class Non Final" applied to class DefaultXmlRpcTransport
+Iteration 623: "Make Class Final" applied to class DefaultXmlRpcTransport
+Iteration 624: "Make Class Non Final" applied to class DefaultXmlRpcTransport
+Iteration 625: "Make Class Final" applied to class DefaultXmlRpcTransport
+Iteration 626: "Make Class Non Final" applied to class DefaultXmlRpcTransport
+Iteration 627: "Make Class Final" applied to class DefaultXmlRpcTransport
+Iteration 628: "Make Class Non Final" applied to class DefaultXmlRpcTransport
+Iteration 629: "Make Class Final" applied to class DefaultXmlRpcTransport
+Iteration 630: "Make Class Non Final" applied to class DefaultXmlRpcTransport
+Iteration 631: "Make Class Final" applied to class DefaultXmlRpcTransport
+Iteration 632: "Make Class Non Final" applied to class DefaultXmlRpcTransport
+Iteration 633: "Make Class Final" applied to class DefaultXmlRpcTransport
+Iteration 634: "Make Class Non Final" applied to class DefaultXmlRpcTransport
+Iteration 635: "Make Class Final" applied to class DefaultXmlRpcTransport
+Iteration 636: "Make Class Non Final" applied to class DefaultXmlRpcTransport
+Iteration 637: "Make Class Final" applied to class DefaultXmlRpcTransport
+Iteration 638: "Make Class Non Final" applied to class DefaultXmlRpcTransport
+Iteration 639: "Decrease Method Security" applied at class XmlRpcApplet to method execute from protected to public
+Iteration 640: "Increase Method Security" applied at class XmlRpcApplet to method execute from public to protected
+Iteration 641: "Make Class Final" applied to class DefaultXmlRpcTransport
+Iteration 642: "Make Class Non Final" applied to class DefaultXmlRpcTransport
+Iteration 643: "Make Class Final" applied to class DefaultXmlRpcTransport
+Iteration 644: "Make Class Non Final" applied to class DefaultXmlRpcTransport
+Iteration 645: "Make Class Final" applied to class DefaultXmlRpcTransport
+Iteration 646: "Make Class Non Final" applied to class DefaultXmlRpcTransport
+Iteration 647: "Make Class Final" applied to class DefaultXmlRpcTransport
+Iteration 648: "Make Class Non Final" applied to class DefaultXmlRpcTransport
+Iteration 649: "Make Class Final" applied to class DefaultXmlRpcTransport
+Iteration 650: "Make Class Non Final" applied to class DefaultXmlRpcTransport
+Iteration 651: "Make Class Final" applied to class DefaultXmlRpcTransport
+Iteration 652: "Make Class Non Final" applied to class DefaultXmlRpcTransport
+Iteration 653: "Make Class Final" applied to class DefaultXmlRpcTransport
+Iteration 654: "Make Class Non Final" applied to class DefaultXmlRpcTransport
+Iteration 655: "Make Class Final" applied to class DefaultXmlRpcTransport
+Iteration 656: "Make Class Non Final" applied to class DefaultXmlRpcTransport
+Iteration 657: "Make Class Final" applied to class DefaultXmlRpcTransport
+Iteration 658: "Make Class Non Final" applied to class DefaultXmlRpcTransport
+Iteration 659: "Make Class Final" applied to class DefaultXmlRpcTransport
+Iteration 660: "Make Class Non Final" applied to class DefaultXmlRpcTransport
+Iteration 661: "Make Class Final" applied to class DefaultXmlRpcTransport
+Iteration 662: "Make Class Non Final" applied to class DefaultXmlRpcTransport
+Iteration 663: "Make Class Final" applied to class DefaultXmlRpcTransport
+Iteration 664: "Make Class Non Final" applied to class DefaultXmlRpcTransport
+Iteration 665: "Make Class Final" applied to class DefaultXmlRpcTransport
+Iteration 666: "Make Class Non Final" applied to class DefaultXmlRpcTransport
+Iteration 667: "Make Class Final" applied to class DefaultXmlRpcTransport
+Iteration 668: "Make Class Non Final" applied to class DefaultXmlRpcTransport
+Iteration 669: "Make Class Final" applied to class DefaultXmlRpcTransport
+Iteration 670: "Make Class Non Final" applied to class DefaultXmlRpcTransport
+Iteration 671: "Decrease Method Security" applied at class XmlRpcApplet to method execute from protected to public
+Iteration 672: "Make Class Final" applied to class DefaultXmlRpcTransport
+Iteration 673: "Make Class Non Final" applied to class DefaultXmlRpcTransport
+Iteration 674: "Make Class Final" applied to class DefaultXmlRpcTransport
+Iteration 675: "Make Class Non Final" applied to class DefaultXmlRpcTransport
+Iteration 676: "Increase Method Security" applied at class XmlRpcApplet to method execute from public to protected
+Iteration 677: "Make Class Final" applied to class DefaultXmlRpcTransport
+Iteration 678: "Make Class Non Final" applied to class DefaultXmlRpcTransport
+Iteration 679: "Make Class Final" applied to class DefaultXmlRpcTransport
+Iteration 680: "Make Class Non Final" applied to class DefaultXmlRpcTransport
+Iteration 681: "Make Class Final" applied to class DefaultXmlRpcTransport
+Iteration 682: "Make Class Non Final" applied to class DefaultXmlRpcTransport
+Iteration 683: "Make Class Final" applied to class DefaultXmlRpcTransport
+Iteration 684: "Make Class Non Final" applied to class DefaultXmlRpcTransport
+Iteration 685: "Make Class Final" applied to class DefaultXmlRpcTransport
+Iteration 686: "Make Class Non Final" applied to class DefaultXmlRpcTransport
+Iteration 687: "Make Class Final" applied to class DefaultXmlRpcTransport
+Iteration 688: "Make Class Non Final" applied to class DefaultXmlRpcTransport
+Iteration 689: "Make Class Final" applied to class DefaultXmlRpcTransport
+Iteration 690: "Make Class Non Final" applied to class DefaultXmlRpcTransport
+Iteration 691: "Make Class Final" applied to class DefaultXmlRpcTransport
+Iteration 692: "Make Class Non Final" applied to class DefaultXmlRpcTransport
+Iteration 693: "Make Class Final" applied to class DefaultXmlRpcTransport
+Iteration 694: "Make Class Non Final" applied to class DefaultXmlRpcTransport
+Iteration 695: "Make Class Final" applied to class DefaultXmlRpcTransport
+Iteration 696: "Make Class Non Final" applied to class DefaultXmlRpcTransport
+Iteration 697: "Make Class Final" applied to class DefaultXmlRpcTransport
+Iteration 698: "Make Class Non Final" applied to class DefaultXmlRpcTransport
+Iteration 699: "Make Class Final" applied to class DefaultXmlRpcTransport
+Iteration 700: "Make Class Non Final" applied to class DefaultXmlRpcTransport
+Iteration 701: "Make Class Final" applied to class DefaultXmlRpcTransport
+Iteration 702: "Make Class Non Final" applied to class DefaultXmlRpcTransport
+Iteration 703: "Decrease Method Security" applied at class XmlRpcApplet to method execute from protected to public
+Iteration 704: "Increase Method Security" applied at class XmlRpcApplet to method execute from public to protected
+Iteration 705: "Make Class Final" applied to class DefaultXmlRpcTransport
+Iteration 706: "Make Class Non Final" applied to class DefaultXmlRpcTransport
+Iteration 707: "Make Class Final" applied to class DefaultXmlRpcTransport
+Iteration 708: "Make Class Non Final" applied to class DefaultXmlRpcTransport
+Iteration 709: "Make Class Final" applied to class DefaultXmlRpcTransport
+Iteration 710: "Make Class Non Final" applied to class DefaultXmlRpcTransport
+Iteration 711: "Make Class Final" applied to class DefaultXmlRpcTransport
+Iteration 712: "Make Class Non Final" applied to class DefaultXmlRpcTransport
+Iteration 713: "Make Class Final" applied to class DefaultXmlRpcTransport
+Iteration 714: "Make Class Non Final" applied to class DefaultXmlRpcTransport
+Iteration 715: "Make Class Final" applied to class DefaultXmlRpcTransport
+Iteration 716: "Make Class Non Final" applied to class DefaultXmlRpcTransport
+Iteration 717: "Make Class Final" applied to class DefaultXmlRpcTransport
+Iteration 718: "Make Class Non Final" applied to class DefaultXmlRpcTransport
+Iteration 719: "Make Class Final" applied to class DefaultXmlRpcTransport
+Iteration 720: "Make Class Non Final" applied to class DefaultXmlRpcTransport
+Iteration 721: "Make Class Final" applied to class DefaultXmlRpcTransport
+Iteration 722: "Make Class Non Final" applied to class DefaultXmlRpcTransport
+Iteration 723: "Make Class Final" applied to class DefaultXmlRpcTransport
+Iteration 724: "Make Class Non Final" applied to class DefaultXmlRpcTransport
+Iteration 725: "Make Class Final" applied to class DefaultXmlRpcTransport
+Iteration 726: "Make Class Non Final" applied to class DefaultXmlRpcTransport
+Iteration 727: "Make Class Final" applied to class DefaultXmlRpcTransport
+Iteration 728: "Make Class Non Final" applied to class DefaultXmlRpcTransport
+Iteration 729: "Make Class Final" applied to class DefaultXmlRpcTransport
+Iteration 730: "Make Class Non Final" applied to class DefaultXmlRpcTransport
+Iteration 731: "Make Class Final" applied to class DefaultXmlRpcTransport
+Iteration 732: "Make Class Non Final" applied to class DefaultXmlRpcTransport
+Iteration 733: "Make Class Final" applied to class DefaultXmlRpcTransport
+Iteration 734: "Make Class Non Final" applied to class DefaultXmlRpcTransport
+Iteration 735: "Decrease Method Security" applied at class XmlRpcApplet to method execute from protected to public
+Iteration 736: "Make Class Final" applied to class DefaultXmlRpcTransport
+Iteration 737: "Make Class Non Final" applied to class DefaultXmlRpcTransport
+Iteration 738: "Make Class Final" applied to class DefaultXmlRpcTransport
+Iteration 739: "Make Class Non Final" applied to class DefaultXmlRpcTransport
+Iteration 740: "Increase Method Security" applied at class XmlRpcApplet to method execute from public to protected
+Iteration 741: "Make Class Final" applied to class DefaultXmlRpcTransport
+Iteration 742: "Make Class Non Final" applied to class DefaultXmlRpcTransport
+Iteration 743: "Make Class Final" applied to class DefaultXmlRpcTransport
+Iteration 744: "Make Class Non Final" applied to class DefaultXmlRpcTransport
+Iteration 745: "Make Class Final" applied to class DefaultXmlRpcTransport
+Iteration 746: "Make Class Non Final" applied to class DefaultXmlRpcTransport
+Iteration 747: "Make Class Final" applied to class DefaultXmlRpcTransport
+Iteration 748: "Make Class Non Final" applied to class DefaultXmlRpcTransport
+Iteration 749: "Make Class Final" applied to class DefaultXmlRpcTransport
+Iteration 750: "Make Class Non Final" applied to class DefaultXmlRpcTransport
+Iteration 751: "Decrease Method Security" applied at class XmlRpcApplet to method execute from protected to public
+Iteration 752: "Make Class Final" applied to class DefaultXmlRpcTransport
+Iteration 753: "Make Class Non Final" applied to class DefaultXmlRpcTransport
+Iteration 754: "Decrease Method Security" applied at class XmlRpcApplet to method execute from protected to public
+Iteration 755: "Make Class Final" applied to class DefaultXmlRpcTransport
+Iteration 756: "Make Class Non Final" applied to class DefaultXmlRpcTransport
+Iteration 757: "Make Class Final" applied to class DefaultXmlRpcTransport
+Iteration 758: "Make Class Non Final" applied to class DefaultXmlRpcTransport
+Iteration 759: "Make Class Final" applied to class DefaultXmlRpcTransport
+Iteration 760: "Make Class Non Final" applied to class DefaultXmlRpcTransport
+Iteration 761: "Make Class Final" applied to class DefaultXmlRpcTransport
+Iteration 762: "Make Class Non Final" applied to class DefaultXmlRpcTransport
+Iteration 763: "Make Class Final" applied to class DefaultXmlRpcTransport
+Iteration 764: "Make Class Non Final" applied to class DefaultXmlRpcTransport
+Iteration 765: "Make Class Final" applied to class DefaultXmlRpcTransport
+Iteration 766: "Make Class Non Final" applied to class DefaultXmlRpcTransport
+Iteration 767: "Make Class Final" applied to class DefaultXmlRpcTransport
+Iteration 768: "Make Class Non Final" applied to class DefaultXmlRpcTransport
+Iteration 769: "Make Class Final" applied to class DefaultXmlRpcTransport
+Iteration 770: "Make Class Non Final" applied to class DefaultXmlRpcTransport
+Iteration 771: "Make Class Final" applied to class DefaultXmlRpcTransport
+Iteration 772: "Make Class Non Final" applied to class DefaultXmlRpcTransport
+Iteration 773: "Increase Method Security" applied at class XmlRpcApplet to method execute from public to protected
+Iteration 774: "Make Class Final" applied to class DefaultXmlRpcTransport
+Iteration 775: "Make Class Non Final" applied to class DefaultXmlRpcTransport
+Iteration 776: "Make Class Final" applied to class DefaultXmlRpcTransport
+Iteration 777: "Make Class Non Final" applied to class DefaultXmlRpcTransport
+Iteration 778: "Make Class Final" applied to class DefaultXmlRpcTransport
+Iteration 779: "Make Class Non Final" applied to class DefaultXmlRpcTransport
+Iteration 780: "Make Class Final" applied to class DefaultXmlRpcTransport
+Iteration 781: "Make Class Non Final" applied to class DefaultXmlRpcTransport
+Iteration 782: "Make Class Final" applied to class DefaultXmlRpcTransport
+Iteration 783: "Make Class Non Final" applied to class DefaultXmlRpcTransport
+Iteration 784: "Make Class Final" applied to class DefaultXmlRpcTransport
+Iteration 785: "Make Class Non Final" applied to class DefaultXmlRpcTransport
+Iteration 786: "Make Class Final" applied to class DefaultXmlRpcTransport
+Iteration 787: "Make Class Non Final" applied to class DefaultXmlRpcTransport
+Iteration 788: "Make Class Final" applied to class DefaultXmlRpcTransport
+Iteration 789: "Make Class Non Final" applied to class DefaultXmlRpcTransport
+Iteration 790: "Make Class Final" applied to class DefaultXmlRpcTransport
+Iteration 791: "Make Class Non Final" applied to class DefaultXmlRpcTransport
+Iteration 792: "Make Class Final" applied to class DefaultXmlRpcTransport
+Iteration 793: "Make Class Non Final" applied to class DefaultXmlRpcTransport
+Iteration 794: "Make Class Final" applied to class DefaultXmlRpcTransport
+Iteration 795: "Make Class Non Final" applied to class DefaultXmlRpcTransport
+Iteration 796: "Make Class Final" applied to class DefaultXmlRpcTransport
+Iteration 797: "Make Class Non Final" applied to class DefaultXmlRpcTransport
+Iteration 798: "Make Class Final" applied to class DefaultXmlRpcTransport
+Iteration 799: "Make Class Non Final" applied to class DefaultXmlRpcTransport
+Iteration 800: "Decrease Method Security" applied at class XmlRpcApplet to method execute from protected to public
+Iteration 801: "Increase Method Security" applied at class XmlRpcApplet to method execute from public to protected
+Iteration 802: "Make Class Final" applied to class DefaultXmlRpcTransport
+Iteration 803: "Make Class Non Final" applied to class DefaultXmlRpcTransport
+Iteration 804: "Make Class Final" applied to class DefaultXmlRpcTransport
+Iteration 805: "Make Class Non Final" applied to class DefaultXmlRpcTransport
+Iteration 806: "Make Class Final" applied to class DefaultXmlRpcTransport
+Iteration 807: "Make Class Non Final" applied to class DefaultXmlRpcTransport
+Iteration 808: "Make Class Final" applied to class DefaultXmlRpcTransport
+Iteration 809: "Make Class Non Final" applied to class DefaultXmlRpcTransport
+Iteration 810: "Make Class Final" applied to class DefaultXmlRpcTransport
+Iteration 811: "Make Class Non Final" applied to class DefaultXmlRpcTransport
+Iteration 812: "Make Class Final" applied to class DefaultXmlRpcTransport
+Iteration 813: "Make Class Non Final" applied to class DefaultXmlRpcTransport
+Iteration 814: "Make Class Final" applied to class DefaultXmlRpcTransport
+Iteration 815: "Make Class Non Final" applied to class DefaultXmlRpcTransport
+Iteration 816: "Make Class Final" applied to class DefaultXmlRpcTransport
+Iteration 817: "Make Class Non Final" applied to class DefaultXmlRpcTransport
+Iteration 818: "Make Class Final" applied to class DefaultXmlRpcTransport
+Iteration 819: "Make Class Non Final" applied to class DefaultXmlRpcTransport
+Iteration 820: "Make Class Final" applied to class DefaultXmlRpcTransport
+Iteration 821: "Make Class Non Final" applied to class DefaultXmlRpcTransport
+Iteration 822: "Make Class Final" applied to class DefaultXmlRpcTransport
+Iteration 823: "Make Class Non Final" applied to class DefaultXmlRpcTransport
+Iteration 824: "Make Class Final" applied to class DefaultXmlRpcTransport
+Iteration 825: "Make Class Non Final" applied to class DefaultXmlRpcTransport
+Iteration 826: "Make Class Final" applied to class DefaultXmlRpcTransport
+Iteration 827: "Make Class Non Final" applied to class DefaultXmlRpcTransport
+Iteration 828: "Make Class Final" applied to class DefaultXmlRpcTransport
+Iteration 829: "Make Class Non Final" applied to class DefaultXmlRpcTransport
+Iteration 830: "Make Class Final" applied to class DefaultXmlRpcTransport
+Iteration 831: "Make Class Non Final" applied to class DefaultXmlRpcTransport
+Iteration 832: "Decrease Method Security" applied at class XmlRpcApplet to method execute from protected to public
+Iteration 833: "Make Class Final" applied to class DefaultXmlRpcTransport
+Iteration 834: "Make Class Non Final" applied to class DefaultXmlRpcTransport
+Iteration 835: "Make Class Final" applied to class DefaultXmlRpcTransport
+Iteration 836: "Make Class Non Final" applied to class DefaultXmlRpcTransport
+Iteration 837: "Increase Method Security" applied at class XmlRpcApplet to method execute from public to protected
+Iteration 838: "Make Class Final" applied to class DefaultXmlRpcTransport
+Iteration 839: "Make Class Non Final" applied to class DefaultXmlRpcTransport
+Iteration 840: "Make Class Final" applied to class DefaultXmlRpcTransport
+Iteration 841: "Make Class Non Final" applied to class DefaultXmlRpcTransport
+Iteration 842: "Make Class Final" applied to class DefaultXmlRpcTransport
+Iteration 843: "Make Class Non Final" applied to class DefaultXmlRpcTransport
+Iteration 844: "Make Class Final" applied to class DefaultXmlRpcTransport
+Iteration 845: "Make Class Non Final" applied to class DefaultXmlRpcTransport
+Iteration 846: "Make Class Final" applied to class DefaultXmlRpcTransport
+Iteration 847: "Make Class Non Final" applied to class DefaultXmlRpcTransport
+Iteration 848: "Decrease Method Security" applied at class XmlRpcApplet to method execute from protected to public
+Iteration 849: "Make Class Final" applied to class DefaultXmlRpcTransport
+Iteration 850: "Make Class Non Final" applied to class DefaultXmlRpcTransport
+Iteration 851: "Increase Field Security" applied at class SimpleXmlRpcClient to field fault from package to private
+Iteration 852: "Decrease Method Security" applied at class XmlRpcClient to method createDefaultTransport from private to package
+Iteration 853: "Increase Field Security" applied at class XmlRpcClient to field call from protected to package
+Iteration 854: "Remove Method" applied at class XmlRpcClient to method setBasicAuthentication
+Iteration 855: "Decrease Method Security" applied at class XmlRpcClient to method createDefaultTransport from package to protected
+Iteration 856: "Decrease Method Security" applied at class XmlWriter to method canonicalizeEncoding from protected to public
+Iteration 857: "Decrease Field Security" applied at class XmlRpc to field DEFAULT_PARSER from private to package
+Iteration 858: "Remove Field" applied at class MinML to field inSTag
+Iteration 859: "Make Class Final" applied to class ServerInputStream
+Iteration 860: "Make Method Static" applied at class Echo to method execute
+Iteration 861: "Make Method Non Final" applied at class DefaultXmlRpcTransportFactory to method createTransport
+Iteration 862: "Move Field Up" applied to field url from XmlRpcSupport to HandlerBase
+Iteration 863: "Make Method Static" applied at class ServerInputStream to method markSupported
+Iteration 864: "Remove Field" applied at class MinML to field inPossiblyAttribute
+Iteration 865: "Make Field Static" applied at class WebServer to field user,password
+Iteration 866: "Decrease Method Security" applied at class SystemHandler to method addSystemHandler from protected to public
+Iteration 867: "Move Field Up" applied to field fault from XmlRpcClientResponseProcessor to XmlRpc
+Iteration 868: "Decrease Method Security" applied at class XmlRpcClientLite to method createTransport from protected to public
+Iteration 869: "Decrease Method Security" applied at class XmlRpcClient to method createDefaultTransport from protected to public
+
+Score has improved overall by 0.884041
+Time taken to refactor: 441.55s
+
+======== Final Metric Info ========
+Average amount of public methods per class: 5.487179
+Average ratio of static classes/methods/variables per class: 0.126866
+Average ratio of final classes/methods/variables per class: 0.082424
+Average ratio of constant classes/methods/variables per class: 0.061593
+Overall fitness function score: 0.884041
