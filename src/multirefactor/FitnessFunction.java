@@ -14,6 +14,7 @@ public class FitnessFunction
 	private ArrayList<String> nonPriorityClasses;
 	private ArrayList<List<CompilationUnit>> previousUnits;
 	private HashMap<String, Integer> elementScores;
+	float baseline = 0.01f;
 
 	// Only use if normalisation functions (calculateBenchmark, calculateNormalisedScore) are not being used.
 	public FitnessFunction(ArrayList<MetricSpecification> configuration)
@@ -24,35 +25,34 @@ public class FitnessFunction
 	public FitnessFunction(Metrics m, ArrayList<MetricSpecification> configuration)
 	{
 		this.configuration = configuration;
-		float baseline = 0.01f;
 		
 		this.initialMetrics = new HashMap<String, Float>();
-		initialMetrics.put("classDesignSize", (float) m.classDesignSize() == 0 ? baseline : (float) m.classDesignSize());
-		initialMetrics.put("numberOfHierarchies", (float) m.numberOfHierarchies() == 0 ? baseline : (float) m.numberOfHierarchies());
-		initialMetrics.put("averageNumberOfAncestors", m.averageNumberOfAncestors() == 0 ? baseline : m.averageNumberOfAncestors());
-		initialMetrics.put("dataAccessMetric", m.dataAccessMetric() == 0 ? baseline : m.dataAccessMetric());
-		initialMetrics.put("directClassCoupling", m.directClassCoupling() == 0 ? baseline : m.directClassCoupling());
-		initialMetrics.put("cohesionAmongMethods", m.cohesionAmongMethods() == 0 ? baseline : m.cohesionAmongMethods());
-		initialMetrics.put("aggregation", m.aggregation() == 0 ? baseline : m.aggregation());
-		initialMetrics.put("functionalAbstraction", m.functionalAbstraction() == 0 ? baseline : m.functionalAbstraction());
-		initialMetrics.put("numberOfPolymorphicMethods", m.numberOfPolymorphicMethods() == 0 ? baseline : m.numberOfPolymorphicMethods());
-		initialMetrics.put("classInterfaceSize", m.classInterfaceSize() == 0 ? baseline : m.classInterfaceSize());
-		initialMetrics.put("numberOfMethods", m.numberOfMethods() == 0 ? baseline : m.numberOfMethods());
-		initialMetrics.put("weightedMethodsPerClass", m.weightedMethodsPerClass() == 0 ? baseline : m.weightedMethodsPerClass());
-		initialMetrics.put("numberOfChildren", m.numberOfChildren() == 0 ? baseline : m.numberOfChildren());
-		initialMetrics.put("abstractness", m.abstractness() == 0 ? baseline : m.abstractness());
-		initialMetrics.put("abstractRatio", m.abstractRatio() == 0 ? baseline : m.abstractRatio());
-		initialMetrics.put("staticRatio", m.staticRatio() == 0 ? baseline : m.staticRatio());
-		initialMetrics.put("finalRatio", m.finalRatio() == 0 ? baseline : m.finalRatio());
-		initialMetrics.put("constantRatio", m.constantRatio() == 0 ? baseline : m.constantRatio());
-		initialMetrics.put("innerClassRatio", m.innerClassRatio() == 0 ? baseline : m.innerClassRatio());
-		initialMetrics.put("referencedMethodsRatio", m.referencedMethodsRatio() == 0 ? baseline : m.referencedMethodsRatio());
-		initialMetrics.put("visibilityRatio", m.visibilityRatio() == 0 ? baseline : m.visibilityRatio());
-		initialMetrics.put("linesOfCode", (float) m.linesOfCode() == 0 ? baseline : (float) m.linesOfCode());
-		initialMetrics.put("numberOfFiles", (float) m.numberOfFiles() == 0 ? baseline : (float) m.numberOfFiles());
-		initialMetrics.put("priority", baseline);
-		initialMetrics.put("diversity", baseline);
-		initialMetrics.put("elementRecentness", baseline);
+		initialMetrics.put("classDesignSize", (float) m.classDesignSize() == 0 ? this.baseline : (float) m.classDesignSize());
+		initialMetrics.put("numberOfHierarchies", (float) m.numberOfHierarchies() == 0 ? this.baseline : (float) m.numberOfHierarchies());
+		initialMetrics.put("averageNumberOfAncestors", m.averageNumberOfAncestors() == 0 ? this.baseline : m.averageNumberOfAncestors());
+		initialMetrics.put("dataAccessMetric", m.dataAccessMetric() == 0 ? this.baseline : m.dataAccessMetric());
+		initialMetrics.put("directClassCoupling", m.directClassCoupling() == 0 ? this.baseline : m.directClassCoupling());
+		initialMetrics.put("cohesionAmongMethods", m.cohesionAmongMethods() == 0 ? this.baseline : m.cohesionAmongMethods());
+		initialMetrics.put("aggregation", m.aggregation() == 0 ? this.baseline : m.aggregation());
+		initialMetrics.put("functionalAbstraction", m.functionalAbstraction() == 0 ? this.baseline : m.functionalAbstraction());
+		initialMetrics.put("numberOfPolymorphicMethods", m.numberOfPolymorphicMethods() == 0 ? this.baseline : m.numberOfPolymorphicMethods());
+		initialMetrics.put("classInterfaceSize", m.classInterfaceSize() == 0 ? this.baseline : m.classInterfaceSize());
+		initialMetrics.put("numberOfMethods", m.numberOfMethods() == 0 ? this.baseline : m.numberOfMethods());
+		initialMetrics.put("weightedMethodsPerClass", m.weightedMethodsPerClass() == 0 ? this.baseline : m.weightedMethodsPerClass());
+		initialMetrics.put("numberOfChildren", m.numberOfChildren() == 0 ? this.baseline : m.numberOfChildren());
+		initialMetrics.put("abstractness", m.abstractness() == 0 ? this.baseline : m.abstractness());
+		initialMetrics.put("abstractRatio", m.abstractRatio() == 0 ? this.baseline : m.abstractRatio());
+		initialMetrics.put("staticRatio", m.staticRatio() == 0 ? this.baseline : m.staticRatio());
+		initialMetrics.put("finalRatio", m.finalRatio() == 0 ? this.baseline : m.finalRatio());
+		initialMetrics.put("constantRatio", m.constantRatio() == 0 ? this.baseline : m.constantRatio());
+		initialMetrics.put("innerClassRatio", m.innerClassRatio() == 0 ? this.baseline : m.innerClassRatio());
+		initialMetrics.put("referencedMethodsRatio", m.referencedMethodsRatio() == 0 ? this.baseline : m.referencedMethodsRatio());
+		initialMetrics.put("visibilityRatio", m.visibilityRatio() == 0 ? this.baseline : m.visibilityRatio());
+		initialMetrics.put("linesOfCode", (float) m.linesOfCode() == 0 ? this.baseline : (float) m.linesOfCode());
+		initialMetrics.put("numberOfFiles", (float) m.numberOfFiles() == 0 ? this.baseline : (float) m.numberOfFiles());
+		initialMetrics.put("priority", this.baseline);
+		initialMetrics.put("diversity", this.baseline);
+		initialMetrics.put("elementRecentness", this.baseline);
 	}
 	
 	public float calculateBenchmark()
@@ -96,7 +96,7 @@ public class FitnessFunction
 			}
 			else
 			{
-				float metricValue = (findMetricValue(m, metric.getName()) == 0) ? 0.01f : findMetricValue(m, metric.getName());
+				float metricValue = (findMetricValue(m, metric.getName()) == 0) ? this.baseline : findMetricValue(m, metric.getName());
 				value = metricValue / this.initialMetrics.get(metric.getName());
 				value--;
 			}
