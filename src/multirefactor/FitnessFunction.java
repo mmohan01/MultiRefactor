@@ -14,7 +14,7 @@ public class FitnessFunction
 	private ArrayList<String> nonPriorityClasses;
 	private ArrayList<List<CompilationUnit>> previousUnits;
 	private HashMap<String, Integer> elementScores;
-	float baseline = 0.01f;
+	private float baseline = 0.01f;
 
 	// Only use if normalisation functions (calculateBenchmark, calculateNormalisedScore) are not being used.
 	public FitnessFunction(ArrayList<MetricSpecification> configuration)
