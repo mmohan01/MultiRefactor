@@ -1,0 +1,229 @@
+======== Search Information ========
+Search: Genetic Algorithm
+Generations: 100
+Population Size: 50
+Crossover Probability: 0.200000
+Mutation Probability: 0.800000
+
+======== Initial Metric Info ========
+Average ratio of private/package/protected attributes to overall attributes per class: 0.406288
+Average coupling per class: 1.728571
+Average cohesion among methods per class: 0.429654
+Average amount of user defined attributes declared per class: 1.000000
+Average functional abstraction per class: 0.295238
+Average amount of polymorphic methods per class: 0.357143
+Average amount of public methods per class: 2.314286
+Average amount of methods per class: 4.457143
+Average amount of complexity of methods per class: 63.942856
+Ratio of interfaces to overall amount of classes: 0.000000
+Average ratio of abstract classes/methods per class: 0.058333
+Average ratio of static classes/methods/variables per class: 0.256991
+Average ratio of final classes/methods/variables per class: 0.087795
+Average ratio of constant classes/methods/variables per class: 0.054747
+Ratio of inner classes to overall amount of ordinary classes in project: 0.657143
+Average inherited referenced methods ratio per class: 0.022487
+Average visibility ratio per class: 0.603762
+Amount of lines of code in project: 6493
+Overall fitness function score: 0.000000
+
+======== Applied Refactorings ========
+Iteration 1: "Decrease Method Visibility" applied at class ParsingTables to method renumberSymbols(beaver.spec.Grammar,beaver.comp.Action.List[]) from private to package
+Iteration 2: "Make Method Non Final" applied at class GrammarScanner to method yyclose()
+Iteration 3: "Make Field Non Static" applied at class GrammarScanner to field YYEOF
+Iteration 4: "Make Class Abstract" applied to class Action\Type\Conflict
+Iteration 5: "Make Class Final" applied to class Action\Type\Conflict\ShiftReduce
+Iteration 6: "Make Method Non Static" applied at class ParsingTables to method countStates(beaver.comp.State)
+Iteration 7: "Decrease Method Visibility" applied at class Make to method printVersion() from package to protected
+Iteration 8: "Make Method Non Final" applied at class GrammarScanner to method yyreset(java.io.Reader)
+Iteration 9: "Decrease Method Visibility" applied at class Action\Type\Conflict to method Conflict(java.lang.String,java.lang.String) from package to protected
+Iteration 10: "Make Method Static" applied at class TreeWalker to method visit(beaver.spec.ast.Declaration.Error)
+Iteration 11: "Increase Method Visibility" applied at class IntArray to method compact() from public to protected
+Iteration 12: "Move Field Up" applied to field declarations from GrammarTreeRoot to Node
+Iteration 13: "Decrease Method Visibility" applied at class Make to method printVersion() from protected to public
+Iteration 14: "Decrease Method Visibility" applied at class Action\Type\Conflict to method Conflict(java.lang.String,java.lang.String) from protected to public
+Iteration 15: "Increase Method Visibility" applied at class IntArray to method compact() from protected to package
+Iteration 16: "Make Field Non Static" applied at class GrammarScanner to field ZZ_BUFFERSIZE
+Iteration 17: "Make Field Static" applied at class GrammarScanner to field yycolumn
+Iteration 18: "Increase Method Visibility" applied at class IntArray to method compact() from package to private
+Iteration 19: "Make Method Final" applied at class ParsingTables to method countStates(beaver.comp.State)
+Iteration 20: "Remove Method" applied at class GrammarScanner to method yyclose()
+Iteration 21: "Decrease Method Visibility" applied at class NonTerminal to method NonTerminal(java.lang.String) from package to protected
+Iteration 22: "Move Method Down" applied to method toString() from GrammarSymbol to NonTerminal
+Iteration 23: "Make Class Abstract" applied to class Action
+Iteration 24: "Make Field Final" applied at class State\Factory to ParameterDeclaration core [in method getState(beaver.comp.Configuration.Set)]
+Iteration 25: "Decrease Method Visibility" applied at class NonTerminal to method NonTerminal(java.lang.String) from protected to public
+Iteration 26: "Increase Field Visibility" applied at class ParserGenerator to field SOURCE_FILE_EXT from public to protected
+Iteration 27: "Increase Field Visibility" applied at class ParserGenerator to field SOURCE_FILE_EXT from protected to package
+Iteration 28: "Move Method Down" applied to method setLocation(int,int) from Node to Declaration
+Iteration 29: "Make Method Non Final" applied at class ParsingTables to method countStates(beaver.comp.State)
+Iteration 30: "Remove Method" applied at class GrammarScanner to method yyreset(java.io.Reader)
+Iteration 31: "Make Method Non Static" applied at class ParserGenerator\CompiledParser to method makeProductionDescriptors(beaver.spec.Grammar)
+Iteration 32: "Make Method Final" applied at class ParsingTables to method countStates(beaver.comp.State)
+Iteration 33: "Make Method Non Final" applied at class ParsingTables to method countStates(beaver.comp.State)
+Iteration 34: "Make Method Final" applied at class ParsingTables to method countStates(beaver.comp.State)
+Iteration 35: "Make Field Final" applied at class NonTerminal to ParameterDeclaration name [in method NonTerminal(java.lang.String)]
+Iteration 36: "Increase Field Visibility" applied at class GrammarBuilder\884331659\880117681 to field found from package to private
+Iteration 37: "Make Method Static" applied at class Declaration\Error to method accept(beaver.spec.ast.TreeWalker)
+Iteration 38: "Remove Method" applied at class IntArray to method compact()
+Iteration 39: "Decrease Method Visibility" applied at class Terminal to method Terminal(java.lang.String,int,beaver.spec.Terminal.Associativity) from package to protected
+Iteration 40: "Make Method Non Final" applied at class ParsingTables to method countStates(beaver.comp.State)
+Iteration 41: "Decrease Method Visibility" applied at class Terminal to method Terminal(java.lang.String,int,beaver.spec.Terminal.Associativity) from protected to public
+Iteration 42: "Make Method Final" applied at class ParsingTables to method countStates(beaver.comp.State)
+Iteration 43: "Make Method Non Final" applied at class ParsingTables to method countStates(beaver.comp.State)
+Iteration 44: "Make Method Final" applied at class ParsingTables to method countStates(beaver.comp.State)
+Iteration 45: "Make Method Non Final" applied at class ParsingTables to method countStates(beaver.comp.State)
+Iteration 46: "Make Method Final" applied at class ParsingTables to method countStates(beaver.comp.State)
+Iteration 47: "Make Method Non Final" applied at class ParsingTables to method countStates(beaver.comp.State)
+Iteration 48: "Make Method Final" applied at class ParsingTables to method countStates(beaver.comp.State)
+Iteration 49: "Remove Field" applied at class GrammarScanner to field yychar
+Iteration 50: "Make Method Final" applied at class ParserGenerator to method makeStates(beaver.spec.Grammar)
+Iteration 51: "Increase Method Visibility" applied at class ParserGenerator\CompiledParser to method writeActionsReport(java.io.File,java.lang.String) from public to protected
+Iteration 52: "Increase Method Visibility" applied at class ParserGenerator\CompiledParser to method writeActionsReport(java.io.File,java.lang.String) from protected to package
+Iteration 53: "Make Method Non Final" applied at class ParsingTables to method countStates(beaver.comp.State)
+Iteration 54: "Make Method Final" applied at class ParsingTables to method countStates(beaver.comp.State)
+Iteration 55: "Make Method Non Final" applied at class ParsingTables to method countStates(beaver.comp.State)
+Iteration 56: "Make Method Final" applied at class ParsingTables to method countStates(beaver.comp.State)
+Iteration 57: "Make Method Non Final" applied at class ParsingTables to method countStates(beaver.comp.State)
+Iteration 58: "Make Method Final" applied at class ParsingTables to method countStates(beaver.comp.State)
+Iteration 59: "Make Method Non Final" applied at class ParsingTables to method countStates(beaver.comp.State)
+Iteration 60: "Make Method Final" applied at class ParsingTables to method countStates(beaver.comp.State)
+Iteration 61: "Make Method Non Final" applied at class ParsingTables to method countStates(beaver.comp.State)
+Iteration 62: "Make Method Final" applied at class ParsingTables to method countStates(beaver.comp.State)
+Iteration 63: "Make Method Non Final" applied at class ParsingTables to method countStates(beaver.comp.State)
+Iteration 64: "Make Method Final" applied at class ParsingTables to method countStates(beaver.comp.State)
+Iteration 65: "Make Method Non Final" applied at class ParsingTables to method countStates(beaver.comp.State)
+Iteration 66: "Make Method Final" applied at class ParsingTables to method countStates(beaver.comp.State)
+Iteration 67: "Make Method Non Final" applied at class ParsingTables to method countStates(beaver.comp.State)
+Iteration 68: "Make Method Final" applied at class ParsingTables to method countStates(beaver.comp.State)
+Iteration 69: "Make Method Non Final" applied at class ParsingTables to method countStates(beaver.comp.State)
+Iteration 70: "Make Method Final" applied at class ParsingTables to method countStates(beaver.comp.State)
+Iteration 71: "Make Method Non Final" applied at class ParsingTables to method countStates(beaver.comp.State)
+Iteration 72: "Make Method Final" applied at class ParsingTables to method countStates(beaver.comp.State)
+Iteration 73: "Make Method Non Final" applied at class ParsingTables to method countStates(beaver.comp.State)
+Iteration 74: "Make Method Final" applied at class ParsingTables to method countStates(beaver.comp.State)
+Iteration 75: "Make Method Non Final" applied at class ParsingTables to method countStates(beaver.comp.State)
+Iteration 76: "Make Method Final" applied at class ParsingTables to method countStates(beaver.comp.State)
+Iteration 77: "Make Method Non Final" applied at class ParsingTables to method countStates(beaver.comp.State)
+Iteration 78: "Make Method Final" applied at class ParsingTables to method countStates(beaver.comp.State)
+Iteration 79: "Make Method Non Final" applied at class ParsingTables to method countStates(beaver.comp.State)
+Iteration 80: "Make Method Final" applied at class ParsingTables to method countStates(beaver.comp.State)
+Iteration 81: "Make Method Non Final" applied at class ParsingTables to method countStates(beaver.comp.State)
+Iteration 82: "Make Method Final" applied at class ParsingTables to method countStates(beaver.comp.State)
+Iteration 83: "Make Method Non Final" applied at class ParsingTables to method countStates(beaver.comp.State)
+Iteration 84: "Make Method Final" applied at class ParsingTables to method countStates(beaver.comp.State)
+Iteration 85: "Decrease Method Visibility" applied at class Make to method getSrcFile(java.lang.String) from package to protected
+Iteration 86: "Make Method Non Final" applied at class ParsingTables to method countStates(beaver.comp.State)
+Iteration 87: "Make Method Final" applied at class ParsingTables to method countStates(beaver.comp.State)
+Iteration 88: "Decrease Method Visibility" applied at class Make to method getSrcFile(java.lang.String) from protected to public
+Iteration 89: "Make Method Non Final" applied at class ParsingTables to method countStates(beaver.comp.State)
+Iteration 90: "Make Method Final" applied at class ParsingTables to method countStates(beaver.comp.State)
+Iteration 91: "Make Method Non Final" applied at class ParsingTables to method countStates(beaver.comp.State)
+Iteration 92: "Make Method Final" applied at class ParsingTables to method countStates(beaver.comp.State)
+Iteration 93: "Make Method Non Final" applied at class ParsingTables to method countStates(beaver.comp.State)
+Iteration 94: "Make Method Final" applied at class ParsingTables to method countStates(beaver.comp.State)
+Iteration 95: "Make Method Non Final" applied at class ParsingTables to method countStates(beaver.comp.State)
+Iteration 96: "Make Method Final" applied at class ParsingTables to method countStates(beaver.comp.State)
+Iteration 97: "Make Method Non Final" applied at class ParsingTables to method countStates(beaver.comp.State)
+Iteration 98: "Make Method Final" applied at class ParsingTables to method countStates(beaver.comp.State)
+Iteration 99: "Make Method Non Final" applied at class ParsingTables to method countStates(beaver.comp.State)
+Iteration 100: "Make Method Final" applied at class ParsingTables to method countStates(beaver.comp.State)
+Iteration 101: "Make Method Non Final" applied at class ParsingTables to method countStates(beaver.comp.State)
+Iteration 102: "Make Method Final" applied at class ParsingTables to method countStates(beaver.comp.State)
+Iteration 103: "Make Method Non Final" applied at class ParsingTables to method countStates(beaver.comp.State)
+Iteration 104: "Make Method Final" applied at class ParsingTables to method countStates(beaver.comp.State)
+Iteration 105: "Make Method Non Final" applied at class ParsingTables to method countStates(beaver.comp.State)
+Iteration 106: "Make Method Final" applied at class ParsingTables to method countStates(beaver.comp.State)
+Iteration 107: "Decrease Method Visibility" applied at class GrammarScanner to method zzScanError(int) from private to package
+Iteration 108: "Decrease Method Visibility" applied at class ParserGenerator\CompiledParser to method countReferencedSymbols(beaver.spec.Production.RHS) from private to package
+Iteration 109: "Make Field Final" applied at class Node to ParameterDeclaration walker [in method accept(beaver.spec.ast.TreeWalker)]
+Iteration 110: "Make Field Static" applied at class Terminal\Associativity to field name
+Iteration 111: "Make Method Final" applied at class SrcReader to method reset()
+Iteration 112: "Decrease Method Visibility" applied at class NonTerminal to method NonTerminal(java.lang.String,java.lang.String) from package to protected
+Iteration 113: "Make Field Static" applied at class Log\Record to field message
+Iteration 114: "Decrease Field Visibility" applied at class ParsingTables to field nonterminal_offsets from package to protected
+Iteration 115: "Make Field Non Final" applied at class GrammarSymbol to FieldDeclaration name
+Iteration 116: "Make Method Static" applied at class Production\1040061195 to method compare(java.lang.Object,java.lang.Object)
+Iteration 117: "Make Method Final" applied at class ParserGenerator\CompiledParser to method indexOfLastReferencedSymbol(beaver.spec.Production.RHS)
+Iteration 118: "Remove Field" applied at class GrammarScanner to field zzAtBOL
+Iteration 119: "Decrease Method Visibility" applied at class Terminal\Associativity to method Associativity(java.lang.String) from private to package
+Iteration 120: "Make Field Static" applied at class SrcReader to field txt
+Iteration 121: "Make Method Static" applied at class ParsingTables to method renumberSymbols(beaver.spec.Grammar,beaver.comp.Action.List[])
+Iteration 122: "Decrease Method Visibility" applied at class ParsingTables to method canInsertActions(beaver.comp.Action.List,int) from private to package
+Iteration 123: "Make Method Non Final" applied at class ParsingTables to method countStates(beaver.comp.State)
+Iteration 124: "Make Method Final" applied at class ParsingTables to method countStates(beaver.comp.State)
+Iteration 125: "Make Method Non Final" applied at class ParsingTables to method countStates(beaver.comp.State)
+Iteration 126: "Make Method Final" applied at class ParsingTables to method countStates(beaver.comp.State)
+Iteration 127: "Make Method Non Final" applied at class ParsingTables to method countStates(beaver.comp.State)
+Iteration 128: "Make Method Final" applied at class ParsingTables to method countStates(beaver.comp.State)
+Iteration 129: "Make Method Non Final" applied at class ParsingTables to method countStates(beaver.comp.State)
+Iteration 130: "Make Method Final" applied at class ParsingTables to method countStates(beaver.comp.State)
+Iteration 131: "Make Method Non Final" applied at class ParsingTables to method countStates(beaver.comp.State)
+Iteration 132: "Make Method Final" applied at class ParsingTables to method countStates(beaver.comp.State)
+Iteration 133: "Make Method Non Final" applied at class ParsingTables to method countStates(beaver.comp.State)
+Iteration 134: "Make Method Final" applied at class ParsingTables to method countStates(beaver.comp.State)
+Iteration 135: "Make Method Non Final" applied at class ParsingTables to method countStates(beaver.comp.State)
+Iteration 136: "Make Method Final" applied at class ParsingTables to method countStates(beaver.comp.State)
+Iteration 137: "Make Method Non Final" applied at class ParsingTables to method countStates(beaver.comp.State)
+Iteration 138: "Decrease Method Visibility" applied at class Terminal\Associativity to method Associativity(java.lang.String) from package to protected
+Iteration 139: "Decrease Method Visibility" applied at class ParsingTables to method canInsertActions(beaver.comp.Action.List,int) from package to protected
+Iteration 140: "Make Method Final" applied at class ParsingTables to method countStates(beaver.comp.State)
+Iteration 141: "Make Method Non Final" applied at class ParsingTables to method countStates(beaver.comp.State)
+Iteration 142: "Make Method Final" applied at class ParsingTables to method countStates(beaver.comp.State)
+Iteration 143: "Make Method Non Final" applied at class ParsingTables to method countStates(beaver.comp.State)
+Iteration 144: "Make Method Final" applied at class ParsingTables to method countStates(beaver.comp.State)
+Iteration 145: "Make Method Non Final" applied at class ParsingTables to method countStates(beaver.comp.State)
+Iteration 146: "Make Method Final" applied at class ParsingTables to method countStates(beaver.comp.State)
+Iteration 147: "Make Method Non Final" applied at class ParsingTables to method countStates(beaver.comp.State)
+Iteration 148: "Make Method Final" applied at class ParsingTables to method countStates(beaver.comp.State)
+Iteration 149: "Make Method Non Final" applied at class ParsingTables to method countStates(beaver.comp.State)
+Iteration 150: "Make Method Final" applied at class ParsingTables to method countStates(beaver.comp.State)
+Iteration 151: "Make Method Non Final" applied at class ParsingTables to method countStates(beaver.comp.State)
+Iteration 152: "Make Method Final" applied at class ParsingTables to method countStates(beaver.comp.State)
+Iteration 153: "Make Method Non Final" applied at class ParsingTables to method countStates(beaver.comp.State)
+Iteration 154: "Make Method Final" applied at class ParsingTables to method countStates(beaver.comp.State)
+Iteration 155: "Decrease Method Visibility" applied at class GrammarScanner to method zzScanError(int) from package to protected
+Iteration 156: "Decrease Method Visibility" applied at class ParserGenerator\CompiledParser to method countReferencedSymbols(beaver.spec.Production.RHS) from package to protected
+Iteration 157: "Decrease Method Visibility" applied at class NonTerminal to method NonTerminal(java.lang.String,java.lang.String) from protected to public
+Iteration 158: "Decrease Field Visibility" applied at class ParsingTables to field nonterminal_offsets from protected to public
+Iteration 159: "Decrease Method Visibility" applied at class Terminal\Associativity to method Associativity(java.lang.String) from protected to public
+Iteration 160: "Decrease Method Visibility" applied at class ParsingTables to method canInsertActions(beaver.comp.Action.List,int) from protected to public
+Iteration 161: "Move Field Up" applied to field sym_name from Rule\Definition\Element to Node
+Iteration 162: "Remove Method" applied at class Declaration to method setLocation(int,int)
+Iteration 163: "Decrease Method Visibility" applied at class Log\Record to method Record(int,int,java.lang.String) from package to protected
+Iteration 164: "Make Class Final" applied to class Options
+Iteration 165: "Make Field Final" applied at class BitSet to LocalVariableDeclaration bit_mask [in method add(int)]
+Iteration 166: "Make Method Final" applied at class GrammarParser\Events to method misspelledTokenReplaced(beaver.Symbol)
+Iteration 167: "Decrease Field Visibility" applied at class Grammar\Exception to field serialVersionUID from private to package
+Iteration 168: "Decrease Method Visibility" applied at class Log\Record to method Record(int,int,java.lang.String) from protected to public
+Iteration 169: "Increase Method Visibility" applied at class Production\List to method add(beaver.spec.Production) from public to protected
+Iteration 170: "Make Class Final" applied to class SrcReader
+Iteration 171: "Make Method Non Final" applied at class GrammarScanner to method yybegin(int)
+Iteration 172: "Decrease Method Visibility" applied at class Declaration\CodeContainer to method CodeContainer(beaver.Symbol) from protected to public
+Iteration 173: "Make Field Static" applied at class Node to field declarations
+Iteration 174: "Decrease Method Visibility" applied at class Terminal to method Terminal(java.lang.String) from package to protected
+Iteration 175: "Make Method Final" applied at class BitSet to method ensureIndexWithinRange(int)
+Iteration 176: "Make Class Non Final" applied to class Terminal\Associativity
+
+Score has improved overall by 0.686789
+Time taken to refactor: 206.82s
+
+======== Final Metric Info ========
+Average ratio of private/package/protected attributes to overall attributes per class: 0.408269
+Average coupling per class: 1.728571
+Average cohesion among methods per class: 0.440692
+Average amount of user defined attributes declared per class: 1.000000
+Average functional abstraction per class: 0.295238
+Average amount of polymorphic methods per class: 0.357143
+Average amount of public methods per class: 2.371428
+Average amount of methods per class: 4.400000
+Average amount of complexity of methods per class: 63.500000
+Ratio of interfaces to overall amount of classes: 0.000000
+Average ratio of abstract classes/methods per class: 0.071905
+Average ratio of static classes/methods/variables per class: 0.274014
+Average ratio of final classes/methods/variables per class: 0.098848
+Average ratio of constant classes/methods/variables per class: 0.066657
+Ratio of inner classes to overall amount of ordinary classes in project: 0.657143
+Average inherited referenced methods ratio per class: 0.022487
+Average visibility ratio per class: 0.622202
+Amount of lines of code in project: 6493
+Overall fitness function score: 0.686789

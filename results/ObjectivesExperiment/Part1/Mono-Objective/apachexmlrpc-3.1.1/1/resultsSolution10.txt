@@ -1,0 +1,83 @@
+======== Search Information ========
+Search: Genetic Algorithm
+Generations: 100
+Population Size: 50
+Crossover Probability: 0.200000
+Mutation Probability: 0.800000
+
+======== Initial Metric Info ========
+Average ratio of private/package/protected attributes to overall attributes per class: 0.530811
+Average coupling per class: 0.994595
+Average cohesion among methods per class: 0.486189
+Average amount of user defined attributes declared per class: 0.594595
+Average functional abstraction per class: 0.320375
+Average amount of polymorphic methods per class: 0.589189
+Average amount of public methods per class: 2.870270
+Average amount of methods per class: 4.237838
+Average amount of complexity of methods per class: 30.735136
+Ratio of interfaces to overall amount of classes: 0.200000
+Average ratio of abstract classes/methods per class: 0.234299
+Average ratio of static classes/methods/variables per class: 0.137684
+Average ratio of final classes/methods/variables per class: 0.106994
+Average ratio of constant classes/methods/variables per class: 0.089900
+Ratio of inner classes to overall amount of ordinary classes in project: 0.129730
+Average inherited referenced methods ratio per class: 0.279704
+Average visibility ratio per class: 0.588081
+Amount of lines of code in project: 14241
+Overall fitness function score: 0.000000
+
+======== Applied Refactorings ========
+Iteration 1: "Decrease Field Visibility" applied at class XmlRpcErrorLogger to field log from private to package
+Iteration 2: "Decrease Field Visibility" applied at class HttpServletRequestImpl to field contentBytesRemaining from private to package
+Iteration 3: "Make Field Final" applied at class HttpServletRequestImpl to LocalVariableDeclaration off [in method HttpServletRequestImpl(java.net.Socket)]
+Iteration 4: "Make Class Concrete" applied to class XmlRpcTransportFactoryImpl
+Iteration 5: "Make Field Final" applied at class JaxbTypeFactory to ParameterDeclaration pURI [in method getParser(org.apache.xmlrpc.common.XmlRpcStreamConfig,org.apache.ws.commons.util.NamespaceContextImpl,java.lang.String,java.lang.String)]
+Iteration 6: "Remove Method" applied at class XmlRpcClientConfigImpl to method cloneMe()
+Iteration 7: "Decrease Method Visibility" applied at class ListSerializer to method writeData(org.xml.sax.ContentHandler,java.lang.Object) from protected to public
+Iteration 8: "Make Method Final" applied at class ExtSerializer to method write(org.xml.sax.ContentHandler,java.lang.Object)
+Iteration 9: "Make Method Final" applied at class XmlRpcClientConfigImpl to method setServerURL(java.net.URL)
+Iteration 10: "Make Method Non Final" applied at class XmlRpcClientConfigImpl to method setServerURL(java.net.URL)
+Iteration 11: "Increase Field Visibility" applied at class AtomicParser to field sb from protected to package
+Iteration 12: "Make Field Static" applied at class JaxbParser to field handler
+Iteration 13: "Make Field Static" applied at class Connection\RequestException to field requestData
+Iteration 14: "Make Method Final" applied at class XmlRpcClientConfigImpl to method setServerURL(java.net.URL)
+Iteration 15: "Make Method Non Final" applied at class XmlRpcClientConfigImpl to method setServerURL(java.net.URL)
+Iteration 16: "Decrease Method Visibility" applied at class XmlRpcCommonsTransport to method isRedirectRequired() from protected to public
+Iteration 17: "Make Field Final" applied at class I1Serializer to ParameterDeclaration pHandler [in method write(org.xml.sax.ContentHandler,java.lang.Object)]
+Iteration 18: "Make Method Static" applied at class NullSerializer to method write(org.xml.sax.ContentHandler,java.lang.Object)
+Iteration 19: "Move Field Up" applied to field client from XmlRpcCommonsTransport to XmlRpcHttpTransport
+Iteration 20: "Make Class Final" applied to class ServletWebServer
+Iteration 21: "Move Field Up" applied to field DATE_TAG from CalendarSerializer to TypeSerializerImpl
+Iteration 22: "Make Class Final" applied to class SerializableParser
+Iteration 23: "Make Field Static" applied at class XmlRpcResponseParser to field level
+Iteration 24: "Decrease Field Visibility" applied at class TimingOutCallback to field result from private to package
+Iteration 25: "Make Method Non Static" applied at class Connection to method toHTTPBytes(java.lang.String)
+Iteration 26: "Move Field Up" applied to field client from XmlRpcHttpTransport to XmlRpcStreamTransport
+Iteration 27: "Decrease Method Visibility" applied at class TypeConverter to method isConvertable(java.lang.Object) from package to protected
+Iteration 28: "Collapse Hierarchy" applied from all elements in XmlRpcLocalTransportFactory to XmlRpcTransportFactoryImpl
+Iteration 29: "Decrease Method Visibility" applied at class BigDecimalParser to method setResult(java.lang.String) from protected to public
+Iteration 30: "Make Method Static" applied at class LimitedInputStream to method markSupported()
+
+Score has improved overall by 0.117925
+Time taken to refactor: 358.58s
+
+======== Final Metric Info ========
+Average ratio of private/package/protected attributes to overall attributes per class: 0.533696
+Average coupling per class: 0.994565
+Average cohesion among methods per class: 0.485305
+Average amount of user defined attributes declared per class: 0.597826
+Average functional abstraction per class: 0.319399
+Average amount of polymorphic methods per class: 0.597826
+Average amount of public methods per class: 2.891304
+Average amount of methods per class: 4.250000
+Average amount of complexity of methods per class: 30.847826
+Ratio of interfaces to overall amount of classes: 0.201087
+Average ratio of abstract classes/methods per class: 0.233761
+Average ratio of static classes/methods/variables per class: 0.142847
+Average ratio of final classes/methods/variables per class: 0.109916
+Average ratio of constant classes/methods/variables per class: 0.091812
+Ratio of inner classes to overall amount of ordinary classes in project: 0.130435
+Average inherited referenced methods ratio per class: 0.281224
+Average visibility ratio per class: 0.591961
+Amount of lines of code in project: 14199
+Overall fitness function score: 0.117925

@@ -1,0 +1,98 @@
+======== Search Information ========
+Search: Genetic Algorithm
+Generations: 100
+Population Size: 50
+Crossover Probability: 0.200000
+Mutation Probability: 0.800000
+
+======== Initial Metric Info ========
+Average ratio of private/package/protected attributes to overall attributes per class: 0.530811
+Average coupling per class: 0.994595
+Average cohesion among methods per class: 0.486189
+Average amount of user defined attributes declared per class: 0.594595
+Average functional abstraction per class: 0.320375
+Average amount of polymorphic methods per class: 0.589189
+Average amount of public methods per class: 2.870270
+Average amount of methods per class: 4.237838
+Average amount of complexity of methods per class: 30.735136
+Ratio of interfaces to overall amount of classes: 0.200000
+Average ratio of abstract classes/methods per class: 0.234299
+Average ratio of static classes/methods/variables per class: 0.137684
+Average ratio of final classes/methods/variables per class: 0.106994
+Average ratio of constant classes/methods/variables per class: 0.089900
+Ratio of inner classes to overall amount of ordinary classes in project: 0.129730
+Average inherited referenced methods ratio per class: 0.279704
+Average visibility ratio per class: 0.588081
+Amount of lines of code in project: 14241
+Overall fitness function score: 0.000000
+
+======== Applied Refactorings ========
+Iteration 1: "Decrease Field Visibility" applied at class XmlRpcErrorLogger to field log from private to package
+Iteration 2: "Decrease Field Visibility" applied at class HttpServletRequestImpl to field contentBytesRemaining from private to package
+Iteration 3: "Make Field Final" applied at class HttpServletRequestImpl to LocalVariableDeclaration off [in method HttpServletRequestImpl(java.net.Socket)]
+Iteration 4: "Make Class Concrete" applied to class XmlRpcTransportFactoryImpl
+Iteration 5: "Make Field Final" applied at class JaxbTypeFactory to ParameterDeclaration pURI [in method getParser(org.apache.xmlrpc.common.XmlRpcStreamConfig,org.apache.ws.commons.util.NamespaceContextImpl,java.lang.String,java.lang.String)]
+Iteration 6: "Increase Field Visibility" applied at class AtomicParser to field sb from protected to package
+Iteration 7: "Make Field Static" applied at class JaxbParser to field handler
+Iteration 8: "Make Field Static" applied at class Connection\RequestException to field requestData
+Iteration 9: "Make Method Final" applied at class XmlRpcClientConfigImpl to method setServerURL(java.net.URL)
+Iteration 10: "Make Method Non Final" applied at class XmlRpcClientConfigImpl to method setServerURL(java.net.URL)
+Iteration 11: "Remove Method" applied at class XmlRpcClientConfigImpl to method cloneMe()
+Iteration 12: "Make Field Static" applied at class XmlRpcSun14HttpTransport to field sslSocketFactory
+Iteration 13: "Decrease Method Visibility" applied at class NullParser to method setResult(java.lang.String) from protected to public
+Iteration 14: "Make Method Final" applied at class ExtSerializer to method write(org.xml.sax.ContentHandler,java.lang.Object)
+Iteration 15: "Make Method Final" applied at class XmlRpcClientConfigImpl to method setServerURL(java.net.URL)
+Iteration 16: "Make Method Non Final" applied at class XmlRpcClientConfigImpl to method setServerURL(java.net.URL)
+Iteration 17: "Increase Field Visibility" applied at class AtomicParser to field sb from package to private
+Iteration 18: "Make Method Final" applied at class XmlRpcClientConfigImpl to method setServerURL(java.net.URL)
+Iteration 19: "Make Method Non Final" applied at class XmlRpcClientConfigImpl to method setServerURL(java.net.URL)
+Iteration 20: "Decrease Method Visibility" applied at class XmlRpcCommonsTransport to method isRedirectRequired() from protected to public
+Iteration 21: "Make Field Final" applied at class I1Serializer to ParameterDeclaration pHandler [in method write(org.xml.sax.ContentHandler,java.lang.Object)]
+Iteration 22: "Make Method Static" applied at class NullSerializer to method write(org.xml.sax.ContentHandler,java.lang.Object)
+Iteration 23: "Move Field Up" applied to field client from XmlRpcCommonsTransport to XmlRpcHttpTransport
+Iteration 24: "Make Class Final" applied to class ServletWebServer
+Iteration 25: "Move Field Up" applied to field DATE_TAG from CalendarSerializer to TypeSerializerImpl
+Iteration 26: "Make Class Final" applied to class SerializableParser
+Iteration 27: "Make Field Static" applied at class XmlRpcResponseParser to field level
+Iteration 28: "Decrease Field Visibility" applied at class TimingOutCallback to field result from private to package
+Iteration 29: "Make Method Non Static" applied at class Connection to method toHTTPBytes(java.lang.String)
+Iteration 30: "Make Method Final" applied at class XmlRpcClientConfigImpl to method setServerURL(java.net.URL)
+Iteration 31: "Make Method Non Final" applied at class XmlRpcClientConfigImpl to method setServerURL(java.net.URL)
+Iteration 32: "Decrease Field Visibility" applied at class TimingOutCallback to field result from package to protected
+Iteration 33: "Move Field Up" applied to field client from XmlRpcHttpTransport to XmlRpcStreamTransport
+Iteration 34: "Decrease Method Visibility" applied at class TypeConverter to method isConvertable(java.lang.Object) from package to protected
+Iteration 35: "Decrease Method Visibility" applied at class BigDecimalParser to method setResult(java.lang.String) from protected to public
+Iteration 36: "Make Method Static" applied at class LimitedInputStream to method markSupported()
+Iteration 37: "Decrease Method Visibility" applied at class ConnectionServer to method writeError(org.apache.xmlrpc.common.XmlRpcStreamRequestConfig,java.io.OutputStream,java.lang.Throwable) from protected to public
+Iteration 38: "Increase Method Visibility" applied at class RequestData to method setSuccess(boolean) from public to protected
+Iteration 39: "Make Field Final" applied at class BigIntegerParser to ParameterDeclaration pResult [in method setResult(java.lang.String)]
+Iteration 40: "Increase Field Visibility" applied at class XmlRpcCommonsTransport to field method from protected to package
+Iteration 41: "Make Class Abstract" applied to class XmlRpcServer
+Iteration 42: "Make Field Final" applied at class XmlRpcSunHttpTransport to ParameterDeclaration e [in method getInputStream()]
+Iteration 43: "Decrease Method Visibility" applied at class ExtSerializer to method getTagName() from protected to public
+Iteration 44: "Make Field Final" applied at class DefaultXMLWriterFactory to ParameterDeclaration pConfig [in method getXmlWriter(org.apache.xmlrpc.common.XmlRpcStreamConfig,java.io.OutputStream)]
+Iteration 45: "Decrease Method Visibility" applied at class XmlRpcHttpClientConfig to method getServerURL() from package to protected
+
+Score has improved overall by 0.101222
+Time taken to refactor: 358.58s
+
+======== Final Metric Info ========
+Average ratio of private/package/protected attributes to overall attributes per class: 0.536216
+Average coupling per class: 0.994595
+Average cohesion among methods per class: 0.486286
+Average amount of user defined attributes declared per class: 0.594595
+Average functional abstraction per class: 0.320375
+Average amount of polymorphic methods per class: 0.589189
+Average amount of public methods per class: 2.886487
+Average amount of methods per class: 4.232432
+Average amount of complexity of methods per class: 30.697298
+Ratio of interfaces to overall amount of classes: 0.200000
+Average ratio of abstract classes/methods per class: 0.233098
+Average ratio of static classes/methods/variables per class: 0.142976
+Average ratio of final classes/methods/variables per class: 0.112057
+Average ratio of constant classes/methods/variables per class: 0.091316
+Ratio of inner classes to overall amount of ordinary classes in project: 0.129730
+Average inherited referenced methods ratio per class: 0.279704
+Average visibility ratio per class: 0.596134
+Amount of lines of code in project: 14241
+Overall fitness function score: 0.101222
