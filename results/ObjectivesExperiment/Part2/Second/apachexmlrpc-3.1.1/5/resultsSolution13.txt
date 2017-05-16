@@ -1,0 +1,45 @@
+======== Search Information ========
+Search: Multi-Objective Genetic Algorithm
+Generations: 100
+Population Size: 50
+Crossover Probability: 0.200000
+Mutation Probability: 0.800000
+
+======== Initial Metric Info ========
+Fitness function 1 score: 0.000000
+Fitness function 2 score: 0.000000
+
+======== Applied Refactorings ========
+Iteration 1: "Make Class Final" applied to class LocalStreamConnection
+Iteration 2: "Make Class Abstract" applied to class XmlRpcLiteHttpTransportFactory
+Iteration 3: "Make Method Final" applied at class XmlRpcTransportImpl to method getClient()
+Iteration 4: "Make Method Final" applied at class LimitedInputStream to method read()
+Iteration 5: "Make Field Final" applied at class XmlRpcException to ParameterDeclaration pStream [in method printStackTrace(java.io.PrintStream)]
+Iteration 6: "Move Field Up" applied to field USER_AGENT from XmlRpcHttpTransport to XmlRpcStreamTransport
+Iteration 7: "Move Field Up" applied to field method from XmlRpcCommonsTransport to XmlRpcHttpTransport
+Iteration 8: "Increase Field Visibility" applied at class I2Serializer to field EX_I2_TAG from public to protected
+Iteration 9: "Decrease Method Visibility" applied at class ServerStreamConnection to method close() from package to protected
+Iteration 10: "Decrease Method Visibility" applied at class XmlRpcStreamRequestProcessor to method execute(org.apache.xmlrpc.common.XmlRpcStreamRequestConfig,org.apache.xmlrpc.common.ServerStreamConnection) from package to protected
+Iteration 11: "Move Method Up" applied to method write(org.xml.sax.ContentHandler,java.lang.Object) from StringSerializer to TypeSerializerImpl
+Iteration 12: "Decrease Method Visibility" applied at class TypeSerializerImpl to method write(org.xml.sax.ContentHandler,java.lang.String,char[]) from protected to public
+Iteration 13: "Decrease Method Visibility" applied at class XmlRpcTransportImpl to method XmlRpcTransportImpl(org.apache.xmlrpc.client.XmlRpcClient) from protected to public
+Iteration 14: "Remove Method" applied at class Connection\RequestException to method getRequestData()
+Iteration 15: "Move Method Down" applied to method getOutputStream(org.apache.xmlrpc.common.ServerStreamConnection,org.apache.xmlrpc.common.XmlRpcStreamRequestConfig,java.io.OutputStream) from XmlRpcHttpServer to ConnectionServer
+Iteration 16: "Remove Method" applied at class XmlRpcClientConfigImpl to method cloneMe()
+Iteration 17: "Make Field Final" applied at class XmlRpcClientWorker to LocalVariableDeclaration client [in method execute(org.apache.xmlrpc.XmlRpcRequest)]
+Iteration 18: "Decrease Method Visibility" applied at class XmlRpcLite14HttpTransport to method newSocket(boolean,java.lang.String,int) from protected to public
+Iteration 19: "Make Field Static" applied at class XmlRpcLite14HttpTransportFactory to field sslSocketFactory
+Iteration 20: "Remove Method" applied at class XmlRpcWriter to method write(org.apache.xmlrpc.XmlRpcRequestConfig,int,java.lang.String)
+Iteration 21: "Decrease Method Visibility" applied at class ServletWebServer to method newTask(org.apache.xmlrpc.webserver.WebServer,org.apache.xmlrpc.server.XmlRpcStreamServer,java.net.Socket) from protected to public
+Iteration 22: "Decrease Method Visibility" applied at class CalendarParser to method setResult(java.lang.String) from protected to public
+Iteration 23: "Make Class Concrete" applied to class XmlRpcTransportFactoryImpl
+Iteration 24: "Make Field Final" applied at class BigDecimalSerializer to ParameterDeclaration pHandler [in method write(org.xml.sax.ContentHandler,java.lang.Object)]
+Iteration 25: "Increase Field Visibility" applied at class TypeSerializerImpl to field ZERO_ATTRIBUTES from protected to package
+Iteration 26: "Make Field Static" applied at class Connection\RequestException to field requestData
+Iteration 27: "Increase Field Visibility" applied at class AbstractReflectiveHandlerMapping to field handlerMap from protected to package
+
+Time taken to refactor: 391.87s
+
+======== Final Metric Info ========
+Fitness function 1 score: 0.105050
+Fitness function 2 score: 1.000000

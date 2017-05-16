@@ -1,0 +1,49 @@
+======== Search Information ========
+Search: Multi-Objective Genetic Algorithm
+Generations: 100
+Population Size: 50
+Crossover Probability: 0.200000
+Mutation Probability: 0.800000
+
+======== Initial Metric Info ========
+Fitness function 1 score: 0.000000
+Fitness function 2 score: 0.000000
+
+======== Applied Refactorings ========
+Iteration 1: "Remove Method" applied at class ThreadPool to method addTask(org.apache.xmlrpc.util.ThreadPool.Task)
+Iteration 2: "Make Field Final" applied at class XmlRpcClientWorkerFactory to ParameterDeclaration pClient [in method XmlRpcClientWorkerFactory(org.apache.xmlrpc.client.XmlRpcClient)]
+Iteration 3: "Make Class Concrete" applied to class XmlRpcTransportFactoryImpl
+Iteration 4: "Make Class Final" applied to class StringParser
+Iteration 5: "Collapse Hierarchy" applied from all elements in XmlRpcLocalTransportFactory to XmlRpcTransportFactoryImpl
+Iteration 6: "Make Method Final" applied at class AtomicParser to method characters(char[],int,int)
+Iteration 7: "Make Class Concrete" applied to class TypeSerializerImpl
+Iteration 8: "Increase Method Visibility" applied at class XmlRpcLiteHttpTransport to method newSocket(boolean,java.lang.String,int) from protected to package
+Iteration 9: "Increase Field Visibility" applied at class FloatSerializer to field EX_FLOAT_TAG from public to protected
+Iteration 10: "Make Method Non Static" applied at class Connection to method toHTTPBytes(java.lang.String)
+Iteration 11: "Make Class Abstract" applied to class TypeSerializerImpl
+Iteration 12: "Move Method Down" applied to method isUsingByteArrayOutput(org.apache.xmlrpc.client.XmlRpcHttpClientConfig) from XmlRpcLiteHttpTransport to XmlRpcLite14HttpTransport
+Iteration 13: "Decrease Method Visibility" applied at class XmlRpcRequestProcessorFactory to method getXmlRpcServer() from package to protected
+Iteration 14: "Remove Method" applied at class XmlRpcSun15HttpTransportFactory to method setProxy(java.lang.String,int)
+Iteration 15: "Increase Field Visibility" applied at class AbstractReflectiveHandlerMapping to field handlerMap from protected to package
+Iteration 16: "Make Field Static" applied at class XmlRpcException to field code
+Iteration 17: "Make Field Final" applied at class XmlRpcNotAuthorizedException to ParameterDeclaration pMessage [in method XmlRpcNotAuthorizedException(java.lang.String)]
+Iteration 18: "Make Method Non Static" applied at class XmlRpcSystemImpl to method addSystemHandler(org.apache.xmlrpc.server.PropertyHandlerMapping)
+Iteration 19: "Make Field Final" applied at class ServletConnection to ParameterDeclaration t [in method run()]
+Iteration 20: "Remove Method" applied at class HttpServletRequestImpl to method getRequestURL()
+Iteration 21: "Increase Method Visibility" applied at class Util to method getSignatureType(java.lang.Class) from public to protected
+Iteration 22: "Remove Method" applied at class XmlRpcHttpRequestConfigImpl to method setConnectionTimeout(int)
+Iteration 23: "Increase Field Visibility" applied at class XmlRpcHttpTransport to field USER_AGENT from public to protected
+Iteration 24: "Increase Field Visibility" applied at class I8Serializer to field EX_I8_TAG from public to protected
+Iteration 25: "Make Class Concrete" applied to class TypeParserImpl
+Iteration 26: "Decrease Method Visibility" applied at class WebServer\AddressMatcher to method AddressMatcher(java.lang.String) from package to protected
+Iteration 27: "Move Field Up" applied to field DATE_TAG from CalendarSerializer to TypeSerializerImpl
+Iteration 28: "Decrease Method Visibility" applied at class TypeFactory to method getSerializer(org.apache.xmlrpc.common.XmlRpcStreamConfig,java.lang.Object) from package to protected
+Iteration 29: "Make Method Non Static" applied at class Util to method getMethodHelp(java.lang.Class,java.lang.reflect.Method)
+Iteration 30: "Make Field Final" applied at class XmlRpcCommonsTransport to LocalVariableDeclaration t [in method writeRequest(org.apache.xmlrpc.client.XmlRpcStreamTransport.ReqWriter)]
+Iteration 31: "Decrease Method Visibility" applied at class ExtSerializer to method getTagName() from protected to public
+
+Time taken to refactor: 465.45s
+
+======== Final Metric Info ========
+Fitness function 1 score: 0.106499
+Fitness function 2 score: 0.967742

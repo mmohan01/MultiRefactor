@@ -1,0 +1,54 @@
+======== Search Information ========
+Search: Multi-Objective Genetic Algorithm
+Generations: 100
+Population Size: 50
+Crossover Probability: 0.200000
+Mutation Probability: 0.800000
+
+======== Initial Metric Info ========
+Fitness function 1 score: 0.000000
+Fitness function 2 score: 0.000000
+
+======== Applied Refactorings ========
+Iteration 1: "Decrease Method Visibility" applied at class GrammarParser\Events to method Events(beaver.comp.util.Log) from package to protected
+Iteration 2: "Make Field Static" applied at class GrammarTreeRoot to field declarations
+Iteration 3: "Make Field Non Final" applied at class Rule\Definition\Element to FieldDeclaration sym_name
+Iteration 4: "Increase Method Visibility" applied at class ParsingTables to method countStates(beaver.comp.State) from package to private
+Iteration 5: "Remove Method" applied at class Node to method setLocation(int,int)
+Iteration 6: "Make Field Static" applied at class Declaration\NameContainer to field name
+Iteration 7: "Remove Method" applied at class IntArray to method compact()
+Iteration 8: "Make Field Static" applied at class SrcReader to field file
+Iteration 9: "Decrease Method Visibility" applied at class State\Factory to method Factory(beaver.comp.Configuration.Set.Factory) from package to protected
+Iteration 10: "Make Field Final" applied at class ParsingTables to ParameterDeclaration state [in method countStates(beaver.comp.State)]
+Iteration 11: "Move Field Up" applied to field prec from Terminal to GrammarSymbol
+Iteration 12: "Make Field Static" applied at class GrammarTreeRoot to field rules
+Iteration 13: "Make Method Non Static" applied at class Make to method printVersion()
+Iteration 14: "Decrease Method Visibility" applied at class State\Factory to method Factory(beaver.comp.Configuration.Set.Factory) from protected to public
+Iteration 15: "Make Method Final" applied at class Make to method compile(beaver.comp.io.SrcReader,beaver.comp.run.Options,beaver.comp.util.Log)
+Iteration 16: "Decrease Method Visibility" applied at class ParserGenerator to method buildActions(beaver.spec.Grammar,beaver.comp.State) from private to package
+Iteration 17: "Remove Method" applied at class GrammarScanner to method yyclose()
+Iteration 18: "Make Field Final" applied at class Options to FieldDeclaration name_action_classes
+Iteration 19: "Make Class Abstract" applied to class Action
+Iteration 20: "Decrease Method Visibility" applied at class Configuration\Set to method Set(beaver.comp.Configuration.Set.Factory,int) from private to package
+Iteration 21: "Move Method Down" applied to method toString() from GrammarSymbol to NonTerminal
+Iteration 22: "Decrease Method Visibility" applied at class GrammarScanner to method newSymbol(short,java.lang.Object) from private to package
+Iteration 23: "Make Method Non Static" applied at class ParserGenerator\CompiledParser to method writeTerminalsClass(beaver.spec.Grammar,beaver.comp.run.Options,java.lang.String,java.io.Writer)
+Iteration 24: "Make Class Final" applied to class Grammar
+Iteration 25: "Decrease Method Visibility" applied at class Log\Record to method Record(int,int,java.lang.String) from package to protected
+Iteration 26: "Make Method Non Static" applied at class ParserGenerator\CompiledParser to method writeMarkersClass(beaver.spec.Terminal[],java.io.Writer)
+Iteration 27: "Move Field Up" applied to field name from Declaration\NameContainer to Declaration
+Iteration 28: "Make Method Non Static" applied at class ParsingTables to method expand(short[])
+Iteration 29: "Decrease Field Visibility" applied at class GrammarParser to field PARSING_TABLES from package to protected
+Iteration 30: "Make Method Final" applied at class Declaration\CodeContainer to method getCode()
+Iteration 31: "Decrease Method Visibility" applied at class Grammar to method Grammar() from package to protected
+Iteration 32: "Move Field Up" applied to field sym_name from Rule\Definition\Element to Node
+Iteration 33: "Increase Field Visibility" applied at class Rule\Definition to field prec_sym_name from public to protected
+Iteration 34: "Decrease Field Visibility" applied at class Rule\Definition to field prec_sym_name from protected to public
+Iteration 35: "Make Field Final" applied at class ParserGenerator\CompiledParser to ParameterDeclaration c [in method encode(int,java.lang.StringBuffer)]
+Iteration 36: "Make Method Static" applied at class ParserGenerator\CompiledParser\1144044224 to method compare(java.lang.Object,java.lang.Object)
+
+Time taken to refactor: 209.48s
+
+======== Final Metric Info ========
+Fitness function 1 score: 0.625780
+Fitness function 2 score: 0.888889

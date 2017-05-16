@@ -1,0 +1,44 @@
+======== Search Information ========
+Search: Multi-Objective Genetic Algorithm
+Generations: 100
+Population Size: 50
+Crossover Probability: 0.200000
+Mutation Probability: 0.800000
+
+======== Initial Metric Info ========
+Fitness function 1 score: 0.000000
+Fitness function 2 score: 0.000000
+
+======== Applied Refactorings ========
+Iteration 1: "Make Field Final" applied at class XmlRpcListableHandlerMapping to ParameterDeclaration pHandlerName [in method getMethodSignature(java.lang.String)]
+Iteration 2: "Move Field Up" applied to field USER_AGENT from XmlRpcHttpTransport to XmlRpcStreamTransport
+Iteration 3: "Decrease Method Visibility" applied at class XmlRpcStreamServer to method getRequest(org.apache.xmlrpc.common.XmlRpcStreamRequestConfig,java.io.InputStream) from protected to public
+Iteration 4: "Move Method Up" applied to method execute(org.apache.xmlrpc.XmlRpcRequest) from XmlRpcLocalStreamServer to XmlRpcStreamServer
+Iteration 5: "Remove Class" applied to class XmlRpcLocalStreamServer
+Iteration 6: "Decrease Method Visibility" applied at class DateParser to method setResult(java.lang.String) from protected to public
+Iteration 7: "Decrease Method Visibility" applied at class XmlRpcHttpRequestConfig to method getBasicUserName() from package to protected
+Iteration 8: "Increase Method Visibility" applied at class HttpServletRequestImpl to method readLine(byte[]) from protected to package
+Iteration 9: "Decrease Method Visibility" applied at class TypeSerializerImpl to method write(org.xml.sax.ContentHandler,java.lang.String,java.lang.String) from protected to public
+Iteration 10: "Make Method Final" applied at class XmlRpcLocalTransport to method sendRequest(org.apache.xmlrpc.XmlRpcRequest)
+Iteration 11: "Make Field Static" applied at class XmlRpcLiteHttpTransport to field ssl
+Iteration 12: "Make Class Final" applied to class FloatSerializer
+Iteration 13: "Decrease Method Visibility" applied at class XmlRpcConfig to method getTimeZone() from package to protected
+Iteration 14: "Make Method Static" applied at class TypeParserImpl to method endDocument()
+Iteration 15: "Make Class Abstract" applied to class XmlRpcLiteHttpTransportFactory
+Iteration 16: "Decrease Field Visibility" applied at class XmlRpcHttpTransport\ByteArrayReqWriter to field baos from private to package
+Iteration 17: "Make Field Static" applied at class ObjectArrayParser to field level
+Iteration 18: "Make Field Final" applied at class ReflectiveXmlRpcHandler\MethodData to LocalVariableDeclaration paramClasses [in method MethodData(java.lang.reflect.Method,org.apache.xmlrpc.common.TypeConverterFactory)]
+Iteration 19: "Make Method Static" applied at class TypeSerializerImpl to method write(org.xml.sax.ContentHandler,java.lang.String,char[])
+Iteration 20: "Make Field Final" applied at class ReflectiveXmlRpcMetaDataHandler to ParameterDeclaration pClass [in method ReflectiveXmlRpcMetaDataHandler(org.apache.xmlrpc.server.AbstractReflectiveHandlerMapping,org.apache.xmlrpc.common.TypeConverterFactory,java.lang.Class,org.apache.xmlrpc.server.RequestProcessorFactoryFactory.RequestProcessorFactory,java.lang.reflect.Method[],java.lang.String[][],java.lang.String)]
+Iteration 21: "Remove Method" applied at class XmlRpcCommonsTransport to method isResponseGzipCompressed()
+Iteration 22: "Decrease Field Visibility" applied at class Connection to field conkeep from private to package
+Iteration 23: "Decrease Method Visibility" applied at class I1Parser to method setResult(java.lang.String) from protected to public
+Iteration 24: "Make Class Concrete" applied to class XmlRpcStreamServer
+Iteration 25: "Make Field Non Final" applied at class HttpUtil to LocalVariableDeclaration bytes [in method encodeBasicAuthentication(java.lang.String,java.lang.String,java.lang.String)]
+Iteration 26: "Make Field Final" applied at class BooleanSerializer to ParameterDeclaration pHandler [in method write(org.xml.sax.ContentHandler,java.lang.Object)]
+
+Time taken to refactor: 387.66s
+
+======== Final Metric Info ========
+Fitness function 1 score: 0.093210
+Fitness function 2 score: 0.961538

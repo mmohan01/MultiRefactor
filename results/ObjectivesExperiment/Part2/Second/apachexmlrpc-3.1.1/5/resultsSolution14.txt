@@ -1,0 +1,49 @@
+======== Search Information ========
+Search: Multi-Objective Genetic Algorithm
+Generations: 100
+Population Size: 50
+Crossover Probability: 0.200000
+Mutation Probability: 0.800000
+
+======== Initial Metric Info ========
+Fitness function 1 score: 0.000000
+Fitness function 2 score: 0.000000
+
+======== Applied Refactorings ========
+Iteration 1: "Make Class Final" applied to class LocalStreamConnection
+Iteration 2: "Make Class Abstract" applied to class XmlRpcLiteHttpTransportFactory
+Iteration 3: "Make Method Final" applied at class XmlRpcTransportImpl to method getClient()
+Iteration 4: "Make Method Final" applied at class LimitedInputStream to method read()
+Iteration 5: "Decrease Method Visibility" applied at class Connection\RequestException to method RequestException(org.apache.xmlrpc.webserver.RequestData,java.lang.String) from package to protected
+Iteration 6: "Make Field Final" applied at class XmlRpcServlet to ParameterDeclaration url [in method newPropertyHandlerMapping(java.net.URL)]
+Iteration 7: "Increase Field Visibility" applied at class I2Serializer to field EX_I2_TAG from public to protected
+Iteration 8: "Decrease Method Visibility" applied at class ServerStreamConnection to method close() from package to protected
+Iteration 9: "Decrease Method Visibility" applied at class XmlRpcStreamRequestProcessor to method execute(org.apache.xmlrpc.common.XmlRpcStreamRequestConfig,org.apache.xmlrpc.common.ServerStreamConnection) from package to protected
+Iteration 10: "Move Method Up" applied to method write(org.xml.sax.ContentHandler,java.lang.Object) from StringSerializer to TypeSerializerImpl
+Iteration 11: "Decrease Method Visibility" applied at class TypeSerializerImpl to method write(org.xml.sax.ContentHandler,java.lang.String,char[]) from protected to public
+Iteration 12: "Decrease Method Visibility" applied at class XmlRpcTransportImpl to method XmlRpcTransportImpl(org.apache.xmlrpc.client.XmlRpcClient) from protected to public
+Iteration 13: "Remove Method" applied at class Connection\RequestException to method getRequestData()
+Iteration 14: "Move Method Down" applied to method getOutputStream(org.apache.xmlrpc.common.ServerStreamConnection,org.apache.xmlrpc.common.XmlRpcStreamRequestConfig,java.io.OutputStream) from XmlRpcHttpServer to ConnectionServer
+Iteration 15: "Remove Method" applied at class XmlRpcClientConfigImpl to method cloneMe()
+Iteration 16: "Make Field Final" applied at class XmlRpcClientWorker to LocalVariableDeclaration client [in method execute(org.apache.xmlrpc.XmlRpcRequest)]
+Iteration 17: "Decrease Method Visibility" applied at class XmlRpcLite14HttpTransport to method newSocket(boolean,java.lang.String,int) from protected to public
+Iteration 18: "Make Field Static" applied at class XmlRpcLite14HttpTransportFactory to field sslSocketFactory
+Iteration 19: "Remove Method" applied at class XmlRpcWriter to method write(org.apache.xmlrpc.XmlRpcRequestConfig,int,java.lang.String)
+Iteration 20: "Make Field Static" applied at class Connection\RequestException to field requestData
+Iteration 21: "Increase Method Visibility" applied at class MapSerializer to method writeEntry(org.xml.sax.ContentHandler,java.lang.Object,java.lang.Object) from protected to package
+Iteration 22: "Increase Field Visibility" applied at class I8Serializer to field EX_I8_TAG from public to protected
+Iteration 23: "Make Class Concrete" applied to class XmlRpcStreamTransportFactory
+Iteration 24: "Make Method Non Static" applied at class HttpServletResponseImpl to method getStatusMessage(int)
+Iteration 25: "Remove Method" applied at class TypeFactoryImpl to method getController()
+Iteration 26: "Make Class Abstract" applied to class XmlRpcStreamTransportFactory
+Iteration 27: "Increase Field Visibility" applied at class XmlRpcHttpTransport to field USER_AGENT from public to protected
+Iteration 28: "Move Field Up" applied to field DATE_TAG from CalendarSerializer to TypeSerializerImpl
+Iteration 29: "Move Field Up" applied to field cfg from RecursiveTypeParserImpl to TypeParserImpl
+Iteration 30: "Decrease Method Visibility" applied at class XmlRpcMetaDataHandler to method getSignatures() from package to protected
+Iteration 31: "Decrease Method Visibility" applied at class XmlRpcRequestProcessorFactory to method getXmlRpcServer() from package to protected
+
+Time taken to refactor: 391.87s
+
+======== Final Metric Info ========
+Fitness function 1 score: 0.117602
+Fitness function 2 score: 0.967742

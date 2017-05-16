@@ -1,0 +1,36 @@
+======== Search Information ========
+Search: Multi-Objective Genetic Algorithm
+Generations: 100
+Population Size: 50
+Crossover Probability: 0.200000
+Mutation Probability: 0.800000
+
+======== Initial Metric Info ========
+Fitness function 1 score: 0.000000
+Fitness function 2 score: 0.000000
+
+======== Applied Refactorings ========
+Iteration 1: "Decrease Method Visibility" applied at class XmlRpcWriter to method writeValue(java.lang.Object) from protected to public
+Iteration 2: "Make Field Final" applied at class XmlRpcStreamTransport\ReqWriterImpl to ParameterDeclaration pStream [in method write(java.io.OutputStream)]
+Iteration 3: "Make Class Concrete" applied to class XmlRpcStreamServer
+Iteration 4: "Make Method Final" applied at class XmlRpcLocalTransport to method isExtensionType(java.lang.Object)
+Iteration 5: "Move Method Up" applied to method newSocket(boolean,java.lang.String,int) from XmlRpcLiteHttpTransport to XmlRpcHttpTransport
+Iteration 6: "Make Field Non Final" applied at class XmlRpcWriter to FieldDeclaration EXTENSIONS_URI
+Iteration 7: "Make Field Static" applied at class XmlRpcServletServer\ServletStreamConnection to field request
+Iteration 8: "Make Method Final" applied at class TypeSerializerImpl to method write(org.xml.sax.ContentHandler,java.lang.String,java.lang.String)
+Iteration 9: "Make Field Static" applied at class DefaultXMLWriterFactory to field factory
+Iteration 10: "Increase Field Visibility" applied at class WebServer to field server from protected to package
+Iteration 11: "Decrease Method Visibility" applied at class AbstractReflectiveHandlerMapping to method getMethodHelp(java.lang.Class,java.lang.reflect.Method[]) from protected to public
+Iteration 12: "Make Class Final" applied to class JaxbTypeFactory
+Iteration 13: "Increase Field Visibility" applied at class NullSerializer to field EX_NIL_TAG from public to protected
+Iteration 14: "Increase Method Visibility" applied at class TypeConverterFactoryImpl\ListTypeConverter to method newList(int) from protected to package
+Iteration 15: "Make Field Static" applied at class XmlRpcTransportFactoryImpl to field client
+Iteration 16: "Make Field Static" applied at class XmlRpcTransportImpl to field client
+Iteration 17: "Make Field Non Final" applied at class XmlRpcWorkerFactory to FieldDeclaration singleton
+Iteration 18: "Make Method Static" applied at class XmlRpcStreamServer to method getInputStream(org.apache.xmlrpc.common.XmlRpcStreamRequestConfig,org.apache.xmlrpc.common.ServerStreamConnection)
+
+Time taken to refactor: 351.86s
+
+======== Final Metric Info ========
+Fitness function 1 score: 0.100618
+Fitness function 2 score: 0.944444
