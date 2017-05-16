@@ -1,0 +1,30 @@
+======== Search Information ========
+Search: Multi-Objective Genetic Algorithm
+Generations: 100
+Population Size: 50
+Crossover Probability: 0.200000
+Mutation Probability: 0.800000
+
+======== Initial Metric Info ========
+Fitness function 1 score: 0.000000
+Fitness function 2 score: 0.000000
+
+======== Applied Refactorings ========
+Iteration 1: "Make Method Static" applied at class XmlRpcClient to method getDefaultXmlRpcWorkerFactory()
+Iteration 2: "Make Field Final" applied at class LongParser to ParameterDeclaration pResult [in method setResult(java.lang.String)]
+Iteration 3: "Make Field Static" applied at class TimingOutCallback to field error
+Iteration 4: "Increase Method Visibility" applied at class Connection to method writeError(org.apache.xmlrpc.webserver.RequestData,java.lang.Throwable,java.io.ByteArrayOutputStream) from public to protected
+Iteration 5: "Increase Method Visibility" applied at class Connection to method writeError(org.apache.xmlrpc.webserver.RequestData,java.lang.Throwable,java.io.ByteArrayOutputStream) from protected to package
+Iteration 6: "Make Method Non Final" applied at class Connection to method toHTTPBytes(java.lang.String)
+Iteration 7: "Make Field Static" applied at class XmlRpcServletServer\ServletStreamConnection to field request
+Iteration 8: "Make Method Static" applied at class XmlRpcClientWorkerFactory to method newWorker()
+Iteration 9: "Make Field Static" applied at class HttpServletRequestImpl to field socket
+Iteration 10: "Decrease Method Visibility" applied at class XmlRpcHttpClientConfig to method getServerURL() from package to protected
+Iteration 11: "Move Method Down" applied to method getOutputStream(org.apache.xmlrpc.common.ServerStreamConnection,org.apache.xmlrpc.common.XmlRpcStreamRequestConfig,java.io.OutputStream) from XmlRpcHttpServer to ConnectionServer
+Iteration 12: "Increase Method Visibility" applied at class XmlRpcServletServer\ServletStreamConnection to method getRequest() from public to protected
+
+Time taken to refactor: 329.94s
+
+======== Final Metric Info ========
+Fitness function 1 score: 0.049422
+Fitness function 2 score: 0.583333

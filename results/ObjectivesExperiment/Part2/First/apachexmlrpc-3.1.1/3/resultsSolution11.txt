@@ -1,0 +1,42 @@
+======== Search Information ========
+Search: Multi-Objective Genetic Algorithm
+Generations: 100
+Population Size: 50
+Crossover Probability: 0.200000
+Mutation Probability: 0.800000
+
+======== Initial Metric Info ========
+Fitness function 1 score: 0.000000
+Fitness function 2 score: 0.000000
+
+======== Applied Refactorings ========
+Iteration 1: "Increase Field Visibility" applied at class XmlRpcCommonsTransport to field method from protected to package
+Iteration 2: "Increase Field Visibility" applied at class AbstractReflectiveHandlerMapping to field handlerMap from protected to package
+Iteration 3: "Remove Method" applied at class XmlRpcCommonsTransport to method isResponseGzipCompressed()
+Iteration 4: "Remove Method" applied at class XmlRpcClient to method setXmlWriterFactory(org.apache.xmlrpc.serializer.XmlWriterFactory)
+Iteration 5: "Make Field Static" applied at class XmlRpcHttpRequestConfigImpl to field enabledForExceptions
+Iteration 6: "Decrease Method Visibility" applied at class Connection\BadRequestException to method BadRequestException(org.apache.xmlrpc.webserver.RequestData,java.lang.String) from package to protected
+Iteration 7: "Decrease Method Visibility" applied at class HttpServletRequestImpl to method addParameter(java.util.Map,java.lang.String,java.lang.String) from private to package
+Iteration 8: "Decrease Method Visibility" applied at class XmlRpcHttpClientConfig to method getServerURL() from package to protected
+Iteration 9: "Increase Method Visibility" applied at class WebServer to method newXmlRpcStreamServer() from protected to package
+Iteration 10: "Remove Method" applied at class XmlRpcStreamServer to method setErrorLogger(org.apache.xmlrpc.server.XmlRpcErrorLogger)
+Iteration 11: "Move Method Down" applied to method isUsingByteArrayOutput(org.apache.xmlrpc.client.XmlRpcHttpClientConfig) from XmlRpcLiteHttpTransport to XmlRpcLite14HttpTransport
+Iteration 12: "Make Class Abstract" applied to class XmlRpcLiteHttpTransportFactory
+Iteration 13: "Make Method Static" applied at class XmlRpcCommonsTransportFactory to method getTransport()
+Iteration 14: "Remove Method" applied at class ServerHttpConnection to method setResponseHeader(java.lang.String,java.lang.String)
+Iteration 15: "Make Method Final" applied at class XmlRpcLocalStreamServer to method execute(org.apache.xmlrpc.XmlRpcRequest)
+Iteration 16: "Decrease Method Visibility" applied at class XmlRpcDateTimeFormat to method getTimeZone() from protected to public
+Iteration 17: "Decrease Method Visibility" applied at class XmlRpcController to method getDefaultXmlRpcWorkerFactory() from protected to public
+Iteration 18: "Increase Method Visibility" applied at class XmlRpcClient to method setConfig(org.apache.xmlrpc.client.XmlRpcClientConfig) from public to protected
+Iteration 19: "Make Method Final" applied at class XmlRpcSunHttpTransport to method getURLConnection()
+Iteration 20: "Make Method Final" applied at class I4Parser to method setResult(java.lang.String)
+Iteration 21: "Decrease Method Visibility" applied at class HttpServletResponseImpl to method getHeader(java.lang.String) from private to package
+Iteration 22: "Remove Method" applied at class XmlRpcHttpRequestConfigImpl to method setReplyTimeout(int)
+Iteration 23: "Decrease Method Visibility" applied at class XmlRpcStreamRequestConfig to method isGzipCompressing() from package to protected
+Iteration 24: "Make Field Non Final" applied at class Util to LocalVariableDeclaration result [in method getMethodHelp(java.lang.Class,java.lang.reflect.Method[])]
+
+Time taken to refactor: 338.58s
+
+======== Final Metric Info ========
+Fitness function 1 score: 0.056815
+Fitness function 2 score: 0.500000

@@ -1,0 +1,37 @@
+======== Search Information ========
+Search: Multi-Objective Genetic Algorithm
+Generations: 100
+Population Size: 50
+Crossover Probability: 0.200000
+Mutation Probability: 0.800000
+
+======== Initial Metric Info ========
+Fitness function 1 score: 0.000000
+Fitness function 2 score: 0.000000
+
+======== Applied Refactorings ========
+Iteration 1: "Make Field Non Final" applied at class XmlRpcStreamServer to LocalVariableDeclaration error [in method writeError(org.apache.xmlrpc.common.XmlRpcStreamRequestConfig,java.io.OutputStream,java.lang.Throwable)]
+Iteration 2: "Make Class Final" applied to class XmlRpcErrorLogger
+Iteration 3: "Remove Method" applied at class AbstractReflectiveHandlerMapping to method getTypeConverterFactory()
+Iteration 4: "Make Method Non Final" applied at class Connection to method toHTTPBytes(java.lang.String)
+Iteration 5: "Make Field Non Final" applied at class PropertyHandlerMapping to LocalVariableDeclaration c [in method newHandlerClass(java.lang.ClassLoader,java.lang.String)]
+Iteration 6: "Make Field Non Final" applied at class ReflectiveXmlRpcMetaDataHandler to FieldDeclaration methodHelp
+Iteration 7: "Decrease Method Visibility" applied at class ReflectiveXmlRpcHandler to method getInstance(org.apache.xmlrpc.XmlRpcRequest) from private to package
+Iteration 8: "Make Field Final" applied at class XmlRpcTransportImpl to ParameterDeclaration pClient [in method XmlRpcTransportImpl(org.apache.xmlrpc.client.XmlRpcClient)]
+Iteration 9: "Make Class Final" applied to class XmlRpcInvocationException
+Iteration 10: "Increase Method Visibility" applied at class HttpServletResponseImpl to method getStatusMessage(int) from public to protected
+Iteration 11: "Decrease Method Visibility" applied at class XmlRpcController to method getDefaultXmlRpcWorkerFactory() from protected to public
+Iteration 12: "Decrease Field Visibility" applied at class XmlRpcClient to field transportFactory from private to package
+Iteration 13: "Make Class Final" applied to class HttpServletRequestImpl
+Iteration 14: "Make Class Abstract" applied to class XmlRpcLiteHttpTransportFactory
+Iteration 15: "Decrease Method Visibility" applied at class ListSerializer to method writeData(org.xml.sax.ContentHandler,java.lang.Object) from protected to public
+Iteration 16: "Move Method Down" applied to method write(org.xml.sax.ContentHandler,java.lang.Object) from ObjectArraySerializer to ListSerializer
+Iteration 17: "Decrease Method Visibility" applied at class TypeParserImpl to method isEmpty(char[],int,int) from protected to public
+Iteration 18: "Make Field Final" applied at class XmlRpcRequestProcessor to ParameterDeclaration pRequest [in method execute(org.apache.xmlrpc.XmlRpcRequest)]
+Iteration 19: "Remove Method" applied at class ThreadPool\Poolable to method getName()
+
+Time taken to refactor: 362.37s
+
+======== Final Metric Info ========
+Fitness function 1 score: 0.043596
+Fitness function 2 score: 0.315789

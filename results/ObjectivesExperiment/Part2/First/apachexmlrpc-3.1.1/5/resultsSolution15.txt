@@ -1,0 +1,39 @@
+======== Search Information ========
+Search: Multi-Objective Genetic Algorithm
+Generations: 100
+Population Size: 50
+Crossover Probability: 0.200000
+Mutation Probability: 0.800000
+
+======== Initial Metric Info ========
+Fitness function 1 score: 0.000000
+Fitness function 2 score: 0.000000
+
+======== Applied Refactorings ========
+Iteration 1: "Make Field Non Final" applied at class XmlRpcStreamServer to LocalVariableDeclaration error [in method writeError(org.apache.xmlrpc.common.XmlRpcStreamRequestConfig,java.io.OutputStream,java.lang.Throwable)]
+Iteration 2: "Make Field Static" applied at class JaxbSerializer to field context
+Iteration 3: "Remove Method" applied at class LocalStreamConnection to method getRequest()
+Iteration 4: "Decrease Method Visibility" applied at class TypeSerializer to method write(org.xml.sax.ContentHandler,java.lang.Object) from package to protected
+Iteration 5: "Make Field Non Final" applied at class HttpServletRequestImpl to FieldDeclaration istream
+Iteration 6: "Remove Method" applied at class XmlRpcServerConfigImpl to method setKeepAliveEnabled(boolean)
+Iteration 7: "Make Method Final" applied at class I4Serializer to method write(org.xml.sax.ContentHandler,java.lang.Object)
+Iteration 8: "Make Class Final" applied to class HttpServletRequestImpl
+Iteration 9: "Make Method Non Static" applied at class Connection to method toHTTPBytes(java.lang.String)
+Iteration 10: "Increase Field Visibility" applied at class I8Serializer to field EX_I8_TAG from public to protected
+Iteration 11: "Make Method Final" applied at class HttpServletResponseImpl to method addCookie(javax.servlet.http.Cookie)
+Iteration 12: "Decrease Method Visibility" applied at class JaxbSerializer to method getTagName() from protected to public
+Iteration 13: "Make Field Final" applied at class I4Serializer to ParameterDeclaration pObject [in method write(org.xml.sax.ContentHandler,java.lang.Object)]
+Iteration 14: "Decrease Method Visibility" applied at class XmlRpcLite14HttpTransport to method newSocket(boolean,java.lang.String,int) from protected to public
+Iteration 15: "Decrease Method Visibility" applied at class Connection to method getRequestConfig() from private to package
+Iteration 16: "Make Method Final" applied at class XmlRpcLocalStreamTransportFactory to method getTransport()
+Iteration 17: "Make Method Non Static" applied at class HttpServletResponseImpl to method getStatusMessage(int)
+Iteration 18: "Make Method Static" applied at class JaxbParser to method getTagName()
+Iteration 19: "Move Method Down" applied to method isUsingByteArrayOutput(org.apache.xmlrpc.client.XmlRpcHttpClientConfig) from XmlRpcLiteHttpTransport to XmlRpcLite14HttpTransport
+Iteration 20: "Make Class Abstract" applied to class XmlRpcServer
+Iteration 21: "Remove Field" applied at class CalendarSerializer to field DATE_TAG
+
+Time taken to refactor: 362.37s
+
+======== Final Metric Info ========
+Fitness function 1 score: 0.046053
+Fitness function 2 score: 0.380952

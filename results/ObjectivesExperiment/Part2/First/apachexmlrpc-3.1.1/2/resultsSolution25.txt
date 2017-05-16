@@ -1,0 +1,41 @@
+======== Search Information ========
+Search: Multi-Objective Genetic Algorithm
+Generations: 100
+Population Size: 50
+Crossover Probability: 0.200000
+Mutation Probability: 0.800000
+
+======== Initial Metric Info ========
+Fitness function 1 score: 0.000000
+Fitness function 2 score: 0.000000
+
+======== Applied Refactorings ========
+Iteration 1: "Make Method Final" applied at class LocalStreamConnection\LocalServerStreamConnection to method close()
+Iteration 2: "Make Field Final" applied at class DoubleSerializer to ParameterDeclaration pHandler [in method write(org.xml.sax.ContentHandler,java.lang.Object)]
+Iteration 3: "Decrease Method Visibility" applied at class ListSerializer to method writeData(org.xml.sax.ContentHandler,java.lang.Object) from protected to public
+Iteration 4: "Decrease Field Visibility" applied at class XmlRpcRequestParser to field level from private to package
+Iteration 5: "Make Field Non Final" applied at class XmlRpcStreamServer to LocalVariableDeclaration msg [in method logError(java.lang.Throwable)]
+Iteration 6: "Make Field Final" applied at class HttpServletResponseImpl to FieldDeclaration writer
+Iteration 7: "Make Method Static" applied at class XmlRpcServlet to method newXmlRpcServer(javax.servlet.ServletConfig)
+Iteration 8: "Make Method Non Final" applied at class Connection to method toHTTPBytes(java.lang.String)
+Iteration 9: "Make Field Non Static" applied at class Connection to field wwwAuthenticate
+Iteration 10: "Remove Method" applied at class XmlRpcCommonsTransport to method isResponseGzipCompressed()
+Iteration 11: "Decrease Method Visibility" applied at class XmlRpcServlet to method handleInitParameters(javax.servlet.ServletConfig) from private to package
+Iteration 12: "Decrease Method Visibility" applied at class XmlRpcHttpClientConfig to method getUserAgent() from package to protected
+Iteration 13: "Move Method Down" applied to method write(org.xml.sax.ContentHandler,java.lang.Object) from ObjectArraySerializer to ListSerializer
+Iteration 14: "Increase Field Visibility" applied at class CalendarSerializer to field DATE_TAG from public to protected
+Iteration 15: "Decrease Method Visibility" applied at class NodeSerializer to method getTagName() from protected to public
+Iteration 16: "Make Class Concrete" applied to class TypeSerializerImpl
+Iteration 17: "Make Method Static" applied at class AbstractReflectiveHandlerMapping to method getSignature(java.lang.reflect.Method[])
+Iteration 18: "Make Method Final" applied at class LocalStreamConnection\LocalServerStreamConnection to method newOutputStream()
+Iteration 19: "Move Method Up" applied to method newURLConnection(java.net.URL) from XmlRpcSunHttpTransport to XmlRpcHttpTransport
+Iteration 20: "Make Field Static" applied at class XmlRpcServerConfigImpl to field isKeepAliveEnabled
+Iteration 21: "Decrease Method Visibility" applied at class JaxbParser to method getExtHandler() from protected to public
+Iteration 22: "Increase Field Visibility" applied at class WebServer to field serverSocket from protected to package
+Iteration 23: "Increase Method Visibility" applied at class BaseXmlWriterFactory to method newXmlWriter() from protected to package
+
+Time taken to refactor: 363.75s
+
+======== Final Metric Info ========
+Fitness function 1 score: 0.049562
+Fitness function 2 score: 0.391304

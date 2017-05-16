@@ -1,0 +1,34 @@
+======== Search Information ========
+Search: Multi-Objective Genetic Algorithm
+Generations: 100
+Population Size: 50
+Crossover Probability: 0.200000
+Mutation Probability: 0.800000
+
+======== Initial Metric Info ========
+Fitness function 1 score: 0.000000
+Fitness function 2 score: 0.000000
+
+======== Applied Refactorings ========
+Iteration 1: "Make Field Non Final" applied at class GrammarScanner to FieldDeclaration ZZ_ROWMAP
+Iteration 2: "Make Class Final" applied to class ParsingTables
+Iteration 3: "Make Method Non Static" applied at class ParserGenerator\CompiledParser to method writeStaticReturns(beaver.spec.Grammar,java.io.Writer)
+Iteration 4: "Make Field Final" applied at class SrcReader to LocalVariableDeclaration copy_len [in method read(char[],int,int)]
+Iteration 5: "Make Class Abstract" applied to class Action
+Iteration 6: "Remove Method" applied at class GrammarScanner to method yyclose()
+Iteration 7: "Increase Method Visibility" applied at class GrammarScanner to method yyreset(java.io.Reader) from public to protected
+Iteration 8: "Make Method Non Static" applied at class ParsingTables to method expand(short[])
+Iteration 9: "Decrease Method Visibility" applied at class Make to method printVersion() from package to protected
+Iteration 10: "Decrease Method Visibility" applied at class Action\List to method compress() from package to protected
+Iteration 11: "Decrease Field Visibility" applied at class GrammarScanner to field yychar from private to package
+Iteration 12: "Move Method Down" applied to method toString() from GrammarSymbol to NonTerminal
+Iteration 13: "Increase Method Visibility" applied at class GrammarScanner to method yyreset(java.io.Reader) from protected to package
+Iteration 14: "Make Field Final" applied at class Configuration\Set to FieldDeclaration core_hash_code
+Iteration 15: "Decrease Method Visibility" applied at class GrammarScanner to method newSymbol(short) from private to package
+Iteration 16: "Decrease Field Visibility" applied at class Action to field LOOKAHEAD_ID_COMPARATOR from package to protected
+
+Time taken to refactor: 181.89s
+
+======== Final Metric Info ========
+Fitness function 1 score: 0.080125
+Fitness function 2 score: 0.500000

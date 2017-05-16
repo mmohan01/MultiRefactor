@@ -1,0 +1,48 @@
+======== Search Information ========
+Search: Multi-Objective Genetic Algorithm
+Generations: 100
+Population Size: 50
+Crossover Probability: 0.200000
+Mutation Probability: 0.800000
+
+======== Initial Metric Info ========
+Fitness function 1 score: 0.000000
+Fitness function 2 score: 0.000000
+
+======== Applied Refactorings ========
+Iteration 1: "Make Method Non Static" applied at class Connection to method toHTTPBytes(java.lang.String)
+Iteration 2: "Make Field Final" applied at class DoubleSerializer to ParameterDeclaration pHandler [in method write(org.xml.sax.ContentHandler,java.lang.Object)]
+Iteration 3: "Decrease Method Visibility" applied at class ListSerializer to method writeData(org.xml.sax.ContentHandler,java.lang.Object) from protected to public
+Iteration 4: "Make Field Non Final" applied at class XmlRpcStreamServer to LocalVariableDeclaration msg [in method logError(java.lang.Throwable)]
+Iteration 5: "Make Field Final" applied at class HttpServletResponseImpl to FieldDeclaration writer
+Iteration 6: "Make Method Static" applied at class XmlRpcServlet to method newXmlRpcServer(javax.servlet.ServletConfig)
+Iteration 7: "Make Method Non Final" applied at class Connection to method toHTTPBytes(java.lang.String)
+Iteration 8: "Make Field Non Static" applied at class Connection to field wwwAuthenticate
+Iteration 9: "Remove Method" applied at class XmlRpcCommonsTransport to method isResponseGzipCompressed()
+Iteration 10: "Decrease Method Visibility" applied at class XmlRpcServlet to method handleInitParameters(javax.servlet.ServletConfig) from private to package
+Iteration 11: "Decrease Method Visibility" applied at class XmlRpcHttpClientConfig to method getUserAgent() from package to protected
+Iteration 12: "Move Method Down" applied to method write(org.xml.sax.ContentHandler,java.lang.Object) from ObjectArraySerializer to ListSerializer
+Iteration 13: "Make Field Static" applied at class LocalStreamConnection to field request
+Iteration 14: "Decrease Method Visibility" applied at class Connection to method writeContentLengthHeader(int) from private to package
+Iteration 15: "Decrease Method Visibility" applied at class ServletOutputStreamImpl to method isCommitted() from package to protected
+Iteration 16: "Move Method Up" applied to method newURLConnection(java.net.URL) from XmlRpcSunHttpTransport to XmlRpcHttpTransport
+Iteration 17: "Make Field Static" applied at class XmlRpcServerConfigImpl to field isKeepAliveEnabled
+Iteration 18: "Make Method Final" applied at class CharSetXmlWriterFactory to method newXmlWriter()
+Iteration 19: "Make Method Final" applied at class RequestData to method getContentLength()
+Iteration 20: "Make Class Concrete" applied to class XmlRpcConfigImpl
+Iteration 21: "Make Method Final" applied at class ObjectArraySerializer to method writeObject(org.xml.sax.ContentHandler,java.lang.Object)
+Iteration 22: "Make Field Final" applied at class XmlRpcErrorLogger to ParameterDeclaration pMessage [in method log(java.lang.String,java.lang.Throwable)]
+Iteration 23: "Make Class Final" applied to class ObjectArrayParser
+Iteration 24: "Make Field Static" applied at class DateSerializer to field format
+Iteration 25: "Make Field Final" applied at class XmlRpcServletServer\ServletStreamConnection to ParameterDeclaration pResponse [in method ServletStreamConnection(javax.servlet.http.HttpServletRequest,javax.servlet.http.HttpServletResponse)]
+Iteration 26: "Decrease Method Visibility" applied at class XmlRpcCommonsTransport to method close() from protected to public
+Iteration 27: "Make Field Static" applied at class XmlRpcResponseParser to field errorCause
+Iteration 28: "Make Method Non Final" applied at class ObjectArraySerializer to method writeObject(org.xml.sax.ContentHandler,java.lang.Object)
+Iteration 29: "Decrease Method Visibility" applied at class XmlRpcServer to method getDefaultXmlRpcWorkerFactory() from protected to public
+Iteration 30: "Decrease Method Visibility" applied at class XmlRpcWriter to method writeValue(java.lang.Object) from protected to public
+
+Time taken to refactor: 363.75s
+
+======== Final Metric Info ========
+Fitness function 1 score: 0.098323
+Fitness function 2 score: 0.333333

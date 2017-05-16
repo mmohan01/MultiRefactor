@@ -1,0 +1,44 @@
+======== Search Information ========
+Search: Multi-Objective Genetic Algorithm
+Generations: 100
+Population Size: 50
+Crossover Probability: 0.200000
+Mutation Probability: 0.800000
+
+======== Initial Metric Info ========
+Fitness function 1 score: 0.000000
+Fitness function 2 score: 0.000000
+
+======== Applied Refactorings ========
+Iteration 1: "Increase Field Visibility" applied at class XmlRpcCommonsTransport to field method from protected to package
+Iteration 2: "Increase Field Visibility" applied at class AbstractReflectiveHandlerMapping to field handlerMap from protected to package
+Iteration 3: "Remove Method" applied at class XmlRpcCommonsTransport to method isResponseGzipCompressed()
+Iteration 4: "Remove Method" applied at class XmlRpcClient to method setXmlWriterFactory(org.apache.xmlrpc.serializer.XmlWriterFactory)
+Iteration 5: "Increase Field Visibility" applied at class TypeSerializerImpl to field ZERO_ATTRIBUTES from protected to package
+Iteration 6: "Move Field Up" applied to field USER_AGENT from XmlRpcHttpTransport to XmlRpcStreamTransport
+Iteration 7: "Decrease Method Visibility" applied at class XmlRpcLiteHttpTransport to method isResponseGzipCompressed(org.apache.xmlrpc.common.XmlRpcStreamRequestConfig) from protected to public
+Iteration 8: "Make Method Final" applied at class LocalStreamConnection\LocalServerStreamConnection to method newOutputStream()
+Iteration 9: "Remove Method" applied at class Connection\RequestException to method getRequestData()
+Iteration 10: "Make Class Final" applied to class DefaultXMLWriterFactory
+Iteration 11: "Move Method Up" applied to method newURLConnection(java.net.URL) from XmlRpcSunHttpTransport to XmlRpcHttpTransport
+Iteration 12: "Decrease Method Visibility" applied at class XmlRpcHttpClientConfig to method getServerURL() from package to protected
+Iteration 13: "Increase Method Visibility" applied at class WebServer to method newXmlRpcStreamServer() from protected to package
+Iteration 14: "Increase Method Visibility" applied at class XmlRpcHttpRequestConfigImpl to method setReplyTimeout(int) from public to protected
+Iteration 15: "Make Field Final" applied at class XmlRpcHandlerMapping to ParameterDeclaration handlerName [in method getHandler(java.lang.String)]
+Iteration 16: "Decrease Method Visibility" applied at class XmlRpcServlet to method handleInitParameters(javax.servlet.ServletConfig) from private to package
+Iteration 17: "Increase Method Visibility" applied at class RequestProcessorFactoryFactory\StatelessProcessorFactoryFactory to method getRequestProcessor(java.lang.Class) from protected to package
+Iteration 18: "Decrease Method Visibility" applied at class Connection\BadRequestException to method BadRequestException(org.apache.xmlrpc.webserver.RequestData,java.lang.String) from package to protected
+Iteration 19: "Decrease Method Visibility" applied at class HttpServletRequestImpl to method addParameter(java.util.Map,java.lang.String,java.lang.String) from private to package
+Iteration 20: "Decrease Method Visibility" applied at class XmlRpcHttpClientConfig to method getServerURL() from protected to public
+Iteration 21: "Increase Method Visibility" applied at class WebServer to method newXmlRpcStreamServer() from package to private
+Iteration 22: "Increase Method Visibility" applied at class XmlRpcHttpRequestConfigImpl to method setReplyTimeout(int) from protected to package
+Iteration 23: "Increase Method Visibility" applied at class XmlRpcHttpTransport to method isUsingByteArrayOutput(org.apache.xmlrpc.client.XmlRpcHttpClientConfig) from protected to package
+Iteration 24: "Decrease Method Visibility" applied at class RequestProcessorFactoryFactory\RequestSpecificProcessorFactoryFactory to method getRequestProcessor(java.lang.Class,org.apache.xmlrpc.XmlRpcRequest) from protected to public
+Iteration 25: "Decrease Method Visibility" applied at class AtomicParser to method setResult(java.lang.String) from protected to public
+Iteration 26: "Decrease Method Visibility" applied at class XmlRpcStreamTransportFactory to method XmlRpcStreamTransportFactory(org.apache.xmlrpc.client.XmlRpcClient) from protected to public
+
+Time taken to refactor: 338.58s
+
+======== Final Metric Info ========
+Fitness function 1 score: 0.063574
+Fitness function 2 score: 0.384615
