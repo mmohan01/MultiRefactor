@@ -1,0 +1,39 @@
+======== Search Information ========
+Search: Multi-Objective Genetic Algorithm
+Generations: 100
+Population Size: 50
+Crossover Probability: 0.200000
+Mutation Probability: 0.800000
+
+======== Initial Metric Info ========
+Fitness function 1 score: 0.000000
+Fitness function 2 score: 0.000000
+Fitness function 3 score: 0.000000
+
+======== Applied Refactorings ========
+Iteration 1: "Make Field Static" applied at class ServletConnection to field socket
+Iteration 2: "Make Field Final" applied at class XmlRpcStreamServer to ParameterDeclaration pConfig [in method writeResponse(org.apache.xmlrpc.common.XmlRpcStreamRequestConfig,java.io.OutputStream,java.lang.Object)]
+Iteration 3: "Decrease Method Visibility" applied at class XmlRpcController to method getDefaultXmlRpcWorkerFactory() from protected to public
+Iteration 4: "Move Method Up" applied to method isUsingByteArrayOutput(org.apache.xmlrpc.client.XmlRpcHttpClientConfig) from XmlRpcHttpTransport to XmlRpcStreamTransport
+Iteration 5: "Make Method Final" applied at class SAXParsers to method newXMLReader()
+Iteration 6: "Make Field Static" applied at class ByteArrayParser to field decoder
+Iteration 7: "Decrease Method Visibility" applied at class ByteArrayParser\779867600\38579125 to method writeBuffer(byte[],int,int) from protected to public
+Iteration 8: "Decrease Method Visibility" applied at class XmlRpcTransportFactoryImpl to method XmlRpcTransportFactoryImpl(org.apache.xmlrpc.client.XmlRpcClient) from protected to public
+Iteration 9: "Make Field Final" applied at class XmlRpcClientException to ParameterDeclaration pMessage [in method XmlRpcClientException(java.lang.String,java.lang.Throwable)]
+Iteration 10: "Decrease Field Visibility" applied at class XmlRpcHttpRequestConfigImpl to field enabledForExceptions from private to package
+Iteration 11: "Make Class Final" applied to class I2Serializer
+Iteration 12: "Make Method Non Static" applied at class HttpServletResponseImpl to method getStatusMessage(int)
+Iteration 13: "Make Class Abstract" applied to class XmlRpcServer
+Iteration 14: "Decrease Method Visibility" applied at class BaseXmlWriterFactory to method newXmlWriter() from protected to public
+Iteration 15: "Decrease Method Visibility" applied at class ServerStreamConnection to method newInputStream() from package to protected
+Iteration 16: "Make Class Final" applied to class ServletWebServer
+Iteration 17: "Increase Field Visibility" applied at class FloatSerializer to field EX_FLOAT_TAG from public to protected
+Iteration 18: "Decrease Method Visibility" applied at class XmlRpcClientWorkerFactory to method newWorker() from protected to public
+Iteration 19: "Decrease Method Visibility" applied at class ConnectionServer to method setResponseHeader(org.apache.xmlrpc.common.ServerStreamConnection,java.lang.String,java.lang.String) from protected to public
+
+Time taken to refactor: 323.81s
+
+======== Final Metric Info ========
+Fitness function 1 score: 0.072330
+Fitness function 2 score: 0.315789
+Fitness function 3 score: 0.565789

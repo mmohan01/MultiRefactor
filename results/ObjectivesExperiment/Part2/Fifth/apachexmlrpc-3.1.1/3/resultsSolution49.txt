@@ -1,0 +1,34 @@
+======== Search Information ========
+Search: Multi-Objective Genetic Algorithm
+Generations: 100
+Population Size: 50
+Crossover Probability: 0.200000
+Mutation Probability: 0.800000
+
+======== Initial Metric Info ========
+Fitness function 1 score: 0.000000
+Fitness function 2 score: 0.000000
+Fitness function 3 score: 0.000000
+
+======== Applied Refactorings ========
+Iteration 1: "Make Field Final" applied at class BaseXmlWriterFactory to LocalVariableDeclaration xw [in method getXmlWriter(org.apache.xmlrpc.common.XmlRpcStreamConfig,java.io.OutputStream)]
+Iteration 2: "Increase Method Visibility" applied at class XmlRpcHttpRequestConfigImpl to method setReplyTimeout(int) from public to protected
+Iteration 3: "Make Class Abstract" applied to class WebServer
+Iteration 4: "Increase Method Visibility" applied at class XmlRpcTransportImpl to method getClient() from public to protected
+Iteration 5: "Decrease Method Visibility" applied at class ServletWebServer to method newTask(org.apache.xmlrpc.webserver.WebServer,org.apache.xmlrpc.server.XmlRpcStreamServer,java.net.Socket) from protected to public
+Iteration 6: "Make Class Concrete" applied to class XmlRpcStreamTransportFactory
+Iteration 7: "Make Method Static" applied at class NodeSerializer to method getTagName()
+Iteration 8: "Decrease Method Visibility" applied at class XmlRpcRequestParser to method addResult(java.lang.Object) from protected to public
+Iteration 9: "Make Method Final" applied at class XmlRpcHttpTransport to method newReqWriter(org.apache.xmlrpc.XmlRpcRequest)
+Iteration 10: "Move Field Up" applied to field sb from AtomicParser to TypeParserImpl
+Iteration 11: "Decrease Method Visibility" applied at class XmlRpcLiteHttpTransport to method writeRequest(org.apache.xmlrpc.client.XmlRpcStreamTransport.ReqWriter) from protected to public
+Iteration 12: "Make Class Concrete" applied to class XmlRpcConfigImpl
+Iteration 13: "Increase Field Visibility" applied at class AbstractReflectiveHandlerMapping to field handlerMap from protected to package
+Iteration 14: "Make Field Static" applied at class XmlRpcServlet to field server
+
+Time taken to refactor: 382.44s
+
+======== Final Metric Info ========
+Fitness function 1 score: 0.006632
+Fitness function 2 score: 0.357143
+Fitness function 3 score: 0.571429
