@@ -1,0 +1,67 @@
+======== Search Information ========
+Search: Multi-Objective Genetic Algorithm
+Generations: 100
+Population Size: 50
+Crossover Probability: 0.200000
+Mutation Probability: 0.800000
+
+======== Initial Metric Info ========
+Fitness function 1 score: 0.000000
+Fitness function 2 score: 0.000000
+Fitness function 3 score: 0.000000
+
+======== Applied Refactorings ========
+Iteration 1: "Make Field Final" applied at class Terminal to ParameterDeclaration prec [in method Terminal(java.lang.String,int,beaver.spec.Terminal.Associativity)]
+Iteration 2: "Make Class Final" applied to class Declaration\Terminals
+Iteration 3: "Make Class Abstract" applied to class Action\Type\Conflict
+Iteration 4: "Make Class Concrete" applied to class GrammarSymbol
+Iteration 5: "Decrease Method Visibility" applied at class State\Factory to method buildShiftsFrom(beaver.comp.State) from private to package
+Iteration 6: "Make Method Final" applied at class NonTerminal to method checkNullability()
+Iteration 7: "Decrease Method Visibility" applied at class Terminal\Associativity to method Associativity(java.lang.String) from private to package
+Iteration 8: "Move Method Down" applied to method toString() from GrammarSymbol to NonTerminal
+Iteration 9: "Increase Method Visibility" applied at class ParsingTables to method expand(short[]) from package to private
+Iteration 10: "Decrease Method Visibility" applied at class GrammarParser\Events to method Events(beaver.comp.util.Log) from package to protected
+Iteration 11: "Move Field Up" applied to field prec_sym_name from Rule\Definition to Node
+Iteration 12: "Decrease Method Visibility" applied at class Make to method parseOptions(java.lang.String[]) from package to protected
+Iteration 13: "Make Class Abstract" applied to class Action
+Iteration 14: "Make Field Final" applied at class SrcReader to ParameterDeclaration buf [in method read(char[],int,int)]
+Iteration 15: "Make Field Final" applied at class TreeWalker to LocalVariableDeclaration i [in method visit(beaver.spec.ast.GrammarTreeRoot)]
+Iteration 16: "Increase Field Visibility" applied at class Rule\Definition\Element to field alias from public to protected
+Iteration 17: "Make Field Static" applied at class NonTerminal to field definitions
+Iteration 18: "Decrease Method Visibility" applied at class Make to method parseOptions(java.lang.String[]) from protected to public
+Iteration 19: "Move Field Up" applied to field found from GrammarBuilder\1853207061\1664810410 to GrammarBuilder\RuleWalker
+Iteration 20: "Decrease Method Visibility" applied at class GrammarBuilder\1853207061\1895741786 to method setPrecedence(beaver.spec.ast.Declaration.SymbolsContainer,beaver.spec.Terminal.Associativity) from private to package
+Iteration 21: "Decrease Method Visibility" applied at class BitSet\Processor to method process(int) from protected to public
+Iteration 22: "Make Field Static" applied at class GrammarScanner to field zzStartRead
+Iteration 23: "Make Field Final" applied at class Declaration\Error to ParameterDeclaration walker [in method accept(beaver.spec.ast.TreeWalker)]
+Iteration 24: "Remove Method" applied at class GrammarScanner to method yyreset(java.io.Reader)
+Iteration 25: "Decrease Method Visibility" applied at class Declaration\NameContainer to method NameContainer(beaver.Symbol) from protected to public
+Iteration 26: "Decrease Method Visibility" applied at class Configuration\Set to method equals(beaver.comp.Configuration.Set) from private to package
+Iteration 27: "Make Field Static" applied at class ParserGenerator\CompiledParser to field tables
+Iteration 28: "Decrease Method Visibility" applied at class State to method findLookaheads() from package to protected
+Iteration 29: "Decrease Method Visibility" applied at class State to method findLookaheads() from protected to public
+Iteration 30: "Decrease Method Visibility" applied at class GrammarScanner to method newSymbol(short,java.lang.Object) from private to package
+Iteration 31: "Increase Field Visibility" applied at class Rule\Definition\Element to field alias from protected to package
+Iteration 32: "Decrease Method Visibility" applied at class GrammarBuilder\1234568079\398706439 to method setPrecedence(beaver.spec.ast.Declaration.SymbolsContainer,beaver.spec.Terminal.Associativity) from package to protected
+Iteration 33: "Decrease Method Visibility" applied at class Configuration\Set to method equals(beaver.comp.Configuration.Set) from package to protected
+Iteration 34: "Decrease Method Visibility" applied at class GrammarScanner to method zzScanError(int) from private to package
+Iteration 35: "Make Method Static" applied at class ParsingTables to method renumberSymbols(beaver.spec.Grammar,beaver.comp.Action.List[])
+Iteration 36: "Decrease Method Visibility" applied at class ParserGenerator to method splitActions(beaver.comp.State) from private to package
+Iteration 37: "Make Method Final" applied at class IntArray to method get(int)
+Iteration 38: "Make Field Non Final" applied at class ParserGenerator\CompiledParser to FieldDeclaration _62_or_63
+Iteration 39: "Decrease Method Visibility" applied at class ParsingTables to method advanceStartIndex(int) from private to package
+Iteration 40: "Make Field Final" applied at class GrammarBuilder to LocalVariableDeclaration item [in method propagateTypes(beaver.spec.NonTerminal[])]
+Iteration 41: "Make Field Non Final" applied at class GrammarParser to LocalVariableDeclaration symbols [in method invokeReduceAction(int,int)]
+Iteration 42: "Make Field Static" applied at class Action\Type to field id
+Iteration 43: "Increase Method Visibility" applied at class Configuration\Set to method equals(beaver.comp.Configuration.Set) from protected to package
+Iteration 44: "Decrease Method Visibility" applied at class Configuration\Set to method equals(beaver.comp.Configuration.Set) from package to protected
+Iteration 45: "Move Field Up" applied to field is_nullable from NonTerminal to GrammarSymbol
+Iteration 46: "Increase Method Visibility" applied at class Configuration\Set to method equals(beaver.comp.Configuration.Set) from protected to package
+Iteration 47: "Increase Field Visibility" applied at class Rule\Definition\Element to field alias from package to private
+
+Time taken to refactor: 166.76s
+
+======== Final Metric Info ========
+Fitness function 1 score: 0.365620
+Fitness function 2 score: 0.808511
+Fitness function 3 score: 0.829787

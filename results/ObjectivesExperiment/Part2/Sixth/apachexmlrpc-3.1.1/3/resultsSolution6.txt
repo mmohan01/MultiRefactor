@@ -1,0 +1,56 @@
+======== Search Information ========
+Search: Multi-Objective Genetic Algorithm
+Generations: 100
+Population Size: 50
+Crossover Probability: 0.200000
+Mutation Probability: 0.800000
+
+======== Initial Metric Info ========
+Fitness function 1 score: 0.000000
+Fitness function 2 score: 0.000000
+Fitness function 3 score: 0.000000
+
+======== Applied Refactorings ========
+Iteration 1: "Move Method Down" applied to method write(org.xml.sax.ContentHandler,java.lang.Object) from ObjectArraySerializer to ListSerializer
+Iteration 2: "Make Field Final" applied at class XmlRpcInvocationException to ParameterDeclaration pCode [in method XmlRpcInvocationException(int,java.lang.String,java.lang.Throwable)]
+Iteration 3: "Decrease Method Visibility" applied at class AbstractReflectiveHandlerMapping\AuthenticationHandler to method isAuthorized(org.apache.xmlrpc.XmlRpcRequest) from package to protected
+Iteration 4: "Make Class Abstract" applied to class XmlRpcServer
+Iteration 5: "Decrease Method Visibility" applied at class Connection\RequestException to method RequestException(org.apache.xmlrpc.webserver.RequestData,java.lang.String) from package to protected
+Iteration 6: "Move Method Up" applied to method execute(org.apache.xmlrpc.XmlRpcRequest) from XmlRpcLocalStreamServer to XmlRpcStreamServer
+Iteration 7: "Decrease Method Visibility" applied at class ServerStreamConnection to method newInputStream() from package to protected
+Iteration 8: "Decrease Method Visibility" applied at class XmlRpcSun14HttpTransport to method newURLConnection(java.net.URL) from protected to public
+Iteration 9: "Make Field Final" applied at class XmlRpcHttpRequestConfigImpl to ParameterDeclaration pUser [in method setBasicUserName(java.lang.String)]
+Iteration 10: "Make Class Concrete" applied to class XmlRpcStreamTransportFactory
+Iteration 11: "Move Method Up" applied to method getTransport() from XmlRpcLiteHttpTransportFactory to XmlRpcTransportFactoryImpl
+Iteration 12: "Move Method Up" applied to method newURLConnection(java.net.URL) from XmlRpcSunHttpTransport to XmlRpcHttpTransport
+Iteration 13: "Remove Class" applied to class XmlRpcLocalStreamServer
+Iteration 14: "Collapse Hierarchy" applied from all elements in XmlRpcLocalStreamTransportFactory to XmlRpcStreamTransportFactory
+Iteration 15: "Decrease Method Visibility" applied at class AbstractReflectiveHandlerMapping\AuthenticationHandler to method isAuthorized(org.apache.xmlrpc.XmlRpcRequest) from protected to public
+Iteration 16: "Remove Method" applied at class XmlRpcWorkerFactory to method getCurrentRequests()
+Iteration 17: "Decrease Method Visibility" applied at class ExtSerializer to method getTagName() from protected to public
+Iteration 18: "Make Class Final" applied to class CalendarParser
+Iteration 19: "Increase Method Visibility" applied at class XmlRpcSun15HttpTransportFactory to method setProxy(java.lang.String,int) from public to protected
+Iteration 20: "Make Field Final" applied at class ThreadPool\Poolable to FieldDeclaration shuttingDown
+Iteration 21: "Make Field Non Static" applied at class XmlRpcStreamServer to field theErrorLogger
+Iteration 22: "Make Class Final" applied to class XmlRpcSunHttpTransportFactory
+Iteration 23: "Decrease Method Visibility" applied at class BooleanParser to method setResult(java.lang.String) from protected to public
+Iteration 24: "Increase Method Visibility" applied at class WebServer to method newXmlRpcStreamServer() from protected to package
+Iteration 25: "Make Class Concrete" applied to class XmlRpcTransportFactoryImpl
+Iteration 26: "Make Class Final" applied to class XmlRpcClientConfigImpl
+Iteration 27: "Decrease Method Visibility" applied at class ServerHttpConnection to method setContentLength(int) from package to protected
+Iteration 28: "Make Field Non Final" applied at class XmlRpcStreamTransport\GzipReqWriter to FieldDeclaration reqWriter
+Iteration 29: "Make Class Final" applied to class DoubleParser
+Iteration 30: "Make Class Final" applied to class XmlRpcSun15HttpTransportFactory
+Iteration 31: "Increase Field Visibility" applied at class RecursiveTypeParserImpl to field cfg from protected to package
+Iteration 32: "Increase Method Visibility" applied at class XmlRpcLiteHttpTransport to method newSocket(boolean,java.lang.String,int) from protected to package
+Iteration 33: "Make Class Abstract" applied to class XmlRpcLiteHttpTransportFactory
+Iteration 34: "Make Class Concrete" applied to class AbstractReflectiveHandlerMapping
+Iteration 35: "Make Method Static" applied at class XmlRpcClientWorkerFactory to method newWorker()
+Iteration 36: "Increase Field Visibility" applied at class AbstractReflectiveHandlerMapping to field handlerMap from protected to package
+
+Time taken to refactor: 422.41s
+
+======== Final Metric Info ========
+Fitness function 1 score: 0.111947
+Fitness function 2 score: 0.944444
+Fitness function 3 score: 0.729167

@@ -1,0 +1,52 @@
+======== Search Information ========
+Search: Multi-Objective Genetic Algorithm
+Generations: 100
+Population Size: 50
+Crossover Probability: 0.200000
+Mutation Probability: 0.800000
+
+======== Initial Metric Info ========
+Fitness function 1 score: 0.000000
+Fitness function 2 score: 0.000000
+Fitness function 3 score: 0.000000
+
+======== Applied Refactorings ========
+Iteration 1: "Make Field Final" applied at class Terminal to ParameterDeclaration prec [in method Terminal(java.lang.String,int,beaver.spec.Terminal.Associativity)]
+Iteration 2: "Make Class Final" applied to class Declaration\Terminals
+Iteration 3: "Make Class Abstract" applied to class Action\Type\Conflict
+Iteration 4: "Make Field Static" applied at class Terminal to field prec
+Iteration 5: "Make Field Final" applied at class State\Factory to LocalVariableDeclaration new_state [in method buildShiftsFrom(beaver.comp.State)]
+Iteration 6: "Make Class Concrete" applied to class GrammarSymbol
+Iteration 7: "Decrease Method Visibility" applied at class Configuration\Set\Factory to method Factory(beaver.spec.Grammar) from package to protected
+Iteration 8: "Make Method Static" applied at class Declaration\Error to method accept(beaver.spec.ast.TreeWalker)
+Iteration 9: "Make Method Static" applied at class SrcReader to method close()
+Iteration 10: "Increase Field Visibility" applied at class ParserGenerator to field SOURCE_FILE_EXT from public to protected
+Iteration 11: "Make Method Final" applied at class Configuration\Set\Factory to method getCore()
+Iteration 12: "Move Method Down" applied to method toString() from GrammarSymbol to NonTerminal
+Iteration 13: "Make Class Abstract" applied to class Action
+Iteration 14: "Remove Method" applied at class GrammarScanner to method yyclose()
+Iteration 15: "Make Method Static" applied at class Production\1259607175 to method compare(java.lang.Object,java.lang.Object)
+Iteration 16: "Remove Method" applied at class IntArray to method compact()
+Iteration 17: "Make Class Concrete" applied to class Declaration
+Iteration 18: "Make Field Static" applied at class State\Factory to field num_states
+Iteration 19: "Make Class Abstract" applied to class Declaration
+Iteration 20: "Decrease Method Visibility" applied at class State\Factory to method buildShiftsFrom(beaver.comp.State) from private to package
+Iteration 21: "Make Method Final" applied at class NonTerminal to method checkNullability()
+Iteration 22: "Decrease Method Visibility" applied at class Terminal\Associativity to method Associativity(java.lang.String) from private to package
+Iteration 23: "Make Class Final" applied to class ParserGenerator
+Iteration 24: "Remove Method" applied at class GrammarScanner to method yyreset(java.io.Reader)
+Iteration 25: "Make Method Static" applied at class ParserGenerator\CompiledParser\734743661 to method compare(java.lang.Object,java.lang.Object)
+Iteration 26: "Decrease Method Visibility" applied at class Configuration\Set\Factory to method Factory(beaver.spec.Grammar) from protected to public
+Iteration 27: "Decrease Method Visibility" applied at class Terminal\Associativity to method Associativity(java.lang.String) from package to protected
+Iteration 28: "Decrease Method Visibility" applied at class Terminal to method Terminal(java.lang.String,int,beaver.spec.Terminal.Associativity) from package to protected
+Iteration 29: "Make Field Final" applied at class Action\Type to ParameterDeclaration name [in method Type(int,java.lang.String)]
+Iteration 30: "Make Method Static" applied at class GrammarTreeRoot to method accept(beaver.spec.ast.TreeWalker)
+Iteration 31: "Increase Field Visibility" applied at class Rule\Definition to field prec_sym_name from public to protected
+Iteration 32: "Make Field Final" applied at class Terminal to ParameterDeclaration type [in method Terminal(java.lang.String,int,beaver.spec.Terminal.Associativity)]
+
+Time taken to refactor: 166.76s
+
+======== Final Metric Info ========
+Fitness function 1 score: 0.366614
+Fitness function 2 score: 0.843750
+Fitness function 3 score: 0.812500

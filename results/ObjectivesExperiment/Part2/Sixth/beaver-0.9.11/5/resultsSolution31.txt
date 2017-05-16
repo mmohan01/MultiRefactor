@@ -1,0 +1,69 @@
+======== Search Information ========
+Search: Multi-Objective Genetic Algorithm
+Generations: 100
+Population Size: 50
+Crossover Probability: 0.200000
+Mutation Probability: 0.800000
+
+======== Initial Metric Info ========
+Fitness function 1 score: 0.000000
+Fitness function 2 score: 0.000000
+Fitness function 3 score: 0.000000
+
+======== Applied Refactorings ========
+Iteration 1: "Make Method Non Final" applied at class GrammarScanner to method yyclose()
+Iteration 2: "Make Method Non Final" applied at class GrammarScanner to method yylength()
+Iteration 3: "Move Method Down" applied to method toString() from GrammarSymbol to NonTerminal
+Iteration 4: "Decrease Method Visibility" applied at class NonTerminal to method NonTerminal(java.lang.String) from package to protected
+Iteration 5: "Decrease Field Visibility" applied at class ParsingTables to field UNUSED_OFFSET from package to protected
+Iteration 6: "Decrease Method Visibility" applied at class Grammar to method Grammar() from package to protected
+Iteration 7: "Make Field Static" applied at class Rule to field lhs_sym
+Iteration 8: "Make Field Static" applied at class Declaration\CodeContainer to field code
+Iteration 9: "Decrease Method Visibility" applied at class Grammar to method Grammar() from protected to public
+Iteration 10: "Remove Method" applied at class IntArray to method compact()
+Iteration 11: "Decrease Method Visibility" applied at class ParsingTables to method insertActions(beaver.comp.Action.List,int) from private to package
+Iteration 12: "Increase Method Visibility" applied at class ParsingTables to method countStates(beaver.comp.State) from package to private
+Iteration 13: "Make Field Non Static" applied at class Production to field DEFAULT_PRECEDENCE_SYMBOL
+Iteration 14: "Make Method Static" applied at class GrammarBuilder\712394298\1038493652 to method visit(beaver.spec.ast.Declaration.Terminals)
+Iteration 15: "Decrease Method Visibility" applied at class Log\Record to method Record(int,int,java.lang.String) from package to protected
+Iteration 16: "Make Method Static" applied at class ParserGenerator\CompiledParser\1869319107 to method compare(java.lang.Object,java.lang.Object)
+Iteration 17: "Increase Field Visibility" applied at class Declaration\TypeOf to field type from public to protected
+Iteration 18: "Decrease Method Visibility" applied at class Production\RHS\Item to method Item(beaver.spec.GrammarSymbol) from package to protected
+Iteration 19: "Decrease Method Visibility" applied at class GrammarSymbol to method GrammarSymbol(java.lang.String) from package to protected
+Iteration 20: "Decrease Method Visibility" applied at class ParserGenerator\CompiledParser to method writeParserActionsArray(beaver.spec.Grammar,beaver.comp.run.Options,java.io.Writer) from private to package
+Iteration 21: "Make Field Non Final" applied at class ParsingTables to FieldDeclaration n_term
+Iteration 22: "Make Field Static" applied at class GrammarTreeRoot to field declarations
+Iteration 23: "Make Field Final" applied at class GrammarBuilder\RuleWalker to ParameterDeclaration node [in method visit(beaver.spec.ast.GrammarTreeRoot)]
+Iteration 24: "Move Method Down" applied to method setLocation(int,int) from Node to Declaration
+Iteration 25: "Decrease Method Visibility" applied at class ParserGenerator to method splitActions(beaver.comp.State) from private to package
+Iteration 26: "Move Field Up" applied to field name from Declaration\NameContainer to Declaration
+Iteration 27: "Remove Method" applied at class GrammarScanner to method yyclose()
+Iteration 28: "Decrease Method Visibility" applied at class State to method splitActions() from package to protected
+Iteration 29: "Make Class Final" applied to class State
+Iteration 30: "Make Field Final" applied at class GrammarScanner to LocalVariableDeclaration j [in method zzUnpackCMap(java.lang.String)]
+Iteration 31: "Increase Method Visibility" applied at class TreeWalker to method visit(beaver.spec.ast.Declaration.NonAssoc) from public to protected
+Iteration 32: "Make Method Final" applied at class GrammarScanner to method nextToken()
+Iteration 33: "Increase Field Visibility" applied at class Rule\Definition\Element to field alias from public to protected
+Iteration 34: "Move Field Up" applied to field sym_name from Rule\Definition\Element to Node
+Iteration 35: "Make Field Non Final" applied at class SrcReader to FieldDeclaration file
+Iteration 36: "Increase Field Visibility" applied at class ParserGenerator to field SOURCE_FILE_EXT from public to protected
+Iteration 37: "Make Method Non Final" applied at class GrammarScanner to method yycharat(int)
+Iteration 38: "Decrease Field Visibility" applied at class IntArray to field data from private to package
+Iteration 39: "Decrease Method Visibility" applied at class ParserGenerator\CompiledParser to method CompiledParser(beaver.spec.Grammar,beaver.comp.ParsingTables) from package to protected
+Iteration 40: "Make Method Final" applied at class Rule\Definition\Element to method getExtUseMark()
+Iteration 41: "Decrease Field Visibility" applied at class BitSet to field bit_bags from private to package
+Iteration 42: "Decrease Field Visibility" applied at class BitSet to field has_bits from private to package
+Iteration 43: "Increase Field Visibility" applied at class Configuration\Set to field core_hash_code from package to private
+Iteration 44: "Remove Method" applied at class GrammarScanner to method yystate()
+Iteration 45: "Move Field Up" applied to field ebnf_sym from Rule\Definition\Element to Node
+Iteration 46: "Decrease Field Visibility" applied at class Log to field errors from private to package
+Iteration 47: "Increase Field Visibility" applied at class Rule\Definition\Element to field alias from protected to package
+Iteration 48: "Make Field Final" applied at class State to ParameterDeclaration num [in method State(int,beaver.comp.Configuration.Set)]
+Iteration 49: "Make Field Static" applied at class GrammarSymbol to field id
+
+Time taken to refactor: 176.96s
+
+======== Final Metric Info ========
+Fitness function 1 score: 0.460416
+Fitness function 2 score: 0.938776
+Fitness function 3 score: 0.857143

@@ -1,0 +1,49 @@
+======== Search Information ========
+Search: Multi-Objective Genetic Algorithm
+Generations: 100
+Population Size: 50
+Crossover Probability: 0.200000
+Mutation Probability: 0.800000
+
+======== Initial Metric Info ========
+Fitness function 1 score: 0.000000
+Fitness function 2 score: 0.000000
+Fitness function 3 score: 0.000000
+
+======== Applied Refactorings ========
+Iteration 1: "Decrease Method Visibility" applied at class XmlRpcHttpTransport to method newReqWriter(org.apache.xmlrpc.XmlRpcRequest) from protected to public
+Iteration 2: "Decrease Method Visibility" applied at class XmlRpcStreamServer to method getRequest(org.apache.xmlrpc.common.XmlRpcStreamRequestConfig,java.io.InputStream) from protected to public
+Iteration 3: "Make Field Static" applied at class XmlRpcStreamTransport\ReqWriterImpl to field request
+Iteration 4: "Make Class Concrete" applied to class XmlRpcStreamTransportFactory
+Iteration 5: "Decrease Method Visibility" applied at class Connection\RequestException to method RequestException(org.apache.xmlrpc.webserver.RequestData,java.lang.String) from package to protected
+Iteration 6: "Collapse Hierarchy" applied from all elements in XmlRpcLocalStreamTransportFactory to XmlRpcStreamTransportFactory
+Iteration 7: "Make Method Static" applied at class XmlRpcCommonsTransportFactory to method getTransport()
+Iteration 8: "Remove Method" applied at class XmlRpcCommonsTransportFactory to method setHttpClient(org.apache.commons.httpclient.HttpClient)
+Iteration 9: "Make Class Final" applied to class XmlRpcServletServer
+Iteration 10: "Decrease Method Visibility" applied at class Connection\RequestException to method RequestException(org.apache.xmlrpc.webserver.RequestData,java.lang.String) from protected to public
+Iteration 11: "Make Class Final" applied to class LongParser
+Iteration 12: "Decrease Method Visibility" applied at class XmlRpcLite14HttpTransport to method newSocket(boolean,java.lang.String,int) from protected to public
+Iteration 13: "Decrease Field Visibility" applied at class XmlRpcLite14HttpTransport to field sslSocketFactory from private to package
+Iteration 14: "Move Field Up" applied to field cfg from RecursiveTypeParserImpl to TypeParserImpl
+Iteration 15: "Decrease Field Visibility" applied at class JaxbTypeFactory to field context from private to package
+Iteration 16: "Decrease Method Visibility" applied at class I2Parser to method setResult(java.lang.String) from protected to public
+Iteration 17: "Make Method Static" applied at class XmlRpcServletServer to method setResponseHeader(org.apache.xmlrpc.common.ServerStreamConnection,java.lang.String,java.lang.String)
+Iteration 18: "Remove Method" applied at class ServerHttpConnection to method setContentLength(int)
+Iteration 19: "Decrease Method Visibility" applied at class XmlRpcSun14HttpTransport to method newURLConnection(java.net.URL) from protected to public
+Iteration 20: "Increase Field Visibility" applied at class XmlRpcLite14HttpTransport to field sslSocketFactory from package to private
+Iteration 21: "Decrease Method Visibility" applied at class XmlRpcListableHandlerMapping to method getListMethods() from package to protected
+Iteration 22: "Make Field Static" applied at class XmlRpcLite14HttpTransportFactory to field sslSocketFactory
+Iteration 23: "Move Field Up" applied to field EX_I2_TAG from I2Serializer to TypeSerializerImpl
+Iteration 24: "Make Method Static" applied at class SerializableParser to method getResult()
+Iteration 25: "Move Method Down" applied to method write(org.xml.sax.ContentHandler,java.lang.Object) from ObjectArraySerializer to ListSerializer
+Iteration 26: "Make Field Final" applied at class XmlRpcLiteHttpTransport to FieldDeclaration ssl
+Iteration 27: "Make Class Abstract" applied to class XmlRpcLiteHttpTransportFactory
+Iteration 28: "Increase Method Visibility" applied at class XmlRpcStreamServer to method setErrorLogger(org.apache.xmlrpc.server.XmlRpcErrorLogger) from public to protected
+Iteration 29: "Move Method Down" applied to method characters(char[],int,int) from AtomicParser to BigDecimalParser
+
+Time taken to refactor: 422.43s
+
+======== Final Metric Info ========
+Fitness function 1 score: 0.118933
+Fitness function 2 score: 0.896552
+Fitness function 3 score: 0.689655

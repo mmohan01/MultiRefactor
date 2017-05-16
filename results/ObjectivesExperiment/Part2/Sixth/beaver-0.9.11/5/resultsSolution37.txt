@@ -1,0 +1,50 @@
+======== Search Information ========
+Search: Multi-Objective Genetic Algorithm
+Generations: 100
+Population Size: 50
+Crossover Probability: 0.200000
+Mutation Probability: 0.800000
+
+======== Initial Metric Info ========
+Fitness function 1 score: 0.000000
+Fitness function 2 score: 0.000000
+Fitness function 3 score: 0.000000
+
+======== Applied Refactorings ========
+Iteration 1: "Decrease Method Visibility" applied at class Production\RHS to method RHS() from package to protected
+Iteration 2: "Make Class Abstract" applied to class Action
+Iteration 3: "Make Field Static" applied at class GrammarTreeRoot to field declarations
+Iteration 4: "Decrease Method Visibility" applied at class Production\RHS to method RHS(beaver.spec.GrammarSymbol,beaver.spec.GrammarSymbol) from package to protected
+Iteration 5: "Make Class Final" applied to class GrammarBuilder
+Iteration 6: "Move Field Up" applied to field is_nullable from NonTerminal to GrammarSymbol
+Iteration 7: "Move Field Down" applied to field is_nullable from GrammarSymbol to NonTerminal
+Iteration 8: "Make Method Static" applied at class ParsingTables to method renumberSymbols(beaver.spec.Grammar,beaver.comp.Action.List[])
+Iteration 9: "Move Field Up" applied to field name from Declaration\NameContainer to Declaration
+Iteration 10: "Remove Method" applied at class GrammarScanner to method yyclose()
+Iteration 11: "Decrease Method Visibility" applied at class State to method splitActions() from package to protected
+Iteration 12: "Make Class Final" applied to class State
+Iteration 13: "Make Field Final" applied at class GrammarScanner to LocalVariableDeclaration j [in method zzUnpackCMap(java.lang.String)]
+Iteration 14: "Increase Method Visibility" applied at class TreeWalker to method visit(beaver.spec.ast.Declaration.NonAssoc) from public to protected
+Iteration 15: "Make Method Final" applied at class GrammarScanner to method nextToken()
+Iteration 16: "Increase Field Visibility" applied at class Rule\Definition\Element to field alias from public to protected
+Iteration 17: "Move Field Up" applied to field sym_name from Rule\Definition\Element to Node
+Iteration 18: "Make Field Non Final" applied at class SrcReader to FieldDeclaration file
+Iteration 19: "Increase Field Visibility" applied at class ParserGenerator to field SOURCE_FILE_EXT from public to protected
+Iteration 20: "Make Method Non Final" applied at class GrammarScanner to method yycharat(int)
+Iteration 21: "Decrease Field Visibility" applied at class IntArray to field data from private to package
+Iteration 22: "Decrease Method Visibility" applied at class ParserGenerator\CompiledParser to method CompiledParser(beaver.spec.Grammar,beaver.comp.ParsingTables) from package to protected
+Iteration 23: "Make Method Final" applied at class Rule\Definition\Element to method getExtUseMark()
+Iteration 24: "Decrease Field Visibility" applied at class BitSet to field bit_bags from private to package
+Iteration 25: "Decrease Field Visibility" applied at class BitSet to field has_bits from private to package
+Iteration 26: "Increase Field Visibility" applied at class Configuration\Set to field core_hash_code from package to private
+Iteration 27: "Remove Method" applied at class GrammarScanner to method yystate()
+Iteration 28: "Move Field Up" applied to field ebnf_sym from Rule\Definition\Element to Node
+Iteration 29: "Decrease Field Visibility" applied at class Log to field errors from private to package
+Iteration 30: "Decrease Method Visibility" applied at class Terminal\Associativity to method Associativity(java.lang.String) from private to package
+
+Time taken to refactor: 176.96s
+
+======== Final Metric Info ========
+Fitness function 1 score: 0.253454
+Fitness function 2 score: 0.966667
+Fitness function 3 score: 0.900000

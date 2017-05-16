@@ -1,0 +1,41 @@
+======== Search Information ========
+Search: Multi-Objective Genetic Algorithm
+Generations: 100
+Population Size: 50
+Crossover Probability: 0.200000
+Mutation Probability: 0.800000
+
+======== Initial Metric Info ========
+Fitness function 1 score: 0.000000
+Fitness function 2 score: 0.000000
+Fitness function 3 score: 0.000000
+
+======== Applied Refactorings ========
+Iteration 1: "Make Class Abstract" applied to class XmlRpcLiteHttpTransportFactory
+Iteration 2: "Make Class Concrete" applied to class XmlRpcStreamTransportFactory
+Iteration 3: "Increase Method Visibility" applied at class TypeParserImpl to method getDocumentLocator() from public to protected
+Iteration 4: "Collapse Hierarchy" applied from all elements in XmlRpcLocalStreamTransportFactory to XmlRpcStreamTransportFactory
+Iteration 5: "Decrease Method Visibility" applied at class JaxbParser to method getExtHandler() from protected to public
+Iteration 6: "Make Class Final" applied to class CharSetXmlWriterFactory
+Iteration 7: "Make Class Concrete" applied to class TypeSerializerImpl
+Iteration 8: "Decrease Method Visibility" applied at class DoubleParser to method setResult(java.lang.String) from protected to public
+Iteration 9: "Decrease Field Visibility" applied at class JaxbParser to field context from private to package
+Iteration 10: "Make Field Final" applied at class XmlRpcLoadException to ParameterDeclaration pMessage [in method XmlRpcLoadException(java.lang.String)]
+Iteration 11: "Remove Method" applied at class XmlRpcClientConfigImpl to method cloneMe()
+Iteration 12: "Make Method Non Static" applied at class XmlRpcSystemImpl to method addSystemHandler(org.apache.xmlrpc.server.PropertyHandlerMapping)
+Iteration 13: "Make Field Final" applied at class XmlRpcServerWorker to ParameterDeclaration pRequest [in method execute(org.apache.xmlrpc.XmlRpcRequest)]
+Iteration 14: "Remove Method" applied at class HttpServletRequestImpl to method getRequestURL()
+Iteration 15: "Decrease Method Visibility" applied at class BigIntegerParser to method setResult(java.lang.String) from protected to public
+Iteration 16: "Decrease Method Visibility" applied at class StringParser to method setResult(java.lang.String) from protected to public
+Iteration 17: "Make Field Static" applied at class XmlRpcClient to field transportFactory
+Iteration 18: "Move Method Up" applied to method newURLConnection(java.net.URL) from XmlRpcSunHttpTransport to XmlRpcHttpTransport
+Iteration 19: "Make Method Final" applied at class SAXParsers to method newXMLReader()
+Iteration 20: "Decrease Field Visibility" applied at class JaxbParser to field handler from private to package
+Iteration 21: "Make Field Final" applied at class ByteArrayParser to ParameterDeclaration pURI [in method startElement(java.lang.String,java.lang.String,java.lang.String,org.xml.sax.Attributes)]
+
+Time taken to refactor: 343.88s
+
+======== Final Metric Info ========
+Fitness function 1 score: 0.113163
+Fitness function 2 score: 0.904762
+Fitness function 3 score: 0.619048

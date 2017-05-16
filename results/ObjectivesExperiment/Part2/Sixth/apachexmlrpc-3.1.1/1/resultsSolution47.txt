@@ -1,0 +1,35 @@
+======== Search Information ========
+Search: Multi-Objective Genetic Algorithm
+Generations: 100
+Population Size: 50
+Crossover Probability: 0.200000
+Mutation Probability: 0.800000
+
+======== Initial Metric Info ========
+Fitness function 1 score: 0.000000
+Fitness function 2 score: 0.000000
+Fitness function 3 score: 0.000000
+
+======== Applied Refactorings ========
+Iteration 1: "Make Field Final" applied at class TypeConverterFactory to ParameterDeclaration pClass [in method getTypeConverter(java.lang.Class)]
+Iteration 2: "Decrease Method Visibility" applied at class XmlRpcController to method getDefaultXmlRpcWorkerFactory() from protected to public
+Iteration 3: "Decrease Method Visibility" applied at class XmlRpcLocalTransport to method isExtensionType(java.lang.Object) from private to package
+Iteration 4: "Decrease Method Visibility" applied at class XmlRpcStreamServer to method getRequest(org.apache.xmlrpc.common.XmlRpcStreamRequestConfig,java.io.InputStream) from protected to public
+Iteration 5: "Make Field Static" applied at class XmlRpcStreamTransport\ReqWriterImpl to field request
+Iteration 6: "Make Class Concrete" applied to class XmlRpcStreamTransportFactory
+Iteration 7: "Decrease Method Visibility" applied at class Connection\RequestException to method RequestException(org.apache.xmlrpc.webserver.RequestData,java.lang.String) from package to protected
+Iteration 8: "Make Class Final" applied to class LongParser
+Iteration 9: "Decrease Method Visibility" applied at class XmlRpcLite14HttpTransport to method newSocket(boolean,java.lang.String,int) from protected to public
+Iteration 10: "Decrease Field Visibility" applied at class XmlRpcLite14HttpTransport to field sslSocketFactory from private to package
+Iteration 11: "Move Field Up" applied to field cfg from RecursiveTypeParserImpl to TypeParserImpl
+Iteration 12: "Make Class Abstract" applied to class XmlRpcLiteHttpTransportFactory
+Iteration 13: "Increase Method Visibility" applied at class XmlRpcStreamServer to method setErrorLogger(org.apache.xmlrpc.server.XmlRpcErrorLogger) from public to protected
+Iteration 14: "Decrease Method Visibility" applied at class ThreadPool\Poolable to method Poolable(java.lang.ThreadGroup,int) from package to protected
+Iteration 15: "Make Field Non Static" applied at class Util to field jaxbElementClass
+
+Time taken to refactor: 422.43s
+
+======== Final Metric Info ========
+Fitness function 1 score: 0.043010
+Fitness function 2 score: 1.000000
+Fitness function 3 score: 0.700000

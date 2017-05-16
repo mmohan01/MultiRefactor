@@ -1,0 +1,50 @@
+======== Search Information ========
+Search: Multi-Objective Genetic Algorithm
+Generations: 100
+Population Size: 50
+Crossover Probability: 0.200000
+Mutation Probability: 0.800000
+
+======== Initial Metric Info ========
+Fitness function 1 score: 0.000000
+Fitness function 2 score: 0.000000
+Fitness function 3 score: 0.000000
+
+======== Applied Refactorings ========
+Iteration 1: "Remove Method" applied at class XmlRpcWriter to method write(org.apache.xmlrpc.XmlRpcRequestConfig,int,java.lang.String)
+Iteration 2: "Increase Method Visibility" applied at class XmlRpcServer to method setTypeConverterFactory(org.apache.xmlrpc.common.TypeConverterFactory) from public to protected
+Iteration 3: "Make Field Final" applied at class XmlRpcClientDefaults to ParameterDeclaration t1 [in method newTransportFactory(org.apache.xmlrpc.client.XmlRpcClient)]
+Iteration 4: "Make Class Concrete" applied to class TypeParserImpl
+Iteration 5: "Make Method Static" applied at class XmlRpcServerWorkerFactory to method newWorker()
+Iteration 6: "Decrease Method Visibility" applied at class XmlRpcSun14HttpTransport to method newURLConnection(java.net.URL) from protected to public
+Iteration 7: "Make Field Static" applied at class ServletConnection to field shuttingDown
+Iteration 8: "Decrease Method Visibility" applied at class ExtParser to method getExtHandler() from protected to public
+Iteration 9: "Make Class Final" applied to class XmlRpcSystemImpl
+Iteration 10: "Decrease Method Visibility" applied at class XmlRpcLocalTransport to method isExtensionType(java.lang.Object) from private to package
+Iteration 11: "Make Class Concrete" applied to class TypeSerializerImpl
+Iteration 12: "Decrease Field Visibility" applied at class XmlRpcSystemImpl to field mapping from private to package
+Iteration 13: "Make Method Static" applied at class NodeSerializer to method serialize(org.xml.sax.ContentHandler,java.lang.Object)
+Iteration 14: "Remove Method" applied at class XmlRpcController to method setMaxThreads(int)
+Iteration 15: "Make Method Final" applied at class XmlRpcTransportFactoryImpl to method getClient()
+Iteration 16: "Increase Field Visibility" applied at class AbstractReflectiveHandlerMapping to field handlerMap from protected to package
+Iteration 17: "Make Field Final" applied at class XmlRpcErrorLogger to ParameterDeclaration pMessage [in method log(java.lang.String)]
+Iteration 18: "Move Method Up" applied to method writeResponse(org.apache.xmlrpc.common.XmlRpcStreamRequestConfig,java.io.OutputStream,java.lang.Object) from ConnectionServer to XmlRpcHttpServer
+Iteration 19: "Remove Method" applied at class Connection\RequestException to method getRequestData()
+Iteration 20: "Make Method Non Final" applied at class Connection to method toHTTPBytes(java.lang.String)
+Iteration 21: "Make Field Static" applied at class XmlRpcSun15HttpTransport to field proxy
+Iteration 22: "Make Field Final" applied at class XmlRpcRequest to ParameterDeclaration pIndex [in method getParameter(int)]
+Iteration 23: "Move Method Down" applied to method isUsingByteArrayOutput(org.apache.xmlrpc.client.XmlRpcHttpClientConfig) from XmlRpcLiteHttpTransport to XmlRpcLite14HttpTransport
+Iteration 24: "Move Method Up" applied to method getTransport() from XmlRpcLiteHttpTransportFactory to XmlRpcTransportFactoryImpl
+Iteration 25: "Move Field Up" applied to field sb from AtomicParser to TypeParserImpl
+Iteration 26: "Make Field Static" applied at class ClientFactory to field typeConverterFactory
+Iteration 27: "Make Method Final" applied at class ListSerializer to method writeData(org.xml.sax.ContentHandler,java.lang.Object)
+Iteration 28: "Make Class Final" applied to class XmlRpcClientException
+Iteration 29: "Make Class Concrete" applied to class AbstractReflectiveHandlerMapping
+Iteration 30: "Decrease Field Visibility" applied at class XmlRpcSunHttpTransport to field userAgent from private to package
+
+Time taken to refactor: 459.02s
+
+======== Final Metric Info ========
+Fitness function 1 score: 0.070329
+Fitness function 2 score: 1.000000
+Fitness function 3 score: 0.600000

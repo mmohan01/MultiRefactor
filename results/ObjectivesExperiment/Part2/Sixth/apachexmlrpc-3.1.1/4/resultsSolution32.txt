@@ -1,0 +1,43 @@
+======== Search Information ========
+Search: Multi-Objective Genetic Algorithm
+Generations: 100
+Population Size: 50
+Crossover Probability: 0.200000
+Mutation Probability: 0.800000
+
+======== Initial Metric Info ========
+Fitness function 1 score: 0.000000
+Fitness function 2 score: 0.000000
+Fitness function 3 score: 0.000000
+
+======== Applied Refactorings ========
+Iteration 1: "Make Field Static" applied at class ServletOutputStreamImpl to field committed
+Iteration 2: "Make Method Final" applied at class I8Parser to method setResult(java.lang.String)
+Iteration 3: "Make Class Abstract" applied to class XmlRpcServer
+Iteration 4: "Make Method Non Static" applied at class HttpServletResponseImpl to method getStatusMessage(int)
+Iteration 5: "Make Field Static" applied at class DefaultXMLWriterFactory to field factory
+Iteration 6: "Increase Method Visibility" applied at class XmlRpcTransportFactoryImpl to method getClient() from public to protected
+Iteration 7: "Decrease Method Visibility" applied at class XmlRpcHttpServerConfig to method isKeepAliveEnabled() from package to protected
+Iteration 8: "Make Field Final" applied at class XmlRpcHandlerMapping to ParameterDeclaration handlerName [in method getHandler(java.lang.String)]
+Iteration 9: "Make Field Non Final" applied at class XmlRpcServer to LocalVariableDeclaration worker [in method execute(org.apache.xmlrpc.XmlRpcRequest)]
+Iteration 10: "Decrease Method Visibility" applied at class XmlRpcSunHttpTransport to method getURLConnection() from protected to public
+Iteration 11: "Move Method Up" applied to method writeResponse(org.apache.xmlrpc.common.XmlRpcStreamRequestConfig,java.io.OutputStream,java.lang.Object) from ConnectionServer to XmlRpcHttpServer
+Iteration 12: "Remove Method" applied at class Connection\RequestException to method getRequestData()
+Iteration 13: "Make Method Non Final" applied at class Connection to method toHTTPBytes(java.lang.String)
+Iteration 14: "Make Field Static" applied at class XmlRpcSun15HttpTransport to field proxy
+Iteration 15: "Make Field Final" applied at class XmlRpcRequest to ParameterDeclaration pIndex [in method getParameter(int)]
+Iteration 16: "Move Method Down" applied to method isUsingByteArrayOutput(org.apache.xmlrpc.client.XmlRpcHttpClientConfig) from XmlRpcLiteHttpTransport to XmlRpcLite14HttpTransport
+Iteration 17: "Move Method Up" applied to method getTransport() from XmlRpcLiteHttpTransportFactory to XmlRpcTransportFactoryImpl
+Iteration 18: "Move Field Up" applied to field sb from AtomicParser to TypeParserImpl
+Iteration 19: "Make Field Static" applied at class ClientFactory to field typeConverterFactory
+Iteration 20: "Make Method Final" applied at class ListSerializer to method writeData(org.xml.sax.ContentHandler,java.lang.Object)
+Iteration 21: "Make Class Final" applied to class XmlRpcClientException
+Iteration 22: "Make Class Concrete" applied to class AbstractReflectiveHandlerMapping
+Iteration 23: "Decrease Field Visibility" applied at class XmlRpcSunHttpTransport to field userAgent from private to package
+
+Time taken to refactor: 459.02s
+
+======== Final Metric Info ========
+Fitness function 1 score: 0.077980
+Fitness function 2 score: 1.000000
+Fitness function 3 score: 0.554348

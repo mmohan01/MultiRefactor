@@ -1,0 +1,42 @@
+======== Search Information ========
+Search: Multi-Objective Genetic Algorithm
+Generations: 100
+Population Size: 50
+Crossover Probability: 0.200000
+Mutation Probability: 0.800000
+
+======== Initial Metric Info ========
+Fitness function 1 score: 0.000000
+Fitness function 2 score: 0.000000
+Fitness function 3 score: 0.000000
+
+======== Applied Refactorings ========
+Iteration 1: "Make Field Final" applied at class Terminal to ParameterDeclaration prec [in method Terminal(java.lang.String,int,beaver.spec.Terminal.Associativity)]
+Iteration 2: "Make Class Final" applied to class Declaration\Terminals
+Iteration 3: "Make Class Abstract" applied to class Action\Type\Conflict
+Iteration 4: "Make Field Static" applied at class Terminal to field prec
+Iteration 5: "Make Field Final" applied at class State\Factory to LocalVariableDeclaration new_state [in method buildShiftsFrom(beaver.comp.State)]
+Iteration 6: "Make Class Concrete" applied to class GrammarSymbol
+Iteration 7: "Decrease Method Visibility" applied at class Configuration\Set\Factory to method Factory(beaver.spec.Grammar) from package to protected
+Iteration 8: "Make Method Static" applied at class Declaration\Error to method accept(beaver.spec.ast.TreeWalker)
+Iteration 9: "Make Method Static" applied at class SrcReader to method close()
+Iteration 10: "Make Field Static" applied at class GrammarParser\Events to field log
+Iteration 11: "Decrease Method Visibility" applied at class Terminal\Associativity to method Associativity(java.lang.String) from private to package
+Iteration 12: "Decrease Method Visibility" applied at class Declaration\NameContainer to method NameContainer(beaver.Symbol) from protected to public
+Iteration 13: "Decrease Method Visibility" applied at class Configuration\Set to method equals(beaver.comp.Configuration.Set) from private to package
+Iteration 14: "Make Field Static" applied at class ParserGenerator\CompiledParser to field tables
+Iteration 15: "Remove Method" applied at class IntArray to method compact()
+Iteration 16: "Decrease Method Visibility" applied at class GrammarBuilder\1707576685\269886287 to method setPrecedence(beaver.spec.ast.Declaration.SymbolsContainer,beaver.spec.Terminal.Associativity) from private to package
+Iteration 17: "Remove Method" applied at class GrammarScanner to method yyclose()
+Iteration 18: "Decrease Method Visibility" applied at class BitSet\Processor to method process(int) from protected to public
+Iteration 19: "Make Field Static" applied at class GrammarScanner to field zzStartRead
+Iteration 20: "Make Field Final" applied at class Declaration\Error to ParameterDeclaration walker [in method accept(beaver.spec.ast.TreeWalker)]
+Iteration 21: "Remove Method" applied at class GrammarScanner to method yyreset(java.io.Reader)
+Iteration 22: "Decrease Method Visibility" applied at class Configuration\Set to method equals(beaver.comp.Configuration.Set) from package to protected
+
+Time taken to refactor: 166.76s
+
+======== Final Metric Info ========
+Fitness function 1 score: 0.296621
+Fitness function 2 score: 0.954545
+Fitness function 3 score: 0.863636
