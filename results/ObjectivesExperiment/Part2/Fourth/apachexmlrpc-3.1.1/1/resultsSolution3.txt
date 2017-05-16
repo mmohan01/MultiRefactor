@@ -1,0 +1,36 @@
+======== Search Information ========
+Search: Multi-Objective Genetic Algorithm
+Generations: 100
+Population Size: 50
+Crossover Probability: 0.200000
+Mutation Probability: 0.800000
+
+======== Initial Metric Info ========
+Fitness function 1 score: 0.000000
+Fitness function 2 score: 0.000000
+Fitness function 3 score: 0.000000
+
+======== Applied Refactorings ========
+Iteration 1: "Make Field Static" applied at class XmlRpcSun15HttpTransportFactory to field proxy
+Iteration 2: "Make Field Static" applied at class XmlRpcCommonsTransport to field client
+Iteration 3: "Make Method Non Final" applied at class Connection to method toHTTPBytes(java.lang.String)
+Iteration 4: "Make Field Final" applied at class XmlRpcListableHandlerMapping to ParameterDeclaration pHandlerName [in method getMethodSignature(java.lang.String)]
+Iteration 5: "Increase Method Visibility" applied at class AbstractReflectiveHandlerMapping to method registerPublicMethods(java.lang.String,java.lang.Class) from protected to package
+Iteration 6: "Decrease Field Visibility" applied at class HttpServletRequestImpl to field contentBytesRemaining from private to package
+Iteration 7: "Decrease Method Visibility" applied at class XmlRpcClientWorkerFactory to method newWorker() from protected to public
+Iteration 8: "Decrease Method Visibility" applied at class HttpServletResponseImpl to method getHttpHeaders(java.lang.Integer) from package to protected
+Iteration 9: "Increase Field Visibility" applied at class I1Serializer to field EX_I1_TAG from public to protected
+Iteration 10: "Make Method Final" applied at class BigIntegerSerializer to method write(org.xml.sax.ContentHandler,java.lang.Object)
+Iteration 11: "Remove Method" applied at class Connection\RequestException to method getRequestData()
+Iteration 12: "Make Field Final" applied at class XmlRpcServerWorker to LocalVariableDeclaration mapping [in method execute(org.apache.xmlrpc.XmlRpcRequest)]
+Iteration 13: "Decrease Method Visibility" applied at class XmlRpcRequestProcessor to method execute(org.apache.xmlrpc.XmlRpcRequest) from package to protected
+Iteration 14: "Make Method Final" applied at class XmlRpcRequestParser to method addResult(java.lang.Object)
+Iteration 15: "Decrease Field Visibility" applied at class XmlRpcServlet to field server from private to package
+Iteration 16: "Make Field Final" applied at class XmlRpcLocalStreamTransport to LocalVariableDeclaration baos [in method writeRequest(org.apache.xmlrpc.client.XmlRpcStreamTransport.ReqWriter)]
+
+Time taken to refactor: 299.01s
+
+======== Final Metric Info ========
+Fitness function 1 score: 0.057767
+Fitness function 2 score: 0.375000
+Fitness function 3 score: 1.000000

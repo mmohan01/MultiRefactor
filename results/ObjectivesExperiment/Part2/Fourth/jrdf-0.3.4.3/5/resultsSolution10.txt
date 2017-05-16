@@ -1,0 +1,44 @@
+======== Search Information ========
+Search: Multi-Objective Genetic Algorithm
+Generations: 100
+Population Size: 50
+Crossover Probability: 0.200000
+Mutation Probability: 0.800000
+
+======== Initial Metric Info ========
+Fitness function 1 score: 0.000000
+Fitness function 2 score: 0.000000
+Fitness function 3 score: 0.000000
+
+======== Applied Refactorings ========
+Iteration 1: "Make Method Static" applied at class AbstractLiteral to method accept(org.jrdf.graph.TypedNodeVisitor)
+Iteration 2: "Make Class Concrete" applied to class AbstractLiteral
+Iteration 3: "Make Class Concrete" applied to class AbstractTripleFactory
+Iteration 4: "Decrease Method Visibility" applied at class ParserBlankNodeFactory to method clear() from package to protected
+Iteration 5: "Decrease Field Visibility" applied at class DefaultAnswer to field closableIterator from private to package
+Iteration 6: "Remove Method" applied at class NullCheckerUnitTest to method testParamAllowed()
+Iteration 7: "Remove Method" applied at class DefaultAnswerUnitTest to method testGetAnswer()
+Iteration 8: "Decrease Method Visibility" applied at class TripleFactoryImpl to method TripleFactoryImpl(org.jrdf.graph.Graph,org.jrdf.graph.GraphElementFactory) from package to protected
+Iteration 9: "Decrease Method Visibility" applied at class BlankNodeImpl to method BlankNodeImpl(java.lang.Long,java.lang.String) from package to protected
+Iteration 10: "Remove Field" applied at class Parser to field DT_IGNORE
+Iteration 11: "Move Field Up" applied to field IS_DEFINED_BY from RDFS to Vocabulary
+Iteration 12: "Move Method Down" applied to method testEmpty() from AbstractGraphUnitTest to GraphImplUnitTest
+Iteration 13: "Decrease Method Visibility" applied at class XmlUtil to method _isAsciiDigit(char) from private to package
+Iteration 14: "Decrease Method Visibility" applied at class Alternative to method containsAll(java.util.Collection) from package to protected
+Iteration 15: "Move Method Up" applied to method getReifySubject() from TripleFactoryUnitTest to AbstractTripleFactoryUnitTest
+Iteration 16: "Make Field Static" applied at class AbstractGraphElementFactoryUnitTest to field elementFactory
+Iteration 17: "Make Method Final" applied at class DefaultQueryExecutor to method executeQuery(org.jrdf.query.Query)
+Iteration 18: "Decrease Method Visibility" applied at class ParseErrorListener to method warning(java.lang.String,int,int) from package to protected
+Iteration 19: "Decrease Method Visibility" applied at class RdfXmlParser to method init(org.jrdf.graph.GraphElementFactory,org.jrdf.parser.ParserBlankNodeFactory) from private to package
+Iteration 20: "Decrease Method Visibility" applied at class ParameterUtilUnitTest to method checkStringNotAllowed(java.lang.String) from private to package
+Iteration 21: "Make Class Concrete" applied to class AbstractBlankNode
+Iteration 22: "Decrease Method Visibility" applied at class StatementHandler to method handleStatement(org.jrdf.graph.SubjectNode,org.jrdf.graph.PredicateNode,org.jrdf.graph.ObjectNode) from package to protected
+Iteration 23: "Decrease Method Visibility" applied at class DefaultSparqlConnection to method finalize() from protected to public
+Iteration 24: "Make Class Abstract" applied to class AbstractTripleFactory
+
+Time taken to refactor: 425.60s
+
+======== Final Metric Info ========
+Fitness function 1 score: 0.191868
+Fitness function 2 score: 0.208333
+Fitness function 3 score: 0.958333

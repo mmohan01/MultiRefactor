@@ -1,0 +1,50 @@
+======== Search Information ========
+Search: Multi-Objective Genetic Algorithm
+Generations: 100
+Population Size: 50
+Crossover Probability: 0.200000
+Mutation Probability: 0.800000
+
+======== Initial Metric Info ========
+Fitness function 1 score: 0.000000
+Fitness function 2 score: 0.000000
+Fitness function 3 score: 0.000000
+
+======== Applied Refactorings ========
+Iteration 1: "Decrease Method Visibility" applied at class NonTerminal to method NonTerminal(java.lang.String) from package to protected
+Iteration 2: "Decrease Method Visibility" applied at class GrammarScanner to method zzScanError(int) from private to package
+Iteration 3: "Increase Field Visibility" applied at class Declaration\TypeOf to field type from public to protected
+Iteration 4: "Decrease Method Visibility" applied at class GrammarScanner to method newSymbol(short) from private to package
+Iteration 5: "Make Method Non Static" applied at class ParserGenerator\CompiledParser to method writeStaticReturns(beaver.spec.Grammar,java.io.Writer)
+Iteration 6: "Make Field Non Final" applied at class GrammarBuilder to LocalVariableDeclaration rules [in method visit(beaver.spec.ast.GrammarTreeRoot)]
+Iteration 7: "Decrease Method Visibility" applied at class GrammarParser\Events to method Events(beaver.comp.util.Log) from package to protected
+Iteration 8: "Decrease Method Visibility" applied at class ParserGenerator\CompiledParser to method CompiledParser(beaver.spec.Grammar,beaver.comp.ParsingTables) from package to protected
+Iteration 9: "Make Class Concrete" applied to class GrammarSymbol
+Iteration 10: "Decrease Method Visibility" applied at class Production\RHS to method RHS(beaver.spec.GrammarSymbol,beaver.spec.GrammarSymbol) from package to protected
+Iteration 11: "Make Method Final" applied at class Declaration\Error to method accept(beaver.spec.ast.TreeWalker)
+Iteration 12: "Make Class Abstract" applied to class Action
+Iteration 13: "Make Class Final" applied to class Make
+Iteration 14: "Make Method Non Final" applied at class GrammarScanner to method yyclose()
+Iteration 15: "Decrease Method Visibility" applied at class ParserGenerator to method splitActions(beaver.comp.State) from private to package
+Iteration 16: "Decrease Method Visibility" applied at class GrammarScanner to method zzScanError(int) from package to protected
+Iteration 17: "Make Method Final" applied at class TreeWalker to method visit(beaver.spec.ast.Declaration.Error)
+Iteration 18: "Make Field Final" applied at class State\Factory to LocalVariableDeclaration new_state [in method buildShiftsFrom(beaver.comp.State)]
+Iteration 19: "Make Method Final" applied at class GrammarBuilder to method writeListsCode(beaver.spec.NonTerminal[])
+Iteration 20: "Decrease Method Visibility" applied at class Log\Record to method Record(int,int,java.lang.String) from package to protected
+Iteration 21: "Make Field Non Static" applied at class Production\RHS to field NONE
+Iteration 22: "Decrease Field Visibility" applied at class GrammarScanner to field matched_text from private to package
+Iteration 23: "Decrease Method Visibility" applied at class Log\Record to method Record(int,int,java.lang.String) from protected to public
+Iteration 24: "Make Field Non Final" applied at class GrammarScanner to FieldDeclaration YYEOF
+Iteration 25: "Decrease Method Visibility" applied at class GrammarScanner to method newSymbol(short,java.lang.Object) from private to package
+Iteration 26: "Decrease Method Visibility" applied at class Terminal to method Terminal(java.lang.String,int,beaver.spec.Terminal.Associativity) from package to protected
+Iteration 27: "Decrease Method Visibility" applied at class Action\Type\Conflict to method Conflict(java.lang.String,java.lang.String) from package to protected
+Iteration 28: "Increase Field Visibility" applied at class Declaration\TypeOf to field type from protected to package
+Iteration 29: "Increase Method Visibility" applied at class ParserGenerator\CompiledParser to method writeActionsReport(java.io.File,java.lang.String) from public to protected
+Iteration 30: "Move Method Down" applied to method toString() from GrammarSymbol to NonTerminal
+
+Time taken to refactor: 165.65s
+
+======== Final Metric Info ========
+Fitness function 1 score: 0.077609
+Fitness function 2 score: 0.366667
+Fitness function 3 score: 0.900000

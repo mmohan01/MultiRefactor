@@ -1,0 +1,51 @@
+======== Search Information ========
+Search: Multi-Objective Genetic Algorithm
+Generations: 100
+Population Size: 50
+Crossover Probability: 0.200000
+Mutation Probability: 0.800000
+
+======== Initial Metric Info ========
+Fitness function 1 score: 0.000000
+Fitness function 2 score: 0.000000
+Fitness function 3 score: 0.000000
+
+======== Applied Refactorings ========
+Iteration 1: "Make Field Static" applied at class ByteArrayParser to field decoder
+Iteration 2: "Make Method Static" applied at class Connection to method close()
+Iteration 3: "Decrease Method Visibility" applied at class XmlRpcMetaDataHandler to method getSignatures() from package to protected
+Iteration 4: "Decrease Method Visibility" applied at class ServerHttpConnection to method setContentLength(int) from package to protected
+Iteration 5: "Decrease Method Visibility" applied at class MapParser to method addResult(java.lang.Object) from protected to public
+Iteration 6: "Decrease Method Visibility" applied at class ServerHttpConnection to method setResponseHeader(java.lang.String,java.lang.String) from package to protected
+Iteration 7: "Make Field Static" applied at class XmlRpcClientWorker to field factory
+Iteration 8: "Decrease Field Visibility" applied at class XmlRpcServletServer\ServletStreamConnection to field request from private to package
+Iteration 9: "Make Field Non Final" applied at class DoubleSerializer to FieldDeclaration DOUBLE_TAG
+Iteration 10: "Make Method Non Final" applied at class Connection to method toHTTPBytes(java.lang.String)
+Iteration 11: "Decrease Method Visibility" applied at class TypeParserImpl to method isEmpty(char[],int,int) from protected to public
+Iteration 12: "Decrease Method Visibility" applied at class BigIntegerParser to method setResult(java.lang.String) from protected to public
+Iteration 13: "Make Class Concrete" applied to class XmlRpcStreamTransportFactory
+Iteration 14: "Increase Field Visibility" applied at class JaxbSerializer to field JAXB_TAG from public to protected
+Iteration 15: "Increase Field Visibility" applied at class FloatSerializer to field EX_FLOAT_TAG from public to protected
+Iteration 16: "Decrease Method Visibility" applied at class TypeFactory to method getSerializer(org.apache.xmlrpc.common.XmlRpcStreamConfig,java.lang.Object) from package to protected
+Iteration 17: "Make Field Static" applied at class TypeConverterFactoryImpl\IdentityTypeConverter to field clazz
+Iteration 18: "Decrease Method Visibility" applied at class XmlRpcServletServer to method isContentLengthRequired(org.apache.xmlrpc.common.XmlRpcStreamRequestConfig) from protected to public
+Iteration 19: "Make Field Static" applied at class XmlRpcHttpRequestConfigImpl to field enabledForExceptions
+Iteration 20: "Make Method Non Static" applied at class HttpServletResponseImpl to method getStatusMessage(int)
+Iteration 21: "Make Class Final" applied to class ByteArraySerializer
+Iteration 22: "Make Field Static" applied at class JaxbParser to field context
+Iteration 23: "Make Method Final" applied at class XmlRpcCommonsTransport\201527845\274109593 to method writeRequest(java.io.OutputStream)
+Iteration 24: "Decrease Method Visibility" applied at class ObjectArrayParser to method addResult(java.lang.Object) from protected to public
+Iteration 25: "Move Method Down" applied to method getOutputStream(org.apache.xmlrpc.common.ServerStreamConnection,org.apache.xmlrpc.common.XmlRpcStreamRequestConfig,java.io.OutputStream) from XmlRpcHttpServer to ConnectionServer
+Iteration 26: "Increase Method Visibility" applied at class RecursiveTypeParserImpl to method startValueTag() from protected to package
+Iteration 27: "Make Class Final" applied to class NodeSerializer
+Iteration 28: "Make Field Final" applied at class ServletWebServer to ParameterDeclaration pWebServer [in method newTask(org.apache.xmlrpc.webserver.WebServer,org.apache.xmlrpc.server.XmlRpcStreamServer,java.net.Socket)]
+Iteration 29: "Decrease Method Visibility" applied at class XmlRpcServlet to method newXmlRpcServer(javax.servlet.ServletConfig) from protected to public
+Iteration 30: "Increase Field Visibility" applied at class JaxbSerializer to field JAXB_TAG from protected to package
+Iteration 31: "Collapse Hierarchy" applied from all elements in XmlRpcLocalStreamTransportFactory to XmlRpcStreamTransportFactory
+
+Time taken to refactor: 322.16s
+
+======== Final Metric Info ========
+Fitness function 1 score: 0.100238
+Fitness function 2 score: 0.281250
+Fitness function 3 score: 0.935484

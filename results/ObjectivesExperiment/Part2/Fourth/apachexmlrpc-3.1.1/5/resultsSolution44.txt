@@ -1,0 +1,42 @@
+======== Search Information ========
+Search: Multi-Objective Genetic Algorithm
+Generations: 100
+Population Size: 50
+Crossover Probability: 0.200000
+Mutation Probability: 0.800000
+
+======== Initial Metric Info ========
+Fitness function 1 score: 0.000000
+Fitness function 2 score: 0.000000
+Fitness function 3 score: 0.000000
+
+======== Applied Refactorings ========
+Iteration 1: "Make Class Final" applied to class LongParser
+Iteration 2: "Make Method Final" applied at class LocalStreamConnection\LocalServerStreamConnection to method close()
+Iteration 3: "Decrease Method Visibility" applied at class BaseXmlWriterFactory to method newXmlWriter() from protected to public
+Iteration 4: "Make Class Final" applied to class Connection
+Iteration 5: "Move Method Down" applied to method writeRequest(org.apache.xmlrpc.client.XmlRpcStreamTransport.ReqWriter) from XmlRpcSunHttpTransport to XmlRpcSun14HttpTransport
+Iteration 6: "Make Field Static" applied at class XmlRpcServletServer\ServletStreamConnection to field request
+Iteration 7: "Make Field Final" applied at class XmlRpcServletServer to ParameterDeclaration e [in method execute(javax.servlet.http.HttpServletRequest,javax.servlet.http.HttpServletResponse)]
+Iteration 8: "Make Field Non Final" applied at class WebServer to FieldDeclaration accept
+Iteration 9: "Decrease Method Visibility" applied at class ServletWebServer to method newTask(org.apache.xmlrpc.webserver.WebServer,org.apache.xmlrpc.server.XmlRpcStreamServer,java.net.Socket) from protected to public
+Iteration 10: "Decrease Method Visibility" applied at class XmlRpcStreamConfig to method getEncoding() from package to protected
+Iteration 11: "Move Method Down" applied to method setRequestHeader(java.lang.String,java.lang.String) from XmlRpcSunHttpTransport to XmlRpcSun14HttpTransport
+Iteration 12: "Make Field Final" applied at class DoubleParser to ParameterDeclaration pResult [in method setResult(java.lang.String)]
+Iteration 13: "Make Field Final" applied at class CalendarSerializer to ParameterDeclaration pHandler [in method write(org.xml.sax.ContentHandler,java.lang.Object)]
+Iteration 14: "Move Method Down" applied to method setRequestHeader(java.lang.String,java.lang.String) from XmlRpcSun14HttpTransport to XmlRpcSun15HttpTransport
+Iteration 15: "Make Method Non Static" applied at class XmlRpcSystemImpl to method addSystemHandler(org.apache.xmlrpc.server.PropertyHandlerMapping)
+Iteration 16: "Make Field Static" applied at class XmlRpcLocalStreamTransportFactory to field server
+Iteration 17: "Decrease Method Visibility" applied at class XmlRpcServlet to method handleInitParameters(javax.servlet.ServletConfig) from private to package
+Iteration 18: "Make Field Final" applied at class XmlRpcHandler to ParameterDeclaration pRequest [in method execute(org.apache.xmlrpc.XmlRpcRequest)]
+Iteration 19: "Make Field Non Final" applied at class FloatSerializer to FieldDeclaration FLOAT_TAG
+Iteration 20: "Decrease Method Visibility" applied at class XmlRpcStreamRequestConfig to method isGzipRequesting() from package to protected
+Iteration 21: "Increase Method Visibility" applied at class RequestData to method getMethod() from public to protected
+Iteration 22: "Decrease Method Visibility" applied at class HttpServletResponseImpl to method getHeader(java.lang.String) from private to package
+
+Time taken to refactor: 328.90s
+
+======== Final Metric Info ========
+Fitness function 1 score: 0.061476
+Fitness function 2 score: 0.318182
+Fitness function 3 score: 0.954545

@@ -1,0 +1,28 @@
+======== Search Information ========
+Search: Multi-Objective Genetic Algorithm
+Generations: 100
+Population Size: 50
+Crossover Probability: 0.200000
+Mutation Probability: 0.800000
+
+======== Initial Metric Info ========
+Fitness function 1 score: 0.000000
+Fitness function 2 score: 0.000000
+Fitness function 3 score: 0.000000
+
+======== Applied Refactorings ========
+Iteration 1: "Move Method Down" applied to method characters(char[],int,int) from AtomicParser to BigDecimalParser
+Iteration 2: "Remove Method" applied at class LocalStreamConnection to method getRequest()
+Iteration 3: "Move Method Down" applied to method getOutputStream(org.apache.xmlrpc.common.ServerStreamConnection,org.apache.xmlrpc.common.XmlRpcStreamRequestConfig,java.io.OutputStream) from XmlRpcHttpServer to ConnectionServer
+Iteration 4: "Decrease Method Visibility" applied at class ServerStreamConnection to method close() from package to protected
+Iteration 5: "Decrease Method Visibility" applied at class ServerHttpConnection to method setContentLength(int) from package to protected
+Iteration 6: "Make Field Final" applied at class ServletWebServer to ParameterDeclaration pWebServer [in method newTask(org.apache.xmlrpc.webserver.WebServer,org.apache.xmlrpc.server.XmlRpcStreamServer,java.net.Socket)]
+Iteration 7: "Decrease Method Visibility" applied at class XmlRpcServlet to method newXmlRpcServer(javax.servlet.ServletConfig) from protected to public
+Iteration 8: "Increase Method Visibility" applied at class HttpServletRequestImpl to method readLine(byte[]) from protected to package
+
+Time taken to refactor: 322.16s
+
+======== Final Metric Info ========
+Fitness function 1 score: 0.013687
+Fitness function 2 score: 0.625000
+Fitness function 3 score: 1.000000
