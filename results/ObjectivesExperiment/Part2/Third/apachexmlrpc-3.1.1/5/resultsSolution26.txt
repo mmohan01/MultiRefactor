@@ -1,0 +1,35 @@
+======== Search Information ========
+Search: Multi-Objective Genetic Algorithm
+Generations: 100
+Population Size: 50
+Crossover Probability: 0.200000
+Mutation Probability: 0.800000
+
+======== Initial Metric Info ========
+Fitness function 1 score: 0.000000
+Fitness function 2 score: 0.000000
+
+======== Applied Refactorings ========
+Iteration 1: "Make Method Final" applied at class BaseXmlWriterFactory to method getXmlWriter(org.apache.xmlrpc.common.XmlRpcStreamConfig,java.io.OutputStream)
+Iteration 2: "Make Class Abstract" applied to class XmlRpcServer
+Iteration 3: "Decrease Method Visibility" applied at class XmlRpcHttpTransport to method newReqWriter(org.apache.xmlrpc.XmlRpcRequest) from protected to public
+Iteration 4: "Make Class Concrete" applied to class XmlRpcConfigImpl
+Iteration 5: "Make Field Final" applied at class BooleanParser to ParameterDeclaration pResult [in method setResult(java.lang.String)]
+Iteration 6: "Move Field Up" applied to field USER_AGENT from XmlRpcHttpTransport to XmlRpcStreamTransport
+Iteration 7: "Make Class Abstract" applied to class XmlRpcConfigImpl
+Iteration 8: "Make Class Final" applied to class DoubleSerializer
+Iteration 9: "Make Field Static" applied at class XmlRpcClientWorker to field factory
+Iteration 10: "Remove Method" applied at class XmlRpcClientConfigImpl to method setUserAgent(java.lang.String)
+Iteration 11: "Decrease Method Visibility" applied at class XmlRpcResponseParser to method addResult(java.lang.Object) from protected to public
+Iteration 12: "Decrease Field Visibility" applied at class ServletConnection to field shuttingDown from private to package
+Iteration 13: "Increase Field Visibility" applied at class ServletConnection to field shuttingDown from package to private
+Iteration 14: "Remove Method" applied at class XmlRpcClient to method setXmlWriterFactory(org.apache.xmlrpc.serializer.XmlWriterFactory)
+Iteration 15: "Move Field Down" applied to field USER_AGENT from XmlRpcStreamTransport to XmlRpcHttpTransport
+Iteration 16: "Make Class Abstract" applied to class WebServer
+Iteration 17: "Move Method Down" applied to method writeRequest(org.apache.xmlrpc.client.XmlRpcStreamTransport.ReqWriter) from XmlRpcSunHttpTransport to XmlRpcSun14HttpTransport
+
+Time taken to refactor: 379.83s
+
+======== Final Metric Info ========
+Fitness function 1 score: 0.051390
+Fitness function 2 score: 0.676471

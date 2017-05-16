@@ -1,0 +1,43 @@
+======== Search Information ========
+Search: Multi-Objective Genetic Algorithm
+Generations: 100
+Population Size: 50
+Crossover Probability: 0.200000
+Mutation Probability: 0.800000
+
+======== Initial Metric Info ========
+Fitness function 1 score: 0.000000
+Fitness function 2 score: 0.000000
+
+======== Applied Refactorings ========
+Iteration 1: "Decrease Method Visibility" applied at class AbstractTripleFactory to method reallyReifyTriple(org.jrdf.graph.SubjectNode,org.jrdf.graph.PredicateNode,org.jrdf.graph.ObjectNode,org.jrdf.graph.Node) from private to package
+Iteration 2: "Make Class Final" applied to class JrdfExample
+Iteration 3: "Make Class Concrete" applied to class AbstractTriple
+Iteration 4: "Make Class Final" applied to class TripleFactoryImpl
+Iteration 5: "Make Field Final" applied at class Graph to ParameterDeclaration subject [in method add(org.jrdf.graph.SubjectNode,org.jrdf.graph.PredicateNode,org.jrdf.graph.ObjectNode)]
+Iteration 6: "Decrease Method Visibility" applied at class TypedNodeVisitor to method visitURIReference(org.jrdf.graph.URIReference) from package to protected
+Iteration 7: "Make Class Final" applied to class DefaultQueryExecutorUnitTest
+Iteration 8: "Make Method Non Static" applied at class UIDGeneratorUnitTest to method suite()
+Iteration 9: "Make Class Non Final" applied to class EmtpyStringChecker
+Iteration 10: "Remove Method" applied at class Vocabulary to method getResources()
+Iteration 11: "Make Class Concrete" applied to class AbstractTripleFactory
+Iteration 12: "Make Method Non Static" applied at class ParameterTestUtil to method invokeMethod(java.lang.Object,java.lang.String,java.lang.Class,java.lang.String)
+Iteration 13: "Increase Method Visibility" applied at class DefaultSparqlConnectionUnitTest to method testExecuteQuery() from public to protected
+Iteration 14: "Make Method Non Static" applied at class UIDGenerator to method getClassLoaderId()
+Iteration 15: "Make Class Non Final" applied to class ParameterTestUtil
+Iteration 16: "Make Field Static" applied at class AbstractTripleFactoryUnitTest to field graph
+Iteration 17: "Make Field Static" applied at class GraphImpl to field index120
+Iteration 18: "Make Field Non Final" applied at class AbstractGraphElementFactoryUnitTest to LocalVariableDeclaration TEST_STR1 [in method testCreateLiterals()]
+Iteration 19: "Make Class Final" applied to class TypedNodeVisitorAdapter
+Iteration 20: "Make Class Final" applied to class UIDGenerator
+Iteration 21: "Decrease Method Visibility" applied at class Container to method add(java.lang.Object) from package to protected
+Iteration 22: "Make Field Static" applied at class BlankNodeImpl to field uid
+Iteration 23: "Decrease Method Visibility" applied at class GraphIterator to method GraphIterator(java.util.Iterator,org.jrdf.graph.GraphElementFactory,org.jrdf.graph.mem.GraphHandler) from package to protected
+Iteration 24: "Make Class Final" applied to class MockClosableIterator
+Iteration 25: "Move Field Up" applied to field VALUE from RDF to Vocabulary
+
+Time taken to refactor: 341.84s
+
+======== Final Metric Info ========
+Fitness function 1 score: 0.067168
+Fitness function 2 score: 0.450000

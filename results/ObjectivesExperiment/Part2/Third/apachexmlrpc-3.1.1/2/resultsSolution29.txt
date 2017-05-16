@@ -1,0 +1,42 @@
+======== Search Information ========
+Search: Multi-Objective Genetic Algorithm
+Generations: 100
+Population Size: 50
+Crossover Probability: 0.200000
+Mutation Probability: 0.800000
+
+======== Initial Metric Info ========
+Fitness function 1 score: 0.000000
+Fitness function 2 score: 0.000000
+
+======== Applied Refactorings ========
+Iteration 1: "Make Field Static" applied at class XmlRpcResponseParser to field errorCause
+Iteration 2: "Make Field Static" applied at class XmlRpcSun15HttpTransport to field proxy
+Iteration 3: "Make Field Static" applied at class ServletConnection to field servlet
+Iteration 4: "Decrease Field Visibility" applied at class ReflectiveXmlRpcMetaDataHandler to field signatures from private to package
+Iteration 5: "Make Method Static" applied at class TypeSerializerImpl to method write(org.xml.sax.ContentHandler,java.lang.String,char[])
+Iteration 6: "Move Method Down" applied to method getOutputStream(org.apache.xmlrpc.common.ServerStreamConnection,org.apache.xmlrpc.common.XmlRpcStreamRequestConfig,java.io.OutputStream) from XmlRpcHttpServer to ConnectionServer
+Iteration 7: "Make Class Final" applied to class JaxbParser
+Iteration 8: "Move Field Up" applied to field sb from AtomicParser to TypeParserImpl
+Iteration 9: "Make Field Final" applied at class ReflectiveXmlRpcHandler to ParameterDeclaration pRequest [in method execute(org.apache.xmlrpc.XmlRpcRequest)]
+Iteration 10: "Make Class Final" applied to class XmlRpcNotAuthorizedException
+Iteration 11: "Remove Method" applied at class HttpServletRequestImpl to method getHttpVersion()
+Iteration 12: "Increase Method Visibility" applied at class XmlRpcSunHttpTransport to method newURLConnection(java.net.URL) from protected to package
+Iteration 13: "Make Class Non Final" applied to class JaxbParser
+Iteration 14: "Decrease Method Visibility" applied at class I1Parser to method setResult(java.lang.String) from protected to public
+Iteration 15: "Decrease Method Visibility" applied at class XmlRpcHttpServerConfig to method isKeepAliveEnabled() from package to protected
+Iteration 16: "Make Class Abstract" applied to class XmlRpcLiteHttpTransportFactory
+Iteration 17: "Make Field Non Final" applied at class Util to FieldDeclaration jaxbElementClass
+Iteration 18: "Increase Method Visibility" applied at class XmlRpcServerConfigImpl to method setKeepAliveEnabled(boolean) from public to protected
+Iteration 19: "Make Class Concrete" applied to class XmlRpcStreamServer
+Iteration 20: "Make Field Final" applied at class ByteArrayParser\2029667363\1499775102 to ParameterDeclaration pOffset [in method writeBuffer(byte[],int,int)]
+Iteration 21: "Decrease Method Visibility" applied at class TypeFactoryImpl\641073873\603126512 to method getTimeZone() from protected to public
+Iteration 22: "Move Field Up" applied to field USER_AGENT from XmlRpcHttpTransport to XmlRpcStreamTransport
+Iteration 23: "Make Class Final" applied to class XmlRpcCommonsTransport
+Iteration 24: "Make Method Non Static" applied at class HttpServletResponseImpl to method getStatusMessage(int)
+
+Time taken to refactor: 364.52s
+
+======== Final Metric Info ========
+Fitness function 1 score: 0.054609
+Fitness function 2 score: 0.656250

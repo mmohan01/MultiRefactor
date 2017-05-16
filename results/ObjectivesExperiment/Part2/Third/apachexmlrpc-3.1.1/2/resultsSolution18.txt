@@ -1,0 +1,32 @@
+======== Search Information ========
+Search: Multi-Objective Genetic Algorithm
+Generations: 100
+Population Size: 50
+Crossover Probability: 0.200000
+Mutation Probability: 0.800000
+
+======== Initial Metric Info ========
+Fitness function 1 score: 0.000000
+Fitness function 2 score: 0.000000
+
+======== Applied Refactorings ========
+Iteration 1: "Make Field Static" applied at class XmlRpcResponseParser to field errorCause
+Iteration 2: "Make Field Static" applied at class XmlRpcSun15HttpTransport to field proxy
+Iteration 3: "Make Field Static" applied at class ServletConnection to field servlet
+Iteration 4: "Decrease Field Visibility" applied at class ReflectiveXmlRpcMetaDataHandler to field signatures from private to package
+Iteration 5: "Make Method Static" applied at class TypeSerializerImpl to method write(org.xml.sax.ContentHandler,java.lang.String,char[])
+Iteration 6: "Increase Field Visibility" applied at class TypeSerializerImpl to field ZERO_ATTRIBUTES from protected to package
+Iteration 7: "Decrease Method Visibility" applied at class TypeParserImpl to method isEmpty(char[],int,int) from protected to public
+Iteration 8: "Move Method Down" applied to method getOutputStream(org.apache.xmlrpc.common.ServerStreamConnection,org.apache.xmlrpc.common.XmlRpcStreamRequestConfig,java.io.OutputStream) from XmlRpcHttpServer to ConnectionServer
+Iteration 9: "Make Class Final" applied to class JaxbParser
+Iteration 10: "Make Method Final" applied at class XmlRpcCommonsTransport to method setContentLength(int)
+Iteration 11: "Increase Method Visibility" applied at class XmlRpcLiteHttpTransport to method newSocket(boolean,java.lang.String,int) from protected to package
+Iteration 12: "Decrease Method Visibility" applied at class XmlRpcHttpServerConfig to method isKeepAliveEnabled() from package to protected
+Iteration 13: "Make Class Abstract" applied to class XmlRpcLiteHttpTransportFactory
+Iteration 14: "Make Field Static" applied at class JaxbSerializer to field context
+
+Time taken to refactor: 364.52s
+
+======== Final Metric Info ========
+Fitness function 1 score: 0.068327
+Fitness function 2 score: 0.660714

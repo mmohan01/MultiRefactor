@@ -1,0 +1,37 @@
+======== Search Information ========
+Search: Multi-Objective Genetic Algorithm
+Generations: 100
+Population Size: 50
+Crossover Probability: 0.200000
+Mutation Probability: 0.800000
+
+======== Initial Metric Info ========
+Fitness function 1 score: 0.000000
+Fitness function 2 score: 0.000000
+
+======== Applied Refactorings ========
+Iteration 1: "Make Class Final" applied to class Declaration\Imports
+Iteration 2: "Make Class Abstract" applied to class Action\Type\Conflict
+Iteration 3: "Make Method Non Static" applied at class ParsingTables to method countStates(beaver.comp.State)
+Iteration 4: "Move Method Down" applied to method setLocation(int,int) from Node to Declaration
+Iteration 5: "Increase Field Visibility" applied at class SrcReader to field txt from protected to package
+Iteration 6: "Move Field Up" applied to field sym_name from Rule\Definition\Element to Node
+Iteration 7: "Decrease Method Visibility" applied at class GrammarSymbol to method GrammarSymbol(java.lang.String) from package to protected
+Iteration 8: "Decrease Method Visibility" applied at class Production\RHS\Item to method Item(beaver.spec.GrammarSymbol) from package to protected
+Iteration 9: "Decrease Field Visibility" applied at class ParsingTables to field last_action_index from package to protected
+Iteration 10: "Decrease Method Visibility" applied at class GrammarBuilder to method writeListsCode(beaver.spec.NonTerminal[]) from private to package
+Iteration 11: "Remove Method" applied at class IntArray to method compact()
+Iteration 12: "Increase Field Visibility" applied at class Grammar to field EBNF_LIST_TYPE from public to protected
+Iteration 13: "Make Field Static" applied at class GrammarParser\Events to field log
+Iteration 14: "Make Method Final" applied at class Declaration\Error to method accept(beaver.spec.ast.TreeWalker)
+Iteration 15: "Decrease Method Visibility" applied at class BitSet\Processor to method process(int) from protected to public
+Iteration 16: "Decrease Method Visibility" applied at class GrammarSymbol to method GrammarSymbol(java.lang.String) from protected to public
+Iteration 17: "Decrease Method Visibility" applied at class Log\Record to method Record(int,int,java.lang.String) from package to protected
+Iteration 18: "Increase Method Visibility" applied at class TreeWalker to method visit(beaver.spec.ast.Declaration.TypeOf) from public to protected
+Iteration 19: "Move Field Up" applied to field defs from Rule to Node
+
+Time taken to refactor: 193.66s
+
+======== Final Metric Info ========
+Fitness function 1 score: 0.360619
+Fitness function 2 score: 0.947368

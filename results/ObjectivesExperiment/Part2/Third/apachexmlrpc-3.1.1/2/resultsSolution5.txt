@@ -1,0 +1,41 @@
+======== Search Information ========
+Search: Multi-Objective Genetic Algorithm
+Generations: 100
+Population Size: 50
+Crossover Probability: 0.200000
+Mutation Probability: 0.800000
+
+======== Initial Metric Info ========
+Fitness function 1 score: 0.000000
+Fitness function 2 score: 0.000000
+
+======== Applied Refactorings ========
+Iteration 1: "Make Class Abstract" applied to class XmlRpcServer
+Iteration 2: "Make Field Static" applied at class XmlRpcLite14HttpTransport to field sslSocketFactory
+Iteration 3: "Move Field Up" applied to field sb from AtomicParser to TypeParserImpl
+Iteration 4: "Make Field Final" applied at class ReflectiveXmlRpcHandler to ParameterDeclaration pRequest [in method execute(org.apache.xmlrpc.XmlRpcRequest)]
+Iteration 5: "Make Class Final" applied to class XmlRpcNotAuthorizedException
+Iteration 6: "Move Method Up" applied to method newSocket(boolean,java.lang.String,int) from XmlRpcLiteHttpTransport to XmlRpcHttpTransport
+Iteration 7: "Make Class Abstract" applied to class XmlRpcLiteHttpTransportFactory
+Iteration 8: "Decrease Method Visibility" applied at class XmlRpcSun14HttpTransport to method newURLConnection(java.net.URL) from protected to public
+Iteration 9: "Remove Method" applied at class HttpServletRequestImpl to method getHttpVersion()
+Iteration 10: "Increase Method Visibility" applied at class XmlRpcSunHttpTransport to method newURLConnection(java.net.URL) from protected to package
+Iteration 11: "Remove Method" applied at class LocalStreamConnection to method getRequest()
+Iteration 12: "Decrease Method Visibility" applied at class RecursiveTypeParserImpl to method endValueTag() from protected to public
+Iteration 13: "Move Method Down" applied to method getOutputStream(org.apache.xmlrpc.common.ServerStreamConnection,org.apache.xmlrpc.common.XmlRpcStreamRequestConfig,java.io.OutputStream) from XmlRpcHttpServer to ConnectionServer
+Iteration 14: "Make Class Final" applied to class JaxbParser
+Iteration 15: "Make Method Final" applied at class XmlRpcCommonsTransport to method setContentLength(int)
+Iteration 16: "Decrease Method Visibility" applied at class XmlRpcHttpServerConfig to method isKeepAliveEnabled() from package to protected
+Iteration 17: "Decrease Method Visibility" applied at class ExtSerializer to method getTagName() from protected to public
+Iteration 18: "Make Field Static" applied at class XmlRpcSun15HttpTransport to field proxy
+Iteration 19: "Make Field Static" applied at class ServletConnection to field servlet
+Iteration 20: "Decrease Field Visibility" applied at class ReflectiveXmlRpcMetaDataHandler to field signatures from private to package
+Iteration 21: "Make Method Static" applied at class TypeSerializerImpl to method write(org.xml.sax.ContentHandler,java.lang.String,char[])
+Iteration 22: "Make Method Final" applied at class DefaultXMLWriterFactory to method getXmlWriter(org.apache.xmlrpc.common.XmlRpcStreamConfig,java.io.OutputStream)
+Iteration 23: "Remove Method" applied at class XmlRpcClient to method setXmlWriterFactory(org.apache.xmlrpc.serializer.XmlWriterFactory)
+
+Time taken to refactor: 364.52s
+
+======== Final Metric Info ========
+Fitness function 1 score: 0.087464
+Fitness function 2 score: 0.673913
