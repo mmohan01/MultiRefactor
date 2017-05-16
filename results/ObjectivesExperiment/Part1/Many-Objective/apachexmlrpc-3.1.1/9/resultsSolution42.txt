@@ -1,0 +1,51 @@
+======== Search Information ========
+Search: Many-Objective Genetic Algorithm
+Generations: 100
+Population Size: 50
+Crossover Probability: 0.200000
+Mutation Probability: 0.800000
+
+======== Initial Metric Info ========
+Fitness function 1 score: 0.000000
+Fitness function 2 score: 0.000000
+Fitness function 3 score: 0.000000
+Fitness function 4 score: 0.000000
+
+======== Applied Refactorings ========
+Iteration 1: "Make Class Abstract" applied to class XmlRpcServer
+Iteration 2: "Make Method Static" applied at class ConnectionServer to method writeError(org.apache.xmlrpc.common.XmlRpcStreamRequestConfig,java.io.OutputStream,java.lang.Throwable)
+Iteration 3: "Make Field Static" applied at class XmlRpcHttpRequestConfigImpl to field enabledForExceptions
+Iteration 4: "Decrease Method Visibility" applied at class I2Parser to method setResult(java.lang.String) from protected to public
+Iteration 5: "Move Method Down" applied to method isUsingByteArrayOutput(org.apache.xmlrpc.client.XmlRpcHttpClientConfig) from XmlRpcLiteHttpTransport to XmlRpcLite14HttpTransport
+Iteration 6: "Move Field Up" applied to field EX_I2_TAG from I2Serializer to TypeSerializerImpl
+Iteration 7: "Decrease Method Visibility" applied at class BaseXmlWriterFactory to method newXmlWriter() from protected to public
+Iteration 8: "Decrease Method Visibility" applied at class XmlRpcSunHttpTransport to method newURLConnection(java.net.URL) from protected to public
+Iteration 9: "Move Method Up" applied to method newURLConnection(java.net.URL) from XmlRpcSunHttpTransport to XmlRpcHttpTransport
+Iteration 10: "Increase Method Visibility" applied at class ClientFactory to method getClient() from public to protected
+Iteration 11: "Decrease Method Visibility" applied at class TypeConverterFactoryImpl\IdentityTypeConverter to method IdentityTypeConverter(java.lang.Class) from package to protected
+Iteration 12: "Make Class Abstract" applied to class XmlRpcLiteHttpTransportFactory
+Iteration 13: "Move Method Up" applied to method write(org.xml.sax.ContentHandler,java.lang.Object) from StringSerializer to TypeSerializerImpl
+Iteration 14: "Make Class Abstract" applied to class WebServer
+Iteration 15: "Move Field Up" applied to field EX_I1_TAG from I1Serializer to TypeSerializerImpl
+Iteration 16: "Decrease Method Visibility" applied at class Connection to method writeContentLengthHeader(int) from private to package
+Iteration 17: "Make Method Final" applied at class DateSerializer to method write(org.xml.sax.ContentHandler,java.lang.Object)
+Iteration 18: "Decrease Method Visibility" applied at class XmlRpcServlet to method newPropertyHandlerMapping(java.net.URL) from protected to public
+Iteration 19: "Decrease Method Visibility" applied at class XmlRpcStreamRequestProcessor to method execute(org.apache.xmlrpc.common.XmlRpcStreamRequestConfig,org.apache.xmlrpc.common.ServerStreamConnection) from package to protected
+Iteration 20: "Make Method Static" applied at class HttpServletResponseImpl to method setBufferSize(int)
+Iteration 21: "Make Field Final" applied at class XmlRpcServletServer to LocalVariableDeclaration serverConfig [in method getConfig(javax.servlet.http.HttpServletRequest)]
+Iteration 22: "Make Field Static" applied at class ObjectArrayParser to field level
+Iteration 23: "Decrease Method Visibility" applied at class XmlRpcLocalTransport to method isExtensionType(java.lang.Object) from private to package
+Iteration 24: "Decrease Method Visibility" applied at class XmlRpcDateTimeFormat to method parseInt(java.lang.String,int,java.lang.StringBuffer,int) from private to package
+Iteration 25: "Decrease Method Visibility" applied at class ReflectiveXmlRpcHandler to method invoke(java.lang.Object,java.lang.reflect.Method,java.lang.Object[]) from private to package
+Iteration 26: "Make Class Final" applied to class NodeSerializer
+Iteration 27: "Make Field Final" applied at class XmlRpcTransport to ParameterDeclaration pRequest [in method sendRequest(org.apache.xmlrpc.XmlRpcRequest)]
+Iteration 28: "Make Class Concrete" applied to class XmlRpcDateTimeDateFormat
+Iteration 29: "Move Method Down" applied to method setRequestHeader(java.lang.String,java.lang.String) from XmlRpcSunHttpTransport to XmlRpcSun14HttpTransport
+
+Time taken to refactor: 395.10s
+
+======== Final Metric Info ========
+Fitness function 1 score: 0.015609
+Fitness function 2 score: 0.172414
+Fitness function 3 score: 0.931035
+Fitness function 4 score: 0.620690

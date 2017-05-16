@@ -1,0 +1,76 @@
+======== Search Information ========
+Search: Many-Objective Genetic Algorithm
+Generations: 100
+Population Size: 50
+Crossover Probability: 0.200000
+Mutation Probability: 0.800000
+
+======== Initial Metric Info ========
+Fitness function 1 score: 0.000000
+Fitness function 2 score: 0.000000
+Fitness function 3 score: 0.000000
+Fitness function 4 score: 0.000000
+
+======== Applied Refactorings ========
+Iteration 1: "Increase Field Visibility" applied at class Rule\Definition\Element to field alias from public to protected
+Iteration 2: "Remove Method" applied at class IntArray to method compact()
+Iteration 3: "Decrease Method Visibility" applied at class GrammarBuilder to method writeListsCode(beaver.spec.NonTerminal[]) from private to package
+Iteration 4: "Remove Method" applied at class GrammarScanner to method yystate()
+Iteration 5: "Decrease Method Visibility" applied at class ParserGenerator to method checkUnreducibleProductions(beaver.spec.Grammar,beaver.comp.State,beaver.comp.util.Log) from private to package
+Iteration 6: "Make Method Static" applied at class GrammarSymbol\1157869541 to method compare(java.lang.Object,java.lang.Object)
+Iteration 7: "Decrease Method Visibility" applied at class BitSet to method ensureIndexWithinRange(int) from private to package
+Iteration 8: "Decrease Method Visibility" applied at class GrammarParser\Events to method Events(beaver.comp.util.Log) from package to protected
+Iteration 9: "Make Field Non Final" applied at class ParserGenerator to FieldDeclaration VERSION
+Iteration 10: "Make Class Concrete" applied to class GrammarSymbol
+Iteration 11: "Increase Method Visibility" applied at class Log\Record\List to method add(beaver.comp.util.Log.Record) from public to protected
+Iteration 12: "Increase Method Visibility" applied at class GrammarScanner to method yyclose() from public to protected
+Iteration 13: "Decrease Method Visibility" applied at class ParsingTables to method renumberSymbols(beaver.spec.Grammar,beaver.comp.Action.List[]) from private to package
+Iteration 14: "Decrease Method Visibility" applied at class ParserGenerator to method buildActions(beaver.spec.Grammar,beaver.comp.State) from private to package
+Iteration 15: "Make Field Non Final" applied at class Action\Type to FieldDeclaration REDUCE
+Iteration 16: "Increase Method Visibility" applied at class ParsingTables to method expand(short[]) from package to private
+Iteration 17: "Make Method Non Static" applied at class GrammarSymbol\1157869541 to method compare(java.lang.Object,java.lang.Object)
+Iteration 18: "Make Field Non Final" applied at class GrammarParser to LocalVariableDeclaration code [in method invokeReduceAction(int,int)]
+Iteration 19: "Make Field Static" applied at class GrammarParser\Events to field log
+Iteration 20: "Make Method Static" applied at class Production\695359281 to method compare(java.lang.Object,java.lang.Object)
+Iteration 21: "Decrease Method Visibility" applied at class Declaration\CodeContainer to method CodeContainer(beaver.Symbol) from protected to public
+Iteration 22: "Increase Method Visibility" applied at class ParsingTables to method countStates(beaver.comp.State) from package to private
+Iteration 23: "Decrease Method Visibility" applied at class Production\RHS\Item to method Item(beaver.spec.GrammarSymbol) from package to protected
+Iteration 24: "Move Field Up" applied to field defs from Rule to Node
+Iteration 25: "Make Class Final" applied to class GrammarScanner
+Iteration 26: "Decrease Method Visibility" applied at class ParsingTables to method renumberSymbols(beaver.spec.Grammar,beaver.comp.Action.List[]) from package to protected
+Iteration 27: "Decrease Method Visibility" applied at class Production to method Production(int,beaver.spec.NonTerminal,beaver.spec.Production.RHS) from package to protected
+Iteration 28: "Decrease Method Visibility" applied at class Make to method getSrcFile(java.lang.String) from package to protected
+Iteration 29: "Decrease Method Visibility" applied at class ParsingTables to method insertActions(beaver.comp.Action.List,int) from private to package
+Iteration 30: "Make Class Abstract" applied to class Action
+Iteration 31: "Make Field Final" applied at class GrammarTreeRoot to ParameterDeclaration declarations [in method GrammarTreeRoot(beaver.spec.ast.Declaration[],beaver.spec.ast.Rule[])]
+Iteration 32: "Make Method Final" applied at class GrammarTreeRoot to method accept(beaver.spec.ast.TreeWalker)
+Iteration 33: "Move Field Down" applied to field defs from Node to Rule
+Iteration 34: "Decrease Method Visibility" applied at class GrammarParser\Events to method Events(beaver.comp.util.Log) from protected to public
+Iteration 35: "Make Field Non Static" applied at class ParserGenerator to field SOURCE_FILE_EXT
+Iteration 36: "Decrease Method Visibility" applied at class NonTerminal to method NonTerminal(java.lang.String,java.lang.String) from package to protected
+Iteration 37: "Move Field Up" applied to field found from GrammarBuilder\216071901\2013113856 to GrammarBuilder\RuleWalker
+Iteration 38: "Make Method Non Static" applied at class ParsingTables to method expand(short[])
+Iteration 39: "Increase Field Visibility" applied at class Rule\Definition to field prec_sym_name from public to protected
+Iteration 40: "Decrease Method Visibility" applied at class Make to method getSrcFile(java.lang.String) from protected to public
+Iteration 41: "Remove Method" applied at class BitSet to method isEmpty()
+Iteration 42: "Increase Field Visibility" applied at class Declaration\TypeOf to field type from public to protected
+Iteration 43: "Increase Field Visibility" applied at class Rule\Definition\Element to field alias from protected to package
+Iteration 44: "Make Method Non Final" applied at class GrammarTreeRoot to method accept(beaver.spec.ast.TreeWalker)
+Iteration 45: "Make Method Static" applied at class TreeWalker to method visit(beaver.spec.ast.Declaration.Error)
+Iteration 46: "Decrease Method Visibility" applied at class Configuration\Set to method reverseReversePropagation() from package to protected
+Iteration 47: "Remove Method" applied at class GrammarScanner to method yyreset(java.io.Reader)
+Iteration 48: "Decrease Method Visibility" applied at class Terminal\Associativity to method Associativity(java.lang.String) from private to package
+Iteration 49: "Move Method Down" applied to method setLocation(int,int) from Node to Declaration
+Iteration 50: "Make Field Non Final" applied at class Rule to FieldDeclaration defs
+Iteration 51: "Make Method Non Static" applied at class GrammarScanner to method zzUnpackAction()
+Iteration 52: "Make Field Non Static" applied at class ParserGenerator to field SERIALIZED_PARSER_TABLES_FILE_EXT
+Iteration 53: "Make Class Final" applied to class SrcReader
+Iteration 54: "Decrease Method Visibility" applied at class GrammarScanner to method zzUnpackAttribute(java.lang.String,int,int[]) from private to package
+
+Time taken to refactor: 190.51s
+
+======== Final Metric Info ========
+Fitness function 1 score: 0.071426
+Fitness function 2 score: 0.129630
+Fitness function 3 score: 0.814815
+Fitness function 4 score: 0.981481

@@ -1,0 +1,49 @@
+======== Search Information ========
+Search: Many-Objective Genetic Algorithm
+Generations: 100
+Population Size: 50
+Crossover Probability: 0.200000
+Mutation Probability: 0.800000
+
+======== Initial Metric Info ========
+Fitness function 1 score: 0.000000
+Fitness function 2 score: 0.000000
+Fitness function 3 score: 0.000000
+Fitness function 4 score: 0.000000
+
+======== Applied Refactorings ========
+Iteration 1: "Move Field Up" applied to field USER_AGENT from XmlRpcHttpTransport to XmlRpcStreamTransport
+Iteration 2: "Remove Method" applied at class Connection\RequestException to method getRequestData()
+Iteration 3: "Decrease Method Visibility" applied at class XmlRpcSun14HttpTransport to method newURLConnection(java.net.URL) from protected to public
+Iteration 4: "Make Field Non Final" applied at class BigIntegerSerializer to FieldDeclaration BIGINTEGER_TAG
+Iteration 5: "Make Field Non Final" applied at class CalendarSerializer to FieldDeclaration EX_CALENDAR_TAG
+Iteration 6: "Move Field Up" applied to field EX_I1_TAG from I1Serializer to TypeSerializerImpl
+Iteration 7: "Make Class Abstract" applied to class XmlRpcLiteHttpTransportFactory
+Iteration 8: "Make Class Concrete" applied to class TypeSerializerImpl
+Iteration 9: "Make Method Non Final" applied at class Connection to method toHTTPBytes(java.lang.String)
+Iteration 10: "Make Class Concrete" applied to class AbstractReflectiveHandlerMapping
+Iteration 11: "Move Field Up" applied to field EX_I2_TAG from I2Serializer to TypeSerializerImpl
+Iteration 12: "Decrease Method Visibility" applied at class XmlRpcRequestParser to method addResult(java.lang.Object) from protected to public
+Iteration 13: "Move Method Up" applied to method newSocket(boolean,java.lang.String,int) from XmlRpcLiteHttpTransport to XmlRpcHttpTransport
+Iteration 14: "Decrease Method Visibility" applied at class XmlRpcHttpServer to method setResponseHeader(org.apache.xmlrpc.common.ServerStreamConnection,java.lang.String,java.lang.String) from protected to public
+Iteration 15: "Decrease Method Visibility" applied at class XmlRpcSun15HttpTransport to method newURLConnection(java.net.URL) from protected to public
+Iteration 16: "Make Class Abstract" applied to class WebServer
+Iteration 17: "Make Class Concrete" applied to class WebServer
+Iteration 18: "Make Field Non Static" applied at class TypeSerializerImpl to field EX_I2_TAG
+Iteration 19: "Make Method Static" applied at class XmlRpcServlet to method newXmlRpcServer(javax.servlet.ServletConfig)
+Iteration 20: "Move Method Up" applied to method getResult() from SerializableParser to ByteArrayParser
+Iteration 21: "Make Field Final" applied at class XmlRpcHandler to ParameterDeclaration pRequest [in method execute(org.apache.xmlrpc.XmlRpcRequest)]
+Iteration 22: "Make Class Final" applied to class XmlRpcLite14HttpTransportFactory
+Iteration 23: "Remove Method" applied at class LocalStreamConnection to method getRequest()
+Iteration 24: "Make Method Static" applied at class NullSerializer to method write(org.xml.sax.ContentHandler,java.lang.Object)
+Iteration 25: "Make Method Non Static" applied at class Connection to method toHTTPBytes(java.lang.String)
+Iteration 26: "Move Method Down" applied to method writeRequest(org.apache.xmlrpc.client.XmlRpcStreamTransport.ReqWriter) from XmlRpcSunHttpTransport to XmlRpcSun14HttpTransport
+Iteration 27: "Make Class Concrete" applied to class XmlRpcTransportImpl
+
+Time taken to refactor: 427.22s
+
+======== Final Metric Info ========
+Fitness function 1 score: -0.068985
+Fitness function 2 score: 0.222222
+Fitness function 3 score: 0.851852
+Fitness function 4 score: 0.638889

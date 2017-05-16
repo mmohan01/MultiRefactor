@@ -1,0 +1,40 @@
+======== Search Information ========
+Search: Many-Objective Genetic Algorithm
+Generations: 100
+Population Size: 50
+Crossover Probability: 0.200000
+Mutation Probability: 0.800000
+
+======== Initial Metric Info ========
+Fitness function 1 score: 0.000000
+Fitness function 2 score: 0.000000
+Fitness function 3 score: 0.000000
+Fitness function 4 score: 0.000000
+
+======== Applied Refactorings ========
+Iteration 1: "Make Field Final" applied at class XmlRpcRequestProcessor to ParameterDeclaration pRequest [in method execute(org.apache.xmlrpc.XmlRpcRequest)]
+Iteration 2: "Move Field Up" applied to field DATE_TAG from CalendarSerializer to TypeSerializerImpl
+Iteration 3: "Decrease Method Visibility" applied at class ReflectiveXmlRpcHandler to method invoke(java.lang.Object,java.lang.reflect.Method,java.lang.Object[]) from private to package
+Iteration 4: "Decrease Method Visibility" applied at class HttpServletResponseImpl to method getHeader(java.lang.String) from private to package
+Iteration 5: "Decrease Method Visibility" applied at class I1Parser to method setResult(java.lang.String) from protected to public
+Iteration 6: "Increase Method Visibility" applied at class TypeSerializerImpl to method write(org.xml.sax.ContentHandler,java.lang.String,java.lang.String) from protected to package
+Iteration 7: "Move Field Up" applied to field USER_AGENT from XmlRpcHttpTransport to XmlRpcStreamTransport
+Iteration 8: "Increase Field Visibility" applied at class AtomicParser to field sb from protected to package
+Iteration 9: "Make Field Static" applied at class XmlRpcServlet to field server
+Iteration 10: "Increase Method Visibility" applied at class XmlRpcLiteHttpTransport to method newSocket(boolean,java.lang.String,int) from protected to package
+Iteration 11: "Decrease Method Visibility" applied at class XmlRpcWorker to method getController() from package to protected
+Iteration 12: "Make Field Final" applied at class XmlRpcInvocationException to ParameterDeclaration pMessage [in method XmlRpcInvocationException(java.lang.String,java.lang.Throwable)]
+Iteration 13: "Increase Method Visibility" applied at class TypeConverterFactoryImpl\ListTypeConverter to method newList(int) from protected to package
+Iteration 14: "Remove Method" applied at class Connection\RequestException to method getRequestData()
+Iteration 15: "Make Field Static" applied at class XmlRpcLite14HttpTransport to field sslSocketFactory
+Iteration 16: "Remove Method" applied at class LocalStreamConnection to method getRequest()
+Iteration 17: "Decrease Method Visibility" applied at class TypeConverter to method isConvertable(java.lang.Object) from package to protected
+Iteration 18: "Make Field Non Static" applied at class TypeConverterFactoryImpl to field voidTypeConverter
+
+Time taken to refactor: 444.82s
+
+======== Final Metric Info ========
+Fitness function 1 score: 0.045839
+Fitness function 2 score: 0.166667
+Fitness function 3 score: 1.000000
+Fitness function 4 score: 0.555556

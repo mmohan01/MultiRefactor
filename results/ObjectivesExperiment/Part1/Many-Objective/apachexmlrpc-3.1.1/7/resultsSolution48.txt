@@ -1,0 +1,44 @@
+======== Search Information ========
+Search: Many-Objective Genetic Algorithm
+Generations: 100
+Population Size: 50
+Crossover Probability: 0.200000
+Mutation Probability: 0.800000
+
+======== Initial Metric Info ========
+Fitness function 1 score: 0.000000
+Fitness function 2 score: 0.000000
+Fitness function 3 score: 0.000000
+Fitness function 4 score: 0.000000
+
+======== Applied Refactorings ========
+Iteration 1: "Make Class Concrete" applied to class XmlRpcStreamServer
+Iteration 2: "Move Method Down" applied to method setRequestHeader(java.lang.String,java.lang.String) from XmlRpcSunHttpTransport to XmlRpcSun14HttpTransport
+Iteration 3: "Make Class Final" applied to class StringSerializer
+Iteration 4: "Make Field Final" applied at class ExtSerializer to ParameterDeclaration pHandler [in method write(org.xml.sax.ContentHandler,java.lang.Object)]
+Iteration 5: "Make Method Non Final" applied at class Connection to method toHTTPBytes(java.lang.String)
+Iteration 6: "Make Class Final" applied to class FloatSerializer
+Iteration 7: "Decrease Method Visibility" applied at class XmlRpcStreamServer to method getRequest(org.apache.xmlrpc.common.XmlRpcStreamRequestConfig,java.io.InputStream) from protected to public
+Iteration 8: "Move Method Up" applied to method writeResponse(org.apache.xmlrpc.common.XmlRpcStreamRequestConfig,java.io.OutputStream,java.lang.Object) from ConnectionServer to XmlRpcHttpServer
+Iteration 9: "Decrease Method Visibility" applied at class XmlRpcLiteHttpTransport to method writeRequest(org.apache.xmlrpc.client.XmlRpcStreamTransport.ReqWriter) from protected to public
+Iteration 10: "Decrease Method Visibility" applied at class XmlRpcHttpRequestConfig to method getBasicPassword() from package to protected
+Iteration 11: "Make Method Non Static" applied at class Util to method getMethodHelp(java.lang.Class,java.lang.reflect.Method)
+Iteration 12: "Remove Method" applied at class Connection\RequestException to method getRequestData()
+Iteration 13: "Move Method Down" applied to method getOutputStream(org.apache.xmlrpc.common.ServerStreamConnection,org.apache.xmlrpc.common.XmlRpcStreamRequestConfig,java.io.OutputStream) from XmlRpcHttpServer to ConnectionServer
+Iteration 14: "Make Field Static" applied at class DateParser to field f
+Iteration 15: "Make Field Non Static" applied at class XmlRpcClientConfigImpl to field serialVersionUID
+Iteration 16: "Move Method Down" applied to method characters(char[],int,int) from AtomicParser to BigDecimalParser
+Iteration 17: "Decrease Method Visibility" applied at class XmlRpcRequestParser to method addResult(java.lang.Object) from protected to public
+Iteration 18: "Decrease Method Visibility" applied at class XmlRpcServletServer to method setResponseHeader(org.apache.xmlrpc.common.ServerStreamConnection,java.lang.String,java.lang.String) from protected to public
+Iteration 19: "Make Class Final" applied to class XmlRpcServerConfigImpl
+Iteration 20: "Move Method Down" applied to method isUsingByteArrayOutput(org.apache.xmlrpc.client.XmlRpcHttpClientConfig) from XmlRpcLiteHttpTransport to XmlRpcLite14HttpTransport
+Iteration 21: "Make Class Final" applied to class DateParser
+Iteration 22: "Decrease Method Visibility" applied at class ReflectiveXmlRpcHandler to method getInstance(org.apache.xmlrpc.XmlRpcRequest) from private to package
+
+Time taken to refactor: 383.60s
+
+======== Final Metric Info ========
+Fitness function 1 score: 0.051860
+Fitness function 2 score: 0.136364
+Fitness function 3 score: 1.000000
+Fitness function 4 score: 0.579545

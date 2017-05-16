@@ -1,0 +1,41 @@
+======== Search Information ========
+Search: Many-Objective Genetic Algorithm
+Generations: 100
+Population Size: 50
+Crossover Probability: 0.200000
+Mutation Probability: 0.800000
+
+======== Initial Metric Info ========
+Fitness function 1 score: 0.000000
+Fitness function 2 score: 0.000000
+Fitness function 3 score: 0.000000
+Fitness function 4 score: 0.000000
+
+======== Applied Refactorings ========
+Iteration 1: "Decrease Method Visibility" applied at class Action\Type\Conflict\ShiftReduce to method makeDescription(beaver.comp.Action.Shift,beaver.comp.Action.Reduce,beaver.comp.State,java.lang.String) from private to package
+Iteration 2: "Decrease Method Visibility" applied at class Production to method Production(int,beaver.spec.NonTerminal,beaver.spec.Production.RHS) from package to protected
+Iteration 3: "Decrease Method Visibility" applied at class Action\Type\Conflict to method Conflict(java.lang.String,java.lang.String) from package to protected
+Iteration 4: "Decrease Method Visibility" applied at class GrammarScanner to method zzScanError(int) from private to package
+Iteration 5: "Make Field Final" applied at class GrammarBuilder to LocalVariableDeclaration terms [in method getTerminals()]
+Iteration 6: "Make Field Final" applied at class Terminal to ParameterDeclaration prec [in method Terminal(java.lang.String,int,beaver.spec.Terminal.Associativity)]
+Iteration 7: "Decrease Method Visibility" applied at class GrammarParser\Events to method Events(beaver.comp.util.Log) from package to protected
+Iteration 8: "Move Field Up" applied to field sym_name from Rule\Definition\Element to Node
+Iteration 9: "Decrease Method Visibility" applied at class State to method splitActions() from package to protected
+Iteration 10: "Decrease Method Visibility" applied at class State to method State(int,beaver.comp.Configuration.Set) from package to protected
+Iteration 11: "Decrease Field Visibility" applied at class Production to field NUM_TERM_CMP from package to protected
+Iteration 12: "Decrease Field Visibility" applied at class GrammarScanner to field ZZ_UNKNOWN_ERROR from private to package
+Iteration 13: "Make Field Final" applied at class Grammar to FieldDeclaration eof
+Iteration 14: "Make Method Non Static" applied at class GrammarBuilder to method trimCode(java.lang.String)
+Iteration 15: "Decrease Method Visibility" applied at class BitSet\Processor to method process(int) from protected to public
+Iteration 16: "Increase Field Visibility" applied at class ParsingTables to field UNUSED_OFFSET from package to private
+Iteration 17: "Make Method Non Final" applied at class GrammarScanner to method yyclose()
+Iteration 18: "Make Class Abstract" applied to class Action
+Iteration 19: "Make Method Static" applied at class ParserGenerator\CompiledParser\849223622 to method compare(java.lang.Object,java.lang.Object)
+
+Time taken to refactor: 197.92s
+
+======== Final Metric Info ========
+Fitness function 1 score: 0.081659
+Fitness function 2 score: 0.157895
+Fitness function 3 score: 1.000000
+Fitness function 4 score: 0.894737

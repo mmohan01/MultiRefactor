@@ -1,0 +1,41 @@
+======== Search Information ========
+Search: Many-Objective Genetic Algorithm
+Generations: 100
+Population Size: 50
+Crossover Probability: 0.200000
+Mutation Probability: 0.800000
+
+======== Initial Metric Info ========
+Fitness function 1 score: 0.000000
+Fitness function 2 score: 0.000000
+Fitness function 3 score: 0.000000
+Fitness function 4 score: 0.000000
+
+======== Applied Refactorings ========
+Iteration 1: "Make Field Non Final" applied at class ParserGenerator\CompiledParser to FieldDeclaration _62_or_63
+Iteration 2: "Make Field Final" applied at class Rule\Definition to ParameterDeclaration elts [in method Definition(beaver.spec.ast.Rule.Definition.Element[])]
+Iteration 3: "Make Method Non Final" applied at class GrammarScanner to method yyclose()
+Iteration 4: "Decrease Method Visibility" applied at class GrammarScanner to method zzUnpackCMap(java.lang.String) from private to package
+Iteration 5: "Increase Method Visibility" applied at class GrammarScanner to method zzUnpackCMap(java.lang.String) from package to private
+Iteration 6: "Make Field Static" applied at class GrammarTreeRoot to field declarations
+Iteration 7: "Decrease Method Visibility" applied at class Action\Reduce\Maker to method buildReduceActions() from package to protected
+Iteration 8: "Make Class Abstract" applied to class Action
+Iteration 9: "Make Field Non Final" applied at class GrammarParser to LocalVariableDeclaration _list_rules [in method invokeReduceAction(int,int)]
+Iteration 10: "Decrease Method Visibility" applied at class GrammarScanner to method zzScanError(int) from private to package
+Iteration 11: "Decrease Method Visibility" applied at class Configuration\Set\Factory to method Factory(beaver.spec.Grammar) from package to protected
+Iteration 12: "Move Method Down" applied to method setLocation(int,int) from Node to Declaration
+Iteration 13: "Decrease Field Visibility" applied at class Action\Type to field NOT_USED from package to protected
+Iteration 14: "Increase Field Visibility" applied at class GrammarScanner to field CODE_END from public to protected
+Iteration 15: "Make Field Static" applied at class GrammarScanner to field matched_text
+Iteration 16: "Decrease Method Visibility" applied at class Grammar to method Grammar() from package to protected
+Iteration 17: "Decrease Method Visibility" applied at class Production\RHS to method RHS(beaver.spec.GrammarSymbol) from package to protected
+Iteration 18: "Increase Field Visibility" applied at class Production\RHS to field NONE from public to protected
+Iteration 19: "Increase Method Visibility" applied at class ParserGenerator\CompiledParser to method writeActionsReport(java.io.File,java.lang.String) from public to protected
+
+Time taken to refactor: 168.09s
+
+======== Final Metric Info ========
+Fitness function 1 score: 0.156702
+Fitness function 2 score: 0.315789
+Fitness function 3 score: 0.947368
+Fitness function 4 score: 1.000000
