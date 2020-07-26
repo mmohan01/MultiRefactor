@@ -16,7 +16,7 @@ import searches.*;
 
 public class Tasks 
 {
-	String pathway = "./data/original/json-1.1";
+	String pathway = "./data/json-1.1";
 	
 	// No attributes - empty constructor.
 	public Tasks(){}
