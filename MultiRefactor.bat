@@ -1,2 +1,2 @@
-@REM java -jar refactory.jar %*
-@java.exe -classpath ./bin;./lib/* multirefactor.Main %*
+@REM To run the MultiRefactor project, use the command below.
+@java -cp bin;lib/* multirefactor.Main %*
